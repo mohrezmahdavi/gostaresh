@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-// Table 36,37 Model
-class InternationalResearchStatusAnalysis extends Model
+// Table 39 Model
+class TechnologyAndInnovationInfrastructure extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_international_research_status_analyses";
+    protected $table = "gostaresh_technology_and_innovation_infrastructures";
 }
