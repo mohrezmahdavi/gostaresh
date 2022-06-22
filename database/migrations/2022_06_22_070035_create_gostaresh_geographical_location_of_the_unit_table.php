@@ -28,7 +28,6 @@ return new class extends Migration
             $table->unsignedBigInteger('distance_from_population_density_of_city')->nullable();
             $table->unsignedBigInteger('distance_from_center_of_province')->nullable();
             $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
-            $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
             $table->string('distance_to_the_nearest_higher_education_center')->nullable();
             $table->string('distance_to_the_nearest_unit_of_azad_university')->nullable();
             $table->tinyInteger('level_and_quality_of_access')->unsigned()->nullable();
