@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('number_and_composition_of_student_population_of_province', function (Blueprint $table) {
+        Schema::create('gostaresh_number_and_composition_of_student_population_of_province', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
 
@@ -23,7 +23,12 @@ return new class extends Migration
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
 
-            
+            $table->tinyInteger('gender_id')->default(1);
+            $table->foreignId('grade_id')->nullable();
+            $table->foreignId('sub_grade_id')->nullable();
+            $table->foreignId('major_id')->nullable();
+            $table->foreignId('minor_id')->nullable();
+            $table->unsignedBigInteger('number_of_persons')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -38,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('number_and_composition_of_student_population_of_province');
+        Schema::dropIfExists('gostaresh_number_and_composition_of_student_population_of_province');
     }
 };
