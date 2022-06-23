@@ -29,6 +29,8 @@ return new class extends Migration
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
+            $table->string('total_graduates')->comment('کل دانش آموختگان')->nullable();
+
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
             $table->softDeletes();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 50 Migration
+// Table 54 Migration
 return new class extends Migration
 {
     /**
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_average_tuition_incomes', function (Blueprint $table) {
+        Schema::create('gostaresh_cost_changes_trends_analyses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
@@ -22,15 +22,8 @@ return new class extends Migration
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
 
-            $table->foreignId('gender_id')->unsigned()->nullable();
-            $table->foreignId('grade_id')->nullable();
-            $table->foreignId('sub_grade_id')->nullable();
-            $table->foreignId('major_id')->nullable();
-            $table->foreignId('minor_id')->nullable();
-
             $table->string('unit')->nullable();
-            $table->string('university')->comment('دانشگاه')->nullable();
-            $table->string('average_field_performance_income')->comment('میانگین درآمد ناشی از اجرای رشته')->nullable();
+            $table->string('total_annual_expenses')->comment('کل هزینه های سالیانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -46,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_average_tuition_incomes');
+        Schema::dropIfExists('gostaresh_cost_changes_trends_analyses');
     }
 };

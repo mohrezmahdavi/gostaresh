@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 50 Migration
+// Table 51 Migration
 return new class extends Migration
 {
     /**
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_average_tuition_incomes', function (Blueprint $table) {
+        Schema::create('gostaresh_percapita_revenue_status_analyses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
 
             $table->string('unit')->nullable();
             $table->string('university')->comment('دانشگاه')->nullable();
-            $table->string('average_field_performance_income')->comment('میانگین درآمد ناشی از اجرای رشته')->nullable();
+            $table->string('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -46,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_average_tuition_incomes');
+        Schema::dropIfExists('gostaresh_percapita_revenue_status_analyses');
     }
 };
