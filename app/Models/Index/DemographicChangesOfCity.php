@@ -5,7 +5,7 @@ namespace App\Models\Index;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// Table 1
+// Table 1 Model
 class DemographicChangesOfCity extends Model
 {
     use HasFactory;

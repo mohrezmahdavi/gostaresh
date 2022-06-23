@@ -31,7 +31,6 @@ return new class extends Migration
             $table->float('operating_income_growth_rate')->comment('نرخ رشد درآمدهای عملیاتی واحد')->nullable();
             $table->string('total_non_tuition_income')->comment('مجموع درآمدهای غیر شهریه ای واحد')->nullable();
             $table->string('total_international_income')->comment('مجموع درآمد های ناشی از فعالیت های بین المللی')->nullable();
-            $table->float('operating_income_growth_rate')->comment('نرخ رشد درآمدهای عملیاتی واحد')->nullable();
             $table->float('shareholder_income')->comment('درآمد ناشی از سهامداری')->nullable();
 
             $table->integer('year')->unsigned()->nullable();

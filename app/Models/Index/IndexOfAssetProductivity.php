@@ -13,5 +13,5 @@ class IndexOfAssetProductivity extends Model
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_index_of_asset_productivities";
+    protected $table = "gostaresh_index_of_asset_productivity";
 }

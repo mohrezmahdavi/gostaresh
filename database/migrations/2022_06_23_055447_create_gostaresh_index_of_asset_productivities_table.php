@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_index_of_asset_productivities', function (Blueprint $table) {
+        Schema::create('gostaresh_index_of_asset_productivity', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('ratio_of_unit_faculty_members_to_faculty_members_of_the_province')->comment('نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان')->nullable();
             $table->string('ratio_of_unit_students_to_students_of_the_province')->comment('نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان')->nullable();
             $table->string('ratio_of_unit_employees_to_provincial_employees')->comment('نسبت تعداد کارمندان به میانگین تعداد کارمندان استان')->nullable();
-            $table->string('ratio_of_unit_teaching_professors_to_teaching_professors_of_the_province')->comment('نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان')->nullable();
+            $table->string('unit_teaching_professors_to_teaching_professors_province')->comment('نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -57,6 +57,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_index_of_asset_productivities');
+        Schema::dropIfExists('gostaresh_index_of_asset_productivity');
     }
 };

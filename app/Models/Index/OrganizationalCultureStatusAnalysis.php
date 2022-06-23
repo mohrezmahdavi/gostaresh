@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-// Table 43 Model
+// Table 44 Model
 class OrganizationalCultureStatusAnalysis extends Model
 {
     use HasFactory, SoftDeletes;
