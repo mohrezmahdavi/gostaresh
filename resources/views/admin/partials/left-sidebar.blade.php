@@ -7,13 +7,13 @@
             <span class="logo-sm">
                 {{-- <img src="{{ asset('assets/admin/images/logo-sm-dark.png') }}" alt="" height="24"> --}}
                 <span class="logo-lg-text-light">
-                    صمت من
+                    گسترش
                 </span>
             </span>
             <span class="logo-lg">
                 {{-- <img src="{{ asset('assets/admin/images/logo-dark.png') }}" alt="" height="20"> --}}
                 <span class="logo-lg-text-light">
-                    صمت من
+                    گسترش
                 </span>
             </span>
         </a>
@@ -22,14 +22,14 @@
             <span class="logo-sm">
                 {{-- <img src="{{ asset('assets/admin/images/logo-sm.png') }}" alt="" height="24"> --}}
                 <span class="logo-lg-text-light">
-                    صمت من
+                    گسترش
                 </span>
 
             </span>
             <span class="logo-lg">
                 {{-- <img src="{{ asset('assets/admin/images/logo-light.png') }}" alt="" height="20"> --}}
                 <span class="logo-lg-text-light">
-                    صمت من
+                    گسترش
                 </span>
 
             </span>
@@ -132,7 +132,7 @@
                     </div>
                 </li>
 
-                
+
 
 
 
