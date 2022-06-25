@@ -93,6 +93,7 @@
 
                                 <tr>
                                     <th>#</th>
+                                    <th>شهرستان</th>
                                     <th>سال</th>
                                     <th>جمعیت (نفر)</th>
                                     <th>نرخ مهاجرت</th>
@@ -104,16 +105,12 @@
                                 @foreach ($demographicChangesOfCities as $key => $demographicChangesOfCity)
                                     <tr>
                                         <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
-                                        <td>{{ $demographicChangesOfCity?->first_name . ' ' . $user?->last_name }}</td>
+                                        <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}</td>
+                                        <td>{{ $demographicChangesOfCity?->year }}</td>
 
-                                        <td>{{ $user?->phone_number }}</td>
-                                        <td>
-                                            @foreach (config('saan.user_status') as $key => $value)
-                                                @if ($key == $user->status)
-                                                    {{ $value }}
-                                                @endif
-                                            @endforeach
-                                        </td>
+                                        <td>{{ $demographicChangesOfCity?->population }}</td>
+                                        <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>
+                                        <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
                                         <td>
 
                                             <a href="{{ route('admin.user.edit', $user) }}"

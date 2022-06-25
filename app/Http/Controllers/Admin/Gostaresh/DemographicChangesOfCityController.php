@@ -16,7 +16,7 @@ class DemographicChangesOfCityController extends Controller
      */
     public function index()
     {
-        $demographicChangesOfCities = DemographicChangesOfCity::orderBy('desc', 'id ASC')->paginate(20);
+        $demographicChangesOfCities = DemographicChangesOfCity::orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
     }
 
