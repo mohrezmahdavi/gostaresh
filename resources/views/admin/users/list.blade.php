@@ -52,13 +52,13 @@
                                     <label class=" col-form-label">بر اساس وضعیت</label>
                                     <div class="">
 
-                                        @foreach (config('saan.user_status') as $key => $value)
+                                        @foreach (config('gostaresh.user_status') as $key => $value)
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" id="inlineCheckbox{{ $key }}"
                                                        {{ request()->status == $key ? 'checked' : '' }} name="status" value="{{ $key }}">
                                                 <label class="form-check-label"
-                                                       for="inlineCheckbox{{ $key }}">{{ config('saan.user_status')[$key] }}</label>
+                                                       for="inlineCheckbox{{ $key }}">{{ config('gostaresh.user_status')[$key] }}</label>
                                             </div>
 
                                         @endforeach
@@ -107,7 +107,7 @@
 
                                         <td>{{ $user?->phone_number }}</td>
                                         <td>
-                                            @foreach (config('saan.user_status') as $key => $value)
+                                            @foreach (config('gostaresh.user_status') as $key => $value)
                                                 @if ($key == $user->status)
                                                     {{ $value }}
                                                 @endif
