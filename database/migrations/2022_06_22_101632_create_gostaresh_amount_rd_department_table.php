@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 3 Migration
+// Table 8 Migration
 return new class extends Migration
 {
     /**
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_number_and_composition_of_student_population_of_province', function (Blueprint $table) {
+        Schema::create('gostaresh_amount_rd_department', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
 
@@ -23,12 +23,7 @@ return new class extends Migration
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
 
-            $table->tinyInteger('gender_id')->default(1);
-            $table->foreignId('grade_id')->nullable();
-            $table->foreignId('sub_grade_id')->nullable();
-            $table->foreignId('major_id')->nullable();
-            $table->foreignId('minor_id')->nullable();
-            $table->unsignedBigInteger('number_of_persons')->default(0);
+            $table->unsignedBigInteger('amount')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -43,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_number_and_composition_of_student_population_of_province');
+        Schema::dropIfExists('gostaresh_payment_amount_in__r_and__d_department');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_geographical_location_of_the_unit', function (Blueprint $table) {
+        Schema::create('gostaresh_geographical_location_of_unit', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
 
@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('university_building')->nullable();
             $table->unsignedBigInteger('distance_from_population_density_of_city')->nullable();
             $table->unsignedBigInteger('distance_from_center_of_province')->nullable();
-            $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
             $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
             $table->string('distance_to_the_nearest_higher_education_center')->nullable();
             $table->string('distance_to_the_nearest_unit_of_azad_university')->nullable();

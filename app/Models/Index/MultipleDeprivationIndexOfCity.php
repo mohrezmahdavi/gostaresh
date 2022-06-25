@@ -5,12 +5,11 @@ namespace App\Models\Index;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// Table 4 Model
-class GrowthRateAndCompositionOfStudentPopulation extends Model
+class MultipleDeprivationIndexOfCity extends Model
 {
     use HasFactory;
-    
-    protected $table = 'gostaresh_growth_rate_population';
+
+    protected $table = 'gostaresh_multiple_deprivation_index_of_city';
 
     protected $guarded = [];
 }

@@ -10,7 +10,7 @@ class NumberAndCompositionOfStudentPopulation extends Model
 {
     use HasFactory;
 
-    protected $table = 'gostaresh_number_and_composition_of_student_population_of_province';
+    protected $table = 'gostaresh_number_student_population';
 
     protected $guarded = [];
 }

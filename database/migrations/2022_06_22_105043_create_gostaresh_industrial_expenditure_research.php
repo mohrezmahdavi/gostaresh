@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 4 Migration
+// Table 9 Migration
 return new class extends Migration
 {
     /**
@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_growth_rate_and_composition_of_province_student_population', function (Blueprint $table) {
+        Schema::create('gostaresh_industrial_expenditure_research', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
 
@@ -23,13 +23,7 @@ return new class extends Migration
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
 
-            $table->foreignId('grade_id')->nullable();
-            $table->foreignId('sub_grade_id')->nullable();
-            $table->foreignId('major_id')->nullable();
-            $table->foreignId('minor_id')->nullable();
-
-            $table->tinyInteger('gender_id')->default(1);
-            $table->float('growth_rate')->default(0);
+            $table->float('amount')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
@@ -44,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_growth_rate_and_composition_of_province_student_population');
+        Schema::dropIfExists('gostaresh_percentage_industrial_sector_expenditure_research_and_development');
     }
 };
