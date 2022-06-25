@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "comma/aban": "2.x",
+        "hekmatinasser/verta": "^2.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
@@ -19,12 +21,21 @@
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.aanplatform.com/comma/aban.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/Helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
