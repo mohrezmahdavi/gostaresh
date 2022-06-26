@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\GDPCity;
+use App\Models\Index\GDPPart;
+use GMP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 5
-class GDPCityController extends Controller
+// Table 6
+class GDPPartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $gdpCities = GDPCity::orderBy('id' , 'desc')->paginate(20);
-        return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
+        $gdpParts = GDPPart::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts'));
     }
 
     /**
@@ -28,7 +29,7 @@ class GDPCityController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.gdp-city.create.create');
+        return view('admin.gostaresh.gdp-part.create.create');
     }
 
     /**
@@ -39,7 +40,7 @@ class GDPCityController extends Controller
      */
     public function store(Request $request)
     {
-        GDPCity::create(array_merge(['user_id' => Auth::id()] , $request->all()));
+        GDPPart::create(array_merge(['user_id' => Auth::id()] , $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -49,7 +50,7 @@ class GDPCityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GDPCity $gdpCity)
+    public function show(GDPPart $gdpPart)
     {
         //
     }
@@ -60,9 +61,9 @@ class GDPCityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(GDPCity $gdpCity)
+    public function edit(GDPPart $gdpPart)
     {
-        return view('admin.gostaresh.gdp-city.edit.edit', compact('gdpCity'));
+        return view('admin.gostaresh.gdp-part.edit.edit', compact('gdpPart'));
     }
 
     /**
@@ -72,10 +73,10 @@ class GDPCityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GDPCity $gdpCity)
+    public function update(Request $request, GDPPart $gdpPart)
     {
-        $gdpCity->update($request->all());
-        return back()->with('success', __('titles.success_update'));
+        $gdpPart->update($request->all());
+        return back()->with('success', __('titles.success_update'));   
     }
 
     /**
@@ -84,9 +85,9 @@ class GDPCityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GDPCity $gdpCity)
+    public function destroy(GDPPart $gdpPart)
     {
-        $gdpCity->delete();
+        $gdpPart->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

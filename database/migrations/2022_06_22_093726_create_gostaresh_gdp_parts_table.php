@@ -18,7 +18,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
 
-            $table->string('part')->nullable();
+            $table->foreignId('country_id')->nullable();
+            $table->foreignId('province_id')->nullable();
+            $table->foreignId('county_id')->nullable();
+            $table->foreignId('city_id')->nullable();
+
+            $table->tinyInteger('part')->nullable();
 
             $table->float('amount')->default(0);
 
