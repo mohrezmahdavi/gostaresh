@@ -60,4 +60,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'part' => 'gdpPart'
     ]);
 
+    // Table 7 Route
+    Route::resource('number/of/research/project', App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class)->names('number.of.research.project')->parameters([
+        'project' => 'numberOfResearchProject'
+    ]);
+
 });
