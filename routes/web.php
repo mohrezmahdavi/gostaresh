@@ -38,5 +38,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     // Table 2 Route
     Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('geographical.location.unit')->parameters([
         'unit' => 'geographicalLocationOfUnit'
-    ]);;
+    ]);
+    
+    // Table 3 Route
+    Route::resource('number/student/population', App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class)->names('number.student.population')->parameters([
+        'population' => 'numberStudentPopulation'
+    ]);
+
 });

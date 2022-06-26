@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\GeographicalLocationOfUnit;
-use Illuminate\Contracts\View\View;
+use App\Models\Index\NumberStudentPopulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View as FacadesView;
 
-class GeographicalLocationOfUnitController extends Controller
+class NumberStudentPopulationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function index()
     {
-        $geographicalLocationOfUnits = GeographicalLocationOfUnit::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
+        $numberStudentPopulations = NumberStudentPopulation::orderBy('id', 'DESC')->paginate(20);
+        return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
     }
 
     /**
@@ -29,7 +27,7 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.geographical-location-of-unit.create.create');
+        return view('admin.gostaresh.number-student-population.create.create');
     }
 
     /**
@@ -40,8 +38,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function store(Request $request)
     {
-        GeographicalLocationOfUnit::create(array_merge(['user_id' => Auth::id()], $request->all()));
-        return redirect()->back()->with('success', __('titles.success_store'));
+        NumberStudentPopulation::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        return back()->with('success', __('titles.success_store'));
     }
 
     /**
@@ -50,7 +48,7 @@ class GeographicalLocationOfUnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GeographicalLocationOfUnit $geographicalLocationOfUnit)
+    public function show(NumberStudentPopulation $numberStudentPopulation)
     {
         //
     }
@@ -61,9 +59,9 @@ class GeographicalLocationOfUnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(GeographicalLocationOfUnit $geographicalLocationOfUnit)
+    public function edit(NumberStudentPopulation $numberStudentPopulation)
     {
-        return view('admin.gostaresh.geographical-location-of-unit.edit.edit', compact('geographicalLocationOfUnit'));
+        return view('admin.gostaresh.number-student-population.edit.edit', compact('numberStudentPopulation'));
     }
 
     /**
@@ -73,9 +71,9 @@ class GeographicalLocationOfUnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
+    public function update(Request $request, NumberStudentPopulation $numberStudentPopulation)
     {
-        $geographicalLocationOfUnit->update($request->all());
+        $numberStudentPopulation->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -85,9 +83,9 @@ class GeographicalLocationOfUnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GeographicalLocationOfUnit $geographicalLocationOfUnit)
+    public function destroy(NumberStudentPopulation $numberStudentPopulation)
     {
-        $geographicalLocationOfUnit->delete();
+        $numberStudentPopulation->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

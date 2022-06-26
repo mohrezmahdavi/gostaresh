@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Table 3 Model
-class NumberAndCompositionOfStudentPopulation extends Model
+class NumberStudentPopulation extends Model
 {
     use HasFactory;
 
