@@ -80,4 +80,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'rate' => 'economicParticipationRate'
     ]);
 
+    // Table 11 Route
+    Route::resource('unemployment/rate', App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class)->names('unemployment.rate')->parameters([
+        'rate' => 'unemploymentRate'
+    ]);
+
 });
