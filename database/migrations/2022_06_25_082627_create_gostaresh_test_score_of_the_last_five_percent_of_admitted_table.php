@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_average_test_score_of_the_last_five_percent_of_admitted', function (Blueprint $table) {
+        Schema::create('gostaresh_test_score_of_the_last_five_percent_of_admitted', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
@@ -45,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_average_test_score_of_the_last_five_percent_of_admitted');
+        Schema::dropIfExists('gostaresh_test_score_of_the_last_five_percent_of_admitted');
     }
 };

@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('number_of_disciplines_corresponding_to_job_fields')->comment('تعداد رشته های تحصیلی منطبق با حوزه های شغلی مورد نیاز در شهرستان')->nullable();
             $table->string('number_of_fields_corresponding_to_the_specified_specialties')->comment('تعداد رشته های تحصیلی منطبق با تخصص های تعیین شده برای شهرستان')->nullable();
             $table->string('number_of_courses_offered_virtually')->comment('تعداد واحدهای درسی ارایه شده به صورت مجازی')->nullable();
-            $table->string('number_of_popular_fields')->comment('تعداد رشته های تحصیلی پر مخاطب (با تعداد کل دانشجوی بیش از 80 درصد ظرفیت)')->nullable();
+            $table->string('number_of_popular_fields_more_than_eighty_percent_capacity')->comment('تعداد رشته های تحصیلی پر مخاطب (با تعداد کل دانشجوی بیش از 80 درصد ظرفیت)')->nullable();
             $table->string('number_of_courses_with_low_audience')->comment('تعداد رشته های تحصیلی کم مخاطب (با تعداد کل دانشجوی کمتر از 20 درصد ظرفیت)')->nullable();
             $table->string('number_of_fields_of_less_than_5_people')->comment('تعداد رشته های تحصیلی کمتر از 5 نفر')->nullable();
             $table->string('number_of_courses_without_admission')->comment('تعداد رشته های تحصیلی بدون پذیرش')->nullable();

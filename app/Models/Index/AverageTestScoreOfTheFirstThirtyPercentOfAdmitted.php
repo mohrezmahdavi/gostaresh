@@ -13,5 +13,5 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmitted extends Model
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_average_test_score_of_the_first_thirty_percent_of_admitted";
+    protected $table = "gostaresh_test_score_of_the_first_thirty_percent_of_admitted";
 }
