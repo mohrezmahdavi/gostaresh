@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,5 +85,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('unemployment/rate', App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class)->names('unemployment.rate')->parameters([
         'rate' => 'unemploymentRate'
     ]);
+
+    // Table 32 Route
+    Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
 
 });
