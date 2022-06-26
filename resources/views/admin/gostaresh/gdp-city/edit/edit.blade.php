@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    افزودن  نرخ رشد و ترکیب جمعیت دانش آموزی
+    ویرایش سهم تولید ناخالص داخلی شهرستان
 @endsection
 
 @section('breadcrumb-title')
-افزودن  نرخ رشد و ترکیب جمعیت دانش آموزی
+ویرایش سهم تولید ناخالص داخلی شهرستان
 @endsection
 
 @section('page-title')
-افزودن  نرخ رشد و ترکیب جمعیت دانش آموزی
+ویرایش سهم تولید ناخالص داخلی شهرستان
 @endsection
 
 @section('styles-head')
@@ -24,36 +24,24 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('number.student.population.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('gdp.city.update', $gdpCity) }}" role="form">
                         @csrf
 
-                        <select-province-component></select-province-component>
+                        <select-province-component 
+                            province_default="{{ $gdpCity->province_id }}" 
+                            county_default="{{ $gdpCity->county_id }}" 
+                            city_default="{{ $gdpCity->city_id }}"  
+                            rural_district_default="{{ $gdpCity->rural_district_id }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="gender_id">
-                                <span>جنسیت  </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="amount">
+                                <span> مقدار (درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="gender_id" id="gender_id" class="form-select" >
-                                    @foreach (config('gostaresh.gender') as $key => $value)
-                                    <option {{ ($key == old('gender_id') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
-                                
-                            </div>
-                        </div>
-
-                        <select-grade-component></select-grade-component>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="growth_rate">
-                                <span> نرخ رشد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="growth_rate" name="growth_rate" value="{{ old('growth_rate') }}"
-                                    class="form-control" placeholder="نرخ رشد را وارد کنید...">
+                                <input type="text" id="amount" name="amount" value="{{ $gdpCity->amount }}"
+                                    class="form-control" placeholder="مقدار را به درصد وارد کنید...">
                             </div>
                         </div>
 
@@ -67,7 +55,7 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select" >
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                    <option {{ ($i == old('year') ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
+                                    <option {{ ($i == $gdpCity->year ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                     
                                 </select>
@@ -83,17 +71,13 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select" >
                                     @for ($i = 1; $i <= 12; $i++)
-                                    <option {{ ($i == old('month') ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
+                                    <option {{ ($i == $gdpCity->month ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                     
                                 </select>
                                 
                             </div>
                         </div>
-
-                        
-
-                        
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

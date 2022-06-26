@@ -50,4 +50,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'population' => 'growthRateStudentPopulation'
     ]);
 
+    // Table 5 Route
+    Route::resource('gdp/city', App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class)->names('gdp.city')->parameters([
+        'city' => 'gdpCity'
+    ]);
+
 });

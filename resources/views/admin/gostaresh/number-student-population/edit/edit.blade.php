@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش وضعیت جغرافیایی واحد و دسترسی به آن در استان
+    ویرایش  تعداد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('breadcrumb-title')
-ویرایش وضعیت جغرافیایی واحد و دسترسی به آن در استان
+ویرایش  تعداد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('page-title')
-ویرایش وضعیت جغرافیایی واحد و دسترسی به آن در استان
+ویرایش  تعداد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('styles-head')
