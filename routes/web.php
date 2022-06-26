@@ -70,9 +70,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'department' => 'paymentRAndDDepartment'
     ]);
 
-    // Table p Route
+    // Table 9 Route
     Route::resource('industrial/expenditure/research', App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class)->names('industrial.expenditure.research')->parameters([
         'research' => 'industrialExpenditureResearch'
+    ]);
+
+    // Table 10 Route
+    Route::resource('economic/participation/rate', App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class)->names('economic.participation.rate')->parameters([
+        'rate' => 'economicParticipationRate'
     ]);
 
 });
