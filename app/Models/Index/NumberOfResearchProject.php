@@ -5,7 +5,7 @@ namespace App\Models\Index;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// Table 7
+// Table 7 Model
 class NumberOfResearchProject extends Model
 {
     use HasFactory;
