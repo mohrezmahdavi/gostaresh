@@ -67,7 +67,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 8 Route
     Route::resource('payment/randd/department', App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class)->names('payment.r.and.d.department')->parameters([
-        'project' => 'paymentRAndDDepartment'
+        'department' => 'paymentRAndDDepartment'
+    ]);
+
+    // Table p Route
+    Route::resource('industrial/expenditure/research', App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class)->names('industrial.expenditure.research')->parameters([
+        'research' => 'industrialExpenditureResearch'
     ]);
 
 });

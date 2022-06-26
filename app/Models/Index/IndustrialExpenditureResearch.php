@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Table 9 Model
-class PercentageIndustrialSectorExpenditureResearchAndDevelopment extends Model
+class IndustrialExpenditureResearch extends Model
 {
     use HasFactory;
     
