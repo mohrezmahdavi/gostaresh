@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'city' => 'demographicChangesOfCity'
     ]);
     // Table 2 Route
-    Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('demographic.changes.city')->parameters([
+    Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('geographical.location.unit')->parameters([
         'unit' => 'geographicalLocationOfUnit'
     ]);;
 });

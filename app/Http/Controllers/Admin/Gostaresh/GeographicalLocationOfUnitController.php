@@ -39,7 +39,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        GeographicalLocationOfUnit::create($request->all());
+        return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
@@ -61,7 +62,7 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function edit(GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
-        return view('admin.gostaresh.demographic-changes-of-city.edit.edit', compact('geographicalLocationOfUnit'));
+        return view('admin.gostaresh.geographical-location-of-unit.edit.edit', compact('geographicalLocationOfUnit'));
     }
 
     /**
@@ -73,7 +74,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function update(Request $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
-        //
+        $geographicalLocationOfUnit->update($request->all());
+        return back()->with('success', __('titles.success_update'));
     }
 
     /**
