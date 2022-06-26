@@ -65,4 +65,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'project' => 'numberOfResearchProject'
     ]);
 
+    // Table 8 Route
+    Route::resource('payment/randd/department', App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class)->names('payment.r.and.d.department')->parameters([
+        'project' => 'paymentRAndDDepartment'
+    ]);
+
 });
