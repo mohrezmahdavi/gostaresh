@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
@@ -157,4 +158,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 40 Route
     Route::resource('technological-product', TechnologicalProductController::class)->names('technological-product');
+
+    // Table 41 Route
+    Route::resource('international-technology', InternationalTechnologyController::class)->names('international-technology');
 });
