@@ -31,11 +31,11 @@
                         @csrf
                         @method('PUT')
 
-                        {{--<select-province-component province_default="{{ $researchOutputStatusAnalysis->province_id }}"--}}
-                            {{--county_default="{{ $researchOutputStatusAnalysis->county_id }}"--}}
-                            {{--city_default="{{ $researchOutputStatusAnalysis->city_id }}"--}}
-                            {{--rural_district_default="{{ $researchOutputStatusAnalysis->rural_district_id }}">--}}
-                        {{--</select-province-component>--}}
+                        <select-province-component province_default="{{ $researchOutputStatusAnalysis->province_id }}"
+                            county_default="{{ $researchOutputStatusAnalysis->county_id }}"
+                            city_default="{{ $researchOutputStatusAnalysis->city_id }}"
+                            rural_district_default="{{ $researchOutputStatusAnalysis->rural_district_id }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">

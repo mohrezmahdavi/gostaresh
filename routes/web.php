@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -121,4 +125,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 35 Route
     Route::resource('research-output-status-analyses', ResearchOutputStatusAnalysisController::class)->names('research-output-status-analyses');
+
+    // Table 36,37 Route
+    Route::resource('international-research', InternationalResearchStatusAnalysisController::class)->names('international-research');
+
+    // Table 38 Route
+    Route::resource('amount-of-facilities', AmountOfFacilitiesController::class)->names('amount-of-facilities');
+
+    // Table 39 Route
+    Route::resource('innovation-infrastructures', InnovationInfrastructureController::class)->names('innovation-infrastructures');
+
+    // Table 40 Route
+    Route::resource('technological-product', TechnologicalProductController::class)->names('technological-product');
 });
