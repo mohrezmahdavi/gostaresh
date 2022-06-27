@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
             $table->string('number_of_laboratories')->comment('تعداد آزمایشگاه ها و کارگاه های دارای استاندارد بین المللی مصوب')->nullable();

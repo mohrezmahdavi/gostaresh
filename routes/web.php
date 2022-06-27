@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
+use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,4 +113,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
 
+    // Table 33 Route
+    Route::resource('graduate-status-analyses', GraduateStatusAnalysisController::class)->names('graduate-status-analyses');
+
+    // Table 34 Route
+    Route::resource('teachers-status-analyses', TeachersStatusAnalysisController::class)->names('teachers-status-analyses');
+
+    // Table 35 Route
+    Route::resource('research-output-status-analyses', ResearchOutputStatusAnalysisController::class)->names('research-output-status-analyses');
 });

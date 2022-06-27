@@ -46,8 +46,8 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
+     * @return void
      */
     public function show(GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
     {
@@ -57,7 +57,7 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
      * @return \Illuminate\Http\Response
      */
     public function edit(GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
@@ -68,8 +68,8 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
@@ -81,7 +81,7 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
      * @return \Illuminate\Http\Response
      */
     public function destroy(GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)

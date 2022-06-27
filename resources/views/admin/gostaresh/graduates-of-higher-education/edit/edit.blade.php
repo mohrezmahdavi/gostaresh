@@ -1,3 +1,4 @@
+{{--Table 32 View--}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -30,12 +31,11 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component province_default="{{ $graduatesOfHigherEducation->province_id }}"
-                            county_default="{{ $graduatesOfHigherEducation->county_id }}"
-                            city_default="{{ $graduatesOfHigherEducation->city_id }}"
-                            rural_district_default="{{ $graduatesOfHigherEducation->rural_district_id }}">
-                        </select-province-component>
-
+                        {{--<select-province-component province_default="{{ $graduatesOfHigherEducation->province_id }}"--}}
+                            {{--county_default="{{ $graduatesOfHigherEducation->county_id }}"--}}
+                            {{--city_default="{{ $graduatesOfHigherEducation->city_id }}"--}}
+                            {{--rural_district_default="{{ $graduatesOfHigherEducation->rural_district_id }}">--}}
+                        {{--</select-province-component>--}}
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university">

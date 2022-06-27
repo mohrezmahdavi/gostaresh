@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('higher_education_subsystems')->comment('زیرنظام های آموزش عالی شهرستان')->nullable();
             $table->string('number_of_non_faculty_staff')->comment('تعداد کارکنان غیر هیات علمی')->nullable();
