@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Table 12 Model
-class EmploymentOfProvincialCity extends Model
+class EmploymentOfProvincial extends Model
 {
     use HasFactory;
 
