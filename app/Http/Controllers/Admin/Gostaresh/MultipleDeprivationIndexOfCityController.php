@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\MultipleDeprivationIndexOfCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+// Table 13 Controller
 class MultipleDeprivationIndexOfCityController extends Controller
 {
     /**

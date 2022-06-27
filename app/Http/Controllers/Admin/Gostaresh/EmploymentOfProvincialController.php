@@ -7,7 +7,7 @@ use App\Models\Index\EmploymentOfProvincial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Empty_;
-
+// Table 12 Controller
 class EmploymentOfProvincialController extends Controller
 {
     /**

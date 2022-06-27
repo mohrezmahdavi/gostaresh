@@ -7,6 +7,7 @@ use App\Models\Index\PovertyOfProvincialCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+//Table 14 Controller
 class PovertyOfProvincialCityController extends Controller
 {
     /**

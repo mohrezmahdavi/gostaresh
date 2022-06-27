@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
-
+// Table 2 Controller
 class GeographicalLocationOfUnitController extends Controller
 {
     /**
