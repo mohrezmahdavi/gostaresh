@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,4 +95,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('multiple/deprivation/index/of/city', App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class)->names('multiple.deprivation.index.of.city')->parameters([
         'city' => 'multipleDeprivationIndexOfCity'
     ]);
+    
+    // Table 32 Route
+    Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
+
 });

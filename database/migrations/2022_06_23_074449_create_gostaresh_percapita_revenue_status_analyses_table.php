@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('university')->comment('دانشگاه')->nullable();
+            $table->string('university_type')->comment('دانشگاه')->nullable();
             $table->string('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
