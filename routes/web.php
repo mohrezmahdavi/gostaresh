@@ -103,10 +103,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
         'city' => 'povertyOfProvincialCity'
     ]);
-
+    
     // Table 15 Route
     Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
         'educational' => 'academicMajorEducational'
+    ]);
+
+    // Table 16,17 Route
+    Route::resource('number/of/students/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class)->names('number.of.students.status.analysis')->parameters([
+        'analysis' => 'numberOfStudentsStatusAnalysis'
     ]);
 
     
