@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\EconomicParticipationRate;
+use App\Models\Index\MultipleDeprivationIndexOfCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// Table 10 Controller
-class EconomicParticipationRateController extends Controller
+// Table 13 Controller
+class MultipleDeprivationIndexOfCityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class EconomicParticipationRateController extends Controller
      */
     public function index()
     {
-        $economicParticipationRate = EconomicParticipationRate::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.economic-participation-rate.list.list', compact('economicParticipationRate'));
+        $multipleDeprivationIndexOfCities = MultipleDeprivationIndexOfCity::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities'));
     }
 
     /**
@@ -27,7 +27,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.economic-participation-rate.create.create');
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.create.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function store(Request $request)
     {
-        EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -48,7 +48,7 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(EconomicParticipationRate $economicParticipationRate)
+    public function show(MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
         //
     }
@@ -59,9 +59,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(EconomicParticipationRate $economicParticipationRate)
+    public function edit(MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
-        return view('admin.gostaresh.economic-participation-rate.edit.edit', compact('economicParticipationRate'));
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.edit.edit', compact('multipleDeprivationIndexOfCity'));
     }
 
     /**
@@ -71,9 +71,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EconomicParticipationRate $economicParticipationRate)
+    public function update(Request $request, MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
-        $economicParticipationRate->update($request->all());
+        $multipleDeprivationIndexOfCity->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -83,9 +83,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EconomicParticipationRate $economicParticipationRate)
+    public function destroy(MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
-        $economicParticipationRate->delete();
+        $multipleDeprivationIndexOfCity->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

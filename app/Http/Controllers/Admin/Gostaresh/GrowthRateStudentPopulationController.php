@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\GrowthRateStudentPopulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+// Table 4 Controller
 class GrowthRateStudentPopulationController extends Controller
 {
     /**

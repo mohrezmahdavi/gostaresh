@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('geographical.location.unit')->parameters([
         'unit' => 'geographicalLocationOfUnit'
     ]);
-    
+
     // Table 3 Route
     Route::resource('number/student/population', App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class)->names('number.student.population')->parameters([
         'population' => 'numberStudentPopulation'
@@ -89,6 +89,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'rate' => 'unemploymentRate'
     ]);
 
+    // Table 12 Route
+    Route::resource('employment/of/provincial', App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class)->names('employment.of.provincial')->parameters([
+        'provincial' => 'employmentOfProvincial'
+    ]);
+
+    // Table 13 Route
+    Route::resource('multiple/deprivation/index/of/city', App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class)->names('multiple.deprivation.index.of.city')->parameters([
+        'city' => 'multipleDeprivationIndexOfCity'
+    ]);
+
+    // Table 14 Route
+    Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
+        'city' => 'povertyOfProvincialCity'
+    ]);
+
+    // Table 15 Route
+    Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
+        'educational' => 'academicMajorEducational'
+    ]);
+
+    
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
 

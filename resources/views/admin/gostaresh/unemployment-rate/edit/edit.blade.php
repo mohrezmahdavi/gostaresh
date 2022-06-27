@@ -54,7 +54,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="education_id" id="education_id" class="form-select">
-                                    @foreach (config('titles.education') as $key => $value)
+                                    @foreach (config('gostaresh.education') as $key => $value)
                                         <option {{ $key == $unemploymentRate->education_id ? 'selected' : '' }}
                                             value="{{ $key }}">
                                             {{ $value }}</option>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\EconomicParticipationRate;
+use App\Models\Index\EmploymentOfProvincial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// Table 10 Controller
-class EconomicParticipationRateController extends Controller
+use PhpParser\Node\Expr\Empty_;
+// Table 12 Controller
+class EmploymentOfProvincialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class EconomicParticipationRateController extends Controller
      */
     public function index()
     {
-        $economicParticipationRate = EconomicParticipationRate::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.economic-participation-rate.list.list', compact('economicParticipationRate'));
+        $employmentOfProvincials = EmploymentOfProvincial::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.employment-of-provincial.list.list', compact('employmentOfProvincials'));
     }
 
     /**
@@ -27,7 +28,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.economic-participation-rate.create.create');
+        return view('admin.gostaresh.employment-of-provincial.create.create');
     }
 
     /**
@@ -38,7 +39,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function store(Request $request)
     {
-        EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EmploymentOfProvincial::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -48,9 +49,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(EconomicParticipationRate $economicParticipationRate)
+    public function show(EmploymentOfProvincial $employmentOfProvincial)
     {
-        //
+        
     }
 
     /**
@@ -59,9 +60,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(EconomicParticipationRate $economicParticipationRate)
+    public function edit(EmploymentOfProvincial $employmentOfProvincial)
     {
-        return view('admin.gostaresh.economic-participation-rate.edit.edit', compact('economicParticipationRate'));
+        return view('admin.gostaresh.employment-of-provincial.edit.edit', compact('employmentOfProvincial'));
     }
 
     /**
@@ -71,9 +72,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EconomicParticipationRate $economicParticipationRate)
+    public function update(Request $request, EmploymentOfProvincial $employmentOfProvincial)
     {
-        $economicParticipationRate->update($request->all());
+        $employmentOfProvincial->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -83,9 +84,9 @@ class EconomicParticipationRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EconomicParticipationRate $economicParticipationRate)
+    public function destroy(EmploymentOfProvincial $employmentOfProvincial)
     {
-        $economicParticipationRate->delete();
+        $employmentOfProvincial->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
