@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\NumberOfVolunteersStatusAnalysis;
+use App\Models\Index\NumberOfAdmissionsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 18 Controller
-class NumberOfVolunteersStatusAnalysisController extends Controller
+// Table 19 Controller
+class NumberOfAdmissionsStatusAnalysisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfVolunteersStatusAnalysises = NumberOfVolunteersStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.number-of-volunteers-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises'));
+        $numberOfAdmissionsStatusAnalysises = NumberOfAdmissionsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.number-of-admissions-status-analysis.list.list', compact('numberOfAdmissionsStatusAnalysises'));
     }
 
     /**
@@ -28,7 +28,7 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.number-of-volunteers-status-analysis.create.create');
+        return view('admin.gostaresh.number-of-admissions-status-analysis.create.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function store(Request $request)
     {
-        NumberOfVolunteersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfAdmissionsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -49,9 +49,9 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
+    public function show(NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
-        
+        //
     }
 
     /**
@@ -60,9 +60,9 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
+    public function edit(NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
-        return view('admin.gostaresh.number-of-volunteers-status-analysis.edit.edit', compact('numberOfVolunteersStatusAnalysis'));
+        return view('admin.gostaresh.number-of-admissions-status-analysis.edit.edit', compact('numberOfAdmissionsStatusAnalysis'));
     }
 
     /**
@@ -72,9 +72,9 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
+    public function update(Request $request, NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
-        $numberOfVolunteersStatusAnalysis->update($request->all());
+        $numberOfAdmissionsStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -84,9 +84,9 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
+    public function destroy(NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
-        $numberOfVolunteersStatusAnalysis->delete();
+        $numberOfAdmissionsStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
