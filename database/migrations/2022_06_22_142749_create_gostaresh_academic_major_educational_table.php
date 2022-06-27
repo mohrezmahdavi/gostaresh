@@ -18,13 +18,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
 
+            $table->foreignId('country_id')->nullable();
+            $table->foreignId('province_id')->nullable();
+            $table->foreignId('county_id')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
+
             $table->tinyInteger('department_of_education_percent')->nullable();
-            
-            $table->float('azad_eslami_percent')->default(0);
-            $table->float('dolati_percent')->default(0);
-            $table->float('payam_noor_percent')->default(0);
-            $table->float('gheir_entefai_percent')->default(0);
-            $table->float('elmi_karbordi_percent')->default(0);
 
             $table->unsignedBigInteger('azad_eslami_count')->default(0);
             $table->unsignedBigInteger('dolati_count')->default(0);
