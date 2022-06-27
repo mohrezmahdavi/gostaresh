@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش نرخ فقر شهرستان های استان
+ایجاد  شاخص محرومیت چندگانه شهرستان های استان
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش نرخ فقر شهرستان های استان
+ایجاد  شاخص محرومیت چندگانه شهرستان های استان
 @endsection
 
 @section('page-title')
-    ویرایش نرخ فقر شهرستان های استان
+ایجاد  شاخص محرومیت چندگانه شهرستان های استان
 @endsection
 
 @section('styles-head')
@@ -24,15 +24,9 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST"
-                        action="{{ route('multiple.deprivation.index.of.city.update', $povertyOfProvincialCity) }}"
-                        role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('multiple.deprivation.index.of.city.store') }}" role="form">
                         @csrf
-                        <select-province-component province_default="{{ $povertyOfProvincialCity->province_id }}"
-                            county_default="{{ $povertyOfProvincialCity->county_id }}"
-                            city_default="{{ $povertyOfProvincialCity->city_id }}"
-                            rural_district_default="{{ $povertyOfProvincialCity->rural_district_id }}">
-                        </select-province-component>
+                        <select-province-component></select-province-component>
 
 
                         <div class="form-group row mt-2">
@@ -42,10 +36,12 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount" name="amount"
-                                    value="{{ $povertyOfProvincialCity->amount }}" class="form-control"
+                                    value="{{ old('amount') }}" class="form-control"
                                     placeholder=" مقدار را وارد کنید...">
                             </div>
                         </div>
+
+                        
 
 
 
@@ -57,8 +53,7 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == $povertyOfProvincialCity->year ? 'selected' : '' }}
-                                            value="{{ $i }}">
+                                        <option {{ $i == old('year') ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -75,8 +70,7 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select">
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == $povertyOfProvincialCity->month ? 'selected' : '' }}
-                                            value="{{ $i }}">
+                                        <option {{ $i == old('month') ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
