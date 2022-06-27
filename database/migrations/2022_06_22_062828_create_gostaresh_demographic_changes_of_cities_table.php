@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->unsignedBigInteger('population')->default(0);
             $table->float('immigration_rates')->default(0);

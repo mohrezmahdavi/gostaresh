@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
             $table->string('payment_to_faculty_members')->comment('درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی')->nullable();

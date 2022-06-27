@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->tinyInteger('gender_id')->default(1);
             $table->foreignId('grade_id')->nullable();

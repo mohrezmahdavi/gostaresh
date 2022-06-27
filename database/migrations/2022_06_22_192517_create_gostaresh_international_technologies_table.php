@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
             $table->string('number_of_participation')->comment('تعداد مشارکت در انتقال دانش فنی/ فناوری انتقال یافته از خارج به داخل کشور (با ارائه گواهی مقام مجاز)')->nullable();
