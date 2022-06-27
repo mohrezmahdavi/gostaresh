@@ -107,10 +107,30 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
         'city' => 'povertyOfProvincialCity'
     ]);
-
+    
     // Table 15 Route
     Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
         'educational' => 'academicMajorEducational'
+    ]);
+
+    // Table 16,17 Route
+    Route::resource('number/of/students/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class)->names('number.of.students.status.analysis')->parameters([
+        'analysis' => 'numberOfStudentsStatusAnalysis'
+    ]);
+
+    // Table 18 Route
+    Route::resource('number/of/volunteers/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfVolunteersStatusAnalysisController::class)->names('number.of.volunteers.status.analysis')->parameters([
+        'analysis' => 'numberOfVolunteersStatusAnalysis'
+    ]);
+
+    // Table 19 Route
+    Route::resource('number/of/admissions/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class)->names('number.of.admissions.status.analysis')->parameters([
+        'analysis' => 'numberOfAdmissionsStatusAnalysis'
+    ]);
+
+    // Table 20 Route
+    Route::resource('number/of/admissions/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class)->names('number.of.admissions.status.analysis')->parameters([
+        'analysis' => 'numberOfAdmissionsStatusAnalysis'
     ]);
 
     
