@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\GraduateStatusAnalysis;
+use App\Models\Index\TeachersStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 33 Controller
-class GraduateStatusAnalysisController extends Controller
+// Table 34 Controller
+class TeachersStatusAnalysisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $graduateStatusAnalysis = GraduateStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalysis'));
+        $teachersStatusAnalysis = TeachersStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalysis'));
     }
 
     /**
@@ -28,7 +28,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.graduate-status-analyses.create.create');
+        return view('admin.gostaresh.teachers-status-analyses.create.create');
     }
 
     /**
@@ -39,17 +39,17 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function store(Request $request)
     {
-        GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param TeachersStatusAnalysis $teachersStatusAnalysis
      * @return void
      */
-    public function show(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function show(TeachersStatusAnalysis $teachersStatusAnalysis)
     {
         //
     }
@@ -57,36 +57,36 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param TeachersStatusAnalysis $teachersStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function edit(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function edit(TeachersStatusAnalysis $teachersStatusAnalysis)
     {
-        return view('admin.gostaresh.graduate-status-analyses.edit.edit', compact('graduateStatusAnalysis'));
+        return view('admin.gostaresh.teachers-status-analyses.edit.edit', compact('teachersStatusAnalysis'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param TeachersStatusAnalysis $teachersStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function update(Request $request, TeachersStatusAnalysis $teachersStatusAnalysis)
     {
-        $graduateStatusAnalysis->update($request->all());
+        $teachersStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param TeachersStatusAnalysis $teachersStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function destroy(TeachersStatusAnalysis $teachersStatusAnalysis)
     {
-        $graduateStatusAnalysis->delete();
+        $teachersStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\GraduateStatusAnalysis;
+use App\Models\Index\ResearchOutputStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 33 Controller
-class GraduateStatusAnalysisController extends Controller
+// Table 35 Controller
+class ResearchOutputStatusAnalysisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $graduateStatusAnalysis = GraduateStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalysis'));
+        $researchOutputStatusAnalysis = ResearchOutputStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.research-output-status-analyses.list.list', compact('researchOutputStatusAnalysis'));
     }
 
     /**
@@ -28,7 +28,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.graduate-status-analyses.create.create');
+        return view('admin.gostaresh.research-output-status-analyses.create.create');
     }
 
     /**
@@ -39,17 +39,17 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function store(Request $request)
     {
-        GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        ResearchOutputStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param ResearchOutputStatusAnalysis $ResearchOutputStatusAnalysis
      * @return void
      */
-    public function show(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function show(ResearchOutputStatusAnalysis $ResearchOutputStatusAnalysis)
     {
         //
     }
@@ -57,36 +57,36 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param ResearchOutputStatusAnalysis $researchOutputStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function edit(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function edit(ResearchOutputStatusAnalysis $researchOutputStatusAnalysis)
     {
-        return view('admin.gostaresh.graduate-status-analyses.edit.edit', compact('graduateStatusAnalysis'));
+        return view('admin.gostaresh.research-output-status-analyses.edit.edit', compact('researchOutputStatusAnalysis'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @param ResearchOutputStatusAnalysis $researchOutputStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function update(Request $request, ResearchOutputStatusAnalysis $researchOutputStatusAnalysis)
     {
-        $graduateStatusAnalysis->update($request->all());
+        $researchOutputStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param ResearchOutputStatusAnalysis $researchOutputStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function destroy(ResearchOutputStatusAnalysis $researchOutputStatusAnalysis)
     {
-        $graduateStatusAnalysis->delete();
+        $researchOutputStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
