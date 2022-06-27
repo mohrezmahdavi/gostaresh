@@ -114,6 +114,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'analysis' => 'numberOfStudentsStatusAnalysis'
     ]);
 
+    // Table 18 Route
+    Route::resource('number/of/volunteers/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfVolunteersStatusAnalysisController::class)->names('number.of.volunteers.status.analysis')->parameters([
+        'analysis' => 'numberOfVolunteersStatusAnalysis'
+    ]);
+
     
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
