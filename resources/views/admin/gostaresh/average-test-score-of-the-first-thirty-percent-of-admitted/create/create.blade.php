@@ -79,14 +79,14 @@
 
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="annual_growth_rate_of_student_enrollment">
-                                <span>نرخ رشد </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="average_test_score_of_the_first_thirty_percent_of_admitted">
+                                <span>تعداد </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="annual_growth_rate_of_student_enrollment" name="annual_growth_rate_of_student_enrollment"
-                                    value="{{ old('annual_growth_rate_of_student_enrollment') }}" class="form-control"
-                                    placeholder=" نرخ رشد را وارد کنید...">
+                                <input type="number" id="average_test_score_of_the_first_thirty_percent_of_admitted" name="average_test_score_of_the_first_thirty_percent_of_admitted"
+                                    value="{{ old('average_test_score_of_the_first_thirty_percent_of_admitted') }}" class="form-control"
+                                    placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 

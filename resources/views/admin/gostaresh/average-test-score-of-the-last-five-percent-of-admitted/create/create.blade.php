@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('average.test.score.of.the.last.five.percent.of.admitted.store') }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 
@@ -79,13 +79,13 @@
 
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_test_score_of_the_first_thirty_percent_of_admitted">
+                            <label class="col-sm-2 col-form-label" for="average_test_score_of_the_last_five_percent_of_admitted">
                                 <span>تعداد </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_test_score_of_the_first_thirty_percent_of_admitted" name="average_test_score_of_the_first_thirty_percent_of_admitted"
-                                    value="{{ old('average_test_score_of_the_first_thirty_percent_of_admitted') }}" class="form-control"
+                                <input type="number" id="average_test_score_of_the_last_five_percent_of_admitted" name="average_test_score_of_the_last_five_percent_of_admitted"
+                                    value="{{ old('average_test_score_of_the_last_five_percent_of_admitted') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
