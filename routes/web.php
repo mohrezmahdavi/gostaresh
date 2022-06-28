@@ -1,9 +1,30 @@
 <?php
 
+use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
+use App\Http\Controllers\Admin\Gostaresh\AssetProductivityController;
+use App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController;
+use App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController;
+use App\Http\Controllers\Admin\Gostaresh\CreditAndAssetController;
+use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
+use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
+use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
+use App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController;
+use App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\RevenueChangesController;
+use App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController;
+use App\Http\Controllers\Admin\Gostaresh\RoadmapDesiredController;
+use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
+use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
+use App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController;
+use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -172,4 +193,67 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 35 Route
     Route::resource('research-output-status-analyses', ResearchOutputStatusAnalysisController::class)->names('research-output-status-analyses');
+
+    // Table 36,37 Route
+    Route::resource('international-research', InternationalResearchStatusAnalysisController::class)->names('international-research');
+
+    // Table 38 Route
+    Route::resource('amount-of-facilities', AmountOfFacilitiesController::class)->names('amount-of-facilities');
+
+    // Table 39 Route
+    Route::resource('innovation-infrastructures', InnovationInfrastructureController::class)->names('innovation-infrastructures');
+
+    // Table 40 Route
+    Route::resource('technological-product', TechnologicalProductController::class)->names('technological-product');
+
+    // Table 41 Route
+    Route::resource('international-technology', InternationalTechnologyController::class)->names('international-technology');
+
+    // Table 42 Route
+    Route::resource('cultural-indicators', CulturalIndicatorsController::class)->names('cultural-indicators');
+
+    // Table 43 Route
+    Route::resource('social-health', SocialHealthController::class)->names('social-health');
+
+    // Table 44 Route
+    Route::resource('organizational-culture', OrganizationalCultureController::class)->names('organizational-culture');
+
+    // Table 45 Route
+    Route::resource('employee-profile', EmployeeProfileController::class)->names('employee-profile');
+
+    // Table 46 Route
+    Route::resource('percapita-status-analyses', PercapitaStatusAnalysesController::class)->names('percapita-status-analyses');
+
+    // Table 47 Route
+    Route::resource('asset-productivity', AssetProductivityController::class)->names('asset-productivity');
+
+    // Table 48 Route
+    Route::resource('revenue-status-analyses', RevenueStatusAnalysesController::class)->names('revenue-status-analyses');
+
+    // Table 49 Route
+    Route::resource('revenue-changes', RevenueChangesController::class)->names('revenue-changes');
+
+    // Table 50 Route
+    Route::resource('tuition-income', TuitionIncomeController::class)->names('tuition-income');
+
+    // Table 51 Route
+    Route::resource('percapita-revenue', PercapitaRevenueController::class)->names('percapita-revenue');
+
+    // Table 52,53 Route
+    Route::resource('university-costs', UniversityCostsController::class)->names('university-costs');
+
+    // Table 54 Route
+    Route::resource('cost-changes-trends', CostChangesTrendsController::class)->names('cost-changes-trends');
+
+    // Table 55 Route
+    Route::resource('cost-of-majors', CostOfMajorsController::class)->names('cost-of-majors');
+
+    // Table 56 Route
+    Route::resource('credit-and-asset', CreditAndAssetController::class)->names('credit-and-asset');
+
+    // Table 57 Route
+    Route::resource('units-general-status', UnitsGeneralStatusController::class)->names('units-general-status');
+
+    // Table 58 Route
+    Route::resource('roadmap-desired', RoadmapDesiredController::class)->names('roadmap-desired');
 });
