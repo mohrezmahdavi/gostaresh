@@ -139,6 +139,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'admitted' => 'averageTestScoreOfTheFirstThirtyPercentOfAdmitted'
     ]);
 
+    // Table 23 Route
+    Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
+        'admitted' => 'averageTestScoreOfTheLastFivePercentOfAdmitted'
+    ]);
+
 
     
     // Table 32 Route
