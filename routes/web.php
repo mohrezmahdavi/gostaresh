@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
 use App\Http\Controllers\Admin\Gostaresh\AssetProductivityController;
 use App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController;
 use App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController;
+use App\Http\Controllers\Admin\Gostaresh\CreditAndAssetController;
 use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
 use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
@@ -17,10 +18,12 @@ use App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\RevenueChangesController;
 use App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController;
+use App\Http\Controllers\Admin\Gostaresh\RoadmapDesiredController;
 use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
+use App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController;
 use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
 use Illuminate\Support\Facades\Route;
 
@@ -213,4 +216,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 55 Route
     Route::resource('cost-of-majors', CostOfMajorsController::class)->names('cost-of-majors');
+
+    // Table 56 Route
+    Route::resource('credit-and-asset', CreditAndAssetController::class)->names('credit-and-asset');
+
+    // Table 57 Route
+    Route::resource('units-general-status', UnitsGeneralStatusController::class)->names('units-general-status');
+
+    // Table 58 Route
+    Route::resource('roadmap-desired', RoadmapDesiredController::class)->names('roadmap-desired');
 });
