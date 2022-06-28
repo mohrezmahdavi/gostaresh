@@ -23,13 +23,14 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->foreignId('gender_id')->unsigned()->nullable();
-            $table->foreignId('grade_id')->nullable();
-            $table->foreignId('sub_grade_id')->nullable();
-            $table->foreignId('major_id')->nullable();
-            $table->foreignId('minor_id')->nullable();
-
-            $table->string('number_of_fields_of_study')->nullable();
+            $table->unsignedBigInteger('kardani_peyvaste_count')->default(0);
+            $table->unsignedBigInteger('kardani_na_peyvaste_count')->default(0);
+            $table->unsignedBigInteger('karshenasi_peyvaste_count')->default(0);
+            $table->unsignedBigInteger('karshenasi_na_peyvaste_count')->default(0);
+            $table->unsignedBigInteger('karshenasi_arshad_count')->default(0);
+            $table->unsignedBigInteger('docktora_herfei_count')->default(0);
+            $table->unsignedBigInteger('docktora_takhasosi_count')->default(0);
+            $table->tinyInteger('department_of_education')->nullable(); 
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

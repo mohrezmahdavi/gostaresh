@@ -154,7 +154,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'study' => 'statusAnalysisOfTheNumberOfFieldsOfStudy'
     ]);
 
-    StatusAnalysisOfTheNumberOfFieldsOfStudy
+    // Table 26, 27 Route
+    Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
+        'study' => 'numberOfNonMedicalFieldsOfStudy'
+    ]);
+
+
     
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
