@@ -129,6 +129,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'analysis' => 'numberOfAdmissionsStatusAnalysis'
     ]);
 
+    // Table 21 Route
+    Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
+        'enrollment' => 'annualGrowthRateOfStudentEnrollment'
+    ]);
+
+
     
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
