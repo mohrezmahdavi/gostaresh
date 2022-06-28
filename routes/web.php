@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use Illuminate\Support\Facades\Route;
@@ -165,4 +166,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 42 Route
     Route::resource('cultural-indicators', CulturalIndicatorsController::class)->names('cultural-indicators');
+
+    // Table 43 Route
+    Route::resource('social-health', SocialHealthController::class)->names('social-health');
 });
