@@ -12,9 +12,12 @@ use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
 use App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
+use App\Http\Controllers\Admin\Gostaresh\RevenueChangesController;
+use App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
+use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -185,4 +188,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 47 Route
     Route::resource('asset-productivity', AssetProductivityController::class)->names('asset-productivity');
+
+    // Table 48 Route
+    Route::resource('revenue-status-analyses', RevenueStatusAnalysesController::class)->names('revenue-status-analyses');
+
+    // Table 49 Route
+    Route::resource('revenue-changes', RevenueChangesController::class)->names('revenue-changes');
+
+    // Table 50 Route
+    Route::resource('tuition-income', TuitionIncomeController::class)->names('tuition-income');
 });
