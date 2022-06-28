@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
+use App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController;
 use App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\RevenueChangesController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
+use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -197,4 +199,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 50 Route
     Route::resource('tuition-income', TuitionIncomeController::class)->names('tuition-income');
+
+    // Table 51 Route
+    Route::resource('percapita-revenue', PercapitaRevenueController::class)->names('percapita-revenue');
+
+    // Table 52,53 Route
+    Route::resource('university-costs', UniversityCostsController::class)->names('university-costs');
 });

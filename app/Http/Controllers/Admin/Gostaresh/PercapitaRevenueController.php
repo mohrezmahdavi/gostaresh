@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\AverageTuitionIncome;
+use App\Models\Index\PercapitaRevenueStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 50 Controller
-class TuitionIncomeController extends Controller
+// Table 51 Controller
+class PercapitaRevenueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TuitionIncomeController extends Controller
      */
     public function index()
     {
-        $tuitionIncome =  AverageTuitionIncome::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.tuition-income.list.list', compact('tuitionIncome'));
+        $percapitaRevenue =  PercapitaRevenueStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.percapita-revenue.list.list', compact('percapitaRevenue'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TuitionIncomeController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.tuition-income.create.create');
+        return view('admin.gostaresh.percapita-revenue.create.create');
     }
 
     /**
@@ -39,17 +39,17 @@ class TuitionIncomeController extends Controller
      */
     public function store(Request $request)
     {
-         AverageTuitionIncome::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param AverageTuitionIncome $tuitionIncome
+     * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
      * @return void
      */
-    public function show(AverageTuitionIncome $tuitionIncome)
+    public function show(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
         //
     }
@@ -57,36 +57,36 @@ class TuitionIncomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param AverageTuitionIncome $tuitionIncome
+     * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
      * @return \Illuminate\Http\Response
      */
-    public function edit(AverageTuitionIncome $tuitionIncome)
+    public function edit(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        return view('admin.gostaresh.tuition-income.edit.edit', compact('tuitionIncome'));
+        return view('admin.gostaresh.percapita-revenue.edit.edit', compact('percapitaRevenue'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param AverageTuitionIncome $tuitionIncome
+     * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTuitionIncome $tuitionIncome)
+    public function update(Request $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        $tuitionIncome->update($request->all());
+        $percapitaRevenue->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param AverageTuitionIncome $tuitionIncome
+     * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AverageTuitionIncome $tuitionIncome)
+    public function destroy(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        $tuitionIncome->delete();
+        $percapitaRevenue->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
