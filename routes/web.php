@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
 use App\Http\Controllers\Admin\Gostaresh\AssetProductivityController;
+use App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController;
+use App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController;
 use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
 use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
@@ -205,4 +207,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 52,53 Route
     Route::resource('university-costs', UniversityCostsController::class)->names('university-costs');
+
+    // Table 54 Route
+    Route::resource('cost-changes-trends', CostChangesTrendsController::class)->names('cost-changes-trends');
+
+    // Table 55 Route
+    Route::resource('cost-of-majors', CostOfMajorsController::class)->names('cost-of-majors');
 });
