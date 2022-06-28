@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
 use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
+use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
@@ -173,4 +174,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 44 Route
     Route::resource('organizational-culture', OrganizationalCultureController::class)->names('organizational-culture');
+
+    // Table 45 Route
+    Route::resource('employee-profile', EmployeeProfileController::class)->names('employee-profile');
 });
