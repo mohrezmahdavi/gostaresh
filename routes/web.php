@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
+use App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController;
 use App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\SocialHealthController;
 use App\Http\Controllers\Admin\Gostaresh\TeachersStatusAnalysisController;
@@ -177,4 +178,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 45 Route
     Route::resource('employee-profile', EmployeeProfileController::class)->names('employee-profile');
+
+    // Table 46 Route
+    Route::resource('percapita-status-analyses', PercapitaStatusAnalysesController::class)->names('percapita-status-analyses');
 });
