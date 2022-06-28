@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
+use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
@@ -161,4 +162,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 41 Route
     Route::resource('international-technology', InternationalTechnologyController::class)->names('international-technology');
+
+    // Table 42 Route
+    Route::resource('cultural-indicators', CulturalIndicatorsController::class)->names('cultural-indicators');
 });
