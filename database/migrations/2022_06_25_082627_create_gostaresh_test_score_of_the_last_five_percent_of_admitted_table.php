@@ -29,8 +29,9 @@ return new class extends Migration
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
-            $table->string('university_type')->nullable();
-            $table->string('average_test_score_of_the_last_five_percent_of_admitted')->nullable();
+            $table->tinyInteger('university_type')->nullable();
+            $table->unsignedBigInteger('average_test_score_of_the_last_five_percent_of_admitted')->nullable();
+            $table->tinyInteger('department_of_education')->nullable(); 
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

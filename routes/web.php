@@ -144,6 +144,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'admitted' => 'averageTestScoreOfTheLastFivePercentOfAdmitted'
     ]);
 
+    // Table 24 Route
+    Route::resource('student/admission/capacity', App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class)->names('student.admission.capacity')->parameters([
+        'admitted' => 'studentAdmissionCapacity'
+    ]);
+
 
     
     // Table 32 Route
