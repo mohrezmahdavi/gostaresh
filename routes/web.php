@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController;
+use App\Http\Controllers\Admin\Gostaresh\AssetProductivityController;
 use App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController;
 use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
@@ -181,4 +182,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 46 Route
     Route::resource('percapita-status-analyses', PercapitaStatusAnalysesController::class)->names('percapita-status-analyses');
+
+    // Table 47 Route
+    Route::resource('asset-productivity', AssetProductivityController::class)->names('asset-productivity');
 });
