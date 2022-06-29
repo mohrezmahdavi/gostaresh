@@ -23,14 +23,18 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->string('university')->nullable();
-            $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
             $table->foreignId('sub_grade_id')->nullable();
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
-            $table->string('total_graduates')->comment('کل دانش آموختگان')->nullable();
+            $table->string('university')->nullable();
+            $table->foreignId('gender_id')->unsigned()->nullable();
+            $table->tinyInteger('department_of_education')->nullable();
+            $table->smallInteger('associate_degree')->nullable();
+            $table->smallInteger('bachelor_degree')->nullable();
+            $table->smallInteger('masters')->nullable();
+            $table->smallInteger('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

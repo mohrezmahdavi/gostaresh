@@ -37,18 +37,6 @@
                             rural_district_default="{{ $graduatesOfHigherEducation->rural_district_id }}">
                         </select-province-component>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="university">
-                                <span>دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="university" name="university"
-                                    value="{{ $graduatesOfHigherEducation->university }}" class="form-control"
-                                    placeholder=" دانشگاه را وارد کنید...">
-                            </div>
-                        </div>
-
                         <select-grade-component
                                 grade_default="{{ $graduatesOfHigherEducation->grade_id }}"
                                 sub_grade_default="{{ $graduatesOfHigherEducation->sub_grade_id }}"
@@ -58,14 +46,86 @@
                         </select-grade-component>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="total_graduates">
-                                <span>کل دانش آموختگان </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="university">
+                                <span>دانشگاه </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_graduates" name="total_graduates"
-                                       value="{{ $graduatesOfHigherEducation->total_graduates }}" class="form-control"
-                                       placeholder=" کل دانش آموختگان را وارد کنید...">
+                                <input type="text" id="university" name="university"
+                                       value="{{ $graduatesOfHigherEducation->university }}" class="form-control"
+                                       placeholder=" دانشگاه را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="gender_id">
+                                <span>جنسیت </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="gender_id" name="gender_id"
+                                       value="{{ $graduatesOfHigherEducation->gender_id }}" class="form-control"
+                                       placeholder=" جنسیت را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="department_of_education">
+                                <span>دپارتمان </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="department_of_education" name="department_of_education"
+                                       value="{{ $graduatesOfHigherEducation->department_of_education }}" class="form-control"
+                                       placeholder=" دپارتمان را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="associate_degree">
+                                <span>کاردانی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="associate_degree" name="associate_degree"
+                                       value="{{ $graduatesOfHigherEducation->associate_degree }}" class="form-control"
+                                       placeholder=" کاردانی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="bachelor_degree">
+                                <span>کارشناسی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                       value="{{ $graduatesOfHigherEducation->bachelor_degree }}" class="form-control"
+                                       placeholder=" کارشناسی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="masters">
+                                <span>کارشناسی ارشد </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="masters" name="masters"
+                                       value="{{ $graduatesOfHigherEducation->masters }}" class="form-control"
+                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="phd">
+                                <span>دکتری </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="phd" name="phd"
+                                       value="{{ $graduatesOfHigherEducation->phd }}" class="form-control"
+                                       placeholder=" دکتری را وارد کنید...">
                             </div>
                         </div>
 
