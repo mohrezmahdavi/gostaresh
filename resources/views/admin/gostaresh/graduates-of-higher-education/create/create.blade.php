@@ -46,25 +46,31 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
-                                <span>جنسیت </span>&nbsp
+                                <span>جنسیت  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="gender_id" name="gender_id"
-                                       value="{{ old('gender_id') }}" class="form-control"
-                                       placeholder=" جنسیت را وارد کنید...">
+                                <select name="gender_id" id="gender_id" class="form-select" >
+                                    @foreach (config('gostaresh.gender') as $key => $value)
+                                        <option {{ ($key == old('gender_id') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span>دپارتمان </span>&nbsp
+                                <span>گروه عمده تحصیلی  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="department_of_education" name="department_of_education"
-                                       value="{{ old('department_of_education') }}" class="form-control"
-                                       placeholder=" دپارتمان را وارد کنید...">
+                                <select name="department_of_education" id="department_of_education" class="form-select" >
+                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
+                                        <option {{ ($key == old('department_of_education') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 

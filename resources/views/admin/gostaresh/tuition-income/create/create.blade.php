@@ -46,25 +46,78 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
-                                <span>دانشگاه </span>&nbsp
+                                <span>دانشگاه  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="university_type" name="university_type"
-                                       value="{{ old('university_type') }}" class="form-control"
-                                       placeholder=" دانشگاه را وارد کنید...">
+                                <select name="university_type" id="university_type" class="form-select" >
+                                    @foreach (config('gostaresh.university_type') as $key => $value)
+                                        <option {{ ($key == old('university_type') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="department_of_education">
+                                <span>گروه عمده تحصیلی  </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="department_of_education" id="department_of_education" class="form-select" >
+                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
+                                        <option {{ ($key == old('department_of_education') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_field_performance_income">
-                                <span>میانگین درآمد ناشی از اجرای رشته </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="associate_degree">
+                                <span>کاردانی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="average_field_performance_income" name="average_field_performance_income"
-                                       value="{{ old('average_field_performance_income') }}" class="form-control"
-                                       placeholder=" میانگین درآمد ناشی از اجرای رشته را وارد کنید...">
+                                <input type="text" id="associate_degree" name="associate_degree"
+                                       value="{{ old('associate_degree') }}" class="form-control"
+                                       placeholder=" کاردانی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="bachelor_degree">
+                                <span>کارشناسی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                       value="{{ old('bachelor_degree') }}" class="form-control"
+                                       placeholder=" کارشناسی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="masters">
+                                <span>کارشناسی ارشد </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="masters" name="masters"
+                                       value="{{ old('masters') }}" class="form-control"
+                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="phd">
+                                <span>دکتری </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="phd" name="phd"
+                                       value="{{ old('phd') }}" class="form-control"
+                                       placeholder=" دکتری را وارد کنید...">
                             </div>
                         </div>
 

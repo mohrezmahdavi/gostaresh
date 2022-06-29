@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
             $table->foreignId('sub_grade_id')->nullable();
             $table->foreignId('major_id')->nullable();
@@ -31,7 +30,11 @@ return new class extends Migration
 
             $table->string('unit')->nullable();
             $table->string('university_type')->comment('دانشگاه')->nullable();
-            $table->string('average_field_performance_income')->comment('میانگین درآمد ناشی از اجرای رشته')->nullable();
+            $table->unsignedTinyInteger('department_of_education')->nullable();
+            $table->unsignedSmallInteger('associate_degree')->nullable();
+            $table->unsignedSmallInteger('bachelor_degree')->nullable();
+            $table->unsignedSmallInteger('masters')->nullable();
+            $table->unsignedSmallInteger('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

@@ -47,25 +47,94 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
-                                <span>دانشگاه </span>&nbsp
+                                <span>دانشگاه  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="university_type" name="university_type"
-                                       value="{{ $costOfMajor->university_type }}" class="form-control"
-                                       placeholder=" دانشگاه را وارد کنید...">
+                                <select name="university_type" id="university_type" class="form-select" >
+                                    @foreach (config('gostaresh.university_type') as $key => $value)
+                                        <option {{ ($key == $costOfMajor->university_type ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_cost_of_majors">
-                                <span>میانگین هزینه ناشی از اجرای رشته </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="gender_id">
+                                <span>جنسیت  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="average_cost_of_majors" name="average_cost_of_majors"
-                                       value="{{ $costOfMajor->average_cost_of_majors }}" class="form-control"
-                                       placeholder=" میانگین هزینه ناشی از اجرای رشته را وارد کنید...">
+                                <select name="gender_id" id="gender_id" class="form-select" >
+                                    @foreach (config('gostaresh.gender') as $key => $value)
+                                        <option {{ ($key == $costOfMajor->gender_id ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="department_of_education">
+                                <span>گروه عمده تحصیلی  </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="department_of_education" id="department_of_education" class="form-select" >
+                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
+                                        <option {{ ($key == $costOfMajor->department_of_education ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="associate_degree">
+                                <span>کاردانی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="associate_degree" name="associate_degree"
+                                       value="{{ $costOfMajor->associate_degree }}" class="form-control"
+                                       placeholder=" کاردانی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="bachelor_degree">
+                                <span>کارشناسی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                       value="{{ $costOfMajor->bachelor_degree }}" class="form-control"
+                                       placeholder=" کارشناسی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="masters">
+                                <span>کارشناسی ارشد </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="masters" name="masters"
+                                       value="{{ $costOfMajor->masters }}" class="form-control"
+                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="phd">
+                                <span>دکتری </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="phd" name="phd"
+                                       value="{{ $costOfMajor->phd }}" class="form-control"
+                                       placeholder=" دکتری را وارد کنید...">
                             </div>
                         </div>
                         
