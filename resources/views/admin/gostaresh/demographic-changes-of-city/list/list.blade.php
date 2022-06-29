@@ -19,69 +19,6 @@
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <form action="" method="get">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class=" col-form-label" for="full_name">بر اساس نام</label>
-                                    <div class="">
-                                        <input type="text" id="full_name" name="full_name" value="{{ request()->full_name }}"
-                                               class="form-control" placeholder="نام را وارد کنید ...">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class=" col-form-label" for="phone_number">شماره همراه</label>
-                                    <div class="">
-                                        <input type="text" id="phone_number" name="phone_number"
-                                               value="{{ request()->phone_number }}" class="form-control"
-                                               placeholder="شماره همراه را وارد کنید ...">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class=" col-form-label">بر اساس وضعیت</label>
-                                    <div class="">
-
-                                        @foreach (config('saan.user_status') as $key => $value)
-
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" id="inlineCheckbox{{ $key }}"
-                                                       {{ request()->status == $key ? 'checked' : '' }} name="status" value="{{ $key }}">
-                                                <label class="form-check-label"
-                                                       for="inlineCheckbox{{ $key }}">{{ config('saan.user_status')[$key] }}</label>
-                                            </div>
-
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row mt-3">
-                            <div class="col">
-                                <button type="submit" class="btn btn-success my-2 my-sm-0">جستجو</button>
-                                <a href="{{ request()->url() }}" type="submit" class="btn btn-danger my-2 my-sm-0">حذف
-                                    فیلتر</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -93,11 +30,12 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان</th>
-                                    <th>سال</th>
-                                    <th>جمعیت (نفر)</th>
+                                    <th>جمعیت </th>
                                     <th>نرخ مهاجرت</th>
-                                    <th>نرخ رشد</th>
+                                    <th> نرخ رشد</th>
+                                    <th>سال</th>
+                                    <th>ماه</th>
+                                    <th>موقعیت</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -105,19 +43,20 @@
                                 @foreach ($demographicChangesOfCities as $key => $demographicChangesOfCity)
                                     <tr>
                                         <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
-                                        <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}</td>
-                                        <td>{{ $demographicChangesOfCity?->year }}</td>
 
                                         <td>{{ $demographicChangesOfCity?->population }}</td>
                                         <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>
                                         <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
+                                        <td>{{ $demographicChangesOfCity?->year }}</td>
+                                        <td>{{ $demographicChangesOfCity?->month }}</td>
+                                        <td>{{ $demographicChangesOfCity?->province->name . " - " . $demographicChangesOfCity?->county->name }}</td>
                                         <td>
 
-                                            <a href="{{ route('admin.user.edit', $user) }}"
+                                            <a href="{{ route('demographic.changes.city.edit', $demographicChangesOfCity) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                             
-                                            <a href="{{ route('admin.user.delete', $user) }}"
+                                            <a href="{{ route('demographic.changes.city.destroy', $demographicChangesOfCity) }}" }}"
                                                 title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
@@ -129,7 +68,7 @@
 
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
-                        {{ $users->withQueryString()->links('pagination::bootstrap-4') }}
+                        {{ $demographicChangesOfCities->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

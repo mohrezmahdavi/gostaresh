@@ -50,6 +50,7 @@ class DemographicChangesOfCityController extends Controller
             'year' => $request->year ?? null,
             'month' => $request->month ?? null,
         ]);
+        return back()->with('success', __('titles.success_store'));
     }
 
     /**
