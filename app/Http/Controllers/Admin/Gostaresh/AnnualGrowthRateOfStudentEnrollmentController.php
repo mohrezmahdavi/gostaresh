@@ -48,7 +48,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function show(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
         
     }
@@ -59,9 +59,9 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function edit(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrowthRateOfStudentEnrollment'));
+        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrthRateOfStdnEnrollment'));
     }
 
     /**
