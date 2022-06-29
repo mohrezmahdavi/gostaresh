@@ -124,7 +124,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
         'city' => 'povertyOfProvincialCity'
     ]);
-    
+
     // Table 15 Route
     Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
         'educational' => 'academicMajorEducational'
@@ -180,8 +180,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'study' => 'numberOfNonMedicalFieldsOfStudy'
     ]);
 
+    // Table 28 Route
+    Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
+        'course' => 'statusAnalysisOfTheNumberOfCourse'
+    ]);
 
-    
+
+
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
 
