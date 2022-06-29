@@ -190,7 +190,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'course' => 'numberOfInternationalCourse'
     ]);
 
-    
+    // Table 30 Route
+    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
+        'rate' => 'internationalStudentGrowthRate'
+    ]);
+
+    // Table 31 Route
+    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
+        'rate' => 'internationalStudentGrowthRate'
+    ]);
+
 
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
