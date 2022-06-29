@@ -124,7 +124,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
         'city' => 'povertyOfProvincialCity'
     ]);
-    
+
     // Table 15 Route
     Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
         'educational' => 'academicMajorEducational'
@@ -180,8 +180,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'study' => 'numberOfNonMedicalFieldsOfStudy'
     ]);
 
+    // Table 28 Route
+    Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
+        'course' => 'statusAnalysisOfTheNumberOfCourse'
+    ]);
 
-    
+    // Table 29 Route
+    Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([
+        'course' => 'numberOfInternationalCourse'
+    ]);
+
+    // Table 30 Route
+    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
+        'rate' => 'internationalStudentGrowthRate'
+    ]);
+
+    // Table 31 Route
+    Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
+        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
+    ]);
+
+
     // Table 32 Route
     Route::resource('graduates-of-higher-education', GraduatesOfHigherEducationController::class)->names('graduates-of-higher-education');
 
