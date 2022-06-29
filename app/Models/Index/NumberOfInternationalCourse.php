@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 // Table 29 Model
-class NumberOfInternationalCourses extends Model
+class NumberOfInternationalCourse extends Model
 {
     use HasFactory, SoftDeletes;
 

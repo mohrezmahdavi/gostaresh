@@ -30,7 +30,11 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('number_of_international_students')->nullable();
+            $table->tinyInteger('department_of_education')->nullable();
+            $table->unsignedBigInteger('kardani_count')->nullable();
+            $table->unsignedBigInteger('karshenasi_count')->nullable();
+            $table->unsignedBigInteger('karshenasi_arshad_count')->nullable();
+            $table->unsignedBigInteger('docktora_count')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

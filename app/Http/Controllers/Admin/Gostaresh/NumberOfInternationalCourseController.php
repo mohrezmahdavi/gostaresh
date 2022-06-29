@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Models\Index\StatusAnalysisOfTheNumberOfCourse;
+use App\Models\Index\NumberOfInternationalCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// Table 28 Controller
-class StatusAnalysisOfTheNumberOfCoursesController extends Controller
+// Table 29 Controller
+class NumberOfInternationalCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function index()
     {
-        $statusAnalysisOfTheNumberOfCourses = StatusAnalysisOfTheNumberOfCourse::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses'));
+        $numberOfInternationalCourses = NumberOfInternationalCourse::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses'));
     }
 
     /**
@@ -27,7 +27,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.create.create');
+        return view('admin.gostaresh.number-of-international-course.create.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function store(Request $request)
     {
-        StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -48,9 +48,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function show(NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        
+        //
     }
 
     /**
@@ -59,9 +59,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function edit(NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.edit.edit', compact('statusAnalysisOfTheNumberOfCourse'));
+        return view('admin.gostaresh.number-of-international-course.edit.edit', compact('numberOfInternationalCourse'));
     }
 
     /**
@@ -71,9 +71,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function update(Request $request, NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        $statusAnalysisOfTheNumberOfCourse->update($request->all());
+        $numberOfInternationalCourse->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -83,9 +83,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function destroy(NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        $statusAnalysisOfTheNumberOfCourse->delete();
+        $numberOfInternationalCourse->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
