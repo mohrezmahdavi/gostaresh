@@ -75,7 +75,7 @@ pipeline {
             steps {
                 script {
                     echo 'deploy app'
-                    def deployCmd= "./app/deploy.sh"
+                    def deployCmd= "./app/deploy_gostaresh.sh"
                     sshagent(['comma_ssh']) {
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@dw.daan.ir ${deployCmd}"
                     }
