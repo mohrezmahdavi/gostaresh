@@ -25,7 +25,7 @@
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('number.of.international.course.update', $internationalStudentGrowthRate) }}"
+                        action="{{ route('international.student.growth.rate.update', $internationalStudentGrowthRate) }}"
                         role="form">
                         @csrf
                         <select-province-component province_default="{{ $internationalStudentGrowthRate->province_id }}"

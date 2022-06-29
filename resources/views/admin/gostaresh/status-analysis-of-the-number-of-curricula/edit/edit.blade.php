@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+ویرایش تحلیل وضعیت تعداد برنامه های درسی
 @endsection
 
 @section('breadcrumb-title')
-ایجاد تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+ویرایش تحلیل وضعیت تعداد برنامه های درسی
 @endsection
 
 @section('page-title')
-تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+تحلیل وضعیت تعداد برنامه های درسی
 @endsection
 
 @section('styles-head')
@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('international.student.growth.rate.create') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.curricula.update', $statusAnalysisOfTheNumberOfCurricula) }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 
@@ -35,71 +35,80 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                    value="{{ old('unit') }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->unit }}" class="form-control"
                                     placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
+
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span> گروه تحصیلی </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="total_number_of_curricula">
+                                <span>تعداد کل برنامه های درسی (رشته گرایش ها) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select">
-                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == old('department_of_education') ? 'selected' : '' }} value="{{ $key }}">
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="kardani_count">
-                                <span>تعداد کاردانی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="kardani_count" name="kardani_count"
-                                    value="{{ old('kardani_count') }}" class="form-control"
+                                <input type="number" id="total_number_of_curricula" name="total_number_of_curricula"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->total_number_of_curricula }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="karshenasi_count">
-                                <span>تعداد کارشناسی </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="number_of_modified_curricula">
+                                <span>تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="karshenasi_count" name="karshenasi_count"
-                                    value="{{ old('karshenasi_count') }}" class="form-control"
+                                <input type="number" id="number_of_modified_curricula" name="number_of_modified_curricula"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_modified_curricula }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="karshenasi_arshad_count">
-                                <span>تعداد کارشناسی ارشد </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="new_interdisciplinary_curricula_implemented">
+                                <span>برنامه های درسی جدید میان رشته ای مورد اجرا </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="karshenasi_arshad_count" name="karshenasi_arshad_count"
-                                    value="{{ old('karshenasi_arshad_count') }}" class="form-control"
+                                <input type="number" id="new_interdisciplinary_curricula_implemented" name="new_interdisciplinary_curricula_implemented"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->new_interdisciplinary_curricula_implemented }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="docktora_count">
-                                <span>تعداد دکتری </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="complete_new_interdisciplinary_curricula">
+                                <span>کل برنامه های درسی جدید میان رشته ای مورد اجرا </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="docktora_count" name="docktora_count"
-                                    value="{{ old('docktora_count') }}" class="form-control"
+                                <input type="number" id="complete_new_interdisciplinary_curricula" name="complete_new_interdisciplinary_curricula"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->complete_new_interdisciplinary_curricula }}" class="form-control"
+                                    placeholder=" تعداد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="number_of_common_curricula_with_the_world">
+                                <span>تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="number_of_common_curricula_with_the_world" name="number_of_common_curricula_with_the_world"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_common_curricula_with_the_world }}" class="form-control"
+                                    placeholder=" تعداد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="number_of_curricula_developed">
+                                <span>تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="number_of_curricula_developed" name="number_of_curricula_developed"
+                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_curricula_developed }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -113,7 +122,7 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == old('year') ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $statusAnalysisOfTheNumberOfCurricula->year ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -130,7 +139,7 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select">
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == old('month') ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $statusAnalysisOfTheNumberOfCurricula->month ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 

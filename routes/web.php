@@ -196,8 +196,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     ]);
 
     // Table 31 Route
-    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
-        'rate' => 'internationalStudentGrowthRate'
+    Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
+        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
     ]);
 
 
