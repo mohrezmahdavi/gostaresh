@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 6
+// Table 6 Migration
 return new class extends Migration
 {
     /**
@@ -18,7 +18,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
 
-            $table->string('part')->nullable();
+            $table->foreignId('country_id')->nullable();
+            $table->foreignId('province_id')->nullable();
+            $table->foreignId('county_id')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
+
+            $table->tinyInteger('part')->nullable();
 
             $table->float('amount')->default(0);
 

@@ -18,10 +18,20 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
 
-            $table->tinyInteger('department_of_education')->nullable();
+            $table->foreignId('country_id')->nullable();
+            $table->foreignId('province_id')->nullable();
+            $table->foreignId('county_id')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
+            $table->tinyInteger('department_of_education_percent')->nullable();
 
-            $table->float('amount')->default(0);
+            $table->unsignedBigInteger('azad_eslami_count')->default(0);
+            $table->unsignedBigInteger('dolati_count')->default(0);
+            $table->unsignedBigInteger('payam_noor_count')->default(0);
+            $table->unsignedBigInteger('gheir_entefai_count')->default(0);
+            $table->unsignedBigInteger('elmi_karbordi_count')->default(0);
+
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

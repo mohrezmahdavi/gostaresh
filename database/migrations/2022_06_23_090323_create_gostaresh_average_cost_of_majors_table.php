@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
@@ -28,7 +29,7 @@ return new class extends Migration
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
-            $table->string('university')->nullable();
+            $table->string('university_type')->nullable();
             $table->string('average_cost_of_majors')->comment('میانگین هزینه ناشی از اجرای رشته')->nullable();
 
             $table->integer('year')->unsigned()->nullable();

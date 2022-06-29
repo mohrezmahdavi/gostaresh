@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('experimental_policy_title')->comment('عنوان سیاست آزمایشی')->nullable();
             $table->string('title_axis')->comment('عنوان محور')->nullable();

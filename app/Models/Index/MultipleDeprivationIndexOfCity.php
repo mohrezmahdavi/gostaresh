@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Table 13 Model
 class MultipleDeprivationIndexOfCity extends Model
 {
     use HasFactory;

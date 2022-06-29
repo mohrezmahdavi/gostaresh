@@ -21,9 +21,10 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('total_graduates')->comment('تعداد کل فارغ التحصلان')->nullable();
+            $table->string('total_graduates')->comment('تعداد کل فارغ التحصیلان')->nullable();
             $table->string('employed_graduates')->comment('تعداد فارغ التحصیلان شاغل')->nullable();
             $table->float('graduate_growth_rate')->comment('نرخ رشد فارغ التحصیلان')->nullable();
             $table->string('related_employed_graduates')->comment('تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی')->nullable();

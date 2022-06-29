@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\GeographicalLocationOfUnit;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
-
+// Table 2 Controller
 class GeographicalLocationOfUnitController extends Controller
 {
     /**
@@ -39,7 +40,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        GeographicalLocationOfUnit::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
@@ -61,7 +63,7 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function edit(GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
-        return view('admin.gostaresh.demographic-changes-of-city.edit.edit', compact('geographicalLocationOfUnit'));
+        return view('admin.gostaresh.geographical-location-of-unit.edit.edit', compact('geographicalLocationOfUnit'));
     }
 
     /**
@@ -73,7 +75,8 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function update(Request $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
-        //
+        $geographicalLocationOfUnit->update($request->all());
+        return back()->with('success', __('titles.success_update'));
     }
 
     /**

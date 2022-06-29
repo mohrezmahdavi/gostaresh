@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('university')->comment('دانشگاه')->nullable();
+            $table->string('university_type')->comment('دانشگاه')->nullable();
             $table->string('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();

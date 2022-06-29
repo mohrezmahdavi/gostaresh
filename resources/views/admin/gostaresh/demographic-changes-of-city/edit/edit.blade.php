@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.user.update', $demographicChangesOfCity) }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('demographic.changes.city.update', $demographicChangesOfCity) }}" role="form">
                         @csrf
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="population">

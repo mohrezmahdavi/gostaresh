@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
             $table->string('student_satisfaction')->comment('میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه')->nullable();

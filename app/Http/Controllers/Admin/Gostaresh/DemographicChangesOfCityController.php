@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+// Table 1 Controller
 class DemographicChangesOfCityController extends Controller
 {
     /**

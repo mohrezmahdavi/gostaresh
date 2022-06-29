@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('county_id')->nullable();
             $table->foreignId('city_id')->nullable();
+            $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
             $table->string('number_of_valid_scientific_articles')->comment('تعداد مقالات معتبر علمی')->nullable();
@@ -40,7 +41,7 @@ return new class extends Migration
             $table->string('amount_of_local_contracts_concluded')->comment('مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی')->nullable();
             $table->string('number_of_scientific_journals')->comment('تعداد مجلات علمی')->nullable();
             $table->string('number_of_R&D_research')->comment('تعداد پژوهش های معطوف به R &D')->nullable();
-            $table->string('Number_of_innovative_ideas')->comment('تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده')->nullable();
+            $table->string('number_of_innovative_ideas')->comment('تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
