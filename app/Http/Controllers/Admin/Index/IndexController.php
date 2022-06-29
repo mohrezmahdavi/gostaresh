@@ -10,11 +10,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        // $routeCollection = Route::getRoutes();
-        // dd($routeCollection);
-        // foreach ($routeCollection as $value) {
-        //     echo $value->getPath();
-        // }
         return view('admin.index.index');
     }
 }

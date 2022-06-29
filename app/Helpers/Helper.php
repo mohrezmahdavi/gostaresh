@@ -26,3 +26,4 @@ if (!function_exists('convertPersianToEnglishInInputRequests')) {
         return $request;
     }
 }
+
