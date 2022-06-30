@@ -19,6 +19,17 @@ class GDPPart extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['part_title'];
+
+    public function getPartTitleAttribute()
+    {
+        foreach (config('gostaresh.parts') as $key => $value) {
+            if ($key == $this->part) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
