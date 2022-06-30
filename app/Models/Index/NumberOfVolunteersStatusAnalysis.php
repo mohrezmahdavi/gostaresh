@@ -20,6 +20,35 @@ class NumberOfVolunteersStatusAnalysis extends Model
 
     protected $table = "gostaresh_number_of_volunteers_status_analyses";
 
+    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title'];
+
+    public function getGenderTitleAttribute()
+    {
+        foreach (config('gostaresh.gender') as $key => $value) {
+            if ($key == $this->gender_id) {
+                return $value;
+            }
+        }
+    }
+
+    public function getUniversityTypeTitleAttribute()
+    {
+        foreach (config('gostaresh.university_type') as $key => $value) {
+            if ($key == $this->university_type) {
+                return $value;
+            }
+        }
+    }
+
+    public function getDepartmentOfEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.department_of_education') as $key => $value) {
+            if ($key == $this->department_of_education) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

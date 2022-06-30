@@ -20,6 +20,17 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
 
     protected $table = "gostaresh_number_of_non_medical_fields_of_studies";
 
+    protected $appends = ['department_of_education_title'];
+
+    public function getDepartmentOfEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.department_of_education') as $key => $value) {
+            if ($key == $this->department_of_education) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

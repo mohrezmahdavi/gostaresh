@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->tinyInteger('department_of_education_percent')->nullable();
+            $table->tinyInteger('department_of_education')->nullable();
 
             $table->unsignedBigInteger('azad_eslami_count')->default(0);
             $table->unsignedBigInteger('dolati_count')->default(0);

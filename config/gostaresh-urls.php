@@ -75,8 +75,8 @@ return [
             'name' => 'number.of.admissions.status.analysis',
         ],
         [
-            'title' => ' تعداد پذیرفته شدگان',
-            'name' => 'number.of.admissions.status.analysis',
+            'title' => 'تعداد ثبت نام شدگان',
+            'name' => 'number.of.registrants.status.analysis',
         ],
         [
             'title' => ' نرخ رشد سالانه ثبت نام دانشجو',
