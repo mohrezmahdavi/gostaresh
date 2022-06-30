@@ -30,33 +30,41 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>جمعیت </th>
-                                    <th>نرخ مهاجرت</th>
-                                    <th> نرخ رشد</th>
-                                    <th>سال</th>
-                                    <th>ماه</th>
-                                    <th>موقعیت</th>
+                                    <th>شهرستان </th>
+                                    <th>واحد دانشگاهی</th>
+                                    <th>ساختمان واحد دانشگاهی</th>
+                                    <th>فاصله از تراکم جمعیتی شهر</th>
+                                    <th>فاصله از مرکز استان</th>
+                                    <th>نوع اقلیم و شرایط آب و هوایی</th>
+                                    <th>فاصله تا نزدیکترین مرکز آموزش عالی</th>
+                                    <th>فاصله تا نزدیکترین واحد دانشگاه آزاد</th>
+                                    <th>سطح و کیفیت دسترسی</th>
+                                    <th>فرصت های بین الملی موقعیت جغرافیایی</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($demographicChangesOfCities as $key => $demographicChangesOfCity)
+                                @foreach ($geographicalLocationOfUnits as $key => $geographicalLocationOfUnit)
                                     <tr>
-                                        <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
+                                        <th scope="row">{{ $geographicalLocationOfUnit?->firstItem() + $key }}</th>
 
-                                        <td>{{ $demographicChangesOfCity?->population }}</td>
-                                        <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>
-                                        <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
-                                        <td>{{ $demographicChangesOfCity?->year }}</td>
-                                        <td>{{ $demographicChangesOfCity?->month }}</td>
-                                        <td>{{ $demographicChangesOfCity?->province->name . " - " . $demographicChangesOfCity?->county->name }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->university_building }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->distance_from_center_of_province }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location }}</td>
                                         <td>
 
-                                            <a href="{{ route('demographic.changes.city.edit', $demographicChangesOfCity) }}"
+                                            <a href="{{ route('geographical.location.unit.edit', $geographicalLocationOfUnit) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                             
-                                            <a href="{{ route('demographic.changes.city.destroy', $demographicChangesOfCity) }}" }}"
+                                            <a href="{{ route('geographical.location.unit.destroy', $geographicalLocationOfUnit) }}" }}"
                                                 title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
@@ -68,7 +76,7 @@
 
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
-                        {{ $demographicChangesOfCities->withQueryString()->links('pagination::bootstrap-4') }}
+                        {{ $geographicalLocationOfUnits->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

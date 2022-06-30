@@ -15,7 +15,7 @@ class GeographicalLocationOfUnit extends Model
 {
     use HasFactory;
 
-    protected $table = 'gostaresh_geographical_location_of_the_unit';
+    protected $table = 'gostaresh_geographical_location_of_unit';
 
     protected $guarded = [];
 
