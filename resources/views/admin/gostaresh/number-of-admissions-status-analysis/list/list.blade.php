@@ -46,7 +46,7 @@
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->university_type_title }}</td>
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->gender_title }}</td>
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->number_of_volunteers }}</td>
+                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->number_of_admissions }}</td>
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->year }}</td>
                                         <td>
         
