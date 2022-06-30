@@ -26,6 +26,7 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('student.admission.capacity.update', $studentAdmissionCapacity) }}" role="form">
                         @csrf
+                        @method('PUT')
                         
                         <select-province-component province_default="{{ $studentAdmissionCapacity->province_id }}"
                             county_default="{{ $studentAdmissionCapacity->county_id }}" city_default="{{ $studentAdmissionCapacity->city_id }}"

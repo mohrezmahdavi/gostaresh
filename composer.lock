@@ -7988,5 +7988,9 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
+<<<<<<< HEAD
+    "plugin-api-version": "2.3.0"
+=======
     "plugin-api-version": "2.1.0"
+>>>>>>> de4216c3af3decd830b1d459b5c7b281eb73a954
 }

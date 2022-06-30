@@ -48,7 +48,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function show(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
         
     }
@@ -59,9 +59,9 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function edit(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrowthRateOfStudentEnrollment'));
+        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrthRateOfStdnEnrollment'));
     }
 
     /**
@@ -71,9 +71,9 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function update(Request $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        $annualGrowthRateOfStudentEnrollment->update($request->all());
+        $annualGrthRateOfStdnEnrollment->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -83,9 +83,9 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AnnualGrowthRateOfStudentEnrollment $annualGrowthRateOfStudentEnrollment)
+    public function destroy(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        $annualGrowthRateOfStudentEnrollment->delete();
+        $annualGrthRateOfStdnEnrollment->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

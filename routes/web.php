@@ -41,7 +41,6 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 
-
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [App\Http\Controllers\Admin\Index\IndexController::class, 'index'])->name('admin.index');
 
@@ -152,27 +151,28 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 21 Route
     Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
-        'enrollment' => 'annualGrowthRateOfStudentEnrollment'
+        'enrollment' => 'annualGrthRateOfStdnEnrollment'
     ]);
 
     // Table 22 Route
     Route::resource('average/test/score/of/the/first/thirty/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class)->names('average.test.score.of.the.first.thirty.percent.of.admitted')->parameters([
-        'admitted' => 'averageTestScoreOfTheFirstThirtyPercentOfAdmitted'
+        'admitted' => 'avgTstScrOfFrtThrtPrntOfAdmitted'
     ]);
 
     // Table 23 Route
     Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
-        'admitted' => 'averageTestScoreOfTheLastFivePercentOfAdmitted'
+        'admitted' => 'avgTstScOfLastFivePctOfAdmitted'
     ]);
 
     // Table 24 Route
     Route::resource('student/admission/capacity', App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class)->names('student.admission.capacity')->parameters([
-        'admitted' => 'studentAdmissionCapacity'
+        'capacity' => 'studentAdmissionCapacity'
     ]);
 
+    ////////////////////
     // Table 25 Route
     Route::resource('status/analysis/of/the/number/of/fields/of/study', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class)->names('status.analysis.of.the.number.of.fields.of.study')->parameters([
-        'study' => 'statusAnalysisOfTheNumberOfFieldsOfStudy'
+        'study' => 'stsAnlysOfTheNumOfFieldsOfStudy'
     ]);
 
     // Table 26, 27 Route
@@ -182,7 +182,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 28 Route
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
-        'course' => 'statusAnalysisOfTheNumberOfCourse'
+        'course' => 'statusAnalysisOfTheNumOfCourse'
     ]);
 
     // Table 29 Route
@@ -197,7 +197,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 31 Route
     Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
-        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
+        'rate' => 'stsAnalysisOfTheNumOfCurricula'
     ]);
 
 

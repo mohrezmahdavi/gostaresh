@@ -75,6 +75,7 @@ class StudentAdmissionCapacityController extends Controller
     public function update(Request $request, StudentAdmissionCapacity $studentAdmissionCapacity)
     {
         $studentAdmissionCapacity->update($request->all());
+        return back()->with('success', __('titles.success_update'));
     }
 
     /**

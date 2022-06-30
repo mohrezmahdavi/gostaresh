@@ -49,7 +49,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AverageTestScoreOfTheLastFivePercentOfAdmitted $averageTestScoreOfTheLastFivePercentOfAdmitted)
+    public function show(AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
         
     }
@@ -60,9 +60,9 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AverageTestScoreOfTheLastFivePercentOfAdmitted $averageTestScoreOfTheLastFivePercentOfAdmitted)
+    public function edit(AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.edit.edit', compact('averageTestScoreOfTheLastFivePercentOfAdmitted'));
+        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.edit.edit', compact('avgTstScOfLastFivePctOfAdmitted'));
     }
 
     /**
@@ -72,9 +72,9 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $averageTestScoreOfTheLastFivePercentOfAdmitted)
+    public function update(Request $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        $averageTestScoreOfTheLastFivePercentOfAdmitted->update($request->all());
+        $avgTstScOfLastFivePctOfAdmitted->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -84,9 +84,9 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AverageTestScoreOfTheLastFivePercentOfAdmitted $averageTestScoreOfTheLastFivePercentOfAdmitted)
+    public function destroy(AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        $averageTestScoreOfTheLastFivePercentOfAdmitted->delete();
+        $avgTstScOfLastFivePctOfAdmitted->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
