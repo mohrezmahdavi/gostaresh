@@ -19,6 +19,7 @@ class PaymentRAndDDepartmentController extends Controller
     public function index()
     {
         $paymentRAndDDepartments = PaymentRAndDDepartment::orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments'));
     }
 
