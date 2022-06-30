@@ -17,6 +17,17 @@ class AcademicMajorEducational extends Model
 
     protected $table = 'gostaresh_academic_major_educational';
     protected $guarded = [];
+    protected $appends = ['department_of_education_title'];
+
+
+    public function getDepartmentOfEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.department_of_education') as $key => $value) {
+            if ($this->department_of_education == $key) {
+                return $value;
+            }
+        }
+    }
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
