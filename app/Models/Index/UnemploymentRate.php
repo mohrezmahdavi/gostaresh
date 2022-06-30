@@ -17,6 +17,18 @@ class UnemploymentRate extends Model
     protected $table = 'gostaresh_unemployment_rate_create';
     protected $guarded = [];
 
+    protected $appends = ['education_title'];
+
+    public function getEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.education') as $key => $value) {
+            if ($key == $this->education_id) {
+                return $value;
+            }
+        }
+    }
+
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
