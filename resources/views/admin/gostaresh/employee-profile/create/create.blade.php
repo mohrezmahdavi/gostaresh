@@ -32,15 +32,19 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="higher_education_subsystems">
-                                <span>زیرنظام های آموزش عالی شهرستان </span>&nbsp
+                                <span>زیرنظام های آموزش عالی شهرستان  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="higher_education_subsystems" name="higher_education_subsystems"
-                                       value="{{ old('higher_education_subsystems') }}" class="form-control"
-                                       placeholder=" زیرنظام های آموزش عالی شهرستان را وارد کنید...">
+                                <select name="higher_education_subsystems" id="higher_education_subsystems" class="form-select" >
+                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
+                                        <option {{ ($key == old('higher_education_subsystems') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
+
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_non_faculty_staff">

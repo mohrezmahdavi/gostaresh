@@ -44,13 +44,16 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="student_satisfaction">
-                                <span>میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه </span>&nbsp
+                                <span>میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="student_satisfaction" name="student_satisfaction"
-                                       value="{{ old('student_satisfaction') }}" class="form-control"
-                                       placeholder=" میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه را وارد کنید...">
+                                <select name="student_satisfaction" id="student_satisfaction" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('student_satisfaction') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
@@ -60,9 +63,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unique_organizational_learning_capability" name="unique_organizational_learning_capability"
-                                       value="{{ old('unique_organizational_learning_capability') }}" class="form-control"
-                                       placeholder=" قابلیت یادگیری سازمانی واحد را وارد کنید...">
+                                <select name="unique_organizational_learning_capability" id="unique_organizational_learning_capability" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('unique_organizational_learning_capability') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
@@ -72,9 +78,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="students_religious_beliefs" name="students_religious_beliefs"
-                                       value="{{ old('students_religious_beliefs') }}" class="form-control"
-                                       placeholder=" میزان پایبندی به فضایل اخلاقی و باورهای دینی در میان دانشجویان واحد دانشگاهی را وارد کنید...">
+                                <select name="students_religious_beliefs" id="students_religious_beliefs" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('students_religious_beliefs') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -84,9 +92,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="student_study_research_culture" name="student_study_research_culture"
-                                       value="{{ old('student_study_research_culture') }}" class="form-control"
-                                       placeholder=" میزان پایبندی به فرهنگ تحقیق مطالعه، تتبع و تحقیق در میان دانشجویان واحد را وارد کنید...">
+                                <select name="student_study_research_culture" id="student_study_research_culture" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('student_study_research_culture') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -96,9 +106,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="hijab_culture_of_students" name="hijab_culture_of_students"
-                                       value="{{ old('hijab_culture_of_students') }}" class="form-control"
-                                       placeholder=" میزان پایبندی به فرهنگ عفاف و حجاب و سبک پوشش اسلامی در میان دانشجویان واحد را وارد کنید...">
+                                <select name="hijab_culture_of_students" id="hijab_culture_of_students" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('hijab_culture_of_students') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -108,9 +120,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="culture_of_participation" name="culture_of_participation"
-                                       value="{{ old('culture_of_participation') }}" class="form-control"
-                                       placeholder=" سطح فرهنگ مشارکت پذیری و کار گروهی در واحد را وارد کنید...">
+                                <select name="culture_of_participation" id="culture_of_participation" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('culture_of_participation') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -120,9 +134,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="faculty_members_self_confidence" name="faculty_members_self_confidence"
-                                       value="{{ old('faculty_members_self_confidence') }}" class="form-control"
-                                       placeholder=" سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد را وارد کنید...">
+                                <select name="faculty_members_self_confidence" id="faculty_members_self_confidence" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('faculty_members_self_confidence') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -132,9 +148,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="amount_of_physical_elements" name="amount_of_physical_elements"
-                                       value="{{ old('amount_of_physical_elements') }}" class="form-control"
-                                       placeholder=" میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی را وارد کنید...">
+                                <select name="amount_of_physical_elements" id="amount_of_physical_elements" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('amount_of_physical_elements') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -144,9 +162,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="percentage_of_sample_professors_in_unit" name="percentage_of_sample_professors_in_unit"
-                                       value="{{ old('percentage_of_sample_professors_in_unit') }}" class="form-control"
-                                       placeholder=" درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان را وارد کنید...">
+                                <select name="percentage_of_sample_professors_in_unit" id="percentage_of_sample_professors_in_unit" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('percentage_of_sample_professors_in_unit') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -156,9 +176,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="percentage_of_sample_professors_in_province" name="percentage_of_sample_professors_in_province"
-                                       value="{{ old('percentage_of_sample_professors_in_province') }}" class="form-control"
-                                       placeholder=" درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی را وارد کنید...">
+                                <select name="percentage_of_sample_professors_in_province" id="percentage_of_sample_professors_in_province" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('percentage_of_sample_professors_in_province') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -168,9 +190,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="percentage_of_sample_students_in_unit" name="percentage_of_sample_students_in_unit"
-                                       value="{{ old('percentage_of_sample_students_in_unit') }}" class="form-control"
-                                       placeholder=" درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان را وارد کنید...">
+                                <select name="percentage_of_sample_students_in_unit" id="percentage_of_sample_students_in_unit" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('percentage_of_sample_students_in_unit') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -180,9 +204,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="percentage_of_sample_students_in_province" name="percentage_of_sample_students_in_province"
-                                       value="{{ old('percentage_of_sample_students_in_province') }}" class="form-control"
-                                       placeholder=" درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی را وارد کنید...">
+                                <select name="percentage_of_sample_students_in_province" id="percentage_of_sample_students_in_province" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('percentage_of_sample_students_in_province') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -192,9 +218,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="brand_influence_in_the_province" name="brand_influence_in_the_province"
-                                       value="{{ old('brand_influence_in_the_province') }}" class="form-control"
-                                       placeholder=" میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان را وارد کنید...">
+                                <select name="brand_influence_in_the_province" id="brand_influence_in_the_province" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('brand_influence_in_the_province') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -204,9 +232,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="level_of_intelligence" name="level_of_intelligence"
-                                       value="{{ old('level_of_intelligence') }}" class="form-control"
-                                       placeholder=" میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد را وارد کنید...">
+                                <select name="level_of_intelligence" id="level_of_intelligence" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('level_of_intelligence') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -216,9 +246,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="axial_program" name="axial_program"
-                                       value="{{ old('axial_program') }}" class="form-control"
-                                       placeholder=" برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش) را وارد کنید...">
+                                <select name="axial_program" id="axial_program" class="form-select" >
+                                    @foreach (config('gostaresh.amount') as $key => $value)
+                                        <option {{ ($key == old('axial_program') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

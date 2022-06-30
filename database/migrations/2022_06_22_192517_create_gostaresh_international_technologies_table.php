@@ -24,11 +24,11 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('number_of_participation')->comment('تعداد مشارکت در انتقال دانش فنی/ فناوری انتقال یافته از خارج به داخل کشور (با ارائه گواهی مقام مجاز)')->nullable();
-            $table->string('number_of_technical_services')->comment('تعداد خدمات فنی و مشاوره ای ارایه شده به موسسات یا شرکت های خارجی')->nullable();
-            $table->string('earnings')->comment('میزان کسب درآمد از خدمات فنی و مشاوره ای بین المللی')->nullable();
-            $table->string('number_of_international_inventions')->comment('تعداد ثبت و یا فایلینگ اختراعات بین المللی (Patent) در ۵ سال اخیر')->nullable();
-            $table->string('number_of_international_knowledge_based_companies')->comment('تعداد شرکت های دانش بنیان با فعالیت بین المللی')->nullable();
+            $table->unsignedInteger('number_of_participation')->comment('تعداد مشارکت در انتقال دانش فنی/ فناوری انتقال یافته از خارج به داخل کشور (با ارائه گواهی مقام مجاز)')->nullable();
+            $table->unsignedInteger('number_of_technical_services')->comment('تعداد خدمات فنی و مشاوره ای ارایه شده به موسسات یا شرکت های خارجی')->nullable();
+            $table->unsignedInteger('earnings')->comment('میزان کسب درآمد از خدمات فنی و مشاوره ای بین المللی')->nullable();
+            $table->unsignedInteger('number_of_international_inventions')->comment('تعداد ثبت و یا فایلینگ اختراعات بین المللی (Patent) در ۵ سال اخیر')->nullable();
+            $table->unsignedInteger('number_of_international_knowledge_based_companies')->comment('تعداد شرکت های دانش بنیان با فعالیت بین المللی')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

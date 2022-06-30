@@ -59,13 +59,31 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
-                                <span>دانشگاه </span>&nbsp
+                                <span>دانشگاه  </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="university_type" name="university_type"
-                                       value="{{ $percapitaRevenue->university_type }}" class="form-control"
-                                       placeholder=" دانشگاه را وارد کنید...">
+                                <select name="university_type" id="university_type" class="form-select" >
+                                    @foreach (config('gostaresh.university_type') as $key => $value)
+                                        <option {{ ($key == $percapitaRevenue->university_type ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="grade">
+                                <span>مقطع تحصیلی  </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="grade" id="grade" class="form-select" >
+                                    @foreach (config('gostaresh.grade') as $key => $value)
+                                        <option {{ ($key == $percapitaRevenue->grade ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 

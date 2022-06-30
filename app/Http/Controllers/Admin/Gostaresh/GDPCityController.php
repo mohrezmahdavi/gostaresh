@@ -7,7 +7,7 @@ use App\Models\Index\GDPCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 5
+// Table 5 Controller
 class GDPCityController extends Controller
 {
     /**

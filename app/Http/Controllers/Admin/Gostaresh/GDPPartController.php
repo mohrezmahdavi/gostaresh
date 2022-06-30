@@ -8,7 +8,7 @@ use GMP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Table 6
+// Table 6 Controller
 class GDPPartController extends Controller
 {
     /**
