@@ -49,7 +49,7 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $averageTestScoreOfTheFirstThirtyPercentOfAdmitted)
+    public function show(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
         //
     }
@@ -60,9 +60,9 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $averageTestScoreOfTheFirstThirtyPercentOfAdmitted)
+    public function edit(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
-        return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.edit.edit', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitted'));
+        return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.edit.edit', compact('avgTstScrOfFrtThrtPrntOfAdmitted'));
     }
 
     /**
@@ -72,9 +72,9 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $averageTestScoreOfTheFirstThirtyPercentOfAdmitted)
+    public function update(Request $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
-        $averageTestScoreOfTheFirstThirtyPercentOfAdmitted->update($request->all());
+        $avgTstScrOfFrtThrtPrntOfAdmitted->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -84,9 +84,9 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $averageTestScoreOfTheFirstThirtyPercentOfAdmitted)
+    public function destroy(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
-        $averageTestScoreOfTheFirstThirtyPercentOfAdmitted->delete();
+        $avgTstScrOfFrtThrtPrntOfAdmitted->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
