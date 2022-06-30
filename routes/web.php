@@ -182,7 +182,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 28 Route
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
-        'course' => 'statusAnalysisOfTheNumberOfCourse'
+        'course' => 'statusAnalysisOfTheNumOfCourse'
     ]);
 
     // Table 29 Route
@@ -197,7 +197,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 31 Route
     Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
-        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
+        'rate' => 'stsAnalysisOfTheNumOfCurricula'
     ]);
 
 
