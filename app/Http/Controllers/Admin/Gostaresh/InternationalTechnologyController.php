@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalTechnology;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,18 +17,18 @@ class InternationalTechnologyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
-        $internationalTechnology =  InternationalTechnology::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.international-technology.list.list', compact('internationalTechnology'));
+        $internationalTechnologies =  InternationalTechnology::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.international-technology.list.list', compact('internationalTechnologies'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -34,8 +38,8 @@ class InternationalTechnologyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -58,7 +62,7 @@ class InternationalTechnologyController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  InternationalTechnology $internationalTechnology
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function edit( InternationalTechnology $internationalTechnology)
     {
@@ -68,9 +72,9 @@ class InternationalTechnologyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param  InternationalTechnology $internationalTechnology
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(Request $request,  InternationalTechnology $internationalTechnology)
     {
@@ -82,7 +86,7 @@ class InternationalTechnologyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  InternationalTechnology $internationalTechnology
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function destroy( InternationalTechnology $internationalTechnology)
     {

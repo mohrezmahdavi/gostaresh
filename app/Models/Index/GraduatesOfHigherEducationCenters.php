@@ -30,6 +30,7 @@ class GraduatesOfHigherEducationCenters extends Model
             }
         }
     }
+
     public function getDepartmentOfEducationTitleAttribute()
     {
         foreach (config('gostaresh.department_of_education') as $key => $value) {
@@ -38,6 +39,7 @@ class GraduatesOfHigherEducationCenters extends Model
             }
         }
     }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
