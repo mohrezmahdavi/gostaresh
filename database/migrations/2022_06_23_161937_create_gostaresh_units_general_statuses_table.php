@@ -24,10 +24,10 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('degree/rank')->comment('درجه/رتبه')->nullable();
-            $table->string('score')->comment('امتیاز')->nullable();
-            $table->string('established_year')->comment('سال تاسیس')->nullable();
-            $table->string('approved_number_and_titles_of_the_faculty')->comment('تعداد و عناوین دانشکده مصوب')->nullable();
+            $table->unsignedInteger('degree/rank')->comment('درجه/رتبه')->nullable();
+            $table->unsignedInteger('score')->comment('امتیاز')->nullable();
+            $table->unsignedInteger('established_year')->comment('سال تاسیس')->nullable();
+            $table->unsignedInteger('approved_number_and_titles_of_the_faculty')->comment('تعداد و عناوین دانشکده مصوب')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

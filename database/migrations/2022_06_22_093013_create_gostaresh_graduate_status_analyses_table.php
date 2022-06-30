@@ -24,13 +24,13 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('total_graduates')->comment('تعداد کل فارغ التحصیلان')->nullable();
-            $table->string('employed_graduates')->comment('تعداد فارغ التحصیلان شاغل')->nullable();
-            $table->float('graduate_growth_rate')->comment('نرخ رشد فارغ التحصیلان')->nullable();
-            $table->string('related_employed_graduates')->comment('تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی')->nullable();
-            $table->string('skill_certification_graduates')->comment('تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای')->nullable();
-            $table->string('employed_graduates_6_months_after_graduation')->comment('تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل')->nullable();
-            $table->string('average_monthly_income_employed_graduates')->comment('متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی')->nullable();
+            $table->unsignedInteger('total_graduates')->comment('تعداد کل فارغ التحصیلان')->nullable();
+            $table->unsignedInteger('employed_graduates')->comment('تعداد فارغ التحصیلان شاغل')->nullable();
+            $table->unsignedInteger('graduate_growth_rate')->comment('نرخ رشد فارغ التحصیلان')->nullable();
+            $table->unsignedInteger('related_employed_graduates')->comment('تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی')->nullable();
+            $table->unsignedInteger('skill_certification_graduates')->comment('تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای')->nullable();
+            $table->unsignedInteger('employed_graduates_6_months_after_graduation')->comment('تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل')->nullable();
+            $table->unsignedBigInteger('average_monthly_income_employed_graduates')->comment('متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('total_annual_income')->comment('کل درآمد های سالیانه')->nullable();
+            $table->unsignedInteger('total_annual_income')->comment('کل درآمد های سالیانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

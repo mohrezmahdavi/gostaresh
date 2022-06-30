@@ -23,21 +23,19 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->string('unit')->nullable();
-            $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
             $table->foreignId('sub_grade_id')->nullable();
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
-            $table->string('average_status_of_high_risk_behaviors')->comment('میانگین نمره کلی وضعیت رفتارهای پر خطر دانشجویان  براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_family_status')->comment('میانگین نمره کلی وضعیت خانوادگی دانشجویان  براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_educational_status')->comment('میانگین نمره کلی وضعیت تحصیلی و آموزشی دانشجویان براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_attitudes_status')->comment('میانگین نمره کلی وضعیت نگرش ها و باورهای دانشجویان براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_life_style_status')->comment('میانگین نمره کلی وضعیت سبک زندگی دانشجویان  براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_attitude_towards_marriage_status')->comment('میانگین نمره کلی وضعیت نگرش دانشجویان نسبت به ازدواج براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_addiction_status')->comment('میانگین نمره کلی وضعیت اعتیاد دانشجویان براساس طرح سیمای زندگی')->nullable();
-            $table->string('average_of_addiction_to_internet_status')->comment('میانگین نمره کلی وضعیت ریتم زیستی (اعتیاد به اینترنت) دانشجویان براساس طرح سیمای زندگی')->nullable();
+            $table->string('unit')->nullable();
+            $table->string('component')->comment('مولفه')->nullable();
+            $table->unsignedTinyInteger('gender_id')->unsigned()->nullable();
+            $table->unsignedSmallInteger('associate_degree')->nullable();
+            $table->unsignedSmallInteger('bachelor_degree')->nullable();
+            $table->unsignedSmallInteger('masters')->nullable();
+            $table->unsignedSmallInteger('professional_doctor')->nullable();
+            $table->unsignedSmallInteger('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

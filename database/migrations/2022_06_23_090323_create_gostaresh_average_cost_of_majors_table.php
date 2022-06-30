@@ -23,14 +23,18 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->foreignId('gender_id')->unsigned()->nullable();
             $table->foreignId('grade_id')->nullable();
             $table->foreignId('sub_grade_id')->nullable();
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
 
             $table->string('university_type')->nullable();
-            $table->string('average_cost_of_majors')->comment('میانگین هزینه ناشی از اجرای رشته')->nullable();
+            $table->unsignedTinyInteger('gender_id')->unsigned()->nullable();
+            $table->unsignedTinyInteger('department_of_education')->nullable();
+            $table->unsignedSmallInteger('associate_degree')->nullable();
+            $table->unsignedSmallInteger('bachelor_degree')->nullable();
+            $table->unsignedSmallInteger('masters')->nullable();
+            $table->unsignedSmallInteger('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
