@@ -26,6 +26,8 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.course.update', $statusAnalysisOfTheNumberOfCourse) }}" role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component></select-province-component>
 
                         <div class="form-group row mt-2">

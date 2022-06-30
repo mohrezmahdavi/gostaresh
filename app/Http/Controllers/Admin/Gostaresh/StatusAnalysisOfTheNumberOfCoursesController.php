@@ -50,7 +50,6 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function show(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
     {
-        
     }
 
     /**
