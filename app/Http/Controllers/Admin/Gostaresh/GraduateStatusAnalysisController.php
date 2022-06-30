@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\GraduateStatusAnalysis;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,20 +17,20 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        $graduateStatusAnalysis = GraduateStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalysis'));
+        $graduateStatusAnalyses = GraduateStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         return view('admin.gostaresh.graduate-status-analyses.create.create');
     }
@@ -34,10 +38,10 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -58,9 +62,9 @@ class GraduateStatusAnalysisController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param GraduateStatusAnalysis $graduateStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function edit(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function edit(GraduateStatusAnalysis $graduateStatusAnalysis): Factory|View|Application
     {
         return view('admin.gostaresh.graduate-status-analyses.edit.edit', compact('graduateStatusAnalysis'));
     }
@@ -68,11 +72,11 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param GraduateStatusAnalysis $graduateStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function update(Request $request, GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
         $graduateStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));
@@ -81,10 +85,10 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param GraduateStatusAnalysis $graduateStatusAnalysis
+     * @return RedirectResponse
      */
-    public function destroy(GraduateStatusAnalysis $graduateStatusAnalysis)
+    public function destroy(GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
         $graduateStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));

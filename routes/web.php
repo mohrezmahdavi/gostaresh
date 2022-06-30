@@ -145,9 +145,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     ]);
 
     // Table 20 Route
-    Route::resource('number/of/registrants/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class)->names('number.of.registrants.status.analysis')->parameters([
-        'analysis' => 'numberOfRegistrantsStatusAnalysis'
-    ]);
+//    Route::resource('number/of/registrants/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class)->names('number.of.registrants.status.analysis')->parameters([
+//        'analysis' => 'numberOfRegistrantsStatusAnalysis'
+//    ]);
 
     // Table 21 Route
     Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
