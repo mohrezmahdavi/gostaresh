@@ -156,48 +156,49 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 22 Route
     Route::resource('average/test/score/of/the/first/thirty/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class)->names('average.test.score.of.the.first.thirty.percent.of.admitted')->parameters([
-        'admitted' => 'averageTestScoreOfTheFirstThirtyPercentOfAdmitted'
+        'admitted' => 'avgTstScrOfFrtThrtPrntOfAdmitted'
     ]);
-//
-//    // Table 23 Route
-//    Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
-//        'admitted' => 'averageTestScoreOfTheLastFivePercentOfAdmitted'
-//    ]);
-//
-//    // Table 24 Route
-//    Route::resource('student/admission/capacity', App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class)->names('student.admission.capacity')->parameters([
-//        'admitted' => 'studentAdmissionCapacity'
-//    ]);
-//
-//    // Table 25 Route
-//    Route::resource('status/analysis/of/the/number/of/fields/of/study', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class)->names('status.analysis.of.the.number.of.fields.of.study')->parameters([
-//        'study' => 'statusAnalysisOfTheNumberOfFieldsOfStudy'
-//    ]);
-//
-//    // Table 26, 27 Route
-//    Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
-//        'study' => 'numberOfNonMedicalFieldsOfStudy'
-//    ]);
-//
-//    // Table 28 Route
-//    Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
-//        'course' => 'statusAnalysisOfTheNumberOfCourse'
-//    ]);
-//
-//    // Table 29 Route
-//    Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([
-//        'course' => 'numberOfInternationalCourse'
-//    ]);
-//
-//    // Table 30 Route
-//    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
-//        'rate' => 'internationalStudentGrowthRate'
-//    ]);
-//
-//    // Table 31 Route
-//    Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
-//        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
-//    ]);
+
+    // Table 23 Route
+    Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
+        'admitted' => 'avgTstScOfLastFivePctOfAdmitted'
+    ]);
+
+    // Table 24 Route
+    Route::resource('student/admission/capacity', App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class)->names('student.admission.capacity')->parameters([
+        'capacity' => 'studentAdmissionCapacity'
+    ]);
+
+    ////////////////////
+    // Table 25 Route
+    Route::resource('status/analysis/of/the/number/of/fields/of/study', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class)->names('status.analysis.of.the.number.of.fields.of.study')->parameters([
+        'study' => 'stsAnlysOfTheNumOfFieldsOfStudy'
+    ]);
+
+    // Table 26, 27 Route
+    Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
+        'study' => 'numberOfNonMedicalFieldsOfStudy'
+    ]);
+
+    // Table 28 Route
+    Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
+        'course' => 'statusAnalysisOfTheNumberOfCourse'
+    ]);
+
+    // Table 29 Route
+    Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([
+        'course' => 'numberOfInternationalCourse'
+    ]);
+
+    // Table 30 Route
+    Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
+        'rate' => 'internationalStudentGrowthRate'
+    ]);
+
+    // Table 31 Route
+    Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
+        'rate' => 'statusAnalysisOfTheNumberOfCurricula'
+    ]);
 
 
     // Table 32 Route

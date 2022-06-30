@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Models\Index\StatusAnalysisOfTheNumberOfFieldsOfStudy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 
@@ -50,7 +51,7 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(StatusAnalysisOfTheNumberOfFieldsOfStudy $statusAnalysisOfTheNumberOfFieldsOfStudy)
+    public function show(StatusAnalysisOfTheNumberOfFieldsOfStudy $stsAnlysOfTheNumOfFieldsOfStudy)
     {
         //
     }
@@ -61,9 +62,9 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StatusAnalysisOfTheNumberOfFieldsOfStudy $statusAnalysisOfTheNumberOfFieldsOfStudy)
+    public function edit(StatusAnalysisOfTheNumberOfFieldsOfStudy $stsAnlysOfTheNumOfFieldsOfStudy)
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.edit.edit', compact('statusAnalysisOfTheNumberOfFieldsOfStudy'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.edit.edit', compact('stsAnlysOfTheNumOfFieldsOfStudy'));
     }
 
     /**
@@ -73,9 +74,9 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StatusAnalysisOfTheNumberOfFieldsOfStudy $statusAnalysisOfTheNumberOfFieldsOfStudy)
+    public function update(Request $request, StatusAnalysisOfTheNumberOfFieldsOfStudy $stsAnlysOfTheNumOfFieldsOfStudy)
     {
-        $statusAnalysisOfTheNumberOfFieldsOfStudy->update($request->all());
+        $stsAnlysOfTheNumOfFieldsOfStudy->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -85,9 +86,9 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StatusAnalysisOfTheNumberOfFieldsOfStudy $statusAnalysisOfTheNumberOfFieldsOfStudy)
+    public function destroy(StatusAnalysisOfTheNumberOfFieldsOfStudy $stsAnlysOfTheNumOfFieldsOfStudy)
     {
-        $statusAnalysisOfTheNumberOfFieldsOfStudy->delete();
+        $stsAnlysOfTheNumOfFieldsOfStudy->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

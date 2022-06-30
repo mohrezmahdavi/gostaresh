@@ -26,6 +26,7 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('annual.growth.rate.of.student.enrollment.update', $annualGrthRateOfStdnEnrollment) }}" role="form">
                         @csrf
+                        @method('PUT')
 
                         <select-province-component province_default="{{ $annualGrthRateOfStdnEnrollment->province_id }}"
                             county_default="{{ $annualGrthRateOfStdnEnrollment->county_id }}" city_default="{{ $annualGrthRateOfStdnEnrollment->city_id }}"
