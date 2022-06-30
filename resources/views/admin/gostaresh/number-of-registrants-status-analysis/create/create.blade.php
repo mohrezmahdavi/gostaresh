@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد تعداد ثبت نام شدگان
+    ایجاد تعداد ثبت نام شدگان
 @endsection
 
 @section('breadcrumb-title')
-ایجاد تعداد ثبت نام شدگان
+    ایجاد تعداد ثبت نام شدگان
 @endsection
 
 @section('page-title')
-ایجاد تعداد ثبت نام شدگان
+    ایجاد تعداد ثبت نام شدگان
 @endsection
 
 @section('styles-head')
@@ -24,7 +24,8 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('number.of.registrants.status.analysis.store') }}" role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('number.of.registrants.status.analysis.store') }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 
@@ -36,7 +37,8 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == old('gender_id') ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == old('gender_id') ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -52,7 +54,8 @@
                             <div class="col-sm-10">
                                 <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == old('department_of_education') ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == old('department_of_education') ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -70,7 +73,8 @@
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ $key == old('university_type') ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == old('university_type') ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -79,18 +83,18 @@
 
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_volunteers">
+                            <label class="col-sm-2 col-form-label" for="number_of_registrants">
                                 <span>تعداد دانشجویان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_volunteers" name="number_of_volunteers"
-                                    value="{{ old('number_of_volunteers') }}" class="form-control"
+                                <input type="number" id="number_of_registrants" name="number_of_registrants"
+                                    value="{{ old('number_of_registrants') }}" class="form-control"
                                     placeholder=" تعداد دانشجویان را وارد کنید...">
                             </div>
                         </div>
 
-                        
+
 
 
 

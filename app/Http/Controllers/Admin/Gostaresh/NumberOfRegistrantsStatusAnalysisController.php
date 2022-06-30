@@ -49,9 +49,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function show(NumberOfRegistrantsStatusAnalysis $numOfRegistrantsStatusAnalysis)
     {
-        
+
     }
 
     /**
@@ -60,9 +60,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function edit(NumberOfRegistrantsStatusAnalysis $numOfRegistrantsStatusAnalysis)
     {
-        return view('admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numberOfRegistrantsStatusAnalysis'));
+        return view('admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numOfRegistrantsStatusAnalysis'));
     }
 
     /**
@@ -72,9 +72,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function update(Request $request, NumberOfRegistrantsStatusAnalysis $numOfRegistrantsStatusAnalysis)
     {
-        $numberOfRegistrantsStatusAnalysis->update($request->all());
+        $numOfRegistrantsStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -84,9 +84,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function destroy(NumberOfRegistrantsStatusAnalysis $numOfRegistrantsStatusAnalysis)
     {
-        $numberOfRegistrantsStatusAnalysis->delete();
+        $numOfRegistrantsStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
