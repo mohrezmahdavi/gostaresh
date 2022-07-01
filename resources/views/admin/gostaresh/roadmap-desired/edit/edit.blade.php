@@ -2,15 +2,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش نقشه راه دستیابی بھ وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش نقشه راه دستیابی بھ وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
 @endsection
 
 @section('page-title')
-    ویرایش نقشه راه دستیابی بھ وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
 @endsection
 
 @section('styles-head')
@@ -132,7 +132,7 @@
                                        placeholder=" ملاحظات را وارد کنید...">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
                                 <span> سال </span>&nbsp
