@@ -86,6 +86,7 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function destroy(NumberOfRegistrantsStatusAnalysis $numOfRegistrantsStatusAnalysis)
     {
+        dd('ssssssss');
         $numOfRegistrantsStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

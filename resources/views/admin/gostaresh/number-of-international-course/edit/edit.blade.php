@@ -28,6 +28,8 @@
                         action="{{ route('number.of.international.course.update', $numberOfInternationalCourse) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $numberOfInternationalCourse->province_id }}"
                             county_default="{{ $numberOfInternationalCourse->county_id }}"
                             city_default="{{ $numberOfInternationalCourse->city_id }}"
@@ -149,7 +151,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

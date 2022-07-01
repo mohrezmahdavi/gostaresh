@@ -48,7 +48,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function show(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
     }
 
@@ -58,9 +58,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function edit(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.edit.edit', compact('statusAnalysisOfTheNumberOfCourse'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.edit.edit', compact('statusAnalysisOfTheNumOfCourse'));
     }
 
     /**
@@ -70,9 +70,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function update(Request $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
-        $statusAnalysisOfTheNumberOfCourse->update($request->all());
+        $statusAnalysisOfTheNumOfCourse->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -82,9 +82,9 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumberOfCourse)
+    public function destroy(StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
-        $statusAnalysisOfTheNumberOfCourse->delete();
+        $statusAnalysisOfTheNumOfCourse->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

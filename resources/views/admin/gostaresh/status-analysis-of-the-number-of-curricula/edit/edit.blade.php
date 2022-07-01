@@ -24,9 +24,14 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.curricula.update', $statusAnalysisOfTheNumberOfCurricula) }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.curricula.update', $stsAnalysisOfTheNumOfCurricula) }}" role="form">
                         @csrf
-                        <select-province-component></select-province-component>
+                        @method('PUT')
+                        <select-province-component province_default="{{ $stsAnalysisOfTheNumOfCurricula->province_id }}"
+                            county_default="{{ $stsAnalysisOfTheNumOfCurricula->county_id }}"
+                            city_default="{{ $stsAnalysisOfTheNumOfCurricula->city_id }}"
+                            rural_district_default="{{ $stsAnalysisOfTheNumOfCurricula->rural_district_id }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
@@ -35,7 +40,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->unit }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->unit }}" class="form-control"
                                     placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
@@ -43,24 +48,24 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_number_of_curricula">
-                                <span>تعداد کل برنامه های درسی (رشته گرایش ها) </span>&nbsp
+                                <span>تعداد کل برنامه های درسی (رشته گرایش‌ها) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_number_of_curricula" name="total_number_of_curricula"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->total_number_of_curricula }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->total_number_of_curricula }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_modified_curricula">
-                                <span>تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی </span>&nbsp
+                                <span>تعداد برنامه‌های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_modified_curricula" name="number_of_modified_curricula"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_modified_curricula }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->number_of_modified_curricula }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -72,31 +77,31 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="new_interdisciplinary_curricula_implemented" name="new_interdisciplinary_curricula_implemented"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->new_interdisciplinary_curricula_implemented }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->new_interdisciplinary_curricula_implemented }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="complete_new_interdisciplinary_curricula">
-                                <span>کل برنامه های درسی جدید میان رشته ای مورد اجرا </span>&nbsp
+                                <span>کل برنامه‌های درسی جدید میان رشته‌ای مورد اجرا </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="complete_new_interdisciplinary_curricula" name="complete_new_interdisciplinary_curricula"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->complete_new_interdisciplinary_curricula }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->complete_new_interdisciplinary_curricula }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_common_curricula_with_the_world">
-                                <span>تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان </span>&nbsp
+                                <span>تعداد برنامه‌های درسی مشترک اجرا شده با سایر دانشگاه‌های جهان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_common_curricula_with_the_world" name="number_of_common_curricula_with_the_world"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_common_curricula_with_the_world }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->number_of_common_curricula_with_the_world }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -108,7 +113,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_curricula_developed" name="number_of_curricula_developed"
-                                    value="{{ $statusAnalysisOfTheNumberOfCurricula->number_of_curricula_developed }}" class="form-control"
+                                    value="{{ $stsAnalysisOfTheNumOfCurricula->number_of_curricula_developed }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -122,7 +127,7 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == $statusAnalysisOfTheNumberOfCurricula->year ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $stsAnalysisOfTheNumOfCurricula->year ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -139,7 +144,7 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select">
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == $statusAnalysisOfTheNumberOfCurricula->month ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $stsAnalysisOfTheNumOfCurricula->month ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -148,7 +153,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

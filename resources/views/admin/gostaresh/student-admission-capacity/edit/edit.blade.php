@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ویرایش میزان ظرفیت پذیرش دانشجو 
+ویرایش میزان ظرفیت پذیرش دانشجو
 @endsection
 
 @section('breadcrumb-title')
-ویرایش میزان ظرفیت پذیرش دانشجو 
+ویرایش میزان ظرفیت پذیرش دانشجو
 @endsection
 
 @section('page-title')
-ویرایش میزان ظرفیت پذیرش دانشجو 
+ویرایش میزان ظرفیت پذیرش دانشجو
 @endsection
 
 @section('styles-head')
@@ -27,12 +27,12 @@
                     <form class="form-horizontal" method="POST" action="{{ route('student.admission.capacity.update', $studentAdmissionCapacity) }}" role="form">
                         @csrf
                         @method('PUT')
-                        
+
                         <select-province-component province_default="{{ $studentAdmissionCapacity->province_id }}"
                             county_default="{{ $studentAdmissionCapacity->county_id }}" city_default="{{ $studentAdmissionCapacity->city_id }}"
                             rural_district_default="{{ $studentAdmissionCapacity->rural_district_id }}">
                         </select-province-component>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span> جنسیت </span>&nbsp
@@ -95,7 +95,7 @@
                             </div>
                         </div>
 
-                        
+
 
 
 
@@ -133,7 +133,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

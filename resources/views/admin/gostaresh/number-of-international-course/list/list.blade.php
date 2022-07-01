@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-تحلیل وضعیت تعداد دوره های تحصیلی	
+تحلیل وضعیت تعداد دوره های تحصیلی
 @endsection
 
 @section('breadcrumb-title')
-تحلیل وضعیت تعداد دوره های تحصیلی	
+تحلیل وضعیت تعداد دوره های تحصیلی
 @endsection
 
 @section('page-title')
-تحلیل وضعیت تعداد دوره های تحصیلی	
+تحلیل وضعیت تعداد دوره های تحصیلی
 @endsection
 
 @section('styles-head')
@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
@@ -41,39 +41,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($statusAnalysisOfTheNumberOfFieldsOfStudies as $key => $statusAnalysisOfTheNumberOfFieldsOfStudy)
+                                @foreach ($numberOfInternationalCourses as $key => $numberOfInternationalCourse)
                                     <tr>
-                                        <th scope="row">{{ $statusAnalysisOfTheNumberOfFieldsOfStudies?->firstItem() + $key }}</th>
-        
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfFieldsOfStudy->county?->name }}
-                                        </td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->unit }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->gender_title }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->department_of_education_title }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->kardani_count }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->karshenasi_count }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->karshenasi_arshad_count }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->docktora_count }}</td>
+                                        <th scope="row">{{ $numberOfInternationalCourses?->firstItem() + $key }}</th>
 
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->year }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
+                                        </td>
+                                        <td>{{ $numberOfInternationalCourse?->unit }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->gender_title }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->department_of_education_title }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->kardani_count }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->karshenasi_count }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->karshenasi_arshad_count }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->docktora_count }}</td>
+
+                                        <td>{{ $numberOfInternationalCourse?->year }}</td>
                                         <td>
-        
-                                            <a href="{{ route('status.analysis.of.the.number.of.fields.of.study.edit', $statusAnalysisOfTheNumberOfFieldsOfStudy) }}"
+
+                                            <a href="{{ route('number.of.international.course.edit', $numberOfInternationalCourse) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
-                                            <a href="{{ route('status.analysis.of.the.number.of.fields.of.study.destroy', $statusAnalysisOfTheNumberOfFieldsOfStudy) }}" title="{{ __('validation.buttons.delete') }}"
+
+                                            <a href="{{ route('number.of.international.course.destroy', $numberOfInternationalCourse) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
-                        {{ $statusAnalysisOfTheNumberOfFieldsOfStudies->withQueryString()->links('pagination::bootstrap-4') }}
+                        {{ $numberOfInternationalCourses->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
