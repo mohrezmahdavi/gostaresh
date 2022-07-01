@@ -28,6 +28,8 @@
                         action="{{ route('unemployment.rate.update', $unemploymentRate) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $unemploymentRate->province_id }}"
                             county_default="{{ $unemploymentRate->county_id }}"
                             city_default="{{ $unemploymentRate->city_id }}"

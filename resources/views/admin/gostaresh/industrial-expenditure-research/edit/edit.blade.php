@@ -27,6 +27,8 @@
                     <form class="form-horizontal" method="POST" action="{{ route('industrial.expenditure.research.update', $industrialExpenditureResearch) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $industrialExpenditureResearch->province_id }}"
                             county_default="{{ $industrialExpenditureResearch->county_id }}" city_default="{{ $industrialExpenditureResearch->city_id }}"
                             rural_district_default="{{ $industrialExpenditureResearch->rural_district_id }}">

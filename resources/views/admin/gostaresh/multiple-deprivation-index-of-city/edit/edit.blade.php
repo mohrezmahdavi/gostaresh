@@ -28,6 +28,8 @@
                         action="{{ route('multiple.deprivation.index.of.city.update', $povertyOfProvincialCity) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $povertyOfProvincialCity->province_id }}"
                             county_default="{{ $povertyOfProvincialCity->county_id }}"
                             city_default="{{ $povertyOfProvincialCity->city_id }}"

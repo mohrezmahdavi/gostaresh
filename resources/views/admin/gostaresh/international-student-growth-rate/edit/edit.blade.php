@@ -28,6 +28,8 @@
                         action="{{ route('international.student.growth.rate.update', $internationalStudentGrowthRate) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $internationalStudentGrowthRate->province_id }}"
                             county_default="{{ $internationalStudentGrowthRate->county_id }}"
                             city_default="{{ $internationalStudentGrowthRate->city_id }}"

@@ -27,6 +27,8 @@
                     <form class="form-horizontal" method="POST" action="{{ route('number.of.research.project.update', $numberOfResearchProject) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $numberOfResearchProject->province_id }}"
                             county_default="{{ $numberOfResearchProject->county_id }}" city_default="{{ $numberOfResearchProject->city_id }}"
                             rural_district_default="{{ $numberOfResearchProject->rural_district_id }}">

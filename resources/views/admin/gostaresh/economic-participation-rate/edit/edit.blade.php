@@ -28,6 +28,8 @@
                         action="{{ route('economic.participation.rate.update', $economicParticipationRate) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $economicParticipationRate->province_id }}"
                             county_default="{{ $economicParticipationRate->county_id }}"
                             city_default="{{ $economicParticipationRate->city_id }}"

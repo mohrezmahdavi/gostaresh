@@ -28,6 +28,8 @@
                         action="{{ route('number.of.international.course.update', $numberOfInternationalCourse) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $numberOfInternationalCourse->province_id }}"
                             county_default="{{ $numberOfInternationalCourse->county_id }}"
                             city_default="{{ $numberOfInternationalCourse->city_id }}"
