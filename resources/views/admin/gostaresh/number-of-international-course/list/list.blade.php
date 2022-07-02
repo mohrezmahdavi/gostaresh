@@ -43,7 +43,7 @@
                                 @foreach ($numberOfInternationalCourses as $key => $numberOfInternationalCourse)
                                     <tr>
                                         <th scope="row">{{ $numberOfInternationalCourses?->firstItem() + $key }}</th>
-        
+
 
                                         <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
                                         </td>
@@ -57,11 +57,11 @@
 
                                         <td>{{ $numberOfInternationalCourse?->year }}</td>
                                         <td>
-        
+
                                             <a href="{{ route('number.of.international.course.edit', $numberOfInternationalCourse) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('number.of.international.course.destroy', $numberOfInternationalCourse) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>

@@ -48,7 +48,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(StatusAnalysisOfTheNumberOfCurricula $statusAnalysisOfTheNumberOfCurricula)
+    public function show(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
         //
     }
@@ -59,9 +59,9 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StatusAnalysisOfTheNumberOfCurricula $statusAnalysisOfTheNumberOfCurricula)
+    public function edit(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.edit.edit', compact('statusAnalysisOfTheNumberOfCurricula'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.edit.edit', compact('stsAnalysisOfTheNumOfCurricula'));
     }
 
     /**
@@ -71,9 +71,9 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StatusAnalysisOfTheNumberOfCurricula $statusAnalysisOfTheNumberOfCurricula)
+    public function update(Request $request, StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
-        $statusAnalysisOfTheNumberOfCurricula->update($request->all());
+        $stsAnalysisOfTheNumOfCurricula->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -83,9 +83,9 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StatusAnalysisOfTheNumberOfCurricula $statusAnalysisOfTheNumberOfCurricula)
+    public function destroy(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
-        $statusAnalysisOfTheNumberOfCurricula->delete();
+        $stsAnalysisOfTheNumOfCurricula->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

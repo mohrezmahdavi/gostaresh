@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.course.update', $statusAnalysisOfTheNumberOfCourse) }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.course.update', $statusAnalysisOfTheNumOfCourse) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -37,7 +37,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->unit }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->unit }}" class="form-control"
                                     placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_number_of_courses" name="total_number_of_courses"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->total_number_of_courses }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->total_number_of_courses }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_international_Persian_language_courses_in_person" name="number_of_international_Persian_language_courses_in_person"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->number_of_international_Persian_language_courses_in_person }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_Persian_language_courses_in_person }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_international_virtual_Persian_language_courses" name="number_of_international_virtual_Persian_language_courses"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->number_of_international_virtual_Persian_language_courses }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_virtual_Persian_language_courses }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_international_courses_in_the_target_language_in_person" name="number_of_international_courses_in_the_target_language_in_person"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->number_of_international_courses_in_the_target_language_in_person }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_courses_in_the_target_language_in_person }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_international_courses_in_the_target_language_virtually" name="number_of_international_courses_in_the_target_language_virtually"
-                                    value="{{ $statusAnalysisOfTheNumberOfCourse->number_of_international_courses_in_the_target_language_virtually }}" class="form-control"
+                                    value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_courses_in_the_target_language_virtually }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == $statusAnalysisOfTheNumberOfCourse->year ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $statusAnalysisOfTheNumOfCourse->year ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -129,7 +129,7 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select">
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == $statusAnalysisOfTheNumberOfCourse->month ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $statusAnalysisOfTheNumOfCourse->month ? 'selected' : '' }} value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -138,7 +138,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>
