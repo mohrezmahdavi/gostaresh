@@ -26,14 +26,15 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('geographical.location.unit.update', $geographicalLocationOfUnit) }}" role="form">
                         @csrf
+                        @method('PUT')
 
-                        <select-province-component 
-                            province_default="{{ $geographicalLocationOfUnit->province_id }}" 
-                            county_default="{{ $geographicalLocationOfUnit->county_id }}" 
-                            city_default="{{ $geographicalLocationOfUnit->city_id }}"  
+                        <select-province-component
+                            province_default="{{ $geographicalLocationOfUnit->province_id }}"
+                            county_default="{{ $geographicalLocationOfUnit->county_id }}"
+                            city_default="{{ $geographicalLocationOfUnit->city_id }}"
                             rural_district_default="{{ $geographicalLocationOfUnit->rural_district_id }}">
                         </select-province-component>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit_university">
                                 <span> واحد دانشگاهی </span>&nbsp
@@ -89,7 +90,7 @@
                                     <option {{ ($key == $geographicalLocationOfUnit->climate_type_and_weather_conditions ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -126,7 +127,7 @@
                                     <option {{ ($key == $geographicalLocationOfUnit->level_and_quality_of_access ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -141,7 +142,7 @@
                                     <option {{ ($key == $geographicalLocationOfUnit->international_opportunities_geographical_location ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -155,9 +156,9 @@
                                     @for ($i = 1250; $i <= 1405; $i++)
                                     <option {{ ($i == $geographicalLocationOfUnit->year ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -171,15 +172,15 @@
                                     @for ($i = 1; $i <= 12; $i++)
                                     <option {{ ($i == $geographicalLocationOfUnit->month ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
-                        
 
-                        
+
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

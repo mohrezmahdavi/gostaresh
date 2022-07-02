@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\CulturalIndicatorsStatusAnalysis;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +17,7 @@ class CulturalIndicatorsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -24,7 +28,7 @@ class CulturalIndicatorsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -34,8 +38,8 @@ class CulturalIndicatorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -58,7 +62,7 @@ class CulturalIndicatorsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function edit( CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
@@ -68,9 +72,9 @@ class CulturalIndicatorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(Request $request,  CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
@@ -82,7 +86,7 @@ class CulturalIndicatorsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function destroy( CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {

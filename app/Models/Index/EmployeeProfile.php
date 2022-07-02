@@ -20,6 +20,17 @@ class EmployeeProfile extends Model
 
     protected $table = "gostaresh_employee_profiles";
 
+    protected $appends = ['department_of_education_title'];
+
+    public function getDepartmentOfEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.department_of_education') as $key => $value) {
+            if ($key == $this->higher_education_subsystems) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

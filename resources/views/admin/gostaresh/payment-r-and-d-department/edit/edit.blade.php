@@ -27,6 +27,8 @@
                     <form class="form-horizontal" method="POST" action="{{ route('payment.r.and.d.department.update', $paymentRAndDDepartment) }}"
                         role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $paymentRAndDDepartment->province_id }}"
                             county_default="{{ $paymentRAndDDepartment->county_id }}" city_default="{{ $paymentRAndDDepartment->city_id }}"
                             rural_district_default="{{ $paymentRAndDDepartment->rural_district_id }}">

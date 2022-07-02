@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان</th>
@@ -44,6 +44,7 @@
                                     <tr>
                                         <th scope="row">{{ $numberOfInternationalCourses?->firstItem() + $key }}</th>
         
+
                                         <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
                                         </td>
                                         <td>{{ $numberOfInternationalCourse?->unit }}</td>
@@ -64,12 +65,12 @@
                                             <a href="{{ route('number.of.international.course.destroy', $numberOfInternationalCourse) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfInternationalCourses->withQueryString()->links('pagination::bootstrap-4') }}

@@ -17,8 +17,8 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfRegistrantsStatusAnalysises = NumberOfRegistrantsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrantsStatusAnalysises'));
+        $numberOfRegistrants = NumberOfRegistrantsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants'));
     }
 
     /**
@@ -49,9 +49,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function show(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        
+
     }
 
     /**
@@ -60,9 +60,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function edit(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        return view('admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numberOfRegistrantsStatusAnalysis'));
+        return view('admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numberOfRegistrant'));
     }
 
     /**
@@ -72,9 +72,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function update(Request $request, NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        $numberOfRegistrantsStatusAnalysis->update($request->all());
+        $numberOfRegistrant->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -84,9 +84,9 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NumberOfRegistrantsStatusAnalysis $numberOfRegistrantsStatusAnalysis)
+    public function destroy(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        $numberOfRegistrantsStatusAnalysis->delete();
+        $numberOfRegistrant->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

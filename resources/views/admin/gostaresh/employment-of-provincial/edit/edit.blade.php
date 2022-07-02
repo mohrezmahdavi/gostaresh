@@ -26,6 +26,8 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('employment.of.provincial.update', $employmentOfProvincial) }}" role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $employmentOfProvincial->province_id }}"
                             county_default="{{ $employmentOfProvincial->county_id }}"
                             city_default="{{ $employmentOfProvincial->city_id }}"
@@ -45,7 +47,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="mining_construction">
                                 <span>استخراج معدن - ساخت </span>&nbsp

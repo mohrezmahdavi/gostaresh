@@ -26,11 +26,12 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('number.student.population.update', $numberStudentPopulation) }}" role="form">
                         @csrf
+                        @method('PUT')
 
-                        <select-province-component 
-                            province_default="{{ $numberStudentPopulation->province_id }}" 
-                            county_default="{{ $numberStudentPopulation->county_id }}" 
-                            city_default="{{ $numberStudentPopulation->city_id }}"  
+                        <select-province-component
+                            province_default="{{ $numberStudentPopulation->province_id }}"
+                            county_default="{{ $numberStudentPopulation->county_id }}"
+                            city_default="{{ $numberStudentPopulation->city_id }}"
                             rural_district_default="{{ $numberStudentPopulation->rural_district_id }}">
                         </select-province-component>
 
@@ -45,7 +46,7 @@
                                     <option {{ ($key == $numberStudentPopulation->gender_id ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -68,7 +69,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
@@ -80,9 +81,9 @@
                                     @for ($i = 1250; $i <= 1405; $i++)
                                     <option {{ ($i == $numberStudentPopulation->year ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -96,15 +97,15 @@
                                     @for ($i = 1; $i <= 12; $i++)
                                     <option {{ ($i == $numberStudentPopulation->month ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
-                        
 
-                        
+
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

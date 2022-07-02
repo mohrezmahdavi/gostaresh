@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalResearchStatusAnalysis;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,20 +17,20 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        $internationalResearchStatusAnalysis = InternationalResearchStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.international-research-status-analyses.list.list', compact('internationalResearchStatusAnalysis'));
+        $internationalResearchStatusAnalyses = InternationalResearchStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.international-research-status-analyses.list.list', compact('internationalResearchStatusAnalyses'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         return view('admin.gostaresh.international-research-status-analyses.create.create');
     }
@@ -34,10 +38,10 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -58,9 +62,9 @@ class InternationalResearchStatusAnalysisController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param InternationalResearchStatusAnalysis $internationalResearch
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function edit(InternationalResearchStatusAnalysis $internationalResearch)
+    public function edit(InternationalResearchStatusAnalysis $internationalResearch): Factory|View|Application
     {
         return view('admin.gostaresh.international-research-status-analyses.edit.edit', compact('internationalResearch'));
     }
@@ -68,11 +72,11 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param InternationalResearchStatusAnalysis $internationalResearch
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, InternationalResearchStatusAnalysis $internationalResearch)
+    public function update(Request $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
         $internationalResearch->update($request->all());
         return back()->with('success', __('titles.success_update'));
@@ -82,9 +86,9 @@ class InternationalResearchStatusAnalysisController extends Controller
      * Remove the specified resource from storage.
      *
      * @param InternationalResearchStatusAnalysis $internationalResearch
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy(InternationalResearchStatusAnalysis $internationalResearch)
+    public function destroy(InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
         $internationalResearch->delete();
         return back()->with('success', __('titles.success_delete'));

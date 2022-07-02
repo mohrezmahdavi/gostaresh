@@ -5,11 +5,11 @@
 @endsection
 
 @section('breadcrumb-title')
-سهم تولید ناخالص داخلی استان 
+سهم تولید ناخالص داخلی استان
 @endsection
 
 @section('page-title')
-سهم تولید ناخالص داخلی استان 
+سهم تولید ناخالص داخلی استان
 @endsection
 
 @section('styles-head')
@@ -26,10 +26,12 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('gdp.part.update', $gdpPart) }}" role="form">
                         @csrf
-                        <select-province-component 
-                            province_default="{{ $gdpPart->province_id }}" 
-                            county_default="{{ $gdpPart->county_id }}" 
-                            city_default="{{ $gdpPart->city_id }}"  
+                        @method('PUT')
+
+                        <select-province-component
+                            province_default="{{ $gdpPart->province_id }}"
+                            county_default="{{ $gdpPart->county_id }}"
+                            city_default="{{ $gdpPart->city_id }}"
                             rural_district_default="{{ $gdpPart->rural_district_id }}">
                         </select-province-component>
 

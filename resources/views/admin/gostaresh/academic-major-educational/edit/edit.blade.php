@@ -27,6 +27,8 @@
                     <form class="form-horizontal" method="POST"
                         action="{{ route('multiple.deprivation.index.of.city.update', $academicMajorEducational) }}" role="form">
                         @csrf
+                        @method('PUT')
+
                         <select-province-component></select-province-component>
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education_percent">

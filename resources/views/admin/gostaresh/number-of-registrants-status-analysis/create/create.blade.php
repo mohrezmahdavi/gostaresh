@@ -79,20 +79,16 @@
 
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_volunteers">
+                            <label class="col-sm-2 col-form-label" for="number_of_registrants">
                                 <span>تعداد دانشجویان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_volunteers" name="number_of_volunteers"
-                                    value="{{ old('number_of_volunteers') }}" class="form-control"
+                                <input type="number" id="number_of_registrants" name="number_of_registrants"
+                                    value="{{ old('number_of_registrants') }}" class="form-control"
                                     placeholder=" تعداد دانشجویان را وارد کنید...">
                             </div>
                         </div>
-
-                        
-
-
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">

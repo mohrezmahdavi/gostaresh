@@ -26,11 +26,12 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('gdp.city.update', $gdpCity) }}" role="form">
                         @csrf
+                        @method('PUT')
 
-                        <select-province-component 
-                            province_default="{{ $gdpCity->province_id }}" 
-                            county_default="{{ $gdpCity->county_id }}" 
-                            city_default="{{ $gdpCity->city_id }}"  
+                        <select-province-component
+                            province_default="{{ $gdpCity->province_id }}"
+                            county_default="{{ $gdpCity->county_id }}"
+                            city_default="{{ $gdpCity->city_id }}"
                             rural_district_default="{{ $gdpCity->rural_district_id }}">
                         </select-province-component>
 
@@ -45,7 +46,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
@@ -57,9 +58,9 @@
                                     @for ($i = 1250; $i <= 1405; $i++)
                                     <option {{ ($i == $gdpCity->year ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -73,9 +74,9 @@
                                     @for ($i = 1; $i <= 12; $i++)
                                     <option {{ ($i == $gdpCity->month ? 'selected' : '') }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 

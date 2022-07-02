@@ -20,6 +20,26 @@ class GraduatesOfHigherEducationCenters extends Model
 
     protected $table = "gostaresh_graduates_of_higher_education_centers";
 
+    protected $appends = ['gender', 'department_of_education_title'];
+
+    public function getGenderAttribute()
+    {
+        foreach (config('gostaresh.gender') as $key => $value) {
+            if ($key == $this->gender_id) {
+                return $value;
+            }
+        }
+    }
+
+    public function getDepartmentOfEducationTitleAttribute()
+    {
+        foreach (config('gostaresh.department_of_education') as $key => $value) {
+            if ($key == $this->department_of_education) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
