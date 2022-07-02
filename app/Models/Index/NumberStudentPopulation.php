@@ -19,6 +19,17 @@ class NumberStudentPopulation extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['gender_title'];
+
+    public function getGenderTitleAttribute()
+    {
+        foreach (config('gostaresh.gender') as $key => $value) {
+            if ($key == $this->gender) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
