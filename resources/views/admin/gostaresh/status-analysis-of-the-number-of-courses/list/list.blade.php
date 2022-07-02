@@ -43,23 +43,23 @@
                                     <tr>
                                         <th scope="row">{{ $statusAnalysisOfTheNumberOfCourses?->firstItem() + $key }}</th>
         
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCourses->county?->name }}
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCourse->county?->name }}
                                         </td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->unit }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->total_number_of_fields_of_study }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->number_of_international_Persian_language_courses_in_person }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->number_of_international_virtual_Persian_language_courses }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->number_of_international_courses_in_the_target_language_in_person }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->number_of_international_courses_in_the_target_language_virtually }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->unit }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->total_number_of_fields_of_study }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually }}</td>
                                         
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourses?->year }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->year }}</td>
                                         <td>
         
-                                            <a href="{{ route('status.analysis.of.the.number.of.course.edit', $statusAnalysisOfTheNumberOfCourses) }}"
+                                            <a href="{{ route('status.analysis.of.the.number.of.course.edit', $statusAnalysisOfTheNumberOfCourse) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
         
-                                            <a href="{{ route('status.analysis.of.the.number.of.course.destroy', $statusAnalysisOfTheNumberOfCourses) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('status.analysis.of.the.number.of.course.destroy', $statusAnalysisOfTheNumberOfCourse) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
         
