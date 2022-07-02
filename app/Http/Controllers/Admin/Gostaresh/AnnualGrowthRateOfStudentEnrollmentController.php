@@ -50,7 +50,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function show(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        
+
     }
 
     /**

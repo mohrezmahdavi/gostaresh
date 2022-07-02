@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد  تعداد رشته/گرایشهای تحصیلی غیر پزشکی
+ویرایش  تعداد رشته/گرایشهای تحصیلی غیر پزشکی
 @endsection
 
 @section('breadcrumb-title')
-ایجاد  تعداد رشته/گرایشهای تحصیلی غیر پزشکی
+ویرایش  تعداد رشته/گرایشهای تحصیلی غیر پزشکی
 @endsection
 
 @section('page-title')
@@ -168,7 +168,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

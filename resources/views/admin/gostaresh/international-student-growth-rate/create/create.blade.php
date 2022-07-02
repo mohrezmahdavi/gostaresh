@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('international.student.growth.rate.create') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('international.student.growth.rate.store') }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 

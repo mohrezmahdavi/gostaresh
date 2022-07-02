@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
-                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.curricula.create') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('status.analysis.of.the.number.of.curricula.store') }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 

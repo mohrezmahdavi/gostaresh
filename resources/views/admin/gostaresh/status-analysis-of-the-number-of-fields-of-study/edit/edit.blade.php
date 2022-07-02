@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        
+
 
 
                         <div class="form-group row mt-2">
@@ -290,7 +290,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>
