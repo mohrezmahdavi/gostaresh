@@ -133,6 +133,29 @@
                 </li>
 
 
+                <li>
+                    <a href="#sidebarDashboardsAtlas" data-bs-toggle="collapse" aria-expanded="false"
+                        aria-controls="sidebarDashboardsAtlas" class="waves-effect">
+                        <i class="mdi mdi-account-group"></i>
+                        {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
+                        <span> اطلس </span>
+                    </a>
+                    <div class="collapse" id="sidebarDashboardsAtlas">
+                        <ul class="nav-second-level">
+                            @foreach (array_slice(config('gostaresh-urls.url'), 0, 3) as $key => $value)
+
+                                <li>
+                                    <a href="{{ route($value['name'] . '.index') }}"><i
+                                            class="ri-calendar-2-line align-middle me-1"></i>{{ $value['title'] }}</a>
+                                </li>
+                            @endforeach
+
+
+                        </ul>
+                    </div>
+                </li>
+
+
 
 
 
