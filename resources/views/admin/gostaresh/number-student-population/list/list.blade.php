@@ -33,6 +33,8 @@
                                     <th>شهرستان </th>
                                     <th>جنسیت</th>
                                     <th>مقطع</th>
+                                    <th>تعداد نفرات</th>
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -44,6 +46,7 @@
                                         <td>{{ $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation->county?->name }}</td>
                                         <td>{{ $numberStudentPopulation?->gender_title }}</td>
                                         <td>{{ $numberStudentPopulation?->grade }}</td>
+                                        <td>{{ $numberStudentPopulation?->number_of_persons }}</td>
                                         <td>
                                             <a href="{{ route('number.student.population.edit', $numberStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
