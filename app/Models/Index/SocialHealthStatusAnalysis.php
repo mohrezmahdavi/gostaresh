@@ -20,6 +20,26 @@ class SocialHealthStatusAnalysis extends Model
 
     protected $table = "gostaresh_social_health_status_analyses";
 
+    protected $appends = ['gender', 'component_title'];
+
+    public function getComponentTitleAttribute()
+    {
+        foreach (config('gostaresh.component') as $key => $value) {
+            if ($key == $this->component) {
+                return $value;
+            }
+        }
+    }
+
+    public function getGenderAttribute()
+    {
+        foreach (config('gostaresh.gender') as $key => $value) {
+            if ($key == $this->gender_id) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

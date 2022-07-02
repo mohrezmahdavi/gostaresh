@@ -26,12 +26,13 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('number.of.students.status.analysis.update', $numberOfStudentsStatusAnalysis) }}" role="form">
                         @csrf
-                        
+                        @method('PUT')
+
                         <select-province-component province_default="{{ $numberOfStudentsStatusAnalysis->province_id }}"
                             county_default="{{ $numberOfStudentsStatusAnalysis->county_id }}" city_default="{{ $numberOfStudentsStatusAnalysis->city_id }}"
                             rural_district_default="{{ $numberOfStudentsStatusAnalysis->rural_district_id }}">
                         </select-province-component>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span> جنسیت </span>&nbsp
@@ -94,7 +95,7 @@
                             </div>
                         </div>
 
-                        
+
 
 
 

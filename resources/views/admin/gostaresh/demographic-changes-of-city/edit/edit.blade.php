@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش روند تحولات جمعیتی شهرستان های استان 
+    ویرایش روند تحولات جمعیتی شهرستان های استان
 @endsection
 
 @section('page-title')
@@ -26,6 +26,8 @@
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('demographic.changes.city.update', $demographicChangesOfCity) }}" role="form">
                         @csrf
+                        @method('PUT')
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="population">
                                 <span> جمعیت </span>&nbsp
@@ -69,9 +71,9 @@
                                     @for ($i = 1250; $i <= 1405, $i++)
                                     <option {{ ($i == $demographicChangesOfCity->year) ? 'selected' : '' }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -85,20 +87,20 @@
                                     @for ($i = 1; $i <= 12, $i++)
                                     <option {{ ($i == $demographicChangesOfCity->month) ? 'selected' : '' }} value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
-                        <select-province-component 
-                            province_default="{{ $demographicChangesOfCity->province_id }}" 
-                            county_default="{{ $demographicChangesOfCity->county_id }}" 
-                            city_default="{{ $demographicChangesOfCity->city_id }}"  
+                        <select-province-component
+                            province_default="{{ $demographicChangesOfCity->province_id }}"
+                            county_default="{{ $demographicChangesOfCity->county_id }}"
+                            city_default="{{ $demographicChangesOfCity->city_id }}"
                             rural_district_default="{{ $demographicChangesOfCity->rural_district_id }}">
                         </select-province-component>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

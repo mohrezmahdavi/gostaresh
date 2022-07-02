@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-تحلیل وضعیت تعداد دوره های تحصیلی
+تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی استان
 @endsection
 
 @section('breadcrumb-title')
-تحلیل وضعیت تعداد دوره های تحصیلی
+تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی استان
 @endsection
 
 @section('page-title')
-تحلیل وضعیت تعداد دوره های تحصیلی
+تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی استان
 @endsection
 
 @section('styles-head')
@@ -28,15 +28,14 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    <th>تعداد کل رشته های تحصیلی</th>
-                                    <th>تعداد رشته های تحصیلی بین المللی</th>
-                                    <th>تعداد رشته های تحصیلی مجازی</th>
-                                    <th>تعداد رشته های فنی و حرفه ای و مهارتی</th>
-                                    <th>تعداد رشته های تحصیلی جدید التاسیس</th>
-                                    <th>تعداد رشته / محل های فاقد پذیرش</th>
-                                    <th>تعداد رشته / محل های فاقد داوطلب</th>
-
+                                    <th>شهرستان</th>
+                                    <th>واحد دانشگاهی </th>
+                                    <th>رشته تحصیلی</th>
+                                    <th>جنسیت</th>
+                                    <th>کاردانی</th>
+                                    <th>کارشناسی</th>
+                                    <th>کارشناسی ارشد</th>
+                                    <th>دکتری</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -44,6 +43,7 @@
                                 @foreach ($numberOfInternationalCourses as $key => $numberOfInternationalCourse)
                                     <tr>
                                         <th scope="row">{{ $numberOfInternationalCourses?->firstItem() + $key }}</th>
+
 
                                         <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
                                         </td>

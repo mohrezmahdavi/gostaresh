@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\GraduatesOfHigherEducationCenters;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +17,7 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -24,7 +28,7 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -34,8 +38,8 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -58,7 +62,7 @@ class GraduatesOfHigherEducationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function edit(GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
     {
@@ -68,9 +72,9 @@ class GraduatesOfHigherEducationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(Request $request, GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
     {
@@ -82,7 +86,7 @@ class GraduatesOfHigherEducationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param GraduatesOfHigherEducationCenters $graduatesOfHigherEducation
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function destroy(GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
     {

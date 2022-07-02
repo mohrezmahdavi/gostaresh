@@ -37,24 +37,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($numberOfRegistrantsStatusAnalysises as $key => $numberOfRegistrantsStatusAnalysis)
+                                @foreach ($numberOfRegistrants as $key => $numberOfRegistrant)
                                     <tr>
-                                        <th scope="row">{{ $numberOfRegistrantsStatusAnalysises?->firstItem() + $key }}</th>
+                                        <th scope="row">{{ $numberOfRegistrants->firstItem() + $key }}</th>
 
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->province?->name . ' - ' . $numberOfRegistrantsStatusAnalysis->county?->name }}
+                                        <td>{{ $numberOfRegistrant?->province?->name . ' - ' . $numberOfRegistrant->county?->name }}
                                         </td>
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->university_type_title }}</td>
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->gender_title }}</td>
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->number_of_registrants }}</td>
-                                        <td>{{ $numberOfRegistrantsStatusAnalysis?->year }}</td>
+                                        <td>{{ $numberOfRegistrant?->university_type_title }}</td>
+                                        <td>{{ $numberOfRegistrant?->gender_title }}</td>
+                                        <td>{{ $numberOfRegistrant?->department_of_education_title }}</td>
+                                        <td>{{ $numberOfRegistrant?->number_of_registrants }}</td>
+                                        <td>{{ $numberOfRegistrant?->year }}</td>
                                         <td>
 
-                                            <a href="{{ route('number.of.registrants.status.analysis.edit', $numberOfRegistrantsStatusAnalysis) }}"
+                                            <a href="{{ route('number.of.registrants.status.analysis.edit', $numberOfRegistrant) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
 
-                                            <a method="delete" href="{{ route('number.of.registrants.status.analysis.destroy', $numberOfRegistrantsStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('number.of.registrants.status.analysis.destroy', $numberOfRegistrant) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -65,7 +65,7 @@
 
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
-                        {{ $numberOfRegistrantsStatusAnalysises->withQueryString()->links('pagination::bootstrap-4') }}
+                        {{ $numberOfRegistrants->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

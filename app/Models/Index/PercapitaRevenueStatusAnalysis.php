@@ -20,6 +20,26 @@ class PercapitaRevenueStatusAnalysis extends Model
 
     protected $table = "gostaresh_percapita_revenue_status_analyses";
 
+    protected $appends = ['university_type_title', 'grade_title'];
+
+    public function getUniversityTypeTitleAttribute()
+    {
+        foreach (config('gostaresh.university_type') as $key => $value) {
+            if ($key == $this->university_type) {
+                return $value;
+            }
+        }
+    }
+
+    public function getGradeTitleAttribute()
+    {
+        foreach (config('gostaresh.grade') as $key => $value) {
+            if ($key == $this->grade) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

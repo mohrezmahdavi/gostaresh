@@ -9,7 +9,7 @@
 @endsection
 
 @section('page-title')
-ویرایش رشته/گرایشهای تحصیلی غیر پزشکی
+تعداد رشته/گرایشهای تحصیلی غیر پزشکی
 @endsection
 
 @section('styles-head')

@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
@@ -37,10 +37,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($numberOfVolunteersStatusAnalysises as $key => $numberOfVolunteersStatusAnalysis)
+                                @foreach ($numberOfVolunteersStatusAnalyses as $key => $numberOfVolunteersStatusAnalysis)
                                     <tr>
-                                        <th scope="row">{{ $numberOfVolunteersStatusAnalysises?->firstItem() + $key }}</th>
-        
+                                        <th scope="row">{{ $numberOfVolunteersStatusAnalyses?->firstItem() + $key }}</th>
+
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->province?->name . ' - ' . $numberOfVolunteersStatusAnalysis->county?->name }}
                                         </td>
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->university_type_title }}</td>
@@ -49,23 +49,23 @@
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->number_of_volunteers }}</td>
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->year }}</td>
                                         <td>
-        
+
                                             <a href="{{ route('number.of.volunteers.status.analysis.edit', $numberOfVolunteersStatusAnalysis) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('number.of.volunteers.status.analysis.destroy', $numberOfVolunteersStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
-                        {{ $numberOfVolunteersStatusAnalysises->withQueryString()->links('pagination::bootstrap-4') }}
+                        {{ $numberOfVolunteersStatusAnalyses->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

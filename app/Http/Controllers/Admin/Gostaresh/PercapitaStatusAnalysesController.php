@@ -17,8 +17,8 @@ class PercapitaStatusAnalysesController extends Controller
      */
     public function index()
     {
-        $percapitaStatusAnalysiss =  PercapitaStatusAnalysis::orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.percapita-status-analyses.list.list', compact('percapitaStatusAnalysiss'));
+        $percapitaStatusAnalyses =  PercapitaStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.percapita-status-analyses.list.list', compact('percapitaStatusAnalyses'));
     }
 
     /**

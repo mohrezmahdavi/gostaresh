@@ -94,10 +94,6 @@
                             </div>
                         </div>
 
-
-
-
-
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
                                 <span> سال </span>&nbsp

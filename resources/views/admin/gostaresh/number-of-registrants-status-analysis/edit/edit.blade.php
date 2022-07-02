@@ -25,15 +25,14 @@
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('number.of.registrants.status.analysis.update', $numOfRegistrantsStatusAnalysis) }}"
+                        action="{{ route('number.of.registrants.status.analysis.update', $numberOfRegistrant) }}"
                         role="form">
                         @csrf
                         @method('PUT')
-
-                        <select-province-component province_default="{{ $numOfRegistrantsStatusAnalysis->province_id }}"
-                            county_default="{{ $numOfRegistrantsStatusAnalysis->county_id }}"
-                            city_default="{{ $numOfRegistrantsStatusAnalysis->city_id }}"
-                            rural_district_default="{{ $numOfRegistrantsStatusAnalysis->rural_district_id }}">
+                        <select-province-component province_default="{{ $numberOfRegistrant->province_id }}"
+                            county_default="{{ $numberOfRegistrant->county_id }}"
+                            city_default="{{ $numberOfRegistrant->city_id }}"
+                            rural_district_default="{{ $numberOfRegistrant->rural_district_id }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -44,8 +43,7 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == $numOfRegistrantsStatusAnalysis->gender_id ? 'selected' : '' }}
-                                            value="{{ $key }}">
+                                        <option {{ $key == $numberOfRegistrant->gender_id ? 'selected' : '' }} value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -61,8 +59,7 @@
                             <div class="col-sm-10">
                                 <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == $numOfRegistrantsStatusAnalysis->department_of_education ? 'selected' : '' }}
-                                            value="{{ $key }}">
+                                        <option {{ $key == $numberOfRegistrant->department_of_education ? 'selected' : '' }} value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -80,8 +77,7 @@
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ $key == $numOfRegistrantsStatusAnalysis->university_type ? 'selected' : '' }}
-                                            value="{{ $key }}">
+                                        <option {{ $key == $numberOfRegistrant->university_type ? 'selected' : '' }} value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -96,14 +92,10 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_registrants" name="number_of_registrants"
-                                    value="{{ $numOfRegistrantsStatusAnalysis->number_of_registrants }}" class="form-control"
-                                    placeholder=" تعداد دانشجویان را وارد کنید...">
+                                       value="{{ $numberOfRegistrant->number_of_registrants }}" class="form-control"
+                                       placeholder=" تعداد دانشجویان را وارد کنید...">
                             </div>
                         </div>
-
-
-
-
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
@@ -113,7 +105,8 @@
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
                                     @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == $numOfRegistrantsStatusAnalysis->year ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $numberOfRegistrant->year ? 'selected' : '' }}
+                                            value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 
@@ -130,7 +123,8 @@
                             <div class="col-sm-10">
                                 <select name="month" id="month" class="form-select">
                                     @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == $numOfRegistrantsStatusAnalysis->month ? 'selected' : '' }} value="{{ $i }}">
+                                        <option {{ $i == $numberOfRegistrant->month ? 'selected' : '' }}
+                                            value="{{ $i }}">
                                             {{ $i }}</option>
                                     @endfor
 

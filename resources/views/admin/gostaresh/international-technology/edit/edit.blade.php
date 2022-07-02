@@ -2,15 +2,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش انتقال فناوری و نوآوری در عرصھ بین المللی در دوره 10 سال
+    ویرایش انتقال فناوری و نوآوری در عرصه بین المللی در دوره 10 سال
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش انتقال فناوری و نوآوری در عرصھ بین المللی در دوره 10 سال
+    ویرایش انتقال فناوری و نوآوری در عرصه بین المللی در دوره 10 سال
 @endsection
 
 @section('page-title')
-    ویرایش انتقال فناوری و نوآوری در عرصھ بین المللی در دوره 10 سال
+    ویرایش انتقال فناوری و نوآوری در عرصه بین المللی در دوره 10 سال
 @endsection
 
 @section('styles-head')
@@ -108,7 +108,7 @@
                                        placeholder=" تعداد شرکت های دانش بنیان با فعالیت بین المللی را وارد کنید...">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
                                 <span> سال </span>&nbsp
