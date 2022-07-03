@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\UnitsGeneralStatus\RoadmapDesiredRequest;
 use App\Models\Index\UnitsGeneralStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class UnitsGeneralStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param RoadmapDesiredRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoadmapDesiredRequest $request)
     {
         UnitsGeneralStatus::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class UnitsGeneralStatusController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param RoadmapDesiredRequest $request
      * @param UnitsGeneralStatus $unitsGeneralStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnitsGeneralStatus $unitsGeneralStatus)
+    public function update(RoadmapDesiredRequest $request, UnitsGeneralStatus $unitsGeneralStatus)
     {
         $unitsGeneralStatus->update($request->all());
         return back()->with('success', __('titles.success_update'));

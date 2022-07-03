@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\RoadmapDesired\RoadmapDesiredRequest;
 use App\Models\Index\RoadmapToAchieveDesiredSituation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class RoadmapDesiredController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param RoadmapDesiredRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoadmapDesiredRequest $request)
     {
         RoadmapToAchieveDesiredSituation::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class RoadmapDesiredController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param RoadmapDesiredRequest $request
      * @param RoadmapToAchieveDesiredSituation $roadmapDesired
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoadmapToAchieveDesiredSituation $roadmapDesired)
+    public function update(RoadmapDesiredRequest $request, RoadmapToAchieveDesiredSituation $roadmapDesired)
     {
         $roadmapDesired->update($request->all());
         return back()->with('success', __('titles.success_update'));

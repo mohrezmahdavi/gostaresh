@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\CostOfMajors\CostOfMajorsRequest;
+use App\Http\Requests\Gostaresh\CostOfMajors\CreditAndAssetRequest;
 use App\Models\Index\AverageCostOfMajor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,10 +35,10 @@ class CostOfMajorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CostOfMajorsRequest $request
+     * @param CreditAndAssetRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CostOfMajorsRequest $request)
+    public function store(CreditAndAssetRequest $request)
     {
         AverageCostOfMajor::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +69,11 @@ class CostOfMajorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CostOfMajorsRequest $request
+     * @param CreditAndAssetRequest $request
      * @param AverageCostOfMajor $costOfMajor
      * @return \Illuminate\Http\Response
      */
-    public function update(CostOfMajorsRequest $request, AverageCostOfMajor $costOfMajor)
+    public function update(CreditAndAssetRequest $request, AverageCostOfMajor $costOfMajor)
     {
         $costOfMajor->update($request->all());
         return back()->with('success', __('titles.success_update'));

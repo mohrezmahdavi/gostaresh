@@ -54,7 +54,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="administrative_credits" name="administrative_credits"
+                                <input type="number" id="administrative_credits" name="administrative_credits"
                                        value="{{$creditAndAsset->administrative_credits }}" class="form-control"
                                        placeholder=" اعتبارات اداری را وارد کنید...">
                             </div>
@@ -66,7 +66,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="educational_credits" name="educational_credits"
+                                <input type="number" id="educational_credits" name="educational_credits"
                                        value="{{$creditAndAsset->educational_credits }}" class="form-control"
                                        placeholder=" اعتبارات آموزشی را وارد کنید...">
                             </div>
@@ -78,7 +78,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="research_credits" name="research_credits"
+                                <input type="number" id="research_credits" name="research_credits"
                                        value="{{$creditAndAsset->research_credits }}" class="form-control"
                                        placeholder=" اعتبارات پژوهشی را وارد کنید...">
                             </div>
@@ -90,7 +90,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="cultural_credits" name="cultural_credits"
+                                <input type="number" id="cultural_credits" name="cultural_credits"
                                        value="{{$creditAndAsset->cultural_credits }}" class="form-control"
                                        placeholder=" اعتبارات فرهنگی را وارد کنید...">
                             </div>
@@ -102,7 +102,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="innovative_credits" name="innovative_credits"
+                                <input type="number" id="innovative_credits" name="innovative_credits"
                                        value="{{$creditAndAsset->innovative_credits }}" class="form-control"
                                        placeholder=" اعتبارات فناورانه و نوآورانه را وارد کنید...">
                             </div>
@@ -114,7 +114,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="skills_credits" name="skills_credits"
+                                <input type="number" id="skills_credits" name="skills_credits"
                                        value="{{$creditAndAsset->skills_credits }}" class="form-control"
                                        placeholder=" اعتبارات حوزه مهارتی را وارد کنید...">
                             </div>
@@ -126,7 +126,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_University_credits" name="total_University_credits"
+                                <input type="number" id="total_University_credits" name="total_University_credits"
                                        value="{{$creditAndAsset->total_University_credits }}" class="form-control"
                                        placeholder=" کل اعتبارات دانشگاه را وارد کنید...">
                             </div>
@@ -138,7 +138,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_university_assets" name="total_university_assets"
+                                <input type="number" id="total_university_assets" name="total_university_assets"
                                        value="{{$creditAndAsset->total_university_assets }}" class="form-control"
                                        placeholder=" کل دارایی های دانشگاه را وارد کنید...">
                             </div>
@@ -147,7 +147,7 @@
                         <x-select-year :default="$creditAndAsset->year" :required="false" name="year"></x-select-year>
 
                         <x-select-month :default="$creditAndAsset->month" :required="false" name="month"></x-select-month>
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
