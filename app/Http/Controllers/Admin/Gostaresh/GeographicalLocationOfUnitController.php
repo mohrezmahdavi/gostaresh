@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Models\Index\GeographicalLocationOfUnit;
+use Facades\Verta;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,41 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function index()
     {
-        $geographicalLocationOfUnits = GeographicalLocationOfUnit::orderBy('id', 'desc')->paginate(20);
+        $query = GeographicalLocationOfUnit::query();
+        if (request()->province_id) {
+            $query->where('province_id', request()->province_id);
+        }
+
+        if (request()->county_id) {
+            $query->where('province_id', request()->county_id);
+        }
+
+        if (request()->city_id) {
+            $query->where('province_id', request()->city_id);
+        }
+
+        if (request()->rural_district_id) {
+            $query->where('province_id', request()->rural_district_id);
+        }
+
+        if (request()->input('start_date')) {
+            $startDateJ = Verta::instance(request()->input('start_date'));
+            $startMonth = (int)$startDateJ->format('n');
+            $startYear = (int)$startDateJ->format('Y');
+            $query->where('year', '>', $startYear)->orWhere(function ($query) use ($startYear, $startMonth) {
+                $query->where('year', $startYear)->where('month', '>', $startMonth);
+            });
+        }
+
+        if (request()->input('end_date')) {
+            $endDateJ = Verta::instance(request()->input('end_date'));
+            $endMonth = (int)$endDateJ->format('n');
+            $endYear = (int)$endDateJ->format('Y');
+            $query->where('year', '<=', $endYear)->orWhere(function ($query) use ($endYear, $endMonth) {
+                $query->where('year', $endYear)->where('month', '<=', $endMonth);
+            });
+        }
+        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
     }
 

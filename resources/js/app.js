@@ -21,6 +21,8 @@ window.Vue = require('vue').default;
 
 Vue.component('select-province-component', require('./components/users/SelectProvinceComponent.vue').default)
 
+Vue.component('select-province-inline-component', require('./components/users/SelectProvinceInlineComponent.vue').default)
+
 // Vue.component('map-component', require('./components/places/MapComponent.vue').default)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
