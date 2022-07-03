@@ -83,7 +83,7 @@
                             <tbody>
                                 @foreach ($geographicalLocationOfUnits as $key => $geographicalLocationOfUnit)
                                     <tr>
-                                        <th scope="row">{{ $geographicalLocationOfUnit?->firstItem() + $key }}</th>
+                                        <th scope="row">{{ $geographicalLocationOfUnits?->firstItem() + $key }}</th>
 
                                         <td>{{ $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name }}
                                         </td>
@@ -107,7 +107,7 @@
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
                                             <a href="{{ route('geographical.location.unit.destroy', $geographicalLocationOfUnit) }}"
-                                                }}" title="{{ __('validation.buttons.delete') }}"
+                                                 title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 

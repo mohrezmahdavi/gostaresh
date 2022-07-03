@@ -23,7 +23,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('number.of.non.medical.fields.of.study.update', $numberOfNonMedicalFieldsOfStudy) }}" role="form">
                         @csrf
                         @method('PUT')
@@ -133,40 +132,12 @@
                             </div>
                         </div>
 
+                        <x-select-year :default="$numberOfNonMedicalFieldsOfStudy->year" :required="false" name="year"></x-select-year>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="year">
-                                <span> سال </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="year" id="year" class="form-select">
-                                    @for ($i = 1250; $i <= 1405; $i++)
-                                        <option {{ $i == $numberOfNonMedicalFieldsOfStudy->year ? 'selected' : '' }} value="{{ $i }}">
-                                            {{ $i }}</option>
-                                    @endfor
+                        <x-select-month :default="$numberOfNonMedicalFieldsOfStudy->month" :required="false" name="month"></x-select-month>
 
-                                </select>
 
-                            </div>
-                        </div>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="month">
-                                <span> ماه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="month" id="month" class="form-select">
-                                    @for ($i = 1; $i <= 12; $i++)
-                                        <option {{ $i == $numberOfNonMedicalFieldsOfStudy->month ? 'selected' : '' }} value="{{ $i }}">
-                                            {{ $i }}</option>
-                                    @endfor
-
-                                </select>
-
-                            </div>
-                        </div>
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
