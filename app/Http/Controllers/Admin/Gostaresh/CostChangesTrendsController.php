@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\CostChangesTrends\CostChangesTrendsRequest;
 use App\Models\Index\CostChangesTrendsAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 54 Controller
@@ -34,10 +34,10 @@ class CostChangesTrendsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CostChangesTrendsRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CostChangesTrendsRequest $request)
     {
          CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +68,11 @@ class CostChangesTrendsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CostChangesTrendsRequest $request
      * @param CostChangesTrendsAnalysis $costChangesTrend
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CostChangesTrendsAnalysis $costChangesTrend)
+    public function update(CostChangesTrendsRequest $request, CostChangesTrendsAnalysis $costChangesTrend)
     {
         $costChangesTrend->update($request->all());
         return back()->with('success', __('titles.success_update'));

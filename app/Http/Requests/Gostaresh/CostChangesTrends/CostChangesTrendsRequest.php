@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Gostaresh\TuitionIncome;
+namespace App\Http\Requests\Gostaresh\CostChangesTrends;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-// Table 50 request
-class TuitionIncomeRequest extends FormRequest
+// Table 54 request
+class CostChangesTrendsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,11 +31,7 @@ class TuitionIncomeRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|between:-99.99,99.99',
-            'bachelor_degree' => 'required|between:-99.99,99.99',
-            'masters' => 'required|between:-99.99,99.99',
-            'phd' => 'required|between:-99.99,99.99',
+            'total_annual_expenses' => 'required|numeric|gte:0|lte:2147483647',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

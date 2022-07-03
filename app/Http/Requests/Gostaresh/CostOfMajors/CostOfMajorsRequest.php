@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Gostaresh\TuitionIncome;
+namespace App\Http\Requests\Gostaresh\CostOfMajors;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-// Table 50 request
-class TuitionIncomeRequest extends FormRequest
+// Table 55 request
+class CostOfMajorsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,13 +30,14 @@ class TuitionIncomeRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required|max:255',
+            'university_type' => 'required|numeric|gte:0',
+            'gender_id' => 'required|numeric|gte:0',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|between:-99.99,99.99',
-            'bachelor_degree' => 'required|between:-99.99,99.99',
-            'masters' => 'required|between:-99.99,99.99',
-            'phd' => 'required|between:-99.99,99.99',
-            'year' => 'required|numeric|gte:0',
+            'associate_degree' => 'required|numeric|gte:0',
+            'bachelor_degree' => 'required|numeric|gte:0|lte:2147483647',
+            'masters' => 'required|numeric|gte:0|lte:2147483647',
+            'phd' => 'required|numeric|gte:0|lte:2147483647',
+            'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
     }

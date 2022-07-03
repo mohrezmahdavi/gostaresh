@@ -54,7 +54,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_annual_expenses" name="total_annual_expenses"
+                                <input type="number" id="total_annual_expenses" name="total_annual_expenses"
                                        value="{{ $costChangesTrend->total_annual_expenses }}" class="form-control"
                                        placeholder=" کل هزینه های سالیانه را وارد کنید...">
                             </div>
@@ -64,7 +64,7 @@
 
                         <x-select-month :default="$costChangesTrend->month" :required="false" name="month"></x-select-month>
 
-                        
+
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>

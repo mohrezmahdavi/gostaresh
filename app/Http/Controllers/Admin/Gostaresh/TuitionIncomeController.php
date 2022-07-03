@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TuitionIncome\TuitionIncomeRequest;
 use App\Models\Index\AverageTuitionIncome;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 50 Controller

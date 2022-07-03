@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\PercapitaRevenue\UniversityCostsRequest;
 use App\Models\Index\PercapitaRevenueStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class PercapitaRevenueController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param UniversityCostsRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UniversityCostsRequest $request)
     {
          PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class PercapitaRevenueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param UniversityCostsRequest $request
      * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
+    public function update(UniversityCostsRequest $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
         $percapitaRevenue->update($request->all());
         return back()->with('success', __('titles.success_update'));
