@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\AssetProductivity\AssetProductivityRequest;
 use App\Models\Index\IndexOfAssetProductivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class AssetProductivityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param AssetProductivityRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AssetProductivityRequest $request)
     {
          IndexOfAssetProductivity::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class AssetProductivityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param AssetProductivityRequest $request
      * @param IndexOfAssetProductivity $assetProductivity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndexOfAssetProductivity $assetProductivity)
+    public function update(AssetProductivityRequest $request, IndexOfAssetProductivity $assetProductivity)
     {
         $assetProductivity->update($request->all());
         return back()->with('success', __('titles.success_update'));

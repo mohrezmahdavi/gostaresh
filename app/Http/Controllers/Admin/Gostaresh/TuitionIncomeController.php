@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\TuitionIncome\TuitionIncomeRequest;
 use App\Models\Index\AverageTuitionIncome;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class TuitionIncomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param TuitionIncomeRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TuitionIncomeRequest $request)
     {
          AverageTuitionIncome::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class TuitionIncomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param TuitionIncomeRequest $request
      * @param AverageTuitionIncome $tuitionIncome
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTuitionIncome $tuitionIncome)
+    public function update(TuitionIncomeRequest $request, AverageTuitionIncome $tuitionIncome)
     {
         $tuitionIncome->update($request->all());
         return back()->with('success', __('titles.success_update'));

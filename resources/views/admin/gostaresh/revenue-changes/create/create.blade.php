@@ -47,7 +47,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_annual_income" name="total_annual_income"
+                                <input type="number" id="total_annual_income" name="total_annual_income"
                                        value="{{ old('total_annual_income') }}" class="form-control"
                                        placeholder=" کل درآمد های سالیانه را وارد کنید...">
                             </div>
@@ -57,7 +57,7 @@
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

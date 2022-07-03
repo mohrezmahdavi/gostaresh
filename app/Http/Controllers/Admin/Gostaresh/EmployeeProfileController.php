@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\EmployeeProfile\EmployeeProfileRequest;
+use App\Http\Requests\Gostaresh\EmployeeProfile\PercapitaStatusAnalysisRequest;
 use App\Models\Index\EmployeeProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,10 +35,10 @@ class EmployeeProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param EmployeeProfileRequest $request
+     * @param PercapitaStatusAnalysisRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeProfileRequest $request)
+    public function store(PercapitaStatusAnalysisRequest $request)
     {
          EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +69,11 @@ class EmployeeProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param EmployeeProfileRequest $request
+     * @param PercapitaStatusAnalysisRequest $request
      * @param EmployeeProfile $employeeProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeProfileRequest $request, EmployeeProfile $employeeProfile)
+    public function update(PercapitaStatusAnalysisRequest $request, EmployeeProfile $employeeProfile)
     {
         $employeeProfile->update($request->all());
         return back()->with('success', __('titles.success_update'));

@@ -31,10 +31,10 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->string('university_type')->comment('دانشگاه')->nullable();
             $table->unsignedTinyInteger('department_of_education')->nullable();
-            $table->unsignedSmallInteger('associate_degree')->nullable();
-            $table->unsignedSmallInteger('bachelor_degree')->nullable();
-            $table->unsignedSmallInteger('masters')->nullable();
-            $table->unsignedSmallInteger('phd')->nullable();
+            $table->float('associate_degree')->nullable();
+            $table->float('bachelor_degree')->nullable();
+            $table->float('masters')->nullable();
+            $table->float('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

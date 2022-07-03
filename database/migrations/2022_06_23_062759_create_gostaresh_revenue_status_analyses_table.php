@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->unsignedInteger('unit')->nullable();
+            $table->string('unit')->nullable();
             $table->unsignedInteger('total_revenue')->comment('کل درآمد ها')->nullable();
             $table->unsignedInteger('income_from_student_tuition')->comment('درآمد حاصل از شهریه دانشجویان')->nullable();
             $table->unsignedInteger('income_from_commercialized_technologies')->comment('درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده')->nullable();
