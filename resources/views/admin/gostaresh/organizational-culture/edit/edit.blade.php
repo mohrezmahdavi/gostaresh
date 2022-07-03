@@ -262,7 +262,7 @@
 
                         <x-select-year :default="$organizationalCulture->year" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$organizationalCulture->year" :required="false" name="month"></x-select-month>
+                        <x-select-month :default="$organizationalCulture->month" :required="false" name="month"></x-select-month>
                         
                         
 
