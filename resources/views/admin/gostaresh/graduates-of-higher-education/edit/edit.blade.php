@@ -17,8 +17,6 @@
 @endsection
 
 @section('content')
-    @include('admin.partials.row-notifiy-col')
-
 
     <div class="row">
         <div class="col-md-12">
@@ -93,7 +91,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="associate_degree" name="associate_degree"
+                                <input type="number" id="associate_degree" name="associate_degree"
                                        value="{{ $graduatesOfHigherEducation->associate_degree }}" class="form-control"
                                        placeholder=" کاردانی را وارد کنید...">
                             </div>
@@ -105,7 +103,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                <input type="number" id="bachelor_degree" name="bachelor_degree"
                                        value="{{ $graduatesOfHigherEducation->bachelor_degree }}" class="form-control"
                                        placeholder=" کارشناسی را وارد کنید...">
                             </div>
@@ -117,7 +115,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="masters" name="masters"
+                                <input type="number" id="masters" name="masters"
                                        value="{{ $graduatesOfHigherEducation->masters }}" class="form-control"
                                        placeholder=" کارشناسی ارشد را وارد کنید...">
                             </div>
@@ -129,7 +127,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="phd" name="phd"
+                                <input type="number" id="phd" name="phd"
                                        value="{{ $graduatesOfHigherEducation->phd }}" class="form-control"
                                        placeholder=" دکتری را وارد کنید...">
                             </div>
