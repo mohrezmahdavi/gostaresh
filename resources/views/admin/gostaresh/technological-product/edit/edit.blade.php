@@ -17,9 +17,6 @@
 @endsection
 
 @section('content')
-    @include('admin.partials.row-notifiy-col')
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -55,7 +52,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_cores" name="number_of_active_technology_cores"
+                                <input type="number" id="number_of_active_technology_cores" name="number_of_active_technology_cores"
                                        value="{{$technologicalProduct->number_of_active_technology_cores }}" class="form-control"
                                        placeholder=" تعداد هسته فناور فعال را وارد کنید...">
                             </div>
@@ -67,7 +64,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_units" name="number_of_active_technology_units"
+                                <input type="number" id="number_of_active_technology_units" name="number_of_active_technology_units"
                                        value="{{$technologicalProduct->number_of_active_technology_units }}" class="form-control"
                                        placeholder=" تعداد واحدهای فناور فعال را وارد کنید...">
                             </div>
@@ -79,7 +76,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_knowledge_based_companies" name="number_of_active_knowledge_based_companies"
+                                <input type="number" id="number_of_active_knowledge_based_companies" name="number_of_active_knowledge_based_companies"
                                        value="{{$technologicalProduct->number_of_active_knowledge_based_companies }}" class="form-control"
                                        placeholder=" تعداد شرکت دانش بنیان فعال را وارد کنید...">
                             </div>
@@ -91,7 +88,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_creative_companies" name="number_of_creative_companies"
+                                <input type="number" id="number_of_creative_companies" name="number_of_creative_companies"
                                        value="{{$technologicalProduct->number_of_creative_companies }}" class="form-control"
                                        placeholder=" تعداد شرکت های خلاق را وارد کنید...">
                             </div>
@@ -103,7 +100,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_commercialized_ideas" name="number_of_commercialized_ideas"
+                                <input type="number" id="number_of_commercialized_ideas" name="number_of_commercialized_ideas"
                                        value="{{$technologicalProduct->number_of_commercialized_ideas }}" class="form-control"
                                        placeholder=" تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده را وارد کنید...">
                             </div>
@@ -115,7 +112,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_knowledge_based_products" name="number_of_knowledge_based_products"
+                                <input type="number" id="number_of_knowledge_based_products" name="number_of_knowledge_based_products"
                                        value="{{$technologicalProduct->number_of_knowledge_based_products }}" class="form-control"
                                        placeholder=" تعداد محصولات دانش بنیان را وارد کنید...">
                             </div>
@@ -127,7 +124,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_products_without_license" name="number_of_products_without_license"
+                                <input type="number" id="number_of_products_without_license" name="number_of_products_without_license"
                                        value="{{$technologicalProduct->number_of_products_without_license }}" class="form-control"
                                        placeholder=" تعداد محصولات بدون مجوز را وارد کنید...">
                             </div>
@@ -139,7 +136,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_licensed_products" name="number_of_licensed_products"
+                                <input type="number" id="number_of_licensed_products" name="number_of_licensed_products"
                                        value="{{$technologicalProduct->number_of_licensed_products }}" class="form-control"
                                        placeholder=" تعداد محصولات با مجوز را وارد کنید...">
                             </div>
@@ -151,7 +148,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_professors" name="number_of_active_technology_professors"
+                                <input type="number" id="number_of_active_technology_professors" name="number_of_active_technology_professors"
                                        value="{{$technologicalProduct->number_of_active_technology_professors }}" class="form-control"
                                        placeholder=" تعداد استاد فناور فعال را وارد کنید...">
                             </div>
@@ -163,12 +160,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_students" name="number_of_active_technology_students"
+                                <input type="number" id="number_of_active_technology_students" name="number_of_active_technology_students"
                                        value="{{$technologicalProduct->number_of_active_technology_students }}" class="form-control"
                                        placeholder=" تعداد دانشجوی فناور فعال را وارد کنید...">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="year">
                                 <span> سال </span>&nbsp

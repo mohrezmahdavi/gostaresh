@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\InternationalResearchStatusAnalysis\AmountOfFacilitiesRequest;
 use App\Models\Index\InternationalResearchStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,10 +39,10 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param AmountOfFacilitiesRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(AmountOfFacilitiesRequest $request): RedirectResponse
     {
         InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -72,11 +73,11 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param AmountOfFacilitiesRequest $request
      * @param InternationalResearchStatusAnalysis $internationalResearch
      * @return RedirectResponse
      */
-    public function update(Request $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
+    public function update(AmountOfFacilitiesRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
         $internationalResearch->update($request->all());
         return back()->with('success', __('titles.success_update'));

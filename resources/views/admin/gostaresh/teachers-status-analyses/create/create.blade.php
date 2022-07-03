@@ -17,9 +17,6 @@
 @endsection
 
 @section('content')
-    @include('admin.partials.row-notifiy-col')
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -48,7 +45,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members" name="number_of_faculty_members"
+                                <input type="number" id="number_of_faculty_members" name="number_of_faculty_members"
                                        value="{{ old('number_of_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی را وارد کنید...">
                             </div>
@@ -60,7 +57,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="scientific_programs_faculty_members" name="scientific_programs_faculty_members"
+                                <input type="number" id="scientific_programs_faculty_members" name="scientific_programs_faculty_members"
                                        value="{{ old('scientific_programs_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیئت علمی مشارکت کننده در برنامه های علمی را وارد کنید...">
                             </div>
@@ -72,7 +69,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="upgraded_faculty_members" name="upgraded_faculty_members"
+                                <input type="number" id="upgraded_faculty_members" name="upgraded_faculty_members"
                                        value="{{ old('upgraded_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی ارتقا یافته را وارد کنید...">
                             </div>
@@ -84,7 +81,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_tuition_teachers" name="number_of_tuition_teachers"
+                                <input type="number" id="number_of_tuition_teachers" name="number_of_tuition_teachers"
                                        value="{{ old('number_of_tuition_teachers') }}" class="form-control"
                                        placeholder=" تعداد مدرسین حق التدریس و اساتید مدعو را وارد کنید...">
                             </div>
@@ -96,7 +93,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_officer_faculty_members_in_other_unit" name="number_of_officer_faculty_members_in_other_unit"
+                                <input type="number" id="number_of_officer_faculty_members_in_other_unit" name="number_of_officer_faculty_members_in_other_unit"
                                        value="{{ old('number_of_officer_faculty_members_in_other_unit') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی مامور در سایر واحدها را وارد کنید...">
                             </div>
@@ -108,7 +105,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_officer_faculty_members_in_central_organization" name="number_of_officer_faculty_members_in_central_organization"
+                                <input type="number" id="number_of_officer_faculty_members_in_central_organization" name="number_of_officer_faculty_members_in_central_organization"
                                        value="{{ old('number_of_officer_faculty_members_in_central_organization') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی مامور در سازمان مرکزی را وارد کنید...">
                             </div>
@@ -120,7 +117,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_participant_faculty_members_in_cooperation_plan" name="number_of_participant_faculty_members_in_cooperation_plan"
+                                <input type="number" id="number_of_participant_faculty_members_in_cooperation_plan" name="number_of_participant_faculty_members_in_cooperation_plan"
                                        value="{{ old('number_of_participant_faculty_members_in_cooperation_plan') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی شرکت کننده در طرح تعاون را وارد کنید...">
                             </div>
@@ -132,7 +129,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_transfer_faculty_members" name="number_of_transfer_faculty_members"
+                                <input type="number" id="number_of_transfer_faculty_members" name="number_of_transfer_faculty_members"
                                        value="{{ old('number_of_transfer_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی انتقالی را وارد کنید...">
                             </div>
@@ -144,7 +141,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_instructor_faculty_members" name="number_of_instructor_faculty_members"
+                                <input type="number" id="number_of_instructor_faculty_members" name="number_of_instructor_faculty_members"
                                        value="{{ old('number_of_instructor_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی با درجه مربی را وارد کنید...">
                             </div>
@@ -156,7 +153,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_assistant_professor_faculty_members" name="number_of_assistant_professor_faculty_members"
+                                <input type="number" id="number_of_assistant_professor_faculty_members" name="number_of_assistant_professor_faculty_members"
                                        value="{{ old('number_of_assistant_professor_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی با درجه استادیار را وارد کنید...">
                             </div>
@@ -168,7 +165,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_associate_professor_faculty_members" name="number_of_associate_professor_faculty_members"
+                                <input type="number" id="number_of_associate_professor_faculty_members" name="number_of_associate_professor_faculty_members"
                                        value="{{ old('number_of_associate_professor_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی با درجه دانشیار را وارد کنید...">
                             </div>
@@ -180,7 +177,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_full_professor_faculty_members" name="number_of_full_professor_faculty_members"
+                                <input type="number" id="number_of_full_professor_faculty_members" name="number_of_full_professor_faculty_members"
                                        value="{{ old('number_of_full_professor_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی با درجه استاد تمام را وارد کنید...">
                             </div>
@@ -192,7 +189,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_smaller_50_years_old" name="number_of_faculty_members_smaller_50_years_old"
+                                <input type="number" id="number_of_faculty_members_smaller_50_years_old" name="number_of_faculty_members_smaller_50_years_old"
                                        value="{{ old('number_of_faculty_members_smaller_50_years_old') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی دارای سن کمتر از 50 سال را وارد کنید...">
                             </div>
@@ -204,7 +201,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_technology_faculty_members" name="number_of_technology_faculty_members"
+                                <input type="number" id="number_of_technology_faculty_members" name="number_of_technology_faculty_members"
                                        value="{{ old('number_of_technology_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی فناور را وارد کنید...">
                             </div>
@@ -216,7 +213,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_type_a" name="number_of_faculty_members_type_a"
+                                <input type="number" id="number_of_faculty_members_type_a" name="number_of_faculty_members_type_a"
                                        value="{{ old('number_of_faculty_members_type_a') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی نوع الف را وارد کنید...">
                             </div>
@@ -228,7 +225,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_type_b" name="number_of_faculty_members_type_b"
+                                <input type="number" id="number_of_faculty_members_type_b" name="number_of_faculty_members_type_b"
                                        value="{{ old('number_of_faculty_members_type_b') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی نوع ب را وارد کنید...">
                             </div>
@@ -240,7 +237,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_top_scientific_faculty_members" name="number_of_top_scientific_faculty_members"
+                                <input type="number" id="number_of_top_scientific_faculty_members" name="number_of_top_scientific_faculty_members"
                                        value="{{ old('number_of_top_scientific_faculty_members') }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی سرآمد علمی را وارد کنید...">
                             </div>
@@ -252,7 +249,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="average_level_of_research_productivity_of_faculty_members" name="average_level_of_research_productivity_of_faculty_members"
+                                <input type="number" id="average_level_of_research_productivity_of_faculty_members" name="average_level_of_research_productivity_of_faculty_members"
                                        value="{{ old('average_level_of_research_productivity_of_faculty_members') }}" class="form-control"
                                        placeholder=" متوسط سطح بهره وری پژوهشی اعضای هیات علمی را وارد کنید...">
                             </div>

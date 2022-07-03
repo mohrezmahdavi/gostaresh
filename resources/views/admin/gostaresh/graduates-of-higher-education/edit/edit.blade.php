@@ -136,7 +136,6 @@
 
                         <x-select-month :default="$graduatesOfHigherEducation->month" :required="false" name="month"></x-select-month>
 
-
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\InnovationInfrastructure\TechnologicalProductRequest;
 use App\Models\Index\TechnologyAndInnovationInfrastructure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,10 +39,10 @@ class InnovationInfrastructureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param TechnologicalProductRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(TechnologicalProductRequest $request): RedirectResponse
     {
         TechnologyAndInnovationInfrastructure::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -72,11 +73,11 @@ class InnovationInfrastructureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param TechnologicalProductRequest $request
      * @param TechnologyAndInnovationInfrastructure $innovationInfrastructure
      * @return RedirectResponse
      */
-    public function update(Request $request, TechnologyAndInnovationInfrastructure $innovationInfrastructure): RedirectResponse
+    public function update(TechnologicalProductRequest $request, TechnologyAndInnovationInfrastructure $innovationInfrastructure): RedirectResponse
     {
         $innovationInfrastructure->update($request->all());
         return back()->with('success', __('titles.success_update'));

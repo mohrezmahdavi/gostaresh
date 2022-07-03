@@ -54,7 +54,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_laboratories" name="number_of_laboratories"
+                                <input type="number" id="number_of_laboratories" name="number_of_laboratories"
                                        value="{{ $internationalResearch->number_of_laboratories }}" class="form-control"
                                        placeholder=" تعداد آزمایشگاه ها و کارگاه های دارای استاندارد بین المللی مصوب را وارد کنید...">
                             </div>
@@ -66,7 +66,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_research_projects" name="number_of_research_projects"
+                                <input type="number" id="number_of_research_projects" name="number_of_research_projects"
                                        value="{{ $internationalResearch->number_of_research_projects }}" class="form-control"
                                        placeholder=" تعداد طرح های تحقیقاتی مشترک با محققان خارجی را وارد کنید...">
                             </div>
@@ -78,7 +78,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_shared_articles" name="number_of_shared_articles"
+                                <input type="number" id="number_of_shared_articles" name="number_of_shared_articles"
                                        value="{{ $internationalResearch->number_of_shared_articles }}" class="form-control"
                                        placeholder=" تعداد مقالات مشترک با محققان خارجی و متخصصان ایرانی مقیم خارج از کشور را وارد کنید...">
                             </div>
@@ -90,7 +90,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_research_projects" name="number_of_international_research_projects"
+                                <input type="number" id="number_of_international_research_projects" name="number_of_international_research_projects"
                                        value="{{ $internationalResearch->number_of_international_research_projects }}" class="form-control"
                                        placeholder=" تعداد طرح های تحقیقاتی بین المللی با ارزش بالای ۱۰۰ هزار دلار را وارد کنید...">
                             </div>
@@ -102,7 +102,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_using_study_abroad" name="number_of_faculty_members_using_study_abroad"
+                                <input type="number" id="number_of_faculty_members_using_study_abroad" name="number_of_faculty_members_using_study_abroad"
                                        value="{{ $internationalResearch->number_of_faculty_members_using_study_abroad }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی استفاده کننده از فرصت های مطالعاتی خارج از کشور در هر سال تحصیلی را وارد کنید...">
                             </div>
@@ -114,7 +114,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_graduate_students_with_opportunities_abroad" name="number_of_graduate_students_with_opportunities_abroad"
+                                <input type="number" id="number_of_graduate_students_with_opportunities_abroad" name="number_of_graduate_students_with_opportunities_abroad"
                                        value="{{ $internationalResearch->number_of_graduate_students_with_opportunities_abroad }}" class="form-control"
                                        placeholder=" تعداد دانشجویان تحصیلات تکمیلی دارای فرصت های مطالعاتی و تحقیقاتی خارج از کشور را وارد کنید...">
                             </div>
@@ -126,7 +126,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_research_opportunities_presented" name="number_of_research_opportunities_presented"
+                                <input type="number" id="number_of_research_opportunities_presented" name="number_of_research_opportunities_presented"
                                        value="{{ $internationalResearch->number_of_research_opportunities_presented }}" class="form-control"
                                        placeholder=" تعداد فرصت های تحقیقاتی و پسادکتری ارایه شده به محققان و دانشجویان کشورهای خارجی و محققان ایرانی خارج از کشور را وارد کنید...">
                             </div>
@@ -138,7 +138,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_foreign_workshops_held" name="number_of_foreign_workshops_held"
+                                <input type="number" id="number_of_foreign_workshops_held" name="number_of_foreign_workshops_held"
                                        value="{{ $internationalResearch->number_of_foreign_workshops_held }}" class="form-control"
                                        placeholder=" تعداد کارگاهها، دوره های آموزشی و تدریس بین المللی برگزار شده توسط اساتید خارجی و متخصصان ایرانی غیر مقیم را وارد کنید...">
                             </div>
@@ -150,7 +150,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_lectures_held" name="number_of_international_lectures_held"
+                                <input type="number" id="number_of_international_lectures_held" name="number_of_international_lectures_held"
                                        value="{{ $internationalResearch->number_of_international_lectures_held }}" class="form-control"
                                        placeholder=" تعدادسخنرانی وسمینارهای علمی بین المللی برگزارشده توسط اساتیدخارجی و متخصصان ایرانی غیر مقیم را وارد کنید...">
                             </div>
@@ -162,7 +162,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_awards" name="number_of_international_awards"
+                                <input type="number" id="number_of_international_awards" name="number_of_international_awards"
                                        value="{{ $internationalResearch->number_of_international_awards }}" class="form-control"
                                        placeholder=" تعداد جوایز بین المللی کسب شده در ۵ سال اخیر را وارد کنید...">
                             </div>
@@ -186,7 +186,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_articles_science_and_nature" name="number_of_articles_science_and_nature"
+                                <input type="number" id="number_of_articles_science_and_nature" name="number_of_articles_science_and_nature"
                                        value="{{ $internationalResearch->number_of_articles_science_and_nature }}" class="form-control"
                                        placeholder=" تعداد مقالات در دو مجله Science  و Nature را وارد کنید...">
                             </div>
@@ -222,7 +222,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_of_world_scientists" name="number_of_faculty_members_of_world_scientists"
+                                <input type="number" id="number_of_faculty_members_of_world_scientists" name="number_of_faculty_members_of_world_scientists"
                                        value="{{ $internationalResearch->number_of_faculty_members_of_world_scientists }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس نظام‌های رتبه بندی مصوب را وارد کنید...">
                             </div>
@@ -234,7 +234,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_faculty_members_of_international_journals" name="number_of_faculty_members_of_international_journals"
+                                <input type="number" id="number_of_faculty_members_of_international_journals" name="number_of_faculty_members_of_international_journals"
                                        value="{{ $internationalResearch->number_of_faculty_members_of_international_journals }}" class="form-control"
                                        placeholder=" تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی را وارد کنید...">
                             </div>
@@ -246,7 +246,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_conferences_held" name="number_of_international_conferences_held"
+                                <input type="number" id="number_of_international_conferences_held" name="number_of_international_conferences_held"
                                        value="{{ $internationalResearch->number_of_international_conferences_held }}" class="form-control"
                                        placeholder=" تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر را وارد کنید...">
                             </div>
@@ -258,7 +258,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_scientific_books" name="number_of_international_scientific_books"
+                                <input type="number" id="number_of_international_scientific_books" name="number_of_international_scientific_books"
                                        value="{{ $internationalResearch->number_of_international_scientific_books }}" class="form-control"
                                        placeholder=" تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -270,7 +270,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_agreements_implemented" name="number_of_international_agreements_implemented"
+                                <input type="number" id="number_of_international_agreements_implemented" name="number_of_international_agreements_implemented"
                                        value="{{ $internationalResearch->number_of_international_agreements_implemented }}" class="form-control"
                                        placeholder=" تعداد تفاهم نامه های بین المللی اجرایی شده را وارد کنید...">
                             </div>
@@ -282,7 +282,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="amount_of_international_research_credits" name="amount_of_international_research_credits"
+                                <input type="number" id="amount_of_international_research_credits" name="amount_of_international_research_credits"
                                        value="{{ $internationalResearch->amount_of_international_research_credits }}" class="form-control"
                                        placeholder=" میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده را وارد کنید...">
                             </div>
@@ -294,7 +294,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_publications" name="number_of_international_publications"
+                                <input type="number" id="number_of_international_publications" name="number_of_international_publications"
                                        value="{{ $internationalResearch->number_of_international_publications }}" class="form-control"
                                        placeholder=" تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus) را وارد کنید...">
                             </div>
@@ -304,7 +304,7 @@
 
                         <x-select-month :default="$internationalResearch->month" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
