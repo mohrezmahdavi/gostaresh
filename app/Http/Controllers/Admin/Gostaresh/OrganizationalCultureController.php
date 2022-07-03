@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\OrganizationalCulture\EmployeeProfileRequest;
 use App\Models\Index\OrganizationalCultureStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,10 @@ class OrganizationalCultureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param EmployeeProfileRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeProfileRequest $request)
     {
          OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class OrganizationalCultureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param EmployeeProfileRequest $request
      * @param OrganizationalCultureStatusAnalysis $organizationalCulture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrganizationalCultureStatusAnalysis $organizationalCulture)
+    public function update(EmployeeProfileRequest $request, OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
         $organizationalCulture->update($request->all());
         return back()->with('success', __('titles.success_update'));

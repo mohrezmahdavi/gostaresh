@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\SocialHealth\SocialHealthRequest;
 use App\Models\Index\SocialHealthStatusAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 43 Controller
@@ -34,10 +34,10 @@ class SocialHealthController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param SocialHealthRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SocialHealthRequest $request)
     {
          SocialHealthStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -68,11 +68,11 @@ class SocialHealthController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param SocialHealthRequest $request
      * @param SocialHealthStatusAnalysis $socialHealth
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  SocialHealthStatusAnalysis $socialHealth)
+    public function update(SocialHealthRequest $request,  SocialHealthStatusAnalysis $socialHealth)
     {
         $socialHealth->update($request->all());
         return back()->with('success', __('titles.success_update'));

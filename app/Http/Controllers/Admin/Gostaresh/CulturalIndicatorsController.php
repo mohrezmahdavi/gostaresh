@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\CulturalIndicators\SocialHealthRequest;
 use App\Models\Index\CulturalIndicatorsStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 42 Controller
@@ -38,10 +38,10 @@ class CulturalIndicatorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param SocialHealthRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(SocialHealthRequest $request)
     {
          CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -64,7 +64,7 @@ class CulturalIndicatorsController extends Controller
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
      * @return Application|Factory|View
      */
-    public function edit( CulturalIndicatorsStatusAnalysis $culturalIndicator)
+    public function edit(CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
         return view('admin.gostaresh.cultural-indicators.edit.edit', compact('culturalIndicator'));
     }
@@ -72,11 +72,11 @@ class CulturalIndicatorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param SocialHealthRequest $request
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
      * @return RedirectResponse
      */
-    public function update(Request $request,  CulturalIndicatorsStatusAnalysis $culturalIndicator)
+    public function update(SocialHealthRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
         $culturalIndicator->update($request->all());
         return back()->with('success', __('titles.success_update'));

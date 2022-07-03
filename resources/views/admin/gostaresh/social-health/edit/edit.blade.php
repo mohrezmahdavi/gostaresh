@@ -35,7 +35,7 @@
                             city_default="{{ $socialHealth->city_id }}"
                             rural_district_default="{{ $socialHealth->rural_district_id }}">
                         </select-province-component>
-                        
+
                         <select-grade-component
                                 grade_default="{{ $socialHealth->grade_id }}"
                                 sub_grade_default="{{ $socialHealth->sub_grade_id }}"
@@ -50,7 +50,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
+                                <input type="number" id="unit" name="unit"
                                        value="{{ $socialHealth->unit }}" class="form-control"
                                        placeholder=" واحد را وارد کنید...">
                             </div>
@@ -92,7 +92,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="associate_degree" name="associate_degree"
+                                <input type="number" id="associate_degree" name="associate_degree"
                                        value="{{ $socialHealth->associate_degree }}" class="form-control"
                                        placeholder=" کاردانی را وارد کنید...">
                             </div>
@@ -104,7 +104,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                <input type="number" id="bachelor_degree" name="bachelor_degree"
                                        value="{{ $socialHealth->bachelor_degree }}" class="form-control"
                                        placeholder=" کارشناسی را وارد کنید...">
                             </div>
@@ -116,7 +116,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="masters" name="masters"
+                                <input type="number" id="masters" name="masters"
                                        value="{{ $socialHealth->masters }}" class="form-control"
                                        placeholder=" کارشناسی ارشد را وارد کنید...">
                             </div>
@@ -128,7 +128,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="professional_doctor" name="professional_doctor"
+                                <input type="number" id="professional_doctor" name="professional_doctor"
                                        value="{{ $socialHealth->professional_doctor }}" class="form-control"
                                        placeholder=" دکتری حرفه ای را وارد کنید...">
                             </div>
@@ -140,7 +140,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="phd" name="phd"
+                                <input type="number" id="phd" name="phd"
                                        value="{{ $socialHealth->phd }}" class="form-control"
                                        placeholder=" دکتری تخصصی را وارد کنید...">
                             </div>
@@ -149,8 +149,8 @@
                         <x-select-year :default="$socialHealth->year" :required="false" name="year"></x-select-year>
 
                         <x-select-month :default="$socialHealth->month" :required="false" name="month"></x-select-month>
-                        
-                        
+
+
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>

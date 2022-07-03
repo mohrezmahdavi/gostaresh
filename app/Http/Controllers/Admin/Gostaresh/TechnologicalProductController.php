@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\TechnologicalProduct\TechnologicalProductRequest;
+use App\Http\Requests\Gostaresh\TechnologicalProduct\InternationalTechnologyRequest;
 use App\Models\Index\TechnologicalProduct;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -39,10 +39,10 @@ class TechnologicalProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param TechnologicalProductRequest $request
+     * @param InternationalTechnologyRequest $request
      * @return RedirectResponse
      */
-    public function store(TechnologicalProductRequest $request)
+    public function store(InternationalTechnologyRequest $request)
     {
         TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -73,11 +73,11 @@ class TechnologicalProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param TechnologicalProductRequest $request
+     * @param InternationalTechnologyRequest $request
      * @param TechnologicalProduct $technologicalProduct
      * @return RedirectResponse
      */
-    public function update(TechnologicalProductRequest $request,  TechnologicalProduct $technologicalProduct)
+    public function update(InternationalTechnologyRequest $request, TechnologicalProduct $technologicalProduct)
     {
         $technologicalProduct->update($request->all());
         return back()->with('success', __('titles.success_update'));

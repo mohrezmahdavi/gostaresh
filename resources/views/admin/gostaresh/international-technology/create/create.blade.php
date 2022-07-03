@@ -47,7 +47,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_participation" name="number_of_participation"
+                                <input type="number" id="number_of_participation" name="number_of_participation"
                                        value="{{ old('number_of_participation') }}" class="form-control"
                                        placeholder=" تعداد مشارکت در انتقال دانش فنی/ فناوری انتقال یافته از خارج به داخل کشور (با ارائه گواهی مقام مجاز) را وارد کنید...">
                             </div>
@@ -59,7 +59,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_technical_services" name="number_of_technical_services"
+                                <input type="number" id="number_of_technical_services" name="number_of_technical_services"
                                        value="{{ old('number_of_technical_services') }}" class="form-control"
                                        placeholder=" تعداد خدمات فنی و مشاوره ای ارایه شده به موسسات یا شرکت های خارجی را وارد کنید...">
                             </div>
@@ -71,7 +71,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="earnings" name="earnings"
+                                <input type="number" id="earnings" name="earnings"
                                        value="{{ old('earnings') }}" class="form-control"
                                        placeholder=" میزان کسب درآمد از خدمات فنی و مشاوره ای بین المللی را وارد کنید...">
                             </div>
@@ -83,7 +83,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_inventions" name="number_of_international_inventions"
+                                <input type="number" id="number_of_international_inventions" name="number_of_international_inventions"
                                        value="{{ old('number_of_international_inventions') }}" class="form-control"
                                        placeholder=" تعداد ثبت و یا فایلینگ اختراعات بین المللی (Patent) در ۵ سال اخیر را وارد کنید...">
                             </div>
@@ -95,7 +95,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_international_knowledge_based_companies" name="number_of_international_knowledge_based_companies"
+                                <input type="number" id="number_of_international_knowledge_based_companies" name="number_of_international_knowledge_based_companies"
                                        value="{{ old('number_of_international_knowledge_based_companies') }}" class="form-control"
                                        placeholder=" تعداد شرکت های دانش بنیان با فعالیت بین المللی را وارد کنید...">
                             </div>
@@ -105,7 +105,7 @@
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

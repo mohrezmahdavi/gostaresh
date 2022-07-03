@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->string('component')->comment('مولفه')->nullable();
+            $table->unsignedTinyInteger('component')->comment('مولفه')->nullable();
             $table->unsignedTinyInteger('gender_id')->unsigned()->nullable();
             $table->unsignedSmallInteger('associate_degree')->nullable();
             $table->unsignedSmallInteger('bachelor_degree')->nullable();

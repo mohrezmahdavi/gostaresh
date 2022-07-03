@@ -41,7 +41,7 @@ class InnovationInfrastructureRequest extends FormRequest
             'number_of_development_offices' => 'required|numeric|gte:0',
             'number_of_industry_trade_offices' => 'required|numeric|gte:0',
             'number_of_entrepreneurship_centers' => 'required|numeric|gte:0',
-            'year' => 'required|numeric|gte:0',
+            'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
     }
