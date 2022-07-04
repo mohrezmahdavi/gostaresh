@@ -36,10 +36,10 @@ class RevenueStatusAnalysisRequest extends FormRequest
             'income_from_commercialized_technologies' => 'required|numeric|gte:0|lte:2147483647',
             'income_from_research_activities' => 'required|numeric|gte:0|lte:2147483647',
             'income_from_skills_training' => 'required|numeric|gte:0|lte:2147483647',
-            'operating_income_growth_rate' => 'required|between:-99.99,99.99',
+            'operating_income_growth_rate' => 'required|numeric|between:-99.99,99.99',
             'total_non_tuition_income' => 'required|numeric|gte:0|lte:2147483647',
             'total_international_income' => 'required|numeric|gte:0|lte:2147483647',
-            'shareholder_income' => 'required|between:-99.99,99.99',
+            'shareholder_income' => 'required|numeric|between:-99.99,99.99',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

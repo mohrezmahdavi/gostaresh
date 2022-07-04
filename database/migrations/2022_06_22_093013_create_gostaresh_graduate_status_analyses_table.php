@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->unsignedInteger('total_graduates')->comment('تعداد کل فارغ التحصیلان')->nullable();
             $table->unsignedInteger('employed_graduates')->comment('تعداد فارغ التحصیلان شاغل')->nullable();
-            $table->unsignedInteger('graduate_growth_rate')->comment('نرخ رشد فارغ التحصیلان')->nullable();
+            $table->float('graduate_growth_rate')->comment('نرخ رشد فارغ التحصیلان')->nullable();
             $table->unsignedInteger('related_employed_graduates')->comment('تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی')->nullable();
             $table->unsignedInteger('skill_certification_graduates')->comment('تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای')->nullable();
             $table->unsignedInteger('employed_graduates_6_months_after_graduation')->comment('تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل')->nullable();

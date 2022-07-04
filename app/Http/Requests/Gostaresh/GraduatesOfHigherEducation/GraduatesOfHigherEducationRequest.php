@@ -30,13 +30,13 @@ class GraduatesOfHigherEducationRequest extends FormRequest
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'university' => 'required',
+            'university' => 'required|max:255',
             'gender_id' => 'required|numeric|gte:0',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|numeric|gte:0',
-            'bachelor_degree' => 'required|numeric|gte:0',
-            'masters' => 'required|numeric|gte:0',
-            'phd' => 'required|numeric|gte:0',
+            'associate_degree' => 'required|numeric|gte:0|lte:2147483647',
+            'bachelor_degree' => 'required|numeric|gte:0|lte:2147483647',
+            'masters' => 'required|numeric|gte:0|lte:2147483647',
+            'phd' => 'required|numeric|gte:0|lte:2147483647',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
