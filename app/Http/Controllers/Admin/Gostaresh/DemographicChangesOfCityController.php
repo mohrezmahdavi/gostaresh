@@ -24,15 +24,15 @@ class DemographicChangesOfCityController extends Controller
         }
 
         if (request()->county_id) {
-            $query->where('province_id', request()->county_id);
+            $query->where('county_id', request()->county_id);
         }
 
         if (request()->city_id) {
-            $query->where('province_id', request()->city_id);
+            $query->where('city_id', request()->city_id);
         }
 
         if (request()->rural_district_id) {
-            $query->where('province_id', request()->rural_district_id);
+            $query->where('rural_district_id', request()->rural_district_id);
         }
 
         if (request()->input('start_date')) {

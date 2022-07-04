@@ -11,6 +11,11 @@
 
 @section('page-title')
     ویرایش تحلیل وضعیت و مشخصات کارمندان دانشگاه در ھر یک از واحدھای شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+
 @endsection
 
 @section('styles-head')

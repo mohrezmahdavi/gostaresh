@@ -10,6 +10,13 @@
 
 @section('page-title')
 نرخ رشد سالانه ثبت نام دانشجو
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('annual.growth.rate.of.student.enrollment.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

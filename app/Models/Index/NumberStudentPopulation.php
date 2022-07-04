@@ -24,7 +24,7 @@ class NumberStudentPopulation extends Model
     public function getGenderTitleAttribute()
     {
         foreach (config('gostaresh.gender') as $key => $value) {
-            if ($key == $this->gender) {
+            if ($key == $this->gender_id) {
                 return $value;
             }
         }

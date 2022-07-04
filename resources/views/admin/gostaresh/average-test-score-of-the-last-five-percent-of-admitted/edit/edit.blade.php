@@ -10,6 +10,11 @@
 
 @section('page-title')
 ویرایش میانگین رتبه آزمون 5 درصد آخر پذیرفته شدگان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+
 @endsection
 
 @section('styles-head')

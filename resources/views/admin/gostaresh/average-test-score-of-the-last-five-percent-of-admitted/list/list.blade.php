@@ -10,6 +10,13 @@
 
 @section('page-title')
 میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان	
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

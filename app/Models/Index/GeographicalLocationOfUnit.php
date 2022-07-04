@@ -19,6 +19,35 @@ class GeographicalLocationOfUnit extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['international_opportunities_geographical_location_title', 'level_and_quality_of_access_title','climate_type_and_weather_conditions_title'];
+
+    public function getLevelAndQualityOfAccessTitleAttribute()
+    {
+        foreach (config('gostaresh.qualities') as $key => $value) {
+            if ($key == $this->level_and_quality_of_access) {
+                return $value;
+            }
+        }
+    }
+
+    public function getInternationalOpportunitiesGeographicalLocationTitleAttribute()
+    {
+        foreach (config('gostaresh.qualities') as $key => $value) {
+            if ($key == $this->international_opportunities_geographical_location) {
+                return $value;
+            }
+        }
+    }
+
+    public function getClimateTypeAndWeatherConditionsTitleAttribute()
+    {
+        foreach (config('gostaresh.climates') as $key => $value) {
+            if ($key == $this->climate_type_and_weather_conditions) {
+                return $value;
+            }
+        }
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
