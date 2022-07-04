@@ -44,7 +44,7 @@ class EmployeeProfileRequest extends FormRequest
             'number_of_expert_staff' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_diploma_and_sub_diploma_employees' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_employees_studying' => 'required|numeric|gte:0|lte:2147483647',
-            'growth_rate' => 'required|numeric|between:-99.99,99.99',
+            'growth_rate' => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

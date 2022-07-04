@@ -45,7 +45,7 @@ class ResearchOutputStatusAnalysisRequest extends FormRequest
             'number_of_theorizing_chairs' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_memoranda_of_understanding' => 'required|numeric|gte:0|lte:2147483647',
             'amount_of_national_contracts_concluded' => 'required|numeric|gte:0|lte:2147483647',
-            'amount_of_local_contracts_concluded' => 'required|numeric|between:0,99.99',
+            'amount_of_local_contracts_concluded' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_scientific_journals' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_R&D_research' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_innovative_ideas' => 'required|numeric|gte:0|lte:2147483647',

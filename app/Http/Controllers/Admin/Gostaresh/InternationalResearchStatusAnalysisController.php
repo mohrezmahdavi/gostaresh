@@ -72,11 +72,11 @@ class InternationalResearchStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AmountOfFacilitiesRequest $request
+     * @param InternationalResearchStatusAnalysisRequest $request
      * @param InternationalResearchStatusAnalysis $internationalResearch
      * @return RedirectResponse
      */
-    public function update(AmountOfFacilitiesRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
+    public function update(InternationalResearchStatusAnalysisRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
         $internationalResearch->update($request->all());
         return back()->with('success', __('titles.success_update'));

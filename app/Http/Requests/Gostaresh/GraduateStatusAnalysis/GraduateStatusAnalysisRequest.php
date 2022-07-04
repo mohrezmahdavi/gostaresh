@@ -33,7 +33,7 @@ class GraduateStatusAnalysisRequest extends FormRequest
             'unit' => 'required|max:255',
             'total_graduates' => 'required|numeric|gte:0|lte:2147483647',
             'employed_graduates' => 'required|numeric|gte:0|lte:2147483647',
-            'graduate_growth_rate' => 'required|numeric|between:-99.99,99.99',
+            'graduate_growth_rate' => 'required|numeric',
             'related_employed_graduates' => 'required|numeric|gte:0|lte:2147483647',
             'skill_certification_graduates' => 'required|numeric|gte:0|lte:2147483647',
             'employed_graduates_6_months_after_graduation' => 'required|numeric|gte:0|lte:2147483647',

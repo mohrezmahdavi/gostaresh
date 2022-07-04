@@ -33,10 +33,10 @@ class CostOfMajorsRequest extends FormRequest
             'university_type' => 'required|numeric|gte:0',
             'gender_id' => 'required|numeric|gte:0',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|numeric|between:-99.99,99.99',
-            'bachelor_degree' => 'required|numeric|between:-99.99,99.99',
-            'masters' => 'required|numeric|between:-99.99,99.99',
-            'phd' => 'required|numeric|between:-99.99,99.99',
+            'associate_degree' => 'required|numeric',
+            'bachelor_degree' => 'required|numeric',
+            'masters' => 'required|numeric',
+            'phd' => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

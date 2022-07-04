@@ -17,6 +17,7 @@
 @endsection
 
 @section('content')
+    @include('admin.partials.row-notifiy-col')
 
     <div class="row">
         <div class="col-md-12">
@@ -201,7 +202,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="amount_of_national_contracts_concluded" name="amount_of_national_contracts_concluded"
+                                <input type="number" id="amount_of_national_contracts_concluded" name="amount_of_national_contracts_concluded"
                                        value="{{ old('amount_of_national_contracts_concluded') }}" class="form-control"
                                        placeholder=" مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی را وارد کنید...">
                             </div>

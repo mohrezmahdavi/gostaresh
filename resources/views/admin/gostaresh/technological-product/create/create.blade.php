@@ -21,6 +21,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
+                    @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST" action="{{ route('technological-product.store') }}" role="form">
                         @csrf
 

@@ -38,7 +38,7 @@ return new class extends Migration
             $table->unsignedInteger('number_of_theorizing_chairs')->comment('تعداد کرسی های نظریه پردازی برگزار شده توسط اساتید واحد دانشگاهی')->nullable();
             $table->unsignedInteger('number_of_memoranda_of_understanding')->comment('تعداد تفاهمنامه ها با صنایع و سازمان‌های محلی/ملی')->nullable();
             $table->unsignedInteger('amount_of_national_contracts_concluded')->comment('مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی')->nullable();
-            $table->float('amount_of_local_contracts_concluded')->comment('مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی')->nullable();
+            $table->unsignedInteger('amount_of_local_contracts_concluded')->comment('مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی')->nullable();
             $table->unsignedInteger('number_of_scientific_journals')->comment('تعداد مجلات علمی')->nullable();
             $table->unsignedInteger('number_of_R&D_research')->comment('تعداد پژوهش های معطوف به R &D')->nullable();
             $table->unsignedInteger('number_of_innovative_ideas')->comment('تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده')->nullable();
