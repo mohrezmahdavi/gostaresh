@@ -99,13 +99,13 @@
                                         <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
                                         </td>
                                         <td>{{ $geographicalLocationOfUnit?->distance_from_center_of_province }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title }}</td>
                                         <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center }}
                                         </td>
                                         <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university }}
                                         </td>
-                                        <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location }}
+                                        <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access_title }}</td>
+                                        <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location_title }}
                                         </td>
                                         <td>
 
