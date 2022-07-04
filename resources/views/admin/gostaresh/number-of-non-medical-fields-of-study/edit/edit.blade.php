@@ -10,6 +10,10 @@
 
 @section('page-title')
 تعداد رشته/گرایشهای تحصیلی غیر پزشکی
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

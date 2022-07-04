@@ -11,6 +11,10 @@
 
 @section('page-title')
 ایجاد انتقال فناوری و نوآوری در عرصه بین المللی در دوره 10 سال
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

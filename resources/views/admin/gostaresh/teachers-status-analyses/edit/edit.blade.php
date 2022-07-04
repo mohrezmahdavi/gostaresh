@@ -11,6 +11,10 @@
 
 @section('page-title')
     ویرایش تحلیل وضعیت اعضای ھیات علمی و مدرسین در شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')

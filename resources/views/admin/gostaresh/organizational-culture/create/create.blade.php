@@ -11,6 +11,10 @@
 
 @section('page-title')
 ایجاد تحلیل وضعیت فرھنگ سازمانی در واحدھای شھرستان ھای استان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

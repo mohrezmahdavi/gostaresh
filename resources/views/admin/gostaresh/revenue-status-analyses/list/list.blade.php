@@ -10,6 +10,13 @@
 
 @section('page-title')
     تعداد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('revenue-status-analyses.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

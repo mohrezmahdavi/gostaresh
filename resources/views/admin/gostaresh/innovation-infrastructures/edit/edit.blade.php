@@ -11,6 +11,10 @@
 
 @section('page-title')
     ویرایش تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')

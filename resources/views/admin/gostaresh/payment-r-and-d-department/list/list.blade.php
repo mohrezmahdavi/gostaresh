@@ -10,6 +10,13 @@
 
 @section('page-title')
 روند تغییرات میزان هزینه کرد در بخش R&D 
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('payment.r.and.d.department.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

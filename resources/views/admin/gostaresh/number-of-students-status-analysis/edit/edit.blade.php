@@ -10,6 +10,11 @@
 
 @section('page-title')
 ویرایش وضعیت تعداد دانشجویان شهرستان های استان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+
 @endsection
 
 @section('styles-head')

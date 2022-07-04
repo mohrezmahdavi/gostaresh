@@ -10,6 +10,13 @@
 
 @section('page-title')
 تحلیل وضعیت شاخص محرومیت چندگانه	
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('multiple.deprivation.index.of.city.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

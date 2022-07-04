@@ -11,6 +11,10 @@
 
 @section('page-title')
     ویرایش میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')

@@ -11,6 +11,10 @@
 
 @section('page-title')
 ایجاد تحلیل روند تغییرات وضعیت درآمد ھای دانشگاه در واحدھای شھرستان ھای استان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

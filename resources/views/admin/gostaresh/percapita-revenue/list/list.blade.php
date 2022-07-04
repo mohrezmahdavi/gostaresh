@@ -10,6 +10,13 @@
 
 @section('page-title')
     تعداد تحلیل وضعیت درآمد سرانه مقطع-رشتھ-گرایش-محل x شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('percapita-revenue.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

@@ -10,6 +10,13 @@
 
 @section('page-title')
 وضعیت نرخ بیکاری	
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('unemployment.rate.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

@@ -10,6 +10,10 @@
 
 @section('page-title')
 ویرایش سهم تولید ناخالص داخلی شهرستان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

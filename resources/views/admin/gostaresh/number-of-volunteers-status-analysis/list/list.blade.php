@@ -10,6 +10,13 @@
 
 @section('page-title')
 تحلیل وضعیت تعداد داوطلبان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('number.of.volunteers.status.analysis.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

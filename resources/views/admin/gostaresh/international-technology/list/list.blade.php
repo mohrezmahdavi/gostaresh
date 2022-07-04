@@ -10,6 +10,13 @@
 
 @section('page-title')
     تعداد انتقال فناوری و نوآوری در عرصه بین المللی در دوره 10 سال
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('international-technology.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

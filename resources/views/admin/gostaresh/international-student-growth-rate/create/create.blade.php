@@ -10,6 +10,10 @@
 
 @section('page-title')
 تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

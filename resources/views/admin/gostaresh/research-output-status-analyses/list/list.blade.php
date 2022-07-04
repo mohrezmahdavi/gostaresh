@@ -11,6 +11,13 @@
 
 @section('page-title')
     تعداد تحلیل وضعیت برونداد پژوھشی در واحدھای مستقر در شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('research-output-status-analyses.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

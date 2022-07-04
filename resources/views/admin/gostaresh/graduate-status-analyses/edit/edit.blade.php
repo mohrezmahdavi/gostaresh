@@ -11,6 +11,11 @@
 
 @section('page-title')
     ویرایش تحلیل وضعیت فارغ التحصیلان (از سال 1395 به بعد) از واحدھای شھرستانی در استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+
 @endsection
 
 @section('styles-head')

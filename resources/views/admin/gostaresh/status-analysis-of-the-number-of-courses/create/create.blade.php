@@ -10,6 +10,10 @@
 
 @section('page-title')
 تعداد دوره های تحصیلی بین المللی
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

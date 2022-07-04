@@ -10,6 +10,13 @@
 
 @section('page-title')
 نرخ رشد و ترکیب جمعیت دانش آموزی
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('growth.rate.student.population.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

@@ -11,6 +11,10 @@
 
 @section('page-title')
     ویرایش تحلیل وضعیت درآمد سرانه مقطع-رشتھ-گرایش-محل x شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')

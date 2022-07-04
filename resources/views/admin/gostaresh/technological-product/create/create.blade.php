@@ -11,6 +11,10 @@
 
 @section('page-title')
 ایجاد تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

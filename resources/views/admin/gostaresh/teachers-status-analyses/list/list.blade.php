@@ -11,6 +11,13 @@
 
 @section('page-title')
     تعداد تحلیل وضعیت اعضای ھیات علمی و مدرسین در شھرستان ھای استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('teachers-status-analyses.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

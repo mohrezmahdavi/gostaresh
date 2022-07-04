@@ -10,6 +10,10 @@
 
 @section('page-title')
 ایجاد تعداد کل طرح های پژوهشی
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

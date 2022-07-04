@@ -10,6 +10,13 @@
 
 @section('page-title')
 تحلیل وضعیت تعداد دوره های تحصیلی بین المللی	
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+<span>
+    <a href="{{ route('status.analysis.of.the.number.of.course.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+</span>
 @endsection
 
 @section('styles-head')

@@ -11,6 +11,10 @@
 
 @section('page-title')
     ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
