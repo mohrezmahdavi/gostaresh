@@ -30,7 +30,12 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->tinyInteger('gender_id')->default(1);
-            $table->float('growth_rate')->default(0);
+            $table->float('ebtedai')->default(0);
+            $table->float('motevasete_1')->default(0);
+            $table->float('motevasete_2_ensani')->default(0);
+            $table->float('motevasete_2_math')->default(0);
+            $table->float('motevasete_2_science')->default(0);
+            $table->float('motevasete_2_kar_danesh')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

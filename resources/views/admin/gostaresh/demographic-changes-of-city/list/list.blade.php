@@ -10,6 +10,13 @@
 
 @section('page-title')
     لیست روند تحولات جمعیتی شهرستان های استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('demographic.changes.city.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

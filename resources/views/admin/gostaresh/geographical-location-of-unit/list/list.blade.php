@@ -10,6 +10,13 @@
 
 @section('page-title')
     وضعیت جغرافیایی واحد و دسترسی به آن در استان
+
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('geographical.location.unit.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

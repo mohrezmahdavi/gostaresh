@@ -46,13 +46,68 @@
                         <select-grade-component></select-grade-component>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="growth_rate">
-                                <span> نرخ رشد </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="ebtedai">
+                                <span> ابتدایی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="growth_rate" name="growth_rate" value="{{ old('growth_rate') }}"
-                                    class="form-control" placeholder="نرخ رشد را وارد کنید...">
+                                <input type="number" id="ebtedai" name="ebtedai" value="{{ old('ebtedai') }}"
+                                    class="form-control" placeholder="تعداد ابتدایی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="motevasete_1">
+                                <span> متوسطه اول </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="motevasete_1" name="motevasete_1" value="{{ old('motevasete_1') }}"
+                                    class="form-control" placeholder="تعداد متوسطه اول را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="motevasete_2_ensani">
+                                <span> متوسطه دوم (علوم انسانی) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="motevasete_2_ensani" name="motevasete_2_ensani" value="{{ old('motevasete_2_ensani') }}"
+                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="motevasete_2_math">
+                                <span> متوسطه دوم (ریاضی) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="motevasete_2_math" name="motevasete_2_math" value="{{ old('motevasete_2_math') }}"
+                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="motevasete_2_science">
+                                <span> متوسطه دوم (علوم تجربی) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="motevasete_2_science" name="motevasete_2_science" value="{{ old('motevasete_2_science') }}"
+                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="motevasete_2_kar_danesh">
+                                <span> متوسطه دوم (کار و دانش و فنی حرفه ای) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh" value="{{ old('motevasete_2_kar_danesh') }}"
+                                    class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
 

@@ -10,6 +10,9 @@
 
 @section('page-title')
 ویرایش وضعیت جغرافیایی واحد و دسترسی به آن در استان
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')

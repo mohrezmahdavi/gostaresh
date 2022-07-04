@@ -27,7 +27,7 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.number-student-population.create.create');
+        return view('admin.gostaresh.growth-rate-student-population.create.create');
     }
 
     /**

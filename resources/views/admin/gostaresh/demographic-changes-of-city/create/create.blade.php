@@ -10,6 +10,10 @@
 
 @section('page-title')
 افزودن روند تحولات جمعیتی شهرستان های استان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
 @endsection
 
 @section('styles-head')
@@ -25,13 +29,15 @@
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST" action="{{ route('demographic.changes.city.store') }}" role="form">
                         @csrf
+
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="population">
                                 <span> جمعیت </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="population" name="population" value="{{ old('population') }}"
+                                <input type="number" id="population" min="0" max="18446744073709551615" name="population" value="{{ old('population') }}"
                                     class="form-control" placeholder="جمعیت را وارد کنید...">
                             </div>
                         </div>
@@ -58,7 +64,7 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="old('yaer')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" :required="true" name="year"></x-select-year>
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 

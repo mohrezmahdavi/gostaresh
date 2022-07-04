@@ -10,6 +10,12 @@
 
 @section('page-title')
     تعداد و ترکیب جمعیت دانش آموزی استان
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('number.student.population.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -69,9 +75,13 @@
                                     <th>#</th>
                                     <th>شهرستان </th>
                                     <th>جنسیت</th>
-                                    <th>مقطع</th>
-                                    <th>تعداد نفرات</th>
-
+                                    {{-- <th>مقطع</th> --}}
+                                    <th>ابتدایی</th>
+                                    <th>متوسطه اول</th>
+                                    <th>متوسطه دوم (علوم انسانی)</th>
+                                    <th>متوسطه دوم (ریاضی)</th>
+                                    <th>متوسطه دوم (علوم تجربی)</th>
+                                    <th>متوسطه دوم (کار و دانش و فنی و حرفه ای)</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -83,8 +93,14 @@
                                         <td>{{ $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation->county?->name }}
                                         </td>
                                         <td>{{ $numberStudentPopulation?->gender_title }}</td>
-                                        <td>{{ $numberStudentPopulation?->grade }}</td>
-                                        <td>{{ $numberStudentPopulation?->number_of_persons }}</td>
+                                        {{-- <td>{{ $numberStudentPopulation?->grade }}</td> --}}
+                                        <td>{{ $numberStudentPopulation?->ebtedai }}</td>
+                                        <td>{{ $numberStudentPopulation?->motevasete_1 }}</td>
+                                        <td>{{ $numberStudentPopulation?->motevasete_2_ensani }}</td>
+                                        <td>{{ $numberStudentPopulation?->motevasete_2_math }}</td>
+                                        <td>{{ $numberStudentPopulation?->motevasete_2_science }}</td>
+                                        <td>{{ $numberStudentPopulation?->motevasete_2_kar_danesh }}</td>
+
                                         <td>
                                             <a href="{{ route('number.student.population.edit', $numberStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
