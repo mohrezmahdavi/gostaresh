@@ -63,7 +63,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="ebtedai" name="ebtedai" value="{{ $numberStudentPopulation->ebtedai }}"
+                                <input type="text" id="ebtedai" name="ebtedai" value="{{ $numberStudentPopulation->ebtedai }}"
                                     class="form-control" placeholder="تعداد ابتدایی را وارد کنید...">
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="motevasete_1" name="motevasete_1" value="{{ $numberStudentPopulation->motevasete_1 }}"
+                                <input type="text" id="motevasete_1" name="motevasete_1" value="{{ $numberStudentPopulation->motevasete_1 }}"
                                     class="form-control" placeholder="تعداد متوسطه اول را وارد کنید...">
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="motevasete_2_ensani" name="motevasete_2_ensani" value="{{ $numberStudentPopulation->motevasete_2_ensani }}"
+                                <input type="text" id="motevasete_2_ensani" name="motevasete_2_ensani" value="{{ $numberStudentPopulation->motevasete_2_ensani }}"
                                     class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="motevasete_2_math" name="motevasete_2_math" value="{{ $numberStudentPopulation->motevasete_2_math }}"
+                                <input type="text" id="motevasete_2_math" name="motevasete_2_math" value="{{ $numberStudentPopulation->motevasete_2_math }}"
                                     class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="motevasete_2_science" name="motevasete_2_science" value="{{ $numberStudentPopulation->motevasete_2_science }}"
+                                <input type="text" id="motevasete_2_science" name="motevasete_2_science" value="{{ $numberStudentPopulation->motevasete_2_science }}"
                                     class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh" value="{{ $numberStudentPopulation->motevasete_2_kar_danesh }}"
+                                <input type="text" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh" value="{{ $numberStudentPopulation->motevasete_2_kar_danesh }}"
                                     class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
