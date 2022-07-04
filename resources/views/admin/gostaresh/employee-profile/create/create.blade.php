@@ -68,7 +68,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_age_of_employees" name="average_age_of_employees"
+                                <input type="text" id="average_age_of_employees" name="average_age_of_employees"
                                        value="{{ old('average_age_of_employees') }}" class="form-control"
                                        placeholder=" میانگین سنی کارمندان را وارد کنید...">
                             </div>

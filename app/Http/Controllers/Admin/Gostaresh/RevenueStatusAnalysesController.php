@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\RevenueStatusAnalysis\RevenueChangesRequest;
+use App\Http\Requests\Gostaresh\RevenueStatusAnalysis\RevenueStatusAnalysisRequest;
 use App\Models\Index\RevenueStatusAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 48 Controller
@@ -35,10 +34,10 @@ class RevenueStatusAnalysesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param RevenueChangesRequest $request
+     * @param RevenueStatusAnalysisRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RevenueChangesRequest $request)
+    public function store(RevenueStatusAnalysisRequest $request)
     {
          RevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +68,11 @@ class RevenueStatusAnalysesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param RevenueChangesRequest $request
+     * @param RevenueStatusAnalysisRequest $request
      * @param RevenueStatusAnalysis $revenueStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function update(RevenueChangesRequest $request, RevenueStatusAnalysis $revenueStatusAnalysis)
+    public function update(RevenueStatusAnalysisRequest $request, RevenueStatusAnalysis $revenueStatusAnalysis)
     {
         $revenueStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

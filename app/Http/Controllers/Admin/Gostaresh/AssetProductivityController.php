@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\AssetProductivity\AssetProductivityRequest;
 use App\Models\Index\IndexOfAssetProductivity;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 47 Controller

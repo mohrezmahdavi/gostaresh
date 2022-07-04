@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\UniversityCosts\CostChangesTrendsRequest;
+use App\Http\Requests\Gostaresh\UniversityCosts\UniversityCostsRequest;
 use App\Models\Index\UniversityCostsAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 52,53 Controller
@@ -35,10 +34,10 @@ class UniversityCostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CostChangesTrendsRequest $request
+     * @param UniversityCostsRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CostChangesTrendsRequest $request)
+    public function store(UniversityCostsRequest $request)
     {
          UniversityCostsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +68,11 @@ class UniversityCostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CostChangesTrendsRequest $request
+     * @param UniversityCostsRequest $request
      * @param UniversityCostsAnalysis $universityCost
      * @return \Illuminate\Http\Response
      */
-    public function update(CostChangesTrendsRequest $request, UniversityCostsAnalysis $universityCost)
+    public function update(UniversityCostsRequest $request, UniversityCostsAnalysis $universityCost)
     {
         $universityCost->update($request->all());
         return back()->with('success', __('titles.success_update'));

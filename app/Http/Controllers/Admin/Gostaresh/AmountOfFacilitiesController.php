@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\AmountOfFacilities\InnovationInfrastructureRequest;
+use App\Http\Requests\Gostaresh\AmountOfFacilities\AmountOfFacilitiesRequest;
 use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 38 Controller
@@ -39,10 +38,10 @@ class AmountOfFacilitiesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param InnovationInfrastructureRequest $request
+     * @param AmountOfFacilitiesRequest $request
      * @return RedirectResponse
      */
-    public function store(InnovationInfrastructureRequest $request): RedirectResponse
+    public function store(AmountOfFacilitiesRequest $request): RedirectResponse
     {
         AmountOfFacilitiesForResearchAchievements::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -73,11 +72,11 @@ class AmountOfFacilitiesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param InnovationInfrastructureRequest $request
+     * @param AmountOfFacilitiesRequest $request
      * @param AmountOfFacilitiesForResearchAchievements $amountOfFacility
      * @return RedirectResponse
      */
-    public function update(InnovationInfrastructureRequest $request, AmountOfFacilitiesForResearchAchievements $amountOfFacility): RedirectResponse
+    public function update(AmountOfFacilitiesRequest $request, AmountOfFacilitiesForResearchAchievements $amountOfFacility): RedirectResponse
     {
         $amountOfFacility->update($request->all());
         return back()->with('success', __('titles.success_update'));
