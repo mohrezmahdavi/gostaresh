@@ -11,6 +11,11 @@
 
 @section('page-title')
 ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+
 @endsection
 
 @section('styles-head')

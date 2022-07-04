@@ -10,6 +10,12 @@
 
 @section('page-title')
     تعداد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('credit-and-asset.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')

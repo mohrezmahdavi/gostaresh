@@ -10,6 +10,11 @@
 
 @section('page-title')
 ایجاد  درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+
+<span>
+    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+</span>
+
 @endsection
 
 @section('styles-head')
