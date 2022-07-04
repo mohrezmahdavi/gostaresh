@@ -82,6 +82,8 @@
                                     <th>متوسطه دوم (ریاضی)</th>
                                     <th>متوسطه دوم (علوم تجربی)</th>
                                     <th>متوسطه دوم (کار و دانش و فنی و حرفه ای)</th>
+                                    <th>سال</th>
+                                    <th>ماه</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -100,7 +102,8 @@
                                         <td>{{ $numberStudentPopulation?->motevasete_2_math }}</td>
                                         <td>{{ $numberStudentPopulation?->motevasete_2_science }}</td>
                                         <td>{{ $numberStudentPopulation?->motevasete_2_kar_danesh }}</td>
-
+                                        <td>{{ $numberStudentPopulation?->year }}</td>
+                                        <td>{{ $numberStudentPopulation?->month }}</td>
                                         <td>
                                             <a href="{{ route('number.student.population.edit', $numberStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
