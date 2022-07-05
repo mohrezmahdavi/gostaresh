@@ -52,8 +52,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="education_id" id="education_id" class="form-select">
-                                    @foreach (config('titles.education') as $key => $value)
-                                        <option {{ $key == old('education_id') ? ' selected' : '' }} 
+                                    @foreach (config('gostaresh.education') as $key => $value)
+                                        <option {{ $key == old('education_id') ? ' selected' : '' }}
                                             value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
@@ -68,7 +68,7 @@
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

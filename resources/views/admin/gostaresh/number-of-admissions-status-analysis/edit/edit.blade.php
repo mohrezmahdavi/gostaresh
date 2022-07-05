@@ -83,13 +83,13 @@
 
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_volunteers">
+                            <label class="col-sm-2 col-form-label" for="number_of_admissions">
                                 <span>تعداد دانشجویان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_volunteers" name="number_of_volunteers"
-                                    value="{{ $numberOfAdmissionsStatusAnalysis->number_of_volunteers }}" class="form-control"
+                                <input type="number" id="number_of_admissions" name="number_of_admissions"
+                                    value="{{ $numberOfAdmissionsStatusAnalysis->number_of_admissions }}" class="form-control"
                                     placeholder=" تعداد دانشجویان را وارد کنید...">
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                         <x-select-month :default="$numberOfAdmissionsStatusAnalysis->month" :required="false" name="month"></x-select-month>
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

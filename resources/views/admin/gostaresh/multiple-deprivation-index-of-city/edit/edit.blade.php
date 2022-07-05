@@ -24,15 +24,15 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('multiple.deprivation.index.of.city.update', $povertyOfProvincialCity) }}"
+                        action="{{ route('multiple.deprivation.index.of.city.update', $multipleDeprivationIndexOfCity) }}"
                         role="form">
                         @csrf
                         @method('PUT')
 
-                        <select-province-component province_default="{{ $povertyOfProvincialCity->province_id }}"
-                            county_default="{{ $povertyOfProvincialCity->county_id }}"
-                            city_default="{{ $povertyOfProvincialCity->city_id }}"
-                            rural_district_default="{{ $povertyOfProvincialCity->rural_district_id }}">
+                        <select-province-component province_default="{{ $multipleDeprivationIndexOfCity->province_id }}"
+                            county_default="{{ $multipleDeprivationIndexOfCity->county_id }}"
+                            city_default="{{ $multipleDeprivationIndexOfCity->city_id }}"
+                            rural_district_default="{{ $multipleDeprivationIndexOfCity->rural_district_id }}">
                         </select-province-component>
 
 
@@ -43,16 +43,16 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount" name="amount"
-                                    value="{{ $povertyOfProvincialCity->amount }}" class="form-control"
+                                    value="{{ $multipleDeprivationIndexOfCity->amount }}" class="form-control"
                                     placeholder=" مقدار را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$povertyOfProvincialCity->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$multipleDeprivationIndexOfCity->year" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$povertyOfProvincialCity->month" :required="false" name="month"></x-select-month>
+                        <x-select-month :default="$multipleDeprivationIndexOfCity->month" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

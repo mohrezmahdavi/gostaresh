@@ -37,7 +37,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
                                 <th>زیرنظام های آموزش عالی شهرستان</th>
                                 <th>تعداد کارکنان غیر هیات علمی</th>
                                 <th>میانگین سنی کارمندان</th>
@@ -61,7 +60,6 @@
                                 <tr>
                                     <th scope="row">{{ $employeeProfiles?->firstItem() + $key }}</th>
                                     <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile->county?->name }}
-                                    <td>{{ $employeeProfile?->unit}}</td>
                                     <td>{{ $employeeProfile?->department_of_education_title}}</td>
                                     <td>{{ $employeeProfile?->number_of_non_faculty_staff}}</td>
                                     <td>{{ $employeeProfile?->average_age_of_employees}}</td>

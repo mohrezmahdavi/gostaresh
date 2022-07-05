@@ -30,7 +30,6 @@ class EmployeeProfileRequest extends FormRequest
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required',
             'higher_education_subsystems' => 'required|numeric|gte:0|lte:2147483647',
             'number_of_non_faculty_staff' => 'required|numeric|gte:0|lte:2147483647',
             'average_age_of_employees' => 'required|numeric|between:0,99.99',

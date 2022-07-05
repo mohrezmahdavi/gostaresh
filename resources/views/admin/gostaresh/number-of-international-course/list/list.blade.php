@@ -48,8 +48,8 @@
                                         <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
                                         </td>
                                         <td>{{ $numberOfInternationalCourse?->unit }}</td>
-                                        <td>{{ $numberOfInternationalCourse?->gender_title }}</td>
                                         <td>{{ $numberOfInternationalCourse?->department_of_education_title }}</td>
+                                        <td>{{ $numberOfInternationalCourse?->gender_title }}</td>
                                         <td>{{ $numberOfInternationalCourse?->kardani_count }}</td>
                                         <td>{{ $numberOfInternationalCourse?->karshenasi_count }}</td>
                                         <td>{{ $numberOfInternationalCourse?->karshenasi_arshad_count }}</td>

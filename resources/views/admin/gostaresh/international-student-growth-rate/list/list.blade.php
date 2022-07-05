@@ -25,11 +25,11 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان</th>
-                                    <th>واحد دانشگاهی </th>
+                                    <th>واحد دانشگاهی</th>
                                     <th>رشته تحصیلی</th>
                                     <th>جنسیت</th>
                                     <th>کاردانی</th>
@@ -43,12 +43,11 @@
                                 @foreach ($internationalStudentGrowthRates as $key => $internationalStudentGrowthRate)
                                     <tr>
                                         <th scope="row">{{ $internationalStudentGrowthRates?->firstItem() + $key }}</th>
-        
-                                        <td>{{ $internationalStudentGrowthRate?->province?->name . ' - ' . $internationalStudentGrowthRate->county?->name }}
-                                        </td>
+
+                                        <td>{{ $internationalStudentGrowthRate?->province?->name . ' - ' . $internationalStudentGrowthRate->county?->name }}</td>
                                         <td>{{ $internationalStudentGrowthRate?->unit }}</td>
-                                        <td>{{ $internationalStudentGrowthRate?->gender_title }}</td>
                                         <td>{{ $internationalStudentGrowthRate?->department_of_education_title }}</td>
+                                        <td>{{ $internationalStudentGrowthRate?->gender_title }}</td>
                                         <td>{{ $internationalStudentGrowthRate?->kardani_count }}</td>
                                         <td>{{ $internationalStudentGrowthRate?->karshenasi_count }}</td>
                                         <td>{{ $internationalStudentGrowthRate?->karshenasi_arshad_count }}</td>
@@ -56,20 +55,20 @@
 
                                         <td>{{ $internationalStudentGrowthRate?->year }}</td>
                                         <td>
-        
+
                                             <a href="{{ route('international.student.growth.rate.edit', $internationalStudentGrowthRate) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('international.student.growth.rate.destroy', $internationalStudentGrowthRate) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $internationalStudentGrowthRates->withQueryString()->links('pagination::bootstrap-4') }}

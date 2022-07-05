@@ -63,7 +63,7 @@ class IndustrialExpenditureResearchController extends Controller
      */
     public function edit(IndustrialExpenditureResearch $industrialExpenditureResearch)
     {
-        return view('admin.gostaresh.industrial-expenditure-research.edit.edit', compact('IndustrialExpenditureResearch'));
+        return view('admin.gostaresh.industrial-expenditure-research.edit.edit', compact('industrialExpenditureResearch'));
     }
 
     /**
