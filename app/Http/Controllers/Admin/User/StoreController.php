@@ -13,13 +13,11 @@ class StoreController extends Controller
 {
     public function store(StoreUserRequest $request)
     {
-        $user = User::create([
-            'first_name' => $request->first_name ?? null,
-            'last_name' => $request->last_name ?? null,
-            'phone_number' => $request->phone_number ?? null,
-            'status' => $request->status ?? 1,
-            // 'role' => $request->role ?? 1,
-        ]);
+        if(!auth()->user()->hasPermissionTo('create-any-user'))
+            abort(403);
+
+        User::create($request->validated());
+
         return redirect()->route('admin.users.list')->with('success','کاربر مورد نظر با موفقیت ایجاد شد.');
     }
 

@@ -108,30 +108,31 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#sidebarDashboardsUsers" data-bs-toggle="collapse" aria-expanded="false"
-                        aria-controls="sidebarDashboardsUsers" class="waves-effect">
-                        <i class="mdi mdi-account-group"></i>
-                        {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
-                        <span> کاربران </span>
-                    </a>
-                    <div class="collapse" id="sidebarDashboardsUsers">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('admin.user.create') }}"><i
-                                        class="ri-calendar-2-line align-middle me-1"></i> افزودن جدید</a>
-                            </li>
+                @if(auth()->user()->hasPermissionTo('view-all-users') or auth()->user()->hasPermissionTo('create-any-user'))
+                    <li>
+                        <a href="#sidebarDashboardsUsers" data-bs-toggle="collapse" aria-expanded="false"
+                            aria-controls="sidebarDashboardsUsers" class="waves-effect">
+                            <i class="mdi mdi-account-group"></i>
+                            {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
+                            <span> کاربران </span>
+                        </a>
+                        <div class="collapse" id="sidebarDashboardsUsers">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.user.create') }}"><i
+                                            class="ri-calendar-2-line align-middle me-1"></i> افزودن جدید</a>
+                                </li>
 
-                            <li>
-                                <a href="{{ route('admin.users.list') }}"><i
-                                        class="ri-message-2-line align-middle me-1"></i> لیست کاربران</a>
-                            </li>
+                                <li>
+                                    <a href="{{ route('admin.users.list') }}"><i
+                                            class="ri-message-2-line align-middle me-1"></i> لیست کاربران</a>
+                                </li>
 
 
-                        </ul>
-                    </div>
-                </li>
-
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 <li>
                     <a href="#sidebarDashboardsAtlas" data-bs-toggle="collapse" aria-expanded="false"

@@ -13,13 +13,10 @@ class UpdateController extends Controller
 {
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update([
-            'first_name' => $request->first_name ?? null,
-            'last_name' => $request->last_name ?? null,
-            'phone_number' => $request->phone_number ?? null,
-            'status' => $request->status ?? 1,
-            // 'role' => $request->role ?? 1,
-        ]);
+        if(!auth()->user()->hasPermissionTo('edit-any-user'))
+            abort(403);
+
+        $user->update($request->validated());
         return back()->with('success','با موفقیت ویرایش شد.');
     }
 
