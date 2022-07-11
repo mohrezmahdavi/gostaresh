@@ -33,7 +33,7 @@ class PercapitaRevenueRequest extends FormRequest
             'unit' => 'required|max:255',
             'university_type' => 'required|numeric|gte:0',
             'grade' => 'required|numeric|gte:0',
-            'percapita_revenue_status_analyses' => 'required|between:-99.99,99.99',
+            'percapita_revenue_status_analyses' => 'required|numeric',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

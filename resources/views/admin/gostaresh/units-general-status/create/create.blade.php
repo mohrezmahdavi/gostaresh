@@ -51,7 +51,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="degree/rank" name="degree/rank"
+                                <input type="text" id="degree/rank" name="degree/rank"
                                        value="{{ old('degree/rank') }}" class="form-control"
                                        placeholder=" درجه/رتبه را وارد کنید...">
                             </div>
@@ -63,7 +63,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="score" name="score"
+                                <input type="text" id="score" name="score"
                                        value="{{ old('score') }}" class="form-control"
                                        placeholder="امتیاز را وارد کنید...">
                             </div>
@@ -75,7 +75,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="established_year" name="established_year"
+                                <input type="text" id="established_year" name="established_year"
                                        value="{{ old('established_year') }}" class="form-control"
                                        placeholder=" سال تاسیس را وارد کنید...">
                             </div>
@@ -87,7 +87,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="approved_number_and_titles_of_the_faculty" name="approved_number_and_titles_of_the_faculty"
+                                <input type="text" id="approved_number_and_titles_of_the_faculty" name="approved_number_and_titles_of_the_faculty"
                                        value="{{ old('approved_number_and_titles_of_the_faculty') }}" class="form-control"
                                        placeholder=" تعداد و عناوین دانشکده مصوب را وارد کنید...">
                             </div>

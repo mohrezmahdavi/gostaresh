@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'country_id' => 'numeric|nullable',
             'province_id' => 'numeric|nullable',
             'county_id' => 'numeric|nullable',
-            'city' => 'numeric|nullable',
+            'city_id' => 'numeric|nullable',
             'rural_district_id' => 'numeric|nullable',
             'address' => 'string|nullable',
             'status' => 'numeric|nullable',

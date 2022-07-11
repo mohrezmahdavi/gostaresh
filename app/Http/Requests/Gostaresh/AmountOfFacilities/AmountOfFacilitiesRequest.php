@@ -30,8 +30,8 @@ class AmountOfFacilitiesRequest extends FormRequest
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required',
-            'amount' => 'required|numeric|gte:0',
+            'unit' => 'required|max:255',
+            'amount' => 'required|numeric|gte:0|lte:2147483647',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

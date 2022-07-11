@@ -27,7 +27,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('number.student.population.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('growth.rate.student.population.store') }}" role="form">
                         @csrf
 
                         <select-province-component></select-province-component>
@@ -43,7 +43,7 @@
                                     <option {{ ($key == old('gender_id') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 

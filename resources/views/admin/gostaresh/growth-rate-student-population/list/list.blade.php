@@ -57,12 +57,12 @@
                                         <td>{{ $growthRateStudentPopulation?->province?->name . ' - ' . $growthRateStudentPopulation->county?->name }}</td>
                                         <td>{{ $growthRateStudentPopulation?->gender_title }}</td>
                                         {{-- <td>{{ $growthRateStudentPopulation?->grade }}</td> --}}
-                                        <td>{{ $numberStudentPopulation?->ebtedai }}</td>
-                                        <td>{{ $numberStudentPopulation?->motevasete_1 }}</td>
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_ensani }}</td>
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_math }}</td>
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_science }}</td>
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_kar_danesh }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->ebtedai }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->motevasete_1 }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_ensani }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_math }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_science }}</td>
+                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_kar_danesh }}</td>
                                         <td>
                                             <a href="{{ route('growth.rate.student.population.edit', $growthRateStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"

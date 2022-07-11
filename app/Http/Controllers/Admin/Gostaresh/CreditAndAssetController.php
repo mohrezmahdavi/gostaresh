@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\CreditAndAsset\UnitsGeneralStatusRequest;
+use App\Http\Requests\Gostaresh\CreditAndAsset\CreditAndAssetRequest;
 use App\Models\Index\CreditAndAssetAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 56 Controller
@@ -35,10 +34,10 @@ class CreditAndAssetController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param UnitsGeneralStatusRequest $request
+     * @param CreditAndAssetRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UnitsGeneralStatusRequest $request)
+    public function store(CreditAndAssetRequest $request)
     {
         CreditAndAssetAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +68,11 @@ class CreditAndAssetController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UnitsGeneralStatusRequest $request
+     * @param CreditAndAssetRequest $request
      * @param CreditAndAssetAnalysis $creditAndAsset
      * @return \Illuminate\Http\Response
      */
-    public function update(UnitsGeneralStatusRequest $request, CreditAndAssetAnalysis $creditAndAsset)
+    public function update(CreditAndAssetRequest $request, CreditAndAssetAnalysis $creditAndAsset)
     {
         $creditAndAsset->update($request->all());
         return back()->with('success', __('titles.success_update'));

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\CulturalIndicators\SocialHealthRequest;
+use App\Http\Requests\Gostaresh\CulturalIndicators\CulturalIndicatorsRequest;
 use App\Models\Index\CulturalIndicatorsStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,10 +38,10 @@ class CulturalIndicatorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param SocialHealthRequest $request
+     * @param CulturalIndicatorsRequest $request
      * @return RedirectResponse
      */
-    public function store(SocialHealthRequest $request)
+    public function store(CulturalIndicatorsRequest $request)
     {
          CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -72,11 +72,11 @@ class CulturalIndicatorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param SocialHealthRequest $request
+     * @param CulturalIndicatorsRequest $request
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
      * @return RedirectResponse
      */
-    public function update(SocialHealthRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
+    public function update(CulturalIndicatorsRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
         $culturalIndicator->update($request->all());
         return back()->with('success', __('titles.success_update'));

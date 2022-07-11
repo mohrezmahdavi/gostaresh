@@ -10,6 +10,9 @@ class EditController extends Controller
 {
     public function edit(User $user)
     {
+        if(!auth()->user()->hasPermissionTo('edit-any-user'))
+            abort(403);
+
         return view('admin.users.edit', compact('user'));
     }
 }

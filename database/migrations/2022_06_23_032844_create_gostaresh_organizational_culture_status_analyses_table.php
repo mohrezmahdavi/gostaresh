@@ -32,10 +32,10 @@ return new class extends Migration
             $table->unsignedTinyInteger('culture_of_participation')->comment('سطح فرهنگ مشارکت پذیری و کار گروهی در واحد')->nullable();
             $table->unsignedTinyInteger('faculty_members_self_confidence')->comment('سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد')->nullable();
             $table->unsignedTinyInteger('amount_of_physical_elements')->comment('میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی')->nullable();
-            $table->unsignedTinyInteger( 'percentage_of_sample_professors_in_unit')->comment('درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان')->nullable();
-            $table->unsignedTinyInteger( 'percentage_of_sample_professors_in_province')->comment('درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی')->nullable();
-            $table->unsignedTinyInteger( 'percentage_of_sample_students_in_unit')->comment('درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان')->nullable();
-            $table->unsignedTinyInteger( 'percentage_of_sample_students_in_province')->comment('درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی')->nullable();
+            $table->float( 'percentage_of_sample_professors_in_unit')->comment('درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان')->nullable();
+            $table->float( 'percentage_of_sample_professors_in_province')->comment('درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی')->nullable();
+            $table->float( 'percentage_of_sample_students_in_unit')->comment('درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان')->nullable();
+            $table->float( 'percentage_of_sample_students_in_province')->comment('درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی')->nullable();
             $table->unsignedTinyInteger( 'brand_influence_in_the_province')->comment('میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان')->nullable();
             $table->unsignedTinyInteger( 'level_of_intelligence')->comment('میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد')->nullable();
             $table->unsignedTinyInteger( 'axial_program')->comment('برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش)')->nullable();

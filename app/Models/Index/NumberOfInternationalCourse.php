@@ -26,13 +26,13 @@ class NumberOfInternationalCourse extends Model
     {
         foreach (config('gostaresh.gender') as $key => $value)
         {
-            if ($key == $this->gender) {
+            if ($key == $this->gender_id) {
                 return $value;
             }
         }
     }
 
-    public function getDepartmentOfEducationTitleAttribute() 
+    public function getDepartmentOfEducationTitleAttribute()
     {
         foreach (config('gostaresh.department_of_education') as $key => $value) {
             if ($key == $this->department_of_education) {

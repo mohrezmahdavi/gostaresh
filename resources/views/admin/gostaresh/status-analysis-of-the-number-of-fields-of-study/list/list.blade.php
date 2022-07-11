@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-میزان ظرفیت پذیرش دانشجو	
+تعداد تحلیل وضعیت تعداد رشته های تحصیلی
 @endsection
 
 @section('breadcrumb-title')
-میزان ظرفیت پذیرش دانشجو	
+    تعداد تحلیل وضعیت تعداد رشته های تحصیلی
 @endsection
 
 @section('page-title')
-میزان ظرفیت پذیرش دانشجو	
+تعداد تحلیل وضعیت تعداد رشته های تحصیلی
 
 <span>
     <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -32,10 +32,11 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
+                                    <th>واحد </th>
                                     <th>تعداد کل رشته های تحصیلی</th>
                                     <th>تعداد رشته های تحصیلی بین المللی</th>
                                     <th>تعداد رشته های تحصیلی مجازی</th>
@@ -53,6 +54,7 @@
                                     <th>تعداد رشته های تحصیلی بدون پذیرش</th>
                                     <th>تعداد رشته های تحصیلی پر متقاضی</th>
                                     <th>تعداد رشته های تحصیلی کم متقاضی</th>
+                                    <th>سال</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -60,7 +62,7 @@
                                 @foreach ($statusAnalysisOfTheNumberOfFieldsOfStudies as $key => $statusAnalysisOfTheNumberOfFieldsOfStudy)
                                     <tr>
                                         <th scope="row">{{ $statusAnalysisOfTheNumberOfFieldsOfStudies?->firstItem() + $key }}</th>
-        
+
                                         <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfFieldsOfStudy->county?->name }}
                                         </td>
                                         <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->unit }}</td>
@@ -83,20 +85,20 @@
                                         <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->low_number_of_applicants }}</td>
                                         <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->year }}</td>
                                         <td>
-        
+
                                             <a href="{{ route('status.analysis.of.the.number.of.fields.of.study.edit', $statusAnalysisOfTheNumberOfFieldsOfStudy) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('status.analysis.of.the.number.of.fields.of.study.destroy', $statusAnalysisOfTheNumberOfFieldsOfStudy) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $statusAnalysisOfTheNumberOfFieldsOfStudies->withQueryString()->links('pagination::bootstrap-4') }}

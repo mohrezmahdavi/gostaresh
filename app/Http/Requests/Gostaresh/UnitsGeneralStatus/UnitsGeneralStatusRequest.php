@@ -31,10 +31,10 @@ class UnitsGeneralStatusRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'degree/rank' => 'required|numeric|gte:0|lte:2147483647',
-            'score' => 'required|numeric|gte:0|lte:2147483647',
-            'established_year' => 'required|numeric|gte:0|lte:2147483647',
-            'approved_number_and_titles_of_the_faculty' => 'required|numeric|gte:0|lte:2147483647',
+            'degree/rank' => 'required|max:255',
+            'score' => 'required|max:255',
+            'established_year' => 'required|max:255',
+            'approved_number_and_titles_of_the_faculty' => 'required|max:255',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

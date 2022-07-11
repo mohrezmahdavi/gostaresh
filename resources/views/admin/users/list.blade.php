@@ -114,14 +114,17 @@
                                             @endforeach
                                         </td>
                                         <td>
+                                            @if(auth()->user()->hasPermissionTo('edit-any-user'))
+                                                <a href="{{ route('admin.user.edit', $user) }}"
+                                                    title="{{ __('validation.buttons.edit') }}"
+                                                    class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                            @endif
 
-                                            <a href="{{ route('admin.user.edit', $user) }}"
-                                                title="{{ __('validation.buttons.edit') }}"
-                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                            
-                                            <a href="{{ route('admin.user.delete', $user) }}"
+                                            @if(auth()->user()->hasPermissionTo('delete-any-user'))
+                                                <a href="{{ route('admin.user.delete', $user) }}"
                                                 title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                            @endif
                                         </td>
 
                                     </tr>

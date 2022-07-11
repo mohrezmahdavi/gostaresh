@@ -27,7 +27,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('multiple.deprivation.index.of.city.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('poverty.of.provincial.city.store') }}" role="form">
                         @csrf
                         <select-province-component></select-province-component>
 
@@ -44,13 +44,13 @@
                             </div>
                         </div>
 
-                        
+
                         <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

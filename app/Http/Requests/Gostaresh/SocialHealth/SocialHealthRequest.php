@@ -26,18 +26,18 @@ class SocialHealthRequest extends FormRequest
     {
         return [
             'country_id' => 'nullable|numeric|gte:0',
-            'province_id'=> 'required|numeric|gte:0',
+            'province_id'=> 'nullable|numeric|gte:0',
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required',
+            'unit' => 'required|max:255',
             'component' => 'required|numeric|gte:0',
             'gender_id' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|numeric|gte:0',
-            'bachelor_degree' => 'required|numeric|gte:0',
-            'masters' => 'required|numeric|gte:0',
-            'professional_doctor' => 'required|numeric|gte:0',
-            'phd' => 'required|numeric|gte:0',
+            'associate_degree' => 'required|numeric|gte:0|lte:2147483647',
+            'bachelor_degree' => 'required|numeric|gte:0|lte:2147483647',
+            'masters' => 'required|numeric|gte:0|lte:2147483647',
+            'professional_doctor' => 'required|numeric|gte:0|lte:2147483647',
+            'phd' => 'required|numeric|gte:0|lte:2147483647',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

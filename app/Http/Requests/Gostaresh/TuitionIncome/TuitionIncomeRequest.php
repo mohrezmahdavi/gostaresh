@@ -32,10 +32,10 @@ class TuitionIncomeRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|between:-99.99,99.99',
-            'bachelor_degree' => 'required|between:-99.99,99.99',
-            'masters' => 'required|between:-99.99,99.99',
-            'phd' => 'required|between:-99.99,99.99',
+            'associate_degree' => 'required|numeric',
+            'bachelor_degree' => 'required|numeric',
+            'masters' => 'required|numeric',
+            'phd' => 'required|numeric',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

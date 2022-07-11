@@ -165,11 +165,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="percentage_of_sample_professors_in_unit" id="percentage_of_sample_professors_in_unit" class="form-select" >
-                                    @foreach (config('gostaresh.amount') as $key => $value)
-                                        <option {{ ($key == old('percentage_of_sample_professors_in_unit') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" id="percentage_of_sample_professors_in_unit" name="percentage_of_sample_professors_in_unit"
+                                       value="{{ old('percentage_of_sample_professors_in_unit') }}" class="form-control"
+                                       placeholder=" درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان را وارد کنید...">
                             </div>
                         </div>
 
@@ -179,11 +177,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="percentage_of_sample_professors_in_province" id="percentage_of_sample_professors_in_province" class="form-select" >
-                                    @foreach (config('gostaresh.amount') as $key => $value)
-                                        <option {{ ($key == old('percentage_of_sample_professors_in_province') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" id="percentage_of_sample_professors_in_province" name="percentage_of_sample_professors_in_province"
+                                       value="{{ old('percentage_of_sample_professors_in_province') }}" class="form-control"
+                                       placeholder=" درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
 
@@ -193,11 +189,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="percentage_of_sample_students_in_unit" id="percentage_of_sample_students_in_unit" class="form-select" >
-                                    @foreach (config('gostaresh.amount') as $key => $value)
-                                        <option {{ ($key == old('percentage_of_sample_students_in_unit') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" id="percentage_of_sample_students_in_unit" name="percentage_of_sample_students_in_unit"
+                                       value="{{ old('percentage_of_sample_students_in_unit') }}" class="form-control"
+                                       placeholder=" درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان را وارد کنید...">
                             </div>
                         </div>
 
@@ -207,11 +201,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="percentage_of_sample_students_in_province" id="percentage_of_sample_students_in_province" class="form-select" >
-                                    @foreach (config('gostaresh.amount') as $key => $value)
-                                        <option {{ ($key == old('percentage_of_sample_students_in_province') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" id="percentage_of_sample_students_in_province" name="percentage_of_sample_students_in_province"
+                                       value="{{ old('percentage_of_sample_students_in_province') }}" class="form-control"
+                                       placeholder=" درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
 

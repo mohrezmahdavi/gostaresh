@@ -90,6 +90,8 @@
                             </div>
                         </div>
 
+                        <select-province-component></select-province-component>
+
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>
                 </div>
@@ -99,5 +101,5 @@
 @endsection
 
 @section('body-scripts')
-
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

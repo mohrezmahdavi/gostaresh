@@ -33,9 +33,9 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
-                                    <th>#</th>                                    <th>بخش </th>
+                                    <th>#</th>
                                     <th>شهرستان</th>
                                     <th>بخش</th>
                                     <th>مقدار</th>
@@ -52,20 +52,20 @@
                                         <td>{{ $gdpPart?->amount }}</td>
                                         <td>{{ $gdpPart?->year }}</td>
                                         <td>
-        
+
                                             <a href="{{ route('gdp.part.edit', $gdpPart) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('gdp.part.destroy', $gdpPart) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $gdpParts->withQueryString()->links('pagination::bootstrap-4') }}

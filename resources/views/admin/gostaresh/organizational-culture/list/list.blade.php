@@ -119,34 +119,10 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->percentage_of_sample_professors_in_unit)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->percentage_of_sample_professors_in_province)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->percentage_of_sample_students_in_unit)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->percentage_of_sample_students_in_province)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
+                                    <td>{{$organizationalCulture->percentage_of_sample_professors_in_unit}}</td>
+                                    <td>{{$organizationalCulture->percentage_of_sample_professors_in_province}}</td>
+                                    <td>{{$organizationalCulture->percentage_of_sample_students_in_unit}}</td>
+                                    <td>{{$organizationalCulture->percentage_of_sample_students_in_province}}</td>
                                     <td>
                                         @foreach (config('gostaresh.amount') as $key => $value)
                                             @if ($key == $organizationalCulture->brand_influence_in_the_province)

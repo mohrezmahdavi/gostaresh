@@ -45,7 +45,7 @@ return new class extends Migration
             $table->unsignedInteger('number_of_international_conferences_held')->comment('تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر')->nullable();
             $table->unsignedInteger('number_of_international_scientific_books')->comment('تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی')->nullable();
             $table->unsignedInteger('number_of_international_agreements_implemented')->comment('تعداد تفاهم نامه های بین المللی اجرایی شده')->nullable();
-            $table->unsignedInteger('amount_of_international_research_credits')->comment('میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده')->nullable();
+            $table->float('amount_of_international_research_credits')->comment('میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده')->nullable();
             $table->unsignedInteger('number_of_international_publications')->comment('تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus)')->nullable();
 
             $table->integer('year')->unsigned()->nullable();

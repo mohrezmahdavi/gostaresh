@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\PercapitaStatusAnalysis\AssetProductivityRequest;
+use App\Http\Requests\Gostaresh\PercapitaStatusAnalysis\PercapitaStatusAnalysisRequest;
 use App\Models\Index\PercapitaStatusAnalysis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 46 Controller
@@ -35,10 +34,10 @@ class PercapitaStatusAnalysesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param AssetProductivityRequest $request
+     * @param PercapitaStatusAnalysisRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AssetProductivityRequest $request)
+    public function store(PercapitaStatusAnalysisRequest $request)
     {
          PercapitaStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -69,11 +68,11 @@ class PercapitaStatusAnalysesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AssetProductivityRequest $request
+     * @param PercapitaStatusAnalysisRequest $request
      * @param PercapitaStatusAnalysis $percapitaStatusAnalysis
      * @return \Illuminate\Http\Response
      */
-    public function update(AssetProductivityRequest $request, PercapitaStatusAnalysis $percapitaStatusAnalysis)
+    public function update(PercapitaStatusAnalysisRequest $request, PercapitaStatusAnalysis $percapitaStatusAnalysis)
     {
         $percapitaStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             CountiesSeeder::class,
             RuralDistrictSeeder::class,
             CitiesIranSeeder::class,
+            UserSeeder::class,
+            RolePermissionSeeder::class
         ]);
     }
 }

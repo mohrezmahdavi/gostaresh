@@ -286,7 +286,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="amount_of_international_research_credits" name="amount_of_international_research_credits"
+                                <input type="text" id="amount_of_international_research_credits" name="amount_of_international_research_credits"
                                        value="{{ $internationalResearch->amount_of_international_research_credits }}" class="form-control"
                                        placeholder=" میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده را وارد کنید...">
                             </div>

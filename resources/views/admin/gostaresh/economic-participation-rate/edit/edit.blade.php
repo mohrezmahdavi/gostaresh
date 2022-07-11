@@ -59,7 +59,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="education_id" id="education_id" class="form-select">
-                                    @foreach (config('titles.education') as $key => $value)
+                                    @foreach (config('gostaresh.education') as $key => $value)
                                         <option {{ $key == $economicParticipationRate->education_id ? 'selected' : '' }}
                                             value="{{ $key }}">
                                             {{ $value }}</option>
@@ -75,7 +75,7 @@
                         <x-select-year :default="$economicParticipationRate->year" :required="false" name="year"></x-select-year>
 
                         <x-select-month :default="$economicParticipationRate->month" :required="false" name="month"></x-select-month>
-                        
+
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>
                 </div>

@@ -11,6 +11,9 @@ class ListController extends Controller
 {
     public function list(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('view-all-users'))
+            abort(403);
+
         $query = User::query();
 
         if (request('first_name')) {

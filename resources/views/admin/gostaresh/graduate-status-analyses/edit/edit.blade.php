@@ -81,7 +81,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="graduate_growth_rate" name="graduate_growth_rate"
+                                <input type="text" id="graduate_growth_rate" name="graduate_growth_rate"
                                        value="{{ $graduateStatusAnalysis->graduate_growth_rate }}" class="form-control"
                                        placeholder=" نرخ رشد فارغ التحصیلان را وارد کنید...">
                             </div>

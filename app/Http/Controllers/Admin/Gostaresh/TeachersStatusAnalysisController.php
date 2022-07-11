@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\ResearchOutputStatusAnalysisRequest;
+use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\TeachersStatusAnalysisRequest;
 use App\Models\Index\TeachersStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 // Table 34 Controller
@@ -40,10 +38,10 @@ class TeachersStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ResearchOutputStatusAnalysisRequest $request
+     * @param TeachersStatusAnalysisRequest $request
      * @return RedirectResponse
      */
-    public function store(ResearchOutputStatusAnalysisRequest $request): RedirectResponse
+    public function store(TeachersStatusAnalysisRequest $request): RedirectResponse
     {
         TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -74,11 +72,11 @@ class TeachersStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ResearchOutputStatusAnalysisRequest $request
+     * @param TeachersStatusAnalysisRequest $request
      * @param TeachersStatusAnalysis $teachersStatusAnalysis
      * @return RedirectResponse
      */
-    public function update(ResearchOutputStatusAnalysisRequest $request, TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
+    public function update(TeachersStatusAnalysisRequest $request, TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
     {
         $teachersStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

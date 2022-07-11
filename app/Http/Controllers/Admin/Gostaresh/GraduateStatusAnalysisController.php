@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Gostaresh\GraduateStatusAnalysis\TeachersStatusAnalysisRequest;
+use App\Http\Requests\Gostaresh\GraduateStatusAnalysis\GraduateStatusAnalysisRequest;
 use App\Models\Index\GraduateStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 // Table 33 Controller
@@ -39,10 +38,10 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param TeachersStatusAnalysisRequest $request
+     * @param GraduateStatusAnalysisRequest $request
      * @return RedirectResponse
      */
-    public function store(TeachersStatusAnalysisRequest $request): RedirectResponse
+    public function store(GraduateStatusAnalysisRequest $request): RedirectResponse
     {
         GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -73,11 +72,11 @@ class GraduateStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param TeachersStatusAnalysisRequest $request
+     * @param GraduateStatusAnalysisRequest $request
      * @param GraduateStatusAnalysis $graduateStatusAnalysis
      * @return RedirectResponse
      */
-    public function update(TeachersStatusAnalysisRequest $request, GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
+    public function update(GraduateStatusAnalysisRequest $request, GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
         $graduateStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

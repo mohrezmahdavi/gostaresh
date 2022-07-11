@@ -51,7 +51,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_revenue" name="total_revenue"
+                                <input type="text" id="total_revenue" name="total_revenue"
                                        value="{{ old('total_revenue') }}" class="form-control"
                                        placeholder=" کل درآمد ها را وارد کنید...">
                             </div>
@@ -63,7 +63,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="income_from_student_tuition" name="income_from_student_tuition"
+                                <input type="text" id="income_from_student_tuition" name="income_from_student_tuition"
                                        value="{{ old('income_from_student_tuition') }}" class="form-control"
                                        placeholder=" درآمد حاصل از شهریه دانشجویان را وارد کنید...">
                             </div>
@@ -75,7 +75,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="income_from_commercialized_technologies" name="income_from_commercialized_technologies"
+                                <input type="text" id="income_from_commercialized_technologies" name="income_from_commercialized_technologies"
                                        value="{{ old('income_from_commercialized_technologies') }}" class="form-control"
                                        placeholder=" درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده را وارد کنید...">
                             </div>
@@ -87,7 +87,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="income_from_research_activities" name="income_from_research_activities"
+                                <input type="text" id="income_from_research_activities" name="income_from_research_activities"
                                        value="{{ old('income_from_research_activities') }}" class="form-control"
                                        placeholder=" درصد درآمد حاصل از فعالیت های تحقیق و توسعه واحد را وارد کنید...">
                             </div>
@@ -99,7 +99,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="income_from_skills_training" name="income_from_skills_training"
+                                <input type="text" id="income_from_skills_training" name="income_from_skills_training"
                                        value="{{ old('income_from_skills_training') }}" class="form-control"
                                        placeholder=" درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد را وارد کنید...">
                             </div>
@@ -123,7 +123,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_non_tuition_income" name="total_non_tuition_income"
+                                <input type="text" id="total_non_tuition_income" name="total_non_tuition_income"
                                        value="{{ old('total_non_tuition_income') }}" class="form-control"
                                        placeholder=" مجموع درآمدهای غیر شهریه ای واحد را وارد کنید...">
                             </div>
@@ -135,7 +135,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_international_income" name="total_international_income"
+                                <input type="text" id="total_international_income" name="total_international_income"
                                        value="{{ old('total_international_income') }}" class="form-control"
                                        placeholder=" مجموع درآمد های ناشی از فعالیت های بین المللی را وارد کنید...">
                             </div>
