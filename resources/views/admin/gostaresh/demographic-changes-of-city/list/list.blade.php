@@ -119,6 +119,19 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.demographic-changes-of-city.line-chart-by-population-component />
+        </div>
+        
+        <div class="col-md-6">
+            <x-gostaresh.demographic-changes-of-city.line-chart-by-immigration-rate-component />
+        </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.demographic-changes-of-city.line-chart-by-grow-rate-component />
+        </div>
+    </div>
 @endsection
 
 @section('body-scripts')

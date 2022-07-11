@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "comma/aban": "2.x",
+        "comma/lachart": "dev-master",
         "guzzlehttp/guzzle": "^7.2",
         "hekmatinasser/verta": "^2.1",
         "laravel/framework": "^9.11",
@@ -27,6 +28,10 @@
         {
             "type": "vcs",
             "url":  "https://gitlab.aanplatform.com/comma/aban.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.aanplatform.com/comma/lachart.git"
         }
     ],
     "autoload": {
