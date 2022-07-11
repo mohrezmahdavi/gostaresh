@@ -126,6 +126,13 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.number-student-population.line-chart-by-gender-component />
+        </div>
+        
+    </div>
 @endsection
 
 @section('body-scripts')
