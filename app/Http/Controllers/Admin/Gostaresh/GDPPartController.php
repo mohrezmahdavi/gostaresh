@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GDPPart\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GDPPart;
 use GMP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 // Table 6 Controller
 class GDPPartController extends Controller
@@ -18,8 +20,22 @@ class GDPPartController extends Controller
      */
     public function index()
     {
-        $gdpParts = GDPPart::orderBy('id', 'desc')->paginate(20);
+        $query = $this->getGDPPartsQuery();
+        $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts'));
+    }
+
+    private function getGDPPartsQuery()
+    {
+        $query = GDPPart::query();
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGDPPartsQuery();
+        $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
+        return Excel::download(new ListExport($gdpParts), 'invoices.xlsx');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\Gostaresh\GDPCity;
+namespace App\Exports\Gostaresh\GDPPart;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -8,12 +8,12 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class ListExport implements FromCollection, WithMapping, WithHeadings
 {
-    private $gdpCities;
+    private $gdpParts;
     private $count = 0;
 
-    public function __construct($gdpCities)
+    public function __construct($gdpParts)
     {
-        $this->gdpCities = $gdpCities;
+        $this->gdpParts = $gdpParts;
     }
 
     /**
@@ -21,18 +21,18 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     */
     public function collection()
     {
-        return $this->gdpCities;
+        return $this->gdpParts;
     }
 
-    public function map($gdpCity): array
+    public function map($gdpPart): array
     {
         $this->count = $this->count + 1;
        
         return [
             $this->count,
-            $gdpCity?->province?->name . ' - ' . $gdpCity->county?->name,
-            $gdpCity?->amount,
-            $gdpCity?->year,
+            $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name,
+            $gdpPart?->amount,
+            $gdpPart?->year,
            
         ];
     }
