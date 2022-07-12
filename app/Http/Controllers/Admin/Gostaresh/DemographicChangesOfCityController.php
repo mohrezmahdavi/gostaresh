@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+
 // Table 1 Controller
 class DemographicChangesOfCityController extends Controller
 {
@@ -16,6 +19,14 @@ class DemographicChangesOfCityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $query = $this->getDemographicChangesOfCitiesQuery();
+
+        $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
+    }
+
+    private function getDemographicChangesOfCitiesQuery()
     {
         $query = DemographicChangesOfCity::query();
 
@@ -52,9 +63,14 @@ class DemographicChangesOfCityController extends Controller
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
         }
+        return $query;
+    }
 
+    public function listExcelExport()
+    {
+        $query = $this->getDemographicChangesOfCitiesQuery();
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
+        return Excel::download(new ListExport($demographicChangesOfCities), 'invoices.xlsx');
     }
 
     /**

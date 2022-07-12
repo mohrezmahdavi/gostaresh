@@ -109,8 +109,12 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
 
+                        </table>
+                        <div class="text-end mt-3">
+                                <a href="{{ route('demographic.changes.city.list.excel',  request()->query->all()) }}" class="btn btn-success ">خروجی اکسل</a>
+
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $demographicChangesOfCities->withQueryString()->links('pagination::bootstrap-4') }}
