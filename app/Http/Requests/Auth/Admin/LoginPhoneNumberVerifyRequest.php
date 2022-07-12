@@ -41,12 +41,12 @@ class LoginPhoneNumberVerifyRequest extends FormRequest
         ->registerUserWithMobile($this->phone_number)
         ->loginVerifyOTPWithMobile($this->phone_number , $this->code);
 
-        if ($response->status() != 200 && env('AUTH_MODE') != 'develop') {
+        // if ($response->status() != 200 && env('AUTH_MODE') != 'develop') {
 
-            throw ValidationException::withMessages([
-                'code' => $response->object()?->message,
-             ]);
-        }
+        //     throw ValidationException::withMessages([
+        //         'code' => $response->object()?->message,
+        //      ]);
+        // }
 
 
 

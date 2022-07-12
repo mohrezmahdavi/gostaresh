@@ -24,12 +24,12 @@ class LoginPhoneNumberRequest extends FormRequest
             ->registerUserWithMobile($this->phone_number)
             ->loginGenerateOTPWithMobile($this->phone_number);
 
-        if ($response->status() != 200 && env('AUTH_MODE') != 'develop') {
+        // if ($response->status() != 200 && env('AUTH_MODE') != 'develop') {
 
-            throw ValidationException::withMessages([
-                'code' => $response->object()?->message,
-            ]);
-        }
+        //     throw ValidationException::withMessages([
+        //         'code' => $response->object()?->message,
+        //     ]);
+        // }
     }
 
     /**
