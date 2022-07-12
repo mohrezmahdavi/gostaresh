@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 // Table 1 Controller
@@ -13,27 +16,23 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
         $query = DemographicChangesOfCity::query();
 
-        if (request()->province_id) {
+        if (request()->province_id)
             $query->where('province_id', request()->province_id);
-        }
 
-        if (request()->county_id) {
+        if (request()->county_id)
             $query->where('county_id', request()->county_id);
-        }
 
-        if (request()->city_id) {
+        if (request()->city_id)
             $query->where('city_id', request()->city_id);
-        }
 
-        if (request()->rural_district_id) {
+        if (request()->rural_district_id)
             $query->where('rural_district_id', request()->rural_district_id);
-        }
 
         if (request()->input('start_date')) {
             $startDateJ = Verta::instance(request()->input('start_date'));
@@ -53,7 +52,23 @@ class DemographicChangesOfCityController extends Controller
             });
         }
 
+        if (!auth()->user()->hasRole('admin'))
+        {
+            if (isset(auth()->user()->province_id))
+                $query->where('province_id', auth()->user()->province_id);
+
+            if (isset(auth()->user()->county_id))
+                $query->where('county_id', auth()->user()->county_id);
+
+            if (isset(auth()->user()->city_id))
+                $query->where('city_id', auth()->user()->city_id);
+
+            if (isset(auth()->user()->rural_district_id))
+                $query->where('rural_district_id', auth()->user()->rural_district_id);
+        }
+
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
     }
 
