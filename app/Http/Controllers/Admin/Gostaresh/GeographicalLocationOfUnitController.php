@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GeographicalLocationOfUnit\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GeographicalLocationOfUnit;
 use Facades\Verta;
@@ -9,6 +10,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
+use Maatwebsite\Excel\Facades\Excel;
+
 // Table 2 Controller
 class GeographicalLocationOfUnitController extends Controller
 {
@@ -18,6 +21,13 @@ class GeographicalLocationOfUnitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $query = $this->getGeographicalLocationOfUnitsQuery();
+        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
+    }
+
+    private function getGeographicalLocationOfUnitsQuery()
     {
         $query = GeographicalLocationOfUnit::query();
         if (request()->province_id) {
@@ -53,8 +63,14 @@ class GeographicalLocationOfUnitController extends Controller
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
         }
-        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGeographicalLocationOfUnitsQuery();
+        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->get();
+        return Excel::download(new ListExport($geographicalLocationOfUnits), 'invoices.xlsx');
     }
 
     /**
