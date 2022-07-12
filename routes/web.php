@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/student/population', App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class)->names('number.student.population')->parameters([
         'population' => 'numberStudentPopulation'
     ]);
+    Route::get('number/student/population/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class, 'listExcelExport'])->name('number.student.population.list.excel');
 
     // Table 4 Route
     Route::resource('growth/rate/student/population', App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class)->names('growth.rate.student.population')->parameters([
