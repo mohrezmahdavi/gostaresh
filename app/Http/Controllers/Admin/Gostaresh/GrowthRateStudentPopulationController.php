@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GrowthRateStudentPopulation\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GrowthRateStudentPopulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+
 // Table 4 Controller
 class GrowthRateStudentPopulationController extends Controller
 {
@@ -16,8 +19,22 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function index()
     {
-        $growthRateStudentPopulations = GrowthRateStudentPopulation::orderBy('id', 'desc')->paginate(20);
+        $query = $this->getGrowthRateStudentPopulationsQuery();
+        $growthRateStudentPopulations = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.growth-rate-student-population.list.list', compact('growthRateStudentPopulations'));
+    }
+
+    private function getGrowthRateStudentPopulationsQuery()
+    {
+        $query = GrowthRateStudentPopulation::query();
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGrowthRateStudentPopulationsQuery();
+        $growthRateStudentPopulations = $query->orderBy('id', 'desc')->get();
+        return Excel::download(new ListExport($growthRateStudentPopulations), 'invoices.xlsx');
     }
 
     /**
