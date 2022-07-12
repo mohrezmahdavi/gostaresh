@@ -84,6 +84,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('gdp/city', App\Http\Controllers\Admin\Gostaresh\GDPCityController::class)->names('gdp.city')->parameters([
         'city' => 'gdpCity'
     ]);
+    Route::get('gdp/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\GDPCityController::class, 'listExcelExport'])->name('gdp.city.list.excel');
+
 
     // Table 6 Route
     Route::resource('gdp/part', App\Http\Controllers\Admin\Gostaresh\GDPPartController::class)->names('gdp.part')->parameters([
