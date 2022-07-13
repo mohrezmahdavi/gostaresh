@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfVolunteersStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\NumberOfVolunteersStatusAnalysis\NumberOfVolunteersStatusAnalysisRequest;
 
 // Table 18 Controller
 class NumberOfVolunteersStatusAnalysisController extends Controller
@@ -39,10 +40,10 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfVolunteersStatusAnalysisRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfVolunteersStatusAnalysisRequest $request)
     {
         NumberOfVolunteersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfVolunteersStatusAnalysisRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
+    public function update(NumberOfVolunteersStatusAnalysisRequest $request, NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
         $numberOfVolunteersStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfNonMedicalFieldsOfStudy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\NumberOfNonMedicalFieldsOfStudy\NumberOfNonMedicalFieldsOfStudyRequest;
 // Table 26,27 Controller
 class NumberOfNonMedicalFieldsOfStudyController extends Controller
 {
@@ -38,10 +39,10 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfNonMedicalFieldsOfStudyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfNonMedicalFieldsOfStudyRequest $request)
     {
         NumberOfNonMedicalFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -72,11 +73,11 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfNonMedicalFieldsOfStudyRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
+    public function update(NumberOfNonMedicalFieldsOfStudyRequest $request, NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
     {
         $numberOfNonMedicalFieldsOfStudy->update($request->all());
         return back()->with('success', __('titles.success_update'));

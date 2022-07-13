@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalStudentGrowthRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
 
 class InternationalStudentGrowthRateController extends Controller
 {
@@ -38,10 +39,10 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  InternationalStudentGrowthRateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InternationalStudentGrowthRateRequest $request)
     {
         InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success',__('titles.success_store'));
@@ -72,11 +73,11 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  InternationalStudentGrowthRateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
+    public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
         $internationalStudentGrowthRate->update($request->all());
         return back()->with('success', __('titles.success_update'));

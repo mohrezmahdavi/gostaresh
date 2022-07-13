@@ -92,7 +92,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="annual_growth_rate_of_student_enrollment" name="annual_growth_rate_of_student_enrollment"
+                                <input type="number" style="direction: rtl" id="annual_growth_rate_of_student_enrollment" name="annual_growth_rate_of_student_enrollment"
                                        value="{{ $annualGrthRateOfStdnEnrollment->annual_growth_rate_of_student_enrollment }}" class="form-control"
                                        placeholder=" نرخ رشد را وارد کنید...">
                             </div>
@@ -105,7 +105,7 @@
 
 
                         
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

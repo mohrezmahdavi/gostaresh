@@ -105,7 +105,7 @@
                         <x-select-month :default="$numberOfStudentsStatusAnalysis->month" :required="false" name="month"></x-select-month>
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

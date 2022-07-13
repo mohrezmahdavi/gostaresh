@@ -89,13 +89,13 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_test_score_of_the_last_five_percent_of_admitted">
-                                <span>تعداد </span>&nbsp
+                                <span>مقدار </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_test_score_of_the_last_five_percent_of_admitted" name="average_test_score_of_the_last_five_percent_of_admitted"
+                                <input type="number" style="direction: rtl" id="average_test_score_of_the_last_five_percent_of_admitted" name="average_test_score_of_the_last_five_percent_of_admitted"
                                     value="{{ $avgTstScOfLastFivePctOfAdmitted->average_test_score_of_the_last_five_percent_of_admitted }}" class="form-control"
-                                    placeholder=" تعداد را وارد کنید...">
+                                    placeholder=" مقدار را وارد کنید...">
                             </div>
                         </div>
 
@@ -106,7 +106,7 @@
                         <x-select-month :default="$avgTstScOfLastFivePctOfAdmitted->month" :required="false" name="month"></x-select-month>
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>
