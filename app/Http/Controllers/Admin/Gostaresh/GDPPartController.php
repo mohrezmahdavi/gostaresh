@@ -34,7 +34,7 @@ class GDPPartController extends Controller
     public function listExcelExport()
     {
         $query = $this->getGDPPartsQuery();
-        $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
+        $gdpParts = $query->orderBy('id', 'desc')->get();
         return Excel::download(new ListExport($gdpParts), 'invoices.xlsx');
     }
 

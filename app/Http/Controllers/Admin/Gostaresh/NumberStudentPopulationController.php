@@ -67,7 +67,7 @@ class NumberStudentPopulationController extends Controller
     public function listExcelExport()
     {
         $query = $this->getNumberStudentPopulationsQuery();
-        $numberStudentPopulations = $query->orderBy('id', 'DESC')->paginate(20);
+        $numberStudentPopulations = $query->orderBy('id', 'DESC')->get();
         return Excel::download(new ListExport($numberStudentPopulations), 'invoices.xlsx');
     }
 
