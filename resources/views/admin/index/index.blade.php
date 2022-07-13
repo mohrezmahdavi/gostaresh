@@ -20,37 +20,86 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead class="thead-light">
+                    <h4 class="header-title mb-2 pb-2 border-bottom">منوی درختی شاخص ها</h4>
 
-                                <tr>
-                                    <th>#</th>
-                                    <th>نام</th>
-                                    <th>اقدام</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (config('gostaresh-urls.url') as $key => $value)
-                                    <tr>
-                                        <th scope="row">{{ $key + 1 }}</th>
-                                        <td>{{ $value['title'] }}</td>
+                    <ul class="sitemap">
+                        @foreach (config('gostaresh-urls.url') as $keyParent => $valueParent)
+                            <li>
 
-                                        <td>
-                                            <a href="{{ route($value['name'] . '.create') }}"
-                                            title="افزودن"
-                                            class="btn btn-success btn-sm">افزودن</a>
-                                            <a href="{{ route($value['name'] . '.index') }}"
-                                            title="لیست"
-                                            class="btn btn-info btn-sm">لیست</a>
-                                        </td>
+                                <a role="link" aria-disabled="true" class="text-uppercase fw-bold">
+                                    <span>{{ $keyParent }}</span>
+                                </a>
 
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
 
-                    </div> <!-- end table-responsive-->
+                                @if (count($valueParent) > 0)
+                                    <ul>
+                                        @foreach ($valueParent as $keyMiddle => $valueMiddle)
+                                            <li>
+
+                                                <a role="link" aria-disabled="true">
+                                                    {{ $keyMiddle }}
+
+                                                </a>
+
+
+                                                @if (count($valueMiddle) > 0)
+                                                    <ul>
+                                                        @foreach ($valueMiddle as $key => $value)
+                                                            <li>
+
+                                                                <a href="{{ route($value['name'] . '.index') }}" >
+                                                                    {{ $value['title'] }}
+
+                                                                </a>
+
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {{-- @foreach (config('gostaresh-urls.url') as $key => $value)
+
+                            
+
+                            <tr>
+                                <th scope="row">{{ $key + 1 }}</th>
+                                <td>{{ $value['title'] }}</td>
+
+                                <td>
+                                    <a href="{{ route($value['name'] . '.create') }}" title="افزودن"
+                                        class="btn btn-success btn-sm">افزودن</a>
+                                    <a href="{{ route($value['name'] . '.index') }}" title="لیست"
+                                        class="btn btn-info btn-sm">لیست</a>
+                                </td>
+
+                            </tr>
+                        @endforeach --}}
+
+
                 </div>
             </div>
         </div>
