@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\PovertyOfProvincialCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\PovertyOfProvincialCity\PovertyOfProvincialCityRequest;
 
 //Table 14 Controller
 class PovertyOfProvincialCityController extends Controller
@@ -39,10 +40,10 @@ class PovertyOfProvincialCityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  PovertyOfProvincialCityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PovertyOfProvincialCityRequest $request)
     {
         PovertyOfProvincialCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class PovertyOfProvincialCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  PovertyOfProvincialCityRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PovertyOfProvincialCity $povertyOfProvincialCity)
+    public function update(PovertyOfProvincialCityRequest $request, PovertyOfProvincialCity $povertyOfProvincialCity)
     {
         $povertyOfProvincialCity->update($request->all());
         return back()->with('success', __('titles.success_update'));

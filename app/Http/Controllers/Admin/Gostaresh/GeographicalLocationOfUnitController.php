@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GeographicalLocationOfUnit\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GeographicalLocationOfUnit;
 use Facades\Verta;
@@ -9,6 +10,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
+use App\Http\Requests\Gostaresh\GeographicalLocationOfUnit\GeographicalLocationOfUnitRequest;
+use Maatwebsite\Excel\Facades\Excel;
+
 // Table 2 Controller
 class GeographicalLocationOfUnitController extends Controller
 {
@@ -18,6 +22,13 @@ class GeographicalLocationOfUnitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $query = $this->getGeographicalLocationOfUnitsQuery();
+        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
+        return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
+    }
+
+    private function getGeographicalLocationOfUnitsQuery()
     {
         $query = GeographicalLocationOfUnit::query();
         if (request()->province_id) {
@@ -56,9 +67,14 @@ class GeographicalLocationOfUnitController extends Controller
 
         $query = filterByOwnProvince($query);
 
-        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
+        return $query;
+    }
 
-        return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
+    public function listExcelExport()
+    {
+        $query = $this->getGeographicalLocationOfUnitsQuery();
+        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->get();
+        return Excel::download(new ListExport($geographicalLocationOfUnits), 'invoices.xlsx');
     }
 
     /**
@@ -74,10 +90,10 @@ class GeographicalLocationOfUnitController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GeographicalLocationOfUnitRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GeographicalLocationOfUnitRequest $request)
     {
         GeographicalLocationOfUnit::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
@@ -108,11 +124,11 @@ class GeographicalLocationOfUnitController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GeographicalLocationOfUnitRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
+    public function update(GeographicalLocationOfUnitRequest $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
         $geographicalLocationOfUnit->update($request->all());
         return back()->with('success', __('titles.success_update'));

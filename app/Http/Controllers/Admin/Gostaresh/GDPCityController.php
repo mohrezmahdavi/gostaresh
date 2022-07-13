@@ -17,13 +17,26 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $query = GDPCity::query();
+        $query = $this->getGDPCityQuery();
 
         $query = filterByOwnProvince($query);
 
         $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
 
         return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
+    }
+
+    private function getGDPCityQuery()
+    {
+        $query = GDPCity::query();
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGDPCityQuery();
+        $gdpCities = $query->orderBy('id' , 'desc')->get();
+        return Excel::download(new ListExport($gdpCities), 'invoices.xlsx');
     }
 
     /**

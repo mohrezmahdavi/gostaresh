@@ -65,7 +65,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <a href="{{ route('gdp.city.list.excel', request()->query->all()) }}"
+                                class="btn btn-success ">خروجی اکسل</a>
+    
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $gdpCities->withQueryString()->links('pagination::bootstrap-4') }}

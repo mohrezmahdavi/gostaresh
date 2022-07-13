@@ -7,6 +7,7 @@ use App\Models\Index\PaymentRAndDDepartment;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\PaymentRAndDDepartment\PaymentRAndDDepartmentRequest;
 
 // Table 8
 class PaymentRAndDDepartmentController extends Controller
@@ -40,12 +41,23 @@ class PaymentRAndDDepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  PaymentRAndDDepartmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaymentRAndDDepartmentRequest $request)
     {
-        PaymentRAndDDepartment::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        PaymentRAndDDepartment::create([
+            'user_id' => Auth::user()?->id,
+            'country_id' => $request->country_id ?? 1,
+            'province_id' => $request->province_id ?? null,
+            'county_id' => $request->county_id ?? null,
+            'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
+            'amount' => $request->amount_payment_rd ?? 0,
+            'year' => $request->year ?? null,
+            'month' => $request->month ?? null,
+        ]);
+        // PaymentRAndDDepartment::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -74,13 +86,23 @@ class PaymentRAndDDepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  PaymentRAndDDepartmentRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaymentRAndDDepartment $paymentRAndDDepartment)
+    public function update(PaymentRAndDDepartmentRequest $request, PaymentRAndDDepartment $paymentRAndDDepartment)
     {
-        $paymentRAndDDepartment->update($request->all());
+        $paymentRAndDDepartment->update([
+            'country_id' => $request->country_id ?? 1,
+            'province_id' => $request->province_id ?? null,
+            'county_id' => $request->county_id ?? null,
+            'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
+            'amount' => $request->amount_payment_rd ?? 0,
+            'year' => $request->year ?? null,
+            'month' => $request->month ?? null,
+        ]);
+        // $paymentRAndDDepartment->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 

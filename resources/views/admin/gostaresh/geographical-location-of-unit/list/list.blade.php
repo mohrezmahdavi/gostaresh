@@ -20,7 +20,7 @@
 @endsection
 
 @section('styles-head')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
@@ -34,7 +34,7 @@
             <div class="card">
                 <div class="card-body">
                     <form action="" method="get">
-                        <div class="row"  id="app">
+                        <div class="row" id="app">
                             <div class="col-md-12">
                                 <select-province-inline-component
                                     province_default="{{ auth()->user()->province_id ?? request()->province_id }}"
@@ -45,11 +45,83 @@
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6">
-                                <x-search-date name="date"
-                                    startDate="{{ request()->input('start_date') }}"
+                            <div class="col-md-4">
+                                <x-search-date name="date" startDate="{{ request()->input('start_date') }}"
                                     endDate="{{ request()->input('end_date') }}">
                                 </x-search-date>
+                            </div>
+                            <div class="col-md-8 mt-4">
+                                <div class="mt-1">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="distance_from_population_density_of_city">فاصله
+                                            از تراکم جمعیتی شهر</label>
+                                        <input class="form-check-input" name="distance_from_population_density_of_city"
+                                            type="checkbox"
+                                            {{ filterCol('distance_from_population_density_of_city') == true ? 'checked' : '' }}
+                                            id="distance_from_population_density_of_city" value="1">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="distance_from_center_of_province">فاصله از مرکز
+                                            استان</label>
+                                        <input class="form-check-input" name="distance_from_center_of_province"
+                                            type="checkbox"
+                                            {{ filterCol('distance_from_center_of_province') == true ? 'checked' : '' }}
+                                            id="distance_from_center_of_province" value="1">
+
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="climate_type_and_weather_conditions_title">نوع
+                                            اقلیم و شرایط آب و هوایی</label>
+                                        <input class="form-check-input" name="climate_type_and_weather_conditions_title"
+                                            type="checkbox"
+                                            {{ filterCol('climate_type_and_weather_conditions_title') == true ? 'checked' : '' }}
+                                            id="climate_type_and_weather_conditions_title" value="1">
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label"
+                                            for="distance_to_the_nearest_higher_education_center">فاصله تا نزدیکترین مرکز
+                                            آموزش عالی</label>
+                                        <input class="form-check-input"
+                                            name="distance_to_the_nearest_higher_education_center" type="checkbox"
+                                            {{ filterCol('distance_to_the_nearest_higher_education_center') == true ? 'checked' : '' }}
+                                            id="distance_to_the_nearest_higher_education_center" value="1">
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label"
+                                            for="distance_to_the_nearest_unit_of_azad_university">فاصله تا نزدیکترین واحد
+                                            دانشگاه آزاد</label>
+                                        <input class="form-check-input"
+                                            name="distance_to_the_nearest_unit_of_azad_university" type="checkbox"
+                                            {{ filterCol('distance_to_the_nearest_unit_of_azad_university') == true ? 'checked' : '' }}
+                                            id="distance_to_the_nearest_unit_of_azad_university" value="1">
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="level_and_quality_of_access_title">سطح و کیفیت
+                                            دسترسی</label>
+                                        <input class="form-check-input" name="level_and_quality_of_access_title"
+                                            type="checkbox"
+                                            {{ filterCol('level_and_quality_of_access_title') == true ? 'checked' : '' }}
+                                            id="level_and_quality_of_access_title" value="1">
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label"
+                                            for="international_opportunities_geographical_location_title">فرصت های بین الملی
+                                            موقعیت جغرافیایی</label>
+                                        <input class="form-check-input"
+                                            name="international_opportunities_geographical_location_title" type="checkbox"
+                                            {{ filterCol('international_opportunities_geographical_location_title') == true ? 'checked' : '' }}
+                                            id="international_opportunities_geographical_location_title" value="1">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -77,13 +149,28 @@
                                     <th>شهرستان </th>
                                     <th>واحد دانشگاهی</th>
                                     <th>ساختمان واحد دانشگاهی</th>
-                                    <th>فاصله از تراکم جمعیتی شهر</th>
-                                    <th>فاصله از مرکز استان</th>
-                                    <th>نوع اقلیم و شرایط آب و هوایی</th>
-                                    <th>فاصله تا نزدیکترین مرکز آموزش عالی</th>
-                                    <th>فاصله تا نزدیکترین واحد دانشگاه آزاد</th>
-                                    <th>سطح و کیفیت دسترسی</th>
-                                    <th>فرصت های بین الملی موقعیت جغرافیایی</th>
+                                    @if (filterCol('distance_from_population_density_of_city') == true)
+                                        <th>فاصله از تراکم جمعیتی شهر</th>
+                                    @endif
+                                    @if (filterCol('distance_from_center_of_province') == true)
+                                        <th>فاصله از مرکز استان</th>
+                                    @endif
+                                    @if (filterCol('climate_type_and_weather_conditions_title') == true)
+                                        <th>نوع اقلیم و شرایط آب و هوایی</th>
+                                    @endif
+                                    @if (filterCol('distance_to_the_nearest_higher_education_center') == true)
+                                        <th>فاصله تا نزدیکترین مرکز آموزش عالی</th>
+                                    @endif
+                                    @if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true)
+                                        <th>فاصله تا نزدیکترین واحد دانشگاه آزاد</th>
+                                    @endif
+                                    @if (filterCol('level_and_quality_of_access_title') == true)
+                                        <th>سطح و کیفیت دسترسی</th>
+                                    @endif
+                                    @if (filterCol('international_opportunities_geographical_location_title') == true)
+                                        <th>فرصت های بین الملی موقعیت جغرافیایی</th>
+                                    @endif
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -96,17 +183,41 @@
                                         </td>
                                         <td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
                                         <td>{{ $geographicalLocationOfUnit?->university_building }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
-                                        </td>
-                                        <td>{{ $geographicalLocationOfUnit?->distance_from_center_of_province }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center }}
-                                        </td>
-                                        <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university }}
-                                        </td>
-                                        <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access_title }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location_title }}
-                                        </td>
+
+                                        @if (filterCol('distance_from_population_density_of_city') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
+                                            </td>
+                                        @endif
+                                        @if (filterCol('distance_from_center_of_province') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->distance_from_center_of_province }}</td>
+                                        @endif
+                                        @if (filterCol('climate_type_and_weather_conditions_title') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title }}
+                                            </td>
+                                        @endif
+                                        @if (filterCol('distance_to_the_nearest_higher_education_center') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center }}
+                                            </td>
+                                        @endif
+                                        @if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university }}
+                                            </td>
+                                        @endif
+                                        @if (filterCol('level_and_quality_of_access_title') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access_title }}
+                                            </td>
+                                        @endif
+                                        @if (filterCol('international_opportunities_geographical_location_title') == true)
+                                            <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location_title }}
+                                            </td>
+                                        @endif
+
+
+
+
+
+
+
                                         <td>
 
                                             <a href="{{ route('geographical.location.unit.edit', $geographicalLocationOfUnit) }}"
@@ -114,7 +225,7 @@
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
                                             <a href="{{ route('geographical.location.unit.destroy', $geographicalLocationOfUnit) }}"
-                                                 title="{{ __('validation.buttons.delete') }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -122,8 +233,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="text-end mt-3">
+                            <a href="{{ route('geographical.location.unit.list.excel', request()->query->all()) }}"
+                                class="btn btn-success ">خروجی اکسل</a>
 
+                        </div>
                     </div> <!-- end table-responsive-->
+
+
                     <div class="mt-3">
                         {{ $geographicalLocationOfUnits->withQueryString()->links('pagination::bootstrap-4') }}
                     </div>
@@ -144,6 +261,5 @@
 @endsection
 
 @section('body-scripts')
-<script src="{{ mix('/js/app.js') }}"></script>
-
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

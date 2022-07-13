@@ -64,7 +64,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_from_population_density_of_city" name="distance_from_population_density_of_city" value="{{ old('distance_from_population_density_of_city') }}"
+                                <input type="number" style="direction: rtl" id="distance_from_population_density_of_city" name="distance_from_population_density_of_city" value="{{ old('distance_from_population_density_of_city') }}"
                                     class="form-control" placeholder="فاصله از تراکم جمعیتی شهر را وارد کنید...">
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_from_center_of_province" name="distance_from_center_of_province" value="{{ old('distance_from_center_of_province') }}"
+                                <input type="number" style="direction: rtl" id="distance_from_center_of_province" name="distance_from_center_of_province" value="{{ old('distance_from_center_of_province') }}"
                                     class="form-control" placeholder="فاصله از مرکز استان را وارد کنید...">
                             </div>
                         </div>

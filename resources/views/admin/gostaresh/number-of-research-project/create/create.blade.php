@@ -42,7 +42,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_research" name="number_of_research" value="{{ old('number_of_research') }}"
+                                <input type="number" style="direction: rtl" id="number_of_research" name="number_of_research" value="{{ old('number_of_research') }}"
                                     class="form-control" placeholder="تعداد پژوهش ها را وارد کنید...">
                             </div>
                         </div>

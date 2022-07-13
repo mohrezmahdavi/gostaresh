@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد نرخ فقر شهرستان های استان
+ایجاد تحلیل وضعیت شاخص محرومیت چندگانه
 @endsection
 
 @section('breadcrumb-title')
-ایجاد نرخ فقر شهرستان های استان
+ایجاد تحلیل وضعیت شاخص محرومیت چندگانه
 @endsection
 
 @section('page-title')
-ایجاد نرخ فقر شهرستان های استان
+ایجاد تحلیل وضعیت شاخص محرومیت چندگانه
 <span>
     <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
 </span>

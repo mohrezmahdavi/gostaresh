@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GDPPart\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GDPPart;
 use GMP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\GDPPart\GDPPartRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 // Table 6 Controller
 class GDPPartController extends Controller
@@ -18,13 +21,23 @@ class GDPPartController extends Controller
      */
     public function index()
     {
-        $query = GDPPart::query();
-
+        $query = $this->getGDPPartsQuery();
         $query = filterByOwnProvince($query);
-
         $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
-
         return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts'));
+    }
+
+    private function getGDPPartsQuery()
+    {
+        $query = GDPPart::query();
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGDPPartsQuery();
+        $gdpParts = $query->orderBy('id', 'desc')->get();
+        return Excel::download(new ListExport($gdpParts), 'invoices.xlsx');
     }
 
     /**
@@ -40,10 +53,10 @@ class GDPPartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPPartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GDPPartRequest $request)
     {
         GDPPart::create(array_merge(['user_id' => Auth::id()] , $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -74,11 +87,11 @@ class GDPPartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPPartRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GDPPart $gdpPart)
+    public function update(GDPPartRequest $request, GDPPart $gdpPart)
     {
         $gdpPart->update($request->all());
         return back()->with('success', __('titles.success_update'));

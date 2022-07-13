@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\MultipleDeprivationIndexOfCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\MultipleDeprivationIndexOfCity\MultipleDeprivationIndexOfCityRequest;
 // Table 13 Controller
 class MultipleDeprivationIndexOfCityController extends Controller
 {
@@ -38,10 +39,10 @@ class MultipleDeprivationIndexOfCityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  MultipleDeprivationIndexOfCityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MultipleDeprivationIndexOfCityRequest $request)
     {
         MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -72,11 +73,11 @@ class MultipleDeprivationIndexOfCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  MultipleDeprivationIndexOfCityRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
+    public function update(MultipleDeprivationIndexOfCityRequest $request, MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
         $multipleDeprivationIndexOfCity->update($request->all());
         return back()->with('success', __('titles.success_update'));

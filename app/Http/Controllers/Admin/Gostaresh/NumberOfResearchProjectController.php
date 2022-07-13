@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfResearchProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\NumberOfResearchProject\NumberOfResearchProjectRequest;
 
 // Table 7 Controller
 class NumberOfResearchProjectController extends Controller
@@ -39,10 +40,10 @@ class NumberOfResearchProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfResearchProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfResearchProjectRequest $request)
     {
         NumberOfResearchProject::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class NumberOfResearchProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfResearchProjectRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfResearchProject $numberOfResearchProject)
+    public function update(NumberOfResearchProjectRequest $request, NumberOfResearchProject $numberOfResearchProject)
     {
         $numberOfResearchProject->update($request->all());
         return back()->with('success', __('titles.success_update'));
