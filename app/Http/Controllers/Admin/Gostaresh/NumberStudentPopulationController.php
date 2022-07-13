@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberStudentPopulation\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberStudentPopulation;
 use Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberStudentPopulation\NumberStudentPopulationRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 // Table 3 Controller
 class NumberStudentPopulationController extends Controller
@@ -18,6 +20,13 @@ class NumberStudentPopulationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $query = $this->getNumberStudentPopulationsQuery();
+        $numberStudentPopulations = $query->orderBy('id', 'DESC')->paginate(20);
+        return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
+    }
+
+    private function getNumberStudentPopulationsQuery()
     {
         $query = NumberStudentPopulation::query();
         if (request()->province_id) {
@@ -53,9 +62,14 @@ class NumberStudentPopulationController extends Controller
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
         }
+        return $query;
+    }
 
-        $numberStudentPopulations = $query->orderBy('id', 'DESC')->paginate(20);
-        return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
+    public function listExcelExport()
+    {
+        $query = $this->getNumberStudentPopulationsQuery();
+        $numberStudentPopulations = $query->orderBy('id', 'DESC')->get();
+        return Excel::download(new ListExport($numberStudentPopulations), 'invoices.xlsx');
     }
 
     /**

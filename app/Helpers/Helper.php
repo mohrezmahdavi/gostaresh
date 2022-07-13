@@ -27,3 +27,28 @@ if (!function_exists('convertPersianToEnglishInInputRequests')) {
     }
 }
 
+if (!function_exists('filterCol')) {
+    function filterCol(string $fieldName)
+    {
+        if (request()->has($fieldName)) {
+            if (request()->input($fieldName) == 1) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (request()->query() == null) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
+

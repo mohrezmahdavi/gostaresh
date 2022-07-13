@@ -143,14 +143,25 @@
                     </a>
                     <div class="collapse" id="sidebarDashboardsAtlas">
                         <ul class="nav-second-level">
-                            @foreach (array_slice(config('gostaresh-urls.url'), 0, 3) as $key => $value)
+                            {{-- @foreach (array_slice(config('gostaresh-urls.url'), 0, 3) as $key => $value)
 
                                 <li>
                                     <a href="{{ route($value['name'] . '.index') }}"><i
                                             class="ri-calendar-2-line align-middle me-1"></i>{{ $value['title'] }}</a>
                                 </li>
-                            @endforeach
-
+                            @endforeach --}}
+                            <li>
+                                <a href="{{ route('demographic.changes.city.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>روند تحولات جمعیتی شهرستان های استان</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('geographical.location.unit.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>وضعیت جغرافیایی واحد و دسترسی به آن در استان</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('number.student.population.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>تعداد و ترکیب جمعیت دانش آموزی استان</a>
+                            </li>
 
                         </ul>
                     </div>

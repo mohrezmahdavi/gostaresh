@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GDPCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\GDPCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\GDPCity\GDPCityRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 // Table 5 Controller
 class GDPCityController extends Controller
@@ -18,8 +20,22 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $gdpCities = GDPCity::orderBy('id' , 'desc')->paginate(20);
+        $query = $this->getGDPCityQuery();
+        $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
         return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
+    }
+
+    private function getGDPCityQuery()
+    {
+        $query = GDPCity::query();
+        return $query;
+    }
+
+    public function listExcelExport()
+    {
+        $query = $this->getGDPCityQuery();
+        $gdpCities = $query->orderBy('id' , 'desc')->get();
+        return Excel::download(new ListExport($gdpCities), 'invoices.xlsx');
     }
 
     /**

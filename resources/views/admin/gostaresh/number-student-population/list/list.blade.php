@@ -110,14 +110,18 @@
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
                                             <a href="{{ route('number.student.population.destroy', $numberStudentPopulation) }}"
-                                                }}" title="{{ __('validation.buttons.delete') }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <a href="{{ route('number.student.population.list.excel', request()->query->all()) }}"
+                                class="btn btn-success ">خروجی اکسل</a>
+    
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberStudentPopulations->withQueryString()->links('pagination::bootstrap-4') }}
