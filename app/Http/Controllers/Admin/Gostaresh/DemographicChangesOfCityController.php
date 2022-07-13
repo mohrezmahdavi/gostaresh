@@ -73,9 +73,7 @@ class DemographicChangesOfCityController extends Controller
             $query->where('year', request()->year);
         }
 
-        $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
-
-        return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
+        return $query;
     }
 
     public function listExcelExport()
