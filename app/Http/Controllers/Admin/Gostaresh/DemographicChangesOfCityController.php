@@ -21,9 +21,14 @@ class DemographicChangesOfCityController extends Controller
     public function index()
     {
         $query = $this->getDemographicChangesOfCitiesQuery();
-
+        $yearSelectedList = $this->yearSelectedList(clone $query);
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
+        return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->pluck('year');
     }
 
     private function getDemographicChangesOfCitiesQuery()
@@ -62,6 +67,10 @@ class DemographicChangesOfCityController extends Controller
             $query->where('year', '<=', $endYear)->orWhere(function ($query) use ($endYear, $endMonth) {
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
+        }
+
+        if (request()->year) {
+            $query->where('year', request()->year);
         }
         return $query;
     }
