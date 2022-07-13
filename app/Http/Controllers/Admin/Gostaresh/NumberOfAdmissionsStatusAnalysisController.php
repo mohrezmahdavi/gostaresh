@@ -17,7 +17,12 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfAdmissionsStatusAnalysises = NumberOfAdmissionsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfAdmissionsStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfAdmissionsStatusAnalysises = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-admissions-status-analysis.list.list', compact('numberOfAdmissionsStatusAnalysises'));
     }
 

@@ -31,8 +31,13 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component></select-province-component>
 
+                        <select-province-component
+                            province_default="{{ $numberOfNonMedicalFieldsOfStudy->province_id ?? '' }}"
+                            county_default="{{ $numberOfNonMedicalFieldsOfStudy->county_id ?? '' }}"
+                            city_default="{{ $numberOfNonMedicalFieldsOfStudy->city_id ?? '' }}"
+                            rural_district_default="{{ $numberOfNonMedicalFieldsOfStudy->rural_district_id ?? '' }}">
+                        </select-province-component>
 
 
                         <div class="form-group row mt-2">

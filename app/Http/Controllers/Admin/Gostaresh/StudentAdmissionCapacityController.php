@@ -17,7 +17,12 @@ class StudentAdmissionCapacityController extends Controller
      */
     public function index()
     {
-        $studentAdmissionCapacities = StudentAdmissionCapacity::orderBy('id', 'desc')->paginate(20);
+        $query = StudentAdmissionCapacity::query();
+
+        $query = filterByOwnProvince($query);
+
+        $studentAdmissionCapacities = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.student-admission-capacity.list.list', compact('studentAdmissionCapacities'));
     }
 

@@ -6,7 +6,9 @@ use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\DemographicChangesOfCity\DemographicChangesOfCityRequest;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,12 +19,13 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
         $query = $this->getDemographicChangesOfCitiesQuery();
         $yearSelectedList = $this->yearSelectedList(clone $query);
+        $query = filterByOwnProvince($query);
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities', 'yearSelectedList'));
     }
@@ -36,21 +39,17 @@ class DemographicChangesOfCityController extends Controller
     {
         $query = DemographicChangesOfCity::query();
 
-        if (request()->province_id) {
+        if (request()->province_id)
             $query->where('province_id', request()->province_id);
-        }
 
-        if (request()->county_id) {
+        if (request()->county_id)
             $query->where('county_id', request()->county_id);
-        }
 
-        if (request()->city_id) {
+        if (request()->city_id)
             $query->where('city_id', request()->city_id);
-        }
 
-        if (request()->rural_district_id) {
+        if (request()->rural_district_id)
             $query->where('rural_district_id', request()->rural_district_id);
-        }
 
         if (request()->input('start_date')) {
             $startDateJ = Verta::instance(request()->input('start_date'));
@@ -73,6 +72,7 @@ class DemographicChangesOfCityController extends Controller
         if (request()->year) {
             $query->where('year', request()->year);
         }
+
         return $query;
     }
 
@@ -82,6 +82,7 @@ class DemographicChangesOfCityController extends Controller
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->get();
         return Excel::download(new ListExport($demographicChangesOfCities), 'invoices.xlsx');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -131,7 +132,7 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param DemographicChangesOfCity $demographicChangesOfCity
      * @return \Illuminate\Http\Response
      */
     public function edit(DemographicChangesOfCity $demographicChangesOfCity)

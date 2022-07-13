@@ -16,7 +16,12 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function index()
     {
-        $statusAnalysisOfTheNumberOfCurriculas = StatusAnalysisOfTheNumberOfCurricula::orderBy('id', 'desc')->paginate(20);
+        $query = StatusAnalysisOfTheNumberOfCurricula::query();
+
+        $query = filterByOwnProvince($query);
+
+        $statusAnalysisOfTheNumberOfCurriculas = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.list.list', compact('statusAnalysisOfTheNumberOfCurriculas'));
     }
 

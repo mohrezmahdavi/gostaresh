@@ -31,7 +31,12 @@
                     <form class="form-horizontal" method="POST" action="{{ route('percapita-revenue.store') }}" role="form">
                         @csrf
 
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ auth()->user()->province_id ?? '' }}"
+                            county_default="{{ auth()->user()->county_id ?? '' }}"
+                            city_default="{{ auth()->user()->city_id ?? '' }}"
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                        </select-province-component>
 
                         <select-grade-component></select-grade-component>
 
@@ -93,7 +98,7 @@
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

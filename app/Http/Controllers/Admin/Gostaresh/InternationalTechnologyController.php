@@ -21,7 +21,12 @@ class InternationalTechnologyController extends Controller
      */
     public function index()
     {
-        $internationalTechnologies =  InternationalTechnology::orderBy('id', 'desc')->paginate(20);
+        $query = InternationalTechnology::query();
+
+        $query = filterByOwnProvince($query);
+
+        $internationalTechnologies = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.international-technology.list.list', compact('internationalTechnologies'));
     }
 

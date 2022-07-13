@@ -17,7 +17,12 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfStudentsStatusAnalysises = NumberOfStudentsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfStudentsStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfStudentsStatusAnalysises = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-students-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises'));
     }
 

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد میانگین رتبه آزمون 5 درصد آخر پذیرفته شدگان 
+ایجاد میانگین رتبه آزمون 5 درصد آخر پذیرفته شدگان
 @endsection
 
 @section('breadcrumb-title')
@@ -29,7 +29,13 @@
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST" action="{{ route('average.test.score.of.the.last.five.percent.of.admitted.store') }}" role="form">
                         @csrf
-                        <select-province-component></select-province-component>
+
+                        <select-province-component
+                            province_default="{{ auth()->user()->province_id ?? '' }}"
+                            county_default="{{ auth()->user()->county_id ?? '' }}"
+                            city_default="{{ auth()->user()->city_id ?? '' }}"
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
@@ -93,7 +99,7 @@
                             </div>
                         </div>
 
-                        
+
                         <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
 
                         <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>

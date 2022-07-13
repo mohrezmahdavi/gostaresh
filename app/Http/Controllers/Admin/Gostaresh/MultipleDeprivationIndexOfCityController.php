@@ -17,7 +17,12 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function index()
     {
-        $multipleDeprivationIndexOfCities = MultipleDeprivationIndexOfCity::orderBy('id', 'desc')->paginate(20);
+        $query = MultipleDeprivationIndexOfCity::query();
+
+        $query = filterByOwnProvince($query);
+
+        $multipleDeprivationIndexOfCities = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities'));
     }
 

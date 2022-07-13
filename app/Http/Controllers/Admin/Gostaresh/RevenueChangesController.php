@@ -17,7 +17,12 @@ class RevenueChangesController extends Controller
      */
     public function index()
     {
-        $revenueChanges =  RevenueChangesTrendsAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = RevenueChangesTrendsAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $revenueChanges = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.revenue-changes.list.list', compact('revenueChanges'));
     }
 

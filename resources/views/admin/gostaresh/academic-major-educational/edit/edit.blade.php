@@ -31,7 +31,7 @@
                         action="{{ route('academic.major.educational.update', $academicMajorEducational) }}" role="form">
                         @csrf
                         @method('PUT')
-                                                
+
                         <select-province-component province_default="{{ $academicMajorEducational->province_id }}"
                             county_default="{{ $academicMajorEducational->county_id }}"
                             city_default="{{ $academicMajorEducational->city_id }}"
@@ -124,7 +124,7 @@
 
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
+                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>
                 </div>
             </div>

@@ -17,7 +17,12 @@ class UnitsGeneralStatusController extends Controller
      */
     public function index()
     {
-        $unitsGeneralStatuses =  UnitsGeneralStatus::orderBy('id', 'desc')->paginate(20);
+        $query = UnitsGeneralStatus::query();
+
+        $query = filterByOwnProvince($query);
+
+        $unitsGeneralStatuses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.units-general-status.list.list', compact('unitsGeneralStatuses'));
     }
 

@@ -17,7 +17,12 @@ class SocialHealthController extends Controller
      */
     public function index()
     {
-        $socialHealths =  SocialHealthStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = SocialHealthStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $socialHealths = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.social-health.list.list', compact('socialHealths'));
     }
 

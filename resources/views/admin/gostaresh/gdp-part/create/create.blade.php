@@ -5,11 +5,11 @@
 @endsection
 
 @section('breadcrumb-title')
-سهم تولید ناخالص داخلی استان 
+سهم تولید ناخالص داخلی استان
 @endsection
 
 @section('page-title')
-سهم تولید ناخالص داخلی استان 
+سهم تولید ناخالص داخلی استان
 
 <span>
     <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -30,7 +30,12 @@
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST" action="{{ route('gdp.part.store') }}" role="form">
                         @csrf
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ auth()->user()->province_id ?? '' }}"
+                            county_default="{{ auth()->user()->county_id ?? '' }}"
+                            city_default="{{ auth()->user()->city_id ?? '' }}"
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="part">

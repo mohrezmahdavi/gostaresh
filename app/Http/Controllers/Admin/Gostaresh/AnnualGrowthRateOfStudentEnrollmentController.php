@@ -16,7 +16,12 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function index()
     {
-        $annualGrowthRateOfStudentEnrollments = AnnualGrowthRateOfStudentEnrollment::orderBy('id', 'desc')->paginate(20);
+        $query = AnnualGrowthRateOfStudentEnrollment::query();
+
+        $query = filterByOwnProvince($query);
+
+        $annualGrowthRateOfStudentEnrollments = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.list.list', compact('annualGrowthRateOfStudentEnrollments'));
     }
 

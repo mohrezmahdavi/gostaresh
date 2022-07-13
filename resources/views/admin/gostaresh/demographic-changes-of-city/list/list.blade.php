@@ -20,7 +20,7 @@
 @endsection
 
 @section('styles-head')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
@@ -36,9 +36,11 @@
                     <form action="" method="get">
                         <div class="row" id="app">
                             <div class="col-md-12">
-                                <select-province-inline-component province_default="{{ request()->province_id }}"
-                                    county_default="{{ request()->county_id }}" city_default="{{ request()->city_id }}"
-                                    rural_district_default="{{ request()->rural_district_id }}">
+                                <select-province-inline-component
+                                    province_default="{{ auth()->user()->province_id ?? request()->province_id }}"
+                                    county_default="{{ auth()->user()->county_id ?? request()->county_id }}"
+                                    city_default="{{ auth()->user()->city_id ?? request()->city_id }}"
+                                    rural_district_default="{{ auth()->user()->rural_district_id ?? request()->rural_district_id }}">
                                 </select-province-inline-component>
                             </div>
                         </div>
@@ -135,8 +137,8 @@
                                             <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
                                         @endif
 
-                                        
-                                        
+
+
                                         <td>{{ $demographicChangesOfCity?->year }}</td>
                                         <td>{{ $demographicChangesOfCity?->month }}</td>
                                         <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}

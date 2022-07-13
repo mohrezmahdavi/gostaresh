@@ -21,6 +21,7 @@ class GrowthRateStudentPopulationController extends Controller
     public function index()
     {
         $query = $this->getGrowthRateStudentPopulationsQuery();
+        $query = filterByOwnProvince($query);
         $growthRateStudentPopulations = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.growth-rate-student-population.list.list', compact('growthRateStudentPopulations'));
     }

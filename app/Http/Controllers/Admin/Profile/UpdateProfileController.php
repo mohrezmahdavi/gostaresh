@@ -14,13 +14,8 @@ class UpdateProfileController extends Controller
     public function update(UpdateUserProfileRequest $request)
     {
         $user = Auth::user();
-        
-        $user->update([
-            'first_name' => $request->first_name ?? null,
-            'last_name' => $request->last_name ?? null,
-            'phone_number' => $request->phone_number ?? null,
-            'status' => $request->status ?? null,
-        ]);
+
+        $user->update($request->validated());
         return back()->with('success','با موفقیت ویرایش شد.');
     }
 

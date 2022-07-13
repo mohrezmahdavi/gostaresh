@@ -34,6 +34,9 @@ class ListController extends Controller
             $query->where('country_id', request('country_id'));
         }
 
+        if (isset(auth()->user()->province_id) and !auth()->user()->hasRole('admin'))
+            $query->where('id', auth()->user()->province_id);
+
         $provinces = $query->get();
 
         return new ProvinceCollection($provinces);

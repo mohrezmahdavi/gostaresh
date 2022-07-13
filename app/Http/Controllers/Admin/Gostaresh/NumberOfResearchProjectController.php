@@ -18,7 +18,12 @@ class NumberOfResearchProjectController extends Controller
      */
     public function index()
     {
-        $numberOfResearchProjects = NumberOfResearchProject::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfResearchProject::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfResearchProjects = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-research-project.list.list', compact('numberOfResearchProjects'));
     }
 

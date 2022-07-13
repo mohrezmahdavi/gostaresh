@@ -19,7 +19,12 @@ class UnemploymentRateController extends Controller
      */
     public function index()
     {
-        $unemploymentRates = UnemploymentRate::orderBy('id', 'desc')->paginate(20);
+        $query = UnemploymentRate::query();
+
+        $query = filterByOwnProvince($query);
+
+        $unemploymentRates = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.unemployment-rate.list.list', compact('unemploymentRates'));
     }
 

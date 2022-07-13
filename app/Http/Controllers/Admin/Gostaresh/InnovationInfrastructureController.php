@@ -21,7 +21,12 @@ class InnovationInfrastructureController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $innovationInfrastructures = TechnologyAndInnovationInfrastructure::orderBy('id', 'desc')->paginate(20);
+        $query = TechnologyAndInnovationInfrastructure::query();
+
+        $query = filterByOwnProvince($query);
+
+        $innovationInfrastructures = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.innovation-infrastructures.list.list', compact('innovationInfrastructures'));
     }
 

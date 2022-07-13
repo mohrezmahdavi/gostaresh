@@ -16,7 +16,12 @@ class InternationalStudentGrowthRateController extends Controller
      */
     public function index()
     {
-        $internationalStudentGrowthRates = InternationalStudentGrowthRate::orderBy('id', 'desc')->paginate(20);
+        $query = InternationalStudentGrowthRate::query();
+
+        $query = filterByOwnProvince($query);
+
+        $internationalStudentGrowthRates = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.international-student-growth-rate.list.list', compact('internationalStudentGrowthRates'));
     }
 

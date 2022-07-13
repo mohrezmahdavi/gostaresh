@@ -21,7 +21,12 @@ class CulturalIndicatorsController extends Controller
      */
     public function index()
     {
-        $culturalIndicators =  CulturalIndicatorsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = CulturalIndicatorsStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $culturalIndicators = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.cultural-indicators.list.list', compact('culturalIndicators'));
     }
 

@@ -18,7 +18,12 @@ class AcademicMajorEducationalController extends Controller
      */
     public function index()
     {
-        $academicMajorEducationals = AcademicMajorEducational::orderBy('id', 'desc')->paginate(20);
+        $query = AcademicMajorEducational::query();
+
+        $query = filterByOwnProvince($query);
+
+        $academicMajorEducationals = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.academic-major-educational.list.list', compact('academicMajorEducationals'));
     }
 

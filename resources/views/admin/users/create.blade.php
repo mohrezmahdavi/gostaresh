@@ -90,7 +90,12 @@
                             </div>
                         </div>
 
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ auth()->user()->province_id ?? '' }}"
+                            county_default="{{ auth()->user()->county_id ?? '' }}"
+                            city_default="{{ auth()->user()->city_id ?? '' }}"
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                        </select-province-component>
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>

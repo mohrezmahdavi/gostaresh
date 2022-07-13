@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
-use App\Exports\Gostaresh\GDPCity\ListExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Gostaresh\GDPCity\GDPCityRequest;
 use App\Models\Index\GDPCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Gostaresh\GDPCity\GDPCityRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
 
 // Table 5 Controller
 class GDPCityController extends Controller
@@ -21,7 +21,11 @@ class GDPCityController extends Controller
     public function index()
     {
         $query = $this->getGDPCityQuery();
+
+        $query = filterByOwnProvince($query);
+
         $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
+
         return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
     }
 
@@ -51,7 +55,7 @@ class GDPCityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  GDPCityRequest  $request
+     * @param GDPCityRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(GDPCityRequest $request)
@@ -85,8 +89,8 @@ class GDPCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  GDPCityRequest  $request
-     * @param  int  $id
+     * @param GDPCityRequest $request
+     * @param GDPCity $gdpCity
      * @return \Illuminate\Http\Response
      */
     public function update(GDPCityRequest $request, GDPCity $gdpCity)

@@ -16,7 +16,12 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function index()
     {
-        $statusAnalysisOfTheNumberOfCourses = StatusAnalysisOfTheNumberOfCourse::orderBy('id', 'desc')->paginate(20);
+        $query = StatusAnalysisOfTheNumberOfCourse::query();
+
+        $query = filterByOwnProvince($query);
+
+        $statusAnalysisOfTheNumberOfCourses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses'));
     }
 

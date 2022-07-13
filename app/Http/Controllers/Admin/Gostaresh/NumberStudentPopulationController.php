@@ -22,6 +22,7 @@ class NumberStudentPopulationController extends Controller
     public function index()
     {
         $query = $this->getNumberStudentPopulationsQuery();
+        $query = filterByOwnProvince($query);
         $numberStudentPopulations = $query->orderBy('id', 'DESC')->paginate(20);
         return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
     }
@@ -62,6 +63,7 @@ class NumberStudentPopulationController extends Controller
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
         }
+
         return $query;
     }
 

@@ -17,7 +17,12 @@ class UniversityCostsController extends Controller
      */
     public function index()
     {
-        $universityCosts =  UniversityCostsAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = UniversityCostsAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $universityCosts = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.university-costs.list.list', compact('universityCosts'));
     }
 

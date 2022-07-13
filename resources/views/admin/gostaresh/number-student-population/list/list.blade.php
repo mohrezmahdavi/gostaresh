@@ -35,9 +35,11 @@
                     <form action="" method="get">
                         <div class="row" id="app">
                             <div class="col-md-12">
-                                <select-province-inline-component province_default="{{ request()->province_id }}"
-                                    county_default="{{ request()->county_id }}" city_default="{{ request()->city_id }}"
-                                    rural_district_default="{{ request()->rural_district_id }}">
+                                <select-province-inline-component
+                                    province_default="{{ auth()->user()->province_id ?? request()->province_id }}"
+                                    county_default="{{ auth()->user()->county_id ?? request()->county_id }}"
+                                    city_default="{{ auth()->user()->city_id ?? request()->city_id }}"
+                                    rural_district_default="{{ auth()->user()->rural_district_id ?? request()->rural_district_id }}">
                                 </select-province-inline-component>
                             </div>
                         </div>
@@ -189,7 +191,7 @@
                                         @if (filterCol('motevasete_2_kar_danesh') == true)
                                         <td>{{ $numberStudentPopulation?->motevasete_2_kar_danesh }}</td>
                                         @endif
-                                        
+
                                         <td>{{ $numberStudentPopulation?->year }}</td>
                                         <td>{{ $numberStudentPopulation?->month }}</td>
                                         <td>
@@ -205,11 +207,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="text-end mt-3">
-                            <a href="{{ route('number.student.population.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
 
-                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberStudentPopulations->withQueryString()->links('pagination::bootstrap-4') }}
