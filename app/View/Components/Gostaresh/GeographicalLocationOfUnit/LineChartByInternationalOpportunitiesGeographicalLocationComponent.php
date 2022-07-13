@@ -29,7 +29,7 @@ class LineChartByInternationalOpportunitiesGeographicalLocationComponent extends
         $chart_arr1 = [
             'chart_title' => " مناسب",
             'report_type' => 'group_by_string',
-            'model' => GeographicalLocationOfUnit::where('international_opportunities_geographical_location' , 1),
+            'model' => GeographicalLocationOfUnit::whereRequestsQuery()->where('international_opportunities_geographical_location' , 1),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',
@@ -38,7 +38,7 @@ class LineChartByInternationalOpportunitiesGeographicalLocationComponent extends
         $chart_arr2 = [
             'chart_title' => "نا مناسب " ,
             'report_type' => 'group_by_string',
-            'model' => GeographicalLocationOfUnit::where('international_opportunities_geographical_location' , 2),
+            'model' => GeographicalLocationOfUnit::whereRequestsQuery()->where('international_opportunities_geographical_location' , 2),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',

@@ -21,56 +21,15 @@ class NumberStudentPopulationController extends Controller
      */
     public function index()
     {
-        $query = $this->getNumberStudentPopulationsQuery();
+        $query = NumberStudentPopulation::whereRequestsQuery();
         $numberStudentPopulations = $query->orderBy('id', 'DESC')->paginate(20);
         return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
     }
 
-    private function getNumberStudentPopulationsQuery()
-    {
-        $query = NumberStudentPopulation::query();
-        if (request()->province_id) {
-            $query->where('province_id', request()->province_id);
-        }
-
-        if (request()->county_id) {
-            $query->where('county_id', request()->county_id);
-        }
-
-        if (request()->city_id) {
-            $query->where('city_id', request()->city_id);
-        }
-
-        if (request()->rural_district_id) {
-            $query->where('rural_district_id', request()->rural_district_id);
-        }
-
-        if (request()->input('start_date')) {
-            $startDateJ = Verta::instance(request()->input('start_date'));
-            $startMonth = (int)$startDateJ->format('n');
-            $startYear = (int)$startDateJ->format('Y');
-            $query->where('year', '>', $startYear)->orWhere(function ($query) use ($startYear, $startMonth) {
-                $query->where('year', $startYear)->where('month', '>', $startMonth);
-            });
-        }
-
-        if (request()->input('end_date')) {
-            $endDateJ = Verta::instance(request()->input('end_date'));
-            $endMonth = (int)$endDateJ->format('n');
-            $endYear = (int)$endDateJ->format('Y');
-            $query->where('year', '<=', $endYear)->orWhere(function ($query) use ($endYear, $endMonth) {
-                $query->where('year', $endYear)->where('month', '<=', $endMonth);
-            });
-        }
-
-        $query = filterByOwnProvince($query);
-
-        return $query;
-    }
 
     public function listExcelExport()
     {
-        $query = $this->getNumberStudentPopulationsQuery();
+        $query = NumberStudentPopulation::whereRequestsQuery();
         $numberStudentPopulations = $query->orderBy('id', 'DESC')->get();
         return Excel::download(new ListExport($numberStudentPopulations), 'invoices.xlsx');
     }

@@ -30,7 +30,7 @@ class LineChartByLevelAndQualityOfAccessComponent extends Component
         $chart_arr1 = [
             'chart_title' => "مناسب",
             'report_type' => 'group_by_string',
-            'model' => GeographicalLocationOfUnit::where('level_and_quality_of_access' , 1),
+            'model' => GeographicalLocationOfUnit::whereRequestsQuery()->where('level_and_quality_of_access' , 1),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',
@@ -39,7 +39,7 @@ class LineChartByLevelAndQualityOfAccessComponent extends Component
         $chart_arr2 = [
             'chart_title' => "نامناسب",
             'report_type' => 'group_by_string',
-            'model' => GeographicalLocationOfUnit::where('level_and_quality_of_access' , 2),
+            'model' => GeographicalLocationOfUnit::whereRequestsQuery()->where('level_and_quality_of_access' , 2),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',

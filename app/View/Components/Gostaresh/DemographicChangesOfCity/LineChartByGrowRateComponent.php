@@ -25,7 +25,7 @@ class LineChartByGrowRateComponent extends Component
      */
     public function render()
     {
-        $modelQuery = DemographicChangesOfCity::query();
+        $modelQuery = DemographicChangesOfCity::whereRequestsQuery();
 
         $charts_arr = [];
         $chart_arr = [
