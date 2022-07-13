@@ -24,6 +24,7 @@ class GeographicalLocationOfUnitController extends Controller
     public function index()
     {
         $query = $this->getGeographicalLocationOfUnitsQuery();
+        $query = filterByOwnProvince($query);
         $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
     }
@@ -64,8 +65,6 @@ class GeographicalLocationOfUnitController extends Controller
                 $query->where('year', $endYear)->where('month', '<=', $endMonth);
             });
         }
-
-        $query = filterByOwnProvince($query);
 
         return $query;
     }

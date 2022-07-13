@@ -6,7 +6,9 @@ use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\DemographicChangesOfCity\DemographicChangesOfCityRequest;
 use Maatwebsite\Excel\Facades\Excel;
@@ -23,6 +25,7 @@ class DemographicChangesOfCityController extends Controller
     {
         $query = $this->getDemographicChangesOfCitiesQuery();
         $yearSelectedList = $this->yearSelectedList(clone $query);
+        $query = filterByOwnProvince($query);
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities', 'yearSelectedList'));
     }
@@ -66,12 +69,22 @@ class DemographicChangesOfCityController extends Controller
             });
         }
 
-        $query = filterByOwnProvince($query);
+        if (request()->year) {
+            $query->where('year', request()->year);
+        }
 
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.gostaresh.demographic-changes-of-city.list.list', compact('demographicChangesOfCities'));
     }
+
+    public function listExcelExport()
+    {
+        $query = $this->getDemographicChangesOfCitiesQuery();
+        $demographicChangesOfCities = $query->orderBy('id', 'desc')->get();
+        return Excel::download(new ListExport($demographicChangesOfCities), 'invoices.xlsx');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -121,7 +134,7 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param DemographicChangesOfCity $demographicChangesOfCity
      * @return \Illuminate\Http\Response
      */
     public function edit(DemographicChangesOfCity $demographicChangesOfCity)
