@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش نرخ فقر شهرستان های استان
+    ویرایش تحلیل وضعیت شاخص محرومیت چندگانه
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش نرخ فقر شهرستان های استان
+ویرایش تحلیل وضعیت شاخص محرومیت چندگانه
 @endsection
 
 @section('page-title')
-    ویرایش نرخ فقر شهرستان های استان
+ویرایش تحلیل وضعیت شاخص محرومیت چندگانه
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -58,7 +58,7 @@
 
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

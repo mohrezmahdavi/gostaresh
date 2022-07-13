@@ -45,7 +45,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_research" name="number_of_research"
+                                <input type="number" style="direction: rtl" id="number_of_research" name="number_of_research"
                                     value="{{ $numberOfResearchProject->number_of_research }}" class="form-control"
                                     placeholder="تعداد پژوهش ها را وارد کنید...">
                             </div>
@@ -57,7 +57,7 @@
                         <x-select-month :default="$numberOfResearchProject->month" :required="false" name="month"></x-select-month>
                         
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

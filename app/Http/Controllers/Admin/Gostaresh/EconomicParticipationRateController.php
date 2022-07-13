@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\EconomicParticipationRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\EconomicParticipationRate\EconomicParticipationRateRequest;
 // Table 10 Controller
 class EconomicParticipationRateController extends Controller
 {
@@ -33,10 +34,10 @@ class EconomicParticipationRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  EconomicParticipationRateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EconomicParticipationRateRequest $request)
     {
         EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -67,11 +68,11 @@ class EconomicParticipationRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  EconomicParticipationRateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EconomicParticipationRate $economicParticipationRate)
+    public function update(EconomicParticipationRateRequest $request, EconomicParticipationRate $economicParticipationRate)
     {
         $economicParticipationRate->update($request->all());
         return back()->with('success', __('titles.success_update'));

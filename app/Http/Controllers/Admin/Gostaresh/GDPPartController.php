@@ -8,6 +8,7 @@ use App\Models\Index\GDPPart;
 use GMP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\GDPPart\GDPPartRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
 // Table 6 Controller
@@ -51,10 +52,10 @@ class GDPPartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPPartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GDPPartRequest $request)
     {
         GDPPart::create(array_merge(['user_id' => Auth::id()] , $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -85,11 +86,11 @@ class GDPPartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPPartRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GDPPart $gdpPart)
+    public function update(GDPPartRequest $request, GDPPart $gdpPart)
     {
         $gdpPart->update($request->all());
         return back()->with('success', __('titles.success_update'));   
