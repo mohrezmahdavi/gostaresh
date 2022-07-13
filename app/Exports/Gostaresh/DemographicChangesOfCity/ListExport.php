@@ -14,10 +14,13 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
 
     private $demographicChangesOfCities;
 
+    private $arr;
+
     public function __construct($demographicChangesOfCities)
     {
         $this->demographicChangesOfCities = $demographicChangesOfCities;
     }
+
     /**
     * @return \Illuminate\Support\Collection
     */
@@ -29,30 +32,42 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     public function map($demographicChangesOfCity): array
     {
         $this->count = $this->count + 1;
-       
-        return [
-            $this->count,
-            $demographicChangesOfCity?->population,
-            $demographicChangesOfCity?->immigration_rates,
-            $demographicChangesOfCity?->growth_rate,
-            $demographicChangesOfCity?->year,
-            $demographicChangesOfCity?->month,
-            $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name,
-        ];
+        $arr = [$this->count];
+        if (filterCol('population') == true) {
+            array_push($arr, $demographicChangesOfCity?->population);
+        }
+        if (filterCol('immigration_rates') == true) {
+            array_push($arr, $demographicChangesOfCity?->immigration_rates);
+        }
+        if (filterCol('growth_rate') == true) {
+            array_push($arr, $demographicChangesOfCity?->growth_rate);
+        }
+
+        array_push($arr, $demographicChangesOfCity?->year);
+        array_push($arr, $demographicChangesOfCity?->month);
+        array_push($arr, $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name);
+        return $arr;
     }
 
     
 
     public function headings(): array
     {
-        return [
-            "#",
-            'جمعیت',
-            'نرخ مهاجرت',
-            'نرخ رشد',
-            'سال',
-            'ماه',
-            'موقعیت',
-        ];
+        $arr = ["#"];
+        if (filterCol('population') == true) {
+            array_push($arr, 'جمعیت');
+        }
+        if (filterCol('immigration_rates') == true) {
+            array_push($arr, 'نرخ مهاجرت');
+        }
+        if (filterCol('growth_rate') == true) {
+            array_push($arr, 'نرخ رشد');
+        }
+
+
+        array_push($arr, 'سال');
+        array_push($arr, 'ماه');
+        array_push($arr, 'موقعیت');
+        return $arr;
     }
 }
