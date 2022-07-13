@@ -7,6 +7,7 @@ use App\Models\Index\UnemploymentRate;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\UnemploymentRate\UnemploymentRateRequest;
 
 // Table 11 Model
 class UnemploymentRateController extends Controller
@@ -35,10 +36,10 @@ class UnemploymentRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UnemploymentRateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnemploymentRateRequest $request)
     {
         UnemploymentRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -69,11 +70,11 @@ class UnemploymentRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UnemploymentRateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnemploymentRate $unemploymentRate)
+    public function update(UnemploymentRateRequest $request, UnemploymentRate $unemploymentRate)
     {
         $unemploymentRate->update($request->all());
         return back()->with('success', __('titles.success_update'));

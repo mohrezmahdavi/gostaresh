@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\IndustrialExpenditureResearch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\IndustrialExpenditureResearch\IndustrialExpenditureResearchRequest;
 
 
 // Table 9 Controller
@@ -35,12 +36,23 @@ class IndustrialExpenditureResearchController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  IndustrialExpenditureResearchRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndustrialExpenditureResearchRequest $request)
     {
-        IndustrialExpenditureResearch::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        IndustrialExpenditureResearch::create([
+            'user_id' => Auth::user()?->id,
+            'country_id' => $request->country_id ?? 1,
+            'province_id' => $request->province_id ?? null,
+            'county_id' => $request->county_id ?? null,
+            'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
+            'amount' => $request->amount_payment_rd ?? 0,
+            'year' => $request->year ?? null,
+            'month' => $request->month ?? null,
+        ]);
+        // IndustrialExpenditureResearch::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -69,13 +81,23 @@ class IndustrialExpenditureResearchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  IndustrialExpenditureResearchRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndustrialExpenditureResearch $industrialExpenditureResearch)
+    public function update(IndustrialExpenditureResearchRequest $request, IndustrialExpenditureResearch $industrialExpenditureResearch)
     {
-        $industrialExpenditureResearch->update($request->all());
+        $industrialExpenditureResearch->update([
+            'country_id' => $request->country_id ?? 1,
+            'province_id' => $request->province_id ?? null,
+            'county_id' => $request->county_id ?? null,
+            'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
+            'amount' => $request->amount_payment_rd ?? 0,
+            'year' => $request->year ?? null,
+            'month' => $request->month ?? null,
+        ]);
+        // $industrialExpenditureResearch->update($request->all());
         return back()->with('success', __('titles.success_update'));
     }
 

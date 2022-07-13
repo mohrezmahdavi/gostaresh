@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش شاخص محرومیت چندگانه شهرستان های استان
+    ویرایش نرخ فقر شهرستان های استان
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش شاخص محرومیت چندگانه شهرستان های استان
+ویرایش نرخ فقر شهرستان های استان
 @endsection
 
 @section('page-title')
-    ویرایش شاخص محرومیت چندگانه شهرستان های استان
+ویرایش نرخ فقر شهرستان های استان
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -58,7 +58,7 @@
                         <x-select-month :default="$povertyOfProvincialCity->month" :required="false" name="month"></x-select-month>
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

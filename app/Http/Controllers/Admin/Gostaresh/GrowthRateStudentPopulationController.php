@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\GrowthRateStudentPopulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\GrowthRateStudentPopulation\GrowthRateStudentPopulationRequest;
 // Table 4 Controller
 class GrowthRateStudentPopulationController extends Controller
 {
@@ -33,10 +34,10 @@ class GrowthRateStudentPopulationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GrowthRateStudentPopulationRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GrowthRateStudentPopulationRequest $request)
     {
         GrowthRateStudentPopulation::create(array_merge(['user_id' => Auth::id()] , $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -67,11 +68,11 @@ class GrowthRateStudentPopulationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GrowthRateStudentPopulationRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GrowthRateStudentPopulation $growthRateStudentPopulation)
+    public function update(GrowthRateStudentPopulationRequest $request, GrowthRateStudentPopulation $growthRateStudentPopulation)
     {
         $growthRateStudentPopulation->update($request->all());
         return back()->with('success', __('titles.success_update'));

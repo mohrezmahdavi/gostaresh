@@ -65,7 +65,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_from_population_density_of_city" name="distance_from_population_density_of_city" value="{{ $geographicalLocationOfUnit->distance_from_population_density_of_city }}"
+                                <input type="number" style="direction: rtl" id="distance_from_population_density_of_city" name="distance_from_population_density_of_city" value="{{ $geographicalLocationOfUnit->distance_from_population_density_of_city }}"
                                     class="form-control" placeholder="فاصله از تراکم جمعیتی شهر را وارد کنید...">
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_from_center_of_province" name="distance_from_center_of_province" value="{{ $geographicalLocationOfUnit->distance_from_center_of_province }}"
+                                <input type="number" style="direction: rtl" id="distance_from_center_of_province" name="distance_from_center_of_province" value="{{ $geographicalLocationOfUnit->distance_from_center_of_province }}"
                                     class="form-control" placeholder="فاصله از مرکز استان را وارد کنید...">
                             </div>
                         </div>
@@ -152,7 +152,7 @@
 
                         <x-select-month :default="$geographicalLocationOfUnit->month" :required="false" name="month"></x-select-month>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>

@@ -7,6 +7,9 @@ use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\DemographicChangesOfCity\DemographicChangesOfCityRequest;
+
+
 // Table 1 Controller
 class DemographicChangesOfCityController extends Controller
 {
@@ -70,10 +73,10 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  DemographicChangesOfCityRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DemographicChangesOfCityRequest $request)
     {
         DemographicChangesOfCity::create([
             'user_id' => Auth::user()?->id,
@@ -81,6 +84,7 @@ class DemographicChangesOfCityController extends Controller
             'province_id' => $request->province_id ?? null,
             'county_id' => $request->county_id ?? null,
             'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
             'population' => $request->population ?? 0,
             'immigration_rates' => $request->immigration_rates ?? 0,
             'growth_rate' => $request->growth_rate ?? 0,
@@ -115,17 +119,18 @@ class DemographicChangesOfCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  DemographicChangesOfCityRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DemographicChangesOfCity $demographicChangesOfCity)
+    public function update(DemographicChangesOfCityRequest $request, DemographicChangesOfCity $demographicChangesOfCity)
     {
         $demographicChangesOfCity->update([
             'country_id' => $request->country_id ?? 1,
             'province_id' => $request->province_id ?? null,
             'county_id' => $request->county_id ?? null,
             'city_id' => $request->city_id ?? null,
+            'rural_district_id' => $request->rural_district_id ?? null,
             'population' => $request->population ?? 0,
             'immigration_rates' => $request->immigration_rates ?? 0,
             'growth_rate' => $request->growth_rate ?? 0,

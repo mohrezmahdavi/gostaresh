@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\AcademicMajorEducational;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\AcademicMajorEducational\AcademicMajorEducationalRequest;
 
 // Table 15 Controller
 class AcademicMajorEducationalController extends Controller
@@ -34,10 +35,10 @@ class AcademicMajorEducationalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AcademicMajorEducationalRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AcademicMajorEducationalRequest $request)
     {
         AcademicMajorEducational::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class AcademicMajorEducationalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AcademicMajorEducationalRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AcademicMajorEducational $academicMajorEducational)
+    public function update(AcademicMajorEducationalRequest $request, AcademicMajorEducational $academicMajorEducational)
     {
         $academicMajorEducational->update($request->all());
         return back()->with('success', __('titles.success_update'));

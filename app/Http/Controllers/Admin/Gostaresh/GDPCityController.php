@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\GDPCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\GDPCity\GDPCityRequest;
 
 // Table 5 Controller
 class GDPCityController extends Controller
@@ -34,10 +35,10 @@ class GDPCityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPCityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GDPCityRequest $request)
     {
         GDPCity::create(array_merge(['user_id' => Auth::id()] , $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -68,11 +69,11 @@ class GDPCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  GDPCityRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GDPCity $gdpCity)
+    public function update(GDPCityRequest $request, GDPCity $gdpCity)
     {
         $gdpCity->update($request->all());
         return back()->with('success', __('titles.success_update'));
