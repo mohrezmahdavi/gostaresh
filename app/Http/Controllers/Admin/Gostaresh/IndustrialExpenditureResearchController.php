@@ -18,7 +18,12 @@ class IndustrialExpenditureResearchController extends Controller
      */
     public function index()
     {
-        $industrialExpenditureResearches = IndustrialExpenditureResearch::orderBy('id', 'desc')->paginate(20);
+        $query = IndustrialExpenditureResearch::query();
+
+        $query = filterByOwnProvince($query);
+
+        $industrialExpenditureResearches = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.industrial-expenditure-research.list.list', compact('industrialExpenditureResearches'));
     }
 

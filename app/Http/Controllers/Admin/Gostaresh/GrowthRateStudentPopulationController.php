@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\GrowthRateStudentPopulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 // Table 4 Controller
 class GrowthRateStudentPopulationController extends Controller
 {
@@ -16,7 +17,12 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function index()
     {
-        $growthRateStudentPopulations = GrowthRateStudentPopulation::orderBy('id', 'desc')->paginate(20);
+        $query = GrowthRateStudentPopulation::query();
+
+        $query = filterByOwnProvince($query);
+
+        $growthRateStudentPopulations = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.growth-rate-student-population.list.list', compact('growthRateStudentPopulations'));
     }
 

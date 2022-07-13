@@ -27,3 +27,23 @@ if (!function_exists('convertPersianToEnglishInInputRequests')) {
     }
 }
 
+function filterByOwnProvince($query)
+{
+    if (!auth()->user()->hasRole('admin'))
+    {
+        if (isset(auth()->user()->province_id))
+            $query->where('province_id', auth()->user()->province_id);
+
+        if (isset(auth()->user()->county_id))
+            $query->where('county_id', auth()->user()->county_id);
+
+        if (isset(auth()->user()->city_id))
+            $query->where('city_id', auth()->user()->city_id);
+
+        if (isset(auth()->user()->rural_district_id))
+            $query->where('rural_district_id', auth()->user()->rural_district_id);
+    }
+
+    return $query;
+}
+

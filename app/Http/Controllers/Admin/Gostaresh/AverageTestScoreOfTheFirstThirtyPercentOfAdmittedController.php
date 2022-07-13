@@ -17,7 +17,12 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      */
     public function index()
     {
-        $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::orderBy('id', 'desc')->paginate(20);
+        $query = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::query();
+
+        $query = filterByOwnProvince($query);
+
+        $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.list', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitteds'));
     }
 

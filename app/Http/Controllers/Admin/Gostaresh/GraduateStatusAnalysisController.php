@@ -21,7 +21,12 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $graduateStatusAnalyses = GraduateStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = GraduateStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $graduateStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses'));
     }
 

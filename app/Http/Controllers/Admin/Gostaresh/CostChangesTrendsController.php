@@ -17,7 +17,12 @@ class CostChangesTrendsController extends Controller
      */
     public function index()
     {
-        $costChangesTrends =  CostChangesTrendsAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = CostChangesTrendsAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $costChangesTrends = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.cost-changes-trends.list.list', compact('costChangesTrends'));
     }
 

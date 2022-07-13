@@ -21,7 +21,12 @@ class TechnologicalProductController extends Controller
      */
     public function index()
     {
-        $technologicalProducts =  TechnologicalProduct::orderBy('id', 'desc')->paginate(20);
+        $query = TechnologicalProduct::query();
+
+        $query = filterByOwnProvince($query);
+
+        $technologicalProducts = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.technological-product.list.list', compact('technologicalProducts'));
     }
 

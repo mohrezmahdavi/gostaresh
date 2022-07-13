@@ -17,7 +17,12 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $gdpCities = GDPCity::orderBy('id' , 'desc')->paginate(20);
+        $query = GDPCity::query();
+
+        $query = filterByOwnProvince($query);
+
+        $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
+
         return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
     }
 

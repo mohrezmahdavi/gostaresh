@@ -17,7 +17,12 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function index()
     {
-        $averageTestScoreOfTheLastFivePercentOfAdmitteds = AverageTestScoreOfTheLastFivePercentOfAdmitted::orderBy('id', 'desc')->paginate(20);
+        $query = AverageTestScoreOfTheLastFivePercentOfAdmitted::query();
+
+        $query = filterByOwnProvince($query);
+
+        $averageTestScoreOfTheLastFivePercentOfAdmitteds = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.list', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds'));
     }
 
@@ -51,7 +56,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function show(AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        
+
     }
 
     /**

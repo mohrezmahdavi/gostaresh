@@ -16,7 +16,12 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function index()
     {
-        $numberOfNonMedicalFieldsOfStudies = NumberOfNonMedicalFieldsOfStudy::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfNonMedicalFieldsOfStudy::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfNonMedicalFieldsOfStudies = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-non-medical-fields-of-study.list.list', compact('numberOfNonMedicalFieldsOfStudies'));
     }
 

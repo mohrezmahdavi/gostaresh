@@ -17,7 +17,12 @@ class RoadmapDesiredController extends Controller
      */
     public function index()
     {
-        $roadmapDesireds =  RoadmapToAchieveDesiredSituation::orderBy('id', 'desc')->paginate(20);
+        $query = RoadmapToAchieveDesiredSituation::query();
+
+        $query = filterByOwnProvince($query);
+
+        $roadmapDesireds = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.roadmap-desired.list.list', compact('roadmapDesireds'));
     }
 

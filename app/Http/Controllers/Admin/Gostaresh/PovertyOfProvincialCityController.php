@@ -17,7 +17,12 @@ class PovertyOfProvincialCityController extends Controller
      */
     public function index()
     {
-        $povertyOfProvincialCities = PovertyOfProvincialCity::orderBy('id', 'desc')->paginate(20);
+        $query = PovertyOfProvincialCity::query();
+
+        $query = filterByOwnProvince($query);
+
+        $povertyOfProvincialCities = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.poverty-of-provincial-citiy.list.list', compact('povertyOfProvincialCities'));
     }
 

@@ -17,7 +17,12 @@ class OrganizationalCultureController extends Controller
      */
     public function index()
     {
-        $organizationalCultures =  OrganizationalCultureStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = OrganizationalCultureStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $organizationalCultures = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.organizational-culture.list.list', compact('organizationalCultures'));
     }
 

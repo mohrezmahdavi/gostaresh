@@ -17,7 +17,12 @@ class AssetProductivityController extends Controller
      */
     public function index()
     {
-        $assetProductivity =  IndexOfAssetProductivity::orderBy('id', 'desc')->paginate(20);
+        $query = IndexOfAssetProductivity::query();
+
+        $query = filterByOwnProvince($query);
+
+        $assetProductivity = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.asset-productivity.list.list', compact('assetProductivity'));
     }
 

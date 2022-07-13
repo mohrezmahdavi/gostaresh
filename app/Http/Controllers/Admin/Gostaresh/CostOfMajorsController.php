@@ -17,7 +17,12 @@ class CostOfMajorsController extends Controller
      */
     public function index()
     {
-        $costOfMajors =  AverageCostOfMajor::orderBy('id', 'desc')->paginate(20);
+        $query = AverageCostOfMajor::query();
+
+        $query = filterByOwnProvince($query);
+
+        $costOfMajors = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.cost-of-majors.list.list', compact('costOfMajors'));
     }
 

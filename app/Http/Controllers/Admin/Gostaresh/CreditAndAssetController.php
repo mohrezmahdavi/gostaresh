@@ -17,7 +17,12 @@ class CreditAndAssetController extends Controller
      */
     public function index()
     {
-        $creditAndAssets =  CreditAndAssetAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = CreditAndAssetAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $creditAndAssets = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.credit-and-asset.list.list', compact('creditAndAssets'));
     }
 

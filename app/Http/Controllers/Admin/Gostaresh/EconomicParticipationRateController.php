@@ -16,7 +16,12 @@ class EconomicParticipationRateController extends Controller
      */
     public function index()
     {
-        $economicParticipationRates = EconomicParticipationRate::orderBy('id', 'desc')->paginate(20);
+        $query = EconomicParticipationRate::query();
+
+        $query = filterByOwnProvince($query);
+
+        $economicParticipationRates = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.economic-participation-rate.list.list', compact('economicParticipationRates'));
     }
 

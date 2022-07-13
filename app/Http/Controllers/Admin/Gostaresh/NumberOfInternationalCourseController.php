@@ -16,7 +16,12 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function index()
     {
-        $numberOfInternationalCourses = NumberOfInternationalCourse::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfInternationalCourse::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfInternationalCourses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses'));
     }
 

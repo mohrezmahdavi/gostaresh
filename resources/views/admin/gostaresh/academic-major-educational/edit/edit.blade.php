@@ -32,7 +32,13 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ $academicMajorEducational->province_id }}"
+                            county_default="{{ $academicMajorEducational->county_id }}"
+                            city_default="{{ $academicMajorEducational->city_id }}"
+                            rural_district_default="{{ $academicMajorEducational->rural_district_id }}">
+                        </select-province-component>
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education">
                                 <span> گروه تحصیلی </span>&nbsp

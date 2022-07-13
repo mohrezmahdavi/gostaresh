@@ -17,7 +17,12 @@ class EmployeeProfileController extends Controller
      */
     public function index()
     {
-        $employeeProfiles =  EmployeeProfile::orderBy('id', 'desc')->paginate(20);
+        $query = EmployeeProfile::query();
+
+        $query = filterByOwnProvince($query);
+
+        $employeeProfiles = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.employee-profile.list.list', compact('employeeProfiles'));
     }
 

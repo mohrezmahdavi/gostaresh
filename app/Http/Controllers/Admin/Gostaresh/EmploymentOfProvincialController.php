@@ -17,7 +17,12 @@ class EmploymentOfProvincialController extends Controller
      */
     public function index()
     {
-        $employmentOfProvincials = EmploymentOfProvincial::orderBy('id', 'desc')->paginate(20);
+        $query = EmploymentOfProvincial::query();
+
+        $query = filterByOwnProvince($query);
+
+        $employmentOfProvincials = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.employment-of-provincial.list.list', compact('employmentOfProvincials'));
     }
 
@@ -51,7 +56,7 @@ class EmploymentOfProvincialController extends Controller
      */
     public function show(EmploymentOfProvincial $employmentOfProvincial)
     {
-        
+
     }
 
     /**

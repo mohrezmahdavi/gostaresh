@@ -18,7 +18,12 @@ class GDPPartController extends Controller
      */
     public function index()
     {
-        $gdpParts = GDPPart::orderBy('id', 'desc')->paginate(20);
+        $query = GDPPart::query();
+
+        $query = filterByOwnProvince($query);
+
+        $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts'));
     }
 
@@ -76,7 +81,7 @@ class GDPPartController extends Controller
     public function update(Request $request, GDPPart $gdpPart)
     {
         $gdpPart->update($request->all());
-        return back()->with('success', __('titles.success_update'));   
+        return back()->with('success', __('titles.success_update'));
     }
 
     /**

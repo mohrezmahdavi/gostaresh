@@ -21,7 +21,12 @@ class GraduatesOfHigherEducationController extends Controller
      */
     public function index()
     {
-        $graduatesOfHigherEducationCenters = GraduatesOfHigherEducationCenters::orderBy('id', 'desc')->paginate(20);
+        $query = GraduatesOfHigherEducationCenters::query();
+
+        $query = filterByOwnProvince($query);
+
+        $graduatesOfHigherEducationCenters = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.graduates-of-higher-education.list.list', compact('graduatesOfHigherEducationCenters'));
     }
 

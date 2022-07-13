@@ -17,7 +17,12 @@ class RevenueStatusAnalysesController extends Controller
      */
     public function index()
     {
-        $revenueStatusAnalyses =  RevenueStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = RevenueStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $revenueStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.revenue-status-analyses.list.list', compact('revenueStatusAnalyses'));
     }
 

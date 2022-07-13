@@ -21,7 +21,12 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $teachersStatusAnalyses = TeachersStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = TeachersStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $teachersStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalyses'));
     }
 

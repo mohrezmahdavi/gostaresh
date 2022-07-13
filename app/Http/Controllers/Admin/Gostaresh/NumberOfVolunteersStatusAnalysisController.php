@@ -17,7 +17,12 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfVolunteersStatusAnalyses = NumberOfVolunteersStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfVolunteersStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfVolunteersStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-volunteers-status-analysis.list.list', compact('numberOfVolunteersStatusAnalyses'));
     }
 

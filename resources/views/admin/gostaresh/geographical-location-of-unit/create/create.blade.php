@@ -29,7 +29,13 @@
                     <form class="form-horizontal" method="POST" action="{{ route('geographical.location.unit.store') }}" role="form">
                         @csrf
 
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ auth()->user()->province_id ?? '' }}"
+                            county_default="{{ auth()->user()->county_id ?? '' }}"
+                            city_default="{{ auth()->user()->city_id ?? '' }}"
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                        </select-province-component>
+
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit_university">
                                 <span> واحد دانشگاهی </span>&nbsp
@@ -85,7 +91,7 @@
                                     <option {{ ($key == old('climate_type_and_weather_conditions') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -122,7 +128,7 @@
                                     <option {{ ($key == old('level_and_quality_of_access') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -137,15 +143,15 @@
                                     <option {{ ($key == old('international_opportunities_geographical_location') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
                         </div>
 
                         <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>             
+                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
 
-                    
+
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
                     </form>
                 </div>

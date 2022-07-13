@@ -17,7 +17,12 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $numberOfRegistrants = NumberOfRegistrantsStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = NumberOfRegistrantsStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $numberOfRegistrants = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants'));
     }
 

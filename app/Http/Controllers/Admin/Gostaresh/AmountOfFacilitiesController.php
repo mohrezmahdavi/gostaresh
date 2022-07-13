@@ -21,7 +21,12 @@ class AmountOfFacilitiesController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $amountOfFacilities = AmountOfFacilitiesForResearchAchievements::orderBy('id', 'desc')->paginate(20);
+        $query = AmountOfFacilitiesForResearchAchievements::query();
+
+        $query = filterByOwnProvince($query);
+
+        $amountOfFacilities = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.amount-of-facilities.list.list', compact('amountOfFacilities'));
     }
 

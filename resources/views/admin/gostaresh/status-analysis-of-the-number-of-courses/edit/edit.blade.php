@@ -31,7 +31,12 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component></select-province-component>
+                        <select-province-component
+                            province_default="{{ $statusAnalysisOfTheNumOfCourse->province_id ?? '' }}"
+                            county_default="{{ $statusAnalysisOfTheNumOfCourse->county_id ?? '' }}"
+                            city_default="{{ $statusAnalysisOfTheNumOfCourse->city_id ?? '' }}"
+                            rural_district_default="{{ $statusAnalysisOfTheNumOfCourse->rural_district_id ?? '' }}">
+                        </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
@@ -111,7 +116,7 @@
                         <x-select-month :default="$statusAnalysisOfTheNumOfCourse->month" :required="false" name="month"></x-select-month>
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

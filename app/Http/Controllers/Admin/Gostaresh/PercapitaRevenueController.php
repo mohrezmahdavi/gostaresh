@@ -17,7 +17,12 @@ class PercapitaRevenueController extends Controller
      */
     public function index()
     {
-        $percapitaRevenue =  PercapitaRevenueStatusAnalysis::orderBy('id', 'desc')->paginate(20);
+        $query = PercapitaRevenueStatusAnalysis::query();
+
+        $query = filterByOwnProvince($query);
+
+        $percapitaRevenue = $query->orderBy('id', 'desc')->paginate(20);
+
         return view('admin.gostaresh.percapita-revenue.list.list', compact('percapitaRevenue'));
     }
 
