@@ -29,7 +29,7 @@ class LineChartByGenderComponent extends Component
         $chart_arr1 = [
             'chart_title' => "مرد",
             'report_type' => 'group_by_string',
-            'model' => NumberStudentPopulation::where('gender_id' , 1),
+            'model' => NumberStudentPopulation::whereRequestsQuery()->where('gender_id' , 1),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',
@@ -38,7 +38,7 @@ class LineChartByGenderComponent extends Component
         $chart_arr2 = [
             'chart_title' => "زن" ,
             'report_type' => 'group_by_string',
-            'model' => NumberStudentPopulation::where('gender_id' , 2),
+            'model' => NumberStudentPopulation::whereRequestsQuery()->where('gender_id' , 2),
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function'    => 'count',
