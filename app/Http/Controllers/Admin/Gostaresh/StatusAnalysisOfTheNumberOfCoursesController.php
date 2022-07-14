@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\StatusAnalysisOfTheNumberOfCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfCourse\StatusAnalysisOfTheNumberOfCourseRequest;
+
 // Table 28 Controller
 class StatusAnalysisOfTheNumberOfCoursesController extends Controller
 {
@@ -38,10 +40,10 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StatusAnalysisOfTheNumberOfCourseRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StatusAnalysisOfTheNumberOfCourseRequest $request)
     {
         StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -71,11 +73,11 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StatusAnalysisOfTheNumberOfCourseRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
+    public function update(StatusAnalysisOfTheNumberOfCourseRequest $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
         $statusAnalysisOfTheNumOfCourse->update($request->all());
         return back()->with('success', __('titles.success_update'));

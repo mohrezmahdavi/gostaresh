@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\AnnualGrowthRateOfStudentEnrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\AnnualGrowthRateOfStudentEnrollment\AnnualGrowthRateOfStudentEnrollmentRequest;
+
 // Table 21 Controller
 class AnnualGrowthRateOfStudentEnrollmentController extends Controller
 {
@@ -38,10 +40,10 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AnnualGrowthRateOfStudentEnrollmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnnualGrowthRateOfStudentEnrollmentRequest $request)
     {
         AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -72,11 +74,11 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AnnualGrowthRateOfStudentEnrollmentRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
+    public function update(AnnualGrowthRateOfStudentEnrollmentRequest $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
         $annualGrthRateOfStdnEnrollment->update($request->all());
         return back()->with('success', __('titles.success_update'));

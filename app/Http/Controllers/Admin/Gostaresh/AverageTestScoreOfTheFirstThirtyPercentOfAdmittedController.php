@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// Table 22 Controller
+use App\Http\Requests\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest;
 
+// Table 22 Controller
 class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Controller
 {
     /**
@@ -39,10 +40,10 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request)
     {
         AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
+    public function update(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
         $avgTstScrOfFrtThrtPrntOfAdmitted->update($request->all());
         return back()->with('success', __('titles.success_update'));

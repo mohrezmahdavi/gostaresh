@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\AverageTestScoreOfTheLastFivePercentOfAdmitted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmitted\AverageTestScoreOfTheLastFivePercentOfAdmittedRequest;
 
 // Table 23 Controller
 class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controller
@@ -39,10 +40,10 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AverageTestScoreOfTheLastFivePercentOfAdmittedRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request)
     {
         AverageTestScoreOfTheLastFivePercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  AverageTestScoreOfTheLastFivePercentOfAdmittedRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
+    public function update(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
         $avgTstScOfLastFivePctOfAdmitted->update($request->all());
         return back()->with('success', __('titles.success_update'));
