@@ -46,6 +46,6 @@ class UpdateUserRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        convertPersianToEnglishInInputRequests($this);
+        //convertPersianToEnglishInInputRequests($this);
     }
 }
