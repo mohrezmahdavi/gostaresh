@@ -31,7 +31,7 @@ class DemographicChangesOfCityController extends Controller
 
     private function yearSelectedList($query)
     {
-        return $query->select('year')->pluck('year');
+        return $query->select('year')->distinct()->pluck('year');
     }
 
 
