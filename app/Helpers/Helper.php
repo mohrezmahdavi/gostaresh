@@ -41,7 +41,7 @@ if (!function_exists('filterCol')) {
         }
         else
         {
-            if (request()->query() == null) {
+            if (request()->query() == null || request()->query("all")==1) {
                 return true;
             }
             else
