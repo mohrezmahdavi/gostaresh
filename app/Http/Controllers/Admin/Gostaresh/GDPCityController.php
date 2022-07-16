@@ -22,9 +22,18 @@ class GDPCityController extends Controller
     {
         $query = $this->getGDPCityQuery();
 
+        $filterColumnsCheckBoxes = GDPCity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
+
         $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
 
-        return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
+        return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     private function getGDPCityQuery()
