@@ -16,13 +16,22 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function index()
     {
-        $query = StatusAnalysisOfTheNumberOfCurricula::query();
+        $query = StatusAnalysisOfTheNumberOfCurricula::WhereRequestsQuery();
+
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCurricula::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $statusAnalysisOfTheNumberOfCurriculas = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.list.list', compact('statusAnalysisOfTheNumberOfCurriculas'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.list.list', compact('statusAnalysisOfTheNumberOfCurriculas', 'yearSelectedList', 'filterColumnsCheckBoxes'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -38,7 +47,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +59,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
@@ -61,7 +70,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
@@ -72,8 +81,8 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
@@ -85,7 +94,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
