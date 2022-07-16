@@ -36,6 +36,7 @@ class StoreUserRequest extends FormRequest
             'address' => 'string|nullable',
             'status' => 'numeric|nullable',
             'user_picture' => 'nullable|image',
+            'roles' => 'nullable|exists:roles,id'
         ];
     }
 

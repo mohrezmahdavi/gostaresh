@@ -35,6 +35,7 @@ class UpdateUserRequest extends FormRequest
             'rural_district_id' => 'numeric|nullable',
             'address' => 'string|nullable',
             'status' => 'numeric|nullable',
+            'roles' => 'nullable|exists:roles,id',
             'user_picture' => 'nullable|image',
         ];
     }
