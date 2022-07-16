@@ -21,15 +21,17 @@
                                                endDate="{{ request()->input('end_date') }}">
                                 </x-search-date>
                             </div>
-                            <div class="col-md-2">
-                                <label class="col-form-label">سال</label>
-                                <select name="year" class="form-select" id="year">
-                                    <option value="">همه</option>
-                                    @foreach ( $yearSelectedList as $yearSelected)
-                                        <option value="{{ $yearSelected }}">{{ $yearSelected }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            @if( count($yearSelectedList))
+                                <div class="col-md-2">
+                                    <label class="col-form-label">سال</label>
+                                    <select name="year" class="form-select" id="year">
+                                        <option value="">همه</option>
+                                        @foreach ( $yearSelectedList as $yearSelected)
+                                            <option value="{{ $yearSelected }}">{{ $yearSelected }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endif
                             <div class="col-md-6 mt-4">
                                 <div class="mt-1">
                                     @foreach($filterColumnsCheckBoxes as $key=>$value)
