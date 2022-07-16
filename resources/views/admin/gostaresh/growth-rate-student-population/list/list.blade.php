@@ -161,7 +161,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($growthRateStudentPopulations as $key => $growthRateStudentPopulation)
                                     <tr>
                                         <th scope="row">{{ $growthRateStudentPopulations?->firstItem() + $key }}</th>
@@ -174,22 +174,22 @@
                                         {{-- <td>{{ $growthRateStudentPopulation?->grade }}</td> --}}
 
                                         @if (filterCol('ebtedai') == true)
-                                        <td>{{ $growthRateStudentPopulation?->ebtedai }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->ebtedai) }}</td>
                                         @endif
                                         @if (filterCol('motevasete_1') == true)
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_1 }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_1) }}</td>
                                         @endif
                                         @if (filterCol('motevasete_2_ensani') == true)
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_ensani }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_ensani) }}</td>
                                         @endif
                                         @if (filterCol('motevasete_2_math') == true)
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_math }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_math) }}</td>
                                         @endif
                                         @if (filterCol('motevasete_2_science') == true)
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_science }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_science) }}</td>
                                         @endif
                                         @if (filterCol('motevasete_2_kar_danesh') == true)
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_kar_danesh }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_kar_danesh) }}</td>
                                         @endif
 
                                         <td>{{ $growthRateStudentPopulation?->year }}</td>

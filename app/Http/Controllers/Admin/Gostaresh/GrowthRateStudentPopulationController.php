@@ -20,21 +20,21 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function index()
     {
-        $query = $this->getGrowthRateStudentPopulationsQuery();
+        $query = GrowthRateStudentPopulation::whereRequestsQuery();
         $growthRateStudentPopulations = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.gostaresh.growth-rate-student-population.list.list', compact('growthRateStudentPopulations'));
     }
 
-    private function getGrowthRateStudentPopulationsQuery()
-    {
-        $query = GrowthRateStudentPopulation::query();
-        $query = filterByOwnProvince($query);
-        return $query;
-    }
+    // private function getGrowthRateStudentPopulationsQuery()
+    // {
+    //     $query = GrowthRateStudentPopulation::query();
+    //     $query = filterByOwnProvince($query);
+    //     return $query;
+    // }
 
     public function listExcelExport()
     {
-        $query = $this->getGrowthRateStudentPopulationsQuery();
+        $query = GrowthRateStudentPopulation::whereRequestsQuery();
         $growthRateStudentPopulations = $query->orderBy('id', 'desc')->get();
         return Excel::download(new ListExport($growthRateStudentPopulations), 'invoices.xlsx');
     }
