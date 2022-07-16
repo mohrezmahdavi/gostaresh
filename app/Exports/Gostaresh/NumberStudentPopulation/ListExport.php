@@ -27,38 +27,70 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     public function map($numberStudentPopulation): array
     {
         $this->count = $this->count + 1;
-       
-        return [
-            $this->count,
-            $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation->county?->name,
-            $numberStudentPopulation?->gender_title,
-            $numberStudentPopulation?->ebtedai,
-            $numberStudentPopulation?->motevasete_1,
-            $numberStudentPopulation?->motevasete_2_ensani,
-            $numberStudentPopulation?->motevasete_2_math,
-            $numberStudentPopulation?->motevasete_2_science,
-            $numberStudentPopulation?->motevasete_2_kar_danesh,
-            $numberStudentPopulation?->year,
-            $numberStudentPopulation?->month,
-        ];
+        $mapping = [$this->count];
+        array_push($mapping, $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation?->county?->name);
+
+        if (filterCol('gender_title') == true) {
+            array_push($mapping, $numberStudentPopulation?->gender_title);
+        }
+        if (filterCol('ebtedai') == true) {
+            array_push($mapping, $numberStudentPopulation?->ebtedai);
+        }
+        if (filterCol('motevasete_1') == true) {
+            array_push($mapping, $numberStudentPopulation?->motevasete_1);
+        }
+        if (filterCol('motevasete_2_ensani') == true) {
+            array_push($mapping, $numberStudentPopulation?->motevasete_2_ensani);
+        }
+        if (filterCol('motevasete_2_math') == true) {
+            array_push($mapping, $numberStudentPopulation?->motevasete_2_math);
+        }
+        if (filterCol('motevasete_2_science') == true) {
+            array_push($mapping, $numberStudentPopulation?->motevasete_2_science);
+        }
+        if (filterCol('motevasete_2_kar_danesh') == true) {
+            array_push($mapping, $numberStudentPopulation?->motevasete_2_kar_danesh);
+        }
+
+        array_push($mapping, $numberStudentPopulation?->year);
+        array_push($mapping, $numberStudentPopulation?->month);
+        array_push($mapping, $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation?->county?->name);
     }
 
-    
+
 
     public function headings(): array
     {
-        return [
-            "#",
-            'شهرستان ',
-            'جنسیت',
-            'ابتدایی',
-            'متوسطه اول',
-            'متوسطه دوم (علوم انسانی)',
-            'متوسطه دوم (ریاضی)',
-            'متوسطه دوم (علوم تجربی)',
-            'متوسطه دوم (کار و دانش و فنی و حرفه ای)',
-            'سال',
-            'ماه',
-        ];
+        $headings = ["#"];
+        array_push($headings, 'شهرستان');
+
+        if (filterCol('gender_title') == true) {
+            array_push($headings, 'جنسیت');
+        }
+        if (filterCol('ebtedai') == true) {
+            array_push($headings, 'ابتدایی');
+        }
+        if (filterCol('motevasete_1') == true) {
+            array_push($headings, 'متوسطه اول');
+        }
+        if (filterCol('motevasete_2_ensani') == true) {
+            array_push($headings, 'متوسطه دوم (علوم انسانی)');
+        }
+        if (filterCol('motevasete_2_math') == true) {
+            array_push($headings, 'متوسطه دوم (ریاضی)');
+        }
+        if (filterCol('motevasete_2_science') == true) {
+            array_push($headings, 'متوسطه دوم (علوم تجربی)');
+        }
+        if (filterCol('motevasete_2_kar_danesh') == true) {
+            array_push($headings, 'متوسطه دوم (کار و دانش و فنی و حرفه ای)');
+        }
+
+        array_push($headings, 'سال');
+        array_push($headings, 'ماه');
+        array_push($headings, 'موقعیت');
+        
+        return $headings;
+    }
     }
 }

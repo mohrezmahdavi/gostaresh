@@ -26,38 +26,80 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     public function map($geographicalLocationOfUnit): array
     {
         $this->count = $this->count + 1;
-       
-        return [
-            $this->count,
-            $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name,
-            $geographicalLocationOfUnit?->unit_university,
-            $geographicalLocationOfUnit?->university_building,
-            $geographicalLocationOfUnit?->distance_from_population_density_of_city,
-            $geographicalLocationOfUnit?->distance_from_center_of_province,
-            $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title,
-            $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center,
-            $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university,
-            $geographicalLocationOfUnit?->level_and_quality_of_access_title,
-            $geographicalLocationOfUnit?->international_opportunities_geographical_location_title,
-        ];
+        $mapping = [$this->count];
+        array_push($mapping, $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit?->county?->name);
+
+        if (filterCol('unit_university') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->unit_university);
+        }
+        if (filterCol('university_building') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->university_building);
+        }
+        if (filterCol('distance_from_population_density_of_city') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->distance_from_population_density_of_city);
+        }
+        if (filterCol('distance_from_center_of_province') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->distance_from_center_of_province);
+        }
+        if (filterCol('climate_type_and_weather_conditions_title') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title);
+        }
+        if (filterCol('distance_to_the_nearest_higher_education_center') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center);
+        }
+        if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university);
+        }
+        if (filterCol('level_and_quality_of_access_title') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->level_and_quality_of_access_title);
+        }
+        if (filterCol('international_opportunities_geographical_location_title') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->international_opportunities_geographical_location_title);
+        }
+
+        array_push($mapping, $geographicalLocationOfUnit?->year);
+        array_push($mapping, $geographicalLocationOfUnit?->month);
+        array_push($mapping, $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit?->county?->name);
+        return $mapping;
     }
 
-    
+
 
     public function headings(): array
     {
-        return [
-            "#",
-            'شهرستان ',
-            'واحد دانشگاهی',
-            'ساختمان واحد دانشگاهی',
-            'فاصله از تراکم جمعیتی شهر',
-            'فاصله از مرکز استان',
-            'نوع اقلیم و شرایط آب و هوایی',
-            'فاصله تا نزدیکترین مرکز آموزش عالی',
-            'فاصله تا نزدیکترین واحد دانشگاه آزاد',
-            'سطح و کیفیت دسترسی',
-            'فرصت های بین الملی موقعیت جغرافیایی',
-        ];
+        $headings = ["#"];
+        array_push($headings, 'شهرستان');
+
+        if (filterCol('unit_university') == true) {
+            array_push($headings, 'واحد دانشگاهی');
+        }
+        if (filterCol('university_building') == true) {
+            array_push($headings, 'ساختمان واحد دانشگاهی');
+        }
+        if (filterCol('distance_from_population_density_of_city') == true) {
+            array_push($headings, 'فاصله از تراکم جمعیتی شهر');
+        }
+        if (filterCol('distance_from_center_of_province') == true) {
+            array_push($headings, 'فاصله از مرکز استان');
+        }
+        if (filterCol('climate_type_and_weather_conditions_title') == true) {
+            array_push($headings, 'نوع اقلیم و شرایط آب و هوایی');
+        }
+        if (filterCol('distance_to_the_nearest_higher_education_center') == true) {
+            array_push($headings, 'فاصله تا نزدیکترین مرکز آموزش عالی');
+        }
+        if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true) {
+            array_push($headings, 'فاصله تا نزدیکترین واحد دانشگاه آزاد');
+        }
+        if (filterCol('level_and_quality_of_access_title') == true) {
+            array_push($headings, 'سطح و کیفیت دسترسی');
+        }
+        if (filterCol('international_opportunities_geographical_location_title') == true) {
+            array_push($headings, 'فرصت های بین الملی موقعیت جغرافیایی');
+        }
+        array_push($headings, 'سال');
+        array_push($headings, 'ماه');
+        array_push($headings, 'موقعیت');
+        return $headings;
     }
 }
