@@ -162,6 +162,10 @@
                                 <a href="{{ route('number.student.population.index') }}"><i
                                         class="ri-calendar-2-line align-middle me-1"></i>تعداد و ترکیب جمعیت دانش آموزی استان</a>
                             </li>
+                            <li>
+                                <a href="{{ route('growth.rate.student.population.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>نرخ رشد و ترکیب جمعیت دانش آموزی استان</a>
+                            </li>
 
                         </ul>
                     </div>
