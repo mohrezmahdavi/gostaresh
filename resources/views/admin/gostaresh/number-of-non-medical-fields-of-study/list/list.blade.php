@@ -48,20 +48,20 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($numberOfNonMedicalFieldsOfStudies as $key => $numberOfNonMedicalFieldsOfStudy)
                                     <tr>
                                         <th scope="row">{{ $numberOfNonMedicalFieldsOfStudies?->firstItem() + $key }}</th>
         
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->province?->name . ' - ' . $numberOfNonMedicalFieldsOfStudy->county?->name }}
                                         </td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->kardani_na_peyvaste_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->karshenasi_peyvaste_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->karshenasi_na_peyvaste_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->karshenasi_arshad_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->docktora_herfei_count }}</td>
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->docktora_takhasosi_count }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_na_peyvaste_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_peyvaste_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_na_peyvaste_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_arshad_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_herfei_count) }}</td>
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_takhasosi_count) }}</td>
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->department_of_education_title }}</td>
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->year }}</td>
                                         <td>

@@ -61,30 +61,30 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($researchOutputStatusAnalyses as $key => $researchOutputStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $researchOutputStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $researchOutputStatusAnalysis?->province?->name . ' - ' . $researchOutputStatusAnalysis->county?->name }}
                                     <td>{{ $researchOutputStatusAnalysis?->unit}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_valid_scientific_articles}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_valid_books}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_authored_books}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_internal_inventions}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_international_inventions}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_theses}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_research_dissertations}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_compiled_dissertations}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_invented_dissertations}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_product_dissertations}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_completed_research_projects}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_theorizing_chairs}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_memoranda_of_understanding}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->amount_of_national_contracts_concluded}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->amount_of_local_contracts_concluded}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_scientific_journals}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis['number_of_R&D_research'] ?? ''}}</td>
-                                    <td>{{ $researchOutputStatusAnalysis?->number_of_innovative_ideas}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_valid_scientific_articles)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_valid_books)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_authored_books)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_internal_inventions)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_international_inventions)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_theses)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_research_dissertations)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_compiled_dissertations)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_invented_dissertations)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_product_dissertations)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_completed_research_projects)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_theorizing_chairs)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_memoranda_of_understanding)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->amount_of_national_contracts_concluded)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->amount_of_local_contracts_concluded)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_scientific_journals)}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis['number_of_R&D_research']) ?? ''}}</td>
+                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_innovative_ideas)}}</td>
                                     <td>{{ $researchOutputStatusAnalysis?->year }}</td>
                                     <td>
 

@@ -47,7 +47,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($statusAnalysisOfTheNumberOfCurriculas as $key => $statusAnalysisOfTheNumberOfCurricula)
                                     <tr>
                                         <th scope="row">{{ $statusAnalysisOfTheNumberOfCurriculas?->firstItem() + $key }}</th>
@@ -56,12 +56,12 @@
                                         <td>{{ $statusAnalysisOfTheNumberOfCurricula?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCurricula->county?->name }}
                                         </td>
                                         <td>{{ $statusAnalysisOfTheNumberOfCurricula?->unit }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->total_number_of_curricula }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->number_of_modified_curricula }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->new_interdisciplinary_curricula_implemented }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->complete_new_interdisciplinary_curricula }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->number_of_common_curricula_with_the_world }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->number_of_curricula_developed }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->total_number_of_curricula) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->number_of_modified_curricula) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->new_interdisciplinary_curricula_implemented) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->complete_new_interdisciplinary_curricula) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->number_of_common_curricula_with_the_world) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->number_of_curricula_developed) }}</td>
 
                                         <td>{{ $statusAnalysisOfTheNumberOfCurricula?->year }}</td>
                                         <td>

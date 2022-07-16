@@ -42,13 +42,13 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($costChangesTrends as $key => $costChangesTrend)
                                 <tr>
                                     <th scope="row">{{ $costChangesTrends?->firstItem() + $key }}</th>
                                     <td>{{ $costChangesTrend?->province?->name . ' - ' . $costChangesTrend->county?->name }}
                                     <td>{{ $costChangesTrend?->unit}}</td>
-                                    <td>{{ $costChangesTrend?->total_annual_expenses}}</td>
+                                    <td>{{ number_format($costChangesTrend?->total_annual_expenses)}}</td>
                                     <td>{{ $costChangesTrend?->year }}</td>
                                     <td>
 

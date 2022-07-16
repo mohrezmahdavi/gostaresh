@@ -71,41 +71,41 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($universityCosts as $key => $universityCost)
                                 <tr>
                                     <th scope="row">{{ $universityCosts?->firstItem() + $key }}</th>
                                     <td>{{ $universityCost?->province?->name . ' - ' . $universityCost->county?->name }}
                                     <td>{{ $universityCost?->unit}}</td>
-                                    <td>{{ $universityCost?->payment_to_faculty_members}}</td>
-                                    <td>{{ $universityCost?->total_running_costs}}</td>
-                                    <td>{{ $universityCost?->average_salary_of_faculty_members}}</td>
-                                    <td>{{ $universityCost?->average_salaries_of_faculty_members_from_research_contracts}}</td>
-                                    <td>{{ $universityCost?->student_fees}}</td>
-                                    <td>{{ $universityCost?->average_salary_of_employees}}</td>
-                                    <td>{{ $universityCost?->current_expenditure_growth_rate}}</td>
-                                    <td>{{ $universityCost?->cost_of_paying_office_rent}}</td>
-                                    <td>{{ $universityCost?->cost_of_rent_for_educational_building}}</td>
-                                    <td>{{ $universityCost?->cost_of_rent_for_research_building}}</td>
-                                    <td>{{ $universityCost?->extra_charge_for_rent_extracurricular_building}}</td>
-                                    <td>{{ $universityCost?->cost_of_rent_innovation_buildings}}</td>
-                                    <td>{{ $universityCost?->energy_costs_of_buildings}}</td>
-                                    <td>{{ $universityCost?->cost_of_university_equipment}}</td>
-                                    <td>{{ $universityCost?->training_costs}}</td>
-                                    <td>{{ $universityCost?->research_costs}}</td>
-                                    <td>{{ $universityCost?->innovation_costs}}</td>
-                                    <td>{{ $universityCost?->educational_costs}}</td>
-                                    <td>{{ $universityCost?->development_costs}}</td>
-                                    <td>{{ $universityCost?->cultural_sphere_costs}}</td>
-                                    <td>{{ $universityCost?->administrative_costs}}</td>
-                                    <td>{{ $universityCost?->information_technology_costs}}</td>
-                                    <td>{{ $universityCost?->International_sphere_costs}}</td>
-                                    <td>{{ $universityCost?->costs_of_staff_training_and_faculty}}</td>
-                                    <td>{{ $universityCost?->sports_expenses}}</td>
-                                    <td>{{ $universityCost?->health_costs}}</td>
-                                    <td>{{ $universityCost?->entrepreneurship_costs}}</td>
-                                    <td>{{ $universityCost?->graduate_costs}}</td>
-                                    <td>{{ $universityCost?->branding_costs}}</td>
+                                    <td>{{ number_format($universityCost?->payment_to_faculty_members)}}</td>
+                                    <td>{{ number_format($universityCost?->total_running_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->average_salary_of_faculty_members)}}</td>
+                                    <td>{{ number_format($universityCost?->average_salaries_of_faculty_members_from_research_contracts)}}</td>
+                                    <td>{{ number_format($universityCost?->student_fees)}}</td>
+                                    <td>{{ number_format($universityCost?->average_salary_of_employees)}}</td>
+                                    <td>{{ number_format($universityCost?->current_expenditure_growth_rate)}}</td>
+                                    <td>{{ number_format($universityCost?->cost_of_paying_office_rent)}}</td>
+                                    <td>{{ number_format($universityCost?->cost_of_rent_for_educational_building)}}</td>
+                                    <td>{{ number_format($universityCost?->cost_of_rent_for_research_building)}}</td>
+                                    <td>{{ number_format($universityCost?->extra_charge_for_rent_extracurricular_building)}}</td>
+                                    <td>{{ number_format($universityCost?->cost_of_rent_innovation_buildings)}}</td>
+                                    <td>{{ number_format($universityCost?->energy_costs_of_buildings)}}</td>
+                                    <td>{{ number_format($universityCost?->cost_of_university_equipment)}}</td>
+                                    <td>{{ number_format($universityCost?->training_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->research_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->innovation_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->educational_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->development_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->cultural_sphere_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->administrative_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->information_technology_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->International_sphere_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->costs_of_staff_training_and_faculty)}}</td>
+                                    <td>{{ number_format($universityCost?->sports_expenses)}}</td>
+                                    <td>{{ number_format($universityCost?->health_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->entrepreneurship_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->graduate_costs)}}</td>
+                                    <td>{{ number_format($universityCost?->branding_costs)}}</td>
                                     <td>{{ $universityCost?->year }}</td>
                                     <td>
 

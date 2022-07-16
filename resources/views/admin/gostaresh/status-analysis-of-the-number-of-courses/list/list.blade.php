@@ -46,7 +46,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($statusAnalysisOfTheNumberOfCourses as $key => $statusAnalysisOfTheNumberOfCourse)
                                     <tr>
                                         <th scope="row">{{ $statusAnalysisOfTheNumberOfCourses?->firstItem() + $key }}</th>
@@ -54,11 +54,11 @@
                                         <td>{{ $statusAnalysisOfTheNumberOfCourse?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCourse->county?->name }}
                                         </td>
                                         <td>{{ $statusAnalysisOfTheNumberOfCourse?->unit }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->total_number_of_courses }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->total_number_of_courses) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person) }}</td>
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually) }}</td>
 
                                         <td>{{ $statusAnalysisOfTheNumberOfCourse?->year }}</td>
                                         <td>

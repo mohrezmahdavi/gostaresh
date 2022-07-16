@@ -53,7 +53,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($percapitaStatusAnalyses as $key => $percapitaStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $percapitaStatusAnalyses?->firstItem() + $key }}</th>

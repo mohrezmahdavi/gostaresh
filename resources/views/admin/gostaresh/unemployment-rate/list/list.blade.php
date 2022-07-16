@@ -42,7 +42,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($unemploymentRates as $key => $unemploymentRate)
                                     <tr>
                                         <th scope="row">{{ $unemploymentRates?->firstItem() + $key }}</th>
@@ -50,7 +50,7 @@
                                         <td>{{ $unemploymentRate?->province?->name . ' - ' . $unemploymentRate->county?->name }}
                                         </td>
                                         <td>{{ $unemploymentRate?->education_title }}</td>
-                                        <td>{{ $unemploymentRate?->amount }}</td>
+                                        <td>{{ number_format($unemploymentRate?->amount) }}</td>
                                         <td>{{ $unemploymentRate?->year }}</td>
                                         <td>
         

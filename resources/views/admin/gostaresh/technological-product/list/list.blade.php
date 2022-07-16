@@ -52,22 +52,22 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($technologicalProducts as $key => $technologicalProduct)
                                 <tr>
                                     <th scope="row">{{ $technologicalProducts?->firstItem() + $key }}</th>
                                     <td>{{ $technologicalProduct?->province?->name . ' - ' . $technologicalProduct->county?->name }}
                                     <td>{{ $technologicalProduct?->unit}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_active_technology_cores}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_active_technology_units}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_active_knowledge_based_companies}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_creative_companies}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_commercialized_ideas}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_knowledge_based_products}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_products_without_license}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_licensed_products}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_active_technology_professors}}</td>
-                                    <td>{{ $technologicalProduct?->number_of_active_technology_students}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_cores)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_units)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_active_knowledge_based_companies)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_creative_companies)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_commercialized_ideas)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_knowledge_based_products)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_products_without_license)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_licensed_products)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_professors)}}</td>
+                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_students)}}</td>
                                     <td>{{ $technologicalProduct?->year }}</td>
                                     <td>
 

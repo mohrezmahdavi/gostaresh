@@ -61,31 +61,31 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($assetProductivity as $key => $value)
                                 <tr>
                                     <th scope="row">{{ $assetProductivity?->firstItem() + $key }}</th>
                                     <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
                                     <td>{{ $value?->unit}}</td>
-                                    <td>{{ $value?->office_space_utilization_rate}}</td>
-                                    <td>{{ $value?->utilization_rate_of_educational_equipment}}</td>
-                                    <td>{{ $value?->utilization_rate_of_technology_equipment}}</td>
-                                    <td>{{ $value?->utilization_rate_of_cultural_equipment}}</td>
-                                    <td>{{ $value?->utilization_rate_of_sports_equipment}}</td>
-                                    <td>{{ $value?->operation_rate_of_agricultural_equipment}}</td>
-                                    <td>{{ $value?->operation_rate_of_workshop_equipment}}</td>
-                                    <td>{{ $value?->faculty_capacity_utilization_rate}}</td>
-                                    <td>{{ $value?->employee_capacity_utilization_rate}}</td>
-                                    <td>{{ $value?->graduate_capacity_utilization_rate}}</td>
-                                    <td>{{ $value?->student_capacity_utilization_rate}}</td>
-                                    <td>{{ $value?->ratio_of_faculty_members_to_students}}</td>
-                                    <td>{{ $value?->ratio_of_staff_to_students}}</td>
-                                    <td>{{ $value?->ratio_of_faculty_members_to_teaching_professors}}</td>
-                                    <td>{{ $value?->ratio_of_faculty_members_to_employees}}</td>
-                                    <td>{{ $value?->ratio_of_unit_faculty_members_to_faculty_members_of_the_province}}</td>
-                                    <td>{{ $value?->ratio_of_unit_students_to_students_of_the_province}}</td>
-                                    <td>{{ $value?->ratio_of_unit_employees_to_provincial_employees}}</td>
-                                    <td>{{ $value?->unit_teaching_professors_to_teaching_professors_province}}</td>
+                                    <td>{{ number_format($value?->office_space_utilization_rate)}}</td>
+                                    <td>{{ number_format($value?->utilization_rate_of_educational_equipment)}}</td>
+                                    <td>{{ number_format($value?->utilization_rate_of_technology_equipment)}}</td>
+                                    <td>{{ number_format($value?->utilization_rate_of_cultural_equipment)}}</td>
+                                    <td>{{ number_format($value?->utilization_rate_of_sports_equipment)}}</td>
+                                    <td>{{ number_format($value?->operation_rate_of_agricultural_equipment)}}</td>
+                                    <td>{{ number_format($value?->operation_rate_of_workshop_equipment)}}</td>
+                                    <td>{{ number_format($value?->faculty_capacity_utilization_rate)}}</td>
+                                    <td>{{ number_format($value?->employee_capacity_utilization_rate)}}</td>
+                                    <td>{{ number_format($value?->graduate_capacity_utilization_rate)}}</td>
+                                    <td>{{ number_format($value?->student_capacity_utilization_rate)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_students)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_staff_to_students)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_teaching_professors)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_employees)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_unit_faculty_members_to_faculty_members_of_the_province)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_unit_students_to_students_of_the_province)}}</td>
+                                    <td>{{ number_format($value?->ratio_of_unit_employees_to_provincial_employees)}}</td>
+                                    <td>{{ number_format($value?->unit_teaching_professors_to_teaching_professors_province)}}</td>
                                     <td>{{ $value?->year }}</td>
                                     <td>
 
