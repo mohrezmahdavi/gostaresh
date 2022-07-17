@@ -55,6 +55,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         array_push($mapping, $numberStudentPopulation?->year);
         array_push($mapping, $numberStudentPopulation?->month);
         array_push($mapping, $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation?->county?->name);
+        return $mapping;
     }
 
 

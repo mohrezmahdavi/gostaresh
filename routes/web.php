@@ -84,7 +84,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'population' => 'growthRateStudentPopulation'
     ]);
     Route::get('growth/rate/student/population/list/excel', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listExcelExport'])->name('growth.rate.student.population.list.excel');
-
+    Route::get('growth/rate/student/population/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listPDFExport'])->name('growth.rate.student.population.list.pdf');
+    Route::get('growth/rate/student/population/list/print', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listPrintExport'])->name('growth.rate.student.population.list.print');
 
     // Table 5 Route
     Route::resource('gdp/city', App\Http\Controllers\Admin\Gostaresh\GDPCityController::class)->names('gdp.city')->parameters([
