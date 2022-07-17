@@ -20,7 +20,7 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $query = $this->getGDPCityQuery();
+        $query = GDPCity::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = GDPCity::$filterColumnsCheckBoxes;
 
@@ -36,12 +36,12 @@ class GDPCityController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
-    private function getGDPCityQuery()
-    {
-        $query = GDPCity::query();
-        $query = filterByOwnProvince($query);
-        return $query;
-    }
+    // private function getGDPCityQuery()
+    // {
+    //     $query = GDPCity::query();
+    //     $query = filterByOwnProvince($query);
+    //     return $query;
+    // }
 
     public function listExcelExport()
     {
