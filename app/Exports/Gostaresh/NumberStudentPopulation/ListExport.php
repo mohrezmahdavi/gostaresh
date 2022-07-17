@@ -92,5 +92,5 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         
         return $headings;
     }
-    }
+    
 }

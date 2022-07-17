@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberStudentPopulation\NumberStudentPopulationRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 3 Controller
 class NumberStudentPopulationController extends Controller
@@ -26,12 +27,29 @@ class NumberStudentPopulationController extends Controller
         return view('admin.gostaresh.number-student-population.list.list', compact('numberStudentPopulations'));
     }
 
+    private function getNumberStudentPopulationRecords()
+    {
+        return NumberStudentPopulation::whereRequestsQuery()->orderBy('id', 'DESC')->get();
+    }
+
 
     public function listExcelExport()
     {
-        $query = NumberStudentPopulation::whereRequestsQuery();
-        $numberStudentPopulations = $query->orderBy('id', 'DESC')->get();
+        $numberStudentPopulations = $this->getNumberStudentPopulationRecords();
         return Excel::download(new ListExport($numberStudentPopulations), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberStudentPopulations = $this->getNumberStudentPopulationRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-student-population.list.pdf', compact('numberStudentPopulations'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberStudentPopulations = $this->getNumberStudentPopulationRecords();
+        return view('admin.gostaresh.number-student-population.list.pdf', compact('numberStudentPopulations'));
     }
 
     /**
