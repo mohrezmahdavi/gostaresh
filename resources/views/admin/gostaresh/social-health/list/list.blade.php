@@ -49,7 +49,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($socialHealths as $key => $socialHealth)
                                 <tr>
                                     <th scope="row">{{ $socialHealths?->firstItem() + $key }}</th>
@@ -57,11 +57,11 @@
                                     <td>{{ $socialHealth?->unit}}</td>
                                     <td>{{ $socialHealth?->component_title}}</td>
                                     <td>{{ $socialHealth?->gender}}</td>
-                                    <td>{{ $socialHealth?->associate_degree }}</td>
-                                    <td>{{ $socialHealth?->bachelor_degree }}</td>
-                                    <td>{{ $socialHealth?->masters }}</td>
-                                    <td>{{ $socialHealth?->professional_doctor}}</td>
-                                    <td>{{ $socialHealth?->phd }}</td>
+                                    <td>{{ number_format($socialHealth?->associate_degree) }}</td>
+                                    <td>{{ number_format($socialHealth?->bachelor_degree) }}</td>
+                                    <td>{{ number_format($socialHealth?->masters) }}</td>
+                                    <td>{{ number_format($socialHealth?->professional_doctor)}}</td>
+                                    <td>{{ number_format($socialHealth?->phd) }}</td>
                                     <td>{{ $socialHealth?->year }}</td>
                                     <td>
 

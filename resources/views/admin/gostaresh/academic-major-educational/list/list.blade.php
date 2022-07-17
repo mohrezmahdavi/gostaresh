@@ -47,7 +47,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($academicMajorEducationals as $key => $academicMajorEducational)
                                     <tr>
                                         <th scope="row">{{ $academicMajorEducationals?->firstItem() + $key }}</th>
@@ -55,11 +55,11 @@
                                         <td>{{ $academicMajorEducational?->province?->name . ' - ' . $academicMajorEducational->county?->name }}
                                         </td>
                                         <td>{{ $academicMajorEducational?->department_of_education_title }}</td>
-                                        <td>{{ $academicMajorEducational?->azad_eslami_count }}</td>
-                                        <td>{{ $academicMajorEducational?->dolati_count }}</td>
-                                        <td>{{ $academicMajorEducational?->payam_noor_count }}</td>
-                                        <td>{{ $academicMajorEducational?->gheir_entefai_count }}</td>
-                                        <td>{{ $academicMajorEducational?->elmi_karbordi_count }}</td>
+                                        <td>{{ number_format($academicMajorEducational?->azad_eslami_count) }}</td>
+                                        <td>{{ number_format($academicMajorEducational?->dolati_count) }}</td>
+                                        <td>{{ number_format($academicMajorEducational?->payam_noor_count) }}</td>
+                                        <td>{{ number_format($academicMajorEducational?->gheir_entefai_count) }}</td>
+                                        <td>{{ number_format($academicMajorEducational?->elmi_karbordi_count) }}</td>
                                         <td>{{ $academicMajorEducational?->year }}</td>
                                         <td>
         

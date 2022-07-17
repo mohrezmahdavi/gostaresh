@@ -44,7 +44,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($annualGrowthRateOfStudentEnrollments as $key => $annualGrowthRateOfStudentEnrollment)
                                     <tr>
                                         <th scope="row">{{ $annualGrowthRateOfStudentEnrollments?->firstItem() + $key }}</th>
@@ -54,7 +54,7 @@
                                         <td>{{ $annualGrowthRateOfStudentEnrollment?->university_type_title }}</td>
                                         <td>{{ $annualGrowthRateOfStudentEnrollment?->gender_title }}</td>
                                         <td>{{ $annualGrowthRateOfStudentEnrollment?->department_of_education_title }}</td>
-                                        <td>{{ $annualGrowthRateOfStudentEnrollment?->annual_growth_rate_of_student_enrollment }}</td>
+                                        <td>{{ number_format($annualGrowthRateOfStudentEnrollment?->annual_growth_rate_of_student_enrollment) }}</td>
                                         <td>{{ $annualGrowthRateOfStudentEnrollment?->year }}</td>
                                         <td>
         

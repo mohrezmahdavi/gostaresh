@@ -43,13 +43,13 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($amountOfFacilities as $key => $amountOfFacility)
                                 <tr>
                                     <th scope="row">{{ $amountOfFacilities?->firstItem() + $key }}</th>
                                     <td>{{ $amountOfFacility?->province?->name . ' - ' . $amountOfFacility->county?->name }}
                                     <td>{{ $amountOfFacility?->unit}}</td>
-                                    <td>{{ $amountOfFacility?->amount}}</td>
+                                    <td>{{ number_format($amountOfFacility?->amount)}}</td>
                                     <td>{{ $amountOfFacility?->year }}</td>
                                     <td>
 

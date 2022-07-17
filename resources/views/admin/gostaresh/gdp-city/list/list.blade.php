@@ -52,7 +52,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($gdpCities as $key => $gdpCity)
                                     <tr>
                                         <th scope="row">{{ $gdpCities?->firstItem() + $key }}</th>
@@ -60,7 +60,7 @@
                                         <td>{{ $gdpCity?->province?->name . ' - ' . $gdpCity->county?->name }}
                                         </td>
                                         @if (filterCol('amount') == true)
-                                        <td>{{ $gdpCity?->amount }}</td>
+                                        <td>{{ number_format($gdpCity?->amount) }}</td>
                                         @endif
                                         @if (filterCol('year') == true)
                                         <td>{{ $gdpCity?->year }}</td>

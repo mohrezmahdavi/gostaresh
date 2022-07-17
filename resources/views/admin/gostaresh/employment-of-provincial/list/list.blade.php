@@ -58,31 +58,31 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($employmentOfProvincials as $key => $employmentOfProvincial)
                                     <tr>
                                         <th scope="row">{{ $employmentOfProvincials?->firstItem() + $key }}</th>
         
                                         <td>{{ $employmentOfProvincial?->province?->name . ' - ' . $employmentOfProvincial->county?->name }}
                                         </td>
-                                        <td>{{ $employmentOfProvincial?->agriculture_hunting_forestry }}</td>
-                                        <td>{{ $employmentOfProvincial?->mining_construction }}</td>
-                                        <td>{{ $employmentOfProvincial?->water_electricity_natural_gas_supply }}</td>
-                                        <td>{{ $employmentOfProvincial?->building }}</td>
-                                        <td>{{ $employmentOfProvincial?->wholesale_retail_vehicle_repair_supply }}</td>
-                                        <td>{{ $employmentOfProvincial?->hotel_and_restaurant }}</td>
-                                        <td>{{ $employmentOfProvincial?->transportation_warehousing_communications }}</td>
-                                        <td>{{ $employmentOfProvincial?->financial_intermediation }}</td>
-                                        <td>{{ $employmentOfProvincial?->office_of_public_affairs_urban_services }}</td>
-                                        <td>{{ $employmentOfProvincial?->education }}</td>
-                                        <td>{{ $employmentOfProvincial?->health_and_social_work }}</td>
-                                        <td>{{ $employmentOfProvincial?->activities_of_employed_households }}</td>
-                                        <td>{{ $employmentOfProvincial?->overseas_organizations_and_delegations }}</td>
-                                        <td>{{ $employmentOfProvincial?->real_estates }}</td>
-                                        <td>{{ $employmentOfProvincial?->professional_scientific_technical_activities }}</td>
-                                        <td>{{ $employmentOfProvincial?->office_and_support_services }}</td>
-                                        <td>{{ $employmentOfProvincial?->art_and_entertainment }}</td>
-                                        <td>{{ $employmentOfProvincial?->other_services }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->agriculture_hunting_forestry) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->mining_construction) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->water_electricity_natural_gas_supply) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->building) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->wholesale_retail_vehicle_repair_supply) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->hotel_and_restaurant) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->transportation_warehousing_communications) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->financial_intermediation) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->office_of_public_affairs_urban_services) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->education) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->health_and_social_work) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->activities_of_employed_households) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->overseas_organizations_and_delegations) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->real_estates) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->professional_scientific_technical_activities) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->office_and_support_services) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->art_and_entertainment) }}</td>
+                                        <td>{{ number_format($employmentOfProvincial?->other_services) }}</td>
                                         <td>{{ $employmentOfProvincial?->year }}</td>
                                         <td>
         

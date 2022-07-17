@@ -52,22 +52,22 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($innovationInfrastructures as $key => $innovationInfrastructure)
                                 <tr>
                                     <th scope="row">{{ $innovationInfrastructures?->firstItem() + $key }}</th>
                                     <td>{{ $innovationInfrastructure?->province?->name . ' - ' . $innovationInfrastructure->county?->name }}
                                     <td>{{ $innovationInfrastructure?->unit}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_active_innovation_houses}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_active_accelerators}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_active_growth_centers}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_active_technology_cores}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_active_skill_high_schools}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_skill_training_centers}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_research_centers}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_development_offices}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_industry_trade_offices}}</td>
-                                    <td>{{ $innovationInfrastructure?->number_of_entrepreneurship_centers}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_active_innovation_houses)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_active_accelerators)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_active_growth_centers)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_active_technology_cores)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_active_skill_high_schools)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_skill_training_centers)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_research_centers)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_development_offices)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_industry_trade_offices)}}</td>
+                                    <td>{{ number_format($innovationInfrastructure?->number_of_entrepreneurship_centers)}}</td>
                                     <td>{{ $innovationInfrastructure?->year }}</td>
                                     <td>
 

@@ -61,30 +61,30 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($teachersStatusAnalyses as $key => $teachersStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $teachersStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $teachersStatusAnalysis?->province?->name . ' - ' . $teachersStatusAnalysis->county?->name }}
                                     <td>{{ $teachersStatusAnalysis?->unit}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->scientific_programs_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->upgraded_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_tuition_teachers}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_officer_faculty_members_in_other_unit}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_officer_faculty_members_in_central_organization}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_participant_faculty_members_in_cooperation_plan}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_transfer_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_instructor_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_assistant_professor_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_associate_professor_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_full_professor_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_faculty_members_smaller_50_years_old}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_technology_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_faculty_members_type_a}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_faculty_members_type_b}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->number_of_top_scientific_faculty_members}}</td>
-                                    <td>{{ $teachersStatusAnalysis?->average_level_of_research_productivity_of_faculty_members}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->scientific_programs_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->upgraded_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_tuition_teachers)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_officer_faculty_members_in_other_unit)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_officer_faculty_members_in_central_organization)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_participant_faculty_members_in_cooperation_plan)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_transfer_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_instructor_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_assistant_professor_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_associate_professor_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_full_professor_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_smaller_50_years_old)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_technology_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_type_a)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_type_b)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_top_scientific_faculty_members)}}</td>
+                                    <td>{{ number_format($teachersStatusAnalysis?->average_level_of_research_productivity_of_faculty_members)}}</td>
                                     <td>{{ $teachersStatusAnalysis?->year }}</td>
                                     <td>
 

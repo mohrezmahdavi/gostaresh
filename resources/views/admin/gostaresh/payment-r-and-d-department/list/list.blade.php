@@ -41,14 +41,14 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($paymentRAndDDepartments as $key => $paymentRAndDDepartment)
                                     <tr>
                                         <th scope="row">{{ $paymentRAndDDepartments?->firstItem() + $key }}</th>
         
                                         <td>{{ $paymentRAndDDepartment?->province?->name . ' - ' . $paymentRAndDDepartment->county?->name }}
                                         </td>
-                                        <td>{{ $paymentRAndDDepartment?->amount }}</td>
+                                        <td>{{ number_format($paymentRAndDDepartment?->amount) }}</td>
                                         <td>{{ $paymentRAndDDepartment?->year }}</td>
                                         <td>
         

@@ -49,7 +49,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($roadmapDesireds as $key => $roadmapDesired)
                                 <tr>
                                     <th scope="row">{{ $roadmapDesireds?->firstItem() + $key }}</th>

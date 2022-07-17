@@ -51,21 +51,21 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($revenueStatusAnalyses as $key => $revenueStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $revenueStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $revenueStatusAnalysis?->province?->name . ' - ' . $revenueStatusAnalysis->county?->name }}
                                     <td>{{ $revenueStatusAnalysis?->unit}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->total_revenue}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->income_from_student_tuition}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->income_from_commercialized_technologies}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->income_from_research_activities}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->income_from_skills_training}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->operating_income_growth_rate}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->total_non_tuition_income}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->total_international_income}}</td>
-                                    <td>{{ $revenueStatusAnalysis?->shareholder_income}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->total_revenue)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->income_from_student_tuition)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->income_from_commercialized_technologies)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->income_from_research_activities)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->income_from_skills_training)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->operating_income_growth_rate)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->total_non_tuition_income)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->total_international_income)}}</td>
+                                    <td>{{ number_format($revenueStatusAnalysis?->shareholder_income)}}</td>
                                     <td>{{ $revenueStatusAnalysis?->year }}</td>
                                     <td>
 

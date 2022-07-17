@@ -45,7 +45,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($percapitaRevenue as $key => $value)
                                 <tr>
                                     <th scope="row">{{ $percapitaRevenue?->firstItem() + $key }}</th>
@@ -53,7 +53,7 @@
                                     <td>{{ $value?->unit}}</td>
                                     <td>{{ $value?->university_type_title}}</td>
                                     <td>{{ $value?->grade_title}}</td>
-                                    <td>{{ $value?->percapita_revenue_status_analyses}}</td>
+                                    <td>{{ number_format($value?->percapita_revenue_status_analyses)}}</td>
                                     <td>{{ $value?->year }}</td>
                                     <td>
 

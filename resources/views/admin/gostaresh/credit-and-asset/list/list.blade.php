@@ -49,20 +49,20 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($creditAndAssets as $key => $creditAndAsset)
                                 <tr>
                                     <th scope="row">{{ $creditAndAssets?->firstItem() + $key }}</th>
                                     <td>{{ $creditAndAsset?->province?->name . ' - ' . $creditAndAsset->county?->name }}
                                     <td>{{ $creditAndAsset?->unit}}</td>
-                                    <td>{{ $creditAndAsset?->administrative_credits}}</td>
-                                    <td>{{ $creditAndAsset?->educational_credits}}</td>
-                                    <td>{{ $creditAndAsset?->research_credits}}</td>
-                                    <td>{{ $creditAndAsset?->cultural_credits}}</td>
-                                    <td>{{ $creditAndAsset?->innovative_credits}}</td>
-                                    <td>{{ $creditAndAsset?->skills_credits}}</td>
-                                    <td>{{ $creditAndAsset?->total_University_credits}}</td>
-                                    <td>{{ $creditAndAsset?->total_university_assets}}</td>
+                                    <td>{{ number_format($creditAndAsset?->administrative_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->educational_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->research_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->cultural_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->innovative_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->skills_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->total_University_credits)}}</td>
+                                    <td>{{ number_format($creditAndAsset?->total_university_assets)}}</td>
                                     <td>{{ $creditAndAsset?->year }}</td>
                                     <td>
 
