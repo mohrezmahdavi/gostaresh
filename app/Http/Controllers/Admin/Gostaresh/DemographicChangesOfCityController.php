@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
+use App\Exports\Gostaresh\DemographicChangesOfCity\PDFExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\DemographicChangesOfCity;
 use Facades\Verta;
@@ -11,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\DemographicChangesOfCity\DemographicChangesOfCityRequest;
+use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 // Table 1 Controller
@@ -46,7 +48,8 @@ class DemographicChangesOfCityController extends Controller
     {
         $query = DemographicChangesOfCity::whereRequestsQuery();
         $demographicChangesOfCities = $query->orderBy('id', 'desc')->get();
-        return  Excel::download(new ListExport($demographicChangesOfCities), 'invoices.pdf');
+        $pdfFile = PDF::loadView('admin.gostaresh.demographic-changes-of-city.list.pdf', compact('demographicChangesOfCities'));
+        return $pdfFile->download('users-list.pdf');
     }
 
 

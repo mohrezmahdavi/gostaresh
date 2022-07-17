@@ -154,7 +154,7 @@
 
                             
 
-                            @foreach (config('gostaresh-urls.url') as $keyParent => $valueParent)
+                            {{-- @foreach (config('gostaresh-urls.url') as $keyParent => $valueParent)
                                 <li>
 
                                     <a role="link" aria-disabled="true" class="text-uppercase fw-bold">
@@ -192,7 +192,7 @@
                                         </ul>
                                     @endif
                                 </li>
-                            @endforeach
+                            @endforeach --}}
 
 
 

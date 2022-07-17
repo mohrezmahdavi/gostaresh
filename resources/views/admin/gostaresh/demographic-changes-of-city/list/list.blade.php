@@ -107,18 +107,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    @if (filterCol('population') == true)
-                                        <th>جمعیت </th>
-                                    @endif
-                                    @if (filterCol('immigration_rates') == true)
-                                        <th>نرخ مهاجرت</th>
-                                    @endif
-                                    @if (filterCol('growth_rate') == true)
-                                        <th>نرخ رشد</th>
-                                    @endif
-                                    <th>سال</th>
-                                    <th>ماه</th>
-                                    <th>موقعیت</th>
+                                    @include('admin.gostaresh.demographic-changes-of-city.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -127,22 +116,8 @@
                                     <tr>
                                         <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
 
-                                        @if (filterCol('population') == true)
-                                            <td>{{ number_format((int) $demographicChangesOfCity?->population) }}</td>
-                                        @endif
-                                        @if (filterCol('immigration_rates') == true)
-                                            <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>
-                                        @endif
-                                        @if (filterCol('growth_rate') == true)
-                                            <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.demographic-changes-of-city.list.partials.tbody')
 
-
-
-                                        <td>{{ $demographicChangesOfCity?->year }}</td>
-                                        <td>{{ $demographicChangesOfCity?->month }}</td>
-                                        <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}
-                                        </td>
                                         <td>
 
                                             <a href="{{ route('demographic.changes.city.edit', $demographicChangesOfCity) }}"
