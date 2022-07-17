@@ -21,17 +21,27 @@ class GDPPartController extends Controller
      */
     public function index()
     {
-        $query = $this->getGDPPartsQuery();
+        $query = GDPPart::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = GDPPart::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
+
         $gdpParts = $query->orderBy('id', 'desc')->paginate(20);
-        return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts'));
+        return view('admin.gostaresh.gdp-part.list.list', compact('gdpParts', 'filterColumnsCheckBoxes', 'yearSelectedList'));
     }
 
-    private function getGDPPartsQuery()
+    private function yearSelectedList($query)
     {
-        $query = GDPPart::query();
-        $query = filterByOwnProvince($query);
-        return $query;
+        return $query->select('year')->distinct()->pluck('year');
     }
+
+    // private function getGDPPartsQuery()
+    // {
+    //     $query = GDPPart::query();
+    //     $query = filterByOwnProvince($query);
+    //     return $query;
+    // }
 
     public function listExcelExport()
     {

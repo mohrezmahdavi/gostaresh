@@ -211,6 +211,18 @@
                                         class="ri-calendar-2-line align-middle me-1"></i>تعداد و ترکیب جمعیت دانش آموزی
                                     استان</a>
                             </li>
+                            <li>
+                                <a href="{{ route('growth.rate.student.population.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>نرخ رشد و ترکیب جمعیت دانش آموزی استان</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('gdp.city.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی کل استان</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('gdp.part.index') }}"><i
+                                        class="ri-calendar-2-line align-middle me-1"></i>روند تغییرات سهم تولید ناخالص داخلی استان در مقایسه با تولید ناخالص داخلی کل کشور</a>
+                            </li>
 
                         </ul>
                     </div>

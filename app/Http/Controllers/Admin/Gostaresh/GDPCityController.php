@@ -20,19 +20,28 @@ class GDPCityController extends Controller
      */
     public function index()
     {
-        $query = $this->getGDPCityQuery();
+        $query = GDPCity::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = GDPCity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
 
-        return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities'));
+        return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
     }
 
-    private function getGDPCityQuery()
+    private function yearSelectedList($query)
     {
-        $query = GDPCity::query();
-        $query = filterByOwnProvince($query);
-        return $query;
+        return $query->select('year')->distinct()->pluck('year');
     }
+
+    // private function getGDPCityQuery()
+    // {
+    //     $query = GDPCity::query();
+    //     $query = filterByOwnProvince($query);
+    //     return $query;
+    // }
 
     public function listExcelExport()
     {

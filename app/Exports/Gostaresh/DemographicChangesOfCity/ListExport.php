@@ -3,7 +3,6 @@
 namespace App\Exports\Gostaresh\DemographicChangesOfCity;
 
 use App\Models\Index\DemographicChangesOfCity;
-use Facades\Verta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -14,8 +13,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     private $count = 0;
 
     private $demographicChangesOfCities;
-
-    private $arr;
 
     public function __construct($demographicChangesOfCities)
     {
@@ -33,43 +30,43 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     public function map($demographicChangesOfCity): array
     {
         $this->count = $this->count + 1;
-        $arr = [$this->count];
+        $mapping = [$this->count];
         if (filterCol('population') == true) {
-            array_push($arr, $demographicChangesOfCity?->population);
+            array_push($mapping, $demographicChangesOfCity?->population);
         }
         if (filterCol('immigration_rates') == true) {
-            array_push($arr, $demographicChangesOfCity?->immigration_rates);
+            array_push($mapping, $demographicChangesOfCity?->immigration_rates);
         }
         if (filterCol('growth_rate') == true) {
-            array_push($arr, $demographicChangesOfCity?->growth_rate);
+            array_push($mapping, $demographicChangesOfCity?->growth_rate);
         }
 
-        array_push($arr, $demographicChangesOfCity?->year);
-        array_push($arr, $demographicChangesOfCity?->month);
-        array_push($arr, $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name);
-        return $arr;
+        array_push($mapping, $demographicChangesOfCity?->year);
+        array_push($mapping, $demographicChangesOfCity?->month);
+        array_push($mapping, $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name);
+        return $mapping;
     }
 
-    
+
 
     public function headings(): array
     {
-        $arr = ["#"];
+        $headings = ["#"];
         if (filterCol('population') == true) {
-            array_push($arr, 'جمعیت');
+            array_push($headings, 'جمعیت');
         }
         if (filterCol('immigration_rates') == true) {
-            array_push($arr, 'نرخ مهاجرت');
+            array_push($headings, 'نرخ مهاجرت');
         }
         if (filterCol('growth_rate') == true) {
-            array_push($arr, 'نرخ رشد');
+            array_push($headings, 'نرخ رشد');
         }
 
 
-        array_push($arr, 'سال');
-        array_push($arr, 'ماه');
-        array_push($arr, 'موقعیت');
-        return $arr;
+        array_push($headings, 'سال');
+        array_push($headings, 'ماه');
+        array_push($headings, 'موقعیت');
+        return $headings;
     }
 
 }
