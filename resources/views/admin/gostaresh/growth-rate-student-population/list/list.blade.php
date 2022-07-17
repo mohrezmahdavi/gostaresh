@@ -49,7 +49,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($growthRateStudentPopulations as $key => $growthRateStudentPopulation)
                                     <tr>
                                         <th scope="row">{{ $growthRateStudentPopulations?->firstItem() + $key }}</th>
@@ -57,12 +57,12 @@
                                         <td>{{ $growthRateStudentPopulation?->province?->name . ' - ' . $growthRateStudentPopulation->county?->name }}</td>
                                         <td>{{ $growthRateStudentPopulation?->gender_title }}</td>
                                         {{-- <td>{{ $growthRateStudentPopulation?->grade }}</td> --}}
-                                        <td>{{ $growthRateStudentPopulation?->ebtedai }}</td>
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_1 }}</td>
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_ensani }}</td>
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_math }}</td>
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_science }}</td>
-                                        <td>{{ $growthRateStudentPopulation?->motevasete_2_kar_danesh }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->ebtedai) }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_1) }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_ensani) }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_math) }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_science) }}</td>
+                                        <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_kar_danesh) }}</td>
                                         <td>
                                             <a href="{{ route('growth.rate.student.population.edit', $growthRateStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"

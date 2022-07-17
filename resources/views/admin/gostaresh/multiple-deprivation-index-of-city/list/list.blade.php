@@ -41,14 +41,14 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($multipleDeprivationIndexOfCities as $key => $multipleDeprivationIndexOfCity)
                                     <tr>
                                         <th scope="row">{{ $multipleDeprivationIndexOfCities?->firstItem() + $key }}</th>
         
                                         <td>{{ $multipleDeprivationIndexOfCity?->province?->name . ' - ' . $multipleDeprivationIndexOfCity->county?->name }}
                                         </td>
-                                        <td>{{ $multipleDeprivationIndexOfCity?->amount }}</td>
+                                        <td>{{ number_format($multipleDeprivationIndexOfCity?->amount) }}</td>
                                         <td>{{ $multipleDeprivationIndexOfCity?->year }}</td>
                                         <td>
         

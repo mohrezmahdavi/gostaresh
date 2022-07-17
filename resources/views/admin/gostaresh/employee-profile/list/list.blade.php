@@ -55,24 +55,24 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($employeeProfiles as $key => $employeeProfile)
                                 <tr>
                                     <th scope="row">{{ $employeeProfiles?->firstItem() + $key }}</th>
                                     <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile->county?->name }}
                                     <td>{{ $employeeProfile?->department_of_education_title}}</td>
-                                    <td>{{ $employeeProfile?->number_of_non_faculty_staff}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_non_faculty_staff)}}</td>
                                     <td>{{ $employeeProfile?->average_age_of_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_male_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_female_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_administrative_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_training_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_research_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_PhD_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_master_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_expert_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_diploma_and_sub_diploma_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_employees_studying}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_male_employees)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_female_employees)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_administrative_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_training_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_research_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_PhD_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_master_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_expert_staff)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_diploma_and_sub_diploma_employees)}}</td>
+                                    <td>{{ number_format($employeeProfile?->number_of_employees_studying)}}</td>
                                     <td>{{ $employeeProfile?->growth_rate}}</td>
                                     <td>{{ $employeeProfile?->year }}</td>
                                     <td>

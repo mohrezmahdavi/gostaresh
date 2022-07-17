@@ -64,33 +64,33 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($internationalResearchStatusAnalyses as $key => $internationalResearchStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $internationalResearchStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $internationalResearchStatusAnalysis?->province?->name . ' - ' . $internationalResearchStatusAnalysis->county?->name }}
                                     <td>{{ $internationalResearchStatusAnalysis?->unit}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_laboratories}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_research_projects}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_shared_articles}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_research_projects}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_faculty_members_using_study_abroad}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_graduate_students_with_opportunities_abroad}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_research_opportunities_presented}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_foreign_workshops_held}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_lectures_held}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_awards}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->average_H_index_of_faculty_members}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_articles_science_and_nature}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->print_ISI_articles}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->percentage_of_quality_articles}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_faculty_members_of_world_scientists}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_faculty_members_of_international_journals}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_conferences_held}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_scientific_books}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_agreements_implemented}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->amount_of_international_research_credits}}</td>
-                                    <td>{{ $internationalResearchStatusAnalysis?->number_of_international_publications}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_laboratories)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_research_projects)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_shared_articles)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_research_projects)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_faculty_members_using_study_abroad)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_graduate_students_with_opportunities_abroad)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_research_opportunities_presented)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_foreign_workshops_held)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_lectures_held)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_awards)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->average_H_index_of_faculty_members)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_articles_science_and_nature)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->print_ISI_articles)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->percentage_of_quality_articles)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_faculty_members_of_world_scientists)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_faculty_members_of_international_journals)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_conferences_held)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_scientific_books)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_agreements_implemented)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->amount_of_international_research_credits)}}</td>
+                                    <td>{{ number_format($internationalResearchStatusAnalysis?->number_of_international_publications)}}</td>
                                     <td>{{ $internationalResearchStatusAnalysis?->year }}</td>
                                     <td>
 

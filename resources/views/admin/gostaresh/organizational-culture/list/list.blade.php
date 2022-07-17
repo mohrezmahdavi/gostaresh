@@ -57,7 +57,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($organizationalCultures as $key => $organizationalCulture)
                                 <tr>
                                     <th scope="row">{{ $organizationalCultures?->firstItem() + $key }}</th>

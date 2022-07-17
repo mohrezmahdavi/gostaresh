@@ -49,7 +49,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($graduatesOfHigherEducationCenters as $key => $graduatesOfHigherEducationCenter)
                                 <tr>
                                     <th scope="row">{{ $graduatesOfHigherEducationCenters?->firstItem() + $key }}</th>
@@ -57,10 +57,10 @@
                                     <td>{{$graduatesOfHigherEducationCenter?->university}}</td>
                                     <td>{{$graduatesOfHigherEducationCenter?->gender}}</td>
                                     <td>{{$graduatesOfHigherEducationCenter?->department_of_education_title}}</td>
-                                    <td>{{ $graduatesOfHigherEducationCenter?->associate_degree }}</td>
-                                    <td>{{ $graduatesOfHigherEducationCenter?->bachelor_degree }}</td>
-                                    <td>{{ $graduatesOfHigherEducationCenter?->masters }}</td>
-                                    <td>{{ $graduatesOfHigherEducationCenter?->phd }}</td>
+                                    <td>{{ number_format($graduatesOfHigherEducationCenter?->associate_degree) }}</td>
+                                    <td>{{ number_format($graduatesOfHigherEducationCenter?->bachelor_degree) }}</td>
+                                    <td>{{ number_format($graduatesOfHigherEducationCenter?->masters) }}</td>
+                                    <td>{{ number_format($graduatesOfHigherEducationCenter?->phd) }}</td>
                                     <td>{{ $graduatesOfHigherEducationCenter?->year }}</td>
                                     <td>
 

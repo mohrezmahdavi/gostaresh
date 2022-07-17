@@ -44,7 +44,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($numberOfVolunteersStatusAnalyses as $key => $numberOfVolunteersStatusAnalysis)
                                     <tr>
                                         <th scope="row">{{ $numberOfVolunteersStatusAnalyses?->firstItem() + $key }}</th>
@@ -54,7 +54,7 @@
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->university_type_title }}</td>
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->gender_title }}</td>
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->number_of_volunteers }}</td>
+                                        <td>{{ number_format($numberOfVolunteersStatusAnalysis?->number_of_volunteers) }}</td>
                                         <td>{{ $numberOfVolunteersStatusAnalysis?->year }}</td>
                                         <td>
 
