@@ -27,25 +27,36 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     public function map($gdpPart): array
     {
         $this->count = $this->count + 1;
-       
-        return [
-            $this->count,
-            $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name,
-            $gdpPart?->amount,
-            $gdpPart?->year,
-           
-        ];
+        $mapping = [$this->count];
+        array_push($mapping, $gdpPart?->province?->name . ' - ' . $gdpPart?->county?->name);
+
+        if (filterCol('amount') == true) {
+            array_push($mapping, $gdpPart?->amount);
+        }
+        if (filterCol('year') == true) {
+            array_push($mapping, $gdpPart?->year);
+        }
+        array_push($mapping, $gdpPart?->month);
+
+        return $mapping;
     }
 
     
 
     public function headings(): array
     {
-        return [
-            "#",
-            'شهرستان ',
-            'مقدار',
-            'سال',
-        ];
+        $headings = ["#"];
+        array_push($headings, 'شهرستان');
+        
+        if (filterCol('population') == true) {
+            array_push($headings, 'مقدار');
+        }
+        if (filterCol('immigration_rates') == true) {
+            array_push($headings, 'سال');
+        }
+        array_push($headings, 'ماه');
+
+        return $headings;
     }
+    
 }
