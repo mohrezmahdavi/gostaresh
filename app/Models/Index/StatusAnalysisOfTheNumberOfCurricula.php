@@ -87,6 +87,14 @@ class StatusAnalysisOfTheNumberOfCurricula extends Model
         return $query;
     }
 
+    public static $numeric_fields = [
+        "total_number_of_curricula",
+        "number_of_modified_curricula",
+        "new_interdisciplinary_curricula_implemented",
+        "complete_new_interdisciplinary_curricula",
+        "number_of_common_curricula_with_the_world",
+        "number_of_curricula_developed",];
+
     public static $filterColumnsCheckBoxes = [
 //        "field" => "title"
         "unit"                                        => "واحد",

@@ -17,15 +17,24 @@ class RevenueStatusAnalysesController extends Controller
      */
     public function index()
     {
-        $query = RevenueStatusAnalysis::query();
+        $query = RevenueStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = RevenueStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $revenueStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.revenue-status-analyses.list.list', compact('revenueStatusAnalyses'));
+        return view('admin.gostaresh.revenue-status-analyses.list.list', compact('revenueStatusAnalyses'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

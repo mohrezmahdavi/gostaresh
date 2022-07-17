@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\GraduateStatusAnalysis\GraduateStatusAnalysisRequest;
+use App\Models\Index\GraduatesOfHigherEducationCenters;
 use App\Models\Index\GraduateStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -21,13 +22,24 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = GraduateStatusAnalysis::query();
+        $query = GraduateStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = GraduateStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $graduateStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses'));
+        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses',
+            'filterColumnsCheckBoxes', 'yearSelectedList'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

@@ -21,15 +21,24 @@ class CulturalIndicatorsController extends Controller
      */
     public function index()
     {
-        $query = CulturalIndicatorsStatusAnalysis::query();
+        $query = CulturalIndicatorsStatusAnalysis::whereRequestQuery();
+
+        $filterColumnsCheckBoxes = CulturalIndicatorsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $culturalIndicators = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.cultural-indicators.list.list', compact('culturalIndicators'));
+        return view('admin.gostaresh.cultural-indicators.list.list', compact('culturalIndicators'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

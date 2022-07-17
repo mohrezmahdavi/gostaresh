@@ -13,17 +13,28 @@ class CreditAndAssetController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $query = CreditAndAssetAnalysis::query();
+        $query = CreditAndAssetAnalysis::whereRequestQuery();
+
+        $filterColumnsCheckBoxes = CreditAndAssetAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $creditAndAssets = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.credit-and-asset.list.list', compact('creditAndAssets'));
+        return view('admin.gostaresh.credit-and-asset.list.list', compact('creditAndAssets'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

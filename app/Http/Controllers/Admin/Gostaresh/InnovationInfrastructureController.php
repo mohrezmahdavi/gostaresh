@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InnovationInfrastructure\InnovationInfrastructureRequest;
+use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
 use App\Models\Index\TechnologyAndInnovationInfrastructure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -21,13 +22,24 @@ class InnovationInfrastructureController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = TechnologyAndInnovationInfrastructure::query();
+        $query = TechnologyAndInnovationInfrastructure::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = TechnologyAndInnovationInfrastructure::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $innovationInfrastructures = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.innovation-infrastructures.list.list', compact('innovationInfrastructures'));
+        return view('admin.gostaresh.innovation-infrastructures.list.list', compact('innovationInfrastructures'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

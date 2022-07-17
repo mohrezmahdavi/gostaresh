@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalResearchStatusAnalysis\InternationalResearchStatusAnalysisRequest;
 use App\Models\Index\InternationalResearchStatusAnalysis;
+use App\Models\Index\ResearchOutputStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -21,13 +22,23 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = InternationalResearchStatusAnalysis::query();
+        $query = InternationalResearchStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = InternationalResearchStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $internationalResearchStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.international-research-status-analyses.list.list', compact('internationalResearchStatusAnalyses'));
+        return view('admin.gostaresh.international-research-status-analyses.list.list', compact(
+            'internationalResearchStatusAnalyses', "filterColumnsCheckBoxes", "yearSelectedList"));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
