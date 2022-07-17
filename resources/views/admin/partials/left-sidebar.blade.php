@@ -79,7 +79,8 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
 
-            <ul id="side-menu">
+            <ul>
+            {{-- <ul id="side-menu"> --}}
 
                 <li class="menu-title">
                     <span>منو</span>
@@ -134,15 +135,79 @@
                     </li>
                 @endif
 
+
                 <li>
-                    <a href="#sidebarDashboardsAtlas" data-bs-toggle="collapse" aria-expanded="false"
-                        aria-controls="sidebarDashboardsAtlas" class="waves-effect">
+                    <a href="#sidebarDashboardsAtlas1" data-bs-toggle="collapse" aria-expanded="false"
+                        aria-controls="sidebarDashboardsAtlas1" class="waves-effect">
                         <i class="mdi mdi-account-group"></i>
                         {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
                         <span> اطلس </span>
                     </a>
-                    <div class="collapse" id="sidebarDashboardsAtlas">
+                    <div class="collapse" id="sidebarDashboardsAtlas1">
                         <ul class="nav-second-level">
+                            @php
+                                $i=0;
+                            @endphp
+
+                            @foreach (config('gostaresh-urls.url') as $key => $value)
+                                <li>
+                                    <a href="#sidebarDashboardsAtlas1_{{$i}}" data-bs-toggle="collapse" aria-expanded="false"
+                                    aria-controls="sidebarDashboardsAtlas1_{{$i}}" class="waves-effect">
+                                        <i class="ri-calendar-2-line align-middle me-1"></i>
+                                        {{$key}}
+                                    </a>
+                                </li>
+                                @if (count($value) > 0)
+                                    <div class="collapse" id="sidebarDashboardsAtlas1_{{$i}}">
+                                        <ul class="nav-second-level">
+                                            @foreach ($value as $keyMiddle => $valueMiddle)
+                                                <li>
+                                                    <a  href="#sidebarDashboardsAtlas_{{$i}}" data-bs-toggle="collapse" aria-expanded="false"
+                                                    aria-controls="sidebarDashboardsAtlas_{{$i}}" class="waves-effect">
+                                                        {{ $keyMiddle }}                                                    
+                                                    </a>                    
+                        
+                                                    @if (count($valueMiddle) > 0)
+                                                        <div class="collapse" id="sidebarDashboardsAtlas_{{$i}}">
+                                                            <ul class="nav-second-level">
+                                                                @foreach ($valueMiddle as $key => $value)
+                                                                    <li>
+                            
+                                                                        <a href="{{ route($value['name'] . '.index') }}" >
+                                                                            {{ $value['title'] }}
+                            
+                                                                        </a>
+                            
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                </li>
+                                                
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                {{-- <li>
+                    <a href="#sidebarDashboardsAtlas" data-bs-toggle="collapse" aria-expanded="false"
+                        aria-controls="sidebarDashboardsAtlas" class="waves-effect">
+                        <i class="mdi mdi-account-group"></i> --}}
+                        {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
+                        {{-- <span> اطلس </span>
+                    </a>
+                    <div class="collapse" id="sidebarDashboardsAtlas">
+                        <ul class="nav-second-level"> --}}
                             {{-- @foreach (array_slice(config('gostaresh-urls.url'), 0, 3) as $key => $value)
 
                                 <li>
@@ -150,7 +215,7 @@
                                             class="ri-calendar-2-line align-middle me-1"></i>{{ $value['title'] }}</a>
                                 </li>
                             @endforeach --}}
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('demographic.changes.city.index') }}"><i
                                         class="ri-calendar-2-line align-middle me-1"></i>روند تحولات جمعیتی شهرستان های استان</a>
                             </li>
@@ -165,11 +230,7 @@
 
                         </ul>
                     </div>
-                </li>
-
-
-
-
+                </li> --}}
 
 
                 {{-- <li>
