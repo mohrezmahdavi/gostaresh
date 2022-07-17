@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,9 +44,15 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان</th>
+                                    @if (filterCol('part_title') == true)
                                     <th>بخش</th>
+                                    @endif
+                                    @if (filterCol('amount') == true)
                                     <th>مقدار</th>
-                                    <th>سال</th>
+                                    @endif
+                                    @if (filterCol('year') == true)
+                                        <th>سال</th>
+                                    @endif
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -48,9 +61,16 @@
                                     <tr>
                                         <th scope="row">{{ $gdpParts?->firstItem() + $key }}</th>
                                         <td>{{ $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name }}</td>
+                    
+                                        @if (filterCol('part_title') == true)
                                         <td>{{ $gdpPart?->part_title }}</td>
+                                        @endif
+                                        @if (filterCol('amount') == true)
                                         <td>{{ number_format($gdpPart?->amount) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $gdpPart?->year }}</td>
+                                        @endif
                                         <td>
 
                                             <a href="{{ route('gdp.part.edit', $gdpPart) }}"
@@ -81,4 +101,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
