@@ -18,13 +18,20 @@ class NumberOfResearchProjectController extends Controller
      */
     public function index()
     {
-        $query = NumberOfResearchProject::query();
+        $query = NumberOfResearchProject::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfResearchProject::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfResearchProjects = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-research-project.list.list', compact('numberOfResearchProjects'));
+        return view('admin.gostaresh.number-of-research-project.list.list', compact('numberOfResearchProjects', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
