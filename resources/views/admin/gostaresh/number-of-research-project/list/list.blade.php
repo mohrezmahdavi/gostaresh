@@ -40,7 +40,7 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
@@ -57,31 +57,31 @@
                                 @foreach ($numberOfResearchProjects as $key => $numberOfResearchProject)
                                     <tr>
                                         <th scope="row">{{ $numberOfResearchProjects?->firstItem() + $key }}</th>
-        
+
                                         <td>{{ $numberOfResearchProject?->province?->name . ' - ' . $numberOfResearchProject->county?->name }}
                                         </td>
                                         @if (filterCol('number_of_research') == true)
                                         <td>{{ number_format($numberOfResearchProject?->number_of_research) }}</td>
                                         @endif
                                         @if (filterCol('year') == true)
-                                        <td>{{ $gdpCity?->year }}</td>
+                                        <td>{{ $numberOfResearchProject?->year }}</td>
                                         @endif
 
                                         <td>
-        
+
                                             <a href="{{ route('number.of.research.project.edit', $numberOfResearchProject) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('number.of.research.project.destroy', $numberOfResearchProject) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfResearchProjects->withQueryString()->links('pagination::bootstrap-4') }}
