@@ -42,6 +42,13 @@ class DemographicChangesOfCityController extends Controller
         return Excel::download(new ListExport($demographicChangesOfCities), 'invoices.xlsx');
     }
 
+    public function listPDFExport()
+    {
+        $query = DemographicChangesOfCity::whereRequestsQuery();
+        $demographicChangesOfCities = $query->orderBy('id', 'desc')->get();
+        return  Excel::download(new ListExport($demographicChangesOfCities), 'invoices.pdf');
+    }
+
 
     /**
      * Show the form for creating a new resource.

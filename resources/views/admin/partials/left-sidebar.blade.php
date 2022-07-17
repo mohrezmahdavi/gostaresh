@@ -108,7 +108,8 @@
                     </a>
                 </li>
 
-                @if(auth()->user()->hasPermissionTo('view-all-users') or auth()->user()->hasPermissionTo('create-any-user'))
+                @if (auth()->user()->hasPermissionTo('view-all-users') or
+                    auth()->user()->hasPermissionTo('create-any-user'))
                     <li>
                         <a href="#sidebarDashboardsUsers" data-bs-toggle="collapse" aria-expanded="false"
                             aria-controls="sidebarDashboardsUsers" class="waves-effect">
@@ -150,17 +151,65 @@
                                             class="ri-calendar-2-line align-middle me-1"></i>{{ $value['title'] }}</a>
                                 </li>
                             @endforeach --}}
+
+                            
+
+                            @foreach (config('gostaresh-urls.url') as $keyParent => $valueParent)
+                                <li>
+
+                                    <a role="link" aria-disabled="true" class="text-uppercase fw-bold">
+                                        <span>{{ $keyParent }}</span>
+                                    </a>
+
+
+                                    @if (count($valueParent) > 0)
+                                        <ul>
+                                            @foreach ($valueParent as $keyMiddle => $valueMiddle)
+                                                <li>
+
+                                                    <a role="link" aria-disabled="true">
+                                                        {{ $keyMiddle }}
+
+                                                    </a>
+
+
+                                                    @if (count($valueMiddle) > 0)
+                                                        <ul>
+                                                            @foreach ($valueMiddle as $key => $value)
+                                                                <li>
+
+                                                                    <a href="{{ route($value['name'] . '.index') }}">
+                                                                        {{ $value['title'] }}
+
+                                                                    </a>
+
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endforeach
+
+
+
                             <li>
                                 <a href="{{ route('demographic.changes.city.index') }}"><i
-                                        class="ri-calendar-2-line align-middle me-1"></i>روند تحولات جمعیتی شهرستان های استان</a>
+                                        class="ri-calendar-2-line align-middle me-1"></i>روند تحولات جمعیتی شهرستان های
+                                    استان</a>
                             </li>
                             <li>
                                 <a href="{{ route('geographical.location.unit.index') }}"><i
-                                        class="ri-calendar-2-line align-middle me-1"></i>وضعیت جغرافیایی واحد و دسترسی به آن در استان</a>
+                                        class="ri-calendar-2-line align-middle me-1"></i>وضعیت جغرافیایی واحد و دسترسی
+                                    به آن در استان</a>
                             </li>
                             <li>
                                 <a href="{{ route('number.student.population.index') }}"><i
-                                        class="ri-calendar-2-line align-middle me-1"></i>تعداد و ترکیب جمعیت دانش آموزی استان</a>
+                                        class="ri-calendar-2-line align-middle me-1"></i>تعداد و ترکیب جمعیت دانش آموزی
+                                    استان</a>
                             </li>
 
                         </ul>
