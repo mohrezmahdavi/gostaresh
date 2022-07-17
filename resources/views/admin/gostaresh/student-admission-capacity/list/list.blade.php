@@ -40,10 +40,11 @@
                                     <th>جنسیت</th>
                                     <th>گروه عمده تحصیلی</th>
                                     <th>مقدار</th>
+                                    <th>سال</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($studentAdmissionCapacities as $key => $studentAdmissionCapacity)
                                     <tr>
                                         <th scope="row">{{ $studentAdmissionCapacities?->firstItem() + $key }}</th>
@@ -53,7 +54,7 @@
                                         <td>{{ $studentAdmissionCapacity?->university_type_title }}</td>
                                         <td>{{ $studentAdmissionCapacity?->gender_title }}</td>
                                         <td>{{ $studentAdmissionCapacity?->department_of_education_title }}</td>
-                                        <td>{{ $studentAdmissionCapacity?->student_admission_capacities }}</td>
+                                        <td>{{ number_format($studentAdmissionCapacity?->student_admission_capacities) }}</td>
                                         <td>{{ $studentAdmissionCapacity?->year }}</td>
                                         <td>
 

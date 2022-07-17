@@ -57,7 +57,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_number_of_courses" name="total_number_of_courses"
+                                <input type="number" style="direction: rtl;" id="total_number_of_courses" name="total_number_of_courses"
                                     value="{{ $statusAnalysisOfTheNumOfCourse->total_number_of_courses }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -69,7 +69,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_Persian_language_courses_in_person" name="number_of_international_Persian_language_courses_in_person"
+                                <input type="number" style="direction: rtl;" id="number_of_international_Persian_language_courses_in_person" name="number_of_international_Persian_language_courses_in_person"
                                     value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_Persian_language_courses_in_person }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -77,11 +77,11 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_international_virtual_Persian_language_courses">
-                                <span>داد دوره های تحصیلی بین المللی برگزار شده به زبان فارسی به صورت مجازی </span>&nbsp
+                                <span>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان فارسی به صورت مجازی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_virtual_Persian_language_courses" name="number_of_international_virtual_Persian_language_courses"
+                                <input type="number" style="direction: rtl;" id="number_of_international_virtual_Persian_language_courses" name="number_of_international_virtual_Persian_language_courses"
                                     value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_virtual_Persian_language_courses }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -93,7 +93,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_courses_in_the_target_language_in_person" name="number_of_international_courses_in_the_target_language_in_person"
+                                <input type="number" style="direction: rtl;" id="number_of_international_courses_in_the_target_language_in_person" name="number_of_international_courses_in_the_target_language_in_person"
                                     value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_courses_in_the_target_language_in_person }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -105,7 +105,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_courses_in_the_target_language_virtually" name="number_of_international_courses_in_the_target_language_virtually"
+                                <input type="number" style="direction: rtl;" id="number_of_international_courses_in_the_target_language_virtually" name="number_of_international_courses_in_the_target_language_virtually"
                                     value="{{ $statusAnalysisOfTheNumOfCourse->number_of_international_courses_in_the_target_language_virtually }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>

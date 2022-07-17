@@ -41,14 +41,14 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($povertyOfProvincialCities as $key => $povertyOfProvincialCity)
                                     <tr>
                                         <th scope="row">{{ $povertyOfProvincialCities?->firstItem() + $key }}</th>
         
                                         <td>{{ $povertyOfProvincialCity?->province?->name . ' - ' . $povertyOfProvincialCity->county?->name }}
                                         </td>
-                                        <td>{{ $povertyOfProvincialCity?->amount }}</td>
+                                        <td>{{ number_format($povertyOfProvincialCity?->amount) }}</td>
                                         <td>{{ $povertyOfProvincialCity?->year }}</td>
                                         <td>
         

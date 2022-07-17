@@ -40,10 +40,11 @@
                                     <th>جنسیت</th>
                                     <th>گروه عمده تحصیلی</th>
                                     <th>مقدار</th>
+                                    <th>سال</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($numberOfStudentsStatusAnalysises as $key => $numberOfStudentsStatusAnalysis)
                                     <tr>
                                         <th scope="row">{{ $numberOfStudentsStatusAnalysises?->firstItem() + $key }}</th>
@@ -53,7 +54,7 @@
                                         <td>{{ $numberOfStudentsStatusAnalysis?->university_type_title }}</td>
                                         <td>{{ $numberOfStudentsStatusAnalysis?->gender_title }}</td>
                                         <td>{{ $numberOfStudentsStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->number_of_students }}</td>
+                                        <td>{{ number_format($numberOfStudentsStatusAnalysis?->number_of_students) }}</td>
                                         <td>{{ $numberOfStudentsStatusAnalysis?->year }}</td>
                                         <td>
         

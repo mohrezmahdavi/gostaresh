@@ -68,7 +68,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($culturalIndicators as $key => $culturalIndicator)
                                 <tr>
                                     <th scope="row">{{ $culturalIndicators?->firstItem() + $key }}</th>

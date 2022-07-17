@@ -13,6 +13,7 @@
 @endsection
 
 @section('styles-head')
+    <link href="{{ asset('assets/admin/custom/css/bootstrap-select.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -46,8 +47,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="status">وضعیت</label>
                             <div class="col-sm-10">
@@ -63,25 +62,21 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="role">نقش کاربری
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                        <div class="form-group row mt-2">
+                           <label class="col-sm-2 col-form-label" for="role">نقش کاربری
+                               <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
 
-                            </label>
+                           </label>
 
-                            <div class="col-sm-10">
-
-                                <select class="form-control" required id="role" name="role">
-                                    <option label="انتخاب کنید"></option>
-                                    @foreach (config('gostaresh.user_roles') as $key => $value)
-                                        <option {{ $user->role == $key ? 'selected' : '' }} value="{{ $key }}">
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div> --}}
-
+                           <div class="col-sm-10">
+                               <select class="form-control selectpicker" multiple aria-label="multiple select example" id="roles" name="roles[]">
+                                   @foreach ($all_roles_in_database as $role)
+                                       <option {{in_array($role->id,$user_roles) ? 'selected' : ''}} value="{{ $role->id }}">
+                                           {{ $role->name }}</option>
+                                   @endforeach
+                               </select>
+                           </div>
+                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="phone_number">
@@ -101,7 +96,7 @@
                                                    rural_district_default="{{ $user->rural_district_id }}">
                         </select-province-component>
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>
@@ -111,4 +106,6 @@
 
 @section('body-scripts')
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ asset('assets/admin/custom/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/custom/js/bootstrap-select.min.js') }}"></script>
 @endsection

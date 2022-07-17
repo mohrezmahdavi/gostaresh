@@ -46,7 +46,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($unitsGeneralStatuses as $key => $unitsGeneralStatus)
                                 <tr>
                                     <th scope="row">{{ $unitsGeneralStatuses?->firstItem() + $key }}</th>

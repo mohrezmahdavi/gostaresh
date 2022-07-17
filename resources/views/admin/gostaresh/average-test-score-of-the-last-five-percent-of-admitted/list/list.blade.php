@@ -40,10 +40,11 @@
                                     <th>جنسیت</th>
                                     <th>گروه عمده تحصیلی</th>
                                     <th>مقدار</th>
+                                    <th>سال</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($averageTestScoreOfTheLastFivePercentOfAdmitteds as $key => $averageTestScoreOfTheLastFivePercentOfAdmitted)
                                     <tr>
                                         <th scope="row">{{ $averageTestScoreOfTheLastFivePercentOfAdmitteds?->firstItem() + $key }}</th>
@@ -53,7 +54,7 @@
                                         <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->university_type_title }}</td>
                                         <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->gender_title }}</td>
                                         <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->department_of_education_title }}</td>
-                                        <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->average_test_score_of_the_last_five_percent_of_admitted }}</td>
+                                        <td>{{ number_format($averageTestScoreOfTheLastFivePercentOfAdmitted?->average_test_score_of_the_last_five_percent_of_admitted) }}</td>
                                         <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->year }}</td>
                                         <td>
 

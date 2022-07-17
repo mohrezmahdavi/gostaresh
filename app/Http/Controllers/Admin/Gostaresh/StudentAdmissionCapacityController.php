@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\StudentAdmissionCapacity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\StudentAdmissionCapacity\StudentAdmissionCapacityRequest;
 
 // Table 24 Controller
 class StudentAdmissionCapacityController extends Controller
@@ -39,10 +40,10 @@ class StudentAdmissionCapacityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StudentAdmissionCapacityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentAdmissionCapacityRequest $request)
     {
         StudentAdmissionCapacity::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class StudentAdmissionCapacityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StudentAdmissionCapacityRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentAdmissionCapacity $studentAdmissionCapacity)
+    public function update(StudentAdmissionCapacityRequest $request, StudentAdmissionCapacity $studentAdmissionCapacity)
     {
         $studentAdmissionCapacity->update($request->all());
         return back()->with('success', __('titles.success_update'));

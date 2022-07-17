@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfInternationalCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\NumberOfInternationalCourse\NumberOfInternationalCourseRequest;
 // Table 29 Controller
 class NumberOfInternationalCourseController extends Controller
 {
@@ -38,10 +39,10 @@ class NumberOfInternationalCourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfInternationalCourseRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfInternationalCourseRequest $request)
     {
         NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -72,11 +73,11 @@ class NumberOfInternationalCourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfInternationalCourseRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfInternationalCourse $numberOfInternationalCourse)
+    public function update(NumberOfInternationalCourseRequest $request, NumberOfInternationalCourse $numberOfInternationalCourse)
     {
         $numberOfInternationalCourse->update($request->all());
         return back()->with('success', __('titles.success_update'));

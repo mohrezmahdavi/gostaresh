@@ -47,17 +47,17 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($internationalTechnologies as $key => $internationalTechnology)
                                 <tr>
                                     <th scope="row">{{ $internationalTechnologies?->firstItem() + $key }}</th>
                                     <td>{{ $internationalTechnology?->province?->name . ' - ' . $internationalTechnology->county?->name }}
                                     <td>{{ $internationalTechnology?->unit}}</td>
-                                    <td>{{ $internationalTechnology?->number_of_participation}}</td>
-                                    <td>{{ $internationalTechnology?->number_of_technical_services}}</td>
-                                    <td>{{ $internationalTechnology?->earnings}}</td>
-                                    <td>{{ $internationalTechnology?->number_of_international_inventions}}</td>
-                                    <td>{{ $internationalTechnology?->number_of_international_knowledge_based_companies}}</td>
+                                    <td>{{ number_format($internationalTechnology?->number_of_participation)}}</td>
+                                    <td>{{ number_format($internationalTechnology?->number_of_technical_services)}}</td>
+                                    <td>{{ number_format($internationalTechnology?->earnings)}}</td>
+                                    <td>{{ number_format($internationalTechnology?->number_of_international_inventions)}}</td>
+                                    <td>{{ number_format($internationalTechnology?->number_of_international_knowledge_based_companies)}}</td>
                                     <td>{{ $internationalTechnology?->year }}</td>
                                     <td>
 

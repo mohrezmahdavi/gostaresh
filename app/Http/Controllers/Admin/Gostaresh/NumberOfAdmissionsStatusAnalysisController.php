@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfAdmissionsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Gostaresh\NumberOfAdmissionsStatusAnalysis\NumberOfAdmissionsStatusAnalysisRequest;
 
 // Table 19 Controller
 class NumberOfAdmissionsStatusAnalysisController extends Controller
@@ -39,10 +40,10 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfAdmissionsStatusAnalysisRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfAdmissionsStatusAnalysisRequest $request)
     {
         NumberOfAdmissionsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return back()->with('success', __('titles.success_store'));
@@ -73,11 +74,11 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NumberOfAdmissionsStatusAnalysisRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
+    public function update(NumberOfAdmissionsStatusAnalysisRequest $request, NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
         $numberOfAdmissionsStatusAnalysis->update($request->all());
         return back()->with('success', __('titles.success_update'));

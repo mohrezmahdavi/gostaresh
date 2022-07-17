@@ -42,7 +42,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($economicParticipationRates as $key => $economicParticipationRate)
                                     <tr>
                                         <th scope="row">{{ $economicParticipationRates?->firstItem() + $key }}</th>
@@ -50,7 +50,7 @@
                                         <td>{{ $economicParticipationRate?->province?->name . ' - ' . $economicParticipationRate->county?->name }}
                                         </td>
                                         <td>{{ $economicParticipationRate?->education_title }}</td>
-                                        <td>{{ $economicParticipationRate?->amount }}</td>
+                                        <td>{{ number_format($economicParticipationRate?->amount) }}</td>
                                         <td>{{ $economicParticipationRate?->year }}</td>
                                         <td>
         

@@ -50,19 +50,19 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($graduateStatusAnalyses as $key => $graduateStatusAnalysis)
                                 <tr>
                                     <th scope="row">{{ $graduateStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $graduateStatusAnalysis?->province?->name . ' - ' . $graduateStatusAnalysis->county?->name }}
                                     <td>{{ $graduateStatusAnalysis?->unit}}</td>
-                                    <td>{{ $graduateStatusAnalysis?->total_graduates}}</td>
-                                    <td>{{ $graduateStatusAnalysis?->employed_graduates}}</td>
-                                    <td>{{ $graduateStatusAnalysis?->graduate_growth_rate }}</td>
-                                    <td>{{ $graduateStatusAnalysis?->related_employed_graduates }}</td>
-                                    <td>{{ $graduateStatusAnalysis?->skill_certification_graduates }}</td>
-                                    <td>{{ $graduateStatusAnalysis?->employed_graduates_6_months_after_graduation }}</td>
-                                    <td>{{ $graduateStatusAnalysis?->average_monthly_income_employed_graduates }}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->total_graduates)}}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->employed_graduates)}}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->graduate_growth_rate) }}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->related_employed_graduates) }}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->skill_certification_graduates) }}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->employed_graduates_6_months_after_graduation) }}</td>
+                                    <td>{{ number_format($graduateStatusAnalysis?->average_monthly_income_employed_graduates) }}</td>
                                     <td>{{ $graduateStatusAnalysis?->year }}</td>
                                     <td>
 

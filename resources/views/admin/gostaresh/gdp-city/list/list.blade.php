@@ -42,14 +42,14 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($gdpCities as $key => $gdpCity)
                                     <tr>
                                         <th scope="row">{{ $gdpCities?->firstItem() + $key }}</th>
         
                                         <td>{{ $gdpCity?->province?->name . ' - ' . $gdpCity->county?->name }}
                                         </td>
-                                        <td>{{ $gdpCity?->amount }}</td>
+                                        <td>{{ number_format($gdpCity?->amount) }}</td>
                                         <td>{{ $gdpCity?->year }}</td>
                                         <td>
         
