@@ -135,10 +135,11 @@
 
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('demographic.changes.city.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-                            <a href="{{ route('demographic.changes.city.list.pdf', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی PDF</a>
+                            <x-exports.export-links 
+                                excelLink="{{ route('demographic.changes.city.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('demographic.changes.city.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('demographic.changes.city.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

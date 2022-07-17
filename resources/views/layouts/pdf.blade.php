@@ -10,10 +10,10 @@
     <style>
         body {
             direction: rtl;
+            font-family: 'IRANSansWeb' !important;
         }
 
         #customers {
-            font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
@@ -40,6 +40,10 @@
             color: white;
         }
     </style>
+
+    <script>
+        window.print();
+    </script>
 </head>
 
 <body>

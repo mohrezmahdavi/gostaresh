@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     ]);
     Route::get('demographic/changes/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listExcelExport'])->name('demographic.changes.city.list.excel');
     Route::get('demographic/changes/city/list/pdf', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listPDFExport'])->name('demographic.changes.city.list.pdf');
+    Route::get('demographic/changes/city/list/print', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listPrintExport'])->name('demographic.changes.city.list.print');
 
     // Table 2 Route
     Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('geographical.location.unit')->parameters([
