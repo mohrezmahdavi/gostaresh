@@ -3,7 +3,6 @@
 namespace App\Exports\Gostaresh\DemographicChangesOfCity;
 
 use App\Models\Index\DemographicChangesOfCity;
-use Facades\Verta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
