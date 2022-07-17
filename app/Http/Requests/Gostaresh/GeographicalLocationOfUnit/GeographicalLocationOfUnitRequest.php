@@ -31,6 +31,8 @@ class GeographicalLocationOfUnitRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             "unit_university" => 'required|string',
             "university_building" => 'required|string',
+            'land_area' => 'required|numeric|gte:0',
+            'the_size_of_the_building' => 'required|numeric|gte:0',
             "distance_from_population_density_of_city" => 'required|numeric|gte:0',
             "distance_from_center_of_province" => 'required|numeric|gte:0',
             "climate_type_and_weather_conditions" => 'required|numeric|gte:0',

@@ -4,6 +4,7 @@ namespace App\Exports\Gostaresh\DemographicChangesOfCity;
 
 use App\Models\Index\DemographicChangesOfCity;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
@@ -67,4 +68,5 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         array_push($headings, 'موقعیت');
         return $headings;
     }
+
 }

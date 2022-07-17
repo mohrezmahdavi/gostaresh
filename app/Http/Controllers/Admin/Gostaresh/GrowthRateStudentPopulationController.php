@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\GrowthRateStudentPopulation\GrowthRateStudentPopulationRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 4 Controller
 class GrowthRateStudentPopulationController extends Controller
@@ -32,11 +33,28 @@ class GrowthRateStudentPopulationController extends Controller
     //     return $query;
     // }
 
+    private function getGrowthRateStudentPopulationRecords()
+    {
+        return GrowthRateStudentPopulation::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
     public function listExcelExport()
     {
-        $query = GrowthRateStudentPopulation::whereRequestsQuery();
-        $growthRateStudentPopulations = $query->orderBy('id', 'desc')->get();
+        $growthRateStudentPopulations = $this->getGrowthRateStudentPopulationRecords();
         return Excel::download(new ListExport($growthRateStudentPopulations), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $growthRateStudentPopulations = $this->getGrowthRateStudentPopulationRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.growth-rate-student-population.list.pdf', compact('growthRateStudentPopulations'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $growthRateStudentPopulations = $this->getGrowthRateStudentPopulationRecords();
+        return view('admin.gostaresh.growth-rate-student-population.list.pdf', compact('growthRateStudentPopulations'));
     }
 
     /**

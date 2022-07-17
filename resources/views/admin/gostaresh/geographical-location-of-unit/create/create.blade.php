@@ -59,6 +59,28 @@
                         </div>
 
                         <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="land_area">
+                                <span> مساحت زمین </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" style="direction: rtl" id="land_area" name="land_area" value="{{ old('land_area') }}"
+                                    class="form-control" placeholder="مساحت زمین را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="the_size_of_the_building">
+                                <span> متراز ساختمانهای ملکی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" style="direction: rtl" id="the_size_of_the_building" name="the_size_of_the_building" value="{{ old('the_size_of_the_building') }}"
+                                    class="form-control" placeholder="متراز ساختمانهای ملکی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="distance_from_population_density_of_city">
                                 <span> فاصله از تراکم جمعیتی شهر </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>

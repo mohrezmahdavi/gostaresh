@@ -60,25 +60,32 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'city' => 'demographicChangesOfCity'
     ]);
     Route::get('demographic/changes/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listExcelExport'])->name('demographic.changes.city.list.excel');
+    Route::get('demographic/changes/city/list/pdf', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listPDFExport'])->name('demographic.changes.city.list.pdf');
+    Route::get('demographic/changes/city/list/print', [App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class, 'listPrintExport'])->name('demographic.changes.city.list.print');
 
     // Table 2 Route
     Route::resource('geographical/location/unit', App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class)->names('geographical.location.unit')->parameters([
         'unit' => 'geographicalLocationOfUnit'
     ]);
     Route::get('geographical/location/unit/list/excel', [App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class, 'listExcelExport'])->name('geographical.location.unit.list.excel');
+    Route::get('geographical/location/unit/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class, 'listPDFExport'])->name('geographical.location.unit.list.pdf');
+    Route::get('geographical/location/unit/list/print', [App\Http\Controllers\Admin\Gostaresh\GeographicalLocationOfUnitController::class, 'listPrintExport'])->name('geographical.location.unit.list.print');
 
     // Table 3 Route
     Route::resource('number/student/population', App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class)->names('number.student.population')->parameters([
         'population' => 'numberStudentPopulation'
     ]);
     Route::get('number/student/population/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class, 'listExcelExport'])->name('number.student.population.list.excel');
+    Route::get('number/student/population/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class, 'listPDFExport'])->name('number.student.population.list.pdf');
+    Route::get('number/student/population/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberStudentPopulationController::class, 'listPrintExport'])->name('number.student.population.list.print');
 
     // Table 4 Route
     Route::resource('growth/rate/student/population', App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class)->names('growth.rate.student.population')->parameters([
         'population' => 'growthRateStudentPopulation'
     ]);
     Route::get('growth/rate/student/population/list/excel', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listExcelExport'])->name('growth.rate.student.population.list.excel');
-
+    Route::get('growth/rate/student/population/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listPDFExport'])->name('growth.rate.student.population.list.pdf');
+    Route::get('growth/rate/student/population/list/print', [App\Http\Controllers\Admin\Gostaresh\GrowthRateStudentPopulationController::class, 'listPrintExport'])->name('growth.rate.student.population.list.print');
 
     // Table 5 Route
     Route::resource('gdp/city', App\Http\Controllers\Admin\Gostaresh\GDPCityController::class)->names('gdp.city')->parameters([

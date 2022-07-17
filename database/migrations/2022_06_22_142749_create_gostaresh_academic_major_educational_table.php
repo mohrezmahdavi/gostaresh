@@ -28,6 +28,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('azad_eslami_count')->default(0);
             $table->unsignedBigInteger('dolati_count')->default(0);
+            $table->unsignedBigInteger('farhangian_count')->default(0);
+            $table->unsignedBigInteger('fani_herfei_count')->default(0);
             $table->unsignedBigInteger('payam_noor_count')->default(0);
             $table->unsignedBigInteger('gheir_entefai_count')->default(0);
             $table->unsignedBigInteger('elmi_karbordi_count')->default(0);
