@@ -19,13 +19,20 @@ class PaymentRAndDDepartmentController extends Controller
      */
     public function index()
     {
-        $query = PaymentRAndDDepartment::query();
+        $query = PaymentRAndDDepartment::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = PaymentRAndDDepartment::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $paymentRAndDDepartments = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments'));
+        return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

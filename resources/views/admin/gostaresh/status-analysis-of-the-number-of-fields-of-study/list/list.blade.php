@@ -82,7 +82,7 @@
                                         <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_fields_of_less_than_5_people) }}</td>
                                         <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_without_admission) }}</td>
                                         <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_popular_fields) }}</td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->low_number_of_applicants) }}</td>
+                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->low_number_of_applicants }}</td>
                                         <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->year }}</td>
                                         <td>
 
