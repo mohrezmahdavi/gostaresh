@@ -116,6 +116,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('payment/randd/department', App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class)->names('payment.r.and.d.department')->parameters([
         'department' => 'paymentRAndDDepartment'
     ]);
+    Route::get('payment/randd/department/list/excel', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listExcelExport'])->name('payment.r.and.d.department.list.excel');
+    Route::get('payment/randd/department/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listPDFExport'])->name('payment.r.and.d.department.list.pdf');
+    Route::get('payment/randd/department/list/print', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listPrintExport'])->name('payment.r.and.d.department.list.print');
 
     // Table 9 Route
     Route::resource('industrial/expenditure/research', App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class)->names('industrial.expenditure.research')->parameters([

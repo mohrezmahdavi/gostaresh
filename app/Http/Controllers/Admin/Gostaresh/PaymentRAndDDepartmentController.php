@@ -8,7 +8,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\PaymentRAndDDepartment\PaymentRAndDDepartmentRequest;
-
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 // Table 8
 class PaymentRAndDDepartmentController extends Controller
 {
@@ -26,6 +27,30 @@ class PaymentRAndDDepartmentController extends Controller
         $paymentRAndDDepartments = $query->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments'));
+    }
+
+    private function getPaymentRAndDDepartmentRecords()
+    {
+        return PaymentRAndDDepartment::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        return Excel::download(new ListExport($paymentRAndDDepartments), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('numberOfResearchProjects'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        return view('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('numberOfResearchProjects'));
     }
 
     /**
