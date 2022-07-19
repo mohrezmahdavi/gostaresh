@@ -43,13 +43,7 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('number_of_research') == true)
-                                        <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.number-of-research-project.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -58,14 +52,7 @@
                                     <tr>
                                         <th scope="row">{{ $numberOfResearchProjects?->firstItem() + $key }}</th>
         
-                                        <td>{{ $numberOfResearchProject?->province?->name . ' - ' . $numberOfResearchProject->county?->name }}
-                                        </td>
-                                        @if (filterCol('number_of_research') == true)
-                                        <td>{{ number_format($numberOfResearchProject?->number_of_research) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $gdpCity?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.number-of-research-project.list.partials.tbody')
 
                                         <td>
         
@@ -81,7 +68,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.of.research.project.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.research.project.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.research.project.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfResearchProjects->withQueryString()->links('pagination::bootstrap-4') }}

@@ -108,6 +108,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/of/research/project', App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class)->names('number.of.research.project')->parameters([
         'project' => 'numberOfResearchProject'
     ]);
+    Route::get('number/of/research/project/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listExcelExport'])->name('number.of.research.project.list.excel');
+    Route::get('number/of/research/project/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listPDFExport'])->name('number.of.research.project.list.pdf');
+    Route::get('number/of/research/project/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listPrintExport'])->name('number.of.research.project.list.print');
 
     // Table 8 Route
     Route::resource('payment/randd/department', App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class)->names('payment.r.and.d.department')->parameters([
