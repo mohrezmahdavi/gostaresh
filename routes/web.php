@@ -132,6 +132,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('economic/participation/rate', App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class)->names('economic.participation.rate')->parameters([
         'rate' => 'economicParticipationRate'
     ]);
+    Route::get('economic/participation/rate/list/excel', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listExcelExport'])->name('economic.participation.rate.list.excel');
+    Route::get('economic/participation/rate/list/pdf', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listPDFExport'])->name('economic.participation.rate.list.pdf');
+    Route::get('economic/participation/rate/list/print', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listPrintExport'])->name('economic.participation.rate.list.print');
 
     // Table 11 Route
     Route::resource('unemployment/rate', App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class)->names('unemployment.rate')->parameters([
