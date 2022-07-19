@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\PaymentRAndDDepartment\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\PaymentRAndDDepartment;
 use Illuminate\Contracts\View\View;
@@ -50,14 +51,14 @@ class PaymentRAndDDepartmentController extends Controller
     public function listPDFExport()
     {
         $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
-        $pdfFile = PDF::loadView('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('numberOfResearchProjects'));
+        $pdfFile = PDF::loadView('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('paymentRAndDDepartments'));
         return $pdfFile->download('export-pdf.pdf');
     }
 
     public function listPrintExport()
     {
         $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
-        return view('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('numberOfResearchProjects'));
+        return view('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('paymentRAndDDepartments'));
     }
 
     /**

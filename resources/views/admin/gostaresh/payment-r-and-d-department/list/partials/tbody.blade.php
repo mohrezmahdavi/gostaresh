@@ -1,11 +1,8 @@
-<td>{{ $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name }}</td>
-
-@if (filterCol('part_title') == true)
-    <td>{{ $gdpPart?->part_title }}</td>
-@endif
+<td>{{ $paymentRAndDDepartment?->province?->name . ' - ' . $paymentRAndDDepartment->county?->name }}
+</td>
 @if (filterCol('amount') == true)
-    <td>{{ number_format($gdpPart?->amount) }}</td>
+<td>{{ number_format($paymentRAndDDepartment?->amount) }}</td>
 @endif
 @if (filterCol('year') == true)
-    <td>{{ $gdpPart?->year }}</td>
+<td>{{ $paymentRAndDDepartment?->year }}</td>
 @endif

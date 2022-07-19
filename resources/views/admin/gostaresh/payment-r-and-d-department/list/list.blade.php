@@ -43,13 +43,7 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('amount') == true)
-                                        <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.payment-r-and-d-department.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -58,14 +52,7 @@
                                     <tr>
                                         <th scope="row">{{ $paymentRAndDDepartments?->firstItem() + $key }}</th>
         
-                                        <td>{{ $paymentRAndDDepartment?->province?->name . ' - ' . $paymentRAndDDepartment->county?->name }}
-                                        </td>
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($paymentRAndDDepartment?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $paymentRAndDDepartment?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.payment-r-and-d-department.list.partials.tbody')
                                         <td>
         
                                             <a href="{{ route('payment.r.and.d.department.edit', $paymentRAndDDepartment) }}"
@@ -80,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('payment.r.and.d.department.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('payment.r.and.d.department.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('payment.r.and.d.department.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $paymentRAndDDepartments->withQueryString()->links('pagination::bootstrap-4') }}
