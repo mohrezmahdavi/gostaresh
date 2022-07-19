@@ -8,7 +8,8 @@ use App\Models\Index\GDPCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\Gostaresh\DemographicChangesOfCity\ListExport;
+use App\Exports\Gostaresh\GDPCity\ListExport;
+use PDF;
 
 // Table 5 Controller
 class GDPCityController extends Controller
@@ -43,11 +44,28 @@ class GDPCityController extends Controller
     //     return $query;
     // }
 
+    private function getGDPCityRecords()
+    {
+        return GDPCity::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
     public function listExcelExport()
     {
-        $query = $this->getGDPCityQuery();
-        $gdpCities = $query->orderBy('id' , 'desc')->get();
+        $gdpCities = $this->getGDPCityRecords();
         return Excel::download(new ListExport($gdpCities), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $gdpCities = $this->getGDPCityRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.gdp-city.list.pdf', compact('gdpCities'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $gdpCities = $this->getGDPCityRecords();
+        return view('admin.gostaresh.gdp-city.list.pdf', compact('gdpCities'));
     }
 
     /**

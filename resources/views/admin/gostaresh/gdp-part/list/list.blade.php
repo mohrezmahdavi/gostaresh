@@ -43,16 +43,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان</th>
-                                    @if (filterCol('part_title') == true)
-                                    <th>بخش</th>
-                                    @endif
-                                    @if (filterCol('amount') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.gdp-part.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -60,17 +51,7 @@
                                 @foreach ($gdpParts as $key => $gdpPart)
                                     <tr>
                                         <th scope="row">{{ $gdpParts?->firstItem() + $key }}</th>
-                                        <td>{{ $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name }}</td>
-                    
-                                        @if (filterCol('part_title') == true)
-                                        <td>{{ $gdpPart?->part_title }}</td>
-                                        @endif
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($gdpPart?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $gdpPart?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.gdp-part.list.partials.tbody')
                                         <td>
 
                                             <a href="{{ route('gdp.part.edit', $gdpPart) }}"
@@ -86,9 +67,11 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('gdp.part.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-    
+                            <x-exports.export-links 
+                                excelLink="{{ route('gdp.part.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('gdp.part.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('gdp.part.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

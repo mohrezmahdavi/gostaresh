@@ -42,13 +42,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('amount') == true)
-                                        <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.gdp-city.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -57,14 +51,7 @@
                                     <tr>
                                         <th scope="row">{{ $gdpCities?->firstItem() + $key }}</th>
 
-                                        <td>{{ $gdpCity?->province?->name . ' - ' . $gdpCity->county?->name }}
-                                        </td>
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($gdpCity?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $gdpCity?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.gdp-city.list.partials.tbody')
 
                                         <td>
 
@@ -81,9 +68,11 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('gdp.city.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-
+                            <x-exports.export-links 
+                                excelLink="{{ route('gdp.city.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('gdp.city.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('gdp.city.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

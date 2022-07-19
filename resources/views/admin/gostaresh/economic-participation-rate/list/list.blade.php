@@ -43,17 +43,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
+                                    @include('admin.gostaresh.economic-participation-rate.list.partials.thead')
 
-                                    @if (filterCol('education_title') == true)
-                                    <th>تحصیلات</th>
-                                    @endif
-                                    @if (filterCol('amount') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
 
                                     <th>اقدام</th>
                                 </tr>
@@ -63,17 +54,8 @@
                                     <tr>
                                         <th scope="row">{{ $economicParticipationRates?->firstItem() + $key }}</th>
 
-                                        <td>{{ $economicParticipationRate?->province?->name . ' - ' . $economicParticipationRate->county?->name }}
-                                        </td>
-                                        @if (filterCol('education_title') == true)
-                                        <td>{{ $economicParticipationRate?->education_title }}</td>
-                                        @endif
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($economicParticipationRate?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $economicParticipationRate?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.economic-participation-rate.list.partials.tbody')
+
                                         <td>
 
                                             <a href="{{ route('economic.participation.rate.edit', $economicParticipationRate) }}"
@@ -88,7 +70,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('economic.participation.rate.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('economic.participation.rate.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('economic.participation.rate.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $economicParticipationRates->withQueryString()->links('pagination::bootstrap-4') }}

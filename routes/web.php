@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'city' => 'gdpCity'
     ]);
     Route::get('gdp/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\GDPCityController::class, 'listExcelExport'])->name('gdp.city.list.excel');
+    Route::get('gdp/city/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GDPCityController::class, 'listPDFExport'])->name('gdp.city.list.pdf');
+    Route::get('gdp/city/list/print', [App\Http\Controllers\Admin\Gostaresh\GDPCityController::class, 'listPrintExport'])->name('gdp.city.list.print');
 
 
     // Table 6 Route
@@ -99,32 +101,48 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'part' => 'gdpPart'
     ]);
     Route::get('gdp/part/list/excel', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listExcelExport'])->name('gdp.part.list.excel');
-
+    Route::get('gdp/part/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listPDFExport'])->name('gdp.part.list.pdf');
+    Route::get('gdp/part/list/print', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listPrintExport'])->name('gdp.part.list.print');
 
     // Table 7 Route
     Route::resource('number/of/research/project', App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class)->names('number.of.research.project')->parameters([
         'project' => 'numberOfResearchProject'
     ]);
+    Route::get('number/of/research/project/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listExcelExport'])->name('number.of.research.project.list.excel');
+    Route::get('number/of/research/project/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listPDFExport'])->name('number.of.research.project.list.pdf');
+    Route::get('number/of/research/project/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class, 'listPrintExport'])->name('number.of.research.project.list.print');
 
     // Table 8 Route
     Route::resource('payment/randd/department', App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class)->names('payment.r.and.d.department')->parameters([
         'department' => 'paymentRAndDDepartment'
     ]);
+    Route::get('payment/randd/department/list/excel', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listExcelExport'])->name('payment.r.and.d.department.list.excel');
+    Route::get('payment/randd/department/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listPDFExport'])->name('payment.r.and.d.department.list.pdf');
+    Route::get('payment/randd/department/list/print', [App\Http\Controllers\Admin\Gostaresh\PaymentRAndDDepartmentController::class, 'listPrintExport'])->name('payment.r.and.d.department.list.print');
 
     // Table 9 Route
     Route::resource('industrial/expenditure/research', App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class)->names('industrial.expenditure.research')->parameters([
         'research' => 'industrialExpenditureResearch'
     ]);
+    Route::get('industrial/expenditure/research/list/excel', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listExcelExport'])->name('industrial.expenditure.research.list.excel');
+    Route::get('industrial/expenditure/research/list/pdf', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listPDFExport'])->name('industrial.expenditure.research.list.pdf');
+    Route::get('industrial/expenditure/research/list/print', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listPrintExport'])->name('industrial.expenditure.research.list.print');
 
     // Table 10 Route
     Route::resource('economic/participation/rate', App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class)->names('economic.participation.rate')->parameters([
         'rate' => 'economicParticipationRate'
     ]);
+    Route::get('economic/participation/rate/list/excel', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listExcelExport'])->name('economic.participation.rate.list.excel');
+    Route::get('economic/participation/rate/list/pdf', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listPDFExport'])->name('economic.participation.rate.list.pdf');
+    Route::get('economic/participation/rate/list/print', [App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class, 'listPrintExport'])->name('economic.participation.rate.list.print');
 
     // Table 11 Route
     Route::resource('unemployment/rate', App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class)->names('unemployment.rate')->parameters([
         'rate' => 'unemploymentRate'
     ]);
+    Route::get('unemployment/rate/list/excel', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listExcelExport'])->name('unemployment.rate.list.excel');
+    Route::get('unemployment/rate/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listPDFExport'])->name('unemployment.rate.list.pdf');
+    Route::get('unemployment/rate/list/print', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listPrintExport'])->name('unemployment.rate.list.print');
 
     // Table 12 Route
     Route::resource('employment/of/provincial', App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class)->names('employment.of.provincial')->parameters([
