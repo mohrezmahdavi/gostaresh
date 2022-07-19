@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\EmploymentOfProvincial\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\EmploymentOfProvincial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Expr\Empty_;
 use App\Http\Requests\Gostaresh\EmploymentOfProvincial\EmploymentOfProvincialRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 // Table 12 Controller
 class EmploymentOfProvincialController extends Controller
 {
@@ -32,6 +35,30 @@ class EmploymentOfProvincialController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getEmploymentOfProvincialRecords()
+    {
+        return EmploymentOfProvincial::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $employmentOfProvincials = $this->getEmploymentOfProvincialRecords();
+        return Excel::download(new ListExport($employmentOfProvincials), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $employmentOfProvincials = $this->getEmploymentOfProvincialRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.employment-of-provincial.list.pdf', compact('employmentOfProvincials'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $employmentOfProvincials = $this->getEmploymentOfProvincialRecords();
+        return view('admin.gostaresh.employment-of-provincial.list.pdf', compact('employmentOfProvincials'));
     }
 
     /**
