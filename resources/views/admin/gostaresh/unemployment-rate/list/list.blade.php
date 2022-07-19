@@ -43,17 +43,9 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
 
-                                    @if (filterCol('education_title') == true)
-                                    <th>تحصیلات</th>
-                                    @endif
-                                    @if (filterCol('amount') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.unemployment-rate.list.partials.thead')
+
 
                                     <th>اقدام</th>
                                 </tr>
@@ -63,18 +55,8 @@
                                     <tr>
                                         <th scope="row">{{ $unemploymentRates?->firstItem() + $key }}</th>
 
-                                        <td>{{ $unemploymentRate?->province?->name . ' - ' . $unemploymentRate->county?->name }}
-                                        </td>
+                                        @include('admin.gostaresh.unemployment-rate.list.partials.tbody')
 
-                                        @if (filterCol('education_title') == true)
-                                        <td>{{ $unemploymentRate?->education_title }}</td>
-                                        @endif
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($unemploymentRate?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $unemploymentRate?->year }}</td>
-                                        @endif
                                         <td>
 
                                             <a href="{{ route('unemployment.rate.edit', $unemploymentRate) }}"
@@ -89,7 +71,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('unemployment.rate.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('unemployment.rate.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('unemployment.rate.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $unemploymentRates->withQueryString()->links('pagination::bootstrap-4') }}

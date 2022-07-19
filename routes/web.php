@@ -140,6 +140,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('unemployment/rate', App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class)->names('unemployment.rate')->parameters([
         'rate' => 'unemploymentRate'
     ]);
+    Route::get('unemployment/rate/list/excel', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listExcelExport'])->name('unemployment.rate.list.excel');
+    Route::get('unemployment/rate/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listPDFExport'])->name('unemployment.rate.list.pdf');
+    Route::get('unemployment/rate/list/print', [App\Http\Controllers\Admin\Gostaresh\UnemploymentRateController::class, 'listPrintExport'])->name('unemployment.rate.list.print');
 
     // Table 12 Route
     Route::resource('employment/of/provincial', App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class)->names('employment.of.provincial')->parameters([
