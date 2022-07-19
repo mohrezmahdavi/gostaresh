@@ -17,13 +17,20 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function index()
     {
-        $query = MultipleDeprivationIndexOfCity::query();
+        $query = MultipleDeprivationIndexOfCity::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = MultipleDeprivationIndexOfCity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $multipleDeprivationIndexOfCities = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities'));
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

@@ -18,13 +18,20 @@ class AcademicMajorEducationalController extends Controller
      */
     public function index()
     {
-        $query = AcademicMajorEducational::query();
+        $query = AcademicMajorEducational::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = AcademicMajorEducational::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $academicMajorEducationals = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.academic-major-educational.list.list', compact('academicMajorEducationals'));
+        return view('admin.gostaresh.academic-major-educational.list.list', compact('academicMajorEducationals', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
