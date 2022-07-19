@@ -18,13 +18,20 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $query = NumberOfStudentsStatusAnalysis::query();
+        $query = NumberOfStudentsStatusAnalysis::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfStudentsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfStudentsStatusAnalysises = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-students-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises'));
+        return view('admin.gostaresh.number-of-students-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
