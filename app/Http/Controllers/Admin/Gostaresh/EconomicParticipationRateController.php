@@ -17,13 +17,20 @@ class EconomicParticipationRateController extends Controller
      */
     public function index()
     {
-        $query = EconomicParticipationRate::query();
+        $query = EconomicParticipationRate::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = EconomicParticipationRate::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $economicParticipationRates = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.economic-participation-rate.list.list', compact('economicParticipationRates'));
+        return view('admin.gostaresh.economic-participation-rate.list.list', compact('economicParticipationRates', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
