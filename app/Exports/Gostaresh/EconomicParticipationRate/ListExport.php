@@ -28,15 +28,18 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     {
         $this->count = $this->count + 1;
         $mapping = [$this->count];
-        array_push($mapping, $gdpPart?->province?->name . ' - ' . $gdpPart?->county?->name);
+        array_push($mapping, $economicParticipationRate?->province?->name . ' - ' . $economicParticipationRate->county?->name);
 
+        if (filterCol('education_title') == true) {
+            array_push($mapping, $economicParticipationRate?->education_title);
+        }
         if (filterCol('amount') == true) {
-            array_push($mapping, $gdpPart?->amount);
+            array_push($mapping, $economicParticipationRate?->amount);
         }
+
         if (filterCol('year') == true) {
-            array_push($mapping, $gdpPart?->year);
+            array_push($mapping, $economicParticipationRate?->year);
         }
-        array_push($mapping, $gdpPart?->month);
 
         return $mapping;
     }
@@ -48,13 +51,15 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         $headings = ["#"];
         array_push($headings, 'شهرستان');
         
-        if (filterCol('population') == true) {
+        if (filterCol('education_title') == true) {
+            array_push($headings, 'تحصیلات');
+        }
+        if (filterCol('amount') == true) {
             array_push($headings, 'مقدار');
         }
-        if (filterCol('immigration_rates') == true) {
+        if (filterCol('year') == true) {
             array_push($headings, 'سال');
         }
-        array_push($headings, 'ماه');
 
         return $headings;
     }
