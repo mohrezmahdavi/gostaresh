@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfResearchProject\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfResearchProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfResearchProject\NumberOfResearchProjectRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 7 Controller
 class NumberOfResearchProjectController extends Controller
@@ -32,6 +35,30 @@ class NumberOfResearchProjectController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfResearchProjectRecords()
+    {
+        return NumberOfResearchProject::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfResearchProjects = $this->getNumberOfResearchProjectRecords();
+        return Excel::download(new ListExport($numberOfResearchProjects), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberOfResearchProjects = $this->getNumberOfResearchProjectRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-research-project.list.pdf', compact('numberOfResearchProjects'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberOfResearchProjects = $this->getNumberOfResearchProjectRecords();
+        return view('admin.gostaresh.number-of-research-project.list.pdf', compact('numberOfResearchProjects'));
     }
 
     /**
