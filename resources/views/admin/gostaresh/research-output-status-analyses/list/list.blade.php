@@ -16,16 +16,24 @@
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
     <span>
-        <a href="{{ route('research-output-status-analyses.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+        <a href="{{ route('research-output-status-analyses.create') }}"
+           class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,25 +46,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>تعداد مقالات معتبر علمی</th>
-                                <th>تعداد کتب معتبر</th>
-                                <th>تعداد کتب تالیفی</th>
-                                <th>تعداد اختراعات ثبت شده داخلی</th>
-                                <th>تعداد اختراعات ثبت شده بین المللی</th>
-                                <th>تعداد پایان نامه ها</th>
-                                <th>تعداد پایان نامه های منجر به مقاله علمی-پژوهشی</th>
-                                <th>تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه</th>
-                                <th>تعداد پایان نامه های منجر به ثبت اختراع</th>
-                                <th>تعداد پایان نامه های منجر به محصول</th>
-                                <th>تعداد طرح های تحقیقاتی خاتمه یافته</th>
-                                <th>تعداد کرسی های نظریه پردازی برگزار شده توسط اساتید واحد دانشگاهی</th>
-                                <th>تعداد تفاهمنامه ها با صنایع و سازمان‌های محلی/ملی</th>
-                                <th>مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی</th>
-                                <th>مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی</th>
-                                <th>تعداد مجلات علمی</th>
-                                <th>تعداد پژوهش های معطوف به R &D</th>
-                                <th>تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -66,25 +60,15 @@
                                 <tr>
                                     <th scope="row">{{ $researchOutputStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $researchOutputStatusAnalysis?->province?->name . ' - ' . $researchOutputStatusAnalysis->county?->name }}
-                                    <td>{{ $researchOutputStatusAnalysis?->unit}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_valid_scientific_articles)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_valid_books)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_authored_books)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_internal_inventions)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_international_inventions)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_theses)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_research_dissertations)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_compiled_dissertations)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_invented_dissertations)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_product_dissertations)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_completed_research_projects)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_theorizing_chairs)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_memoranda_of_understanding)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->amount_of_national_contracts_concluded)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->amount_of_local_contracts_concluded)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_scientific_journals)}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis['number_of_R&D_research']) ?? ''}}</td>
-                                    <td>{{ number_format($researchOutputStatusAnalysis?->number_of_innovative_ideas)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\ResearchOutputStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($researchOutputStatusAnalysis?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $researchOutputStatusAnalysis?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $researchOutputStatusAnalysis?->year }}</td>
                                     <td>
 
@@ -92,8 +76,8 @@
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
-{{--                                        <a href="{{ route('research-output-status-analyses.destroy', $researchOutputStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"--}}
-{{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
+                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $researchOutputStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"--}}
+                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
                                     </td>
 
                                 </tr>
@@ -113,4 +97,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

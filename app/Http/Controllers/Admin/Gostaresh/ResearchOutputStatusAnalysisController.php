@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\ResearchOutputStatusAnalysis\ResearchOutputStatusAnalysisRequest;
+use App\Models\Index\GraduatesOfHigherEducationCenters;
 use App\Models\Index\ResearchOutputStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -21,14 +22,25 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = ResearchOutputStatusAnalysis::query();
+        $query = ResearchOutputStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = ResearchOutputStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $researchOutputStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.research-output-status-analyses.list.list', compact('researchOutputStatusAnalyses'));
+        return view('admin.gostaresh.research-output-status-analyses.list.list', compact('researchOutputStatusAnalyses',
+            'yearSelectedList', 'filterColumnsCheckBoxes'));
     }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
 
     /**
      * Show the form for creating a new resource.

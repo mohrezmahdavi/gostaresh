@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,8 +44,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>میزان</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -48,8 +58,15 @@
                                 <tr>
                                     <th scope="row">{{ $amountOfFacilities?->firstItem() + $key }}</th>
                                     <td>{{ $amountOfFacility?->province?->name . ' - ' . $amountOfFacility->county?->name }}
-                                    <td>{{ $amountOfFacility?->unit}}</td>
-                                    <td>{{ number_format($amountOfFacility?->amount)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\AmountOfFacilitiesForResearchAchievements::$numeric_fields))
+                                                <td>{{ number_format($amountOfFacility?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $amountOfFacility?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $amountOfFacility?->year }}</td>
                                     <td>
 
@@ -57,8 +74,8 @@
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
-{{--                                        <a href="{{ route('research-output-status-analyses.destroy', $amountOfFacility) }}" title="{{ __('validation.buttons.delete') }}"--}}
-{{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
+                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $amountOfFacility) }}" title="{{ __('validation.buttons.delete') }}"--}}
+                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
                                     </td>
 
                                 </tr>
@@ -78,4 +95,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

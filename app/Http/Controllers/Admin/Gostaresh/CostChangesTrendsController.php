@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CostChangesTrends\CostChangesTrendsRequest;
 use App\Models\Index\CostChangesTrendsAnalysis;
+use App\Models\Index\UniversityCostsAnalysis;
 use Illuminate\Support\Facades\Auth;
 
 // Table 54 Controller
@@ -17,13 +18,24 @@ class CostChangesTrendsController extends Controller
      */
     public function index()
     {
-        $query = CostChangesTrendsAnalysis::query();
+        $query = CostChangesTrendsAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = CostChangesTrendsAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $costChangesTrends = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.cost-changes-trends.list.list', compact('costChangesTrends'));
+        return view('admin.gostaresh.cost-changes-trends.list.list', compact('costChangesTrends'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -44,7 +56,7 @@ class CostChangesTrendsController extends Controller
      */
     public function store(CostChangesTrendsRequest $request)
     {
-         CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 

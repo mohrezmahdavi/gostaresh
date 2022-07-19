@@ -17,13 +17,24 @@ class CostOfMajorsController extends Controller
      */
     public function index()
     {
-        $query = AverageCostOfMajor::query();
+        $query = AverageCostOfMajor::whereReuqestQuery();
+
+        $filterColumnsCheckBoxes = AverageCostOfMajor::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $costOfMajors = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.cost-of-majors.list.list', compact('costOfMajors'));
+        return view('admin.gostaresh.cost-of-majors.list.list', compact('costOfMajors'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

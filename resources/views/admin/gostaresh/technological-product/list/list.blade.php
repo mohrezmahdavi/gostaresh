@@ -1,17 +1,17 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-     تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
+    تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
 @endsection
 
 @section('breadcrumb-title')
-     تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
+    تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
 @endsection
 
 @section('page-title')
-     تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
+    تعداد و محصولات فناورانه و نوآورانه اساتید و دانشجویان در دوره 10 سال
 
-     <span>
+    <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
     <span>
@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,17 +44,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>تعداد هسته فناور فعال</th>
-                                <th>تعداد واحدهای فناور فعال</th>
-                                <th>تعداد شرکت دانش بنیان فعال</th>
-                                <th>تعداد شرکت های خلاق</th>
-                                <th>تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده</th>
-                                <th>تعداد محصولات دانش بنیان</th>
-                                <th>تعداد محصولات بدون مجوز</th>
-                                <th>تعداد محصولات با مجوز</th>
-                                <th>تعداد استاد فناور فعال</th>
-                                <th>تعداد دانشجوی فناور فعال</th>
+                                @foreach( $filterColumnsCheckBoxes as $key => $value )
+                                    @if( filterCol($key))
+                                        <th>{{ $value }}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -57,17 +58,15 @@
                                 <tr>
                                     <th scope="row">{{ $technologicalProducts?->firstItem() + $key }}</th>
                                     <td>{{ $technologicalProduct?->province?->name . ' - ' . $technologicalProduct->county?->name }}
-                                    <td>{{ $technologicalProduct?->unit}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_cores)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_units)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_active_knowledge_based_companies)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_creative_companies)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_commercialized_ideas)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_knowledge_based_products)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_products_without_license)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_licensed_products)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_professors)}}</td>
-                                    <td>{{ number_format($technologicalProduct?->number_of_active_technology_students)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\TechnologicalProduct::$numeric_fields))
+                                                <td>{{ number_format($technologicalProduct?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $technologicalProduct?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $technologicalProduct?->year }}</td>
                                     <td>
 
@@ -97,4 +96,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

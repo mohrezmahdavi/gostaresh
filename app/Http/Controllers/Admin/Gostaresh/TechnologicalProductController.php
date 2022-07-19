@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TechnologicalProduct\TechnologicalProductRequest;
 use App\Models\Index\TechnologicalProduct;
+use App\Models\Index\TechnologyAndInnovationInfrastructure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -21,13 +22,24 @@ class TechnologicalProductController extends Controller
      */
     public function index()
     {
-        $query = TechnologicalProduct::query();
+        $query = TechnologicalProduct::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = TechnologicalProduct::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $technologicalProducts = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.technological-product.list.list', compact('technologicalProducts'));
+        return view('admin.gostaresh.technological-product.list.list', compact('technologicalProducts'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -55,10 +67,10 @@ class TechnologicalProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  TechnologicalProduct $technologicalProduct
+     * @param TechnologicalProduct $technologicalProduct
      * @return void
      */
-    public function show( TechnologicalProduct $technologicalProduct)
+    public function show(TechnologicalProduct $technologicalProduct)
     {
         //
     }
@@ -66,10 +78,10 @@ class TechnologicalProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  TechnologicalProduct $technologicalProduct
+     * @param TechnologicalProduct $technologicalProduct
      * @return Application|Factory|View
      */
-    public function edit( TechnologicalProduct $technologicalProduct)
+    public function edit(TechnologicalProduct $technologicalProduct)
     {
         return view('admin.gostaresh.technological-product.edit.edit', compact('technologicalProduct'));
     }
@@ -90,10 +102,10 @@ class TechnologicalProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  TechnologicalProduct $technologicalProduct
+     * @param TechnologicalProduct $technologicalProduct
      * @return RedirectResponse
      */
-    public function destroy( TechnologicalProduct $technologicalProduct)
+    public function destroy(TechnologicalProduct $technologicalProduct)
     {
         $technologicalProduct->delete();
         return back()->with('success', __('titles.success_delete'));

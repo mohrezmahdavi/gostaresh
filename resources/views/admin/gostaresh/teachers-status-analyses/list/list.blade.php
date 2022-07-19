@@ -21,10 +21,19 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
 
     <div class="row">
@@ -38,25 +47,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>تعداد اعضای هیات علمی</th>
-                                <th>تعداد اعضای هیئت علمی مشارکت کننده در برنامه های علمی</th>
-                                <th>تعداد اعضای هیات علمی ارتقا یافته</th>
-                                <th>تعداد مدرسین حق التدریس و اساتید مدعو</th>
-                                <th>تعداد اعضای هیات علمی مامور در سایر واحدها</th>
-                                <th>تعداد اعضای هیات علمی مامور در سازمان مرکزی</th>
-                                <th>تعداد اعضای هیات علمی شرکت کننده در طرح تعاون</th>
-                                <th>تعداد اعضای هیات علمی انتقالی</th>
-                                <th>تعداد اعضای هیات علمی با درجه مربی</th>
-                                <th>تعداد اعضای هیات علمی با درجه استادیار</th>
-                                <th>تعداد اعضای هیات علمی با درجه دانشیار</th>
-                                <th>تعداد اعضای هیات علمی با درجه استاد تمام</th>
-                                <th>تعداد اعضای هیات علمی دارای سن کمتر از 50 سال</th>
-                                <th>تعداد اعضای هیات علمی فناور</th>
-                                <th>تعداد اعضای هیات علمی نوع الف</th>
-                                <th>تعداد اعضای هیات علمی نوع ب</th>
-                                <th>تعداد اعضای هیات علمی سرآمد علمی</th>
-                                <th>متوسط سطح بهره وری پژوهشی اعضای هیات علمی</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -66,25 +61,16 @@
                                 <tr>
                                     <th scope="row">{{ $teachersStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $teachersStatusAnalysis?->province?->name . ' - ' . $teachersStatusAnalysis->county?->name }}
-                                    <td>{{ $teachersStatusAnalysis?->unit}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->scientific_programs_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->upgraded_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_tuition_teachers)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_officer_faculty_members_in_other_unit)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_officer_faculty_members_in_central_organization)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_participant_faculty_members_in_cooperation_plan)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_transfer_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_instructor_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_assistant_professor_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_associate_professor_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_full_professor_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_smaller_50_years_old)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_technology_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_type_a)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_faculty_members_type_b)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->number_of_top_scientific_faculty_members)}}</td>
-                                    <td>{{ number_format($teachersStatusAnalysis?->average_level_of_research_productivity_of_faculty_members)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\TeachersStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($teachersStatusAnalysis?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $teachersStatusAnalysis?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $teachersStatusAnalysis?->year }}</td>
                                     <td>
 
@@ -113,4 +99,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

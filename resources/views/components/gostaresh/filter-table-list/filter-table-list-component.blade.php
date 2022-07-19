@@ -32,9 +32,12 @@
                                     </select>
                                 </div>
                             @endif
-                            <div class="col-md-6 mt-4">
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-12 mt-4">
                                 <div class="mt-1">
-                                    @foreach($filterColumnsCheckBoxes as $key=>$value)
+                                    @foreach( $filterColumnsCheckBoxes as $key=>$value)
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="{{ $key }}">{{$value}}</label>
                                             <input class="form-check-input" name="{{ $key}}" type="checkbox"
@@ -46,6 +49,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">جستجو</button>

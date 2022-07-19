@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\TeachersStatusAnalysisRequest;
+use App\Models\Index\GraduateStatusAnalysis;
 use App\Models\Index\TeachersStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -21,13 +22,23 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = TeachersStatusAnalysis::query();
+        $query = TeachersStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = TeachersStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $teachersStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalyses'));
+        return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalyses',
+            'yearSelectedList', 'filterColumnsCheckBoxes'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

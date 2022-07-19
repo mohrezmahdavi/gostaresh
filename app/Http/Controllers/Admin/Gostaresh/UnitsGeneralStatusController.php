@@ -17,13 +17,25 @@ class UnitsGeneralStatusController extends Controller
      */
     public function index()
     {
-        $query = UnitsGeneralStatus::query();
+        $query = UnitsGeneralStatus::whereReuqestQuery();
+
+        $filterColumnsCheckBoxes = UnitsGeneralStatus::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $unitsGeneralStatuses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.units-general-status.list.list', compact('unitsGeneralStatuses'));
+        return view('admin.gostaresh.units-general-status.list.list', compact('unitsGeneralStatuses'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

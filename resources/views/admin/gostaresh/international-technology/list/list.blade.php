@@ -20,11 +20,20 @@
 @endsection
 
 @section('styles-head')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,12 +46,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>تعداد مشارکت در انتقال دانش فنی/ فناوری انتقال یافته از خارج به داخل کشور</th>
-                                <th>تعداد خدمات فنی و مشاوره ای ارایه شده به موسسات یا شرکت های خارجی</th>
-                                <th>میزان کسب درآمد از خدمات فنی و مشاوره ای بین المللی</th>
-                                <th>تعداد ثبت و یا فایلینگ اختراعات بین المللی</th>
-                                <th>تعداد شرکت های دانش بنیان با فعالیت بین المللی</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -52,12 +60,16 @@
                                 <tr>
                                     <th scope="row">{{ $internationalTechnologies?->firstItem() + $key }}</th>
                                     <td>{{ $internationalTechnology?->province?->name . ' - ' . $internationalTechnology->county?->name }}
-                                    <td>{{ $internationalTechnology?->unit}}</td>
-                                    <td>{{ number_format($internationalTechnology?->number_of_participation)}}</td>
-                                    <td>{{ number_format($internationalTechnology?->number_of_technical_services)}}</td>
-                                    <td>{{ number_format($internationalTechnology?->earnings)}}</td>
-                                    <td>{{ number_format($internationalTechnology?->number_of_international_inventions)}}</td>
-                                    <td>{{ number_format($internationalTechnology?->number_of_international_knowledge_based_companies)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\InternationalTechnology::$numeric_fields))
+                                                <td>{{ number_format($internationalTechnology?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $internationalTechnology?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $internationalTechnology?->year }}</td>
                                     <td>
 
@@ -87,4 +99,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
