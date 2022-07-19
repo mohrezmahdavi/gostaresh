@@ -17,13 +17,23 @@ class TuitionIncomeController extends Controller
      */
     public function index()
     {
-        $query = AverageTuitionIncome::query();
+        $query = AverageTuitionIncome::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = AverageTuitionIncome::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $tuitionIncome = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.tuition-income.list.list', compact('tuitionIncome'));
+        return view('admin.gostaresh.tuition-income.list.list', compact('tuitionIncome'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

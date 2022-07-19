@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaRevenue\PercapitaRevenueRequest;
+use App\Models\Index\AverageTuitionIncome;
 use App\Models\Index\PercapitaRevenueStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,15 +18,25 @@ class PercapitaRevenueController extends Controller
      */
     public function index()
     {
-        $query = PercapitaRevenueStatusAnalysis::query();
+        $query = PercapitaRevenueStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = PercapitaRevenueStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $percapitaRevenue = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.percapita-revenue.list.list', compact('percapitaRevenue'));
+        return view('admin.gostaresh.percapita-revenue.list.list', compact('percapitaRevenue'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
 
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

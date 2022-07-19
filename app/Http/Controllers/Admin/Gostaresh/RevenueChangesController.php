@@ -17,15 +17,24 @@ class RevenueChangesController extends Controller
      */
     public function index()
     {
-        $query = RevenueChangesTrendsAnalysis::query();
+        $query = RevenueChangesTrendsAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = RevenueChangesTrendsAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $revenueChanges = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.revenue-changes.list.list', compact('revenueChanges'));
+        return view('admin.gostaresh.revenue-changes.list.list', compact('revenueChanges'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

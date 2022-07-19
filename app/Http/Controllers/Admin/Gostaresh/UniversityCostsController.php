@@ -17,15 +17,25 @@ class UniversityCostsController extends Controller
      */
     public function index()
     {
-        $query = UniversityCostsAnalysis::query();
+        $query = UniversityCostsAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = UniversityCostsAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $universityCosts = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.university-costs.list.list', compact('universityCosts'));
+        return view('admin.gostaresh.university-costs.list.list', compact('universityCosts'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
 
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +54,7 @@ class UniversityCostsController extends Controller
      */
     public function store(UniversityCostsRequest $request)
     {
-         UniversityCostsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        UniversityCostsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 

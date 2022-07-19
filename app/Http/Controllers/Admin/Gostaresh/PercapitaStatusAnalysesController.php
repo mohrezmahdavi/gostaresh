@@ -17,15 +17,24 @@ class PercapitaStatusAnalysesController extends Controller
      */
     public function index()
     {
-        $query = PercapitaStatusAnalysis::query();
+        $query = PercapitaStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = PercapitaStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $percapitaStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.percapita-status-analyses.list.list', compact('percapitaStatusAnalyses'));
+        return view('admin.gostaresh.percapita-status-analyses.list.list', compact('percapitaStatusAnalyses'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

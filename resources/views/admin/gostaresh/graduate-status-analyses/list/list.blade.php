@@ -21,11 +21,19 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,14 +46,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>تعداد کل فارغ التحصیلان</th>
-                                <th>تعداد فارغ التحصیلان شاغل</th>
-                                <th>نرخ رشد فارغ التحصیلان</th>
-                                <th>تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی</th>
-                                <th>تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای</th>
-                                <th>تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل</th>
-                                <th>متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -55,14 +60,15 @@
                                 <tr>
                                     <th scope="row">{{ $graduateStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $graduateStatusAnalysis?->province?->name . ' - ' . $graduateStatusAnalysis->county?->name }}
-                                    <td>{{ $graduateStatusAnalysis?->unit}}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->total_graduates)}}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->employed_graduates)}}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->graduate_growth_rate) }}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->related_employed_graduates) }}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->skill_certification_graduates) }}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->employed_graduates_6_months_after_graduation) }}</td>
-                                    <td>{{ number_format($graduateStatusAnalysis?->average_monthly_income_employed_graduates) }}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\GraduateStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($graduateStatusAnalysis?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $graduateStatusAnalysis?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $graduateStatusAnalysis?->year }}</td>
                                     <td>
 
@@ -91,4 +97,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

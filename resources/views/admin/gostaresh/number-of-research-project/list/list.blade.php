@@ -40,7 +40,7 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     @include('admin.gostaresh.number-of-research-project.list.partials.thead')
@@ -55,15 +55,15 @@
                                         @include('admin.gostaresh.number-of-research-project.list.partials.tbody')
 
                                         <td>
-        
+
                                             <a href="{{ route('number.of.research.project.edit', $numberOfResearchProject) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('number.of.research.project.destroy', $numberOfResearchProject) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
