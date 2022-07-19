@@ -108,6 +108,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.zone.create') }}">
+                        <i class="ri-dashboard-line me-1"></i>
+                        <span>مدیریت مناطق</span>
+                    </a>
+                </li>
+
                 @if(auth()->user()->hasPermissionTo('view-all-users') or auth()->user()->hasPermissionTo('create-any-user'))
                     <li>
                         <a href="#sidebarDashboardsUsers" data-bs-toggle="collapse" aria-expanded="false"
