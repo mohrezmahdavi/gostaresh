@@ -18,13 +18,20 @@ class EmploymentOfProvincialController extends Controller
      */
     public function index()
     {
-        $query = EmploymentOfProvincial::query();
+        $query = EmploymentOfProvincial::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = EmploymentOfProvincial::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $employmentOfProvincials = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.employment-of-provincial.list.list', compact('employmentOfProvincials'));
+        return view('admin.gostaresh.employment-of-provincial.list.list', compact('employmentOfProvincials', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
