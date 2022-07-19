@@ -101,7 +101,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         'part' => 'gdpPart'
     ]);
     Route::get('gdp/part/list/excel', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listExcelExport'])->name('gdp.part.list.excel');
-
+    Route::get('gdp/part/list/pdf', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listPDFExport'])->name('gdp.part.list.pdf');
+    Route::get('gdp/part/list/print', [App\Http\Controllers\Admin\Gostaresh\GDPPartController::class, 'listPrintExport'])->name('gdp.part.list.print');
 
     // Table 7 Route
     Route::resource('number/of/research/project', App\Http\Controllers\Admin\Gostaresh\NumberOfResearchProjectController::class)->names('number.of.research.project')->parameters([
