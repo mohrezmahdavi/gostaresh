@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\IndustrialExpenditureResearch\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\IndustrialExpenditureResearch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\IndustrialExpenditureResearch\IndustrialExpenditureResearchRequest;
-
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 9 Controller
 class IndustrialExpenditureResearchController extends Controller
@@ -33,6 +35,30 @@ class IndustrialExpenditureResearchController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getIndustrialExpenditureResearchRecords()
+    {
+        return IndustrialExpenditureResearch::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $industrialExpenditureResearches = $this->getIndustrialExpenditureResearchRecords();
+        return Excel::download(new ListExport($industrialExpenditureResearches), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $industrialExpenditureResearches = $this->getIndustrialExpenditureResearchRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.industrial-expenditure-research.list.pdf', compact('industrialExpenditureResearches'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $industrialExpenditureResearches = $this->getIndustrialExpenditureResearchRecords();
+        return view('admin.gostaresh.industrial-expenditure-research.list.pdf', compact('industrialExpenditureResearches'));
     }
 
     /**

@@ -124,6 +124,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('industrial/expenditure/research', App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class)->names('industrial.expenditure.research')->parameters([
         'research' => 'industrialExpenditureResearch'
     ]);
+    Route::get('industrial/expenditure/research/list/excel', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listExcelExport'])->name('industrial.expenditure.research.list.excel');
+    Route::get('industrial/expenditure/research/list/pdf', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listPDFExport'])->name('industrial.expenditure.research.list.pdf');
+    Route::get('industrial/expenditure/research/list/print', [App\Http\Controllers\Admin\Gostaresh\IndustrialExpenditureResearchController::class, 'listPrintExport'])->name('industrial.expenditure.research.list.print');
 
     // Table 10 Route
     Route::resource('economic/participation/rate', App\Http\Controllers\Admin\Gostaresh\EconomicParticipationRateController::class)->names('economic.participation.rate')->parameters([

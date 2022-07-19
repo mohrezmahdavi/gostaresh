@@ -43,13 +43,7 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('amount') == true)
-                                        <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.industrial-expenditure-research.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -57,15 +51,8 @@
                                 @foreach ($industrialExpenditureResearches as $key => $industrialExpenditureResearch)
                                     <tr>
                                         <th scope="row">{{ $industrialExpenditureResearches?->firstItem() + $key }}</th>
-        
-                                        <td>{{ $industrialExpenditureResearch?->province?->name . ' - ' . $industrialExpenditureResearch->county?->name }}
-                                        </td>
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($industrialExpenditureResearch?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $industrialExpenditureResearch?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.industrial-expenditure-research.list.partials.tbody')
+                                        
                                         <td>
         
                                             <a href="{{ route('industrial.expenditure.research.edit', $industrialExpenditureResearch) }}"
@@ -80,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('industrial.expenditure.research.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('industrial.expenditure.research.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('industrial.expenditure.research.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $industrialExpenditureResearches->withQueryString()->links('pagination::bootstrap-4') }}
