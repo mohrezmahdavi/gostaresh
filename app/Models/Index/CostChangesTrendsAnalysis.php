@@ -87,4 +87,6 @@ class CostChangesTrendsAnalysis extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
 }

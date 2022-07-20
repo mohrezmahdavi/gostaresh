@@ -87,4 +87,6 @@ class UniversityCostsAnalysis extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
 }

@@ -87,4 +87,6 @@ class IndexOfAssetProductivity extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
 }

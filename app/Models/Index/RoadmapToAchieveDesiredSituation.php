@@ -87,4 +87,6 @@ class RoadmapToAchieveDesiredSituation extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
 }

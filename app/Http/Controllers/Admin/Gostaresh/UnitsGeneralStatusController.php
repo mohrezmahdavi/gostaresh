@@ -17,7 +17,7 @@ class UnitsGeneralStatusController extends Controller
      */
     public function index()
     {
-        $query = UnitsGeneralStatus::whereReuqestQuery();
+        $query = UnitsGeneralStatus::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = UnitsGeneralStatus::$filterColumnsCheckBoxes;
 

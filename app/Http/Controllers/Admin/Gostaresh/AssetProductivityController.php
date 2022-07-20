@@ -17,7 +17,7 @@ class AssetProductivityController extends Controller
      */
     public function index()
     {
-        $query = IndexOfAssetProductivity::whereRequestQuery();
+        $query = IndexOfAssetProductivity::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = IndexOfAssetProductivity::$filterColumnsCheckBoxes;
 

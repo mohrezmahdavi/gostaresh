@@ -87,4 +87,6 @@ class PercapitaStatusAnalysis extends Model
         return $query;
     }
 
+    public  static $filterColumnsCheckBoxes;
+
 }

@@ -87,4 +87,7 @@ class CreditAndAssetAnalysis extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
+
 }

@@ -87,4 +87,7 @@ class UnitsGeneralStatus extends Model
         return $query;
     }
 
+    public static $filterColumnsCheckBoxes;
+
+
 }

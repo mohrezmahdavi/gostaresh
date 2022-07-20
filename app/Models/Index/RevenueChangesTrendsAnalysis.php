@@ -86,5 +86,7 @@ class RevenueChangesTrendsAnalysis extends Model
 
         return $query;
     }
+    public static $filterColumnsCheckBoxes;
+
 
 }
