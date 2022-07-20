@@ -1,6 +1,6 @@
 <div class="form-group row mt-2">
     <label class="col-sm-2 col-form-label" for="year">
-        <span> سال </span>&nbsp
+        <span> {{ $title ?? 'سال' }} </span>&nbsp
         @if (($required ?? false) == true)
             <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
         @endif
