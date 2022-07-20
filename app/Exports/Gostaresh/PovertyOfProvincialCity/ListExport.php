@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\Gostaresh\MultipleDeprivationIndexOfCity;
+namespace App\Exports\Gostaresh\PovertyOfProvincialCity;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -9,12 +9,12 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class ListExport implements FromCollection, WithMapping, WithHeadings
 {
 
-    private $multipleDeprivationIndexOfCities;
+    private $povertyOfProvincialCities;
     private $count = 0;
 
-    public function __construct($multipleDeprivationIndexOfCities)
+    public function __construct($povertyOfProvincialCities)
     {
-        $this->multipleDeprivationIndexOfCities = $multipleDeprivationIndexOfCities;
+        $this->povertyOfProvincialCities = $povertyOfProvincialCities;
     }
 
     /**
@@ -22,21 +22,21 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     */
     public function collection()
     {
-        return $this->multipleDeprivationIndexOfCities;
+        return $this->povertyOfProvincialCities;
     }
 
-    public function map($multipleDeprivationIndexOfCity): array
+    public function map($povertyOfProvincialCity): array
     {
         $this->count = $this->count + 1;
         $mapping = [$this->count];
 
-        array_push($mapping, $multipleDeprivationIndexOfCity?->province?->name . ' - ' . $multipleDeprivationIndexOfCity?->county?->name);
+        array_push($mapping, $povertyOfProvincialCity?->province?->name . ' - ' . $povertyOfProvincialCity?->county?->name);
 
         if (filterCol('amount') == true) {
-            array_push($mapping, $multipleDeprivationIndexOfCity?->amount);
+            array_push($mapping, $povertyOfProvincialCity?->amount);
         }
         if (filterCol('year') == true) {
-            array_push($mapping, $multipleDeprivationIndexOfCity?->year);
+            array_push($mapping, $povertyOfProvincialCity?->year);
         }
        
         return $mapping;

@@ -164,6 +164,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
         'city' => 'povertyOfProvincialCity'
     ]);
+    Route::get('poverty/of/provincial/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class, 'listExcelExport'])->name('poverty.of.provincial.city.list.excel');
+    Route::get('poverty/of/provincial/city/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class, 'listPDFExport'])->name('poverty.of.provincial.city.list.pdf');
+    Route::get('poverty/of/provincial/city/list/print', [App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class, 'listPrintExport'])->name('poverty.of.provincial.city.list.print');
 
     // Table 15 Route
     Route::resource('academic/major/educational', App\Http\Controllers\Admin\Gostaresh\AcademicMajorEducationalController::class)->names('academic.major.educational')->parameters([
