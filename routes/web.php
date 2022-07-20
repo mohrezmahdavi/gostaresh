@@ -156,6 +156,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('multiple/deprivation/index/of/city', App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class)->names('multiple.deprivation.index.of.city')->parameters([
         'city' => 'multipleDeprivationIndexOfCity'
     ]);
+    Route::get('multiple/deprivation/index/of/city/list/excel', [App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class, 'listExcelExport'])->name('multiple.deprivation.index.of.city.list.excel');
+    Route::get('multiple/deprivation/index/of/city/list/pdf', [App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class, 'listPDFExport'])->name('multiple.deprivation.index.of.city.list.pdf');
+    Route::get('multiple/deprivation/index/of/city/list/print', [App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class, 'listPrintExport'])->name('multiple.deprivation.index.of.city.list.print');
 
     // Table 14 Route
     Route::resource('poverty/of/provincial/city', App\Http\Controllers\Admin\Gostaresh\PovertyOfProvincialCityController::class)->names('poverty.of.provincial.city')->parameters([
