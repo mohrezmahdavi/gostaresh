@@ -1,5 +1,5 @@
 <th>شهرستان </th>
-@if (filterCol('number_of_research') == true)
+@if (filterCol('amount') == true)
     <th>مقدار</th>
 @endif
 @if (filterCol('year') == true)

@@ -1,8 +1,8 @@
-<td>{{ $numberOfResearchProject?->province?->name . ' - ' . $numberOfResearchProject->county?->name }}
+<td>{{ $multipleDeprivationIndexOfCity?->province?->name . ' - ' . $multipleDeprivationIndexOfCity->county?->name }}
 </td>
-@if (filterCol('number_of_research') == true)
-<td>{{ number_format($numberOfResearchProject?->number_of_research) }}</td>
+@if (filterCol('amount') == true)
+<td>{{ number_format($multipleDeprivationIndexOfCity?->amount) }}</td>
 @endif
 @if (filterCol('year') == true)
-<td>{{ $numberOfResearchProject?->year }}</td>
+<td>{{ $multipleDeprivationIndexOfCity?->year }}</td>
 @endif
