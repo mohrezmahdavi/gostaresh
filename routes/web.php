@@ -148,6 +148,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('employment/of/provincial', App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class)->names('employment.of.provincial')->parameters([
         'provincial' => 'employmentOfProvincial'
     ]);
+    Route::get('employment/of/provincial/list/excel', [App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class, 'listExcelExport'])->name('employment.of.provincial.list.excel');
+    Route::get('employment/of/provincial/list/pdf', [App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class, 'listPDFExport'])->name('employment.of.provincial.list.pdf');
+    Route::get('employment/of/provincial/list/print', [App\Http\Controllers\Admin\Gostaresh\EmploymentOfProvincialController::class, 'listPrintExport'])->name('employment.of.provincial.list.print');
 
     // Table 13 Route
     Route::resource('multiple/deprivation/index/of/city', App\Http\Controllers\Admin\Gostaresh\MultipleDeprivationIndexOfCityController::class)->names('multiple.deprivation.index.of.city')->parameters([

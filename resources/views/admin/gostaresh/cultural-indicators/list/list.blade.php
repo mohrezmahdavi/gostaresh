@@ -61,7 +61,7 @@
                                     <td>{{ $culturalIndicator?->province?->name . ' - ' . $culturalIndicator->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
 
-                                        @if( in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
+                                        @if(in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
                                             <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
                                         @else
                                             <td>{{ $culturalIndicator?->{$key} }}</td>

@@ -4,5 +4,5 @@
 <td>{{ number_format($numberOfResearchProject?->number_of_research) }}</td>
 @endif
 @if (filterCol('year') == true)
-<td>{{ $gdpCity?->year }}</td>
+<td>{{ $numberOfResearchProject?->year }}</td>
 @endif

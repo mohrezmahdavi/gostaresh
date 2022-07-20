@@ -59,7 +59,7 @@ class CulturalIndicatorsStatusAnalysis extends Model
 
         if (request()->rural_district_id)
             $query->where('rural_district_id', request()->rural_district_id);
-
+        
         if (request()->input('start_date')) {
             $startDateJ = Verta::instance(request()->input('start_date'));
             $startMonth = (int)$startDateJ->format('n');
