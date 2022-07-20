@@ -85,6 +85,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('graduates.of.higher.education.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('graduates.of.higher.education.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('graduates.of.higher.education.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

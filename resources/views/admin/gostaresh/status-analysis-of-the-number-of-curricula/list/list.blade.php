@@ -89,6 +89,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('status.analysis.of.the.number.of.curricula.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('status.analysis.of.the.number.of.curricula.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('status.analysis.of.the.number.of.curricula.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $statusAnalysisOfTheNumberOfCurriculas->withQueryString()->links('pagination::bootstrap-4') }}
