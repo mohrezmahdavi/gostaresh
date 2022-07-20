@@ -20,10 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -32,45 +40,65 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-        
+
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>دانشگاه </th>
+                                    @if (filterCol('university_type_title') == true)
+                                    <th>دانشگاه</th>
+                                    @endif
+                                    @if (filterCol('gender_title') == true)
                                     <th>جنسیت</th>
+                                    @endif
+                                    @if (filterCol('department_of_education_title') == true)
                                     <th>گروه عمده تحصیلی</th>
+                                    @endif
+                                    @if (filterCol('number_of_admissions') == true)
                                     <th>مقدار</th>
-                                    <th>سال</th>
+                                    @endif
+                                    @if (filterCol('year') == true)
+                                        <th>سال</th>
+                                    @endif
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($numberOfAdmissionsStatusAnalysises as $key => $numberOfAdmissionsStatusAnalysis)
                                     <tr>
                                         <th scope="row">{{ $numberOfAdmissionsStatusAnalysises?->firstItem() + $key }}</th>
-        
+
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->province?->name . ' - ' . $numberOfAdmissionsStatusAnalysis->county?->name }}
                                         </td>
+                                        @if (filterCol('university_type_title') == true)
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->university_type_title }}</td>
+                                        @endif
+                                        @if (filterCol('gender_title') == true)
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->gender_title }}</td>
+                                        @endif
+                                        @if (filterCol('department_of_education_title') == true)
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->number_of_admissions }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_admissions') == true)
+                                        <td>{{ number_format($numberOfAdmissionsStatusAnalysis?->number_of_admissions) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $numberOfAdmissionsStatusAnalysis?->year }}</td>
+                                        @endif
                                         <td>
-        
+
                                             <a href="{{ route('number.of.admissions.status.analysis.edit', $numberOfAdmissionsStatusAnalysis) }}"
                                                 title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                     class="fa fa-edit"></i></a>
-        
+
                                             <a href="{{ route('number.of.admissions.status.analysis.destroy', $numberOfAdmissionsStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
-        
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-        
+
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfAdmissionsStatusAnalysises->withQueryString()->links('pagination::bootstrap-4') }}
@@ -82,4 +110,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

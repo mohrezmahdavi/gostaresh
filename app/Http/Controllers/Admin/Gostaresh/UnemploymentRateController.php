@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\UnemploymentRate\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\UnemploymentRate;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\UnemploymentRate\UnemploymentRateRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 11 Model
 class UnemploymentRateController extends Controller
@@ -19,13 +21,44 @@ class UnemploymentRateController extends Controller
      */
     public function index()
     {
-        $query = UnemploymentRate::query();
+        $query = UnemploymentRate::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = UnemploymentRate::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $unemploymentRates = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.unemployment-rate.list.list', compact('unemploymentRates'));
+        return view('admin.gostaresh.unemployment-rate.list.list', compact('unemploymentRates', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getUnemploymentRateRecords()
+    {
+        return UnemploymentRate::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $unemploymentRates = $this->getUnemploymentRateRecords();
+        return Excel::download(new ListExport($unemploymentRates), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $unemploymentRates = $this->getUnemploymentRateRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.unemployment-rate.list.pdf', compact('unemploymentRates'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $unemploymentRates = $this->getUnemploymentRateRecords();
+        return view('admin.gostaresh.unemployment-rate.list.pdf', compact('unemploymentRates'));
     }
 
     /**

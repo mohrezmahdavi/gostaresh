@@ -13,18 +13,30 @@ class RoadmapDesiredController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $query = RoadmapToAchieveDesiredSituation::query();
+        $query = RoadmapToAchieveDesiredSituation::whereRequestQuery();
+
+        $filterColumnsCheckBoxes = RoadmapToAchieveDesiredSituation::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $roadmapDesireds = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.roadmap-desired.list.list', compact('roadmapDesireds'));
+        return view('admin.gostaresh.roadmap-desired.list.list', compact('roadmapDesireds'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
 
     /**
      * Show the form for creating a new resource.

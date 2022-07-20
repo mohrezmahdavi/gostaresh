@@ -49,22 +49,22 @@ pipeline {
             }
         }
 
-        // stage('deploy develop') {
-        //     when {
-        //         expression {
-        //             BRANCH_NAME == 'develop'
-        //         }
-        //     }
-        //     steps {
-        //         script {
-        //             echo 'deploy app'
-        //             def deployCmd= "./app/deploy.sh"
-        //             sshagent(['comma_ssh']) {
-        //                 sh "ssh -o StrictHostKeyChecking=no ubuntu@erp.raahinio.ir ${deployCmd}"
-        //             }
-        //         }
-        //     }
-        // }
+        stage('deploy develop') {
+            when {
+                expression {
+                    BRANCH_NAME == 'develop'
+                }
+            }
+            steps {
+                script {
+                    echo 'deploy app'
+                    def deployCmd= "./applications/gostaresh/deploy.sh"
+                    sshagent(['comma_ssh']) {
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@erp.raahinio.ir ${deployCmd}"
+                    }
+                }
+            }
+        }
 
         stage('deploy master') {
             when {

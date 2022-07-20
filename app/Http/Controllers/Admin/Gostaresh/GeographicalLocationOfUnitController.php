@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View as FacadesView;
 use App\Http\Requests\Gostaresh\GeographicalLocationOfUnit\GeographicalLocationOfUnitRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 2 Controller
 class GeographicalLocationOfUnitController extends Controller
@@ -28,12 +29,29 @@ class GeographicalLocationOfUnitController extends Controller
         return view('admin.gostaresh.geographical-location-of-unit.list.list', compact('geographicalLocationOfUnits'));
     }
 
+    private function getGeographicalLocationOfUnitRecords()
+    {
+        return GeographicalLocationOfUnit::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
 
     public function listExcelExport()
     {
-        $query = GeographicalLocationOfUnit::whereRequestsQuery();
-        $geographicalLocationOfUnits = $query->orderBy('id', 'desc')->get();
+        $geographicalLocationOfUnits = $this->getGeographicalLocationOfUnitRecords();
         return Excel::download(new ListExport($geographicalLocationOfUnits), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $geographicalLocationOfUnits = $this->getGeographicalLocationOfUnitRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.geographical-location-of-unit.list.pdf', compact('geographicalLocationOfUnits'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $geographicalLocationOfUnits = $this->getGeographicalLocationOfUnitRecords();
+        return view('admin.gostaresh.geographical-location-of-unit.list.pdf', compact('geographicalLocationOfUnits'));
     }
 
     /**

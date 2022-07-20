@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,113 +44,37 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه</th>
-                                <th>قابلیت یادگیری سازمانی واحد</th>
-                                <th>میزان پایبندی به فضایل اخلاقی و باورهای دینی در میان دانشجویان واحد دانشگاهی</th>
-                                <th>میزان پایبندی به فرهنگ تحقیق مطالعه، تتبع و تحقیق در میان دانشجویان واحد</th>
-                                <th>میزان پایبندی به فرهنگ عفاف و حجاب و سبک پوشش اسلامی در میان دانشجویان واحد</th>
-                                <th>سطح فرهنگ مشارکت پذیری و کار گروهی در واحد</th>
-                                <th>سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد</th>
-                                <th>میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی</th>
-                                <th>درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان</th>
-                                <th>درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی</th>
-                                <th>درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان</th>
-                                <th>درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی</th>
-                                <th>میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان</th>
-                                <th>میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد</th>
-                                <th>برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش)</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key) )
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($organizationalCultures as $key => $organizationalCulture)
                                 <tr>
                                     <th scope="row">{{ $organizationalCultures?->firstItem() + $key }}</th>
                                     <td>{{ $organizationalCulture?->province?->name . ' - ' . $organizationalCulture->county?->name }}
-                                    <td>{{ $organizationalCulture?->unit}}</td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->student_satisfaction)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->unique_organizational_learning_capability)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->students_religious_beliefs)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->student_study_research_culture)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->hijab_culture_of_students)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->culture_of_participation)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->faculty_members_self_confidence)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->amount_of_physical_elements)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>{{$organizationalCulture->percentage_of_sample_professors_in_unit}}</td>
-                                    <td>{{$organizationalCulture->percentage_of_sample_professors_in_province}}</td>
-                                    <td>{{$organizationalCulture->percentage_of_sample_students_in_unit}}</td>
-                                    <td>{{$organizationalCulture->percentage_of_sample_students_in_province}}</td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->brand_influence_in_the_province)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->level_of_intelligence)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach (config('gostaresh.amount') as $key => $value)
-                                            @if ($key == $organizationalCulture->axial_program)
-                                                {{$value}}
-                                            @endif
-                                        @endforeach
-                                    </td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+
+                                        @if( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$numeric_fields))
+                                            <td>{{ number_format($organizationalCulture?->{$key}) }}</td>321
+                                        @elseif( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
+                                            <td>
+                                                @foreach ( config('gostaresh.amount') as $amountKey => $amountValue)
+                                                    @if ( $amountKey == $organizationalCulture->{$key})
+                                                        {{ $amountValue}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        @else
+                                            <td>{{ $organizationalCulture?->{$key} }}</td>
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $organizationalCulture?->year }}</td>
                                     <td>
 
@@ -173,4 +104,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

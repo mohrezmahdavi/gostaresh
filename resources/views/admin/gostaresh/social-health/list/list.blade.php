@@ -20,12 +20,19 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -37,31 +44,30 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>مولفه</th>
-                                <th>جنسیت</th>
-                                <th>کاردانی</th>
-                                <th>کارشناسی</th>
-                                <th>کارشناسی ارشد</th>
-                                <th>دکتری حرفه ای</th>
-                                <th>دکتری تخصصی</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($socialHealths as $key => $socialHealth)
                                 <tr>
                                     <th scope="row">{{ $socialHealths?->firstItem() + $key }}</th>
                                     <td>{{ $socialHealth?->province?->name . ' - ' . $socialHealth->county?->name }}
-                                    <td>{{ $socialHealth?->unit}}</td>
-                                    <td>{{ $socialHealth?->component_title}}</td>
-                                    <td>{{ $socialHealth?->gender}}</td>
-                                    <td>{{ $socialHealth?->associate_degree }}</td>
-                                    <td>{{ $socialHealth?->bachelor_degree }}</td>
-                                    <td>{{ $socialHealth?->masters }}</td>
-                                    <td>{{ $socialHealth?->professional_doctor}}</td>
-                                    <td>{{ $socialHealth?->phd }}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+
+                                        @if( in_array($key , \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
+                                            <td>{{ number_format($socialHealth?->{$key}) }}</td>
+                                        @else
+                                            <td>{{ $socialHealth?->{$key} }}</td>
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $socialHealth?->year }}</td>
                                     <td>
 
@@ -91,4 +97,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

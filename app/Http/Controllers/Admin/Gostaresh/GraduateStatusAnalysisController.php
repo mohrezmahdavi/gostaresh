@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GraduateStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\GraduateStatusAnalysis\GraduateStatusAnalysisRequest;
+use App\Models\Index\GraduatesOfHigherEducationCenters;
 use App\Models\Index\GraduateStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 33 Controller
 class GraduateStatusAnalysisController extends Controller
@@ -21,14 +25,51 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = GraduateStatusAnalysis::query();
+        $query = GraduateStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = GraduateStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $graduateStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses'));
+        return view('admin.gostaresh.graduate-status-analyses.list.list', compact('graduateStatusAnalyses',
+            'filterColumnsCheckBoxes', 'yearSelectedList'
+        ));
     }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    // ****************** Export ******************
+    private function getGraduateStatusAnalysisRecords()
+    {
+        return GraduateStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $graduateStatusAnalysises = $this->getGraduateStatusAnalysisRecords();
+        return Excel::download(new ListExport($graduateStatusAnalysises), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $graduateStatusAnalysises = $this->getGraduateStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.graduate-status-analyses.list.pdf', compact('graduateStatusAnalysises'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $graduateStatusAnalysises = $this->getGraduateStatusAnalysisRecords();
+        return view('admin.gostaresh.graduate-status-analyses.list.pdf', compact('graduateStatusAnalysises'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.

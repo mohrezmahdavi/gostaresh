@@ -146,31 +146,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    <th>واحد دانشگاهی</th>
-                                    <th>ساختمان واحد دانشگاهی</th>
-                                    @if (filterCol('distance_from_population_density_of_city') == true)
-                                        <th>فاصله از تراکم جمعیتی شهر</th>
-                                    @endif
-                                    @if (filterCol('distance_from_center_of_province') == true)
-                                        <th>فاصله از مرکز استان</th>
-                                    @endif
-                                    @if (filterCol('climate_type_and_weather_conditions_title') == true)
-                                        <th>نوع اقلیم و شرایط آب و هوایی</th>
-                                    @endif
-                                    @if (filterCol('distance_to_the_nearest_higher_education_center') == true)
-                                        <th>فاصله تا نزدیکترین مرکز آموزش عالی</th>
-                                    @endif
-                                    @if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true)
-                                        <th>فاصله تا نزدیکترین واحد دانشگاه آزاد</th>
-                                    @endif
-                                    @if (filterCol('level_and_quality_of_access_title') == true)
-                                        <th>سطح و کیفیت دسترسی</th>
-                                    @endif
-                                    @if (filterCol('international_opportunities_geographical_location_title') == true)
-                                        <th>فرصت های بین الملی موقعیت جغرافیایی</th>
-                                    @endif
 
+                                    @include('admin.gostaresh.geographical-location-of-unit.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -178,46 +155,7 @@
                                 @foreach ($geographicalLocationOfUnits as $key => $geographicalLocationOfUnit)
                                     <tr>
                                         <th scope="row">{{ $geographicalLocationOfUnits?->firstItem() + $key }}</th>
-
-                                        <td>{{ $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name }}
-                                        </td>
-                                        <td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
-                                        <td>{{ $geographicalLocationOfUnit?->university_building }}</td>
-
-                                        @if (filterCol('distance_from_population_density_of_city') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
-                                            </td>
-                                        @endif
-                                        @if (filterCol('distance_from_center_of_province') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->distance_from_center_of_province }}</td>
-                                        @endif
-                                        @if (filterCol('climate_type_and_weather_conditions_title') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->climate_type_and_weather_conditions_title }}
-                                            </td>
-                                        @endif
-                                        @if (filterCol('distance_to_the_nearest_higher_education_center') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_higher_education_center }}
-                                            </td>
-                                        @endif
-                                        @if (filterCol('distance_to_the_nearest_unit_of_azad_university') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->distance_to_the_nearest_unit_of_azad_university }}
-                                            </td>
-                                        @endif
-                                        @if (filterCol('level_and_quality_of_access_title') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->level_and_quality_of_access_title }}
-                                            </td>
-                                        @endif
-                                        @if (filterCol('international_opportunities_geographical_location_title') == true)
-                                            <td>{{ $geographicalLocationOfUnit?->international_opportunities_geographical_location_title }}
-                                            </td>
-                                        @endif
-
-
-
-
-
-
-
+                                        @include('admin.gostaresh.geographical-location-of-unit.list.partials.tbody')
                                         <td>
 
                                             <a href="{{ route('geographical.location.unit.edit', $geographicalLocationOfUnit) }}"
@@ -234,9 +172,11 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('geographical.location.unit.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-
+                            <x-exports.export-links 
+                                excelLink="{{ route('geographical.location.unit.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('geographical.location.unit.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('geographical.location.unit.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
 

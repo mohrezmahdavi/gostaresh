@@ -18,13 +18,20 @@ class PovertyOfProvincialCityController extends Controller
      */
     public function index()
     {
-        $query = PovertyOfProvincialCity::query();
+        $query = PovertyOfProvincialCity::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = PovertyOfProvincialCity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $povertyOfProvincialCities = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.poverty-of-provincial-citiy.list.list', compact('povertyOfProvincialCities'));
+        return view('admin.gostaresh.poverty-of-provincial-citiy.list.list', compact('povertyOfProvincialCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

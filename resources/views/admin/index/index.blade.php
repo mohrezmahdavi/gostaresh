@@ -23,7 +23,7 @@
                     <h4 class="header-title mb-2 pb-2 border-bottom">منوی درختی شاخص ها</h4>
 
                     <ul class="sitemap">
-                        @foreach (config('gostaresh-urls.url') as $keyParent => $valueParent)
+                        @foreach ( config('gostaresh-urls.url') as $keyParent => $valueParent)
                             <li>
 
                                 <a role="link" aria-disabled="true" class="text-uppercase fw-bold">
@@ -47,7 +47,7 @@
                                                         @foreach ($valueMiddle as $key => $value)
                                                             <li>
 
-                                                                <a href="{{ route($value['name'] . '.index') }}" >
+                                                                <a href="{{ route($value['name'] . '.index',["all=1"]) }}" >
                                                                     {{ $value['title'] }}
 
                                                                 </a>
@@ -83,7 +83,7 @@
 
                     {{-- @foreach (config('gostaresh-urls.url') as $key => $value)
 
-                            
+
 
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>

@@ -20,10 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+    :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -35,21 +43,16 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    <th>مقدار </th>
-                                    <th>سال</th>
+                                    @include('admin.gostaresh.payment-r-and-d-department.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($paymentRAndDDepartments as $key => $paymentRAndDDepartment)
                                     <tr>
                                         <th scope="row">{{ $paymentRAndDDepartments?->firstItem() + $key }}</th>
         
-                                        <td>{{ $paymentRAndDDepartment?->province?->name . ' - ' . $paymentRAndDDepartment->county?->name }}
-                                        </td>
-                                        <td>{{ $paymentRAndDDepartment?->amount }}</td>
-                                        <td>{{ $paymentRAndDDepartment?->year }}</td>
+                                        @include('admin.gostaresh.payment-r-and-d-department.list.partials.tbody')
                                         <td>
         
                                             <a href="{{ route('payment.r.and.d.department.edit', $paymentRAndDDepartment) }}"
@@ -64,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('payment.r.and.d.department.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('payment.r.and.d.department.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('payment.r.and.d.department.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $paymentRAndDDepartments->withQueryString()->links('pagination::bootstrap-4') }}
@@ -76,4 +85,6 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
+

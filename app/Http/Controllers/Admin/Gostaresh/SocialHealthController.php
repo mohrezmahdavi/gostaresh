@@ -17,15 +17,24 @@ class SocialHealthController extends Controller
      */
     public function index()
     {
-        $query = SocialHealthStatusAnalysis::query();
+        $query = SocialHealthStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = SocialHealthStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $socialHealths = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.social-health.list.list', compact('socialHealths'));
+        return view('admin.gostaresh.social-health.list.list', compact('socialHealths'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

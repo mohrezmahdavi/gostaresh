@@ -20,10 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+    :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -35,21 +43,16 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    <th>مقدار </th>
-                                    <th>سال</th>
+                                    @include('admin.gostaresh.industrial-expenditure-research.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($industrialExpenditureResearches as $key => $industrialExpenditureResearch)
                                     <tr>
                                         <th scope="row">{{ $industrialExpenditureResearches?->firstItem() + $key }}</th>
-        
-                                        <td>{{ $industrialExpenditureResearch?->province?->name . ' - ' . $industrialExpenditureResearch->county?->name }}
-                                        </td>
-                                        <td>{{ $industrialExpenditureResearch?->amount }}</td>
-                                        <td>{{ $industrialExpenditureResearch?->year }}</td>
+                                        @include('admin.gostaresh.industrial-expenditure-research.list.partials.tbody')
+                                        
                                         <td>
         
                                             <a href="{{ route('industrial.expenditure.research.edit', $industrialExpenditureResearch) }}"
@@ -64,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('industrial.expenditure.research.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('industrial.expenditure.research.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('industrial.expenditure.research.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $industrialExpenditureResearches->withQueryString()->links('pagination::bootstrap-4') }}
@@ -76,4 +85,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

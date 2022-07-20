@@ -17,13 +17,24 @@ class EmployeeProfileController extends Controller
      */
     public function index()
     {
-        $query = EmployeeProfile::query();
+        $query = EmployeeProfile::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = EmployeeProfile::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $employeeProfiles = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.employee-profile.list.list', compact('employeeProfiles'));
+        return view('admin.gostaresh.employee-profile.list.list', compact('employeeProfiles'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -44,7 +55,7 @@ class EmployeeProfileController extends Controller
      */
     public function store(EmployeeProfileRequest $request)
     {
-         EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->all()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 

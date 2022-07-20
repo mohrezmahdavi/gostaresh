@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\PaymentRAndDDepartment\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\PaymentRAndDDepartment;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\PaymentRAndDDepartment\PaymentRAndDDepartmentRequest;
-
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 // Table 8
 class PaymentRAndDDepartmentController extends Controller
 {
@@ -19,13 +21,44 @@ class PaymentRAndDDepartmentController extends Controller
      */
     public function index()
     {
-        $query = PaymentRAndDDepartment::query();
+        $query = PaymentRAndDDepartment::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = PaymentRAndDDepartment::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $paymentRAndDDepartments = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments'));
+        return view('admin.gostaresh.payment-r-and-d-department.list.list', compact('paymentRAndDDepartments', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getPaymentRAndDDepartmentRecords()
+    {
+        return PaymentRAndDDepartment::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        return Excel::download(new ListExport($paymentRAndDDepartments), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('paymentRAndDDepartments'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $paymentRAndDDepartments = $this->getPaymentRAndDDepartmentRecords();
+        return view('admin.gostaresh.payment-r-and-d-department.list.pdf', compact('paymentRAndDDepartments'));
     }
 
     /**

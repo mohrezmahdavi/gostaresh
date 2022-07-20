@@ -44,7 +44,7 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($averageTestScoreOfTheFirstThirtyPercentOfAdmitteds as $key => $averageTestScoreOfTheFirstThirtyPercentOfAdmitted)
                                     <tr>
                                         <th scope="row">{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds?->firstItem() + $key }}</th>
@@ -54,7 +54,7 @@
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->university_type_title }}</td>
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->gender_title }}</td>
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->department_of_education_title }}</td>
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->average_test_score_of_the_first_thirty_percent_of_admitted }}</td>
+                                        <td>{{ number_format($averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->average_test_score_of_the_first_thirty_percent_of_admitted) }}</td>
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->year }}</td>
                                         <td>
         

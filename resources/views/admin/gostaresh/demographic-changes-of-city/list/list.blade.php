@@ -20,7 +20,7 @@
 @endsection
 
 @section('styles-head')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
@@ -107,18 +107,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    @if (filterCol('population') == true)
-                                        <th>جمعیت </th>
-                                    @endif
-                                    @if (filterCol('immigration_rates') == true)
-                                        <th>نرخ مهاجرت</th>
-                                    @endif
-                                    @if (filterCol('growth_rate') == true)
-                                        <th>نرخ رشد</th>
-                                    @endif
-                                    <th>سال</th>
-                                    <th>ماه</th>
-                                    <th>موقعیت</th>
+                                    @include('admin.gostaresh.demographic-changes-of-city.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -127,22 +116,8 @@
                                     <tr>
                                         <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
 
-                                        @if (filterCol('population') == true)
-                                            <td>{{ $demographicChangesOfCity?->population }}</td>
-                                        @endif
-                                        @if (filterCol('immigration_rates') == true)
-                                            <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>
-                                        @endif
-                                        @if (filterCol('growth_rate') == true)
-                                            <td>{{ $demographicChangesOfCity?->growth_rate }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.demographic-changes-of-city.list.partials.tbody')
 
-
-
-                                        <td>{{ $demographicChangesOfCity?->year }}</td>
-                                        <td>{{ $demographicChangesOfCity?->month }}</td>
-                                        <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}
-                                        </td>
                                         <td>
 
                                             <a href="{{ route('demographic.changes.city.edit', $demographicChangesOfCity) }}"
@@ -160,9 +135,11 @@
 
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('demographic.changes.city.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-
+                            <x-exports.export-links 
+                                excelLink="{{ route('demographic.changes.city.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('demographic.changes.city.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('demographic.changes.city.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

@@ -20,11 +20,19 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
+
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,43 +45,29 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>زیرنظام های آموزش عالی شهرستان</th>
-                                <th>تعداد کارکنان غیر هیات علمی</th>
-                                <th>میانگین سنی کارمندان</th>
-                                <th>تعداد کارمندان مرد</th>
-                                <th>تعداد کارمندان زن</th>
-                                <th>تعداد کارمندان اداری</th>
-                                <th>تعداد کارمندان بخش آموزشی</th>
-                                <th>تعداد کارمندان بخش پژوهش</th>
-                                <th>تعداد کارمندان با مدرک دکترا</th>
-                                <th>تعداد کارمندان با مدرک کارشناسی ارشد</th>
-                                <th>تعداد کارمندان با مدرک کارشناسی</th>
-                                <th>تعداد کارمندان با مدرک دیپلم و زیر دیپلم</th>
-                                <th>تعداد کارمندان در حال تحصیل</th>
-                                <th>نرخ رشد کارمندان</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($employeeProfiles as $key => $employeeProfile)
                                 <tr>
                                     <th scope="row">{{ $employeeProfiles?->firstItem() + $key }}</th>
                                     <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile->county?->name }}
-                                    <td>{{ $employeeProfile?->department_of_education_title}}</td>
-                                    <td>{{ $employeeProfile?->number_of_non_faculty_staff}}</td>
-                                    <td>{{ $employeeProfile?->average_age_of_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_male_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_female_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_administrative_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_training_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_research_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_PhD_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_master_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_expert_staff}}</td>
-                                    <td>{{ $employeeProfile?->number_of_diploma_and_sub_diploma_employees}}</td>
-                                    <td>{{ $employeeProfile?->number_of_employees_studying}}</td>
-                                    <td>{{ $employeeProfile?->growth_rate}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\EmployeeProfile::$numeric_fields))
+                                                <td>{{ number_format($employeeProfile?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $employeeProfile->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $employeeProfile?->year }}</td>
                                     <td>
 
@@ -103,4 +97,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

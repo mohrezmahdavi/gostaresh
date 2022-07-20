@@ -129,34 +129,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('gender_title') == true)
-                                        <th>جنسیت</th>
-                                    @endif
+                                    @include('admin.gostaresh.number-student-population.list.partials.thead')
 
-                                    {{-- <th>مقطع</th> --}}
-                                    @if (filterCol('ebtedai') == true)
-                                        <th>ابتدایی</th>
-                                    @endif
-
-                                    @if (filterCol('motevasete_1') == true)
-                                        <th>متوسطه اول</th>
-                                    @endif
-                                    @if (filterCol('motevasete_2_ensani') == true)
-                                        <th>متوسطه دوم (علوم انسانی)</th>
-                                    @endif
-                                    @if (filterCol('motevasete_2_math') == true)
-                                        <th>متوسطه دوم (ریاضی)</th>
-                                    @endif
-                                    @if (filterCol('motevasete_2_science') == true)
-                                        <th>متوسطه دوم (علوم تجربی)</th>
-                                    @endif
-                                    @if (filterCol('motevasete_2_kar_danesh') == true)
-                                        <th>متوسطه دوم (کار و دانش و فنی و حرفه ای)</th>
-                                    @endif
-
-                                    <th>سال</th>
-                                    <th>ماه</th>
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -164,36 +138,9 @@
                                 @foreach ($numberStudentPopulations as $key => $numberStudentPopulation)
                                     <tr>
                                         <th scope="row">{{ $numberStudentPopulations?->firstItem() + $key }}</th>
+                                        @include('admin.gostaresh.number-student-population.list.partials.tbody')
 
-                                        <td>{{ $numberStudentPopulation?->province?->name . ' - ' . $numberStudentPopulation->county?->name }}
-                                        </td>
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $numberStudentPopulation?->gender_title }}</td>
-                                        @endif
-
-                                        {{-- <td>{{ $numberStudentPopulation?->grade }}</td> --}}
-                                        @if (filterCol('ebtedai') == true)
-                                        <td>{{ $numberStudentPopulation?->ebtedai }}</td>
-                                        @endif
-
-                                        @if (filterCol('motevasete_1') == true)
-                                        <td>{{ $numberStudentPopulation?->motevasete_1 }}</td>
-                                        @endif
-                                        @if (filterCol('motevasete_2_ensani') == true)
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_ensani }}</td>
-                                        @endif
-                                        @if (filterCol('motevasete_2_math') == true)
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_math }}</td>
-                                        @endif
-                                        @if (filterCol('motevasete_2_science') == true)
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_science }}</td>
-                                        @endif
-                                        @if (filterCol('motevasete_2_kar_danesh') == true)
-                                        <td>{{ $numberStudentPopulation?->motevasete_2_kar_danesh }}</td>
-                                        @endif
-
-                                        <td>{{ $numberStudentPopulation?->year }}</td>
-                                        <td>{{ $numberStudentPopulation?->month }}</td>
+                                        
                                         <td>
                                             <a href="{{ route('number.student.population.edit', $numberStudentPopulation) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
@@ -207,7 +154,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.student.population.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.student.population.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.student.population.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberStudentPopulations->withQueryString()->links('pagination::bootstrap-4') }}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalTechnology\InternationalTechnologyRequest;
 use App\Models\Index\InternationalTechnology;
+use App\Models\Index\TechnologicalProduct;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -21,13 +22,24 @@ class InternationalTechnologyController extends Controller
      */
     public function index()
     {
-        $query = InternationalTechnology::query();
+        $query = InternationalTechnology::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = InternationalTechnology::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $internationalTechnologies = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.international-technology.list.list', compact('internationalTechnologies'));
+        return view('admin.gostaresh.international-technology.list.list', compact('internationalTechnologies'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\TeachersStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\TeachersStatusAnalysisRequest;
+use App\Models\Index\GraduateStatusAnalysis;
 use App\Models\Index\TeachersStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 34 Controller
 class TeachersStatusAnalysisController extends Controller
@@ -21,14 +25,50 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $query = TeachersStatusAnalysis::query();
+        $query = TeachersStatusAnalysis::whereRequestsQuery();
+
+        $filterColumnsCheckBoxes = TeachersStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $teachersStatusAnalyses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalyses'));
+        return view('admin.gostaresh.teachers-status-analyses.list.list', compact('teachersStatusAnalyses',
+            'yearSelectedList', 'filterColumnsCheckBoxes'));
     }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    // ****************** Export ******************
+    private function getTeachersStatusAnalysesRecords()
+    {
+        return TeachersStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        return Excel::download(new ListExport($teachersStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.teachers-status-analyses.list.pdf', compact('teachersStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        return view('admin.gostaresh.teachers-status-analyses.list.pdf', compact('teachersStatusAnalyses'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.

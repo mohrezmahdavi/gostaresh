@@ -17,15 +17,24 @@ class AssetProductivityController extends Controller
      */
     public function index()
     {
-        $query = IndexOfAssetProductivity::query();
+        $query = IndexOfAssetProductivity::whereRequestQuery();
+
+        $filterColumnsCheckBoxes = IndexOfAssetProductivity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $query = filterByOwnProvince($query);
 
         $assetProductivity = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.asset-productivity.list.list', compact('assetProductivity'));
+        return view('admin.gostaresh.asset-productivity.list.list', compact('assetProductivity'
+            , 'yearSelectedList', 'filterColumnsCheckBoxes'
+        ));
     }
-
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -48,7 +48,7 @@
                                 <th>اقدام</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                             @foreach ($tuitionIncome as $key => $value)
                                 <tr>
                                     <th scope="row">{{ $tuitionIncome?->firstItem() + $key }}</th>
@@ -56,10 +56,10 @@
                                     <td>{{ $value?->unit}}</td>
                                     <td>{{ $value?->university_type_title}}</td>
                                     <td>{{ $value?->department_of_education_title}}</td>
-                                    <td>{{ $value?->associate_degree }}</td>
-                                    <td>{{ $value?->bachelor_degree }}</td>
-                                    <td>{{ $value?->masters }}</td>
-                                    <td>{{ $value?->phd }}</td>
+                                    <td>{{ number_format($value?->associate_degree) }}</td>
+                                    <td>{{ number_format($value?->bachelor_degree) }}</td>
+                                    <td>{{ number_format($value?->masters) }}</td>
+                                    <td>{{ number_format($value?->phd) }}</td>
                                     <td>{{ $value?->year }}</td>
                                     <td>
 

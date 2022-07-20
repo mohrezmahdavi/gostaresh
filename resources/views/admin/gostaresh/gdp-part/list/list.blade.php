@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,21 +43,15 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان</th>
-                                    <th>بخش</th>
-                                    <th>مقدار</th>
-                                    <th>سال</th>
+                                    @include('admin.gostaresh.gdp-part.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: right; direction: ltr">
                                 @foreach ($gdpParts as $key => $gdpPart)
                                     <tr>
                                         <th scope="row">{{ $gdpParts?->firstItem() + $key }}</th>
-                                        <td>{{ $gdpPart?->province?->name . ' - ' . $gdpPart->county?->name }}</td>
-                                        <td>{{ $gdpPart?->part_title }}</td>
-                                        <td>{{ $gdpPart?->amount }}</td>
-                                        <td>{{ $gdpPart?->year }}</td>
+                                        @include('admin.gostaresh.gdp-part.list.partials.tbody')
                                         <td>
 
                                             <a href="{{ route('gdp.part.edit', $gdpPart) }}"
@@ -66,9 +67,11 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <a href="{{ route('gdp.part.list.excel', request()->query->all()) }}"
-                                class="btn btn-success ">خروجی اکسل</a>
-    
+                            <x-exports.export-links 
+                                excelLink="{{ route('gdp.part.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('gdp.part.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('gdp.part.list.print', request()->query->all()) }}"
+                            />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
@@ -81,4 +84,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
