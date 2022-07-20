@@ -20,11 +20,17 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
-
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,30 +43,30 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>دانشگاه</th>
-                                <th>گروه عمده تحصیلی</th>
-                                <th>کاردانی</th>
-                                <th>کارشناسی</th>
-                                <th>کارشناسی ارشد</th>
-                                <th>دکتری</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                            @foreach ($tuitionIncome as $key => $value)
+                            @foreach ($tuitionIncome as $key => $tuitionIncomeItem)
                                 <tr>
                                     <th scope="row">{{ $tuitionIncome?->firstItem() + $key }}</th>
-                                    <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
-                                    <td>{{ $value?->unit}}</td>
-                                    <td>{{ $value?->university_type_title}}</td>
-                                    <td>{{ $value?->department_of_education_title}}</td>
-                                    <td>{{ number_format($value?->associate_degree) }}</td>
-                                    <td>{{ number_format($value?->bachelor_degree) }}</td>
-                                    <td>{{ number_format($value?->masters) }}</td>
-                                    <td>{{ number_format($value?->phd) }}</td>
-                                    <td>{{ $value?->year }}</td>
+                                    <td>{{ $tuitionIncomeItem?->province?->name . ' - ' . $tuitionIncomeItem->county?->name }}
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\AverageTuitionIncome::$numeric_fields))
+                                                <td>{{ number_format($tuitionIncomeItem?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $tuitionIncomeItem->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    <td>{{ $tuitionIncomeItem?->year }}</td>
                                     <td>
 
                                         <a href="{{ route('tuition-income.edit', $value) }}"
@@ -89,4 +95,6 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

@@ -107,4 +107,19 @@ class AverageTuitionIncome extends Model
         return $query;
     }
 
+    public static $numeric_fields = [
+        "associate_degree", "bachelor_degree", "masters",
+        "phd",];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                          => "واحد",
+        "university_type_title"         => "دانشگاه",
+        "department_of_education_title" => "گروه عمده تحصیلی",
+        "associate_degree"              => "کاردانی",
+        "bachelor_degree"               => "کارشناسی",
+        "masters"                       => "کارشناسی ارشد",
+        "phd"                           => "دکتری",
+
+    ];
+
 }

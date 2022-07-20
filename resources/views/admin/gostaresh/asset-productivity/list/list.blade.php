@@ -20,11 +20,18 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,56 +44,34 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>نرخ بهره برداری از فضای اداری</th>
-                                <th>نرخ بهره برداری از فضا و تجهیزات آموزشی</th>
-                                <th>نرخ بهره برداری از فضای و تجهیزات فناوری و نوآوری</th>
-                                <th>سرانه نرخ بهره برداری از فضا و تجهیزات فرهنگی</th>
-                                <th>نرخ بهره برداری از فضا و تجهیزات ورزشی</th>
-                                <th>نرخ بهره برداری از تجهیزات و فضای کشاورزی و زراعی</th>
-                                <th>ﻧـﺮخﺑﻬـﺮهﺑـﺮداری ازتجهیزات و فضای کارگاهی و آزمایشگاهی</th>
-                                <th>نرخ بهره برداری از ظرفیت اعضای هیات علمی</th>
-                                <th>نرخ بهره برداری از ظرفیت کارمندان</th>
-                                <th>نرخ بهره برداری از ظرفیت فارغ التحصیلان</th>
-                                <th>نرخ بهره برداری از ظرفیت دانشجویان</th>
-                                <th>نسبت تعداد اعضای هیات علمی به دانشجویان</th>
-                                <th>نسبت تعداد کارمندان به دانشجویان</th>
-                                <th>نسبت تعداد اعضای هیات علمی به تعداد اساتید مدعو و حق التدریس</th>
-                                <th>نسبت تعداد اعضای هیات علمی به کارمندان واحد</th>
-                                <th>نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان</th>
-                                <th>نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان</th>
-                                <th>نسبت تعداد کارمندان به میانگین تعداد کارمندان استان</th>
-                                <th>نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان</th>
+
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+                                
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                            @foreach ($assetProductivity as $key => $value)
+                            @foreach ($assetProductivity as $key => $assetProductivityItem)
                                 <tr>
                                     <th scope="row">{{ $assetProductivity?->firstItem() + $key }}</th>
-                                    <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
-                                    <td>{{ $value?->unit}}</td>
-                                    <td>{{ number_format($value?->office_space_utilization_rate)}}</td>
-                                    <td>{{ number_format($value?->utilization_rate_of_educational_equipment)}}</td>
-                                    <td>{{ number_format($value?->utilization_rate_of_technology_equipment)}}</td>
-                                    <td>{{ number_format($value?->utilization_rate_of_cultural_equipment)}}</td>
-                                    <td>{{ number_format($value?->utilization_rate_of_sports_equipment)}}</td>
-                                    <td>{{ number_format($value?->operation_rate_of_agricultural_equipment)}}</td>
-                                    <td>{{ number_format($value?->operation_rate_of_workshop_equipment)}}</td>
-                                    <td>{{ number_format($value?->faculty_capacity_utilization_rate)}}</td>
-                                    <td>{{ number_format($value?->employee_capacity_utilization_rate)}}</td>
-                                    <td>{{ number_format($value?->graduate_capacity_utilization_rate)}}</td>
-                                    <td>{{ number_format($value?->student_capacity_utilization_rate)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_students)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_staff_to_students)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_teaching_professors)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_faculty_members_to_employees)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_unit_faculty_members_to_faculty_members_of_the_province)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_unit_students_to_students_of_the_province)}}</td>
-                                    <td>{{ number_format($value?->ratio_of_unit_employees_to_provincial_employees)}}</td>
-                                    <td>{{ number_format($value?->unit_teaching_professors_to_teaching_professors_province)}}</td>
-                                    <td>{{ $value?->year }}</td>
+                                    <td>{{ $assetProductivityItem?->province?->name . ' - ' . $assetProductivityItem->county?->name }}
+
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\IndexOfAssetProductivity::$numeric_fields))
+                                                <td>{{ number_format($assetProductivityItem?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $assetProductivityItem->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
+                                    <td>{{ $assetProductivityItem?->year }}</td>
                                     <td>
 
                                         <a href="{{ route('asset-productivity.edit', $value) }}"
@@ -115,4 +100,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

@@ -17,7 +17,7 @@ class CostOfMajorsController extends Controller
      */
     public function index()
     {
-        $query = AverageCostOfMajor::whereReuqestQuery();
+        $query = AverageCostOfMajor::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = AverageCostOfMajor::$filterColumnsCheckBoxes;
 
