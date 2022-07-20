@@ -83,6 +83,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('international-research.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('international-research.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('international-research.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

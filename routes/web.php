@@ -260,21 +260,39 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 35 Route
     Route::resource('research-output-status-analyses', ResearchOutputStatusAnalysisController::class)->names('research-output-status-analyses');
+    Route::get('research-output-status-analyses/list/excel', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listExcelExport'])->name('research-output-status-analyses.list.excel');
+    Route::get('research-output-status-analyses/list/pdf', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPDFExport'])->name('research-output-status-analyses.list.pdf');
+    Route::get('research-output-status-analyses/list/print', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPrintExport'])->name('research-output-status-analyses.list.print');
 
     // Table 36,37 Route
     Route::resource('international-research', InternationalResearchStatusAnalysisController::class)->names('international-research');
+    Route::get('international-research/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listExcelExport'])->name('international-research.list.excel');
+    Route::get('international-research/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPDFExport'])->name('international-research.list.pdf');
+    Route::get('international-research/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPrintExport'])->name('international-research.list.print');
 
     // Table 38 Route
     Route::resource('amount-of-facilities', AmountOfFacilitiesController::class)->names('amount-of-facilities');
+    Route::get('amount-of-facilities/list/excel', [App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController::class, 'listExcelExport'])->name('amount-of-facilities.list.excel');
+    Route::get('amount-of-facilities/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController::class, 'listPDFExport'])->name('amount-of-facilities.list.pdf');
+    Route::get('amount-of-facilities/list/print', [App\Http\Controllers\Admin\Gostaresh\AmountOfFacilitiesController::class, 'listPrintExport'])->name('amount-of-facilities.list.print');
 
     // Table 39 Route
     Route::resource('innovation-infrastructures', InnovationInfrastructureController::class)->names('innovation-infrastructures');
+    Route::get('innovation-infrastructures/list/excel', [App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController::class, 'listExcelExport'])->name('innovation-infrastructures.list.excel');
+    Route::get('innovation-infrastructures/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController::class, 'listPDFExport'])->name('innovation-infrastructures.list.pdf');
+    Route::get('innovation-infrastructures/list/print', [App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController::class, 'listPrintExport'])->name('innovation-infrastructures.list.print');
 
     // Table 40 Route
     Route::resource('technological-product', TechnologicalProductController::class)->names('technological-product');
+    Route::get('technological-product/list/excel', [App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController::class, 'listExcelExport'])->name('technological-product.list.excel');
+    Route::get('technological-product/list/pdf', [App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController::class, 'listPDFExport'])->name('technological-product.list.pdf');
+    Route::get('technological-product/list/print', [App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController::class, 'listPrintExport'])->name('technological-product.list.print');
 
     // Table 41 Route
     Route::resource('international-technology', InternationalTechnologyController::class)->names('international-technology');
+    Route::get('international-technology/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController::class, 'listExcelExport'])->name('international-technology.list.excel');
+    Route::get('international-technology/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController::class, 'listPDFExport'])->name('international-technology.list.pdf');
+    Route::get('international-technology/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController::class, 'listPrintExport'])->name('international-technology.list.print');
 
     // Table 42 Route
     Route::resource('cultural-indicators', CulturalIndicatorsController::class)->names('cultural-indicators');
