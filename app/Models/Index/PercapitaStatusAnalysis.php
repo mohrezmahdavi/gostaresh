@@ -87,6 +87,21 @@ class PercapitaStatusAnalysis extends Model
         return $query;
     }
 
-    public  static $filterColumnsCheckBoxes;
+    public static $numeric_fields = [];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                          => "واحد",
+        "percapita_office_space"        => "سرانه فضای اداری",
+        "percapita_educational_space"   => "سرانه فضای آموزشی",
+        "percapita_innovation_space"    => "سرانه فضای فناوری و نوآوری",
+        "percapita_cultural_space"      => "سرانه فضای فرهنگی",
+        "percapita_civil_space"         => "سرانه فضای عمرانی",
+        "building_under_construction"   => "ساختمان در دست احداث",
+        "percapita_residential"         => "سرانه اقامتی",
+        "percapita_operating_buildings" => "سرانه ساختمان های بهره بردار",
+        "percapita_sports_space"        => "سرانه فضای ورزشی",
+        "percapita_aristocratic_space"  => "سرانه فضای اعیانی",
+        "percapita_arena_space"         => "سرانه فضای عرصه",
+    ];
 
 }

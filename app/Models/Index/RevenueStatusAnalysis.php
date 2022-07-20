@@ -87,6 +87,29 @@ class RevenueStatusAnalysis extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = [
+        "total_revenue",
+        "income_from_student_tuition",
+        "income_from_commercialized_technologies",
+        "income_from_research_activities",
+        "income_from_skills_training",
+        "operating_income_growth_rate",
+        "total_non_tuition_income",
+        "total_international_income",
+        "shareholder_income",
+    ];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                                    => "واحد",
+        "total_revenue"                           => "کل درآمد ها",
+        "income_from_student_tuition"             => "درآمد حاصل از شهریه دانشجویان",
+        "income_from_commercialized_technologies" => "درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده",
+        "income_from_research_activities"         => "درصد درآمد حاصل از فعالیت های تحقیق و توسعه واحد",
+        "income_from_skills_training"             => "درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد",
+        "operating_income_growth_rate"            => "نرخ رشد درآمدهای عملیاتی واحد",
+        "total_non_tuition_income"                => "مجموع درآمدهای غیر شهریه ای واحد",
+        "total_international_income"              => "مجموع درآمد های ناشی از فعالیت های بین المللی",
+        "shareholder_income"                      => "درآمد ناشی از سهامداری",
+    ];
 
 }

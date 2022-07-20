@@ -87,6 +87,11 @@ class CostChangesTrendsAnalysis extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = ["total_annual_expenses"];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                  => "واحد",
+        "total_annual_expenses" => "کل هزینه های سالیانه",
+    ];
 
 }

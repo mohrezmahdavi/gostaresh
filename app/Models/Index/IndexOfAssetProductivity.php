@@ -87,6 +87,29 @@ class IndexOfAssetProductivity extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = [];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                                                             => "واحد",
+        "office_space_utilization_rate"                                    => "نرخ بهره برداری از فضای اداری",
+        "utilization_rate_of_educational_equipment"                        => "نرخ بهره برداری از فضا و تجهیزات آموزشی",
+        "utilization_rate_of_technology_equipment"                         => "نرخ بهره برداری از فضای و تجهیزات فناوری و نوآوری",
+        "utilization_rate_of_cultural_equipment"                           => "سرانه نرخ بهره برداری از فضا و تجهیزات فرهنگی",
+        "utilization_rate_of_sports_equipment"                             => "نرخ بهره برداری از فضا و تجهیزات ورزشی",
+        "operation_rate_of_agricultural_equipment"                         => "نرخ بهره برداری از تجهیزات و فضای کشاورزی و زراعی",
+        "operation_rate_of_workshop_equipment"                             => "ﻧـﺮخﺑﻬـﺮهﺑـﺮداری ازتجهیزات و فضای کارگاهی و آزمایشگاهی",
+        "faculty_capacity_utilization_rate"                                => "نرخ بهره برداری از ظرفیت اعضای هیات علمی",
+        "employee_capacity_utilization_rate"                               => "نرخ بهره برداری از ظرفیت کارمندان",
+        "graduate_capacity_utilization_rate"                               => "نرخ بهره برداری از ظرفیت فارغ التحصیلان",
+        "student_capacity_utilization_rate"                                => "نرخ بهره برداری از ظرفیت دانشجویان",
+        "ratio_of_faculty_members_to_students"                             => "نسبت تعداد اعضای هیات علمی به دانشجویان",
+        "ratio_of_staff_to_students"                                       => "نسبت تعداد کارمندان به دانشجویان",
+        "ratio_of_faculty_members_to_teaching_professors"                  => "نسبت تعداد اعضای هیات علمی به تعداد اساتید مدعو و حق التدریس",
+        "ratio_of_faculty_members_to_employees"                            => "نسبت تعداد اعضای هیات علمی به کارمندان واحد",
+        "ratio_of_unit_faculty_members_to_faculty_members_of_the_province" => "نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان",
+        "ratio_of_unit_students_to_students_of_the_province"               => "نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان",
+        "ratio_of_unit_employees_to_provincial_employees"                  => "نسبت تعداد کارمندان به میانگین تعداد کارمندان استان",
+        "unit_teaching_professors_to_teaching_professors_province"         => "نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان",
+    ];
 
 }

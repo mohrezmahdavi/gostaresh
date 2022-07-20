@@ -21,7 +21,7 @@ class CulturalIndicatorsController extends Controller
      */
     public function index()
     {
-        $query = CulturalIndicatorsStatusAnalysis::whereRequestQuery();
+        $query = CulturalIndicatorsStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = CulturalIndicatorsStatusAnalysis::$filterColumnsCheckBoxes;
 

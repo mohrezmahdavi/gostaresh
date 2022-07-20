@@ -116,6 +116,22 @@ class AverageCostOfMajor extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = [
+        "associate_degree",
+        "bachelor_degree",
+        "masters",
+        "phd",
+    ];
+
+    public static $filterColumnsCheckBoxes = [
+        "university_type_title"         => "دانشگاه",
+        "gender"                        => "جنسیت",
+        "department_of_education_title" => "گروه عمده تحصیلی",
+        "associate_degree"              => "کاردانی",
+        "bachelor_degree"               => "کارشناسی",
+        "masters"                       => "کارشناسی ارشد",
+        "phd"                           => "دکتری",
+
+    ];
 
 }

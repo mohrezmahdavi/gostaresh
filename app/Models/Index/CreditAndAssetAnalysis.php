@@ -87,7 +87,28 @@ class CreditAndAssetAnalysis extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = [
+        "administrative_credits",
+        "educational_credits",
+        "research_credits",
+        "cultural_credits",
+        "innovative_credits",
+        "skills_credits",
+        "total_University_credits",
+        "total_university_assets",
+    ];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                     => "واحد",
+        "administrative_credits"   => "اعتبارات اداری",
+        "educational_credits"      => "اعتبارات آموزشی",
+        "research_credits"         => "اعتبارات پژوهشی",
+        "cultural_credits"         => "اعتبارات فرهنگی",
+        "innovative_credits"       => "اعتبارات فناورانه و نوآورانه",
+        "skills_credits"           => "اعتبارات حوزه مهارتی",
+        "total_University_credits" => "کل اعتبارات دانشگاه",
+        "total_university_assets"  => "کل دارایی های دانشگاه",
+    ];
 
 
 }

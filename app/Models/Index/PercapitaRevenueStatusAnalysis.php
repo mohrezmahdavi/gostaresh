@@ -107,6 +107,13 @@ class PercapitaRevenueStatusAnalysis extends Model
         return $query;
     }
 
-    public static $filterColumnsCheckBoxes;
+    public static $numeric_fields = ["percapita_revenue_status_analyses"];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                              => "واحد",
+        "university_type_title"             => "دانشگاه",
+        "grade_title"                       => "مقطع تحصیلی",
+        "percapita_revenue_status_analyses" => "تحلیل وضعیت درآمد سرانه",
+    ];
 
 }
