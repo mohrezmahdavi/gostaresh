@@ -5501,6 +5501,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5508,6 +5532,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     province_default: {
+      "default": ""
+    },
+    zone_default: {
       "default": ""
     },
     county_default: {
@@ -5525,9 +5552,13 @@ __webpack_require__.r(__webpack_exports__);
       country_selected: 1,
       count_province_changed: 0,
       count_county_changed: 0,
+      count_zone_changed: 0,
       provinces: [],
       province_selected: "",
       flag_province: true,
+      flag_zone: true,
+      zone_selected: "",
+      zones_count: "",
       counties: [],
       county_selected: "",
       flag_county: true,
@@ -5550,6 +5581,10 @@ __webpack_require__.r(__webpack_exports__);
       this.province_selected = this.province_default;
     }
 
+    if (this.zone_default != "") {
+      this.zone_selected = this.zone_default;
+    }
+
     if (this.county_default != "") {
       this.county_selected = this.county_default;
     }
@@ -5568,19 +5603,38 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.count_province_changed != 0) {
         this.county_selected = "";
+        this.zones_count = "";
       }
 
       if (newValue != "") {
-        _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
-          _this2.counties = [];
-          _this2.counties = data.data;
+        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+          _this2.zones_count = data.data.zone_number;
         });
       }
 
       this.count_province_changed++;
     },
-    county_selected: function county_selected(newValue) {
+    zone_selected: function zone_selected(newValue) {
       var _this3 = this;
+
+      if (this.count_zone_changed != 0) {
+        this.city_selected = "";
+        this.rural_district_selected = "";
+        this.rural_districts = [];
+        this.cities = [];
+      }
+
+      if (newValue != "") {
+        _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(this.province_selected, newValue).then(function (data) {
+          _this3.counties = [];
+          _this3.counties = data.data;
+        });
+      }
+
+      this.count_zone_changed++;
+    },
+    county_selected: function county_selected(newValue) {
+      var _this4 = this;
 
       if (this.count_county_changed != 0) {
         this.city_selected = "";
@@ -5591,11 +5645,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (newValue != "") {
         _services_city__WEBPACK_IMPORTED_MODULE_2__["default"].listCities(newValue).then(function (data) {
-          _this3.cities = data.data;
-        });
-        _services_rural_district__WEBPACK_IMPORTED_MODULE_3__["default"].listRuralDistricts(newValue).then(function (data) {
-          _this3.rural_districts = data.data;
-        });
+          _this4.cities = data.data;
+        }); // RuralDistrictService.listRuralDistricts(newValue).then((data) => {
+        //   this.rural_districts = data.data;
+        // });
       }
 
       this.count_county_changed++;
@@ -5619,7 +5672,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_province__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/province */ "./resources/js/services/province/index.js");
 /* harmony import */ var _services_county__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/county */ "./resources/js/services/county/index.js");
 /* harmony import */ var _services_city__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/city */ "./resources/js/services/city/index.js");
-/* harmony import */ var _services_rural_district__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/rural-district */ "./resources/js/services/rural-district/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5716,11 +5793,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
-
+ // import RuralDistrictService from "../../services/rural-district";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     province_default: {
+      "default": ""
+    },
+    zone_default: {
       "default": ""
     },
     county_default: {
@@ -5741,6 +5821,9 @@ __webpack_require__.r(__webpack_exports__);
       provinces: [],
       province_selected: "",
       flag_province: true,
+      flag_zone: true,
+      zone_selected: "",
+      zones_count: "",
       counties: [],
       county_selected: "",
       flag_county: true,
@@ -5763,6 +5846,10 @@ __webpack_require__.r(__webpack_exports__);
       this.province_selected = this.province_default;
     }
 
+    if (this.zone_default != "") {
+      this.zone_selected = this.zone_default;
+    }
+
     if (this.county_default != "") {
       this.county_selected = this.county_default;
     }
@@ -5781,19 +5868,38 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.count_province_changed != 0) {
         this.county_selected = "";
+        this.zones_count = "";
       }
 
       if (newValue != "") {
-        _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
-          _this2.counties = [];
-          _this2.counties = data.data;
+        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+          _this2.zones_count = data.data.zone_number;
         });
       }
 
       this.count_province_changed++;
     },
-    county_selected: function county_selected(newValue) {
+    zone_selected: function zone_selected(newValue) {
       var _this3 = this;
+
+      if (this.count_zone_changed != 0) {
+        this.city_selected = "";
+        this.rural_district_selected = "";
+        this.rural_districts = [];
+        this.cities = [];
+      }
+
+      if (newValue != "") {
+        _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(this.province_selected, newValue).then(function (data) {
+          _this3.counties = [];
+          _this3.counties = data.data;
+        });
+      }
+
+      this.count_zone_changed++;
+    },
+    county_selected: function county_selected(newValue) {
+      var _this4 = this;
 
       if (this.count_county_changed != 0) {
         this.city_selected = "";
@@ -5804,11 +5910,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (newValue != "") {
         _services_city__WEBPACK_IMPORTED_MODULE_2__["default"].listCities(newValue).then(function (data) {
-          _this3.cities = data.data;
-        });
-        _services_rural_district__WEBPACK_IMPORTED_MODULE_3__["default"].listRuralDistricts(newValue).then(function (data) {
-          _this3.rural_districts = data.data;
-        });
+          _this4.cities = data.data;
+        }); // RuralDistrictService.listRuralDistricts(newValue).then((data) => {
+        //   this.rural_districts = data.data;
+        // });
       }
 
       this.count_county_changed++;
@@ -6072,19 +6177,21 @@ var CountyService = /*#__PURE__*/function () {
     value: function () {
       var _listCounties = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var province_id,
+            zone_id,
             _args = arguments;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 province_id = _args.length > 0 && _args[0] !== undefined ? _args[0] : '';
-                _context.next = 3;
-                return this.fetchAsync("/api/counties?province_id=".concat(province_id));
-
-              case 3:
-                return _context.abrupt("return", _context.sent);
+                zone_id = _args.length > 1 && _args[1] !== undefined ? _args[1] : '';
+                _context.next = 4;
+                return this.fetchAsync("/api/counties?province_id=".concat(province_id, "&zone_id=").concat(zone_id));
 
               case 4:
+                return _context.abrupt("return", _context.sent);
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -29324,6 +29431,66 @@ var render = function () {
     _c("div", { staticClass: "form-group row mt-2" }, [
       _c(
         "label",
+        { staticClass: "col-sm-2 col-form-label", attrs: { for: "zone_id" } },
+        [_vm._v("منطقه")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-10" }, [
+        _vm.flag_zone
+          ? _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.zone_selected,
+                    expression: "zone_selected",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { name: "zone_id", id: "zone_id" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.zone_selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { selected: "", value: "" } }, [
+                  _vm._v("انتخاب کنید"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.zones_count, function (zone) {
+                  return _c(
+                    "option",
+                    { key: zone, domProps: { value: zone } },
+                    [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
+                  )
+                }),
+              ],
+              2
+            )
+          : _c("select", {
+              staticClass: "form-control",
+              attrs: { id: "zone_id" },
+            }),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group row mt-2" }, [
+      _c(
+        "label",
         { staticClass: "col-sm-2 col-form-label", attrs: { for: "county_id" } },
         [_vm._v("شهرستان")]
       ),
@@ -29444,78 +29611,6 @@ var render = function () {
             }),
       ]),
     ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row mt-2" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-2 col-form-label",
-          attrs: { for: "rural_district_id" },
-        },
-        [_vm._v("دهستان")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _vm.flag_rural_district
-          ? _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.rural_district_selected,
-                    expression: "rural_district_selected",
-                  },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "rural_district_id", id: "rural_district_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.rural_district_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(this.rural_districts, function (rural_district) {
-                  return _c(
-                    "option",
-                    {
-                      key: rural_district.id,
-                      domProps: { value: rural_district.id },
-                    },
-                    [
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(rural_district.name) +
-                          "\n        "
-                      ),
-                    ]
-                  )
-                }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "rural_district_id" },
-            }),
-      ]),
-    ]),
   ])
 }
 var staticRenderFns = []
@@ -29606,6 +29701,66 @@ var render = function () {
           : _c("select", {
               staticClass: "form-control",
               attrs: { id: "province_id" },
+            }),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group col-md-3" }, [
+      _c(
+        "label",
+        { staticClass: "col-form-label", attrs: { for: "zone_id" } },
+        [_vm._v("منطقه")]
+      ),
+      _vm._v(" "),
+      _c("div", {}, [
+        _vm.flag_zone
+          ? _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.zone_selected,
+                    expression: "zone_selected",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { name: "zone_id", id: "zone_id" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.zone_selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { selected: "", value: "" } }, [
+                  _vm._v("انتخاب کنید"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.zones_count, function (zone) {
+                  return _c(
+                    "option",
+                    { key: zone, domProps: { value: zone } },
+                    [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
+                  )
+                }),
+              ],
+              2
+            )
+          : _c("select", {
+              staticClass: "form-control",
+              attrs: { id: "zone_id" },
             }),
       ]),
     ]),
@@ -29730,75 +29885,6 @@ var render = function () {
           : _c("select", {
               staticClass: "form-control",
               attrs: { id: "city_id" },
-            }),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group col-md-3" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "rural_district_id" } },
-        [_vm._v("دهستان")]
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        _vm.flag_rural_district
-          ? _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.rural_district_selected,
-                    expression: "rural_district_selected",
-                  },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "rural_district_id", id: "rural_district_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.rural_district_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(this.rural_districts, function (rural_district) {
-                  return _c(
-                    "option",
-                    {
-                      key: rural_district.id,
-                      domProps: { value: rural_district.id },
-                    },
-                    [
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(rural_district.name) +
-                          "\n        "
-                      ),
-                    ]
-                  )
-                }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "rural_district_id" },
             }),
       ]),
     ]),

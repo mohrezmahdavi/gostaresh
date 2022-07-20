@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\County;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CountyCollection;
 use App\Models\County;
-use Illuminate\Http\Request;
 
 /**
  * @group County Controller
@@ -19,7 +18,7 @@ class ListController extends Controller
      * @queryParam name string The name of the counties
      * @queryParam province_id integer The province id of the province
      *
-     * @return \Illuminate\Http\Response
+     * @return CountyCollection
      */
     public function index()
     {
@@ -31,6 +30,10 @@ class ListController extends Controller
 
         if (request('province_id')) {
             $query->where('province_id', request('province_id'));
+        }
+
+        if (request('zone_id')) {
+            $query->where('zone', request('zone_id'));
         }
 
         if (isset(auth()->user()->county_id) and !auth()->user()->hasRole('admin'))
