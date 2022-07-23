@@ -43,22 +43,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('university_type_title') == true)
-                                    <th>دانشگاه</th>
-                                    @endif
-                                    @if (filterCol('gender_title') == true)
-                                    <th>جنسیت</th>
-                                    @endif
-                                    @if (filterCol('department_of_education_title') == true)
-                                    <th>گروه عمده تحصیلی</th>
-                                    @endif
-                                    @if (filterCol('number_of_students') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.number-of-students-status-analysis.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -67,23 +53,8 @@
                                     <tr>
                                         <th scope="row">{{ $numberOfStudentsStatusAnalysises?->firstItem() + $key }}</th>
 
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->province?->name . ' - ' . $numberOfStudentsStatusAnalysis->county?->name }}
-                                        </td>
-                                        @if (filterCol('university_type_title') == true)
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->university_type_title }}</td>
-                                        @endif
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->gender_title }}</td>
-                                        @endif
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_students') == true)
-                                        <td>{{ number_format($numberOfStudentsStatusAnalysis?->number_of_students) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $numberOfStudentsStatusAnalysis?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.number-of-students-status-analysis.list.partials.tbody')
+
                                         <td>
 
                                             <a href="{{ route('number.of.students.status.analysis.edit', $numberOfStudentsStatusAnalysis) }}"
@@ -98,7 +69,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.of.students.status.analysis.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.students.status.analysis.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.students.status.analysis.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfStudentsStatusAnalysises->withQueryString()->links('pagination::bootstrap-4') }}

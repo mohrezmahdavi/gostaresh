@@ -51,14 +51,14 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     public function listPDFExport()
     {
         $numberOfStudentsStatusAnalysises = $this->getNumberOfStudentsStatusAnalysisRecords();
-        $pdfFile = PDF::loadView('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('academicMajorEducationals'));
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('numberOfStudentsStatusAnalysises'));
         return $pdfFile->download('export-pdf.pdf');
     }
 
     public function listPrintExport()
     {
         $numberOfStudentsStatusAnalysises = $this->getNumberOfStudentsStatusAnalysisRecords();
-        return view('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('academicMajorEducationals'));
+        return view('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('numberOfStudentsStatusAnalysises'));
     }
 
     /**
