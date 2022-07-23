@@ -35,6 +35,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $roadmapDesired->province_id }}"
+                            zone_default="{{ $roadmapDesired->county->zone }}"
                             county_default="{{ $roadmapDesired->county_id }}"
                             city_default="{{ $roadmapDesired->city_id }}"
                             rural_district_default="{{ $roadmapDesired->rural_district_id }}">

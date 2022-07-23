@@ -29872,7 +29872,7 @@ var render = function () {
                   _vm._v("انتخاب کنید"),
                 ]),
                 _vm._v(" "),
-                _vm._l(this.cities, function (city) {
+                _vm._l(_vm.cities, function (city) {
                   return _c(
                     "option",
                     { key: city.id, domProps: { value: city.id } },

@@ -32,6 +32,7 @@
 
                         <select-province-component
                             province_default="{{ $geographicalLocationOfUnit->province_id }}"
+                            zone_default="{{ $geographicalLocationOfUnit->county->zone }}"
                             county_default="{{ $geographicalLocationOfUnit->county_id }}"
                             city_default="{{ $geographicalLocationOfUnit->city_id }}"
                             rural_district_default="{{ $geographicalLocationOfUnit->rural_district_id }}">

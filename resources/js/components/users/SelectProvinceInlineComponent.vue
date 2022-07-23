@@ -82,7 +82,7 @@
           v-model="city_selected"
         >
           <option selected value="">انتخاب کنید</option>
-          <option v-for="city in this.cities" :value="city.id" :key="city.id">
+          <option v-for="city in cities" :value="city.id" :key="city.id">
             {{ city.name }}
           </option>
         </select>

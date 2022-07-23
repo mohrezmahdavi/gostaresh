@@ -33,6 +33,7 @@
 
                         <select-province-component
                             province_default="{{ $growthRateStudentPopulation->province_id }}"
+                            zone_default="{{ $growthRateStudentPopulation->county->zone }}"
                             county_default="{{ $growthRateStudentPopulation->county_id }}"
                             city_default="{{ $growthRateStudentPopulation->city_id }}"
                             rural_district_default="{{ $growthRateStudentPopulation->rural_district_id }}">

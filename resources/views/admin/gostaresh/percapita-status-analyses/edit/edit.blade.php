@@ -35,6 +35,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $percapitaStatusAnalysis->province_id }}"
+                            zone_default="{{ $percapitaStatusAnalysis->county->zone }}"
                             county_default="{{ $percapitaStatusAnalysis->county_id }}"
                             city_default="{{ $percapitaStatusAnalysis->city_id }}"
                             rural_district_default="{{ $percapitaStatusAnalysis->rural_district_id }}">
