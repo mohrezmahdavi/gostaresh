@@ -43,13 +43,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('amount') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.poverty-of-provincial-citiy.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -58,14 +52,7 @@
                                     <tr>
                                         <th scope="row">{{ $povertyOfProvincialCities?->firstItem() + $key }}</th>
 
-                                        <td>{{ $povertyOfProvincialCity?->province?->name . ' - ' . $povertyOfProvincialCity->county?->name }}
-                                        </td>
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($povertyOfProvincialCity?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $povertyOfProvincialCity?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.poverty-of-provincial-citiy.list.partials.tbody')
                                         <td>
 
                                             <a href="{{ route('poverty.of.provincial.city.edit', $povertyOfProvincialCity) }}"
@@ -80,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('poverty.of.provincial.city.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('poverty.of.provincial.city.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('poverty.of.provincial.city.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $povertyOfProvincialCities->withQueryString()->links('pagination::bootstrap-4') }}

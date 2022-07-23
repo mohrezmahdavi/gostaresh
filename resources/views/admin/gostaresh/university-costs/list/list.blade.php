@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
+
 @endsection
 
 @section('breadcrumb-title')
@@ -9,10 +11,6 @@
 
 @section('page-title')
     تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
-@endsection
-
-@section('styles-head')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -20,11 +18,26 @@
     <span>
         <a href="{{ route('university-costs.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+
+
+@endsection
+
+@section('styles-head')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,36 +50,12 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی</th>
-                                <th>کل هزینه های جاری</th>
-                                <th>میانگین حقوق دریافتی اعضای هیات علمی</th>
-                                <th>میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای تحقیقاتی، آموزشی و خدماتی</th>
-                                <th>هزینه دانشجویان</th>
-                                <th>میانگین حقوق دریافتی کارمندان</th>
-                                <th>نرخ رشد هزینه های جاری</th>
-                                <th>هزینه پرداخت اجاره ساختمان اداری</th>
-                                <th>هزینه پرداخت اجاره ساختمان آموزشی</th>
-                                <th>هزینه پرداخت اجاره ساختمان پژوهشی</th>
-                                <th>هزینه پرداخت اجاره ساختمان فوق برنامه</th>
-                                <th>هزینه پرداخت اجاره ساختمان فناوری و نوآوری</th>
-                                <th>هزینه های انرژی ساختمان ها</th>
-                                <th>هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه</th>
-                                <th>هزینه های حوزه آموزش</th>
-                                <th>هزینه های حوزه پژوهش</th>
-                                <th>هزینه های حوزه فناوری و نوآوری</th>
-                                <th>هزینه های حوزه مهارت آموزشی و کارآفرینی</th>
-                                <th>هزینه های حوزه تحقیق و توسعه</th>
-                                <th>هزینه های حوزه فرهنگی</th>
-                                <th>هزینه های حوزه اداری</th>
-                                <th>هزینه های حوزه فناوری اطلاعات و زیرساخت های فضای مجازی</th>
-                                <th>هزینه های حوزه بین الملل</th>
-                                <th>هزینه های حوزه آموزش ضمن خدمت کارکنان و اساتید</th>
-                                <th>هزینه های حوزه ورزشی</th>
-                                <th>هزینه های حوزه بهداشت و سلامت</th>
-                                <th>هزینه های حوزه ترویج کارآفرینی و اشتغال</th>
-                                <th>هزینه های حوزه فارغ التحصیلان</th>
-                                <th>هزینه های حوزه برند سازی و تبلیغات و جذب دانشجویان</th>
+
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -76,36 +65,16 @@
                                 <tr>
                                     <th scope="row">{{ $universityCosts?->firstItem() + $key }}</th>
                                     <td>{{ $universityCost?->province?->name . ' - ' . $universityCost->county?->name }}
-                                    <td>{{ $universityCost?->unit}}</td>
-                                    <td>{{ number_format($universityCost?->payment_to_faculty_members)}}</td>
-                                    <td>{{ number_format($universityCost?->total_running_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->average_salary_of_faculty_members)}}</td>
-                                    <td>{{ number_format($universityCost?->average_salaries_of_faculty_members_from_research_contracts)}}</td>
-                                    <td>{{ number_format($universityCost?->student_fees)}}</td>
-                                    <td>{{ number_format($universityCost?->average_salary_of_employees)}}</td>
-                                    <td>{{ number_format($universityCost?->current_expenditure_growth_rate)}}</td>
-                                    <td>{{ number_format($universityCost?->cost_of_paying_office_rent)}}</td>
-                                    <td>{{ number_format($universityCost?->cost_of_rent_for_educational_building)}}</td>
-                                    <td>{{ number_format($universityCost?->cost_of_rent_for_research_building)}}</td>
-                                    <td>{{ number_format($universityCost?->extra_charge_for_rent_extracurricular_building)}}</td>
-                                    <td>{{ number_format($universityCost?->cost_of_rent_innovation_buildings)}}</td>
-                                    <td>{{ number_format($universityCost?->energy_costs_of_buildings)}}</td>
-                                    <td>{{ number_format($universityCost?->cost_of_university_equipment)}}</td>
-                                    <td>{{ number_format($universityCost?->training_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->research_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->innovation_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->educational_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->development_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->cultural_sphere_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->administrative_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->information_technology_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->International_sphere_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->costs_of_staff_training_and_faculty)}}</td>
-                                    <td>{{ number_format($universityCost?->sports_expenses)}}</td>
-                                    <td>{{ number_format($universityCost?->health_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->entrepreneurship_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->graduate_costs)}}</td>
-                                    <td>{{ number_format($universityCost?->branding_costs)}}</td>
+
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\UniversityCostsAnalysis::$numeric_fields))
+                                                <td>{{ number_format($universityCost?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $universityCost->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $universityCost?->year }}</td>
                                     <td>
 
@@ -135,4 +104,6 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

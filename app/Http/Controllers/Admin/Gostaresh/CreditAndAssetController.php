@@ -17,7 +17,7 @@ class CreditAndAssetController extends Controller
      */
     public function index()
     {
-        $query = CreditAndAssetAnalysis::whereRequestQuery();
+        $query = CreditAndAssetAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = CreditAndAssetAnalysis::$filterColumnsCheckBoxes;
 

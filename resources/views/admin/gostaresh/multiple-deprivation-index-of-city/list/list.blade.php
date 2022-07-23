@@ -43,13 +43,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('amount') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.multiple-deprivation-index-of-city.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -57,15 +51,8 @@
                                 @foreach ($multipleDeprivationIndexOfCities as $key => $multipleDeprivationIndexOfCity)
                                     <tr>
                                         <th scope="row">{{ $multipleDeprivationIndexOfCities?->firstItem() + $key }}</th>
-
-                                        <td>{{ $multipleDeprivationIndexOfCity?->province?->name . ' - ' . $multipleDeprivationIndexOfCity->county?->name }}
-                                        </td>
-                                        @if (filterCol('amount') == true)
-                                        <td>{{ number_format($multipleDeprivationIndexOfCity?->amount) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $multipleDeprivationIndexOfCity?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.multiple-deprivation-index-of-city.list.partials.tbody')
+                                        
                                         <td>
 
                                             <a href="{{ route('multiple.deprivation.index.of.city.edit', $multipleDeprivationIndexOfCity) }}"
@@ -80,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('multiple.deprivation.index.of.city.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('multiple.deprivation.index.of.city.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('multiple.deprivation.index.of.city.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $multipleDeprivationIndexOfCities->withQueryString()->links('pagination::bootstrap-4') }}
