@@ -17,13 +17,20 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function index()
     {
-        $query = NumberOfNonMedicalFieldsOfStudy::query();
+        $query = NumberOfNonMedicalFieldsOfStudy::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfNonMedicalFieldsOfStudy::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfNonMedicalFieldsOfStudies = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.list.list', compact('numberOfNonMedicalFieldsOfStudies'));
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.list.list', compact('numberOfNonMedicalFieldsOfStudies', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

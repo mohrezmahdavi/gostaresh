@@ -20,10 +20,21 @@
 @endsection
 
 @section('styles-head')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,13 +47,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>واحد</th>
-                                    <th>تعداد کل دوره های تحصیلی</th>
-                                    <th>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان فارسی به صورت حضوری</th>
-                                    <th>داد دوره های تحصیلی بین المللی برگزار شده به زبان فارسی به صورت مجازی</th>
-                                    <th>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان های کشورهای هدف به صورت حضوری</th>
-                                    <th>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان های کشورهای هدف به صورت مجازی</th>
-                                    <th>سال</th>
+                                    
+                                    @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                    @endforeach
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -53,14 +63,30 @@
 
                                         <td>{{ $statusAnalysisOfTheNumberOfCourse?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCourse->county?->name }}
                                         </td>
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->unit }}</td>
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->total_number_of_courses) }}</td>
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person) }}</td>
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses) }}</td>
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person) }}</td>
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually) }}</td>
+                                       
 
+                                        @if (filterCol('unit') == true)
+                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->unit }}</td>
+                                        @endif
+                                        @if (filterCol('total_number_of_courses') == true)
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->total_number_of_courses) }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_international_Persian_language_courses_in_person') == true)
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person) }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_international_virtual_Persian_language_courses') == true)
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses) }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_international_courses_in_the_target_language_in_person') == true)
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person) }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_international_courses_in_the_target_language_virtually') == true)
+                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $statusAnalysisOfTheNumberOfCourse?->year }}</td>
+                                        @endif
+                                        
                                         <td>
 
                                             <a href="{{ route('status.analysis.of.the.number.of.course.edit', $statusAnalysisOfTheNumberOfCourse) }}"
@@ -87,4 +113,7 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

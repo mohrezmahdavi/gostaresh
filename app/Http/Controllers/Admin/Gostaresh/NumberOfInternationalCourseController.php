@@ -17,13 +17,20 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function index()
     {
-        $query = NumberOfInternationalCourse::query();
+        $query = NumberOfInternationalCourse::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfInternationalCourse::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfInternationalCourses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses'));
+        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses',, 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

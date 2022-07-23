@@ -18,13 +18,20 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function index()
     {
-        $query = StatusAnalysisOfTheNumberOfCourse::query();
+        $query = StatusAnalysisOfTheNumberOfCourse::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCourse::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $statusAnalysisOfTheNumberOfCourses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
