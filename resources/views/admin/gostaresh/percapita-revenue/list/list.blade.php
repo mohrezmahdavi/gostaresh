@@ -20,11 +20,17 @@
 @endsection
 
 @section('styles-head')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
-
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,24 +43,31 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>دانشگاه</th>
-                                <th>مقطع تحصیلی</th>
-                                <th>تحلیل وضعیت درآمد سرانه</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                            @foreach ($percapitaRevenue as $key => $value)
+                            @foreach ($percapitaRevenue as $key => $percapitaRevenueItem)
                                 <tr>
                                     <th scope="row">{{ $percapitaRevenue?->firstItem() + $key }}</th>
-                                    <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
-                                    <td>{{ $value?->unit}}</td>
-                                    <td>{{ $value?->university_type_title}}</td>
-                                    <td>{{ $value?->grade_title}}</td>
-                                    <td>{{ number_format($value?->percapita_revenue_status_analyses)}}</td>
-                                    <td>{{ $value?->year }}</td>
+                                    <td>{{ $percapitaRevenueItem?->province?->name . ' - ' . $percapitaRevenueItem->county?->name }}
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\PercapitaRevenueStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($percapitaRevenueItem?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $percapitaRevenueItem->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
+                                    <td>{{ $percapitaRevenueItem?->year }}</td>
                                     <td>
 
                                         <a href="{{ route('percapita-revenue.edit', $value) }}"
@@ -83,4 +96,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

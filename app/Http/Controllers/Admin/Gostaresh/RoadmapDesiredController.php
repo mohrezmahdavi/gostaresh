@@ -17,7 +17,7 @@ class RoadmapDesiredController extends Controller
      */
     public function index()
     {
-        $query = RoadmapToAchieveDesiredSituation::whereRequestQuery();
+        $query = RoadmapToAchieveDesiredSituation::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = RoadmapToAchieveDesiredSituation::$filterColumnsCheckBoxes;
 

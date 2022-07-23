@@ -87,4 +87,16 @@ class UnitsGeneralStatus extends Model
         return $query;
     }
 
+    public static $numeric_fields = [];
+
+    public static $filterColumnsCheckBoxes = [
+        'unit'                                      => 'واحد',
+        'degree/rank'                               => 'درجه/رتبه',
+        'score'                                     => 'امتیاز',
+        'established_year'                          => 'سال تاسیس',
+        'approved_number_and_titles_of_the_faculty' => 'تعداد و عناوین دانشکده مصوب',
+
+    ];
+
+
 }
