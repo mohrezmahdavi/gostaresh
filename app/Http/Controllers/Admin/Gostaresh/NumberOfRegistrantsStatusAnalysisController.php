@@ -18,13 +18,20 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $query = NumberOfRegistrantsStatusAnalysis::query();
+        $query = NumberOfRegistrantsStatusAnalysis::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfRegistrantsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfRegistrants = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants'));
+        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
