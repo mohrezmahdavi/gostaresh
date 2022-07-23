@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\SocialHealth\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\SocialHealth\SocialHealthRequest;
 use App\Models\Index\SocialHealthStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 
 // Table 43 Controller
 class SocialHealthController extends Controller
@@ -35,6 +39,33 @@ class SocialHealthController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    // ****************** Export ******************
+    private function getSocialHealthRecords()
+    {
+        return SocialHealthStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $socialHealths = $this->getSocialHealthRecords();
+        return Excel::download(new ListExport($socialHealths), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $socialHealths = $this->getSocialHealthRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.social-health.list.pdf', compact('socialHealths'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $socialHealths = $this->getSocialHealthRecords();
+        return view('admin.gostaresh.social-health.list.pdf', compact('socialHealths'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *

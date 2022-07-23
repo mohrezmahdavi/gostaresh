@@ -296,15 +296,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 42 Route
     Route::resource('cultural-indicators', CulturalIndicatorsController::class)->names('cultural-indicators');
+    Route::get('cultural-indicators/list/excel', [App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController::class, 'listExcelExport'])->name('cultural-indicators.list.excel');
+    Route::get('cultural-indicators/list/pdf', [App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController::class, 'listPDFExport'])->name('cultural-indicators.list.pdf');
+    Route::get('cultural-indicators/list/print', [App\Http\Controllers\Admin\Gostaresh\CulturalIndicatorsController::class, 'listPrintExport'])->name('cultural-indicators.list.print');
 
     // Table 43 Route
     Route::resource('social-health', SocialHealthController::class)->names('social-health');
+    Route::get('social-health/list/excel', [App\Http\Controllers\Admin\Gostaresh\SocialHealthController::class, 'listExcelExport'])->name('social-health.list.excel');
+    Route::get('social-health/list/pdf', [App\Http\Controllers\Admin\Gostaresh\SocialHealthController::class, 'listPDFExport'])->name('social-health.list.pdf');
+    Route::get('social-health/list/print', [App\Http\Controllers\Admin\Gostaresh\SocialHealthController::class, 'listPrintExport'])->name('social-health.list.print');
 
     // Table 44 Route
     Route::resource('organizational-culture', OrganizationalCultureController::class)->names('organizational-culture');
+    Route::get('organizational-culture/list/excel', [App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController::class, 'listExcelExport'])->name('organizational-culture.list.excel');
+    Route::get('organizational-culture/list/pdf', [App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController::class, 'listPDFExport'])->name('organizational-culture.list.pdf');
+    Route::get('organizational-culture/list/print', [App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController::class, 'listPrintExport'])->name('organizational-culture.list.print');
 
     // Table 45 Route
     Route::resource('employee-profile', EmployeeProfileController::class)->names('employee-profile');
+    Route::get('employee-profile/list/excel', [App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController::class, 'listExcelExport'])->name('employee-profile.list.excel');
+    Route::get('employee-profile/list/pdf', [App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController::class, 'listPDFExport'])->name('employee-profile.list.pdf');
+    Route::get('employee-profile/list/print', [App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController::class, 'listPrintExport'])->name('employee-profile.list.print');
 
     // Table 46 Route
     Route::resource('percapita-status-analyses', PercapitaStatusAnalysesController::class)->names('percapita-status-analyses');
