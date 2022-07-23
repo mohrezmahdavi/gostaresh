@@ -43,29 +43,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    
-                                    @if (filterCol('department_of_education_title') == true)
-                                        <th>گروه تحصیلی</th>
-                                    @endif
-                                    @if (filterCol('azad_eslami_count') == true)
-                                        <th>دانشگاه آزاد اسلامی واحد</th>
-                                    @endif
-                                    @if (filterCol('dolati_count') == true)
-                                        <th>دولتی</th>
-                                    @endif
-                                    @if (filterCol('payam_noor_count') == true)
-                                        <th>پیام نور</th>
-                                    @endif
-                                    @if (filterCol('gheir_entefai_count') == true)
-                                        <th>موسسات غیرانتفاعی</th>
-                                    @endif
-                                    @if (filterCol('elmi_karbordi_count') == true)
-                                        <th>علمی-کاربردی</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.academic-major-educational.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -74,30 +52,7 @@
                                     <tr>
                                         <th scope="row">{{ $academicMajorEducationals?->firstItem() + $key }}</th>
 
-                                        <td>{{ $academicMajorEducational?->province?->name . ' - ' . $academicMajorEducational->county?->name }}
-                                        </td>
-
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $academicMajorEducational?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('azad_eslami_count') == true)
-                                        <td>{{ number_format($academicMajorEducational?->azad_eslami_count) }}</td>
-                                        @endif
-                                        @if (filterCol('dolati_count') == true)
-                                        <td>{{ number_format($academicMajorEducational?->dolati_count) }}</td>
-                                        @endif
-                                        @if (filterCol('payam_noor_count') == true)
-                                        <td>{{ number_format($academicMajorEducational?->payam_noor_count) }}</td>
-                                        @endif
-                                        @if (filterCol('gheir_entefai_count') == true)
-                                        <td>{{ number_format($academicMajorEducational?->gheir_entefai_count) }}</td>
-                                        @endif
-                                        @if (filterCol('elmi_karbordi_count') == true)
-                                        <td>{{ number_format($academicMajorEducational?->elmi_karbordi_count) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $academicMajorEducational?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.academic-major-educational.list.partials.tbody')
                                         <td>
 
                                             <a href="{{ route('academic.major.educational.edit', $academicMajorEducational) }}"
@@ -112,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('academic.major.educational.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('academic.major.educational.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('academic.major.educational.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $academicMajorEducationals->withQueryString()->links('pagination::bootstrap-4') }}
