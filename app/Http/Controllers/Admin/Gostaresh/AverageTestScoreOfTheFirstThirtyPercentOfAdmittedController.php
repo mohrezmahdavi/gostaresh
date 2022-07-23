@@ -45,7 +45,7 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      */
     public function store(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request)
     {
-        AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +80,7 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      */
     public function update(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
-        $avgTstScrOfFrtThrtPrntOfAdmitted->update($request->all());
+        $avgTstScrOfFrtThrtPrntOfAdmitted->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

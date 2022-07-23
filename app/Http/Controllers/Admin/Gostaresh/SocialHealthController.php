@@ -53,7 +53,7 @@ class SocialHealthController extends Controller
      */
     public function store(SocialHealthRequest $request)
     {
-         SocialHealthStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         SocialHealthStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +88,7 @@ class SocialHealthController extends Controller
      */
     public function update(SocialHealthRequest $request,  SocialHealthStatusAnalysis $socialHealth)
     {
-        $socialHealth->update($request->all());
+        $socialHealth->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

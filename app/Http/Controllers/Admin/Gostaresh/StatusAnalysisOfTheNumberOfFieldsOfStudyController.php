@@ -47,7 +47,7 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      */
     public function store(StatusAnalysisOfTheNumberOfFieldsOfStudyRequest $request)
     {
-        StatusAnalysisOfTheNumberOfFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        StatusAnalysisOfTheNumberOfFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -82,7 +82,7 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      */
     public function update(StatusAnalysisOfTheNumberOfFieldsOfStudyRequest $request, StatusAnalysisOfTheNumberOfFieldsOfStudy $stsAnlysOfTheNumOfFieldsOfStudy)
     {
-        $stsAnlysOfTheNumOfFieldsOfStudy->update($request->all());
+        $stsAnlysOfTheNumOfFieldsOfStudy->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

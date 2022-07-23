@@ -60,7 +60,7 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function store(ResearchOutputStatusAnalysisRequest $request): RedirectResponse
     {
-        ResearchOutputStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        ResearchOutputStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +95,7 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function update(ResearchOutputStatusAnalysisRequest $request, ResearchOutputStatusAnalysis $researchOutputStatusAnalysis): RedirectResponse
     {
-        $researchOutputStatusAnalysis->update($request->all());
+        $researchOutputStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

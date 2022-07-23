@@ -44,7 +44,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function store(NumberOfNonMedicalFieldsOfStudyRequest $request)
     {
-        NumberOfNonMedicalFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfNonMedicalFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +79,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function update(NumberOfNonMedicalFieldsOfStudyRequest $request, NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
     {
-        $numberOfNonMedicalFieldsOfStudy->update($request->all());
+        $numberOfNonMedicalFieldsOfStudy->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

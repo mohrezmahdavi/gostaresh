@@ -45,7 +45,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function store(AnnualGrowthRateOfStudentEnrollmentRequest $request)
     {
-        AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +80,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function update(AnnualGrowthRateOfStudentEnrollmentRequest $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        $annualGrthRateOfStdnEnrollment->update($request->all());
+        $annualGrthRateOfStdnEnrollment->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

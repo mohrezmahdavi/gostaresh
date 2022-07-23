@@ -45,7 +45,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function store(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request)
     {
-        AverageTestScoreOfTheLastFivePercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AverageTestScoreOfTheLastFivePercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +80,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function update(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        $avgTstScOfLastFivePctOfAdmitted->update($request->all());
+        $avgTstScOfLastFivePctOfAdmitted->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

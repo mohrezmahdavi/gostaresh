@@ -72,7 +72,7 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function store(GeographicalLocationOfUnitRequest $request)
     {
-        GeographicalLocationOfUnit::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        GeographicalLocationOfUnit::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -107,7 +107,7 @@ class GeographicalLocationOfUnitController extends Controller
      */
     public function update(GeographicalLocationOfUnitRequest $request, GeographicalLocationOfUnit $geographicalLocationOfUnit)
     {
-        $geographicalLocationOfUnit->update($request->all());
+        $geographicalLocationOfUnit->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

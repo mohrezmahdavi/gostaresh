@@ -79,7 +79,7 @@ class PovertyOfProvincialCityController extends Controller
      */
     public function store(PovertyOfProvincialCityRequest $request)
     {
-        PovertyOfProvincialCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        PovertyOfProvincialCity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class PovertyOfProvincialCityController extends Controller
      */
     public function update(PovertyOfProvincialCityRequest $request, PovertyOfProvincialCity $povertyOfProvincialCity)
     {
-        $povertyOfProvincialCity->update($request->all());
+        $povertyOfProvincialCity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

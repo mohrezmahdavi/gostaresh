@@ -45,7 +45,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function store(StatusAnalysisOfTheNumberOfCourseRequest $request)
     {
-        StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +79,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function update(StatusAnalysisOfTheNumberOfCourseRequest $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
-        $statusAnalysisOfTheNumOfCourse->update($request->all());
+        $statusAnalysisOfTheNumOfCourse->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

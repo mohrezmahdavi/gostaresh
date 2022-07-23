@@ -44,7 +44,7 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function store(NumberOfInternationalCourseRequest $request)
     {
-        NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +79,7 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function update(NumberOfInternationalCourseRequest $request, NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        $numberOfInternationalCourse->update($request->all());
+        $numberOfInternationalCourse->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

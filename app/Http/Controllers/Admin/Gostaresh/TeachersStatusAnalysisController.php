@@ -88,7 +88,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function store(TeachersStatusAnalysisRequest $request): RedirectResponse
     {
-        TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -123,7 +123,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function update(TeachersStatusAnalysisRequest $request, TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
     {
-        $teachersStatusAnalysis->update($request->all());
+        $teachersStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -55,7 +55,7 @@ class PercapitaRevenueController extends Controller
      */
     public function store(PercapitaRevenueRequest $request)
     {
-         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +90,7 @@ class PercapitaRevenueController extends Controller
      */
     public function update(PercapitaRevenueRequest $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        $percapitaRevenue->update($request->all());
+        $percapitaRevenue->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

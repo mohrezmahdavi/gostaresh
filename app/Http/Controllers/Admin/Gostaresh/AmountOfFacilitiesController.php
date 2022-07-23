@@ -60,7 +60,7 @@ class AmountOfFacilitiesController extends Controller
      */
     public function store(AmountOfFacilitiesRequest $request): RedirectResponse
     {
-        AmountOfFacilitiesForResearchAchievements::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AmountOfFacilitiesForResearchAchievements::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +95,7 @@ class AmountOfFacilitiesController extends Controller
      */
     public function update(AmountOfFacilitiesRequest $request, AmountOfFacilitiesForResearchAchievements $amountOfFacility): RedirectResponse
     {
-        $amountOfFacility->update($request->all());
+        $amountOfFacility->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

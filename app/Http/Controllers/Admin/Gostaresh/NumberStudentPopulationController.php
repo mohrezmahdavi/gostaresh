@@ -70,7 +70,7 @@ class NumberStudentPopulationController extends Controller
      */
     public function store(NumberStudentPopulationRequest $request)
     {
-        NumberStudentPopulation::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberStudentPopulation::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -105,7 +105,7 @@ class NumberStudentPopulationController extends Controller
      */
     public function update(NumberStudentPopulationRequest $request, NumberStudentPopulation $numberStudentPopulation)
     {
-        $numberStudentPopulation->update($request->all());
+        $numberStudentPopulation->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -86,7 +86,7 @@ class GDPCityController extends Controller
      */
     public function store(GDPCityRequest $request)
     {
-        GDPCity::create(array_merge(['user_id' => Auth::id()] , $request->all()));
+        GDPCity::create(array_merge(['user_id' => Auth::id()] , $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -121,7 +121,7 @@ class GDPCityController extends Controller
      */
     public function update(GDPCityRequest $request, GDPCity $gdpCity)
     {
-        $gdpCity->update($request->all());
+        $gdpCity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -53,7 +53,7 @@ class RevenueChangesController extends Controller
      */
     public function store(RevenueChangesRequest $request)
     {
-         RevenueChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         RevenueChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +88,7 @@ class RevenueChangesController extends Controller
      */
     public function update(RevenueChangesRequest $request, RevenueChangesTrendsAnalysis $revenueChange)
     {
-        $revenueChange->update($request->all());
+        $revenueChange->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

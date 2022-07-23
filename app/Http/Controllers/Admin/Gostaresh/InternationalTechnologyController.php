@@ -60,7 +60,7 @@ class InternationalTechnologyController extends Controller
      */
     public function store(InternationalTechnologyRequest $request)
     {
-         InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +95,7 @@ class InternationalTechnologyController extends Controller
      */
     public function update(InternationalTechnologyRequest $request,  InternationalTechnology $internationalTechnology)
     {
-        $internationalTechnology->update($request->all());
+        $internationalTechnology->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

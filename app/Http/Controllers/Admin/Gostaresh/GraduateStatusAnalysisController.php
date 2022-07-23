@@ -89,7 +89,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function store(GraduateStatusAnalysisRequest $request): RedirectResponse
     {
-        GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -124,7 +124,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function update(GraduateStatusAnalysisRequest $request, GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
-        $graduateStatusAnalysis->update($request->all());
+        $graduateStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

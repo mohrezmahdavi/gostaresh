@@ -79,7 +79,7 @@ class NumberOfResearchProjectController extends Controller
      */
     public function store(NumberOfResearchProjectRequest $request)
     {
-        NumberOfResearchProject::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfResearchProject::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class NumberOfResearchProjectController extends Controller
      */
     public function update(NumberOfResearchProjectRequest $request, NumberOfResearchProject $numberOfResearchProject)
     {
-        $numberOfResearchProject->update($request->all());
+        $numberOfResearchProject->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

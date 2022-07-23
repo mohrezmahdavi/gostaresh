@@ -60,7 +60,7 @@ class InnovationInfrastructureController extends Controller
      */
     public function store(InnovationInfrastructureRequest $request): RedirectResponse
     {
-        TechnologyAndInnovationInfrastructure::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TechnologyAndInnovationInfrastructure::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +95,7 @@ class InnovationInfrastructureController extends Controller
      */
     public function update(InnovationInfrastructureRequest $request, TechnologyAndInnovationInfrastructure $innovationInfrastructure): RedirectResponse
     {
-        $innovationInfrastructure->update($request->all());
+        $innovationInfrastructure->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

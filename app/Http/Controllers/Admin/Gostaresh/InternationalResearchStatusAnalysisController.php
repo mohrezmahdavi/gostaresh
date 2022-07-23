@@ -59,7 +59,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function store(InternationalResearchStatusAnalysisRequest $request): RedirectResponse
     {
-        InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -94,7 +94,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function update(InternationalResearchStatusAnalysisRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
-        $internationalResearch->update($request->all());
+        $internationalResearch->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

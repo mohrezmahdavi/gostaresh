@@ -79,7 +79,7 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function store(NumberOfStudentsStatusAnalysisRequest $request)
     {
-        NumberOfStudentsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfStudentsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function update(NumberOfStudentsStatusAnalysisRequest $request, NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
-        $numberOfStudentsStatusAnalysis->update($request->all());
+        $numberOfStudentsStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -56,7 +56,7 @@ class UnitsGeneralStatusController extends Controller
      */
     public function store(UnitsGeneralStatusRequest $request)
     {
-        UnitsGeneralStatus::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        UnitsGeneralStatus::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -91,7 +91,7 @@ class UnitsGeneralStatusController extends Controller
      */
     public function update(UnitsGeneralStatusRequest $request, UnitsGeneralStatus $unitsGeneralStatus)
     {
-        $unitsGeneralStatus->update($request->all());
+        $unitsGeneralStatus->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

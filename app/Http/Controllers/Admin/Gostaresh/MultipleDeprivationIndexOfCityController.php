@@ -79,7 +79,7 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function store(MultipleDeprivationIndexOfCityRequest $request)
     {
-        MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function update(MultipleDeprivationIndexOfCityRequest $request, MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
-        $multipleDeprivationIndexOfCity->update($request->all());
+        $multipleDeprivationIndexOfCity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 
