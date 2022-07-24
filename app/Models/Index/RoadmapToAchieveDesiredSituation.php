@@ -87,4 +87,17 @@ class RoadmapToAchieveDesiredSituation extends Model
         return $query;
     }
 
+    public static $numeric_fields = [];
+
+    public static $filterColumnsCheckBoxes = [
+        "experimental_policy_title" => "عنوان سیاست آزمایشی",
+        "title_axis"                => "عنوان محور",
+        "project_title"             => "عنوان پروژه",
+        "quantitative_goal"         => "هدف کمی",
+        "test"                      => "سنجش",
+        "annual_progress_level"     => "سطح پیشرفت و تحقق سالانه",
+        "responsible_for_track"     => "مسئول پیگیری",
+        "considerations"            => "ملاحظات",
+    ];
+
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\RevenueStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\RevenueStatusAnalysis\RevenueStatusAnalysisRequest;
 use App\Models\Index\RevenueStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 48 Controller
 class RevenueStatusAnalysesController extends Controller
@@ -31,10 +34,38 @@ class RevenueStatusAnalysesController extends Controller
             , 'yearSelectedList', 'filterColumnsCheckBoxes'
         ));
     }
+
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+        
+    // ****************** Export ******************
+    private function getRevenueStatusAnalysisRecords()
+    {
+        return RevenueStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $revenueStatusAnalyses = $this->getRevenueStatusAnalysisRecords();
+        return Excel::download(new ListExport($revenueStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $revenueStatusAnalyses = $this->getRevenueStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.revenue-status-analyses.list.pdf', compact('revenueStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $revenueStatusAnalyses = $this->getRevenueStatusAnalysisRecords();
+        return view('admin.gostaresh.revenue-status-analyses.list.pdf', compact('revenueStatusAnalyses'));
+    }
+    // ****************** End Export ******************
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -53,7 +84,7 @@ class RevenueStatusAnalysesController extends Controller
      */
     public function store(RevenueStatusAnalysisRequest $request)
     {
-         RevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         RevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +119,7 @@ class RevenueStatusAnalysesController extends Controller
      */
     public function update(RevenueStatusAnalysisRequest $request, RevenueStatusAnalysis $revenueStatusAnalysis)
     {
-        $revenueStatusAnalysis->update($request->all());
+        $revenueStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

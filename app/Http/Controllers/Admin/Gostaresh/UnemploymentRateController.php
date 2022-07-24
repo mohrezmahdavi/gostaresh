@@ -79,7 +79,7 @@ class UnemploymentRateController extends Controller
      */
     public function store(UnemploymentRateRequest $request)
     {
-        UnemploymentRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        UnemploymentRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class UnemploymentRateController extends Controller
      */
     public function update(UnemploymentRateRequest $request, UnemploymentRate $unemploymentRate)
     {
-        $unemploymentRate->update($request->all());
+        $unemploymentRate->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

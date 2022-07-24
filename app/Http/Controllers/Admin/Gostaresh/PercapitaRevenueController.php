@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\PercapitaRevenue\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaRevenue\PercapitaRevenueRequest;
 use App\Models\Index\AverageTuitionIncome;
 use App\Models\Index\PercapitaRevenueStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 51 Controller
 class PercapitaRevenueController extends Controller
@@ -37,6 +40,33 @@ class PercapitaRevenueController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    // ****************** Export ******************
+    private function getPercapitaRevenueRecords()
+    {
+        return PercapitaRevenueStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $percapitaRevenues = $this->getPercapitaRevenueRecords();
+        return Excel::download(new ListExport($percapitaRevenues), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $percapitaRevenues = $this->getPercapitaRevenueRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.percapita-revenue.list.pdf', compact('percapitaRevenues'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $percapitaRevenues = $this->getPercapitaRevenueRecords();
+        return view('admin.gostaresh.percapita-revenue.list.pdf', compact('percapitaRevenues'));
+    }
+    // ****************** End Export ******************
+        
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +85,7 @@ class PercapitaRevenueController extends Controller
      */
     public function store(PercapitaRevenueRequest $request)
     {
-         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +120,7 @@ class PercapitaRevenueController extends Controller
      */
     public function update(PercapitaRevenueRequest $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        $percapitaRevenue->update($request->all());
+        $percapitaRevenue->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

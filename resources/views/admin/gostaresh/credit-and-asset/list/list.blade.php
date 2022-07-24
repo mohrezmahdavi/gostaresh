@@ -19,11 +19,15 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,15 +40,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>اعتبارات اداری</th>
-                                <th>اعتبارات آموزشی</th>
-                                <th>اعتبارات پژوهشی</th>
-                                <th>اعتبارات فرهنگی</th>
-                                <th>اعتبارات فناورانه و نوآورانه</th>
-                                <th>اعتبارات حوزه مهارتی</th>
-                                <th>کل اعتبارات دانشگاه</th>
-                                <th>کل دارایی های دانشگاه</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -54,15 +54,15 @@
                                 <tr>
                                     <th scope="row">{{ $creditAndAssets?->firstItem() + $key }}</th>
                                     <td>{{ $creditAndAsset?->province?->name . ' - ' . $creditAndAsset->county?->name }}
-                                    <td>{{ $creditAndAsset?->unit}}</td>
-                                    <td>{{ number_format($creditAndAsset?->administrative_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->educational_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->research_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->cultural_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->innovative_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->skills_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->total_University_credits)}}</td>
-                                    <td>{{ number_format($creditAndAsset?->total_university_assets)}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\CreditAndAssetAnalysis::$numeric_fields))
+                                                <td>{{ number_format($creditAndAsset?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $creditAndAsset->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $creditAndAsset?->year }}</td>
                                     <td>
 
@@ -80,6 +80,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('credit-and-asset.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('credit-and-asset.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('credit-and-asset.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -92,4 +99,6 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

@@ -18,13 +18,20 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $query = NumberOfAdmissionsStatusAnalysis::query();
+        $query = NumberOfAdmissionsStatusAnalysis::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfAdmissionsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfAdmissionsStatusAnalysises = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-admissions-status-analysis.list.list', compact('numberOfAdmissionsStatusAnalysises'));
+        return view('admin.gostaresh.number-of-admissions-status-analysis.list.list', compact('numberOfAdmissionsStatusAnalysises', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
      */
     public function store(NumberOfAdmissionsStatusAnalysisRequest $request)
     {
-        NumberOfAdmissionsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfAdmissionsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +87,7 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
      */
     public function update(NumberOfAdmissionsStatusAnalysisRequest $request, NumberOfAdmissionsStatusAnalysis $numberOfAdmissionsStatusAnalysis)
     {
-        $numberOfAdmissionsStatusAnalysis->update($request->all());
+        $numberOfAdmissionsStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

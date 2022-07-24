@@ -34,6 +34,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $unemploymentRate->province_id }}"
+                            zone_default="{{ $unemploymentRate->county->zone }}"
                             county_default="{{ $unemploymentRate->county_id }}"
                             city_default="{{ $unemploymentRate->city_id }}"
                             rural_district_default="{{ $unemploymentRate->rural_district_id }}">

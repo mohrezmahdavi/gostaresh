@@ -18,13 +18,20 @@ class StudentAdmissionCapacityController extends Controller
      */
     public function index()
     {
-        $query = StudentAdmissionCapacity::query();
+        $query = StudentAdmissionCapacity::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $studentAdmissionCapacities = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.student-admission-capacity.list.list', compact('studentAdmissionCapacities'));
+        return view('admin.gostaresh.student-admission-capacity.list.list', compact('studentAdmissionCapacities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class StudentAdmissionCapacityController extends Controller
      */
     public function store(StudentAdmissionCapacityRequest $request)
     {
-        StudentAdmissionCapacity::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        StudentAdmissionCapacity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +87,7 @@ class StudentAdmissionCapacityController extends Controller
      */
     public function update(StudentAdmissionCapacityRequest $request, StudentAdmissionCapacity $studentAdmissionCapacity)
     {
-        $studentAdmissionCapacity->update($request->all());
+        $studentAdmissionCapacity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

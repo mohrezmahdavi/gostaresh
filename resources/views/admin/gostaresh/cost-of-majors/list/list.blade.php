@@ -20,11 +20,16 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,13 +42,15 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>دانشگاه</th>
-                                <th>جنسیت</th>
-                                <th>گروه عمده تحصیلی</th>
-                                <th>کاردانی</th>
-                                <th>کارشناسی</th>
-                                <th>کارشناسی ارشد</th>
-                                <th>دکتری</th>
+
+
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -53,13 +60,16 @@
                                 <tr>
                                     <th scope="row">{{ $costOfMajors?->firstItem() + $key }}</th>
                                     <td>{{ $costOfMajor?->province?->name . ' - ' . $costOfMajor->county?->name }}
-                                    <td>{{ $costOfMajor?->university_type_title}}</td>
-                                    <td>{{ $costOfMajor?->gender}}</td>
-                                    <td>{{ $costOfMajor?->department_of_education_title}}</td>
-                                    <td>{{ number_format($costOfMajor?->associate_degree) }}</td>
-                                    <td>{{ number_format($costOfMajor?->bachelor_degree) }}</td>
-                                    <td>{{ number_format($costOfMajor?->masters) }}</td>
-                                    <td>{{ number_format($costOfMajor?->phd) }}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\AverageCostOfMajor::$numeric_fields))
+                                                <td>{{ number_format($costOfMajor?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $costOfMajor->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $costOfMajor?->year }}</td>
                                     <td>
 
@@ -77,6 +87,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('cost-of-majors.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('cost-of-majors.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('cost-of-majors.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -89,4 +106,7 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

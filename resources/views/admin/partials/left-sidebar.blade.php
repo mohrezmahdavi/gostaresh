@@ -96,7 +96,7 @@
 
                 <li>
                     <a href="{{ route('admin.index') }}">
-                        <i class="mdi mdi-home"></i>
+                        <i class="mdi mdi-home "></i>
                         <span> خانه </span>
                     </a>
                 </li>
@@ -106,6 +106,13 @@
                     <a href="{{ route('admin.profile.edit') }}">
                         <i class="ri-dashboard-line me-1"></i>
                         <span>پروفایل کاربری</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.zone.create') }}">
+                        <i class="ri-dashboard-line me-1"></i>
+                        <span>مدیریت مناطق</span>
                     </a>
                 </li>
 

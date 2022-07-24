@@ -33,6 +33,7 @@
 
                         <select-province-component
                             province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
                             rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
@@ -74,17 +75,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="established_year">
-                                <span>سال تاسیس </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="established_year" name="established_year"
-                                       value="{{ old('established_year') }}" class="form-control"
-                                       placeholder=" سال تاسیس را وارد کنید...">
-                            </div>
-                        </div>
+                        <x-select-year :default="old('established_year')" :required="true" name="established_year" title="سال تاسیس"></x-select-year>
+
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="approved_number_and_titles_of_the_faculty">

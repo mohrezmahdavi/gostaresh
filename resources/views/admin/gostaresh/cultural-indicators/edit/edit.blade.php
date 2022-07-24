@@ -2,15 +2,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+ویرایش تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+ویرایش تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 @endsection
 
 @section('page-title')
-    ویرایش تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+ویرایش تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -35,6 +35,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $culturalIndicator->province_id }}"
+                            zone_default="{{ $culturalIndicator->county->zone }}"
                             county_default="{{ $culturalIndicator->county_id }}"
                             city_default="{{ $culturalIndicator->city_id }}"
                             rural_district_default="{{ $culturalIndicator->rural_district_id }}">

@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <input type="hidden" name="country_id" id="" value="1" />
+
     <div class="form-group col-md-3">
       <label class="col-form-label" for="province_id">استان</label>
       <div class="">
@@ -23,8 +24,28 @@
         <select v-else class="form-control" id="province_id"></select>
       </div>
     </div>
+
     <div class="form-group col-md-3">
-      <label class=" col-form-label" for="county_id">شهرستان</label>
+      <label class="col-form-label" for="zone_id">منطقه</label>
+      <div class="">
+        <select
+          v-if="flag_zone"
+          name="zone_id"
+          class="form-control"
+          id="zone_id"
+          v-model="zone_selected"
+        >
+          <option selected value="">انتخاب کنید</option>
+          <option v-for="zone in zones_count" :value="zone" :key="zone">
+            {{ zone }}
+          </option>
+        </select>
+        <select v-else class="form-control" id="zone_id"></select>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label class="col-form-label" for="county_id">شهرستان</label>
       <div class="">
         <select
           v-if="flag_county"
@@ -47,8 +68,8 @@
     </div>
 
     <div class="form-group col-md-3">
-      <label class=" col-form-label" for="city_id">شهر</label>
-      <div class="">
+      <label class="col-form-label" for="city_id">شهر</label>
+       <div class="">
         <select
           v-if="flag_city"
           name="city_id"
@@ -65,30 +86,30 @@
       </div>
     </div>
 
-    <div class="form-group col-md-3">
-      <label class="col-form-label" for="rural_district_id"
-        >دهستان</label
-      >
-      <div class="">
-        <select
-          v-if="flag_rural_district"
-          name="rural_district_id"
-          class="form-control"
-          id="rural_district_id"
-          v-model="rural_district_selected"
-        >
-          <option selected value="">انتخاب کنید</option>
-          <option
-            v-for="rural_district in this.rural_districts"
-            :value="rural_district.id"
-            :key="rural_district.id"
-          >
-            {{ rural_district.name }}
-          </option>
-        </select>
-        <select v-else class="form-control" id="rural_district_id"></select>
-      </div>
-    </div>
+    <!--<div class="form-group col-md-3">-->
+    <!--<label class="col-form-label" for="rural_district_id"-->
+    <!--&gt;دهستان</label-->
+    <!--&gt;-->
+    <!--<div class="">-->
+    <!--<select-->
+    <!--v-if="flag_rural_district"-->
+    <!--name="rural_district_id"-->
+    <!--class="form-control"-->
+    <!--id="rural_district_id"-->
+    <!--v-model="rural_district_selected"-->
+    <!--&gt;-->
+    <!--<option selected value="">انتخاب کنید</option>-->
+    <!--<option-->
+    <!--v-for="rural_district in this.rural_districts"-->
+    <!--:value="rural_district.id"-->
+    <!--:key="rural_district.id"-->
+    <!--&gt;-->
+    <!--{{ rural_district.name }}-->
+    <!--</option>-->
+    <!--</select>-->
+    <!--<select v-else class="form-control" id="rural_district_id"></select>-->
+    <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -96,7 +117,7 @@
 import ProvinceService from "../../services/province";
 import CountyService from "../../services/county";
 import CityService from "../../services/city";
-import RuralDistrictService from "../../services/rural-district";
+// import RuralDistrictService from "../../services/rural-district";
 
 export default {
   props: {
@@ -119,10 +140,15 @@ export default {
 
       count_province_changed: 0,
       count_county_changed: 0,
+      count_zone_changed: 0,
 
       provinces: [],
       province_selected: "",
       flag_province: true,
+
+      flag_zone: true,
+      zone_selected: "",
+      zones_count: "",
 
       counties: [],
       county_selected: "",
@@ -147,7 +173,10 @@ export default {
     }
 
     if (this.county_default != "") {
-      this.county_selected = this.county_default;
+      CountyService.getCountyInfoById(this.county_default).then((data) => {
+        this.zone_selected = data.data.zone;
+        this.county_selected = this.county_default;
+      });
     }
 
     if (this.city_default != "") {
@@ -162,16 +191,38 @@ export default {
     province_selected(newValue) {
       if (this.count_province_changed != 0) {
         this.county_selected = "";
+        this.zones_count = "";
+        this.zone_selected = "";
       }
-      if(newValue != "")
-      {
-        CountyService.listCounties(newValue).then((data) => {
-          this.counties = [];
-          this.counties = data.data;
+      if (newValue != "") {
+        ProvinceService.getProvinceInfoById(newValue).then((data) => {
+          this.zones_count = data.data.zone_number;
         });
       }
       this.count_province_changed++;
     },
+
+    zone_selected(newValue) {
+      if (this.count_zone_changed != 0) {
+        this.city_selected = "";
+        this.rural_district_selected = "";
+        this.rural_districts = [];
+        this.cities = [];
+        this.counties = [];
+      }
+
+      if (newValue != "") {
+        CountyService.listCounties(this.province_selected, newValue).then(
+          (data) => {
+            this.counties = [];
+            this.counties = data.data;
+          }
+        );
+      }
+
+      this.count_zone_changed++;
+    },
+
     county_selected(newValue) {
       if (this.count_county_changed != 0) {
         this.city_selected = "";
@@ -184,9 +235,9 @@ export default {
         CityService.listCities(newValue).then((data) => {
           this.cities = data.data;
         });
-        RuralDistrictService.listRuralDistricts(newValue).then((data) => {
-          this.rural_districts = data.data;
-        });
+        // RuralDistrictService.listRuralDistricts(newValue).then((data) => {
+        //   this.rural_districts = data.data;
+        // });
       }
 
       this.count_county_changed++;

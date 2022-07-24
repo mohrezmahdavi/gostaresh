@@ -78,7 +78,7 @@ class GDPPartController extends Controller
      */
     public function store(GDPPartRequest $request)
     {
-        GDPPart::create(array_merge(['user_id' => Auth::id()] , $request->all()));
+        GDPPart::create(array_merge(['user_id' => Auth::id()] , $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -113,7 +113,7 @@ class GDPPartController extends Controller
      */
     public function update(GDPPartRequest $request, GDPPart $gdpPart)
     {
-        $gdpPart->update($request->all());
+        $gdpPart->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

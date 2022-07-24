@@ -20,10 +20,14 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -35,12 +39,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    <th>دانشگاه </th>
-                                    <th>جنسیت</th>
-                                    <th>گروه عمده تحصیلی</th>
-                                    <th>مقدار</th>
-                                    <th>سال</th>
+                                    @include('admin.gostaresh.number-of-volunteers-status-analysis.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -48,14 +48,8 @@
                                 @foreach ($numberOfVolunteersStatusAnalyses as $key => $numberOfVolunteersStatusAnalysis)
                                     <tr>
                                         <th scope="row">{{ $numberOfVolunteersStatusAnalyses?->firstItem() + $key }}</th>
-
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->province?->name . ' - ' . $numberOfVolunteersStatusAnalysis->county?->name }}
-                                        </td>
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->university_type_title }}</td>
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->gender_title }}</td>
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->department_of_education_title }}</td>
-                                        <td>{{ number_format($numberOfVolunteersStatusAnalysis?->number_of_volunteers) }}</td>
-                                        <td>{{ $numberOfVolunteersStatusAnalysis?->year }}</td>
+                                        @include('admin.gostaresh.number-of-volunteers-status-analysis.list.partials.tbody')
+                                        
                                         <td>
 
                                             <a href="{{ route('number.of.volunteers.status.analysis.edit', $numberOfVolunteersStatusAnalysis) }}"
@@ -82,4 +76,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

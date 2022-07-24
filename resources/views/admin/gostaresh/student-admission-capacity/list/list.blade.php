@@ -20,10 +20,16 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,11 +42,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>دانشگاه </th>
-                                    <th>جنسیت</th>
-                                    <th>گروه عمده تحصیلی</th>
-                                    <th>مقدار</th>
-                                    <th>سال</th>
+                                    @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                    @endforeach
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -51,11 +57,21 @@
 
                                         <td>{{ $studentAdmissionCapacity?->province?->name . ' - ' . $studentAdmissionCapacity->county?->name }}
                                         </td>
+                                        @if (filterCol('university_type_title') == true)
                                         <td>{{ $studentAdmissionCapacity?->university_type_title }}</td>
+                                        @endif
+                                        @if (filterCol('gender_title') == true)
                                         <td>{{ $studentAdmissionCapacity?->gender_title }}</td>
+                                        @endif
+                                        @if (filterCol('department_of_education_title') == true)
                                         <td>{{ $studentAdmissionCapacity?->department_of_education_title }}</td>
+                                        @endif
+                                        @if (filterCol('student_admission_capacities') == true)
                                         <td>{{ number_format($studentAdmissionCapacity?->student_admission_capacities) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $studentAdmissionCapacity?->year }}</td>
+                                        @endif
                                         <td>
 
                                             <a href="{{ route('student.admission.capacity.edit', $studentAdmissionCapacity) }}"
@@ -82,4 +98,7 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\RevenueChanges\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\RevenueChanges\RevenueChangesRequest;
 use App\Models\Index\RevenueChangesTrendsAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 
 // Table 49 Controller
 class RevenueChangesController extends Controller
@@ -35,6 +39,33 @@ class RevenueChangesController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    // ****************** Export ******************
+    private function getRevenueChangesRecords()
+    {
+        return RevenueChangesTrendsAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $revenueChanges = $this->getRevenueChangesRecords();
+        return Excel::download(new ListExport($revenueChanges), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $revenueChanges = $this->getRevenueChangesRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.revenue-changes.list.pdf', compact('revenueChanges'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $revenueChanges = $this->getRevenueChangesRecords();
+        return view('admin.gostaresh.revenue-changes.list.pdf', compact('revenueChanges'));
+    }
+    // ****************** End Export ******************
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -53,7 +84,7 @@ class RevenueChangesController extends Controller
      */
     public function store(RevenueChangesRequest $request)
     {
-         RevenueChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         RevenueChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +119,7 @@ class RevenueChangesController extends Controller
      */
     public function update(RevenueChangesRequest $request, RevenueChangesTrendsAnalysis $revenueChange)
     {
-        $revenueChange->update($request->all());
+        $revenueChange->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

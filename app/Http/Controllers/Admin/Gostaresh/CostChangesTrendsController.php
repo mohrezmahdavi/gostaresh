@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\CostChangesTrends\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CostChangesTrends\CostChangesTrendsRequest;
 use App\Models\Index\CostChangesTrendsAnalysis;
 use App\Models\Index\UniversityCostsAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 54 Controller
 class CostChangesTrendsController extends Controller
@@ -37,6 +40,32 @@ class CostChangesTrendsController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+    
+    // ****************** Export ******************
+    private function getCostChangesTrendsAnalysisRecords()
+    {
+        return CostChangesTrendsAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $costChangesTrends = $this->getCostChangesTrendsAnalysisRecords();
+        return Excel::download(new ListExport($costChangesTrends), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $costChangesTrends = $this->getCostChangesTrendsAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.cost-changes-trends.list.pdf', compact('costChangesTrends'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $costChangesTrends = $this->getCostChangesTrendsAnalysisRecords();
+        return view('admin.gostaresh.cost-changes-trends.list.pdf', compact('costChangesTrends'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.
@@ -56,7 +85,7 @@ class CostChangesTrendsController extends Controller
      */
     public function store(CostChangesTrendsRequest $request)
     {
-        CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -91,7 +120,7 @@ class CostChangesTrendsController extends Controller
      */
     public function update(CostChangesTrendsRequest $request, CostChangesTrendsAnalysis $costChangesTrend)
     {
-        $costChangesTrend->update($request->all());
+        $costChangesTrend->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\RoadmapDesired\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\RoadmapDesired\RoadmapDesiredRequest;
 use App\Models\Index\RoadmapToAchieveDesiredSituation;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 58 Controller
 class RoadmapDesiredController extends Controller
@@ -17,7 +20,7 @@ class RoadmapDesiredController extends Controller
      */
     public function index()
     {
-        $query = RoadmapToAchieveDesiredSituation::whereRequestQuery();
+        $query = RoadmapToAchieveDesiredSituation::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = RoadmapToAchieveDesiredSituation::$filterColumnsCheckBoxes;
 
@@ -37,6 +40,31 @@ class RoadmapDesiredController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getRoadmapDesiredRecords()
+    {
+        return RoadmapToAchieveDesiredSituation::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $roadmapDesireds = $this->getRoadmapDesiredRecords();
+        return Excel::download(new ListExport($roadmapDesireds), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $roadmapDesireds = $this->getRoadmapDesiredRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.roadmap-desired.list.pdf', compact('roadmapDesireds'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $roadmapDesireds = $this->getRoadmapDesiredRecords();
+        return view('admin.gostaresh.roadmap-desired.list.pdf', compact('roadmapDesireds'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.
@@ -56,7 +84,7 @@ class RoadmapDesiredController extends Controller
      */
     public function store(RoadmapDesiredRequest $request)
     {
-        RoadmapToAchieveDesiredSituation::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        RoadmapToAchieveDesiredSituation::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -91,7 +119,7 @@ class RoadmapDesiredController extends Controller
      */
     public function update(RoadmapDesiredRequest $request, RoadmapToAchieveDesiredSituation $roadmapDesired)
     {
-        $roadmapDesired->update($request->all());
+        $roadmapDesired->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

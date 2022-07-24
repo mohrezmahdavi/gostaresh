@@ -2,15 +2,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 @endsection
 
 @section('page-title')
-    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ویرایش نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -35,6 +35,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $roadmapDesired->province_id }}"
+                            zone_default="{{ $roadmapDesired->county->zone }}"
                             county_default="{{ $roadmapDesired->county_id }}"
                             city_default="{{ $roadmapDesired->city_id }}"
                             rural_district_default="{{ $roadmapDesired->rural_district_id }}">

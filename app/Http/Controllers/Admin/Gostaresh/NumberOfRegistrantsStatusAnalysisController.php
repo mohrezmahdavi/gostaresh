@@ -18,13 +18,20 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $query = NumberOfRegistrantsStatusAnalysis::query();
+        $query = NumberOfRegistrantsStatusAnalysis::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfRegistrantsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfRegistrants = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants'));
+        return view('admin.gostaresh.number-of-registrants-status-analysis.list.list', compact('numberOfRegistrants', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function store(NumberOfRegistrantsStatusAnalysisRequest $request)
     {
-        NumberOfRegistrantsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfRegistrantsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +87,7 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
      */
     public function update(NumberOfRegistrantsStatusAnalysisRequest $request, NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        $numberOfRegistrant->update($request->all());
+        $numberOfRegistrant->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

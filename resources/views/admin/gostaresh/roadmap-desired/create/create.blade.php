@@ -2,15 +2,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 @endsection
 
 @section('breadcrumb-title')
-ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی
 @endsection
 
 @section('page-title')
-ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 
 <span>
     <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -33,6 +33,7 @@
 
                         <select-province-component
                             province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
                             rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">

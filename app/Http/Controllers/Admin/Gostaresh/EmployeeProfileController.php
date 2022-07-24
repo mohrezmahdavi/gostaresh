@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\EmployeeProfile\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\EmployeeProfile\EmployeeProfileRequest;
 use App\Models\Index\EmployeeProfile;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 45 Controller
 class EmployeeProfileController extends Controller
@@ -37,6 +40,32 @@ class EmployeeProfileController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getEmployeeProfileRecords()
+    {
+        return EmployeeProfile::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $employeeProfiles = $this->getEmployeeProfileRecords();
+        return Excel::download(new ListExport($employeeProfiles), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $employeeProfiles = $this->getEmployeeProfileRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.employee-profile.list.pdf', compact('employeeProfiles'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $employeeProfiles = $this->getEmployeeProfileRecords();
+        return view('admin.gostaresh.employee-profile.list.pdf', compact('employeeProfiles'));
+    }
+    // ****************** End Export ******************
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +84,7 @@ class EmployeeProfileController extends Controller
      */
     public function store(EmployeeProfileRequest $request)
     {
-        EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +119,7 @@ class EmployeeProfileController extends Controller
      */
     public function update(EmployeeProfileRequest $request, EmployeeProfile $employeeProfile)
     {
-        $employeeProfile->update($request->all());
+        $employeeProfile->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

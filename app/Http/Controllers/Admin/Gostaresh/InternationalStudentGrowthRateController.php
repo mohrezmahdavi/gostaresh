@@ -17,13 +17,20 @@ class InternationalStudentGrowthRateController extends Controller
      */
     public function index()
     {
-        $query = InternationalStudentGrowthRate::query();
+        $query = InternationalStudentGrowthRate::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $internationalStudentGrowthRates = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.international-student-growth-rate.list.list', compact('internationalStudentGrowthRates'));
+        return view('admin.gostaresh.international-student-growth-rate.list.list', compact('internationalStudentGrowthRates', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -44,7 +51,7 @@ class InternationalStudentGrowthRateController extends Controller
      */
     public function store(InternationalStudentGrowthRateRequest $request)
     {
-        InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success',__('titles.success_store'));
     }
 
@@ -79,7 +86,7 @@ class InternationalStudentGrowthRateController extends Controller
      */
     public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
-        $internationalStudentGrowthRate->update($request->all());
+        $internationalStudentGrowthRate->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -20,11 +20,16 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,8 +41,13 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>کل هزینه های سالیانه</th>
+
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -47,8 +57,17 @@
                                 <tr>
                                     <th scope="row">{{ $costChangesTrends?->firstItem() + $key }}</th>
                                     <td>{{ $costChangesTrend?->province?->name . ' - ' . $costChangesTrend->county?->name }}
-                                    <td>{{ $costChangesTrend?->unit}}</td>
-                                    <td>{{ number_format($costChangesTrend?->total_annual_expenses)}}</td>
+
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\CostChangesTrendsAnalysis::$numeric_fields))
+                                                <td>{{ number_format($costChangesTrend?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $costChangesTrend->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $costChangesTrend?->year }}</td>
                                     <td>
 
@@ -66,6 +85,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('cost-changes-trends.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('cost-changes-trends.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('cost-changes-trends.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -78,4 +104,6 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

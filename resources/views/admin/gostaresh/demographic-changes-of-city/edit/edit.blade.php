@@ -67,15 +67,13 @@
 
                         <x-select-month :default="$demographicChangesOfCity->month" :required="false" name="month"></x-select-month>
 
-
                         <select-province-component
                             province_default="{{ $demographicChangesOfCity->province_id }}"
+                            zone_default="{{ $demographicChangesOfCity->county->zone }}"
                             county_default="{{ $demographicChangesOfCity->county_id }}"
                             city_default="{{ $demographicChangesOfCity->city_id }}"
                             rural_district_default="{{ $demographicChangesOfCity->rural_district_id }}">
                         </select-province-component>
-
-
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

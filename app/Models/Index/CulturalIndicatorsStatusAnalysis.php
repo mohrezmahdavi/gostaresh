@@ -87,7 +87,30 @@ class CulturalIndicatorsStatusAnalysis extends Model
         return $query;
     }
 
-    public static $numeric_fields = [];
+    public static $numeric_fields = [
+        "cultural_centers_status_score",
+        "printed_publications_status_score",
+        "cultural_organizations_status_score",
+        "people_coverage_status_score",
+        "free_thinking_status_score",
+        "interact_with_cyberspace_status_score",
+        "fixed_cultural_events_status_score",
+        "amounts_of_honors_and_awards",
+        "cultural_industry_products",
+        "level_of_initiatives",
+        "points_for_running_luxury_programs",
+        "election_turnout_score",
+        "score_cultural_skills_training_programs",
+        "score_of_cultural_participation_of_Basiji_professors",
+        "participation_of_unit_professors_in_cultural_counseling",
+        "position_of_the_university_as_cultural_center",
+        "score_cultural_programs",
+        "score_Families_of_professors",
+        "score_of_professors",
+        "satisfaction_of_managers_performance",
+        "student_counseling_centers",
+        "general_cultural_rank_of_the_university_unit",
+    ];
 
     public static $filterColumnsCheckBoxes = [
         "unit"                                                           => "واحد",

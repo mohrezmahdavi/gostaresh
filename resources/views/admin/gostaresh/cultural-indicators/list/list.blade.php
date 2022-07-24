@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    تعداد تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 @endsection
 
 @section('breadcrumb-title')
-    تعداد تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 @endsection
 
 @section('page-title')
-    تعداد تحلیل وضعیت شاخص ھا و برنامه ھای فرھنگی در واحدھای شھرستان ھای استان
+تحلیل وضعیت شاخص ها و برنامه های فرهنگی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -20,11 +20,6 @@
 @endsection
 
 @section('styles-head')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
@@ -60,11 +55,12 @@
                                     <th scope="row">{{ $culturalIndicators?->firstItem() + $key }}</th>
                                     <td>{{ $culturalIndicator?->province?->name . ' - ' . $culturalIndicator->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
-
-                                        @if(in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
-                                            <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
-                                        @else
-                                            <td>{{ $culturalIndicator?->{$key} }}</td>
+                                        @if( filterCol($key))
+                                            @if(in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $culturalIndicator?->{$key} }}</td>
+                                            @endif
                                         @endif
                                     @endforeach
 
@@ -85,6 +81,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('cultural-indicators.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('cultural-indicators.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('cultural-indicators.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

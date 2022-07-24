@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\InternationalResearchStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalResearchStatusAnalysis\InternationalResearchStatusAnalysisRequest;
 use App\Models\Index\InternationalResearchStatusAnalysis;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 36,37 Controller
 class InternationalResearchStatusAnalysisController extends Controller
@@ -41,6 +44,32 @@ class InternationalResearchStatusAnalysisController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getInternationalResearchStatusAnalysesRecords()
+    {
+        return InternationalResearchStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $internationalResearchStatusAnalyses = $this->getInternationalResearchStatusAnalysesRecords();
+        return Excel::download(new ListExport($internationalResearchStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $internationalResearchStatusAnalyses = $this->getInternationalResearchStatusAnalysesRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.international-research-status-analyses.list.pdf', compact('internationalResearchStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $internationalResearchStatusAnalyses = $this->getInternationalResearchStatusAnalysesRecords();
+        return view('admin.gostaresh.international-research-status-analyses.list.pdf', compact('internationalResearchStatusAnalyses'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +88,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function store(InternationalResearchStatusAnalysisRequest $request): RedirectResponse
     {
-        InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -94,7 +123,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function update(InternationalResearchStatusAnalysisRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
-        $internationalResearch->update($request->all());
+        $internationalResearch->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

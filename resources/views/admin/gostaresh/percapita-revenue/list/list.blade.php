@@ -20,11 +20,13 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
-
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,27 +39,34 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>دانشگاه</th>
-                                <th>مقطع تحصیلی</th>
-                                <th>تحلیل وضعیت درآمد سرانه</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                            @foreach ($percapitaRevenue as $key => $value)
+                            @foreach ($percapitaRevenue as $key => $percapitaRevenueItem)
                                 <tr>
                                     <th scope="row">{{ $percapitaRevenue?->firstItem() + $key }}</th>
-                                    <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
-                                    <td>{{ $value?->unit}}</td>
-                                    <td>{{ $value?->university_type_title}}</td>
-                                    <td>{{ $value?->grade_title}}</td>
-                                    <td>{{ number_format($value?->percapita_revenue_status_analyses)}}</td>
-                                    <td>{{ $value?->year }}</td>
+                                    <td>{{ $percapitaRevenueItem?->province?->name . ' - ' . $percapitaRevenueItem->county?->name }}
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\PercapitaRevenueStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($percapitaRevenueItem?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $percapitaRevenueItem->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
+                                    <td>{{ $percapitaRevenueItem?->year }}</td>
                                     <td>
 
-                                        <a href="{{ route('percapita-revenue.edit', $value) }}"
+                                        <a href="{{ route('percapita-revenue.edit', $percapitaRevenueItem->id) }}"
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
@@ -71,6 +80,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('percapita-revenue.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('percapita-revenue.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('percapita-revenue.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -83,4 +99,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

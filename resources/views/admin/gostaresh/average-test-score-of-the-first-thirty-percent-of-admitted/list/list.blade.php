@@ -20,10 +20,14 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+    :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,11 +40,21 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>دانشگاه </th>
+                                    @if (filterCol('university_type_title') == true)
+                                    <th>دانشگاه</th>
+                                    @endif
+                                    @if (filterCol('gender_title') == true)
                                     <th>جنسیت</th>
+                                    @endif
+                                    @if (filterCol('department_of_education_title') == true)
                                     <th>گروه عمده تحصیلی</th>
+                                    @endif
+                                    @if (filterCol('average_test_score_of_the_first_thirty_percent_of_admitted') == true)
                                     <th>مقدار</th>
-                                    <th>سال</th>
+                                    @endif
+                                    @if (filterCol('year') == true)
+                                        <th>سال</th>
+                                    @endif
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -51,11 +65,23 @@
         
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->province?->name . ' - ' . $averageTestScoreOfTheFirstThirtyPercentOfAdmitted->county?->name }}
                                         </td>
+                                        
+                                        @if (filterCol('university_type_title') == true)
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->university_type_title }}</td>
+                                        @endif
+                                        @if (filterCol('gender_title') == true)
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->gender_title }}</td>
+                                        @endif
+                                        @if (filterCol('department_of_education_title') == true)
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->department_of_education_title }}</td>
+                                        @endif
+                                        @if (filterCol('average_test_score_of_the_first_thirty_percent_of_admitted') == true)
                                         <td>{{ number_format($averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->average_test_score_of_the_first_thirty_percent_of_admitted) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->year }}</td>
+                                        @endif
+                                        
                                         <td>
         
                                             <a href="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.edit', $averageTestScoreOfTheFirstThirtyPercentOfAdmitted) }}"
@@ -82,4 +108,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

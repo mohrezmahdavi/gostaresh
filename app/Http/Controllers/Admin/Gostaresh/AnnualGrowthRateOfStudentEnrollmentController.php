@@ -18,13 +18,20 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function index()
     {
-        $query = AnnualGrowthRateOfStudentEnrollment::query();
+        $query = AnnualGrowthRateOfStudentEnrollment::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = AnnualGrowthRateOfStudentEnrollment::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $annualGrowthRateOfStudentEnrollments = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.list.list', compact('annualGrowthRateOfStudentEnrollments'));
+        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.list.list', compact('annualGrowthRateOfStudentEnrollments', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function store(AnnualGrowthRateOfStudentEnrollmentRequest $request)
     {
-        AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +87,7 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
      */
     public function update(AnnualGrowthRateOfStudentEnrollmentRequest $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        $annualGrthRateOfStdnEnrollment->update($request->all());
+        $annualGrthRateOfStdnEnrollment->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

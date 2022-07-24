@@ -29,6 +29,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('select-grade-component', require('./components/grades/SelectGradeComponent.vue').default)
 
+
+Vue.component('date-picker-component', require('./components/DatePickerComponent.vue').default);
+Vue.component('date-time-picker-component', require('./components/DateTimePickerComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

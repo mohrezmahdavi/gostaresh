@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\CreditAndAsset\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CreditAndAsset\CreditAndAssetRequest;
 use App\Models\Index\CreditAndAssetAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 56 Controller
 class CreditAndAssetController extends Controller
@@ -17,7 +20,7 @@ class CreditAndAssetController extends Controller
      */
     public function index()
     {
-        $query = CreditAndAssetAnalysis::whereRequestQuery();
+        $query = CreditAndAssetAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = CreditAndAssetAnalysis::$filterColumnsCheckBoxes;
 
@@ -37,6 +40,32 @@ class CreditAndAssetController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getCreditAndAssetAnalysisRecords()
+    {
+        return CreditAndAssetAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $creditAndAssets = $this->getCreditAndAssetAnalysisRecords();
+        return Excel::download(new ListExport($creditAndAssets), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $creditAndAssets = $this->getCreditAndAssetAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.credit-and-asset.list.pdf', compact('creditAndAssets'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $creditAndAssets = $this->getCreditAndAssetAnalysisRecords();
+        return view('admin.gostaresh.credit-and-asset.list.pdf', compact('creditAndAssets'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +84,7 @@ class CreditAndAssetController extends Controller
      */
     public function store(CreditAndAssetRequest $request)
     {
-        CreditAndAssetAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        CreditAndAssetAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +119,7 @@ class CreditAndAssetController extends Controller
      */
     public function update(CreditAndAssetRequest $request, CreditAndAssetAnalysis $creditAndAsset)
     {
-        $creditAndAsset->update($request->all());
+        $creditAndAsset->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

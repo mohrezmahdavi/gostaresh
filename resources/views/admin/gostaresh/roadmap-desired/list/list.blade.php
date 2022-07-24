@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 @endsection
 
 @section('breadcrumb-title')
-    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 @endsection
 
 @section('page-title')
-    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی X
+    ایجاد نقشه راه دستیابی به وضع مطلوب در واحد دانشگاھی 
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -20,10 +20,14 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
 
     <div class="row">
@@ -37,14 +41,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>عنوان سیاست آزمایشی</th>
-                                <th>عنوان محور</th>
-                                <th>عنوان پروژه</th>
-                                <th>هدف کمی</th>
-                                <th>سنجش</th>
-                                <th>سطح پیشرفت و تحقق سالانه</th>
-                                <th>مسئول پیگیری</th>
-                                <th>ملاحظات</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -54,14 +55,15 @@
                                 <tr>
                                     <th scope="row">{{ $roadmapDesireds?->firstItem() + $key }}</th>
                                     <td>{{ $roadmapDesired?->province?->name . ' - ' . $roadmapDesired->county?->name }}
-                                    <td>{{ $roadmapDesired?->experimental_policy_title}}</td>
-                                    <td>{{ $roadmapDesired?->title_axis}}</td>
-                                    <td>{{ $roadmapDesired?->project_title}}</td>
-                                    <td>{{ $roadmapDesired?->quantitative_goal}}</td>
-                                    <td>{{ $roadmapDesired?->test}}</td>
-                                    <td>{{ $roadmapDesired?->annual_progress_level}}</td>
-                                    <td>{{ $roadmapDesired?->responsible_for_track}}</td>
-                                    <td>{{ $roadmapDesired?->considerations}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\RoadmapToAchieveDesiredSituation::$numeric_fields))
+                                                <td>{{ number_format($roadmapDesired?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $roadmapDesired->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $roadmapDesired?->year }}</td>
                                     <td>
 
@@ -79,6 +81,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('roadmap-desired.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('roadmap-desired.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('roadmap-desired.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -91,4 +100,6 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

@@ -75,7 +75,7 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function store(GrowthRateStudentPopulationRequest $request)
     {
-        GrowthRateStudentPopulation::create(array_merge(['user_id' => Auth::id()] , $request->all()));
+        GrowthRateStudentPopulation::create(array_merge(['user_id' => Auth::id()] , $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -110,7 +110,7 @@ class GrowthRateStudentPopulationController extends Controller
      */
     public function update(GrowthRateStudentPopulationRequest $request, GrowthRateStudentPopulation $growthRateStudentPopulation)
     {
-        $growthRateStudentPopulation->update($request->all());
+        $growthRateStudentPopulation->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

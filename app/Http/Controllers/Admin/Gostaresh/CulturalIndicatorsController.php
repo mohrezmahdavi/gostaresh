@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\CulturalIndicators\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CulturalIndicators\CulturalIndicatorsRequest;
 use App\Models\Index\CulturalIndicatorsStatusAnalysis;
@@ -10,6 +11,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 42 Controller
 class CulturalIndicatorsController extends Controller
@@ -36,10 +39,38 @@ class CulturalIndicatorsController extends Controller
             , 'yearSelectedList', 'filterColumnsCheckBoxes'
         ));
     }
+    
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+    
+    // ****************** Export ******************
+    private function getCulturalIndicatorsRecords()
+    {
+        return CulturalIndicatorsStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $culturalIndicators = $this->getCulturalIndicatorsRecords();
+        return Excel::download(new ListExport($culturalIndicators), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $culturalIndicators = $this->getCulturalIndicatorsRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.cultural-indicators.list.pdf', compact('culturalIndicators'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $culturalIndicators = $this->getCulturalIndicatorsRecords();
+        return view('admin.gostaresh.cultural-indicators.list.pdf', compact('culturalIndicators'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +89,7 @@ class CulturalIndicatorsController extends Controller
      */
     public function store(CulturalIndicatorsRequest $request)
     {
-         CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -93,7 +124,7 @@ class CulturalIndicatorsController extends Controller
      */
     public function update(CulturalIndicatorsRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
-        $culturalIndicator->update($request->all());
+        $culturalIndicator->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

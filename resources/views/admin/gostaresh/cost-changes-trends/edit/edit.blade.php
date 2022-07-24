@@ -35,6 +35,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $costChangesTrend->province_id }}"
+                            zone_default="{{ $costChangesTrend->county->zone }}"
                             county_default="{{ $costChangesTrend->county_id }}"
                             city_default="{{ $costChangesTrend->city_id }}"
                             rural_district_default="{{ $costChangesTrend->rural_district_id }}">

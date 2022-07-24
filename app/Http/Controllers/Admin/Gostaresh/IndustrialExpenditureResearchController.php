@@ -90,7 +90,7 @@ class IndustrialExpenditureResearchController extends Controller
             'year' => $request->year ?? null,
             'month' => $request->month ?? null,
         ]);
-        // IndustrialExpenditureResearch::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        // IndustrialExpenditureResearch::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -135,7 +135,7 @@ class IndustrialExpenditureResearchController extends Controller
             'year' => $request->year ?? null,
             'month' => $request->month ?? null,
         ]);
-        // $industrialExpenditureResearch->update($request->all());
+        // $industrialExpenditureResearch->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

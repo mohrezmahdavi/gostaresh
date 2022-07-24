@@ -4,14 +4,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="get">
-                        <div class="row" id="app">
+                    <form action="" method="get" id="app">
+                        <div class="row">
                             <div class="col-md-12">
                                 <select-province-inline-component
-                                    province_default="{{ auth()->user()->province_id ?? request()->province_id }}"
-                                    county_default="{{ auth()->user()->county_id ?? request()->county_id }}"
-                                    city_default="{{ auth()->user()->city_id ?? request()->city_id }}"
-                                    rural_district_default="{{ auth()->user()->rural_district_id ?? request()->rural_district_id }}">
+                                    province_default="{{ request()->province_id ?? auth()->user()->province_id ?? ''}}"
+                                    zone_default="{{ request()->zone_id ?? auth()->user()->county->zone ?? ''}}"
+                                    county_default="{{ request()->county_id ?? auth()->user()->county_id ?? ''}}"
+                                    city_default="{{ request()->city_id ?? auth()->user()->city_id ?? ''}}"
+                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}">
                                 </select-province-inline-component>
                             </div>
                         </div>

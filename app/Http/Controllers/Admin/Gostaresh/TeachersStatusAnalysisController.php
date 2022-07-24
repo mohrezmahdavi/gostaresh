@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\TeachersStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\TeachersStatusAnalysisRequest;
 use App\Models\Index\GraduateStatusAnalysis;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 34 Controller
 class TeachersStatusAnalysisController extends Controller
@@ -41,6 +44,32 @@ class TeachersStatusAnalysisController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getTeachersStatusAnalysesRecords()
+    {
+        return TeachersStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        return Excel::download(new ListExport($teachersStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.teachers-status-analyses.list.pdf', compact('teachersStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $teachersStatusAnalyses = $this->getTeachersStatusAnalysesRecords();
+        return view('admin.gostaresh.teachers-status-analyses.list.pdf', compact('teachersStatusAnalyses'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +88,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function store(TeachersStatusAnalysisRequest $request): RedirectResponse
     {
-        TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -94,7 +123,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function update(TeachersStatusAnalysisRequest $request, TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
     {
-        $teachersStatusAnalysis->update($request->all());
+        $teachersStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -87,4 +87,14 @@ class RevenueChangesTrendsAnalysis extends Model
         return $query;
     }
 
+    public static $numeric_fields = [
+        "total_annual_income",
+    ];
+
+    public static $filterColumnsCheckBoxes = [
+        "unit"                => "واحد",
+        "total_annual_income" => "کل درآمد های سالیانه",
+    ];
+
+
 }

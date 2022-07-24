@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\StatusAnalysisOfTheNumberOfCurricula\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\StatusAnalysisOfTheNumberOfCurricula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
 {
@@ -34,6 +37,33 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getStatusAnalysisOfTheNumberOfCurriculaRecords()
+    {
+        return StatusAnalysisOfTheNumberOfCurricula::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $statusAnalysisOfTheNumberOfCurriculas = $this->getStatusAnalysisOfTheNumberOfCurriculaRecords();
+        return Excel::download(new ListExport($statusAnalysisOfTheNumberOfCurriculas), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $statusAnalysisOfTheNumberOfCurriculas = $this->getStatusAnalysisOfTheNumberOfCurriculaRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.status-analysis-of-the-number-of-curricula.list.pdf', compact('statusAnalysisOfTheNumberOfCurriculas'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $statusAnalysisOfTheNumberOfCurriculas = $this->getStatusAnalysisOfTheNumberOfCurriculaRecords();
+        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.list.pdf', compact('statusAnalysisOfTheNumberOfCurriculas'));
+    }
+    // ****************** End Export ******************
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +82,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function store(Request $request)
     {
-        StatusAnalysisOfTheNumberOfCurricula::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        StatusAnalysisOfTheNumberOfCurricula::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -87,7 +117,7 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function update(Request $request, StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
-        $stsAnalysisOfTheNumOfCurricula->update($request->all());
+        $stsAnalysisOfTheNumOfCurricula->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\TechnologicalProduct\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TechnologicalProduct\TechnologicalProductRequest;
 use App\Models\Index\TechnologicalProduct;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 40 Controller
 class TechnologicalProductController extends Controller
@@ -42,6 +45,32 @@ class TechnologicalProductController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getTechnologicalProductRecords()
+    {
+        return TechnologicalProduct::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $technologicalProducts = $this->getTechnologicalProductRecords();
+        return Excel::download(new ListExport($technologicalProducts), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $technologicalProducts = $this->getTechnologicalProductRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.technological-product.list.pdf', compact('technologicalProducts'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $technologicalProducts = $this->getTechnologicalProductRecords();
+        return view('admin.gostaresh.technological-product.list.pdf', compact('technologicalProducts'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +89,7 @@ class TechnologicalProductController extends Controller
      */
     public function store(TechnologicalProductRequest $request)
     {
-        TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +124,7 @@ class TechnologicalProductController extends Controller
      */
     public function update(TechnologicalProductRequest $request, TechnologicalProduct $technologicalProduct)
     {
-        $technologicalProduct->update($request->all());
+        $technologicalProduct->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

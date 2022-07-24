@@ -20,16 +20,18 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
-
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body">f
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
@@ -37,33 +39,33 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>دانشگاه</th>
-                                <th>گروه عمده تحصیلی</th>
-                                <th>کاردانی</th>
-                                <th>کارشناسی</th>
-                                <th>کارشناسی ارشد</th>
-                                <th>دکتری</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                            @foreach ($tuitionIncome as $key => $value)
+                            @foreach ($tuitionIncome as $key => $tuitionIncomeItem)
                                 <tr>
                                     <th scope="row">{{ $tuitionIncome?->firstItem() + $key }}</th>
-                                    <td>{{ $value?->province?->name . ' - ' . $value->county?->name }}
-                                    <td>{{ $value?->unit}}</td>
-                                    <td>{{ $value?->university_type_title}}</td>
-                                    <td>{{ $value?->department_of_education_title}}</td>
-                                    <td>{{ number_format($value?->associate_degree) }}</td>
-                                    <td>{{ number_format($value?->bachelor_degree) }}</td>
-                                    <td>{{ number_format($value?->masters) }}</td>
-                                    <td>{{ number_format($value?->phd) }}</td>
-                                    <td>{{ $value?->year }}</td>
+                                    <td>{{ $tuitionIncomeItem?->province?->name . ' - ' . $tuitionIncomeItem->county?->name }}
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\AverageTuitionIncome::$numeric_fields))
+                                                <td>{{ number_format($tuitionIncomeItem?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $tuitionIncomeItem->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    <td>{{ $tuitionIncomeItem?->year }}</td>
                                     <td>
 
-                                        <a href="{{ route('tuition-income.edit', $value) }}"
+                                        <a href="{{ route('tuition-income.edit', $tuitionIncomeItem->id) }}"
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
@@ -77,6 +79,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('tuition-income.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('tuition-income.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('tuition-income.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -89,4 +98,6 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

@@ -20,11 +20,15 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,11 +41,15 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>درجه/رتبه</th>
-                                <th>امتیاز</th>
-                                <th>سال تاسیس</th>
-                                <th>تعداد و عناوین دانشکده مصوب</th>
+
+
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -51,11 +59,16 @@
                                 <tr>
                                     <th scope="row">{{ $unitsGeneralStatuses?->firstItem() + $key }}</th>
                                     <td>{{ $unitsGeneralStatus?->province?->name . ' - ' . $unitsGeneralStatus->county?->name }}
-                                    <td>{{ $unitsGeneralStatus?->unit}}</td>
-                                    <td>{{ $unitsGeneralStatus['degree/rank'] ?? ''}}</td>
-                                    <td>{{ $unitsGeneralStatus?->score}}</td>
-                                    <td>{{ $unitsGeneralStatus?->established_year}}</td>
-                                    <td>{{ $unitsGeneralStatus?->approved_number_and_titles_of_the_faculty}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\UnitsGeneralStatus::$numeric_fields))
+                                                <td>{{ number_format($unitsGeneralStatus?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $unitsGeneralStatus->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     <td>{{ $unitsGeneralStatus?->year }}</td>
                                     <td>
 
@@ -73,6 +86,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('units-general-status.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('units-general-status.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('units-general-status.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -85,4 +105,7 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
+
+
 @endsection

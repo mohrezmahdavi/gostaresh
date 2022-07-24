@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\InternationalTechnology\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalTechnology\InternationalTechnologyRequest;
 use App\Models\Index\InternationalTechnology;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 41 Controller
 class InternationalTechnologyController extends Controller
@@ -42,6 +45,32 @@ class InternationalTechnologyController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getInternationalTechnologyRecords()
+    {
+        return InternationalTechnology::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $internationalTechnologies = $this->getInternationalTechnologyRecords();
+        return Excel::download(new ListExport($internationalTechnologies), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $internationalTechnologies = $this->getInternationalTechnologyRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.international-technology.list.pdf', compact('internationalTechnologies'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $internationalTechnologies = $this->getInternationalTechnologyRecords();
+        return view('admin.gostaresh.international-technology.list.pdf', compact('internationalTechnologies'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +89,7 @@ class InternationalTechnologyController extends Controller
      */
     public function store(InternationalTechnologyRequest $request)
     {
-         InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +124,7 @@ class InternationalTechnologyController extends Controller
      */
     public function update(InternationalTechnologyRequest $request,  InternationalTechnology $internationalTechnology)
     {
-        $internationalTechnology->update($request->all());
+        $internationalTechnology->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

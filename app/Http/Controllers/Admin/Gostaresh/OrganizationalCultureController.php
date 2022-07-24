@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\OrganizationalCulture\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\OrganizationalCulture\OrganizationalCultureRequest;
 use App\Models\Index\OrganizationalCultureStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 
 // Table 44 Controller
 class OrganizationalCultureController extends Controller
@@ -36,6 +40,33 @@ class OrganizationalCultureController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+    
+    // ****************** Export ******************
+    private function getOrganizationalCultureRecords()
+    {
+        return OrganizationalCultureStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $organizationalCultures = $this->getOrganizationalCultureRecords();
+        return Excel::download(new ListExport($organizationalCultures), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $organizationalCultures = $this->getOrganizationalCultureRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.organizational-culture.list.pdf', compact('organizationalCultures'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $organizationalCultures = $this->getOrganizationalCultureRecords();
+        return view('admin.gostaresh.organizational-culture.list.pdf', compact('organizationalCultures'));
+    }
+    // ****************** End Export ******************
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +85,7 @@ class OrganizationalCultureController extends Controller
      */
     public function store(OrganizationalCultureRequest $request)
     {
-        OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -89,7 +120,7 @@ class OrganizationalCultureController extends Controller
      */
     public function update(OrganizationalCultureRequest $request, OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
-        $organizationalCulture->update($request->all());
+        $organizationalCulture->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

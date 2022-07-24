@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfStudentsStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfStudentsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfStudentsStatusAnalysis\NumberOfStudentsStatusAnalysisRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 16,17 Controller
 class NumberOfStudentsStatusAnalysisController extends Controller
@@ -18,13 +21,44 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function index()
     {
-        $query = NumberOfStudentsStatusAnalysis::query();
+        $query = NumberOfStudentsStatusAnalysis::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfStudentsStatusAnalysis::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfStudentsStatusAnalysises = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-students-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises'));
+        return view('admin.gostaresh.number-of-students-status-analysis.list.list', compact('numberOfStudentsStatusAnalysises', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfStudentsStatusAnalysisRecords()
+    {
+        return NumberOfStudentsStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfStudentsStatusAnalysises = $this->getNumberOfStudentsStatusAnalysisRecords();
+        return Excel::download(new ListExport($numberOfStudentsStatusAnalysises), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberOfStudentsStatusAnalysises = $this->getNumberOfStudentsStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('numberOfStudentsStatusAnalysises'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberOfStudentsStatusAnalysises = $this->getNumberOfStudentsStatusAnalysisRecords();
+        return view('admin.gostaresh.number-of-students-status-analysis.list.pdf', compact('numberOfStudentsStatusAnalysises'));
     }
 
     /**
@@ -45,7 +79,7 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function store(NumberOfStudentsStatusAnalysisRequest $request)
     {
-        NumberOfStudentsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfStudentsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +114,7 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function update(NumberOfStudentsStatusAnalysisRequest $request, NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
-        $numberOfStudentsStatusAnalysis->update($request->all());
+        $numberOfStudentsStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

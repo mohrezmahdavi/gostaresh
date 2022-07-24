@@ -20,11 +20,15 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -37,18 +41,12 @@
                             <tr>
                                 <th>#</th>
                                 <th>شهرستان</th>
-                                <th>واحد</th>
-                                <th>سرانه فضای اداری</th>
-                                <th>سرانه فضای آموزشی</th>
-                                <th>سرانه فضای فناوری و نوآوری</th>
-                                <th>سرانه فضای فرهنگی</th>
-                                <th>سرانه فضای عمرانی</th>
-                                <th>ساختمان در دست احداث</th>
-                                <th>سرانه اقامتی</th>
-                                <th>سرانه ساختمان های بهره بردار</th>
-                                <th>سرانه فضای ورزشی</th>
-                                <th>سرانه فضای اعیانی</th>
-                                <th>سرانه فضای عرصه</th>
+                                @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                @endforeach
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -58,18 +56,15 @@
                                 <tr>
                                     <th scope="row">{{ $percapitaStatusAnalyses?->firstItem() + $key }}</th>
                                     <td>{{ $percapitaStatusAnalysis?->province?->name . ' - ' . $percapitaStatusAnalysis->county?->name }}
-                                    <td>{{ $percapitaStatusAnalysis?->unit}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_office_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_educational_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_innovation_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_cultural_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_civil_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->building_under_construction}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_residential}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_operating_buildings}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_sports_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_aristocratic_space}}</td>
-                                    <td>{{ $percapitaStatusAnalysis?->percapita_arena_space}}</td>
+                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
+                                        @if( filterCol($key))
+                                            @if( in_array($key,\App\Models\Index\PercapitaStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($percapitaStatusAnalysis?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $percapitaStatusAnalysis->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                     <td>{{ $percapitaStatusAnalysis?->year }}</td>
                                     <td>
 
@@ -87,6 +82,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('percapita-status-analyses.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('percapita-status-analyses.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('percapita-status-analyses.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">
@@ -99,4 +101,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

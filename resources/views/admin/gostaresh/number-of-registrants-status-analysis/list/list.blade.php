@@ -20,10 +20,14 @@
 @endsection
 
 @section('styles-head')
+
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+    :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,11 +40,21 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>دانشگاه </th>
+                                    @if (filterCol('university_type_title') == true)
+                                    <th>دانشگاه</th>
+                                    @endif
+                                    @if (filterCol('gender_title') == true)
                                     <th>جنسیت</th>
+                                    @endif
+                                    @if (filterCol('department_of_education_title') == true)
                                     <th>گروه عمده تحصیلی</th>
+                                    @endif
+                                    @if (filterCol('number_of_registrants') == true)
                                     <th>مقدار</th>
-                                    <th>سال</th>
+                                    @endif
+                                    @if (filterCol('year') == true)
+                                        <th>سال</th>
+                                    @endif
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -51,11 +65,22 @@
 
                                         <td>{{ $numberOfRegistrant?->province?->name . ' - ' . $numberOfRegistrant->county?->name }}
                                         </td>
+                                        
+                                        @if (filterCol('university_type_title') == true)
                                         <td>{{ $numberOfRegistrant?->university_type_title }}</td>
+                                        @endif
+                                        @if (filterCol('gender_title') == true)
                                         <td>{{ $numberOfRegistrant?->gender_title }}</td>
+                                        @endif
+                                        @if (filterCol('department_of_education_title') == true)
                                         <td>{{ $numberOfRegistrant?->department_of_education_title }}</td>
+                                        @endif
+                                        @if (filterCol('number_of_registrants') == true)
                                         <td>{{ number_format($numberOfRegistrant?->number_of_registrants) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $numberOfRegistrant?->year }}</td>
+                                        @endif
                                         <td>
 
                                             <a href="{{ route('number.of.registrants.status.analysis.edit', $numberOfRegistrant) }}"
@@ -82,4 +107,5 @@
 @endsection
 
 @section('body-scripts')
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

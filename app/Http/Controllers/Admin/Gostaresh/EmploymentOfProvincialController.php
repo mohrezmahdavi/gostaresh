@@ -79,7 +79,7 @@ class EmploymentOfProvincialController extends Controller
      */
     public function store(EmploymentOfProvincialRequest $request)
     {
-        EmploymentOfProvincial::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EmploymentOfProvincial::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class EmploymentOfProvincialController extends Controller
      */
     public function update(EmploymentOfProvincialRequest $request, EmploymentOfProvincial $employmentOfProvincial)
     {
-        $employmentOfProvincial->update($request->all());
+        $employmentOfProvincial->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

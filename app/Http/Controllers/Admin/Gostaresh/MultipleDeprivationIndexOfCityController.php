@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\MultipleDeprivationIndexOfCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\MultipleDeprivationIndexOfCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\MultipleDeprivationIndexOfCity\MultipleDeprivationIndexOfCityRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 // Table 13 Controller
 class MultipleDeprivationIndexOfCityController extends Controller
 {
@@ -17,13 +21,44 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function index()
     {
-        $query = MultipleDeprivationIndexOfCity::query();
+        $query = MultipleDeprivationIndexOfCity::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = MultipleDeprivationIndexOfCity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $multipleDeprivationIndexOfCities = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities'));
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.list', compact('multipleDeprivationIndexOfCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getMultipleDeprivationIndexOfCityRecords()
+    {
+        return MultipleDeprivationIndexOfCity::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $multipleDeprivationIndexOfCities = $this->getMultipleDeprivationIndexOfCityRecords();
+        return Excel::download(new ListExport($multipleDeprivationIndexOfCities), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $multipleDeprivationIndexOfCities = $this->getMultipleDeprivationIndexOfCityRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.multiple-deprivation-index-of-city.list.pdf', compact('multipleDeprivationIndexOfCities'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $multipleDeprivationIndexOfCities = $this->getMultipleDeprivationIndexOfCityRecords();
+        return view('admin.gostaresh.multiple-deprivation-index-of-city.list.pdf', compact('multipleDeprivationIndexOfCities'));
     }
 
     /**
@@ -44,7 +79,7 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function store(MultipleDeprivationIndexOfCityRequest $request)
     {
-        MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        MultipleDeprivationIndexOfCity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +114,7 @@ class MultipleDeprivationIndexOfCityController extends Controller
      */
     public function update(MultipleDeprivationIndexOfCityRequest $request, MultipleDeprivationIndexOfCity $multipleDeprivationIndexOfCity)
     {
-        $multipleDeprivationIndexOfCity->update($request->all());
+        $multipleDeprivationIndexOfCity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 
