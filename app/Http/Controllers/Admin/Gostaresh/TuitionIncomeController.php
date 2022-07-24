@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\TuitionIncome\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TuitionIncome\TuitionIncomeRequest;
 use App\Models\Index\AverageTuitionIncome;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 
 // Table 50 Controller
 class TuitionIncomeController extends Controller
@@ -36,6 +40,32 @@ class TuitionIncomeController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getRevenueChangesRecords()
+    {
+        return AverageTuitionIncome::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $tuitionIncomes = $this->getRevenueChangesRecords();
+        return Excel::download(new ListExport($tuitionIncomes), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $tuitionIncomes = $this->getRevenueChangesRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.tuition-income.list.pdf', compact('tuitionIncomes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $tuitionIncomes = $this->getRevenueChangesRecords();
+        return view('admin.gostaresh.tuition-income.list.pdf', compact('tuitionIncomes'));
+    }
+    // ****************** End Export ******************
+    
     /**
      * Show the form for creating a new resource.
      *

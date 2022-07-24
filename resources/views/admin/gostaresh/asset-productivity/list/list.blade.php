@@ -84,6 +84,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('asset-productivity.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('asset-productivity.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('asset-productivity.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

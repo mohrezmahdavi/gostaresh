@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\InnovationInfrastructures\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InnovationInfrastructure\InnovationInfrastructureRequest;
 use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 39 Controller
 class InnovationInfrastructureController extends Controller
@@ -41,6 +44,32 @@ class InnovationInfrastructureController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    // ****************** Export ******************
+    private function getTechnologyAndInnovationInfrastructureRecords()
+    {
+        return TechnologyAndInnovationInfrastructure::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $innovationInfrastructures = $this->getTechnologyAndInnovationInfrastructureRecords();
+        return Excel::download(new ListExport($innovationInfrastructures), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $innovationInfrastructures = $this->getTechnologyAndInnovationInfrastructureRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.innovation-infrastructures.list.pdf', compact('innovationInfrastructures'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $innovationInfrastructures = $this->getTechnologyAndInnovationInfrastructureRecords();
+        return view('admin.gostaresh.innovation-infrastructures.list.pdf', compact('innovationInfrastructures'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Http\Controllers\Controller;
+use App\Exports\Gostaresh\AmountOfFacilities\ListExport;
 use App\Http\Requests\Gostaresh\AmountOfFacilities\AmountOfFacilitiesRequest;
 use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,6 +11,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 38 Controller
 class AmountOfFacilitiesController extends Controller
@@ -41,6 +44,31 @@ class AmountOfFacilitiesController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    // ****************** Export ******************
+    private function getAmountOfFacilitiesForResearchAchievementsRecords()
+    {
+        return AmountOfFacilitiesForResearchAchievements::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $amountOfFacilitiesForResearchAchievements = $this->getAmountOfFacilitiesForResearchAchievementsRecords();
+        return Excel::download(new ListExport($amountOfFacilitiesForResearchAchievements), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $amountOfFacilitiesForResearchAchievements = $this->getAmountOfFacilitiesForResearchAchievementsRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.amount-of-facilities.list.pdf', compact('amountOfFacilitiesForResearchAchievements'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $amountOfFacilitiesForResearchAchievements = $this->getAmountOfFacilitiesForResearchAchievementsRecords();
+        return view('admin.gostaresh.amount-of-facilities.list.pdf', compact('amountOfFacilitiesForResearchAchievements'));
+    }
+    // ****************** End Export ******************
 
     /**
      * Show the form for creating a new resource.

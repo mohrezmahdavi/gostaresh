@@ -56,11 +56,12 @@
                                     <th scope="row">{{ $socialHealths?->firstItem() + $key }}</th>
                                     <td>{{ $socialHealth?->province?->name . ' - ' . $socialHealth->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
-
-                                        @if( in_array($key , \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
-                                            <td>{{ number_format($socialHealth?->{$key}) }}</td>
-                                        @else
-                                            <td>{{ $socialHealth?->{$key} }}</td>
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($socialHealth?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $socialHealth?->{$key} }}</td>
+                                            @endif
                                         @endif
                                     @endforeach
 
@@ -81,6 +82,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('social-health.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('social-health.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('social-health.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

@@ -55,11 +55,12 @@
                                     <th scope="row">{{ $culturalIndicators?->firstItem() + $key }}</th>
                                     <td>{{ $culturalIndicator?->province?->name . ' - ' . $culturalIndicator->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
-
-                                        @if(in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
-                                            <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
-                                        @else
-                                            <td>{{ $culturalIndicator?->{$key} }}</td>
+                                        @if( filterCol($key))
+                                            @if(in_array($key , \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $culturalIndicator?->{$key} }}</td>
+                                            @endif
                                         @endif
                                     @endforeach
 
@@ -80,6 +81,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('cultural-indicators.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('cultural-indicators.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('cultural-indicators.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

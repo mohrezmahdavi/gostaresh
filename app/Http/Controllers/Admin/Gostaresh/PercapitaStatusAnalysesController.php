@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\PercapitaStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaStatusAnalysis\PercapitaStatusAnalysisRequest;
 use App\Models\Index\PercapitaStatusAnalysis;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 46 Controller
 class PercapitaStatusAnalysesController extends Controller
@@ -35,6 +38,34 @@ class PercapitaStatusAnalysesController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    // ****************** Export ******************
+    private function getPercapitaStatusAnalysisRecords()
+    {
+        return PercapitaStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $percapitaStatusAnalyses = $this->getPercapitaStatusAnalysisRecords();
+        return Excel::download(new ListExport($percapitaStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $percapitaStatusAnalyses = $this->getPercapitaStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.percapita-status-analyses.list.pdf', compact('percapitaStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $percapitaStatusAnalyses = $this->getPercapitaStatusAnalysisRecords();
+        return view('admin.gostaresh.percapita-status-analyses.list.pdf', compact('percapitaStatusAnalyses'));
+    }
+    // ****************** End Export ******************
+    
+    
     /**
      * Show the form for creating a new resource.
      *
