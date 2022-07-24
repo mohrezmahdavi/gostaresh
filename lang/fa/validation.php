@@ -526,6 +526,7 @@ return [
         "number_of_international_courses_in_the_target_language_virtually" => 'تعداد دوره های تحصیلی بین المللی برگزار شده به زبان های کشورهای هدف به صورت مجازی',
         "kardani_count" => 'تعداد کاردانی',
         "karshenasi_count" => 'تعداد کارشناسی',
-        "docktora_count" => 'تعداد دکتری'
+        "docktora_count" => 'تعداد دکتری',
+        "phone_number" => 'شماره همراه'
     ]
 ];
