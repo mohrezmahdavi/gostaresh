@@ -85,6 +85,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('roadmap-desired.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('roadmap-desired.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('roadmap-desired.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

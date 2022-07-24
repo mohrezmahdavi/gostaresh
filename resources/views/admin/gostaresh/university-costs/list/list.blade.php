@@ -92,6 +92,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('university-costs.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('university-costs.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('university-costs.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

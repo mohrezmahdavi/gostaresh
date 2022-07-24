@@ -84,6 +84,13 @@
                             </tbody>
                         </table>
 
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('percapita-revenue.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('percapita-revenue.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('percapita-revenue.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div>
                     <!-- end table-responsive-->
                     <div class="mt-3">

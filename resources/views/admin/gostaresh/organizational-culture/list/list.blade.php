@@ -59,19 +59,20 @@
                                     <th scope="row">{{ $organizationalCultures?->firstItem() + $key }}</th>
                                     <td>{{ $organizationalCulture?->province?->name . ' - ' . $organizationalCulture->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
-
-                                        @if( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$numeric_fields))
-                                            <td>{{ number_format($organizationalCulture?->{$key}) }}</td>321
-                                        @elseif( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
-                                            <td>
-                                                @foreach ( config('gostaresh.amount') as $amountKey => $amountValue)
-                                                    @if ( $amountKey == $organizationalCulture->{$key})
-                                                        {{ $amountValue}}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        @else
-                                            <td>{{ $organizationalCulture?->{$key} }}</td>
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($organizationalCulture?->{$key}) }}</td>
+                                            @elseif( in_array($key , \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
+                                                <td>
+                                                    @foreach ( config('gostaresh.amount') as $amountKey => $amountValue)
+                                                        @if ( $amountKey == $organizationalCulture->{$key})
+                                                            {{ $amountValue}}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                            @else
+                                                <td>{{ $organizationalCulture?->{$key} }}</td>
+                                            @endif
                                         @endif
                                     @endforeach
 

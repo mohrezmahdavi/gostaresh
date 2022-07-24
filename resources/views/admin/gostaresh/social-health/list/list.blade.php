@@ -60,11 +60,12 @@
                                     <th scope="row">{{ $socialHealths?->firstItem() + $key }}</th>
                                     <td>{{ $socialHealth?->province?->name . ' - ' . $socialHealth->county?->name }}
                                     @foreach( $filterColumnsCheckBoxes as $key => $value)
-
-                                        @if( in_array($key , \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
-                                            <td>{{ number_format($socialHealth?->{$key}) }}</td>
-                                        @else
-                                            <td>{{ $socialHealth?->{$key} }}</td>
+                                        @if( filterCol($key))
+                                            @if( in_array($key , \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
+                                                <td>{{ number_format($socialHealth?->{$key}) }}</td>
+                                            @else
+                                                <td>{{ $socialHealth?->{$key} }}</td>
+                                            @endif
                                         @endif
                                     @endforeach
 

@@ -326,37 +326,73 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 46 Route
     Route::resource('percapita-status-analyses', PercapitaStatusAnalysesController::class)->names('percapita-status-analyses');
+    Route::get('percapita-status-analyses/list/excel', [App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController::class, 'listExcelExport'])->name('percapita-status-analyses.list.excel');
+    Route::get('percapita-status-analyses/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController::class, 'listPDFExport'])->name('percapita-status-analyses.list.pdf');
+    Route::get('percapita-status-analyses/list/print', [App\Http\Controllers\Admin\Gostaresh\PercapitaStatusAnalysesController::class, 'listPrintExport'])->name('percapita-status-analyses.list.print');
 
     // Table 47 Route
     Route::resource('asset-productivity', AssetProductivityController::class)->names('asset-productivity');
+    Route::get('asset-productivity/list/excel', [App\Http\Controllers\Admin\Gostaresh\AssetProductivityController::class, 'listExcelExport'])->name('asset-productivity.list.excel');
+    Route::get('asset-productivity/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AssetProductivityController::class, 'listPDFExport'])->name('asset-productivity.list.pdf');
+    Route::get('asset-productivity/list/print', [App\Http\Controllers\Admin\Gostaresh\AssetProductivityController::class, 'listPrintExport'])->name('asset-productivity.list.print');
 
     // Table 48 Route
     Route::resource('revenue-status-analyses', RevenueStatusAnalysesController::class)->names('revenue-status-analyses');
+    Route::get('revenue-status-analyses/list/excel', [App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController::class, 'listExcelExport'])->name('revenue-status-analyses.list.excel');
+    Route::get('revenue-status-analyses/list/pdf', [App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController::class, 'listPDFExport'])->name('revenue-status-analyses.list.pdf');
+    Route::get('revenue-status-analyses/list/print', [App\Http\Controllers\Admin\Gostaresh\RevenueStatusAnalysesController::class, 'listPrintExport'])->name('revenue-status-analyses.list.print');
 
     // Table 49 Route
     Route::resource('revenue-changes', RevenueChangesController::class)->names('revenue-changes');
+    Route::get('revenue-changes/list/excel', [App\Http\Controllers\Admin\Gostaresh\RevenueChangesController::class, 'listExcelExport'])->name('revenue-changes.list.excel');
+    Route::get('revenue-changes/list/pdf', [App\Http\Controllers\Admin\Gostaresh\RevenueChangesController::class, 'listPDFExport'])->name('revenue-changes.list.pdf');
+    Route::get('revenue-changes/list/print', [App\Http\Controllers\Admin\Gostaresh\RevenueChangesController::class, 'listPrintExport'])->name('revenue-changes.list.print');
 
     // Table 50 Route
     Route::resource('tuition-income', TuitionIncomeController::class)->names('tuition-income');
+    Route::get('tuition-income/list/excel', [App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController::class, 'listExcelExport'])->name('tuition-income.list.excel');
+    Route::get('tuition-income/list/pdf', [App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController::class, 'listPDFExport'])->name('tuition-income.list.pdf');
+    Route::get('tuition-income/list/print', [App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController::class, 'listPrintExport'])->name('tuition-income.list.print');
 
     // Table 51 Route
     Route::resource('percapita-revenue', PercapitaRevenueController::class)->names('percapita-revenue');
+    Route::get('percapita-revenue/list/excel', [App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController::class, 'listExcelExport'])->name('percapita-revenue.list.excel');
+    Route::get('percapita-revenue/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController::class, 'listPDFExport'])->name('percapita-revenue.list.pdf');
+    Route::get('percapita-revenue/list/print', [App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController::class, 'listPrintExport'])->name('percapita-revenue.list.print');
 
     // Table 52,53 Route
     Route::resource('university-costs', UniversityCostsController::class)->names('university-costs');
+    Route::get('university-costs/list/excel', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listExcelExport'])->name('university-costs.list.excel');
+    Route::get('university-costs/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPDFExport'])->name('university-costs.list.pdf');
+    Route::get('university-costs/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPrintExport'])->name('university-costs.list.print');
 
     // Table 54 Route
     Route::resource('cost-changes-trends', CostChangesTrendsController::class)->names('cost-changes-trends');
+    Route::get('cost-changes-trends/list/excel', [App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController::class, 'listExcelExport'])->name('cost-changes-trends.list.excel');
+    Route::get('cost-changes-trends/list/pdf', [App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController::class, 'listPDFExport'])->name('cost-changes-trends.list.pdf');
+    Route::get('cost-changes-trends/list/print', [App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController::class, 'listPrintExport'])->name('cost-changes-trends.list.print');
 
     // Table 55 Route
     Route::resource('cost-of-majors', CostOfMajorsController::class)->names('cost-of-majors');
+    Route::get('cost-of-majors/list/excel', [App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController::class, 'listExcelExport'])->name('cost-of-majors.list.excel');
+    Route::get('cost-of-majors/list/pdf', [App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController::class, 'listPDFExport'])->name('cost-of-majors.list.pdf');
+    Route::get('cost-of-majors/list/print', [App\Http\Controllers\Admin\Gostaresh\CostOfMajorsController::class, 'listPrintExport'])->name('cost-of-majors.list.print');
 
     // Table 56 Route
     Route::resource('credit-and-asset', CreditAndAssetController::class)->names('credit-and-asset');
+    Route::get('credit-and-asset/list/excel', [App\Http\Controllers\Admin\Gostaresh\CreditAndAssetController::class, 'listExcelExport'])->name('credit-and-asset.list.excel');
+    Route::get('credit-and-asset/list/pdf', [App\Http\Controllers\Admin\Gostaresh\CreditAndAssetController::class, 'listPDFExport'])->name('credit-and-asset.list.pdf');
+    Route::get('credit-and-asset/list/print', [App\Http\Controllers\Admin\Gostaresh\CreditAndAssetController::class, 'listPrintExport'])->name('credit-and-asset.list.print');
 
     // Table 57 Route
     Route::resource('units-general-status', UnitsGeneralStatusController::class)->names('units-general-status');
+    Route::get('units-general-status/list/excel', [App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController::class, 'listExcelExport'])->name('units-general-status.list.excel');
+    Route::get('units-general-status/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController::class, 'listPDFExport'])->name('units-general-status.list.pdf');
+    Route::get('units-general-status/list/print', [App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController::class, 'listPrintExport'])->name('units-general-status.list.print');
 
     // Table 58 Route
     Route::resource('roadmap-desired', RoadmapDesiredController::class)->names('roadmap-desired');
+    Route::get('roadmap-desired/list/excel', [App\Http\Controllers\Admin\Gostaresh\RoadmapDesiredController::class, 'listExcelExport'])->name('roadmap-desired.list.excel');
+    Route::get('roadmap-desired/list/pdf', [App\Http\Controllers\Admin\Gostaresh\RoadmapDesiredController::class, 'listPDFExport'])->name('roadmap-desired.list.pdf');
+    Route::get('roadmap-desired/list/print', [App\Http\Controllers\Admin\Gostaresh\RoadmapDesiredController::class, 'listPrintExport'])->name('roadmap-desired.list.print');
 });
