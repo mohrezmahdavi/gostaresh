@@ -19,10 +19,21 @@
 @endsection
 
 @section('styles-head')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -35,13 +46,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان</th>
-                                    <th>واحد دانشگاهی </th>
-                                    <th>رشته تحصیلی</th>
-                                    <th>جنسیت</th>
-                                    <th>کاردانی</th>
-                                    <th>کارشناسی</th>
-                                    <th>کارشناسی ارشد</th>
-                                    <th>دکتری</th>
+                                    
+                                    @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                    @endforeach
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -53,15 +63,32 @@
 
                                         <td>{{ $numberOfInternationalCourse?->province?->name . ' - ' . $numberOfInternationalCourse->county?->name }}
                                         </td>
+                                    
+                        
+                                        @if (filterCol('unit') == true)
                                         <td>{{ $numberOfInternationalCourse?->unit }}</td>
+                                        @endif
+                                        @if (filterCol('department_of_education_title') == true)
                                         <td>{{ $numberOfInternationalCourse?->department_of_education_title }}</td>
+                                        @endif
+                                        @if (filterCol('gender_title') == true)
                                         <td>{{ $numberOfInternationalCourse?->gender_title }}</td>
-                                        <td>{{ $numberOfInternationalCourse?->kardani_count }}</td>
-                                        <td>{{ $numberOfInternationalCourse?->karshenasi_count }}</td>
-                                        <td>{{ $numberOfInternationalCourse?->karshenasi_arshad_count }}</td>
-                                        <td>{{ $numberOfInternationalCourse?->docktora_count }}</td>
-
+                                        @endif
+                                        @if (filterCol('kardani_count') == true)
+                                        <td>{{ number_format($numberOfInternationalCourse?->kardani_count) }}</td>
+                                        @endif
+                                        @if (filterCol('karshenasi_count') == true)
+                                        <td>{{ number_format($numberOfInternationalCourse?->karshenasi_count) }}</td>
+                                        @endif
+                                        @if (filterCol('karshenasi_arshad_count') == true)
+                                        <td>{{ number_format($numberOfInternationalCourse?->karshenasi_arshad_count) }}</td>
+                                        @endif
+                                        @if (filterCol('docktora_count') == true)
+                                        <td>{{ number_format($numberOfInternationalCourse?->docktora_count) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $numberOfInternationalCourse?->year }}</td>
+                                        @endif
                                         <td>
 
                                             <a href="{{ route('number.of.international.course.edit', $numberOfInternationalCourse) }}"
@@ -88,4 +115,7 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

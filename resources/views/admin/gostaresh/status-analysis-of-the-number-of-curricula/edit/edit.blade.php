@@ -31,6 +31,7 @@
                         @csrf
                         @method('PUT')
                         <select-province-component province_default="{{ $stsAnalysisOfTheNumOfCurricula->province_id }}"
+                            zone_default="{{ $stsAnalysisOfTheNumOfCurricula->county->zone }}"
                             county_default="{{ $stsAnalysisOfTheNumOfCurricula->county_id }}"
                             city_default="{{ $stsAnalysisOfTheNumOfCurricula->city_id }}"
                             rural_district_default="{{ $stsAnalysisOfTheNumOfCurricula->rural_district_id }}">

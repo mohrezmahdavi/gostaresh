@@ -54,7 +54,7 @@ class TuitionIncomeController extends Controller
      */
     public function store(TuitionIncomeRequest $request)
     {
-         AverageTuitionIncome::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         AverageTuitionIncome::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -89,7 +89,7 @@ class TuitionIncomeController extends Controller
      */
     public function update(TuitionIncomeRequest $request, AverageTuitionIncome $tuitionIncome)
     {
-        $tuitionIncome->update($request->all());
+        $tuitionIncome->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

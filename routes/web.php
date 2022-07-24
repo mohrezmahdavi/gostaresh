@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
 use App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController;
 use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
+use App\Http\Controllers\Admin\Zone\ZoneController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/user/edit/{user}', [\App\Http\Controllers\Admin\User\EditController::class, 'edit'])->name('admin.user.edit');
     Route::post('/user/edit/{user}', [\App\Http\Controllers\Admin\User\UpdateController::class, 'update'])->name('admin.user.update');
     Route::get('/user/delete/{user}', [\App\Http\Controllers\Admin\User\DeleteController::class, 'delete'])->name('admin.user.delete');
+
+    //Zone
+    Route::get('/zones/create', [ZoneController::class, 'create'])->name('admin.zone.create');
+    Route::post('/zones', [ZoneController::class, 'store'])->name('admin.zone.store');
 
     // Table 1 Route
     Route::resource('demographic/changes/city', App\Http\Controllers\Admin\Gostaresh\DemographicChangesOfCityController::class)->names('demographic.changes.city')->parameters([

@@ -55,7 +55,7 @@ class CostOfMajorsController extends Controller
      */
     public function store(CostOfMajorsRequest $request)
     {
-        AverageCostOfMajor::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AverageCostOfMajor::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +90,7 @@ class CostOfMajorsController extends Controller
      */
     public function update(CostOfMajorsRequest $request, AverageCostOfMajor $costOfMajor)
     {
-        $costOfMajor->update($request->all());
+        $costOfMajor->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

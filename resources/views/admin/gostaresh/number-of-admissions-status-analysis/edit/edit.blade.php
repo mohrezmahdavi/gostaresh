@@ -32,6 +32,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $numberOfAdmissionsStatusAnalysis->province_id }}"
+                            zone_default="{{ $numberOfAdmissionsStatusAnalysis->county->zone }}"
                             county_default="{{ $numberOfAdmissionsStatusAnalysis->county_id }}" city_default="{{ $numberOfAdmissionsStatusAnalysis->city_id }}"
                             rural_district_default="{{ $numberOfAdmissionsStatusAnalysis->rural_district_id }}">
                         </select-province-component>

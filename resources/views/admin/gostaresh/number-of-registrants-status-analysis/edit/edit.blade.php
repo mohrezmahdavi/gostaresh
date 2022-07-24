@@ -33,6 +33,7 @@
                         @csrf
                         @method('PUT')
                         <select-province-component province_default="{{ $numberOfRegistrant->province_id }}"
+                            zone_default="{{ $numberOfRegistrant->county->zone }}"
                             county_default="{{ $numberOfRegistrant->county_id }}"
                             city_default="{{ $numberOfRegistrant->city_id }}"
                             rural_district_default="{{ $numberOfRegistrant->rural_district_id }}">

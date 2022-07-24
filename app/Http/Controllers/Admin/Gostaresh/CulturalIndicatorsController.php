@@ -58,7 +58,7 @@ class CulturalIndicatorsController extends Controller
      */
     public function store(CulturalIndicatorsRequest $request)
     {
-         CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -93,7 +93,7 @@ class CulturalIndicatorsController extends Controller
      */
     public function update(CulturalIndicatorsRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
-        $culturalIndicator->update($request->all());
+        $culturalIndicator->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

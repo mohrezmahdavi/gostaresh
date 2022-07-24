@@ -90,7 +90,7 @@ class PaymentRAndDDepartmentController extends Controller
             'year' => $request->year ?? null,
             'month' => $request->month ?? null,
         ]);
-        // PaymentRAndDDepartment::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        // PaymentRAndDDepartment::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -135,7 +135,7 @@ class PaymentRAndDDepartmentController extends Controller
             'year' => $request->year ?? null,
             'month' => $request->month ?? null,
         ]);
-        // $paymentRAndDDepartment->update($request->all());
+        // $paymentRAndDDepartment->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

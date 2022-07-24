@@ -54,7 +54,7 @@ class OrganizationalCultureController extends Controller
      */
     public function store(OrganizationalCultureRequest $request)
     {
-        OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -89,7 +89,7 @@ class OrganizationalCultureController extends Controller
      */
     public function update(OrganizationalCultureRequest $request, OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
-        $organizationalCulture->update($request->all());
+        $organizationalCulture->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

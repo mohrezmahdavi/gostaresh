@@ -79,7 +79,7 @@ class AcademicMajorEducationalController extends Controller
      */
     public function store(AcademicMajorEducationalRequest $request)
     {
-        AcademicMajorEducational::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AcademicMajorEducational::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class AcademicMajorEducationalController extends Controller
      */
     public function update(AcademicMajorEducationalRequest $request, AcademicMajorEducational $academicMajorEducational)
     {
-        $academicMajorEducational->update($request->all());
+        $academicMajorEducational->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -18,13 +18,20 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function index()
     {
-        $query = AverageTestScoreOfTheLastFivePercentOfAdmitted::query();
+        $query = AverageTestScoreOfTheLastFivePercentOfAdmitted::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = AverageTestScoreOfTheLastFivePercentOfAdmitted::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $averageTestScoreOfTheLastFivePercentOfAdmitteds = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.list', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds'));
+        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.list', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function store(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request)
     {
-        AverageTestScoreOfTheLastFivePercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        AverageTestScoreOfTheLastFivePercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -80,7 +87,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function update(AverageTestScoreOfTheLastFivePercentOfAdmittedRequest $request, AverageTestScoreOfTheLastFivePercentOfAdmitted $avgTstScOfLastFivePctOfAdmitted)
     {
-        $avgTstScOfLastFivePctOfAdmitted->update($request->all());
+        $avgTstScOfLastFivePctOfAdmitted->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

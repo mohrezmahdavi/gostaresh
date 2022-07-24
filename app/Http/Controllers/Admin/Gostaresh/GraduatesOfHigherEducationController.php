@@ -88,7 +88,7 @@ class GraduatesOfHigherEducationController extends Controller
      */
     public function store(GraduatesOfHigherEducationRequest $request)
     {
-        GraduatesOfHigherEducationCenters::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        GraduatesOfHigherEducationCenters::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -123,7 +123,7 @@ class GraduatesOfHigherEducationController extends Controller
      */
     public function update(GraduatesOfHigherEducationRequest $request, GraduatesOfHigherEducationCenters $graduatesOfHigherEducation)
     {
-        $graduatesOfHigherEducation->update($request->all());
+        $graduatesOfHigherEducation->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

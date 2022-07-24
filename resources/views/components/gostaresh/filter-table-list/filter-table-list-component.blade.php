@@ -9,6 +9,7 @@
                             <div class="col-md-12">
                                 <select-province-inline-component
                                     province_default="{{ auth()->user()->province_id ?? request()->province_id }}"
+                                    zone_default="{{ auth()->user()->county->zone ?? request()->zone_id }}"
                                     county_default="{{ auth()->user()->county_id ?? request()->county_id }}"
                                     city_default="{{ auth()->user()->city_id ?? request()->city_id }}"
                                     rural_district_default="{{ auth()->user()->rural_district_id ?? request()->rural_district_id }}">

@@ -55,7 +55,7 @@ class EmployeeProfileController extends Controller
      */
     public function store(EmployeeProfileRequest $request)
     {
-        EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EmployeeProfile::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +90,7 @@ class EmployeeProfileController extends Controller
      */
     public function update(EmployeeProfileRequest $request, EmployeeProfile $employeeProfile)
     {
-        $employeeProfile->update($request->all());
+        $employeeProfile->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

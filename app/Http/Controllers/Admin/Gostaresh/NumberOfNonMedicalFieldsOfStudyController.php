@@ -17,13 +17,20 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function index()
     {
-        $query = NumberOfNonMedicalFieldsOfStudy::query();
+        $query = NumberOfNonMedicalFieldsOfStudy::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfNonMedicalFieldsOfStudy::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfNonMedicalFieldsOfStudies = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.list.list', compact('numberOfNonMedicalFieldsOfStudies'));
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.list.list', compact('numberOfNonMedicalFieldsOfStudies', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -44,7 +51,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function store(NumberOfNonMedicalFieldsOfStudyRequest $request)
     {
-        NumberOfNonMedicalFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfNonMedicalFieldsOfStudy::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +86,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function update(NumberOfNonMedicalFieldsOfStudyRequest $request, NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
     {
-        $numberOfNonMedicalFieldsOfStudy->update($request->all());
+        $numberOfNonMedicalFieldsOfStudy->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

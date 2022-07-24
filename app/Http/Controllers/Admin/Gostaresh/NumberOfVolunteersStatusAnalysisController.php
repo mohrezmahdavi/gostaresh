@@ -52,7 +52,7 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function store(NumberOfVolunteersStatusAnalysisRequest $request)
     {
-        NumberOfVolunteersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfVolunteersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -87,7 +87,7 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
      */
     public function update(NumberOfVolunteersStatusAnalysisRequest $request, NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
-        $numberOfVolunteersStatusAnalysis->update($request->all());
+        $numberOfVolunteersStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -70,6 +70,7 @@
 
                         <select-province-component
                             province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
                             rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">

@@ -18,13 +18,20 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function index()
     {
-        $query = StatusAnalysisOfTheNumberOfCourse::query();
+        $query = StatusAnalysisOfTheNumberOfCourse::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCourse::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $statusAnalysisOfTheNumberOfCourses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.list', compact('statusAnalysisOfTheNumberOfCourses', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -45,7 +52,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function store(StatusAnalysisOfTheNumberOfCourseRequest $request)
     {
-        StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        StatusAnalysisOfTheNumberOfCourse::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +86,7 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
      */
     public function update(StatusAnalysisOfTheNumberOfCourseRequest $request, StatusAnalysisOfTheNumberOfCourse $statusAnalysisOfTheNumOfCourse)
     {
-        $statusAnalysisOfTheNumOfCourse->update($request->all());
+        $statusAnalysisOfTheNumOfCourse->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

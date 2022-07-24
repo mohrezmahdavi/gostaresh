@@ -60,7 +60,7 @@ class TechnologicalProductController extends Controller
      */
     public function store(TechnologicalProductRequest $request)
     {
-        TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -95,7 +95,7 @@ class TechnologicalProductController extends Controller
      */
     public function update(TechnologicalProductRequest $request, TechnologicalProduct $technologicalProduct)
     {
-        $technologicalProduct->update($request->all());
+        $technologicalProduct->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

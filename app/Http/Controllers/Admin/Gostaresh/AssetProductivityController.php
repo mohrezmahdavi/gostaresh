@@ -53,7 +53,7 @@ class AssetProductivityController extends Controller
      */
     public function store(AssetProductivityRequest $request)
     {
-         IndexOfAssetProductivity::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         IndexOfAssetProductivity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +88,7 @@ class AssetProductivityController extends Controller
      */
     public function update(AssetProductivityRequest $request, IndexOfAssetProductivity $assetProductivity)
     {
-        $assetProductivity->update($request->all());
+        $assetProductivity->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

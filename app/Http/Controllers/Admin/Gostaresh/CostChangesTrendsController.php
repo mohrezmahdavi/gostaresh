@@ -56,7 +56,7 @@ class CostChangesTrendsController extends Controller
      */
     public function store(CostChangesTrendsRequest $request)
     {
-        CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -91,7 +91,7 @@ class CostChangesTrendsController extends Controller
      */
     public function update(CostChangesTrendsRequest $request, CostChangesTrendsAnalysis $costChangesTrend)
     {
-        $costChangesTrend->update($request->all());
+        $costChangesTrend->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

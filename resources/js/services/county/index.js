@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 class CountyService {
-    async listCounties(province_id = '') {
+    async listCounties(province_id = '', zone_id = '') {
         return await this.fetchAsync(
-            `/api/counties?province_id=${province_id}`) 
+            `/api/counties?province_id=${province_id}&zone_id=${zone_id}`)
     }
 
     async getCountyInfoById(id) {

@@ -55,7 +55,7 @@ class CreditAndAssetController extends Controller
      */
     public function store(CreditAndAssetRequest $request)
     {
-        CreditAndAssetAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        CreditAndAssetAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -90,7 +90,7 @@ class CreditAndAssetController extends Controller
      */
     public function update(CreditAndAssetRequest $request, CreditAndAssetAnalysis $creditAndAsset)
     {
-        $creditAndAsset->update($request->all());
+        $creditAndAsset->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

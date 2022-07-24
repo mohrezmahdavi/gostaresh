@@ -56,7 +56,7 @@ class RoadmapDesiredController extends Controller
      */
     public function store(RoadmapDesiredRequest $request)
     {
-        RoadmapToAchieveDesiredSituation::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        RoadmapToAchieveDesiredSituation::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -91,7 +91,7 @@ class RoadmapDesiredController extends Controller
      */
     public function update(RoadmapDesiredRequest $request, RoadmapToAchieveDesiredSituation $roadmapDesired)
     {
-        $roadmapDesired->update($request->all());
+        $roadmapDesired->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

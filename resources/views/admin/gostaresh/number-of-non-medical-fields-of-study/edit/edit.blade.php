@@ -34,6 +34,7 @@
 
                         <select-province-component
                             province_default="{{ $numberOfNonMedicalFieldsOfStudy->province_id ?? '' }}"
+                            zone_default="{{ $numberOfNonMedicalFieldsOfStudy->county->zone }}"
                             county_default="{{ $numberOfNonMedicalFieldsOfStudy->county_id ?? '' }}"
                             city_default="{{ $numberOfNonMedicalFieldsOfStudy->city_id ?? '' }}"
                             rural_district_default="{{ $numberOfNonMedicalFieldsOfStudy->rural_district_id ?? '' }}">

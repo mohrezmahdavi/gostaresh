@@ -32,6 +32,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $annualGrthRateOfStdnEnrollment->province_id }}"
+                            zone_default="{{ $annualGrthRateOfStdnEnrollment->county->zone }}"
                             county_default="{{ $annualGrthRateOfStdnEnrollment->county_id }}" city_default="{{ $annualGrthRateOfStdnEnrollment->city_id }}"
                             rural_district_default="{{ $annualGrthRateOfStdnEnrollment->rural_district_id }}">
                         </select-province-component>

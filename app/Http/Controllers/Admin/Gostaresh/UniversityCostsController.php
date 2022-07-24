@@ -54,7 +54,7 @@ class UniversityCostsController extends Controller
      */
     public function store(UniversityCostsRequest $request)
     {
-        UniversityCostsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        UniversityCostsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -89,7 +89,7 @@ class UniversityCostsController extends Controller
      */
     public function update(UniversityCostsRequest $request, UniversityCostsAnalysis $universityCost)
     {
-        $universityCost->update($request->all());
+        $universityCost->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

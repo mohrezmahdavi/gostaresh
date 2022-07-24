@@ -34,6 +34,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $multipleDeprivationIndexOfCity->province_id }}"
+                            zone_default="{{ $multipleDeprivationIndexOfCity->county->zone }}"
                             county_default="{{ $multipleDeprivationIndexOfCity->county_id }}"
                             city_default="{{ $multipleDeprivationIndexOfCity->city_id }}"
                             rural_district_default="{{ $multipleDeprivationIndexOfCity->rural_district_id }}">

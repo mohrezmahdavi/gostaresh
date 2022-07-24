@@ -53,7 +53,7 @@ class PercapitaStatusAnalysesController extends Controller
      */
     public function store(PercapitaStatusAnalysisRequest $request)
     {
-         PercapitaStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->all()));
+         PercapitaStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -88,7 +88,7 @@ class PercapitaStatusAnalysesController extends Controller
      */
     public function update(PercapitaStatusAnalysisRequest $request, PercapitaStatusAnalysis $percapitaStatusAnalysis)
     {
-        $percapitaStatusAnalysis->update($request->all());
+        $percapitaStatusAnalysis->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

@@ -17,13 +17,20 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function index()
     {
-        $query = NumberOfInternationalCourse::query();
+        $query = NumberOfInternationalCourse::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = NumberOfInternationalCourse::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $numberOfInternationalCourses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses'));
+        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses',, 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
@@ -44,7 +51,7 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function store(NumberOfInternationalCourseRequest $request)
     {
-        NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        NumberOfInternationalCourse::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -79,7 +86,7 @@ class NumberOfInternationalCourseController extends Controller
      */
     public function update(NumberOfInternationalCourseRequest $request, NumberOfInternationalCourse $numberOfInternationalCourse)
     {
-        $numberOfInternationalCourse->update($request->all());
+        $numberOfInternationalCourse->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 

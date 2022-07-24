@@ -79,7 +79,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function store(EconomicParticipationRateRequest $request)
     {
-        EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->all()));
+        EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -114,7 +114,7 @@ class EconomicParticipationRateController extends Controller
      */
     public function update(EconomicParticipationRateRequest $request, EconomicParticipationRate $economicParticipationRate)
     {
-        $economicParticipationRate->update($request->all());
+        $economicParticipationRate->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 
