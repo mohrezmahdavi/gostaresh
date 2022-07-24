@@ -2489,6 +2489,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.count_province_changed != 0) {
         this.county_selected = "";
         this.zones_count = "";
+        this.zone_selected = "";
       }
 
       if (newValue != "") {
@@ -2507,6 +2508,7 @@ __webpack_require__.r(__webpack_exports__);
         this.rural_district_selected = "";
         this.rural_districts = [];
         this.cities = [];
+        this.counties = [];
       }
 
       if (newValue != "") {
@@ -2681,9 +2683,6 @@ __webpack_require__.r(__webpack_exports__);
     province_default: {
       "default": ""
     },
-    zone_default: {
-      "default": ""
-    },
     county_default: {
       "default": ""
     },
@@ -2699,6 +2698,7 @@ __webpack_require__.r(__webpack_exports__);
       country_selected: 1,
       count_province_changed: 0,
       count_county_changed: 0,
+      count_zone_changed: 0,
       provinces: [],
       province_selected: "",
       flag_province: true,
@@ -2749,6 +2749,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.count_province_changed != 0) {
         this.county_selected = "";
         this.zones_count = "";
+        this.zone_selected = "";
       }
 
       if (newValue != "") {
@@ -2767,6 +2768,7 @@ __webpack_require__.r(__webpack_exports__);
         this.rural_district_selected = "";
         this.rural_districts = [];
         this.cities = [];
+        this.counties = [];
       }
 
       if (newValue != "") {
@@ -62752,7 +62754,7 @@ var render = function () {
                   _vm._v("انتخاب کنید"),
                 ]),
                 _vm._v(" "),
-                _vm._l(_vm.cities, function (city) {
+                _vm._l(this.cities, function (city) {
                   return _c(
                     "option",
                     { key: city.id, domProps: { value: city.id } },

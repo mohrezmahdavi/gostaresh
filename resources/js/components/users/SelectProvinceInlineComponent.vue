@@ -69,7 +69,7 @@
 
     <div class="form-group col-md-3">
       <label class="col-form-label" for="city_id">شهر</label>
-      <div class="">
+       <div class="">
         <select
           v-if="flag_city"
           name="city_id"
@@ -78,7 +78,7 @@
           v-model="city_selected"
         >
           <option selected value="">انتخاب کنید</option>
-          <option v-for="city in cities" :value="city.id" :key="city.id">
+          <option v-for="city in this.cities" :value="city.id" :key="city.id">
             {{ city.name }}
           </option>
         </select>
@@ -124,9 +124,6 @@ export default {
     province_default: {
       default: "",
     },
-    zone_default: {
-      default: "",
-    },
     county_default: {
       default: "",
     },
@@ -143,6 +140,7 @@ export default {
 
       count_province_changed: 0,
       count_county_changed: 0,
+      count_zone_changed: 0,
 
       provinces: [],
       province_selected: "",
@@ -194,6 +192,7 @@ export default {
       if (this.count_province_changed != 0) {
         this.county_selected = "";
         this.zones_count = "";
+        this.zone_selected = "";
       }
       if (newValue != "") {
         ProvinceService.getProvinceInfoById(newValue).then((data) => {
@@ -209,6 +208,7 @@ export default {
         this.rural_district_selected = "";
         this.rural_districts = [];
         this.cities = [];
+        this.counties = [];
       }
 
       if (newValue != "") {

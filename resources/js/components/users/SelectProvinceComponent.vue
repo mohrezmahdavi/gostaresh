@@ -194,6 +194,7 @@ export default {
       if (this.count_province_changed != 0) {
         this.county_selected = "";
         this.zones_count = "";
+        this.zone_selected = "";
       }
       if (newValue != "") {
         ProvinceService.getProvinceInfoById(newValue).then((data) => {
@@ -209,6 +210,7 @@ export default {
         this.rural_district_selected = "";
         this.rural_districts = [];
         this.cities = [];
+        this.counties = [];
       }
 
       if (newValue != "") {
