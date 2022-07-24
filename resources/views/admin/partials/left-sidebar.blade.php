@@ -96,7 +96,7 @@
 
                 <li>
                     <a href="{{ route('admin.index') }}">
-                        <i class="mdi mdi-home"></i>
+                        <i class="mdi mdi-home "></i>
                         <span> خانه </span>
                     </a>
                 </li>

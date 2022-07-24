@@ -4,8 +4,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="get">
-                        <div class="row" id="app">
+                    <form action="" method="get" id="app">
+                        <div class="row">
                             <div class="col-md-12">
                                 <select-province-inline-component
                                     province_default="{{ auth()->user()->province_id ?? request()->province_id }}"

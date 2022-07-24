@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfVolunteersStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfVolunteersStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfVolunteersStatusAnalysis\NumberOfVolunteersStatusAnalysisRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 18 Controller
 class NumberOfVolunteersStatusAnalysisController extends Controller
@@ -32,6 +35,30 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfVolunteersStatusAnalysisRecords()
+    {
+        return NumberOfVolunteersStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfVolunteersStatusAnalyses = $this->getNumberOfVolunteersStatusAnalysisRecords();
+        return Excel::download(new ListExport($numberOfVolunteersStatusAnalyses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberOfVolunteersStatusAnalyses = $this->getNumberOfVolunteersStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-volunteers-status-analysis.list.pdf', compact('numberOfVolunteersStatusAnalyses'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberOfVolunteersStatusAnalyses = $this->getNumberOfVolunteersStatusAnalysisRecords();
+        return view('admin.gostaresh.number-of-volunteers-status-analysis.list.pdf', compact('numberOfVolunteersStatusAnalyses'));
     }
 
     /**
