@@ -20,10 +20,21 @@
 @endsection
 
 @section('styles-head')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('assets/datepicker/mds.bs.datetimepicker.style.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('assets/datepicker/mds.bs.datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
+
+
+
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -36,14 +47,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>شهرستان </th>
-                                    <th>کاردانی پیوسته</th>
-                                    <th>کاردانی ناپیوسته</th>
-                                    <th>کارشناسی پیوسته</th>
-                                    <th>کارشناسی ناپیوسته</th>
-                                    <th>کارشناسی ارشد</th>
-                                    <th>دکتری حرفه ای</th>
-                                    <th>دکتری تخصصی</th>
-                                    <th>گروه/ مقطع</th>
+                                    @foreach($filterColumnsCheckBoxes as $key => $value)
+                                    @if( filterCol($key))
+                                        <th>{{$value}}</th>
+                                    @endif
+                                    @endforeach
 
                                     <th>اقدام</th>
                                 </tr>
@@ -55,15 +63,32 @@
         
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->province?->name . ' - ' . $numberOfNonMedicalFieldsOfStudy->county?->name }}
                                         </td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_na_peyvaste_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_peyvaste_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_na_peyvaste_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_arshad_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_herfei_count) }}</td>
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_takhasosi_count) }}</td>
+                            
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->department_of_education_title }}</td>
+                                        @if (filterCol('kardani_peyvaste_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count) }}</td>
+                                        @endif
+                                        @if (filterCol('kardani_na_peyvaste_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_na_peyvaste_count) }}</td>
+                                        @endif
+                                        @if (filterCol('karshenasi_peyvaste_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_peyvaste_count) }}</td>
+                                        @endif
+                                        @if (filterCol('karshenasi_na_peyvaste_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_na_peyvaste_count) }}</td>
+                                        @endif
+                                        @if (filterCol('karshenasi_arshad_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_arshad_count) }}</td>
+                                        @endif
+                                        @if (filterCol('docktora_herfei_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_herfei_count) }}</td>
+                                        @endif
+                                        @if (filterCol('docktora_takhasosi_count') == true)
+                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_takhasosi_count) }}</td>
+                                        @endif
+                                        @if (filterCol('year') == true)
                                         <td>{{ $numberOfNonMedicalFieldsOfStudy?->year }}</td>
+                                        @endif
                                         <td>
         
                                             <a href="{{ route('number.of.non.medical.fields.of.study.edit', $numberOfNonMedicalFieldsOfStudy) }}"
@@ -90,4 +115,7 @@
 @endsection
 
 @section('body-scripts')
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+
 @endsection

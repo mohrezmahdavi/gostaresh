@@ -20,13 +20,20 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
      */
     public function index()
     {
-        $query = StatusAnalysisOfTheNumberOfFieldsOfStudy::query();
+        $query = StatusAnalysisOfTheNumberOfFieldsOfStudy::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfFieldsOfStudy::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $statusAnalysisOfTheNumberOfFieldsOfStudies = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.list', compact('statusAnalysisOfTheNumberOfFieldsOfStudies'));
+        return view('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.list', compact('statusAnalysisOfTheNumberOfFieldsOfStudies', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

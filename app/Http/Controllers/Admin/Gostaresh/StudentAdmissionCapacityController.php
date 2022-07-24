@@ -18,13 +18,20 @@ class StudentAdmissionCapacityController extends Controller
      */
     public function index()
     {
-        $query = StudentAdmissionCapacity::query();
+        $query = StudentAdmissionCapacity::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $studentAdmissionCapacities = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.student-admission-capacity.list.list', compact('studentAdmissionCapacities'));
+        return view('admin.gostaresh.student-admission-capacity.list.list', compact('studentAdmissionCapacities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

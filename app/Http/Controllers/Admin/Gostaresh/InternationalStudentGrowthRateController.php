@@ -17,13 +17,20 @@ class InternationalStudentGrowthRateController extends Controller
      */
     public function index()
     {
-        $query = InternationalStudentGrowthRate::query();
+        $query = InternationalStudentGrowthRate::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $internationalStudentGrowthRates = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.international-student-growth-rate.list.list', compact('internationalStudentGrowthRates'));
+        return view('admin.gostaresh.international-student-growth-rate.list.list', compact('internationalStudentGrowthRates', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

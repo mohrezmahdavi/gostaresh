@@ -65,4 +65,58 @@ class InternationalStudentGrowthRate extends Model
     {
         return $this->belongsTo(RuralDistrict::class, 'rural_district_id');
     }
+
+    public function scopeWhereRequestsQuery($query)
+    {
+        $query = filterByOwnProvince($query);
+
+        if (request('province_id'))
+            $query->where('province_id', request('province_id'));
+
+        if (request('county_id'))
+            $query->where('county_id', request('county_id'));
+
+        if (request('city_id'))
+            $query->where('city_id', request('city_id'));
+
+        if (request('rural_district_id'))
+            $query->where('rural_district_id', request('rural_district_id'));
+
+        if (request('start_date'))
+        {
+            $startDateJ = verta(request('start_date'));
+            $startMonth = (int)$startDateJ->format('n');
+            $startYear = (int)$startDateJ->format('Y');
+            $query->where('year', '>', $startYear)->orWhere(function ($query) use ($startYear, $startMonth) {
+                $query->where('year', $startYear)->where('month', '>', $startMonth);
+            });
+        }
+
+        if (request('end_date'))
+        {
+            $endDateJ = verta(request('end_date'));
+            $endMonth = (int)$endDateJ->format('n');
+            $endYear = (int)$endDateJ->format('Y');
+            $query->where('year', '<=', $endYear)->orWhere(function ($query) use ($endYear, $endMonth) {
+                $query->where('year', $endYear)->where('month', '<=', $endMonth);
+            });
+        }
+        if (request('year')) {
+            $query->where('year', request('year'));
+        }
+
+        return $query;
+    }
+
+    public static $filterColumnsCheckBoxes = [
+
+        "unit"                          => "واحد دانشگاهی",
+        "department_of_education_title" => "رشته تحصیلی",
+        "gender_title"                  => "جنسیت",
+        "associate_degree"              => "کاردانی",
+        "bachelor_degree"               => "کارشناسی",
+        "masters"                       => "کارشناسی ارشد",
+        "phd"                           => "دکتری",
+
+    ];
 }

@@ -18,13 +18,20 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
      */
     public function index()
     {
-        $query = AverageTestScoreOfTheLastFivePercentOfAdmitted::query();
+        $query = AverageTestScoreOfTheLastFivePercentOfAdmitted::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = AverageTestScoreOfTheLastFivePercentOfAdmitted::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $averageTestScoreOfTheLastFivePercentOfAdmitteds = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.list', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds'));
+        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.list', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**

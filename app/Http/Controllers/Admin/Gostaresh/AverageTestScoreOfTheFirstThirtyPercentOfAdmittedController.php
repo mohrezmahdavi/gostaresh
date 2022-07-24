@@ -18,13 +18,20 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
      */
     public function index()
     {
-        $query = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::query();
+        $query = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::whereRequestsQuery();
 
-        $query = filterByOwnProvince($query);
+        $filterColumnsCheckBoxes = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::$filterColumnsCheckBoxes;
+
+        $yearSelectedList = $this->yearSelectedList(clone $query);
 
         $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.list', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitteds'));
+        return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.list', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitteds', 'filterColumnsCheckBoxes', 'yearSelectedList'));
+    }
+
+    private function yearSelectedList($query)
+    {
+        return $query->select('year')->distinct()->pluck('year');
     }
 
     /**
