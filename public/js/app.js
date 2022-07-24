@@ -2411,10 +2411,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -2471,12 +2467,11 @@ __webpack_require__.r(__webpack_exports__);
       this.province_selected = this.province_default;
     }
 
-    if (this.zone_default != "") {
-      this.zone_selected = this.zone_default;
-    }
-
     if (this.county_default != "") {
-      this.county_selected = this.county_default;
+      _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].getCountyInfoById(this.county_default).then(function (data) {
+        _this.zone_selected = data.data.zone;
+        _this.county_selected = _this.county_default;
+      });
     }
 
     if (this.city_default != "") {
@@ -2677,10 +2672,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
  // import RuralDistrictService from "../../services/rural-district";
@@ -2736,12 +2727,11 @@ __webpack_require__.r(__webpack_exports__);
       this.province_selected = this.province_default;
     }
 
-    if (this.zone_default != "") {
-      this.zone_selected = this.zone_default;
-    }
-
     if (this.county_default != "") {
-      this.county_selected = this.county_default;
+      _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].getCountyInfoById(this.county_default).then(function (data) {
+        _this.zone_selected = data.data.zone;
+        _this.county_selected = _this.county_default;
+      });
     }
 
     if (this.city_default != "") {
@@ -62658,7 +62648,7 @@ var render = function () {
     _c("div", { staticClass: "form-group col-md-3" }, [
       _c(
         "label",
-        { staticClass: " col-form-label", attrs: { for: "county_id" } },
+        { staticClass: "col-form-label", attrs: { for: "county_id" } },
         [_vm._v("شهرستان")]
       ),
       _vm._v(" "),
@@ -62722,7 +62712,7 @@ var render = function () {
     _c("div", { staticClass: "form-group col-md-3" }, [
       _c(
         "label",
-        { staticClass: " col-form-label", attrs: { for: "city_id" } },
+        { staticClass: "col-form-label", attrs: { for: "city_id" } },
         [_vm._v("شهر")]
       ),
       _vm._v(" "),

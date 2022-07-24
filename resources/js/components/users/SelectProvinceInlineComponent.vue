@@ -29,18 +29,14 @@
       <label class="col-form-label" for="zone_id">منطقه</label>
       <div class="">
         <select
-                v-if="flag_zone"
-                name="zone_id"
-                class="form-control"
-                id="zone_id"
-                v-model="zone_selected"
+          v-if="flag_zone"
+          name="zone_id"
+          class="form-control"
+          id="zone_id"
+          v-model="zone_selected"
         >
           <option selected value="">انتخاب کنید</option>
-          <option
-                  v-for="zone in zones_count"
-                  :value="zone"
-                  :key="zone"
-          >
+          <option v-for="zone in zones_count" :value="zone" :key="zone">
             {{ zone }}
           </option>
         </select>
@@ -49,7 +45,7 @@
     </div>
 
     <div class="form-group col-md-3">
-      <label class=" col-form-label" for="county_id">شهرستان</label>
+      <label class="col-form-label" for="county_id">شهرستان</label>
       <div class="">
         <select
           v-if="flag_county"
@@ -72,7 +68,7 @@
     </div>
 
     <div class="form-group col-md-3">
-      <label class=" col-form-label" for="city_id">شهر</label>
+      <label class="col-form-label" for="city_id">شهر</label>
       <div class="">
         <select
           v-if="flag_city"
@@ -91,28 +87,28 @@
     </div>
 
     <!--<div class="form-group col-md-3">-->
-      <!--<label class="col-form-label" for="rural_district_id"-->
-        <!--&gt;دهستان</label-->
-      <!--&gt;-->
-      <!--<div class="">-->
-        <!--<select-->
-          <!--v-if="flag_rural_district"-->
-          <!--name="rural_district_id"-->
-          <!--class="form-control"-->
-          <!--id="rural_district_id"-->
-          <!--v-model="rural_district_selected"-->
-        <!--&gt;-->
-          <!--<option selected value="">انتخاب کنید</option>-->
-          <!--<option-->
-            <!--v-for="rural_district in this.rural_districts"-->
-            <!--:value="rural_district.id"-->
-            <!--:key="rural_district.id"-->
-          <!--&gt;-->
-            <!--{{ rural_district.name }}-->
-          <!--</option>-->
-        <!--</select>-->
-        <!--<select v-else class="form-control" id="rural_district_id"></select>-->
-      <!--</div>-->
+    <!--<label class="col-form-label" for="rural_district_id"-->
+    <!--&gt;دهستان</label-->
+    <!--&gt;-->
+    <!--<div class="">-->
+    <!--<select-->
+    <!--v-if="flag_rural_district"-->
+    <!--name="rural_district_id"-->
+    <!--class="form-control"-->
+    <!--id="rural_district_id"-->
+    <!--v-model="rural_district_selected"-->
+    <!--&gt;-->
+    <!--<option selected value="">انتخاب کنید</option>-->
+    <!--<option-->
+    <!--v-for="rural_district in this.rural_districts"-->
+    <!--:value="rural_district.id"-->
+    <!--:key="rural_district.id"-->
+    <!--&gt;-->
+    <!--{{ rural_district.name }}-->
+    <!--</option>-->
+    <!--</select>-->
+    <!--<select v-else class="form-control" id="rural_district_id"></select>-->
+    <!--</div>-->
     <!--</div>-->
   </div>
 </template>
@@ -152,9 +148,9 @@ export default {
       province_selected: "",
       flag_province: true,
 
-      flag_zone : true,
-      zone_selected : "",
-      zones_count : "",
+      flag_zone: true,
+      zone_selected: "",
+      zones_count: "",
 
       counties: [],
       county_selected: "",
@@ -178,12 +174,11 @@ export default {
       this.province_selected = this.province_default;
     }
 
-    if (this.zone_default != "") {
-      this.zone_selected = this.zone_default;
-    }
-
     if (this.county_default != "") {
-      this.county_selected = this.county_default;
+      CountyService.getCountyInfoById(this.county_default).then((data) => {
+        this.zone_selected = data.data.zone;
+        this.county_selected = this.county_default;
+      });
     }
 
     if (this.city_default != "") {
@@ -200,18 +195,15 @@ export default {
         this.county_selected = "";
         this.zones_count = "";
       }
-      if(newValue != "")
-      {
+      if (newValue != "") {
         ProvinceService.getProvinceInfoById(newValue).then((data) => {
-
           this.zones_count = data.data.zone_number;
         });
       }
       this.count_province_changed++;
     },
 
-    zone_selected(newValue)
-    {
+    zone_selected(newValue) {
       if (this.count_zone_changed != 0) {
         this.city_selected = "";
         this.rural_district_selected = "";
@@ -220,10 +212,12 @@ export default {
       }
 
       if (newValue != "") {
-        CountyService.listCounties(this.province_selected,newValue).then((data) => {
-          this.counties = [];
-          this.counties = data.data;
-        });
+        CountyService.listCounties(this.province_selected, newValue).then(
+          (data) => {
+            this.counties = [];
+            this.counties = data.data;
+          }
+        );
       }
 
       this.count_zone_changed++;
