@@ -91,6 +91,7 @@
                         </div>
 
                         <select-province-component province_default="{{ $user->province_id }}"
+                                                   zone_default="{{ $user->zone_id }}"
                                                    county_default="{{ $user->county_id }}"
                                                    city_default="{{ $user->city_id }}"
                                                    rural_district_default="{{ $user->rural_district_id }}">
