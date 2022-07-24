@@ -46,7 +46,7 @@
                                         <th>{{$value}}</th>
                                     @endif
                                 @endforeach
-                                
+
                                 <th>سال</th>
                                 <th>اقدام</th>
                             </tr>
@@ -70,7 +70,7 @@
                                     <td>{{ $assetProductivityItem?->year }}</td>
                                     <td>
 
-                                        <a href="{{ route('asset-productivity.edit', $value) }}"
+                                        <a href="{{ route('asset-productivity.edit', $assetProductivityItem->id) }}"
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
@@ -85,7 +85,7 @@
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('asset-productivity.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('asset-productivity.list.pdf', request()->query->all()) }}"
                                 printLink="{{ route('asset-productivity.list.print', request()->query->all()) }}"

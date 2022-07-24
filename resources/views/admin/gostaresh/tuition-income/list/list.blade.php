@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body">f
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
@@ -65,7 +65,7 @@
                                     <td>{{ $tuitionIncomeItem?->year }}</td>
                                     <td>
 
-                                        <a href="{{ route('tuition-income.edit', $value) }}"
+                                        <a href="{{ route('tuition-income.edit', $tuitionIncomeItem->id) }}"
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
@@ -80,7 +80,7 @@
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('tuition-income.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('tuition-income.list.pdf', request()->query->all()) }}"
                                 printLink="{{ route('tuition-income.list.print', request()->query->all()) }}"

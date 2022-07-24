@@ -66,7 +66,7 @@
                                     <td>{{ $percapitaRevenueItem?->year }}</td>
                                     <td>
 
-                                        <a href="{{ route('percapita-revenue.edit', $value) }}"
+                                        <a href="{{ route('percapita-revenue.edit', $percapitaRevenueItem->id) }}"
                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                                 class="fa fa-edit"></i></a>
 
@@ -81,7 +81,7 @@
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('percapita-revenue.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('percapita-revenue.list.pdf', request()->query->all()) }}"
                                 printLink="{{ route('percapita-revenue.list.print', request()->query->all()) }}"
