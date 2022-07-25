@@ -41,12 +41,8 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                    @endforeach
+
+                                    @include('admin.gostaresh.number-of-non-medical-fields-of-study.list.partials.thead')
 
                                     <th>اقدام</th>
                                 </tr>
@@ -55,35 +51,9 @@
                                 @foreach ($numberOfNonMedicalFieldsOfStudies as $key => $numberOfNonMedicalFieldsOfStudy)
                                     <tr>
                                         <th scope="row">{{ $numberOfNonMedicalFieldsOfStudies?->firstItem() + $key }}</th>
-        
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->province?->name . ' - ' . $numberOfNonMedicalFieldsOfStudy->county?->name }}
-                                        </td>
-                            
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->department_of_education_title }}</td>
-                                        @if (filterCol('kardani_peyvaste_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count) }}</td>
-                                        @endif
-                                        @if (filterCol('kardani_na_peyvaste_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_na_peyvaste_count) }}</td>
-                                        @endif
-                                        @if (filterCol('karshenasi_peyvaste_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_peyvaste_count) }}</td>
-                                        @endif
-                                        @if (filterCol('karshenasi_na_peyvaste_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_na_peyvaste_count) }}</td>
-                                        @endif
-                                        @if (filterCol('karshenasi_arshad_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->karshenasi_arshad_count) }}</td>
-                                        @endif
-                                        @if (filterCol('docktora_herfei_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_herfei_count) }}</td>
-                                        @endif
-                                        @if (filterCol('docktora_takhasosi_count') == true)
-                                        <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->docktora_takhasosi_count) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $numberOfNonMedicalFieldsOfStudy?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.number-of-non-medical-fields-of-study.list.partials.tbody')
+
+                                        
                                         <td>
         
                                             <a href="{{ route('number.of.non.medical.fields.of.study.edit', $numberOfNonMedicalFieldsOfStudy) }}"
@@ -98,7 +68,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.of.non.medical.fields.of.study.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.non.medical.fields.of.study.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.non.medical.fields.of.study.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfNonMedicalFieldsOfStudies->withQueryString()->links('pagination::bootstrap-4') }}

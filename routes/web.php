@@ -257,6 +257,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
         'study' => 'numberOfNonMedicalFieldsOfStudy'
     ]);
+    Route::get('number/of/non/medical/fields/of/study/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.list.excel');
+    Route::get('number/of/non/medical/fields/of/study/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.list.pdf');
+    Route::get('number/of/non/medical/fields/of/study/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPrintExport'])->name('number.of.non.medical.fields.of.study.list.print');
 
     // Table 28 Route
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
