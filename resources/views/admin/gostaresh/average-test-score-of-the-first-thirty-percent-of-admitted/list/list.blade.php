@@ -39,22 +39,7 @@
         
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('university_type_title') == true)
-                                    <th>دانشگاه</th>
-                                    @endif
-                                    @if (filterCol('gender_title') == true)
-                                    <th>جنسیت</th>
-                                    @endif
-                                    @if (filterCol('department_of_education_title') == true)
-                                    <th>گروه عمده تحصیلی</th>
-                                    @endif
-                                    @if (filterCol('average_test_score_of_the_first_thirty_percent_of_admitted') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -63,25 +48,8 @@
                                     <tr>
                                         <th scope="row">{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds?->firstItem() + $key }}</th>
         
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->province?->name . ' - ' . $averageTestScoreOfTheFirstThirtyPercentOfAdmitted->county?->name }}
-                                        </td>
                                         
-                                        @if (filterCol('university_type_title') == true)
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->university_type_title }}</td>
-                                        @endif
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->gender_title }}</td>
-                                        @endif
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('average_test_score_of_the_first_thirty_percent_of_admitted') == true)
-                                        <td>{{ number_format($averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->average_test_score_of_the_first_thirty_percent_of_admitted) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitted?->year }}</td>
-                                        @endif
-                                        
+                                        @include('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.partials.tbody')
                                         <td>
         
                                             <a href="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.edit', $averageTestScoreOfTheFirstThirtyPercentOfAdmitted) }}"
@@ -96,7 +64,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-        
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('average.test.score.of.the.first.thirty.percent.of.admitted.list.print', request()->query->all()) }}" />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds->withQueryString()->links('pagination::bootstrap-4') }}

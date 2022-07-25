@@ -225,6 +225,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('average/test/score/of/the/first/thirty/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class)->names('average.test.score.of.the.first.thirty.percent.of.admitted')->parameters([
         'admitted' => 'avgTstScrOfFrtThrtPrntOfAdmitted'
     ]);
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/excel', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listExcelExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.excel');
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listPDFExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.pdf');
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/print', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listPrintExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.print');
 
     // Table 23 Route
     Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
