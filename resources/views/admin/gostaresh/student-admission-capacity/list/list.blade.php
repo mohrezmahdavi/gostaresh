@@ -1,26 +1,25 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-میزان ظرفیت پذیرش دانشجو
+    میزان ظرفیت پذیرش دانشجو
 @endsection
 
 @section('breadcrumb-title')
-میزان ظرفیت پذیرش دانشجو
+    میزان ظرفیت پذیرش دانشجو
 @endsection
 
 @section('page-title')
-میزان ظرفیت پذیرش دانشجو
+    میزان ظرفیت پذیرش دانشجو
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('student.admission.capacity.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('student.admission.capacity.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -28,8 +27,7 @@
 
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" />
 
     <div class="row">
         <div class="col-md-12">
@@ -41,12 +39,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                    @endforeach
+                                    @include('admin.gostaresh.student-admission-capacity.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -55,30 +49,16 @@
                                     <tr>
                                         <th scope="row">{{ $studentAdmissionCapacities?->firstItem() + $key }}</th>
 
-                                        <td>{{ $studentAdmissionCapacity?->province?->name . ' - ' . $studentAdmissionCapacity->county?->name }}
-                                        </td>
-                                        @if (filterCol('university_type_title') == true)
-                                        <td>{{ $studentAdmissionCapacity?->university_type_title }}</td>
-                                        @endif
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $studentAdmissionCapacity?->gender_title }}</td>
-                                        @endif
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $studentAdmissionCapacity?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('student_admission_capacities') == true)
-                                        <td>{{ number_format($studentAdmissionCapacity?->student_admission_capacities) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $studentAdmissionCapacity?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.student-admission-capacity.list.partials.tbody')
+
                                         <td>
 
                                             <a href="{{ route('student.admission.capacity.edit', $studentAdmissionCapacity) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('student.admission.capacity.destroy', $studentAdmissionCapacity) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('student.admission.capacity.destroy', $studentAdmissionCapacity) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -86,7 +66,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('student.admission.capacity.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('student.admission.capacity.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('student.admission.capacity.list.print', request()->query->all()) }}" />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $studentAdmissionCapacities->withQueryString()->links('pagination::bootstrap-4') }}
@@ -98,7 +83,5 @@
 @endsection
 
 @section('body-scripts')
-
     <script src="{{ mix('/js/app.js') }}"></script>
-
 @endsection
