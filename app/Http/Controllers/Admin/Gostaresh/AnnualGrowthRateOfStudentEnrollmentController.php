@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\AnnualGrowthRateOfStudentEnrollment\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\AnnualGrowthRateOfStudentEnrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\AnnualGrowthRateOfStudentEnrollment\AnnualGrowthRateOfStudentEnrollmentRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 21 Controller
 class AnnualGrowthRateOfStudentEnrollmentController extends Controller
@@ -32,6 +35,30 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getAnnualGrowthRateOfStudentEnrollmentRecords()
+    {
+        return AnnualGrowthRateOfStudentEnrollment::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $annualGrowthRateOfStudentEnrollments = $this->getAnnualGrowthRateOfStudentEnrollmentRecords();
+        return Excel::download(new ListExport($annualGrowthRateOfStudentEnrollments), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $annualGrowthRateOfStudentEnrollments = $this->getAnnualGrowthRateOfStudentEnrollmentRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.annual-growth-rate-of-student-enrollment.list.pdf', compact('annualGrowthRateOfStudentEnrollments'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $annualGrowthRateOfStudentEnrollments = $this->getAnnualGrowthRateOfStudentEnrollmentRecords();
+        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.list.pdf', compact('annualGrowthRateOfStudentEnrollments'));
     }
 
     /**

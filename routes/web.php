@@ -217,6 +217,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
         'enrollment' => 'annualGrthRateOfStdnEnrollment'
     ]);
+    Route::get('annual/growth/rate/of/student/enrollment/list/excel', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listExcelExport'])->name('annual.growth.rate.of.student.enrollment.list.excel');
+    Route::get('annual/growth/rate/of/student/enrollment/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listPDFExport'])->name('annual.growth.rate.of.student.enrollment.list.pdf');
+    Route::get('annual/growth/rate/of/student/enrollment/list/print', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listPrintExport'])->name('annual.growth.rate.of.student.enrollment.list.print');
 
     // Table 22 Route
     Route::resource('average/test/score/of/the/first/thirty/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class)->names('average.test.score.of.the.first.thirty.percent.of.admitted')->parameters([
