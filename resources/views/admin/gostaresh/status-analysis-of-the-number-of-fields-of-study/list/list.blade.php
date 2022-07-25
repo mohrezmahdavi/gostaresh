@@ -42,13 +42,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    
-                                    @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                    @endforeach
+                                    @include('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -57,63 +52,8 @@
                                     <tr>
                                         <th scope="row">{{ $statusAnalysisOfTheNumberOfFieldsOfStudies?->firstItem() + $key }}</th>
 
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfFieldsOfStudy->county?->name }}
-                                        </td>
-                                        
-                                        @if (filterCol('unit') == true)
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->unit }}</td>
-                                        @endif
-                                        @if (filterCol('total_number_of_fields_of_study') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->total_number_of_fields_of_study) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_international_courses') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_international_courses) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_virtual_courses') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_virtual_courses) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_technical_disciplines') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_technical_disciplines) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_courses_not_accepted') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_not_accepted) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_courses_without_volunteers') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_without_volunteers) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_GDP_courses') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_GDP_courses) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_disciplines_corresponding_to_job_fields') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_disciplines_corresponding_to_job_fields) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_fields_corresponding_to_the_specified_specialties') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_fields_corresponding_to_the_specified_specialties) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_courses_offered_virtually') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_offered_virtually) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_popular_fields_more_than_eighty_percent_capacity') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_popular_fields_more_than_eighty_percent_capacity) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_courses_with_low_audience') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_with_low_audience) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_fields_of_less_than_5_people') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_fields_of_less_than_5_people) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_courses_without_admission') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_courses_without_admission) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_popular_fields') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->number_of_popular_fields) }}</td>
-                                        @endif
-                                        @if (filterCol('low_number_of_applicants') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfFieldsOfStudy?->low_number_of_applicants) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $statusAnalysisOfTheNumberOfFieldsOfStudy?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.partials.tbody')
+
                                         <td>
 
                                             <a href="{{ route('status.analysis.of.the.number.of.fields.of.study.edit', $statusAnalysisOfTheNumberOfFieldsOfStudy) }}"
@@ -128,7 +68,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('status.analysis.of.the.number.of.fields.of.study.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('status.analysis.of.the.number.of.fields.of.study.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('status.analysis.of.the.number.of.fields.of.study.list.print', request()->query->all()) }}" />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $statusAnalysisOfTheNumberOfFieldsOfStudies->withQueryString()->links('pagination::bootstrap-4') }}
