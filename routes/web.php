@@ -209,6 +209,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/of/registrants/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class)->names('number.of.registrants.status.analysis')->parameters([
         'analysis' => 'numberOfRegistrant'
     ]);
+    Route::get('number/of/registrants/status/analysis/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listExcelExport'])->name('number.of.registrants.status.analysis.list.excel');
+    Route::get('number/of/registrants/status/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listPDFExport'])->name('number.of.registrants.status.analysis.list.pdf');
+    Route::get('number/of/registrants/status/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listPrintExport'])->name('number.of.registrants.status.analysis.list.print');
 
     // Table 21 Route
     Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
