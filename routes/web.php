@@ -265,6 +265,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
         'course' => 'statusAnalysisOfTheNumOfCourse'
     ]);
+    Route::get('status/analysis/of/the/number/of/course/list/excel', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listExcelExport'])->name('status.analysis.of.the.number.of.course.list.excel');
+    Route::get('status/analysis/of/the/number/of/course/list/pdf', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listPDFExport'])->name('status.analysis.of.the.number.of.course.list.pdf');
+    Route::get('status/analysis/of/the/number/of/course/list/print', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listPrintExport'])->name('status.analysis.of.the.number.of.course.list.print');
 
     // Table 29 Route
     Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([

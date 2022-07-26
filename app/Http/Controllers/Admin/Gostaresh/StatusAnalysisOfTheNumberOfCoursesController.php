@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\StatusAnalysisOfTheNumberOfCourse\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\StatusAnalysisOfTheNumberOfCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfCourse\StatusAnalysisOfTheNumberOfCourseRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 28 Controller
 class StatusAnalysisOfTheNumberOfCoursesController extends Controller
@@ -32,6 +35,32 @@ class StatusAnalysisOfTheNumberOfCoursesController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getStatusAnalysisOfTheNumberOfCourseRecords()
+    {
+        return StatusAnalysisOfTheNumberOfCourse::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $statusAnalysisOfTheNumberOfCourses = $this->getStatusAnalysisOfTheNumberOfCourseRecords();
+        return Excel::download(new ListExport($statusAnalysisOfTheNumberOfCourses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCourse::$filterColumnsCheckBoxes;
+        $statusAnalysisOfTheNumberOfCourses = $this->getStatusAnalysisOfTheNumberOfCourseRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.status-analysis-of-the-number-of-courses.list.pdf', compact('statusAnalysisOfTheNumberOfCourses','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCourse::$filterColumnsCheckBoxes;
+        $statusAnalysisOfTheNumberOfCourses = $this->getStatusAnalysisOfTheNumberOfCourseRecords();
+        return view('admin.gostaresh.status-analysis-of-the-number-of-courses.list.pdf', compact('statusAnalysisOfTheNumberOfCourses', 'filterColumnsCheckBoxes'));
     }
 
     /**
