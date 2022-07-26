@@ -40,7 +40,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    
+                                    @include('admin.gostaresh.number-of-international-course.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -49,6 +50,7 @@
                                     <tr>
                                         <th scope="row">{{ $numberOfInternationalCourses?->firstItem() + $key }}</th>
 
+                                        @include('admin.gostaresh.number-of-international-course.list.partials.tbody')
 
                                         
                                         <td>
@@ -65,7 +67,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.of.international.course.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.international.course.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.international.course.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfInternationalCourses->withQueryString()->links('pagination::bootstrap-4') }}

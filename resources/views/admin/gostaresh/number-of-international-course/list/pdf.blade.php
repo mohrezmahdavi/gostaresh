@@ -9,7 +9,7 @@
 @endsection
 
 @section('tbody')
-    @foreach ($statusAnalysisOfTheNumberOfCourses as $key => $statusAnalysisOfTheNumberOfCourse)
+    @foreach ($numberOfInternationalCourses as $key => $numberOfInternationalCourse)
         <tr>
             <td>{{ $key + 1 }}</td>
 

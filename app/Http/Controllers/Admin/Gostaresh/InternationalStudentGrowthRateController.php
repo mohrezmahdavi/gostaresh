@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\InternationalStudentGrowthRate\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalStudentGrowthRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class InternationalStudentGrowthRateController extends Controller
 {
@@ -31,6 +34,32 @@ class InternationalStudentGrowthRateController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getInternationalStudentGrowthRateRecords()
+    {
+        return InternationalStudentGrowthRate::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        return Excel::download(new ListExport($internationalStudentGrowthRates), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        return view('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates', 'filterColumnsCheckBoxes'));
     }
 
     /**
