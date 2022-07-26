@@ -273,6 +273,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([
         'course' => 'numberOfInternationalCourse'
     ]);
+    Route::get('number/of/international/course/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listExcelExport'])->name('number.of.international.course.list.excel');
+    Route::get('number/of/international/course/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listPDFExport'])->name('number.of.international.course.list.pdf');
+    Route::get('number/of/international/course/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listPrintExport'])->name('number.of.international.course.list.print');
 
     // Table 30 Route
     Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
