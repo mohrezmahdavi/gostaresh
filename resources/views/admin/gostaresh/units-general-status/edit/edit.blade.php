@@ -1,4 +1,4 @@
-{{--Table 57 View--}}
+{{-- Table 57 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -29,8 +29,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('units-general-status.update', $unitsGeneralStatus) }}"
-                        role="form">
+                        action="{{ route('units-general-status.update', $unitsGeneralStatus) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -38,7 +37,13 @@
                             zone_default="{{ $unitsGeneralStatus->county->zone }}"
                             county_default="{{ $unitsGeneralStatus->county_id }}"
                             city_default="{{ $unitsGeneralStatus->city_id }}"
-                            rural_district_default="{{ $unitsGeneralStatus->rural_district_id }}">
+                            rural_district_default="{{ $unitsGeneralStatus->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -47,9 +52,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ $unitsGeneralStatus->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ $unitsGeneralStatus->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -60,8 +64,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="degree/rank" name="degree/rank"
-                                       value="{{ $unitsGeneralStatus['degree/rank'] }}" class="form-control"
-                                       placeholder=" درجه/رتبه را وارد کنید...">
+                                    value="{{ $unitsGeneralStatus['degree/rank'] }}" class="form-control"
+                                    placeholder=" درجه/رتبه را وارد کنید...">
                             </div>
                         </div>
 
@@ -72,12 +76,13 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="score" name="score"
-                                       value="{{ $unitsGeneralStatus->score }}" class="form-control"
-                                       placeholder="امتیاز را وارد کنید...">
+                                    value="{{ $unitsGeneralStatus->score }}" class="form-control"
+                                    placeholder="امتیاز را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$unitsGeneralStatus->established_year" :required="true" name="established_year" title="سال تاسیس"></x-select-year>
+                        <x-select-year :default="$unitsGeneralStatus->established_year" :required="true" name="established_year" title="سال تاسیس">
+                        </x-select-year>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="approved_number_and_titles_of_the_faculty">
@@ -85,15 +90,17 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="approved_number_and_titles_of_the_faculty" name="approved_number_and_titles_of_the_faculty"
-                                       value="{{ $unitsGeneralStatus->approved_number_and_titles_of_the_faculty }}" class="form-control"
-                                       placeholder=" تعداد و عناوین دانشکده مصوب را وارد کنید...">
+                                <input type="text" id="approved_number_and_titles_of_the_faculty"
+                                    name="approved_number_and_titles_of_the_faculty"
+                                    value="{{ $unitsGeneralStatus->approved_number_and_titles_of_the_faculty }}"
+                                    class="form-control" placeholder=" تعداد و عناوین دانشکده مصوب را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$unitsGeneralStatus->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$unitsGeneralStatus->year" min="1390" max="1400" :required="false" name="year">
+                        </x-select-year>
 
-                        <x-select-month :default="$unitsGeneralStatus->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$unitsGeneralStatus->month" :required="false" name="month"></x-select-month> --}}
 
 
 
