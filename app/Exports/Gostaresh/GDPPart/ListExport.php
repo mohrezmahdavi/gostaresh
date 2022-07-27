@@ -49,7 +49,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         array_push($headings, 'شهرستان');
         
         if (filterCol('population') == true) {
-            array_push($headings, 'مقدار');
+            array_push($headings, 'روند تغییر در مقدار GDP استان');
         }
         if (filterCol('immigration_rates') == true) {
             array_push($headings, 'سال');
