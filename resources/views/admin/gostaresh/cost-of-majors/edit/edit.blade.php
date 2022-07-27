@@ -38,7 +38,13 @@
                             zone_default="{{ $costOfMajor->county->zone }}"
                             county_default="{{ $costOfMajor->county_id }}"
                             city_default="{{ $costOfMajor->city_id }}"
-                            rural_district_default="{{ $costOfMajor->rural_district_id }}">
+                            rural_district_default="{{ $costOfMajor->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <select-grade-component
@@ -142,9 +148,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$costOfMajor->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$costOfMajor->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$costOfMajor->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$costOfMajor->month" :required="false" name="month"></x-select-month> --}}
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
