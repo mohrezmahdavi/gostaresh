@@ -1,20 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش تعداد کل طرح های پژوهشی
+    ویرایش روند تغییرات تعداد کل طرح های پژوهشی
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش تعداد کل طرح های پژوهشی
+    ویرایش روند تغییرات تعداد کل طرح های پژوهشی
 @endsection
 
 @section('page-title')
-    ویرایش تعداد کل طرح های پژوهشی
+    ویرایش روند تغییرات تعداد کل طرح های پژوهشی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-
 @endsection
 
 @section('styles-head')
@@ -28,15 +27,22 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('number.of.research.project.update', $numberOfResearchProject) }}"
-                        role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('number.of.research.project.update', $numberOfResearchProject) }}" role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $numberOfResearchProject->province_id }}"
                             zone_default="{{ $numberOfResearchProject->county->zone }}"
-                            county_default="{{ $numberOfResearchProject->county_id }}" city_default="{{ $numberOfResearchProject->city_id }}"
-                            rural_district_default="{{ $numberOfResearchProject->rural_district_id }}">
+                            county_default="{{ $numberOfResearchProject->county_id }}"
+                            city_default="{{ $numberOfResearchProject->city_id }}"
+                            rural_district_default="{{ $numberOfResearchProject->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
@@ -46,17 +52,18 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_research" name="number_of_research"
-                                    value="{{ $numberOfResearchProject->number_of_research }}" class="form-control"
-                                    placeholder="تعداد پژوهش ها را وارد کنید...">
+                                <input type="number" style="direction: rtl" id="number_of_research"
+                                    name="number_of_research" value="{{ $numberOfResearchProject->number_of_research }}"
+                                    class="form-control" placeholder="تعداد پژوهش ها را وارد کنید...">
                             </div>
                         </div>
 
 
-                        <x-select-year :default="$numberOfResearchProject->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$numberOfResearchProject->year" min="1390" max="1400" :required="false" name="year">
+                        </x-select-year>
 
-                        <x-select-month :default="$numberOfResearchProject->month" :required="false" name="month"></x-select-month>
-                        
+                        {{-- <x-select-month :default="$numberOfResearchProject->month" :required="false" name="month"></x-select-month> --}}
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
