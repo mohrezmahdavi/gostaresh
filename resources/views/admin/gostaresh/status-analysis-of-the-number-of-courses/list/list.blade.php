@@ -1,26 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
+    تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 @endsection
 
 @section('breadcrumb-title')
-تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
+    تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 @endsection
 
 @section('page-title')
-تحلیل وضعیت تعداد دوره های تحصیلی بین المللی	
+    تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('status.analysis.of.the.number.of.course.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('status.analysis.of.the.number.of.course.create') }}" class="btn btn-success btn-sm">افزودن رکورد
+            جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -28,8 +28,12 @@
 
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -41,54 +45,27 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    
-                                    @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                    @endforeach
+                                    @include('admin.gostaresh.status-analysis-of-the-number-of-courses.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
                                 @foreach ($statusAnalysisOfTheNumberOfCourses as $key => $statusAnalysisOfTheNumberOfCourse)
                                     <tr>
-                                        <th scope="row">{{ $statusAnalysisOfTheNumberOfCourses?->firstItem() + $key }}</th>
+                                        <th scope="row">{{ $statusAnalysisOfTheNumberOfCourses?->firstItem() + $key }}
+                                        </th>
 
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCourse->county?->name }}
-                                        </td>
-                                       
+                                        @include('admin.gostaresh.status-analysis-of-the-number-of-courses.list.partials.tbody')
 
-                                        @if (filterCol('unit') == true)
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->unit }}</td>
-                                        @endif
-                                        @if (filterCol('total_number_of_courses') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->total_number_of_courses) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_international_Persian_language_courses_in_person') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_Persian_language_courses_in_person) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_international_virtual_Persian_language_courses') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_virtual_Persian_language_courses) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_international_courses_in_the_target_language_in_person') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_in_person) }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_international_courses_in_the_target_language_virtually') == true)
-                                        <td>{{ number_format($statusAnalysisOfTheNumberOfCourse?->number_of_international_courses_in_the_target_language_virtually) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $statusAnalysisOfTheNumberOfCourse?->year }}</td>
-                                        @endif
-                                        
                                         <td>
 
                                             <a href="{{ route('status.analysis.of.the.number.of.course.edit', $statusAnalysisOfTheNumberOfCourse) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('status.analysis.of.the.number.of.course.destroy', $statusAnalysisOfTheNumberOfCourse) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('status.analysis.of.the.number.of.course.destroy', $statusAnalysisOfTheNumberOfCourse) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -96,7 +73,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('status.analysis.of.the.number.of.course.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('status.analysis.of.the.number.of.course.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('status.analysis.of.the.number.of.course.list.print', request()->query->all()) }}" />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $statusAnalysisOfTheNumberOfCourses->withQueryString()->links('pagination::bootstrap-4') }}
@@ -108,7 +90,5 @@
 @endsection
 
 @section('body-scripts')
-
     <script src="{{ mix('/js/app.js') }}"></script>
-
 @endsection

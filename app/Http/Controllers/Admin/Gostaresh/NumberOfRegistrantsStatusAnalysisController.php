@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfRegistrantsStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfRegistrantsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfRegistrantsStatusAnalysis\NumberOfRegistrantsStatusAnalysisRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 20 Controller
 class NumberOfRegistrantsStatusAnalysisController extends Controller
@@ -32,6 +35,30 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfRegistrantsStatusAnalysisRecords()
+    {
+        return NumberOfRegistrantsStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfRegistrants = $this->getNumberOfRegistrantsStatusAnalysisRecords();
+        return Excel::download(new ListExport($numberOfRegistrants), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberOfRegistrants = $this->getNumberOfRegistrantsStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-registrants-status-analysis.list.pdf', compact('numberOfRegistrants'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberOfRegistrants = $this->getNumberOfRegistrantsStatusAnalysisRecords();
+        return view('admin.gostaresh.number-of-registrants-status-analysis.list.pdf', compact('numberOfRegistrants'));
     }
 
     /**

@@ -1,4 +1,4 @@
-{{--Table 40 View--}}
+{{-- Table 40 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -27,8 +27,7 @@
                 <div class="card-body" id="app">
                     @include('admin.partials.row-notifiy-col')
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('technological-product.update', $technologicalProduct) }}"
-                        role="form">
+                        action="{{ route('technological-product.update', $technologicalProduct) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -36,7 +35,13 @@
                             zone_default="{{ $technologicalProduct->county->zone }}"
                             county_default="{{ $technologicalProduct->county_id }}"
                             city_default="{{ $technologicalProduct->city_id }}"
-                            rural_district_default="{{ $technologicalProduct->rural_district_id }}">
+                            rural_district_default="{{ $technologicalProduct->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -46,8 +51,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                       value="{{$technologicalProduct->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                    value="{{ $technologicalProduct->unit }}" class="form-control"
+                                    placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -57,9 +62,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_cores" name="number_of_active_technology_cores"
-                                       value="{{$technologicalProduct->number_of_active_technology_cores }}" class="form-control"
-                                       placeholder=" تعداد هسته فناور فعال را وارد کنید...">
+                                <input type="text" id="number_of_active_technology_cores"
+                                    name="number_of_active_technology_cores"
+                                    value="{{ $technologicalProduct->number_of_active_technology_cores }}"
+                                    class="form-control" placeholder=" تعداد هسته فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -69,9 +75,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_units" name="number_of_active_technology_units"
-                                       value="{{$technologicalProduct->number_of_active_technology_units }}" class="form-control"
-                                       placeholder=" تعداد واحدهای فناور فعال را وارد کنید...">
+                                <input type="text" id="number_of_active_technology_units"
+                                    name="number_of_active_technology_units"
+                                    value="{{ $technologicalProduct->number_of_active_technology_units }}"
+                                    class="form-control" placeholder=" تعداد واحدهای فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -81,9 +88,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_knowledge_based_companies" name="number_of_active_knowledge_based_companies"
-                                       value="{{$technologicalProduct->number_of_active_knowledge_based_companies }}" class="form-control"
-                                       placeholder=" تعداد شرکت دانش بنیان فعال را وارد کنید...">
+                                <input type="text" id="number_of_active_knowledge_based_companies"
+                                    name="number_of_active_knowledge_based_companies"
+                                    value="{{ $technologicalProduct->number_of_active_knowledge_based_companies }}"
+                                    class="form-control" placeholder=" تعداد شرکت دانش بنیان فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -94,8 +102,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_creative_companies" name="number_of_creative_companies"
-                                       value="{{$technologicalProduct->number_of_creative_companies }}" class="form-control"
-                                       placeholder=" تعداد شرکت های خلاق را وارد کنید...">
+                                    value="{{ $technologicalProduct->number_of_creative_companies }}" class="form-control"
+                                    placeholder=" تعداد شرکت های خلاق را وارد کنید...">
                             </div>
                         </div>
 
@@ -105,9 +113,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_commercialized_ideas" name="number_of_commercialized_ideas"
-                                       value="{{$technologicalProduct->number_of_commercialized_ideas }}" class="form-control"
-                                       placeholder=" تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده را وارد کنید...">
+                                <input type="text" id="number_of_commercialized_ideas"
+                                    name="number_of_commercialized_ideas"
+                                    value="{{ $technologicalProduct->number_of_commercialized_ideas }}"
+                                    class="form-control"
+                                    placeholder=" تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده را وارد کنید...">
                             </div>
                         </div>
 
@@ -117,9 +127,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_knowledge_based_products" name="number_of_knowledge_based_products"
-                                       value="{{$technologicalProduct->number_of_knowledge_based_products }}" class="form-control"
-                                       placeholder=" تعداد محصولات دانش بنیان را وارد کنید...">
+                                <input type="text" id="number_of_knowledge_based_products"
+                                    name="number_of_knowledge_based_products"
+                                    value="{{ $technologicalProduct->number_of_knowledge_based_products }}"
+                                    class="form-control" placeholder=" تعداد محصولات دانش بنیان را وارد کنید...">
                             </div>
                         </div>
 
@@ -129,9 +140,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_products_without_license" name="number_of_products_without_license"
-                                       value="{{$technologicalProduct->number_of_products_without_license }}" class="form-control"
-                                       placeholder=" تعداد محصولات بدون مجوز را وارد کنید...">
+                                <input type="text" id="number_of_products_without_license"
+                                    name="number_of_products_without_license"
+                                    value="{{ $technologicalProduct->number_of_products_without_license }}"
+                                    class="form-control" placeholder=" تعداد محصولات بدون مجوز را وارد کنید...">
                             </div>
                         </div>
 
@@ -142,8 +154,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_licensed_products" name="number_of_licensed_products"
-                                       value="{{$technologicalProduct->number_of_licensed_products }}" class="form-control"
-                                       placeholder=" تعداد محصولات با مجوز را وارد کنید...">
+                                    value="{{ $technologicalProduct->number_of_licensed_products }}" class="form-control"
+                                    placeholder=" تعداد محصولات با مجوز را وارد کنید...">
                             </div>
                         </div>
 
@@ -153,9 +165,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_professors" name="number_of_active_technology_professors"
-                                       value="{{$technologicalProduct->number_of_active_technology_professors }}" class="form-control"
-                                       placeholder=" تعداد استاد فناور فعال را وارد کنید...">
+                                <input type="text" id="number_of_active_technology_professors"
+                                    name="number_of_active_technology_professors"
+                                    value="{{ $technologicalProduct->number_of_active_technology_professors }}"
+                                    class="form-control" placeholder=" تعداد استاد فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -165,9 +178,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="number_of_active_technology_students" name="number_of_active_technology_students"
-                                       value="{{$technologicalProduct->number_of_active_technology_students }}" class="form-control"
-                                       placeholder=" تعداد دانشجوی فناور فعال را وارد کنید...">
+                                <input type="text" id="number_of_active_technology_students"
+                                    name="number_of_active_technology_students"
+                                    value="{{ $technologicalProduct->number_of_active_technology_students }}"
+                                    class="form-control" placeholder=" تعداد دانشجوی فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -178,7 +192,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
-                                    @for ($i = 1250; $i <= 1405; $i++)
+                                    @for ($i = 1390; $i <= 1400; $i++)
                                         <option {{ $i == $technologicalProduct->year ? 'selected' : '' }}
                                             value="{{ $i }}">
                                             {{ $i }}</option>
@@ -189,7 +203,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mt-2">
+                        {{-- <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="month">
                                 <span> ماه </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
@@ -205,7 +219,7 @@
                                 </select>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

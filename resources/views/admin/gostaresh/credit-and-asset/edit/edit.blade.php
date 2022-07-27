@@ -1,4 +1,4 @@
-{{--Table 56 View--}}
+{{-- Table 56 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -15,7 +15,6 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-
 @endsection
 
 @section('styles-head')
@@ -30,16 +29,20 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('credit-and-asset.update', $creditAndAsset) }}"
-                        role="form">
+                        action="{{ route('credit-and-asset.update', $creditAndAsset) }}" role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $creditAndAsset->province_id }}"
                             zone_default="{{ $creditAndAsset->county->zone }}"
-                            county_default="{{ $creditAndAsset->county_id }}"
-                            city_default="{{ $creditAndAsset->city_id }}"
-                            rural_district_default="{{ $creditAndAsset->rural_district_id }}">
+                            county_default="{{ $creditAndAsset->county_id }}" city_default="{{ $creditAndAsset->city_id }}"
+                            rural_district_default="{{ $creditAndAsset->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -48,9 +51,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{$creditAndAsset->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ $creditAndAsset->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -61,8 +63,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="administrative_credits" name="administrative_credits"
-                                       value="{{$creditAndAsset->administrative_credits }}" class="form-control"
-                                       placeholder=" اعتبارات اداری را وارد کنید...">
+                                    value="{{ $creditAndAsset->administrative_credits }}" class="form-control"
+                                    placeholder=" اعتبارات اداری را وارد کنید...">
                             </div>
                         </div>
 
@@ -73,8 +75,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="educational_credits" name="educational_credits"
-                                       value="{{$creditAndAsset->educational_credits }}" class="form-control"
-                                       placeholder=" اعتبارات آموزشی را وارد کنید...">
+                                    value="{{ $creditAndAsset->educational_credits }}" class="form-control"
+                                    placeholder=" اعتبارات آموزشی را وارد کنید...">
                             </div>
                         </div>
 
@@ -85,8 +87,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="research_credits" name="research_credits"
-                                       value="{{$creditAndAsset->research_credits }}" class="form-control"
-                                       placeholder=" اعتبارات پژوهشی را وارد کنید...">
+                                    value="{{ $creditAndAsset->research_credits }}" class="form-control"
+                                    placeholder=" اعتبارات پژوهشی را وارد کنید...">
                             </div>
                         </div>
 
@@ -97,8 +99,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="cultural_credits" name="cultural_credits"
-                                       value="{{$creditAndAsset->cultural_credits }}" class="form-control"
-                                       placeholder=" اعتبارات فرهنگی را وارد کنید...">
+                                    value="{{ $creditAndAsset->cultural_credits }}" class="form-control"
+                                    placeholder=" اعتبارات فرهنگی را وارد کنید...">
                             </div>
                         </div>
 
@@ -109,8 +111,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="innovative_credits" name="innovative_credits"
-                                       value="{{$creditAndAsset->innovative_credits }}" class="form-control"
-                                       placeholder=" اعتبارات فناورانه و نوآورانه را وارد کنید...">
+                                    value="{{ $creditAndAsset->innovative_credits }}" class="form-control"
+                                    placeholder=" اعتبارات فناورانه و نوآورانه را وارد کنید...">
                             </div>
                         </div>
 
@@ -121,8 +123,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="skills_credits" name="skills_credits"
-                                       value="{{$creditAndAsset->skills_credits }}" class="form-control"
-                                       placeholder=" اعتبارات حوزه مهارتی را وارد کنید...">
+                                    value="{{ $creditAndAsset->skills_credits }}" class="form-control"
+                                    placeholder=" اعتبارات حوزه مهارتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -133,8 +135,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_University_credits" name="total_University_credits"
-                                       value="{{$creditAndAsset->total_University_credits }}" class="form-control"
-                                       placeholder=" کل اعتبارات دانشگاه را وارد کنید...">
+                                    value="{{ $creditAndAsset->total_University_credits }}" class="form-control"
+                                    placeholder=" کل اعتبارات دانشگاه را وارد کنید...">
                             </div>
                         </div>
 
@@ -145,14 +147,14 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_university_assets" name="total_university_assets"
-                                       value="{{$creditAndAsset->total_university_assets }}" class="form-control"
-                                       placeholder=" کل دارایی های دانشگاه را وارد کنید...">
+                                    value="{{ $creditAndAsset->total_university_assets }}" class="form-control"
+                                    placeholder=" کل دارایی های دانشگاه را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$creditAndAsset->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$creditAndAsset->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$creditAndAsset->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$creditAndAsset->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

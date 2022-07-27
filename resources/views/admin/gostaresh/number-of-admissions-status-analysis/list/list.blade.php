@@ -39,22 +39,7 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('university_type_title') == true)
-                                    <th>دانشگاه</th>
-                                    @endif
-                                    @if (filterCol('gender_title') == true)
-                                    <th>جنسیت</th>
-                                    @endif
-                                    @if (filterCol('department_of_education_title') == true)
-                                    <th>گروه عمده تحصیلی</th>
-                                    @endif
-                                    @if (filterCol('number_of_admissions') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.number-of-admissions-status-analysis.list.partials.thead')
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -62,24 +47,8 @@
                                 @foreach ($numberOfAdmissionsStatusAnalysises as $key => $numberOfAdmissionsStatusAnalysis)
                                     <tr>
                                         <th scope="row">{{ $numberOfAdmissionsStatusAnalysises?->firstItem() + $key }}</th>
-
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->province?->name . ' - ' . $numberOfAdmissionsStatusAnalysis->county?->name }}
-                                        </td>
-                                        @if (filterCol('university_type_title') == true)
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->university_type_title }}</td>
-                                        @endif
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->gender_title }}</td>
-                                        @endif
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_admissions') == true)
-                                        <td>{{ number_format($numberOfAdmissionsStatusAnalysis?->number_of_admissions) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $numberOfAdmissionsStatusAnalysis?->year }}</td>
-                                        @endif
+                                        @include('admin.gostaresh.number-of-admissions-status-analysis.list.partials.tbody')
+                                        
                                         <td>
 
                                             <a href="{{ route('number.of.admissions.status.analysis.edit', $numberOfAdmissionsStatusAnalysis) }}"
@@ -94,7 +63,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="text-end mt-3">
+                            <x-exports.export-links 
+                                excelLink="{{ route('number.of.admissions.status.analysis.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.admissions.status.analysis.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.admissions.status.analysis.list.print', request()->query->all()) }}"
+                            />
+                        </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
                         {{ $numberOfAdmissionsStatusAnalysises->withQueryString()->links('pagination::bootstrap-4') }}

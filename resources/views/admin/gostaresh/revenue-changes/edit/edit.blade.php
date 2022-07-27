@@ -1,4 +1,4 @@
-{{--Table 49 View--}}
+{{-- Table 49 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -28,17 +28,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST"
-                        action="{{ route('revenue-changes.update', $revenueChange) }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('revenue-changes.update', $revenueChange) }}"
                         role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $revenueChange->province_id }}"
                             zone_default="{{ $revenueChange->county->zone }}"
-                            county_default="{{ $revenueChange->county_id }}"
-                            city_default="{{ $revenueChange->city_id }}"
-                            rural_district_default="{{ $revenueChange->rural_district_id }}">
+                            county_default="{{ $revenueChange->county_id }}" city_default="{{ $revenueChange->city_id }}"
+                            rural_district_default="{{ $revenueChange->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -47,9 +51,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ $revenueChange->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ $revenueChange->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -60,14 +63,14 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_annual_income" name="total_annual_income"
-                                       value="{{ $revenueChange->total_annual_income }}" class="form-control"
-                                       placeholder=" کل درآمد های سالیانه را وارد کنید...">
+                                    value="{{ $revenueChange->total_annual_income }}" class="form-control"
+                                    placeholder=" کل درآمد های سالیانه را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$revenueChange->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$revenueChange->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$revenueChange->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$revenueChange->month" :required="false" name="month"></x-select-month> --}}
 
 
 

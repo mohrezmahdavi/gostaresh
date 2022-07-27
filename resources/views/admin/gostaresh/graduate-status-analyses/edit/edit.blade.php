@@ -1,4 +1,4 @@
-{{--Table 33 View--}}
+{{-- Table 33 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -15,7 +15,6 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-
 @endsection
 
 @section('styles-head')
@@ -28,8 +27,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('graduate-status-analyses.update', $graduateStatusAnalysis) }}"
-                        role="form">
+                        action="{{ route('graduate-status-analyses.update', $graduateStatusAnalysis) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -37,7 +35,13 @@
                             zone_default="{{ $graduateStatusAnalysis->county->zone }}"
                             county_default="{{ $graduateStatusAnalysis->county_id }}"
                             city_default="{{ $graduateStatusAnalysis->city_id }}"
-                            rural_district_default="{{ $graduateStatusAnalysis->rural_district_id }}">
+                            rural_district_default="{{ $graduateStatusAnalysis->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -47,8 +51,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                       value="{{ $graduateStatusAnalysis->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                    value="{{ $graduateStatusAnalysis->unit }}" class="form-control"
+                                    placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -59,8 +63,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_graduates" name="total_graduates"
-                                       value="{{ $graduateStatusAnalysis->total_graduates }}" class="form-control"
-                                       placeholder=" تعداد کل فارغ التحصیلان را وارد کنید...">
+                                    value="{{ $graduateStatusAnalysis->total_graduates }}" class="form-control"
+                                    placeholder=" تعداد کل فارغ التحصیلان را وارد کنید...">
                             </div>
                         </div>
 
@@ -71,8 +75,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="employed_graduates" name="employed_graduates"
-                                       value="{{ $graduateStatusAnalysis->employed_graduates }}" class="form-control"
-                                       placeholder=" تعداد فارغ التحصیلان شاغل را وارد کنید...">
+                                    value="{{ $graduateStatusAnalysis->employed_graduates }}" class="form-control"
+                                    placeholder=" تعداد فارغ التحصیلان شاغل را وارد کنید...">
                             </div>
                         </div>
 
@@ -83,8 +87,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="graduate_growth_rate" name="graduate_growth_rate"
-                                       value="{{ $graduateStatusAnalysis->graduate_growth_rate }}" class="form-control"
-                                       placeholder=" نرخ رشد فارغ التحصیلان را وارد کنید...">
+                                    value="{{ $graduateStatusAnalysis->graduate_growth_rate }}" class="form-control"
+                                    placeholder=" نرخ رشد فارغ التحصیلان را وارد کنید...">
                             </div>
                         </div>
 
@@ -95,8 +99,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="related_employed_graduates" name="related_employed_graduates"
-                                       value="{{ $graduateStatusAnalysis->related_employed_graduates }}" class="form-control"
-                                       placeholder=" تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی را وارد کنید...">
+                                    value="{{ $graduateStatusAnalysis->related_employed_graduates }}" class="form-control"
+                                    placeholder=" تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی را وارد کنید...">
                             </div>
                         </div>
 
@@ -106,9 +110,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="skill_certification_graduates" name="skill_certification_graduates"
-                                       value="{{ $graduateStatusAnalysis->skill_certification_graduates }}" class="form-control"
-                                       placeholder=" تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای را وارد کنید...">
+                                <input type="number" id="skill_certification_graduates"
+                                    name="skill_certification_graduates"
+                                    value="{{ $graduateStatusAnalysis->skill_certification_graduates }}"
+                                    class="form-control"
+                                    placeholder=" تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای را وارد کنید...">
                             </div>
                         </div>
 
@@ -118,9 +124,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="employed_graduates_6_months_after_graduation" name="employed_graduates_6_months_after_graduation"
-                                       value="{{ $graduateStatusAnalysis->employed_graduates_6_months_after_graduation }}" class="form-control"
-                                       placeholder=" تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل را وارد کنید...">
+                                <input type="number" id="employed_graduates_6_months_after_graduation"
+                                    name="employed_graduates_6_months_after_graduation"
+                                    value="{{ $graduateStatusAnalysis->employed_graduates_6_months_after_graduation }}"
+                                    class="form-control"
+                                    placeholder=" تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل را وارد کنید...">
                             </div>
                         </div>
 
@@ -130,15 +138,17 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_monthly_income_employed_graduates" name="average_monthly_income_employed_graduates"
-                                       value="{{ $graduateStatusAnalysis->average_monthly_income_employed_graduates }}" class="form-control"
-                                       placeholder=" متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی را وارد کنید...">
+                                <input type="number" id="average_monthly_income_employed_graduates"
+                                    name="average_monthly_income_employed_graduates"
+                                    value="{{ $graduateStatusAnalysis->average_monthly_income_employed_graduates }}"
+                                    class="form-control"
+                                    placeholder=" متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$graduateStatusAnalysis->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$graduateStatusAnalysis->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$graduateStatusAnalysis->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$graduateStatusAnalysis->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

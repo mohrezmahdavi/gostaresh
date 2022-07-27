@@ -1,33 +1,32 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-تعداد  ثبت نام شدگان
+    تعداد ثبت نام شدگان
 @endsection
 
 @section('breadcrumb-title')
-تعداد  ثبت نام شدگان
+    تعداد ثبت نام شدگان
 @endsection
 
 @section('page-title')
-تعداد  ثبت نام شدگان
+    تعداد ثبت نام شدگان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('number.of.registrants.status.analysis.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('number.of.registrants.status.analysis.create') }}" class="btn btn-success btn-sm">افزودن رکورد
+            جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-    :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" />
 
     <div class="row">
         <div class="col-md-12">
@@ -39,22 +38,8 @@
 
                                 <tr>
                                     <th>#</th>
-                                    <th>شهرستان </th>
-                                    @if (filterCol('university_type_title') == true)
-                                    <th>دانشگاه</th>
-                                    @endif
-                                    @if (filterCol('gender_title') == true)
-                                    <th>جنسیت</th>
-                                    @endif
-                                    @if (filterCol('department_of_education_title') == true)
-                                    <th>گروه عمده تحصیلی</th>
-                                    @endif
-                                    @if (filterCol('number_of_registrants') == true)
-                                    <th>مقدار</th>
-                                    @endif
-                                    @if (filterCol('year') == true)
-                                        <th>سال</th>
-                                    @endif
+                                    @include('admin.gostaresh.number-of-registrants-status-analysis.list.partials.thead')
+
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
@@ -62,32 +47,17 @@
                                 @foreach ($numberOfRegistrants as $key => $numberOfRegistrant)
                                     <tr>
                                         <th scope="row">{{ $numberOfRegistrants->firstItem() + $key }}</th>
+                                        @include('admin.gostaresh.number-of-registrants-status-analysis.list.partials.tbody')
 
-                                        <td>{{ $numberOfRegistrant?->province?->name . ' - ' . $numberOfRegistrant->county?->name }}
-                                        </td>
-                                        
-                                        @if (filterCol('university_type_title') == true)
-                                        <td>{{ $numberOfRegistrant?->university_type_title }}</td>
-                                        @endif
-                                        @if (filterCol('gender_title') == true)
-                                        <td>{{ $numberOfRegistrant?->gender_title }}</td>
-                                        @endif
-                                        @if (filterCol('department_of_education_title') == true)
-                                        <td>{{ $numberOfRegistrant?->department_of_education_title }}</td>
-                                        @endif
-                                        @if (filterCol('number_of_registrants') == true)
-                                        <td>{{ number_format($numberOfRegistrant?->number_of_registrants) }}</td>
-                                        @endif
-                                        @if (filterCol('year') == true)
-                                        <td>{{ $numberOfRegistrant?->year }}</td>
-                                        @endif
+
                                         <td>
 
                                             <a href="{{ route('number.of.registrants.status.analysis.edit', $numberOfRegistrant) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('number.of.registrants.status.analysis.destroy', $numberOfRegistrant) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('number.of.registrants.status.analysis.destroy', $numberOfRegistrant) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -95,6 +65,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="text-end mt-3">
+                            <x-exports.export-links
+                                excelLink="{{ route('number.of.registrants.status.analysis.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.registrants.status.analysis.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.registrants.status.analysis.list.print', request()->query->all()) }}" />
+                        </div>
 
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

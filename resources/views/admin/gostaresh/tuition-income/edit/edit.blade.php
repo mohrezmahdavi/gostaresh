@@ -1,4 +1,4 @@
-{{--Table 50 View--}}
+{{-- Table 50 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -28,25 +28,26 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST"
-                        action="{{ route('tuition-income.update', $tuitionIncome) }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('tuition-income.update', $tuitionIncome) }}"
                         role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $tuitionIncome->province_id }}"
                             zone_default="{{ $tuitionIncome->county->zone }}"
-                            county_default="{{ $tuitionIncome->county_id }}"
-                            city_default="{{ $tuitionIncome->city_id }}"
-                            rural_district_default="{{ $tuitionIncome->rural_district_id }}">
+                            county_default="{{ $tuitionIncome->county_id }}" city_default="{{ $tuitionIncome->city_id }}"
+                            rural_district_default="{{ $tuitionIncome->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
-                        <select-grade-component
-                                grade_default="{{ $tuitionIncome->grade_id }}"
-                                sub_grade_default="{{ $tuitionIncome->sub_grade_id }}"
-                                major_default="{{ $tuitionIncome->major_id }}"
-                                minor_default="{{ $tuitionIncome->minor_id }}"
-                        >
+                        <select-grade-component grade_default="{{ $tuitionIncome->grade_id }}"
+                            sub_grade_default="{{ $tuitionIncome->sub_grade_id }}"
+                            major_default="{{ $tuitionIncome->major_id }}" minor_default="{{ $tuitionIncome->minor_id }}">
                         </select-grade-component>
 
                         <div class="form-group row mt-2">
@@ -55,21 +56,21 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ $tuitionIncome->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ $tuitionIncome->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
-                                <span>دانشگاه  </span>&nbsp
+                                <span>دانشگاه </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="university_type" id="university_type" class="form-select" >
+                                <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ ($key == $tuitionIncome->university_type ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == $tuitionIncome->university_type ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
@@ -77,13 +78,14 @@
                         </div>
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span>گروه عمده تحصیلی  </span>&nbsp
+                                <span>گروه عمده تحصیلی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select" >
+                                <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ ($key == $tuitionIncome->department_of_education ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == $tuitionIncome->department_of_education ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
@@ -97,8 +99,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="associate_degree" name="associate_degree"
-                                       value="{{ $tuitionIncome->associate_degree }}" class="form-control"
-                                       placeholder=" کاردانی را وارد کنید...">
+                                    value="{{ $tuitionIncome->associate_degree }}" class="form-control"
+                                    placeholder=" کاردانی را وارد کنید...">
                             </div>
                         </div>
 
@@ -109,8 +111,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="bachelor_degree" name="bachelor_degree"
-                                       value="{{ $tuitionIncome->bachelor_degree }}" class="form-control"
-                                       placeholder=" کارشناسی را وارد کنید...">
+                                    value="{{ $tuitionIncome->bachelor_degree }}" class="form-control"
+                                    placeholder=" کارشناسی را وارد کنید...">
                             </div>
                         </div>
 
@@ -120,9 +122,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="masters" name="masters"
-                                       value="{{ $tuitionIncome->masters }}" class="form-control"
-                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                                <input type="text" id="masters" name="masters" value="{{ $tuitionIncome->masters }}"
+                                    class="form-control" placeholder=" کارشناسی ارشد را وارد کنید...">
                             </div>
                         </div>
 
@@ -132,19 +133,18 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="phd" name="phd"
-                                       value="{{ $tuitionIncome->phd }}" class="form-control"
-                                       placeholder=" دکتری را وارد کنید...">
+                                <input type="text" id="phd" name="phd" value="{{ $tuitionIncome->phd }}"
+                                    class="form-control" placeholder=" دکتری را وارد کنید...">
                             </div>
                         </div>
 
 
-                        <x-select-year :default="$tuitionIncome->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$tuitionIncome->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$tuitionIncome->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$tuitionIncome->month" :required="false" name="month"></x-select-month> --}}
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

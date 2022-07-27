@@ -121,7 +121,7 @@ class StudentAdmissionCapacity extends Model
         "university_type_title"          => "دانشگاه",
         "gender_title"                   => "جنسیت",
         "department_of_education_title"  => "گروه عمده تحصیلی",
-        "student_admission_capacities"   => "مقدار",
+        "student_admission_capacities"   => "تعداد میزان ظرفیت پذیرش دانشجو",
         "year"                           => "سال",
      
     ];

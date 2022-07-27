@@ -3,7 +3,7 @@
 <th>بخش</th>
 @endif
 @if (filterCol('amount') == true)
-<th>مقدار</th>
+<th>روند تغییر در مقدار GDP استان</th>
 @endif
 @if (filterCol('year') == true)
     <th>سال</th>

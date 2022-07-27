@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\StudentAdmissionCapacity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\StudentAdmissionCapacity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\StudentAdmissionCapacity\StudentAdmissionCapacityRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 24 Controller
 class StudentAdmissionCapacityController extends Controller
@@ -32,6 +35,32 @@ class StudentAdmissionCapacityController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getStudentAdmissionCapacityRecords()
+    {
+        return StudentAdmissionCapacity::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $studentAdmissionCapacities = $this->getStudentAdmissionCapacityRecords();
+        return Excel::download(new ListExport($studentAdmissionCapacities), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
+        $studentAdmissionCapacities = $this->getStudentAdmissionCapacityRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.student-admission-capacity.list.pdf', compact('studentAdmissionCapacities','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
+        $studentAdmissionCapacities = $this->getStudentAdmissionCapacityRecords();
+        return view('admin.gostaresh.student-admission-capacity.list.pdf', compact('studentAdmissionCapacities', 'filterColumnsCheckBoxes'));
     }
 
     /**

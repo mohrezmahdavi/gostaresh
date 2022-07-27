@@ -2431,6 +2431,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     rural_district_default: {
       "default": ""
+    },
+    fields: {
+      type: Object,
+      "default": function _default() {
+        return {
+          province: true,
+          zone: true,
+          county: true,
+          city: true
+        };
+      }
     }
   },
   data: function data() {
@@ -2493,9 +2504,18 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (newValue != "") {
-        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
-          _this2.zones_count = data.data.zone_number;
-        });
+        if (this.fields.zone == true) {
+          _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+            _this2.zones_count = data.data.zone_number;
+          });
+        }
+
+        if (this.fields.zone == false && this.fields.county == true) {
+          _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
+            _this2.counties = [];
+            _this2.counties = data.data;
+          });
+        }
       }
 
       this.count_province_changed++;
@@ -2691,6 +2711,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     rural_district_default: {
       "default": ""
+    },
+    fields: {
+      type: Object,
+      "default": function _default() {
+        return {
+          province: true,
+          zone: true,
+          county: true,
+          city: true
+        };
+      }
     }
   },
   data: function data() {
@@ -2753,9 +2784,18 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (newValue != "") {
-        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
-          _this2.zones_count = data.data.zone_number;
-        });
+        if (this.fields.zone == true) {
+          _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+            _this2.zones_count = data.data.zone_number;
+          });
+        }
+
+        if (this.fields.zone == false && this.fields.county == true) {
+          _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
+            _this2.counties = [];
+            _this2.counties = data.data;
+          });
+        }
       }
 
       this.count_province_changed++;
@@ -62243,256 +62283,279 @@ var render = function () {
       attrs: { type: "hidden", name: "country_id", id: "", value: "1" },
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group row mt-2" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-2 col-form-label",
-          attrs: { for: "province_id" },
-        },
-        [_vm._v("استان")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _vm.flag_province
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.province == true
+      ? _c("div", { staticClass: "form-group row mt-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "province_id" },
+            },
+            [_vm._v("استان")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _vm.flag_province
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.province_selected,
-                    expression: "province_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.province_selected,
+                        expression: "province_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "province_id", id: "province_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.province_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "province_id", id: "province_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.province_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.provinces, function (province) {
-                  return _c(
-                    "option",
-                    { key: province.id, domProps: { value: province.id } },
-                    [
-                      _vm._v(
-                        "\n          " + _vm._s(province.name) + "\n        "
-                      ),
-                    ]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.provinces, function (province) {
+                      return _c(
+                        "option",
+                        { key: province.id, domProps: { value: province.id } },
+                        [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(province.name) +
+                              "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "province_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "province_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group row mt-2" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 col-form-label", attrs: { for: "zone_id" } },
-        [_vm._v("منطقه")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _vm.flag_zone
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.zone == true
+      ? _c("div", { staticClass: "form-group row mt-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "zone_id" },
+            },
+            [_vm._v("منطقه")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _vm.flag_zone
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.zone_selected,
-                    expression: "zone_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.zone_selected,
+                        expression: "zone_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "zone_id", id: "zone_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.zone_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "zone_id", id: "zone_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.zone_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.zones_count, function (zone) {
-                  return _c(
-                    "option",
-                    { key: zone, domProps: { value: zone } },
-                    [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.zones_count, function (zone) {
+                      return _c(
+                        "option",
+                        { key: zone, domProps: { value: zone } },
+                        [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "zone_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "zone_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group row mt-2" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 col-form-label", attrs: { for: "county_id" } },
-        [_vm._v("شهرستان")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _vm.flag_county
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.county == true
+      ? _c("div", { staticClass: "form-group row mt-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "county_id" },
+            },
+            [_vm._v("شهرستان")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _vm.flag_county
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.county_selected,
-                    expression: "county_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.county_selected,
+                        expression: "county_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "county_id", id: "county_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.county_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "county_id", id: "county_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.county_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.counties, function (county) {
-                  return _c(
-                    "option",
-                    { key: county.id, domProps: { value: county.id } },
-                    [
-                      _vm._v(
-                        "\n          " + _vm._s(county.name) + "\n        "
-                      ),
-                    ]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.counties, function (county) {
+                      return _c(
+                        "option",
+                        { key: county.id, domProps: { value: county.id } },
+                        [
+                          _vm._v(
+                            "\n          " + _vm._s(county.name) + "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "county_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "county_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group row mt-2" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 col-form-label", attrs: { for: "city_id" } },
-        [_vm._v("شهر")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _vm.flag_city
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.city == true
+      ? _c("div", { staticClass: "form-group row mt-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "city_id" },
+            },
+            [_vm._v("شهر")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _vm.flag_city
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.city_selected,
-                    expression: "city_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.city_selected,
+                        expression: "city_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "city_id", id: "city_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.city_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "city_id", id: "city_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.city_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(this.cities, function (city) {
-                  return _c(
-                    "option",
-                    { key: city.id, domProps: { value: city.id } },
-                    [_vm._v("\n          " + _vm._s(city.name) + "\n        ")]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(this.cities, function (city) {
+                      return _c(
+                        "option",
+                        { key: city.id, domProps: { value: city.id } },
+                        [
+                          _vm._v(
+                            "\n          " + _vm._s(city.name) + "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "city_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "city_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []
@@ -62523,253 +62586,267 @@ var render = function () {
       attrs: { type: "hidden", name: "country_id", id: "", value: "1" },
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group col-md-3" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "province_id" } },
-        [_vm._v("استان")]
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        _vm.flag_province
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.province == true
+      ? _c("div", { staticClass: "form-group col-md-3" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "province_id" } },
+            [_vm._v("استان")]
+          ),
+          _vm._v(" "),
+          _c("div", {}, [
+            _vm.flag_province
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.province_selected,
-                    expression: "province_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.province_selected,
+                        expression: "province_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "province_id", id: "province_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.province_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "province_id", id: "province_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.province_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.provinces, function (province) {
-                  return _c(
-                    "option",
-                    { key: province.id, domProps: { value: province.id } },
-                    [
-                      _vm._v(
-                        "\n          " + _vm._s(province.name) + "\n        "
-                      ),
-                    ]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.provinces, function (province) {
+                      return _c(
+                        "option",
+                        { key: province.id, domProps: { value: province.id } },
+                        [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(province.name) +
+                              "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "province_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "province_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group col-md-3" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "zone_id" } },
-        [_vm._v("منطقه")]
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        _vm.flag_zone
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.zone == true
+      ? _c("div", { staticClass: "form-group col-md-3" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "zone_id" } },
+            [_vm._v("منطقه")]
+          ),
+          _vm._v(" "),
+          _c("div", {}, [
+            _vm.flag_zone
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.zone_selected,
-                    expression: "zone_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.zone_selected,
+                        expression: "zone_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "zone_id", id: "zone_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.zone_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "zone_id", id: "zone_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.zone_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.zones_count, function (zone) {
-                  return _c(
-                    "option",
-                    { key: zone, domProps: { value: zone } },
-                    [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.zones_count, function (zone) {
+                      return _c(
+                        "option",
+                        { key: zone, domProps: { value: zone } },
+                        [_vm._v("\n          " + _vm._s(zone) + "\n        ")]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "zone_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "zone_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group col-md-3" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "county_id" } },
-        [_vm._v("شهرستان")]
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        _vm.flag_county
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.county == true
+      ? _c("div", { staticClass: "form-group col-md-3" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "county_id" } },
+            [_vm._v("شهرستان")]
+          ),
+          _vm._v(" "),
+          _c("div", {}, [
+            _vm.flag_county
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.county_selected,
-                    expression: "county_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.county_selected,
+                        expression: "county_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "county_id", id: "county_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.county_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "county_id", id: "county_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.county_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.counties, function (county) {
-                  return _c(
-                    "option",
-                    { key: county.id, domProps: { value: county.id } },
-                    [
-                      _vm._v(
-                        "\n          " + _vm._s(county.name) + "\n        "
-                      ),
-                    ]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.counties, function (county) {
+                      return _c(
+                        "option",
+                        { key: county.id, domProps: { value: county.id } },
+                        [
+                          _vm._v(
+                            "\n          " + _vm._s(county.name) + "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "county_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "county_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group col-md-3" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "city_id" } },
-        [_vm._v("شهر")]
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        _vm.flag_city
-          ? _c(
-              "select",
-              {
-                directives: [
+    _vm.fields.city == true
+      ? _c("div", { staticClass: "form-group col-md-3" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "city_id" } },
+            [_vm._v("شهر")]
+          ),
+          _vm._v(" "),
+          _c("div", {}, [
+            _vm.flag_city
+              ? _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.city_selected,
-                    expression: "city_selected",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.city_selected,
+                        expression: "city_selected",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "city_id", id: "city_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.city_selected = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
                   },
-                ],
-                staticClass: "form-control",
-                attrs: { name: "city_id", id: "city_id" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.city_selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("انتخاب کنید"),
-                ]),
-                _vm._v(" "),
-                _vm._l(this.cities, function (city) {
-                  return _c(
-                    "option",
-                    { key: city.id, domProps: { value: city.id } },
-                    [_vm._v("\n          " + _vm._s(city.name) + "\n        ")]
-                  )
+                  [
+                    _c("option", { attrs: { selected: "", value: "" } }, [
+                      _vm._v("انتخاب کنید"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(this.cities, function (city) {
+                      return _c(
+                        "option",
+                        { key: city.id, domProps: { value: city.id } },
+                        [
+                          _vm._v(
+                            "\n          " + _vm._s(city.name) + "\n        "
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
+                )
+              : _c("select", {
+                  staticClass: "form-control",
+                  attrs: { id: "city_id" },
                 }),
-              ],
-              2
-            )
-          : _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "city_id" },
-            }),
-      ]),
-    ]),
+          ]),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

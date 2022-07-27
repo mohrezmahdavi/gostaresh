@@ -12,7 +12,11 @@
                                     zone_default="{{ request()->zone_id ?? auth()->user()->county->zone ?? ''}}"
                                     county_default="{{ request()->county_id ?? auth()->user()->county_id ?? ''}}"
                                     city_default="{{ request()->city_id ?? auth()->user()->city_id ?? ''}}"
-                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}">
+                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}"
+                                    @if (($fieldsProvinceSelect) != null)
+                                        :fields="{{ json_encode($fieldsProvinceSelect) }}"
+                                    @endif
+                                    >
                                 </select-province-inline-component>
                             </div>
                         </div>

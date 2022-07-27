@@ -1,4 +1,4 @@
-{{--Table 35 View--}}
+{{-- Table 35 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -37,7 +37,13 @@
                             zone_default="{{ $researchOutputStatusAnalysis->county->zone }}"
                             county_default="{{ $researchOutputStatusAnalysis->county_id }}"
                             city_default="{{ $researchOutputStatusAnalysis->city_id }}"
-                            rural_district_default="{{ $researchOutputStatusAnalysis->rural_district_id }}">
+                            rural_district_default="{{ $researchOutputStatusAnalysis->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -47,8 +53,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                       value="{{ $researchOutputStatusAnalysis->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->unit }}" class="form-control"
+                                    placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -58,9 +64,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_valid_scientific_articles" name="number_of_valid_scientific_articles"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_valid_scientific_articles }}" class="form-control"
-                                       placeholder=" تعداد مقالات معتبر علمی را وارد کنید...">
+                                <input type="number" id="number_of_valid_scientific_articles"
+                                    name="number_of_valid_scientific_articles"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_valid_scientific_articles }}"
+                                    class="form-control" placeholder=" تعداد مقالات معتبر علمی را وارد کنید...">
                             </div>
                         </div>
 
@@ -71,8 +78,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_valid_books" name="number_of_valid_books"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_valid_books }}" class="form-control"
-                                       placeholder=" تعداد کتب معتبر را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->number_of_valid_books }}" class="form-control"
+                                    placeholder=" تعداد کتب معتبر را وارد کنید...">
                             </div>
                         </div>
 
@@ -83,8 +90,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_authored_books" name="number_of_authored_books"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_authored_books }}" class="form-control"
-                                       placeholder=" تعداد کتب تالیفی را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->number_of_authored_books }}"
+                                    class="form-control" placeholder=" تعداد کتب تالیفی را وارد کنید...">
                             </div>
                         </div>
 
@@ -94,9 +101,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_internal_inventions" name="number_of_internal_inventions"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_internal_inventions }}" class="form-control"
-                                       placeholder=" تعداد اختراعات ثبت شده داخلی را وارد کنید...">
+                                <input type="number" id="number_of_internal_inventions"
+                                    name="number_of_internal_inventions"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_internal_inventions }}"
+                                    class="form-control" placeholder=" تعداد اختراعات ثبت شده داخلی را وارد کنید...">
                             </div>
                         </div>
 
@@ -106,9 +114,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_inventions" name="number_of_international_inventions"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_international_inventions }}" class="form-control"
-                                       placeholder=" تعداد اختراعات ثبت شده بین المللی را وارد کنید...">
+                                <input type="number" id="number_of_international_inventions"
+                                    name="number_of_international_inventions"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_international_inventions }}"
+                                    class="form-control" placeholder=" تعداد اختراعات ثبت شده بین المللی را وارد کنید...">
                             </div>
                         </div>
 
@@ -119,8 +128,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_theses" name="number_of_theses"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_theses }}" class="form-control"
-                                       placeholder=" تعداد پایان نامه ها را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->number_of_theses }}" class="form-control"
+                                    placeholder=" تعداد پایان نامه ها را وارد کنید...">
                             </div>
                         </div>
 
@@ -130,21 +139,26 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_research_dissertations" name="number_of_research_dissertations"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_research_dissertations }}" class="form-control"
-                                       placeholder=" تعداد پایان نامه های منجر به مقاله علمی-پژوهشی را وارد کنید...">
+                                <input type="number" id="number_of_research_dissertations"
+                                    name="number_of_research_dissertations"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_research_dissertations }}"
+                                    class="form-control"
+                                    placeholder=" تعداد پایان نامه های منجر به مقاله علمی-پژوهشی را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_compiled_dissertations">
-                                <span>تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه </span>&nbsp
+                                <span>تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه
+                                </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_compiled_dissertations" name="number_of_compiled_dissertations"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_compiled_dissertations }}" class="form-control"
-                                       placeholder=" تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه را وارد کنید...">
+                                <input type="number" id="number_of_compiled_dissertations"
+                                    name="number_of_compiled_dissertations"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_compiled_dissertations }}"
+                                    class="form-control"
+                                    placeholder=" تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه را وارد کنید...">
                             </div>
                         </div>
 
@@ -154,9 +168,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_invented_dissertations" name="number_of_invented_dissertations"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_invented_dissertations }}" class="form-control"
-                                       placeholder=" تعداد پایان نامه های منجر به ثبت اختراع را وارد کنید...">
+                                <input type="number" id="number_of_invented_dissertations"
+                                    name="number_of_invented_dissertations"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_invented_dissertations }}"
+                                    class="form-control"
+                                    placeholder=" تعداد پایان نامه های منجر به ثبت اختراع را وارد کنید...">
                             </div>
                         </div>
 
@@ -166,9 +182,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_product_dissertations" name="number_of_product_dissertations"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_product_dissertations }}" class="form-control"
-                                       placeholder=" تعداد پایان نامه های منجر به محصول را وارد کنید...">
+                                <input type="number" id="number_of_product_dissertations"
+                                    name="number_of_product_dissertations"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_product_dissertations }}"
+                                    class="form-control"
+                                    placeholder=" تعداد پایان نامه های منجر به محصول را وارد کنید...">
                             </div>
                         </div>
 
@@ -178,9 +196,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_completed_research_projects" name="number_of_completed_research_projects"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_completed_research_projects }}" class="form-control"
-                                       placeholder=" تعداد طرح های تحقیقاتی خاتمه یافته را وارد کنید...">
+                                <input type="number" id="number_of_completed_research_projects"
+                                    name="number_of_completed_research_projects"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_completed_research_projects }}"
+                                    class="form-control"
+                                    placeholder=" تعداد طرح های تحقیقاتی خاتمه یافته را وارد کنید...">
                             </div>
                         </div>
 
@@ -191,8 +211,9 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_theorizing_chairs" name="number_of_theorizing_chairs"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_theorizing_chairs }}" class="form-control"
-                                       placeholder=" تعداد کرسی های نظریه پردازی برگزار شده توسط اساتید واحد دانشگاهی را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->number_of_theorizing_chairs }}"
+                                    class="form-control"
+                                    placeholder=" تعداد کرسی های نظریه پردازی برگزار شده توسط اساتید واحد دانشگاهی را وارد کنید...">
                             </div>
                         </div>
 
@@ -202,9 +223,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_memoranda_of_understanding" name="number_of_memoranda_of_understanding"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_memoranda_of_understanding }}" class="form-control"
-                                       placeholder=" تعداد تفاهمنامه ها با صنایع و سازمان‌های محلی/ملی را وارد کنید...">
+                                <input type="number" id="number_of_memoranda_of_understanding"
+                                    name="number_of_memoranda_of_understanding"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_memoranda_of_understanding }}"
+                                    class="form-control"
+                                    placeholder=" تعداد تفاهمنامه ها با صنایع و سازمان‌های محلی/ملی را وارد کنید...">
                             </div>
                         </div>
 
@@ -214,9 +237,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="amount_of_national_contracts_concluded" name="amount_of_national_contracts_concluded"
-                                       value="{{ $researchOutputStatusAnalysis->amount_of_national_contracts_concluded }}" class="form-control"
-                                       placeholder=" مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی را وارد کنید...">
+                                <input type="number" id="amount_of_national_contracts_concluded"
+                                    name="amount_of_national_contracts_concluded"
+                                    value="{{ $researchOutputStatusAnalysis->amount_of_national_contracts_concluded }}"
+                                    class="form-control"
+                                    placeholder=" مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی را وارد کنید...">
                             </div>
                         </div>
 
@@ -226,9 +251,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="amount_of_local_contracts_concluded" name="amount_of_local_contracts_concluded"
-                                       value="{{ $researchOutputStatusAnalysis->amount_of_local_contracts_concluded }}" class="form-control"
-                                       placeholder=" مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی را وارد کنید...">
+                                <input type="number" id="amount_of_local_contracts_concluded"
+                                    name="amount_of_local_contracts_concluded"
+                                    value="{{ $researchOutputStatusAnalysis->amount_of_local_contracts_concluded }}"
+                                    class="form-control"
+                                    placeholder=" مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی را وارد کنید...">
                             </div>
                         </div>
 
@@ -238,9 +265,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_scientific_journals" name="number_of_scientific_journals"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_scientific_journals }}" class="form-control"
-                                       placeholder=" تعداد مجلات علمی را وارد کنید...">
+                                <input type="number" id="number_of_scientific_journals"
+                                    name="number_of_scientific_journals"
+                                    value="{{ $researchOutputStatusAnalysis->number_of_scientific_journals }}"
+                                    class="form-control" placeholder=" تعداد مجلات علمی را وارد کنید...">
                             </div>
                         </div>
 
@@ -251,8 +279,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_R&D_research" name="number_of_R&D_research"
-                                       value="{{ $researchOutputStatusAnalysis['number_of_R&D_research'] }}" class="form-control"
-                                       placeholder=" تعداد پژوهش های معطوف به R &D را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis['number_of_R&D_research'] }}"
+                                    class="form-control" placeholder=" تعداد پژوهش های معطوف به R &D را وارد کنید...">
                             </div>
                         </div>
 
@@ -263,16 +291,17 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_innovative_ideas" name="number_of_innovative_ideas"
-                                       value="{{ $researchOutputStatusAnalysis->number_of_innovative_ideas }}" class="form-control"
-                                       placeholder=" تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده را وارد کنید...">
+                                    value="{{ $researchOutputStatusAnalysis->number_of_innovative_ideas }}"
+                                    class="form-control"
+                                    placeholder=" تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$researchOutputStatusAnalysis->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$researchOutputStatusAnalysis->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$researchOutputStatusAnalysis->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$researchOutputStatusAnalysis->month" :required="false" name="month"></x-select-month> --}}
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

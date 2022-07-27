@@ -1,4 +1,4 @@
-{{--Table 34 View--}}
+{{-- Table 34 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -21,15 +21,18 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
 
     <div class="row">
@@ -40,55 +43,54 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($teachersStatusAnalyses as $key => $teachersStatusAnalysis)
                                 <tr>
-                                    <th scope="row">{{ $teachersStatusAnalyses?->firstItem() + $key }}</th>
-                                    <td>{{ $teachersStatusAnalysis?->province?->name . ' - ' . $teachersStatusAnalysis->county?->name }}
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key , \App\Models\Index\TeachersStatusAnalysis::$numeric_fields))
-                                                <td>{{ number_format($teachersStatusAnalysis?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $teachersStatusAnalysis?->{$key} }}</td>
-                                            @endif
+                                    <th>#</th>
+                                    <th>شهرستان</th>
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
+                                    <th>سال</th>
+                                    <th>اقدام</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($teachersStatusAnalyses as $key => $teachersStatusAnalysis)
+                                    <tr>
+                                        <th scope="row">{{ $teachersStatusAnalyses?->firstItem() + $key }}</th>
+                                        <td>{{ $teachersStatusAnalysis?->province?->name . ' - ' . $teachersStatusAnalysis->county?->name }}
+                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                                @if (filterCol($key))
+                                                    @if (in_array($key, \App\Models\Index\TeachersStatusAnalysis::$numeric_fields))
+                                        <td>{{ number_format($teachersStatusAnalysis?->{$key}) }}</td>
+                                    @else
+                                        <td>{{ $teachersStatusAnalysis?->{$key} }}</td>
+                                @endif
+                                @endif
+                                @endforeach
 
-                                    <td>{{ $teachersStatusAnalysis?->year }}</td>
-                                    <td>
+                                <td>{{ $teachersStatusAnalysis?->year }}</td>
+                                <td>
 
-                                        <a href="{{ route('teachers-status-analyses.edit', $teachersStatusAnalysis) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
+                                    <a href="{{ route('teachers-status-analyses.edit', $teachersStatusAnalysis) }}"
+                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                            class="fa fa-edit"></i></a>
 
-                                        {{--                                        <a href="{{ route('graduates-of-higher-education.destroy', $teachersStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"--}}
-                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
-                                    </td>
+                                    {{-- <a href="{{ route('graduates-of-higher-education.destroy', $teachersStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}" --}}
+                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+                                </td>
 
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('teachers-status-analyses.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('teachers-status-analyses.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('teachers-status-analyses.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('teachers-status-analyses.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->
