@@ -92,7 +92,7 @@ class AmountOfFacilitiesForResearchAchievements extends Model
     ];
     public static $filterColumnsCheckBoxes = [
         "unit"   => "واحد",
-        "amount" => "میزان"
+        "amount" => "میزان تسھیلات و حمایت ھای مالی"
     ];
 
 }
