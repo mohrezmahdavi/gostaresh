@@ -12,7 +12,7 @@ class FilterTableListComponent extends Component
      *
      * @return void
      */
-    public function __construct(public $yearSelectedList = [], public $filterColumnsCheckBoxes = [])
+    public function __construct(public $yearSelectedList = [], public $filterColumnsCheckBoxes = [], public $fieldsProvinceSelect = null)
     {
         //
     }

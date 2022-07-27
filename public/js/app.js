@@ -2504,9 +2504,18 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (newValue != "") {
-        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
-          _this2.zones_count = data.data.zone_number;
-        });
+        if (this.fields.zone == true) {
+          _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+            _this2.zones_count = data.data.zone_number;
+          });
+        }
+
+        if (this.fields.zone == false && this.fields.county == true) {
+          _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
+            _this2.counties = [];
+            _this2.counties = data.data;
+          });
+        }
       }
 
       this.count_province_changed++;
@@ -2775,9 +2784,18 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (newValue != "") {
-        _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
-          _this2.zones_count = data.data.zone_number;
-        });
+        if (this.fields.zone == true) {
+          _services_province__WEBPACK_IMPORTED_MODULE_0__["default"].getProvinceInfoById(newValue).then(function (data) {
+            _this2.zones_count = data.data.zone_number;
+          });
+        }
+
+        if (this.fields.zone == false && this.fields.county == true) {
+          _services_county__WEBPACK_IMPORTED_MODULE_1__["default"].listCounties(newValue).then(function (data) {
+            _this2.counties = [];
+            _this2.counties = data.data;
+          });
+        }
       }
 
       this.count_province_changed++;

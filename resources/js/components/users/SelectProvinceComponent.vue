@@ -208,9 +208,17 @@ export default {
         this.zone_selected = "";
       }
       if (newValue != "") {
-        ProvinceService.getProvinceInfoById(newValue).then((data) => {
-          this.zones_count = data.data.zone_number;
-        });
+        if (this.fields.zone == true) {
+          ProvinceService.getProvinceInfoById(newValue).then((data) => {
+            this.zones_count = data.data.zone_number;
+          });
+        }
+        if (this.fields.zone == false && this.fields.county == true) {
+          CountyService.listCounties(newValue).then((data) => {
+            this.counties = [];
+            this.counties = data.data;
+          });
+        }
       }
       this.count_province_changed++;
     },
