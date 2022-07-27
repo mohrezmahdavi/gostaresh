@@ -2,7 +2,7 @@
   <div class="row">
     <input type="hidden" name="country_id" id="" value="1" />
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3" v-if="fields.province == true">
       <label class="col-form-label" for="province_id">استان</label>
       <div class="">
         <select
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3" v-if="fields.zone == true">
       <label class="col-form-label" for="zone_id">منطقه</label>
       <div class="">
         <select
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3" v-if="fields.county == true">
       <label class="col-form-label" for="county_id">شهرستان</label>
       <div class="">
         <select
@@ -67,9 +67,9 @@
       </div>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3" v-if="fields.city == true">
       <label class="col-form-label" for="city_id">شهر</label>
-       <div class="">
+      <div class="">
         <select
           v-if="flag_city"
           name="city_id"
@@ -132,6 +132,17 @@ export default {
     },
     rural_district_default: {
       default: "",
+    },
+    fields: {
+      type: Object,
+      default() {
+        return {
+          province: true,
+          zone: true,
+          county: true,
+          city: true,
+        };
+      },
     },
   },
   data() {
