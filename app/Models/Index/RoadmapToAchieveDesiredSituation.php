@@ -94,7 +94,7 @@ class RoadmapToAchieveDesiredSituation extends Model
         "title_axis"                => "عنوان محور",
         "project_title"             => "عنوان پروژه",
         "quantitative_goal"         => "هدف کمی",
-        "test"                      => "سنجش",
+        "test"                      => "سنجه",
         "annual_progress_level"     => "سطح پیشرفت و تحقق سالانه",
         "responsible_for_track"     => "مسئول پیگیری",
         "considerations"            => "ملاحظات",
