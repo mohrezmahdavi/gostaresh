@@ -1,20 +1,20 @@
-{{--Table 48 View--}}
+{{-- Table 48 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
 @endsection
 
 @section('breadcrumb-title')
-ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
 @endsection
 
 @section('page-title')
-ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل وضعیت درآمد ھای دانشگاه در واحدھای دانشگاھی استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -28,15 +28,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('revenue-status-analyses.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('revenue-status-analyses.store') }}"
+                        role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -45,9 +51,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ old('unit') }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -58,8 +63,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_revenue" name="total_revenue"
-                                       value="{{ old('total_revenue') }}" class="form-control"
-                                       placeholder=" کل درآمد ها را وارد کنید...">
+                                    value="{{ old('total_revenue') }}" class="form-control"
+                                    placeholder=" کل درآمد ها را وارد کنید...">
                             </div>
                         </div>
 
@@ -70,8 +75,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_student_tuition" name="income_from_student_tuition"
-                                       value="{{ old('income_from_student_tuition') }}" class="form-control"
-                                       placeholder=" درآمد حاصل از شهریه دانشجویان را وارد کنید...">
+                                    value="{{ old('income_from_student_tuition') }}" class="form-control"
+                                    placeholder=" درآمد حاصل از شهریه دانشجویان را وارد کنید...">
                             </div>
                         </div>
 
@@ -81,9 +86,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="income_from_commercialized_technologies" name="income_from_commercialized_technologies"
-                                       value="{{ old('income_from_commercialized_technologies') }}" class="form-control"
-                                       placeholder=" درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده را وارد کنید...">
+                                <input type="text" id="income_from_commercialized_technologies"
+                                    name="income_from_commercialized_technologies"
+                                    value="{{ old('income_from_commercialized_technologies') }}" class="form-control"
+                                    placeholder=" درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده را وارد کنید...">
                             </div>
                         </div>
 
@@ -93,9 +99,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="income_from_research_activities" name="income_from_research_activities"
-                                       value="{{ old('income_from_research_activities') }}" class="form-control"
-                                       placeholder=" درصد درآمد حاصل از فعالیت های تحقیق و توسعه واحد را وارد کنید...">
+                                <input type="text" id="income_from_research_activities"
+                                    name="income_from_research_activities"
+                                    value="{{ old('income_from_research_activities') }}" class="form-control"
+                                    placeholder=" درصد درآمد حاصل از فعالیت های تحقیق و توسعه واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -106,8 +113,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_skills_training" name="income_from_skills_training"
-                                       value="{{ old('income_from_skills_training') }}" class="form-control"
-                                       placeholder=" درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد را وارد کنید...">
+                                    value="{{ old('income_from_skills_training') }}" class="form-control"
+                                    placeholder=" درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -118,8 +125,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="operating_income_growth_rate" name="operating_income_growth_rate"
-                                       value="{{ old('operating_income_growth_rate') }}" class="form-control"
-                                       placeholder=" نرخ رشد درآمدهای عملیاتی واحد را وارد کنید...">
+                                    value="{{ old('operating_income_growth_rate') }}" class="form-control"
+                                    placeholder=" نرخ رشد درآمدهای عملیاتی واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -130,8 +137,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_non_tuition_income" name="total_non_tuition_income"
-                                       value="{{ old('total_non_tuition_income') }}" class="form-control"
-                                       placeholder=" مجموع درآمدهای غیر شهریه ای واحد را وارد کنید...">
+                                    value="{{ old('total_non_tuition_income') }}" class="form-control"
+                                    placeholder=" مجموع درآمدهای غیر شهریه ای واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -142,8 +149,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_international_income" name="total_international_income"
-                                       value="{{ old('total_international_income') }}" class="form-control"
-                                       placeholder=" مجموع درآمد های ناشی از فعالیت های بین المللی را وارد کنید...">
+                                    value="{{ old('total_international_income') }}" class="form-control"
+                                    placeholder=" مجموع درآمد های ناشی از فعالیت های بین المللی را وارد کنید...">
                             </div>
                         </div>
 
@@ -154,14 +161,14 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="shareholder_income" name="shareholder_income"
-                                       value="{{ old('shareholder_income') }}" class="form-control"
-                                       placeholder=" درآمد ناشی از سهامداری را وارد کنید...">
+                                    value="{{ old('shareholder_income') }}" class="form-control"
+                                    placeholder=" درآمد ناشی از سهامداری را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
 
