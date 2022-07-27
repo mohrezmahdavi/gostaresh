@@ -1,4 +1,4 @@
-{{--Table 39 View--}}
+{{-- Table 39 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -29,8 +29,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('innovation-infrastructures.update', $innovationInfrastructure) }}"
-                        role="form">
+                        action="{{ route('innovation-infrastructures.update', $innovationInfrastructure) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -38,7 +37,13 @@
                             zone_default="{{ $innovationInfrastructure->county->zone }}"
                             county_default="{{ $innovationInfrastructure->county_id }}"
                             city_default="{{ $innovationInfrastructure->city_id }}"
-                            rural_district_default="{{ $innovationInfrastructure->rural_district_id }}">
+                            rural_district_default="{{ $innovationInfrastructure->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -48,8 +53,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
-                                       value="{{ $innovationInfrastructure->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                    value="{{ $innovationInfrastructure->unit }}" class="form-control"
+                                    placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -59,9 +64,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_innovation_houses" name="number_of_active_innovation_houses"
-                                       value="{{ $innovationInfrastructure->number_of_active_innovation_houses }}" class="form-control"
-                                       placeholder=" تعداد سرای نوآوری فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_innovation_houses"
+                                    name="number_of_active_innovation_houses"
+                                    value="{{ $innovationInfrastructure->number_of_active_innovation_houses }}"
+                                    class="form-control" placeholder=" تعداد سرای نوآوری فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -71,9 +77,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_accelerators" name="number_of_active_accelerators"
-                                       value="{{ $innovationInfrastructure->number_of_active_accelerators }}" class="form-control"
-                                       placeholder=" تعداد شتاب دهنده فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_accelerators"
+                                    name="number_of_active_accelerators"
+                                    value="{{ $innovationInfrastructure->number_of_active_accelerators }}"
+                                    class="form-control" placeholder=" تعداد شتاب دهنده فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -83,9 +90,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_growth_centers" name="number_of_active_growth_centers"
-                                       value="{{ $innovationInfrastructure->number_of_active_growth_centers }}" class="form-control"
-                                       placeholder=" تعداد مراکز رشد فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_growth_centers"
+                                    name="number_of_active_growth_centers"
+                                    value="{{ $innovationInfrastructure->number_of_active_growth_centers }}"
+                                    class="form-control" placeholder=" تعداد مراکز رشد فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -95,9 +103,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_technology_cores" name="number_of_active_technology_cores"
-                                       value="{{ $innovationInfrastructure->number_of_active_technology_cores }}" class="form-control"
-                                       placeholder=" تعداد هسته فناور فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_technology_cores"
+                                    name="number_of_active_technology_cores"
+                                    value="{{ $innovationInfrastructure->number_of_active_technology_cores }}"
+                                    class="form-control" placeholder=" تعداد هسته فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -107,9 +116,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_skill_high_schools" name="number_of_active_skill_high_schools"
-                                       value="{{ $innovationInfrastructure->number_of_active_skill_high_schools }}" class="form-control"
-                                       placeholder=" تعداد مدارس عالی مهارتی فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_skill_high_schools"
+                                    name="number_of_active_skill_high_schools"
+                                    value="{{ $innovationInfrastructure->number_of_active_skill_high_schools }}"
+                                    class="form-control" placeholder=" تعداد مدارس عالی مهارتی فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -119,9 +129,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_skill_training_centers" name="number_of_skill_training_centers"
-                                       value="{{ $innovationInfrastructure->number_of_skill_training_centers }}" class="form-control"
-                                       placeholder=" تعداد مراکز توانمندسازی و آموزش مهارتی را وارد کنید...">
+                                <input type="number" id="number_of_skill_training_centers"
+                                    name="number_of_skill_training_centers"
+                                    value="{{ $innovationInfrastructure->number_of_skill_training_centers }}"
+                                    class="form-control"
+                                    placeholder=" تعداد مراکز توانمندسازی و آموزش مهارتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -132,8 +144,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_research_centers" name="number_of_research_centers"
-                                       value="{{ $innovationInfrastructure->number_of_research_centers }}" class="form-control"
-                                       placeholder=" تعداد مراکز تحقیقاتی را وارد کنید...">
+                                    value="{{ $innovationInfrastructure->number_of_research_centers }}"
+                                    class="form-control" placeholder=" تعداد مراکز تحقیقاتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -143,9 +155,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_development_offices" name="number_of_development_offices"
-                                       value="{{ $innovationInfrastructure->number_of_development_offices }}" class="form-control"
-                                       placeholder=" تعداد دفاتر توسعه و انتقال فناوری را وارد کنید...">
+                                <input type="number" id="number_of_development_offices"
+                                    name="number_of_development_offices"
+                                    value="{{ $innovationInfrastructure->number_of_development_offices }}"
+                                    class="form-control" placeholder=" تعداد دفاتر توسعه و انتقال فناوری را وارد کنید...">
                             </div>
                         </div>
 
@@ -155,9 +168,11 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_industry_trade_offices" name="number_of_industry_trade_offices"
-                                       value="{{ $innovationInfrastructure->number_of_industry_trade_offices }}" class="form-control"
-                                       placeholder=" تعداددفاتر کلینیک صنعت، معدن و تجارت را وارد کنید...">
+                                <input type="number" id="number_of_industry_trade_offices"
+                                    name="number_of_industry_trade_offices"
+                                    value="{{ $innovationInfrastructure->number_of_industry_trade_offices }}"
+                                    class="form-control"
+                                    placeholder=" تعداددفاتر کلینیک صنعت، معدن و تجارت را وارد کنید...">
                             </div>
                         </div>
 
@@ -167,15 +182,16 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_entrepreneurship_centers" name="number_of_entrepreneurship_centers"
-                                       value="{{ $innovationInfrastructure->number_of_entrepreneurship_centers }}" class="form-control"
-                                       placeholder=" تعداد مراکز کارآفرینی را وارد کنید...">
+                                <input type="number" id="number_of_entrepreneurship_centers"
+                                    name="number_of_entrepreneurship_centers"
+                                    value="{{ $innovationInfrastructure->number_of_entrepreneurship_centers }}"
+                                    class="form-control" placeholder=" تعداد مراکز کارآفرینی را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$innovationInfrastructure->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$innovationInfrastructure->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$innovationInfrastructure->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$innovationInfrastructure->month" :required="false" name="month"></x-select-month> --}}
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

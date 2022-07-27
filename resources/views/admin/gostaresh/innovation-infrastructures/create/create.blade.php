@@ -1,20 +1,20 @@
-{{--Table 39 View--}}
+{{-- Table 39 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
+    ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
 @endsection
 
 @section('breadcrumb-title')
-ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
+    ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
 @endsection
 
 @section('page-title')
-ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
+    ایجاد تعداد زیرساخت ھای فناوری و نوآوری واحدھای دانشگاھی استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -28,15 +28,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('innovation-infrastructures.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('innovation-infrastructures.store') }}"
+                        role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -45,9 +51,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ old('unit') }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -57,9 +62,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_innovation_houses" name="number_of_active_innovation_houses"
-                                       value="{{ old('number_of_active_innovation_houses') }}" class="form-control"
-                                       placeholder=" تعداد سرای نوآوری فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_innovation_houses"
+                                    name="number_of_active_innovation_houses"
+                                    value="{{ old('number_of_active_innovation_houses') }}" class="form-control"
+                                    placeholder=" تعداد سرای نوآوری فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -69,9 +75,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_accelerators" name="number_of_active_accelerators"
-                                       value="{{ old('number_of_active_accelerators') }}" class="form-control"
-                                       placeholder=" تعداد شتاب دهنده فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_accelerators"
+                                    name="number_of_active_accelerators" value="{{ old('number_of_active_accelerators') }}"
+                                    class="form-control" placeholder=" تعداد شتاب دهنده فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -81,9 +87,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_growth_centers" name="number_of_active_growth_centers"
-                                       value="{{ old('number_of_active_growth_centers') }}" class="form-control"
-                                       placeholder=" تعداد مراکز رشد فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_growth_centers"
+                                    name="number_of_active_growth_centers"
+                                    value="{{ old('number_of_active_growth_centers') }}" class="form-control"
+                                    placeholder=" تعداد مراکز رشد فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -93,9 +100,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_technology_cores" name="number_of_active_technology_cores"
-                                       value="{{ old('number_of_active_technology_cores') }}" class="form-control"
-                                       placeholder=" تعداد هسته فناور فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_technology_cores"
+                                    name="number_of_active_technology_cores"
+                                    value="{{ old('number_of_active_technology_cores') }}" class="form-control"
+                                    placeholder=" تعداد هسته فناور فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -105,9 +113,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_active_skill_high_schools" name="number_of_active_skill_high_schools"
-                                       value="{{ old('number_of_active_skill_high_schools') }}" class="form-control"
-                                       placeholder=" تعداد مدارس عالی مهارتی فعال را وارد کنید...">
+                                <input type="number" id="number_of_active_skill_high_schools"
+                                    name="number_of_active_skill_high_schools"
+                                    value="{{ old('number_of_active_skill_high_schools') }}" class="form-control"
+                                    placeholder=" تعداد مدارس عالی مهارتی فعال را وارد کنید...">
                             </div>
                         </div>
 
@@ -117,9 +126,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_skill_training_centers" name="number_of_skill_training_centers"
-                                       value="{{ old('number_of_skill_training_centers') }}" class="form-control"
-                                       placeholder=" تعداد مراکز توانمندسازی و آموزش مهارتی را وارد کنید...">
+                                <input type="number" id="number_of_skill_training_centers"
+                                    name="number_of_skill_training_centers"
+                                    value="{{ old('number_of_skill_training_centers') }}" class="form-control"
+                                    placeholder=" تعداد مراکز توانمندسازی و آموزش مهارتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -130,8 +140,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="number_of_research_centers" name="number_of_research_centers"
-                                       value="{{ old('number_of_research_centers') }}" class="form-control"
-                                       placeholder=" تعداد مراکز تحقیقاتی را وارد کنید...">
+                                    value="{{ old('number_of_research_centers') }}" class="form-control"
+                                    placeholder=" تعداد مراکز تحقیقاتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -141,9 +151,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_development_offices" name="number_of_development_offices"
-                                       value="{{ old('number_of_development_offices') }}" class="form-control"
-                                       placeholder=" تعداد دفاتر توسعه و انتقال فناوری را وارد کنید...">
+                                <input type="number" id="number_of_development_offices"
+                                    name="number_of_development_offices"
+                                    value="{{ old('number_of_development_offices') }}" class="form-control"
+                                    placeholder=" تعداد دفاتر توسعه و انتقال فناوری را وارد کنید...">
                             </div>
                         </div>
 
@@ -153,9 +164,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_industry_trade_offices" name="number_of_industry_trade_offices"
-                                       value="{{ old('number_of_industry_trade_offices') }}" class="form-control"
-                                       placeholder=" تعداددفاتر کلینیک صنعت، معدن و تجارت را وارد کنید...">
+                                <input type="number" id="number_of_industry_trade_offices"
+                                    name="number_of_industry_trade_offices"
+                                    value="{{ old('number_of_industry_trade_offices') }}" class="form-control"
+                                    placeholder=" تعداددفاتر کلینیک صنعت، معدن و تجارت را وارد کنید...">
                             </div>
                         </div>
 
@@ -165,15 +177,16 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_entrepreneurship_centers" name="number_of_entrepreneurship_centers"
-                                       value="{{ old('number_of_entrepreneurship_centers') }}" class="form-control"
-                                       placeholder=" تعداد مراکز کارآفرینی را وارد کنید...">
+                                <input type="number" id="number_of_entrepreneurship_centers"
+                                    name="number_of_entrepreneurship_centers"
+                                    value="{{ old('number_of_entrepreneurship_centers') }}" class="form-control"
+                                    placeholder=" تعداد مراکز کارآفرینی را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
