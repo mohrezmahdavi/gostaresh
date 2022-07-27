@@ -1,33 +1,37 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
+    میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
 @endsection
 
 @section('breadcrumb-title')
-میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
+    میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
 @endsection
 
 @section('page-title')
-میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
+    میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.create') }}"
+            class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-    :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -47,17 +51,19 @@
                             <tbody style="text-align: right; direction: ltr">
                                 @foreach ($averageTestScoreOfTheLastFivePercentOfAdmitteds as $key => $averageTestScoreOfTheLastFivePercentOfAdmitted)
                                     <tr>
-                                        <th scope="row">{{ $averageTestScoreOfTheLastFivePercentOfAdmitteds?->firstItem() + $key }}</th>
+                                        <th scope="row">
+                                            {{ $averageTestScoreOfTheLastFivePercentOfAdmitteds?->firstItem() + $key }}</th>
 
                                         @include('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.partials.tbody')
 
                                         <td>
 
                                             <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.edit', $averageTestScoreOfTheLastFivePercentOfAdmitted) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.destroy', $averageTestScoreOfTheLastFivePercentOfAdmitted) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('average.test.score.of.the.last.five.percent.of.admitted.destroy', $averageTestScoreOfTheLastFivePercentOfAdmitted) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 

@@ -69,7 +69,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'گروه عمده تحصیلی');
         }
         if (filterCol('average_test_score_of_the_last_five_percent_of_admitted') == true) {
-            array_push($headings, 'مقدار');
+            array_push($headings, "مقدار میانگین رتبه آزمون 5 درصد آخر پذیرفته شدگان");
         }
         if (filterCol('year') == true) {
             array_push($headings, 'سال');

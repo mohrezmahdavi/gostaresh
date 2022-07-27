@@ -121,7 +121,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmitted extends Model
         "university_type_title"                                    => "دانشگاه",
         "gender_title"                                             => "جنسیت",
         "department_of_education_title"                            => "گروه عمده تحصیلی",
-        "average_test_score_of_the_last_five_percent_of_admitted"  => "مقدار",
+        "average_test_score_of_the_last_five_percent_of_admitted"  => "مقدار میانگین رتبه آزمون 5 درصد آخر پذیرفته شدگان",
         "year"                                                     => "سال",
 
     ];
