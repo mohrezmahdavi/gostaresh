@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش تعداد دوره های تحصیلی بین المللی
+ویرایش تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش تعداد دوره های تحصیلی بین المللی
+ویرایش تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 @endsection
 
 @section('page-title')
-    ویرایش تعداد دوره های تحصیلی بین المللی
+ویرایش تحلیل وضعیت تعداد دوره های تحصیلی بین المللی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
