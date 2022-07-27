@@ -1,27 +1,25 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+    نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 @endsection
 
 @section('breadcrumb-title')
-نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+    نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 @endsection
 
 @section('page-title')
-نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+    نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('international.student.growth.rate.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('international.student.growth.rate.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
-
 @endsection
 
 @section('content')
@@ -29,8 +27,12 @@
 
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -53,14 +55,15 @@
                                         <th scope="row">{{ $internationalStudentGrowthRates?->firstItem() + $key }}</th>
                                         @include('admin.gostaresh.international-student-growth-rate.list.partials.tbody')
 
-                                        
+
                                         <td>
 
                                             <a href="{{ route('international.student.growth.rate.edit', $internationalStudentGrowthRate) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('international.student.growth.rate.destroy', $internationalStudentGrowthRate) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('international.student.growth.rate.destroy', $internationalStudentGrowthRate) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -69,11 +72,10 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('international.student.growth.rate.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('international.student.growth.rate.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('international.student.growth.rate.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('international.student.growth.rate.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
@@ -86,7 +88,5 @@
 @endsection
 
 @section('body-scripts')
-
     <script src="{{ mix('/js/app.js') }}"></script>
-
 @endsection

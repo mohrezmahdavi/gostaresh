@@ -135,7 +135,7 @@ return [
                     'name' => 'number.of.international.course',
                 ],
                 [
-                    'title' => ' نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی',
+                    'title' => 'نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی',
                     'name' => 'international.student.growth.rate',
                 ],
                 
