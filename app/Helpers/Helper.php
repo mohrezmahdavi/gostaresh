@@ -33,19 +33,13 @@ if (!function_exists('filterCol')) {
         if (request()->has($fieldName)) {
             if (request()->input($fieldName) == 1) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
-        }
-        else
-        {
-            if (request()->query() == null || request()->query("all")==1) {
+        } else {
+            if (request()->query() == null || request()->query("all") == 1) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
@@ -55,8 +49,7 @@ if (!function_exists('filterCol')) {
 if (!function_exists('filterByOwnProvince')) {
     function filterByOwnProvince($query)
     {
-        if (!auth()->user()->hasRole('admin'))
-        {
+        if (!auth()->user()->hasRole('admin')) {
             if (isset(auth()->user()->city_id))
                 $query->where('city_id', auth()->user()->city_id);
 
@@ -68,5 +61,28 @@ if (!function_exists('filterByOwnProvince')) {
 
         }
         return $query;
+    }
+}
+if (!function_exists('getAppModelsList')) {
+    function getAppModelsList($modelsPath, $FullNameSpace = true /* only model name without namespace = false */)
+    {
+        $out = [];
+        $results = scandir($modelsPath);
+        $path = "App\Models\\";
+
+        foreach ($results as $result) {
+            if ($result === '.' or $result === '..')
+                continue;
+
+            $filePath = "$modelsPath/$result";
+
+            $filename = $path . $result;
+
+            if (is_dir($filePath))
+                $out = array_merge($out, getAppModelsList($filePath, $FullNameSpace));
+            else
+                $out[] = substr($FullNameSpace ? $filename : $result, 0, -4);
+        }
+        return $out;
     }
 }
