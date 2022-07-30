@@ -5,6 +5,9 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
+use App\Models\Major;
+use App\Models\Minor;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -75,6 +78,21 @@ class NumberOfStudentsStatusAnalysis extends Model
     public function ruralDistrict()
     {
         return $this->belongsTo(RuralDistrict::class, 'rural_district_id');
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
+    public function minor()
+    {
+        return $this->belongsTo(Minor::class, 'minor_id');
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'major_id');
     }
 
     public function scopeWhereRequestsQuery($query)

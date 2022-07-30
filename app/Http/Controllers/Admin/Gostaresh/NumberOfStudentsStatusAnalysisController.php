@@ -8,6 +8,9 @@ use App\Models\Index\NumberOfStudentsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfStudentsStatusAnalysis\NumberOfStudentsStatusAnalysisRequest;
+use App\Models\Grade;
+use App\Models\Major;
+use App\Models\Minor;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -68,7 +71,10 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.number-of-students-status-analysis.create.create');
+        $grades = Grade::all();
+        $majors = Major::all();
+        $minors = Minor::all();
+        return view('admin.gostaresh.number-of-students-status-analysis.create.create', compact('grades', 'majors', 'minors'));
     }
 
     /**
@@ -102,7 +108,10 @@ class NumberOfStudentsStatusAnalysisController extends Controller
      */
     public function edit(NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
-        return view('admin.gostaresh.number-of-students-status-analysis.edit.edit', compact('numberOfStudentsStatusAnalysis'));
+        $grades = Grade::all();
+        $majors = Major::all();
+        $minors = Minor::all();
+        return view('admin.gostaresh.number-of-students-status-analysis.edit.edit', compact('numberOfStudentsStatusAnalysis', 'minors', 'majors', 'grades'));
     }
 
     /**

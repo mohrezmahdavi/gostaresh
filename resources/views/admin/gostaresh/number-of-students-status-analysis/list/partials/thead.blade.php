@@ -9,8 +9,19 @@
     <th>گروه عمده تحصیلی</th>
 @endif
 @if (filterCol('number_of_students') == true)
-    <th>مقدار</th>
+    <th>تعداد دانشجویان</th>
 @endif
+
+@if (filterCol('grade_id') == true)
+    <th>مقطع</th>
+@endif
+@if (filterCol('major_id') == true)
+    <th>رشته</th>
+@endif
+@if (filterCol('minor_id') == true)
+    <th>گرایش</th>
+@endif
+
 @if (filterCol('year') == true)
     <th>سال</th>
 @endif
