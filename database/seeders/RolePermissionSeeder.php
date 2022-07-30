@@ -17,17 +17,23 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
+        //        get list of name of all modles
+        $models = getAppModelsList(app_path() . "/Models", false);
+        $models[] = "Role";
         DB::statement('SET foreign_key_checks=0');
         DB::table('permissions')->truncate();
         DB::table('roles')->truncate();
         DB::table('role_has_permissions')->truncate();
+        DB::table('model_has_permissions')->truncate();
         DB::statement('SET foreign_key_checks=1');
 
-        Permission::create(['name' => 'view-all-users']);
-        Permission::create(['name' => 'view-any-user']);
-        Permission::create(['name' => 'create-any-user']);
-        Permission::create(['name' => 'edit-any-user']);
-        Permission::create(['name' => 'delete-any-user']);
+        //   add each model's permissions to database
+        foreach ($models as $model) {
+            Permission::create(['name' => 'view-any-' . $model, "guard_name" => "web"]);
+            Permission::create(['name' => 'create-any-' . $model, "guard_name" => "web"]);
+            Permission::create(['name' => 'edit-any-' . $model, "guard_name" => "web"]);
+            Permission::create(['name' => 'delete-any-' . $model, "guard_name" => "web"]);
+        }
 
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
