@@ -4,7 +4,7 @@
 <th>تحصیلات</th>
 @endif
 @if (filterCol('amount') == true)
-<th>مقدار</th>
+<th>مقدار  نرخ بیکاری (درصد)</th>
 @endif
 @if (filterCol('year') == true)
     <th>سال</th>

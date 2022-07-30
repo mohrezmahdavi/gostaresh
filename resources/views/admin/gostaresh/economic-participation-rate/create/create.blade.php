@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ایجاد درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد وضعیت نرخ مشارکت اقتصادی
 @endsection
 
 @section('breadcrumb-title')
-    ایجاد درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد وضعیت نرخ مشارکت اقتصادی
 @endsection
 
 @section('page-title')
-    ایجاد درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد وضعیت نرخ مشارکت اقتصادی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
