@@ -5,11 +5,11 @@
 @endsection
 
 @section('breadcrumb-title')
-ویرایش نرخ فقر شهرستان های استان
+    ویرایش نرخ فقر شهرستان های استان
 @endsection
 
 @section('page-title')
-ویرایش نرخ فقر شهرستان های استان
+    ویرایش نرخ فقر شهرستان های استان
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -28,8 +28,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('poverty.of.provincial.city.update', $povertyOfProvincialCity) }}"
-                        role="form">
+                        action="{{ route('poverty.of.provincial.city.update', $povertyOfProvincialCity) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -37,13 +36,19 @@
                             zone_default="{{ $povertyOfProvincialCity->county->zone }}"
                             county_default="{{ $povertyOfProvincialCity->county_id }}"
                             city_default="{{ $povertyOfProvincialCity->city_id }}"
-                            rural_district_default="{{ $povertyOfProvincialCity->rural_district_id }}">
+                            rural_district_default="{{ $povertyOfProvincialCity->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount">
-                                <span>مقدار </span>&nbsp
+                                <span>میزان نرخ فقر </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -54,9 +59,9 @@
                         </div>
 
 
-                        <x-select-year :default="$povertyOfProvincialCity->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$povertyOfProvincialCity->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$povertyOfProvincialCity->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$povertyOfProvincialCity->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
