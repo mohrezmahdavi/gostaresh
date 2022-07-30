@@ -9,7 +9,7 @@
     <th>گروه عمده تحصیلی</th>
 @endif
 @if (filterCol('average_test_score_of_the_first_thirty_percent_of_admitted') == true)
-    <th>مقدار</th>
+    <th>میانگین رتبه آزمون 30 درصد اول پذیرفته شدگان</th>
 @endif
 @if (filterCol('year') == true)
     <th>سال</th>
