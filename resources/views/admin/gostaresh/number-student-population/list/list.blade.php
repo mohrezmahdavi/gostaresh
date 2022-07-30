@@ -19,7 +19,6 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -32,11 +31,17 @@
                         <div class="row" id="app">
                             <div class="col-md-12">
                                 <select-province-inline-component
-                                    province_default="{{ request()->province_id ?? auth()->user()->province_id ?? ''}}"
-                                    zone_default="{{ request()->zone_id ?? auth()->user()->county->zone ?? ''}}"
-                                    county_default="{{ request()->county_id ?? auth()->user()->county_id ?? ''}}"
-                                    city_default="{{ request()->city_id ?? auth()->user()->city_id ?? ''}}"
-                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}">
+                                    province_default="{{ request()->province_id ?? (auth()->user()->province_id ?? '') }}"
+                                    zone_default="{{ request()->zone_id ?? (auth()->user()->county->zone ?? '') }}"
+                                    county_default="{{ request()->county_id ?? (auth()->user()->county_id ?? '') }}"
+                                    city_default="{{ request()->city_id ?? (auth()->user()->city_id ?? '') }}"
+                                    rural_district_default="{{ request()->rural_district_id ?? (auth()->user()->rural_district_id ?? '') }}"
+                                    :fields="{{ json_encode([
+                                        'province' => true,
+                                        'zone' => false,
+                                        'county' => true,
+                                        'city' => false,
+                                    ]) }}">
                                 </select-province-inline-component>
                             </div>
                         </div>
@@ -155,8 +160,7 @@
                             <x-exports.export-links
                                 excelLink="{{ route('number.student.population.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('number.student.population.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('number.student.population.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('number.student.population.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
