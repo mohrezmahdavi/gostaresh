@@ -1,19 +1,18 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش  نرخ رشد و ترکیب جمعیت دانش آموزی
+    ویرایش نرخ رشد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('breadcrumb-title')
-ویرایش  نرخ رشد و ترکیب جمعیت دانش آموزی
+    ویرایش نرخ رشد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('page-title')
-ویرایش  نرخ رشد و ترکیب جمعیت دانش آموزی
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-
+    ویرایش نرخ رشد و ترکیب جمعیت دانش آموزی
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,39 +26,45 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('growth.rate.student.population.update', $growthRateStudentPopulation) }}" role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('growth.rate.student.population.update', $growthRateStudentPopulation) }}"
+                        role="form">
                         @csrf
                         @method('PUT')
 
-                        <select-province-component
-                            province_default="{{ $growthRateStudentPopulation->province_id }}"
+                        <select-province-component province_default="{{ $growthRateStudentPopulation->province_id }}"
                             zone_default="{{ $growthRateStudentPopulation->county->zone }}"
                             county_default="{{ $growthRateStudentPopulation->county_id }}"
                             city_default="{{ $growthRateStudentPopulation->city_id }}"
-                            rural_district_default="{{ $growthRateStudentPopulation->rural_district_id }}">
+                            rural_district_default="{{ $growthRateStudentPopulation->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
-                                <span>جنسیت  </span>&nbsp
+                                <span>جنسیت </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="gender_id" id="gender_id" class="form-select" >
+                                <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                    <option {{ ($key == $growthRateStudentPopulation->gender_id ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == $growthRateStudentPopulation->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
                             </div>
                         </div>
 
-                        <select-grade-component
-                            grade_default="{{ $growthRateStudentPopulation->grade_id }}"
+                        <select-grade-component grade_default="{{ $growthRateStudentPopulation->grade_id }}"
                             sub_grade_default="{{ $growthRateStudentPopulation->sub_grade_id }}"
                             major_default="{{ $growthRateStudentPopulation->major_id }}"
-                            minor_default="{{ $growthRateStudentPopulation->minor_id }}"
-                        >
+                            minor_default="{{ $growthRateStudentPopulation->minor_id }}">
                         </select-grade-component>
 
                         <div class="form-group row mt-2">
@@ -68,8 +73,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ebtedai" name="ebtedai" value="{{ $growthRateStudentPopulation->ebtedai }}"
-                                    class="form-control" placeholder="تعداد ابتدایی را وارد کنید...">
+                                <input type="text" id="ebtedai" name="ebtedai"
+                                    value="{{ $growthRateStudentPopulation->ebtedai }}" class="form-control"
+                                    placeholder="تعداد ابتدایی را وارد کنید...">
                             </div>
                         </div>
 
@@ -79,8 +85,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="motevasete_1" name="motevasete_1" value="{{ $growthRateStudentPopulation->motevasete_1 }}"
-                                    class="form-control" placeholder="تعداد متوسطه اول را وارد کنید...">
+                                <input type="text" id="motevasete_1" name="motevasete_1"
+                                    value="{{ $growthRateStudentPopulation->motevasete_1 }}" class="form-control"
+                                    placeholder="تعداد متوسطه اول را وارد کنید...">
                             </div>
                         </div>
 
@@ -90,8 +97,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="motevasete_2_ensani" name="motevasete_2_ensani" value="{{ $growthRateStudentPopulation->motevasete_2_ensani }}"
-                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                                <input type="text" id="motevasete_2_ensani" name="motevasete_2_ensani"
+                                    value="{{ $growthRateStudentPopulation->motevasete_2_ensani }}" class="form-control"
+                                    placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
 
@@ -101,8 +109,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="motevasete_2_math" name="motevasete_2_math" value="{{ $growthRateStudentPopulation->motevasete_2_math }}"
-                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                                <input type="text" id="motevasete_2_math" name="motevasete_2_math"
+                                    value="{{ $growthRateStudentPopulation->motevasete_2_math }}" class="form-control"
+                                    placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
 
@@ -112,8 +121,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="motevasete_2_science" name="motevasete_2_science" value="{{ $growthRateStudentPopulation->motevasete_2_science }}"
-                                    class="form-control" placeholder="تعداد  را وارد کنید...">
+                                <input type="text" id="motevasete_2_science" name="motevasete_2_science"
+                                    value="{{ $growthRateStudentPopulation->motevasete_2_science }}" class="form-control"
+                                    placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
 
@@ -123,16 +133,17 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh" value="{{ $growthRateStudentPopulation->motevasete_2_kar_danesh }}"
+                                <input type="text" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh"
+                                    value="{{ $growthRateStudentPopulation->motevasete_2_kar_danesh }}"
                                     class="form-control" placeholder="تعداد  را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$growthRateStudentPopulation->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$growthRateStudentPopulation->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$growthRateStudentPopulation->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$growthRateStudentPopulation->month" :required="false" name="month"></x-select-month> --}}
 
-                        
+
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
@@ -142,5 +153,5 @@
 @endsection
 
 @section('body-scripts')
-<script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
