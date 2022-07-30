@@ -1,20 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ویرایش وضعیت تعداد دانشجویان شهرستان های استان
+    ویرایش وضعیت تعداد دانشجویان شهرستان های استان
 @endsection
 
 @section('breadcrumb-title')
-ویرایش وضعیت تعداد دانشجویان شهرستان های استان
+    ویرایش وضعیت تعداد دانشجویان شهرستان های استان
 @endsection
 
 @section('page-title')
-ویرایش وضعیت تعداد دانشجویان شهرستان های استان
+    ویرایش وضعیت تعداد دانشجویان شهرستان های استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -28,14 +27,23 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('number.of.students.status.analysis.update', $numberOfStudentsStatusAnalysis) }}" role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('number.of.students.status.analysis.update', $numberOfStudentsStatusAnalysis) }}"
+                        role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $numberOfStudentsStatusAnalysis->province_id }}"
                             zone_default="{{ $numberOfStudentsStatusAnalysis->county->zone }}"
-                            county_default="{{ $numberOfStudentsStatusAnalysis->county_id }}" city_default="{{ $numberOfStudentsStatusAnalysis->city_id }}"
-                            rural_district_default="{{ $numberOfStudentsStatusAnalysis->rural_district_id }}">
+                            county_default="{{ $numberOfStudentsStatusAnalysis->county_id }}"
+                            city_default="{{ $numberOfStudentsStatusAnalysis->city_id }}"
+                            rural_district_default="{{ $numberOfStudentsStatusAnalysis->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -46,7 +54,8 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == $numberOfStudentsStatusAnalysis->gender_id ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == $numberOfStudentsStatusAnalysis->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -62,7 +71,9 @@
                             <div class="col-sm-10">
                                 <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == $numberOfStudentsStatusAnalysis->department_of_education ? 'selected' : '' }} value="{{ $key }}">
+                                        <option
+                                            {{ $key == $numberOfStudentsStatusAnalysis->department_of_education ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -80,7 +91,9 @@
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ $key == $numberOfStudentsStatusAnalysis->university_type ? 'selected' : '' }} value="{{ $key }}">
+                                        <option
+                                            {{ $key == $numberOfStudentsStatusAnalysis->university_type ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -101,9 +114,9 @@
                         </div>
 
 
-                        <x-select-year :default="$numberOfStudentsStatusAnalysis->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$numberOfStudentsStatusAnalysis->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$numberOfStudentsStatusAnalysis->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$numberOfStudentsStatusAnalysis->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
