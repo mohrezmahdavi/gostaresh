@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ایجاد وضعیت تعداد دانشجویان شهرستان های استان
+ایجاد تحلیل وضعیت تعداد دانشجویان
 @endsection
 
 @section('breadcrumb-title')
-    ایجاد وضعیت تعداد دانشجویان شهرستان های استان
+ایجاد تحلیل وضعیت تعداد دانشجویان
 @endsection
 
 @section('page-title')
-    ایجاد وضعیت تعداد دانشجویان شهرستان های استان
+ایجاد تحلیل وضعیت تعداد دانشجویان
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
