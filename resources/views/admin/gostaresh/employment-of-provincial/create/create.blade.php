@@ -1,19 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 @endsection
 
 @section('breadcrumb-title')
-ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 @endsection
 
 @section('page-title')
-ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ایجاد وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,15 +27,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('employment.of.provincial.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('employment.of.provincial.store') }}"
+                        role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -69,7 +75,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="water_electricity_natural_gas_supply" name="water_electricity_natural_gas_supply"
+                                <input type="number" id="water_electricity_natural_gas_supply"
+                                    name="water_electricity_natural_gas_supply"
                                     value="{{ old('water_electricity_natural_gas_supply') }}" class="form-control"
                                     placeholder="  تامین آب، برق و گاز طبیعی را وارد کنید...">
                             </div>
@@ -81,9 +88,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="building" name="building"
-                                    value="{{ old('building') }}" class="form-control"
-                                    placeholder="  ساختمان را وارد کنید...">
+                                <input type="number" id="building" name="building" value="{{ old('building') }}"
+                                    class="form-control" placeholder="  ساختمان را وارد کنید...">
                             </div>
                         </div>
 
@@ -93,7 +99,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="wholesale_retail_vehicle_repair_supply" name="wholesale_retail_vehicle_repair_supply"
+                                <input type="number" id="wholesale_retail_vehicle_repair_supply"
+                                    name="wholesale_retail_vehicle_repair_supply"
                                     value="{{ old('wholesale_retail_vehicle_repair_supply') }}" class="form-control"
                                     placeholder="  عمده فروشی، خرده فروشی، تعمیر وسایل نقلیه و تامین کالا را وارد کنید...">
                             </div>
@@ -117,7 +124,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="transportation_warehousing_communications" name="transportation_warehousing_communications"
+                                <input type="number" id="transportation_warehousing_communications"
+                                    name="transportation_warehousing_communications"
                                     value="{{ old('transportation_warehousing_communications') }}" class="form-control"
                                     placeholder="  حمل و نقل، انبارداری و ارتباطات را وارد کنید...">
                             </div>
@@ -141,7 +149,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="office_of_public_affairs_urban_services" name="office_of_public_affairs_urban_services"
+                                <input type="number" id="office_of_public_affairs_urban_services"
+                                    name="office_of_public_affairs_urban_services"
                                     value="{{ old('office_of_public_affairs_urban_services') }}" class="form-control"
                                     placeholder="  اداره امور عمومی و خدمات شهری، دفاع، و تامین اجتماعی را وارد کنید...">
                             </div>
@@ -153,9 +162,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="education" name="education"
-                                    value="{{ old('education') }}" class="form-control"
-                                    placeholder="   آموزش را وارد کنید...">
+                                <input type="number" id="education" name="education" value="{{ old('education') }}"
+                                    class="form-control" placeholder="   آموزش را وارد کنید...">
                             </div>
                         </div>
 
@@ -178,7 +186,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="activities_of_employed_households" name="activities_of_employed_households"
+                                <input type="number" id="activities_of_employed_households"
+                                    name="activities_of_employed_households"
                                     value="{{ old('activities_of_employed_households') }}" class="form-control"
                                     placeholder="   فعالیت های خانوارهای دارای مستخدم را وارد کنید...">
                             </div>
@@ -190,7 +199,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="overseas_organizations_and_delegations" name="overseas_organizations_and_delegations"
+                                <input type="number" id="overseas_organizations_and_delegations"
+                                    name="overseas_organizations_and_delegations"
                                     value="{{ old('overseas_organizations_and_delegations') }}" class="form-control"
                                     placeholder="   سازمان ها و هیات های برون مرزی را وارد کنید...">
                             </div>
@@ -214,9 +224,10 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="professional_scientific_technical_activities" name="professional_scientific_technical_activities"
-                                    value="{{ old('professional_scientific_technical_activities') }}" class="form-control"
-                                    placeholder="   فعالیت های حرفه ای ، علمی و فنی را وارد کنید...">
+                                <input type="number" id="professional_scientific_technical_activities"
+                                    name="professional_scientific_technical_activities"
+                                    value="{{ old('professional_scientific_technical_activities') }}"
+                                    class="form-control" placeholder="   فعالیت های حرفه ای ، علمی و فنی را وارد کنید...">
                             </div>
                         </div>
 
@@ -234,7 +245,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="art_and_entertainment">
-                                <span>هنر  و سرگرمی </span>&nbsp
+                                <span>هنر و سرگرمی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -256,9 +267,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
 
