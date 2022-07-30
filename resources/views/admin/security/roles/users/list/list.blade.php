@@ -1,15 +1,24 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    لیست کاربران
+
+    لیست کاربران گروه {{ $role->name }}
 @endsection
 
 @section('breadcrumb-title')
-    لیست کاربران
+
+    لیست کاربران گروه {{ $role->name }}
 @endsection
 
 @section('page-title')
-    لیست کاربران
+
+    لیست کاربران گروه {{ $role->name }}
+    <span>
+        <a href="{{ route("admin.role.edit",$role)}}" class="btn btn-info btn-sm">جزئیات گروه</a>
+    </span>
+    <span>
+        <a href="{{ route("admin.role.user.add.list",$role)}}" class="btn btn-success btn-sm">افزودن کاربر</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -29,7 +38,8 @@
                                 <div class="form-group">
                                     <label class=" col-form-label" for="full_name">بر اساس نام</label>
                                     <div class="">
-                                        <input type="text" id="full_name" name="full_name" value="{{ request()->full_name }}"
+                                        <input type="text" id="full_name" name="full_name"
+                                               value="{{ request()->full_name }}"
                                                class="form-control" placeholder="نام را وارد کنید ...">
                                     </div>
                                 </div>
@@ -55,8 +65,10 @@
                                         @foreach (config('gostaresh.user_status') as $key => $value)
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" id="inlineCheckbox{{ $key }}"
-                                                       {{ request()->status == $key ? 'checked' : '' }} name="status" value="{{ $key }}">
+                                                <input class="form-check-input" type="radio"
+                                                       id="inlineCheckbox{{ $key }}"
+                                                       {{ request()->status == $key ? 'checked' : '' }} name="status"
+                                                       value="{{ $key }}">
                                                 <label class="form-check-label"
                                                        for="inlineCheckbox{{ $key }}">{{ config('gostaresh.user_status')[$key] }}</label>
                                             </div>
@@ -91,44 +103,47 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                                <tr>
-                                    <th>#</th>
-                                    <th>نام</th>
-                                    <th>تلفن تماس</th>
-                                    <th>وضعیت</th>
-                                    <th>اقدام</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>نام</th>
+                                <th>تلفن تماس</th>
+                                <th>وضعیت</th>
+                                <th>اقدام</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $key => $user)
-                                    <tr>
-                                        <th scope="row">{{ $users?->firstItem() + $key }}</th>
-                                        <td>{{ $user?->first_name . ' ' . $user?->last_name }}</td>
+                            @foreach ($users as $key => $user)
+                                <tr>
+                                    <th scope="row">{{ $users?->firstItem() + $key }}</th>
+                                    <td>{{ $user?->first_name . ' ' . $user?->last_name }}</td>
 
-                                        <td>{{ $user?->phone_number }}</td>
-                                        <td>
-                                            @foreach (config('gostaresh.user_status') as $key => $value)
-                                                @if ($key == $user->status)
-                                                    {{ $value }}
-                                                @endif
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @if(auth()->user()->hasPermissionTo('edit-any-User'))
-                                                <a href="{{ route('admin.user.edit', $user) }}"
-                                                    title="{{ __('validation.buttons.edit') }}"
-                                                    class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                    <td>{{ $user?->phone_number }}</td>
+                                    <td>
+                                        @foreach (config('gostaresh.user_status') as $key => $value)
+                                            @if ($key == $user->status)
+                                                {{ $value }}
                                             @endif
-
-                                            @if(auth()->user()->hasPermissionTo('delete-any-User'))
-                                                <a href="{{ route('admin.user.delete', $user) }}"
-                                                title="{{ __('validation.buttons.delete') }}"
-                                                class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @can( 'edit-any-Role')
+                                            @if($user->id != auth()->id())
+                                                <form
+                                                    action="{{ route('admin.role.user.remove',[ "user"=>$user->id,"role"=>$role->id])}}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit"
+                                                            title="{{ __('validation.buttons.delete') }}"
+                                                            class="btn btn-danger btn-sm"><i class="fa fa-minus"></i>
+                                                    </button>
+                                                </form>
                                             @endif
-                                        </td>
+                                        @endcan
+                                    </td>
 
-                                    </tr>
-                                @endforeach
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
 

@@ -11,8 +11,7 @@ class UpdateController extends Controller
 {
     public function update(UpdateUserRequest $request, User $user)
     {
-        if(!auth()->user()->hasPermissionTo('edit-any-user'))
-            abort(403);
+     $this->authorize("edit-any-User");
 
         $user->update([
             'first_name' => (string) $request->first_name,

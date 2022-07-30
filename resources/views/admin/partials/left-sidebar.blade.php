@@ -38,49 +38,49 @@
 
     <div class="h-100" data-simplebar>
 
-        {{-- <!-- User box -->
-        <div class="user-box text-center">
-            <img src="../assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme"
-                class="rounded-circle avatar-md">
-            <div class="dropdown">
-                <a href="#" class="text-reset dropdown-toggle h5 mt-2 mb-1 d-block"
-                    data-bs-toggle="dropdown">Nik Patel</a>
-                <div class="dropdown-menu user-pro-dropdown">
+    {{-- <!-- User box -->
+    <div class="user-box text-center">
+        <img src="../assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme"
+            class="rounded-circle avatar-md">
+        <div class="dropdown">
+            <a href="#" class="text-reset dropdown-toggle h5 mt-2 mb-1 d-block"
+                data-bs-toggle="dropdown">Nik Patel</a>
+            <div class="dropdown-menu user-pro-dropdown">
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user me-1"></i>
-                        <span>My Account</span>
-                    </a>
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-user me-1"></i>
+                    <span>My Account</span>
+                </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings me-1"></i>
-                        <span>Settings</span>
-                    </a>
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-settings me-1"></i>
+                    <span>Settings</span>
+                </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock me-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-lock me-1"></i>
+                    <span>Lock Screen</span>
+                </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-log-out me-1"></i>
-                        <span>Logout</span>
-                    </a>
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-log-out me-1"></i>
+                    <span>Logout</span>
+                </a>
 
-                </div>
             </div>
-            <p class="text-reset">Admin Head</p>
-        </div> --}}
+        </div>
+        <p class="text-reset">Admin Head</p>
+    </div> --}}
 
-        <!--- Sidemenu -->
+    <!--- Sidemenu -->
         <div id="sidebar-menu">
 
             <ul>
-            {{-- <ul id="side-menu"> --}}
+                {{-- <ul id="side-menu"> --}}
 
                 <li class="menu-title">
                     <span>منو</span>
@@ -116,11 +116,20 @@
                     </a>
                 </li>
 
-                @if (auth()->user()->hasPermissionTo('view-all-users') or
-                    auth()->user()->hasPermissionTo('create-any-user'))
+                @can ("view-any-Role" )
+                    <li>
+                        <a href="{{ route('admin.role.index') }}">
+                            <i class="ri-dashboard-line me-1"></i>
+                            <span>{{__("titles.groups")}}</span>
+                        </a>
+                    </li>
+                @endcan
+
+                @if ( auth()->user()->hasPermissionTo('view-any-User') or
+                    auth()->user()->hasPermissionTo('create-any-User'))
                     <li>
                         <a href="#sidebarDashboardsUsers" data-bs-toggle="collapse" aria-expanded="false"
-                            aria-controls="sidebarDashboardsUsers" class="waves-effect">
+                           aria-controls="sidebarDashboardsUsers" class="waves-effect">
                             <i class="mdi mdi-account-group"></i>
                             {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
                             <span> کاربران </span>
@@ -146,7 +155,7 @@
 
                 <li>
                     <a href="#sidebarDashboardsAtlas1" data-bs-toggle="collapse" aria-expanded="false"
-                        aria-controls="sidebarDashboardsAtlas1" class="waves-effect">
+                       aria-controls="sidebarDashboardsAtlas1" class="waves-effect">
                         <i class="mdi mdi-account-group"></i>
                         {{-- <span class="badge bg-success rounded-pill float-end">3</span> --}}
                         <span> اطلس </span>
@@ -159,8 +168,9 @@
 
                             @foreach (config('gostaresh-urls.url') as $key => $value)
                                 <li>
-                                    <a href="#sidebarDashboardsAtlas1_{{$i}}" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="sidebarDashboardsAtlas1_{{$i}}" class="waves-effect">
+                                    <a href="#sidebarDashboardsAtlas1_{{$i}}" data-bs-toggle="collapse"
+                                       aria-expanded="false"
+                                       aria-controls="sidebarDashboardsAtlas1_{{$i}}" class="waves-effect">
                                         <i class="ri-calendar-2-line align-middle me-1"></i>
                                         {{$key}}
                                     </a>
@@ -170,29 +180,31 @@
                                         <ul class="nav-second-level">
                                             @foreach ($value as $keyMiddle => $valueMiddle)
                                                 <li>
-                                                    <a  href="#sidebarDashboardsAtlas_{{$i}}" data-bs-toggle="collapse" aria-expanded="false"
-                                                    aria-controls="sidebarDashboardsAtlas_{{$i}}" class="waves-effect">
-                                                        {{ $keyMiddle }}                                                    
-                                                    </a>                    
-                        
+                                                    <a href="#sidebarDashboardsAtlas_{{$i}}" data-bs-toggle="collapse"
+                                                       aria-expanded="false"
+                                                       aria-controls="sidebarDashboardsAtlas_{{$i}}"
+                                                       class="waves-effect">
+                                                        {{ $keyMiddle }}
+                                                    </a>
+
                                                     @if (count($valueMiddle) > 0)
                                                         <div class="collapse" id="sidebarDashboardsAtlas_{{$i}}">
                                                             <ul class="nav-second-level">
                                                                 @foreach ($valueMiddle as $key => $value)
                                                                     <li>
-                            
-                                                                        <a href="{{ route($value['name'] . '.index') }}" >
+
+                                                                        <a href="{{ route($value['name'] . '.index') }}">
                                                                             {{ $value['title'] }}
-                            
+
                                                                         </a>
-                            
+
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
                                                     @endif
                                                 </li>
-                                                
+
                                                 @php
                                                     $i++;
                                                 @endphp
@@ -205,9 +217,6 @@
                         </ul>
                     </div>
                 </li>
-
-
-            
 
 
                 {{-- <li>
