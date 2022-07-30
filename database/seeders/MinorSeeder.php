@@ -14,7 +14,8 @@ class MinorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Minor::truncate();
+
         Minor::insert([
             ["name" => "ابزار دقیق"],
             ["name" => "اپتیک و لیزر"],

@@ -14,7 +14,8 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Grade::truncate();
+
         Grade::insert([
             [
                 'slug' => 'associate-degree',

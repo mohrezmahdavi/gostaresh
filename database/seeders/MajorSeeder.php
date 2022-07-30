@@ -14,7 +14,8 @@ class MajorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Major::truncate();
+
         Major::insert([
             ["name" => "اتاق عمل"],
             ["name" => "اجرای ساختمان های بتنی"],

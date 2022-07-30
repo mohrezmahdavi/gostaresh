@@ -9,6 +9,7 @@
         "carlos-meneses/laravel-mpdf": "^2.1",
         "comma/aban": "2.x",
         "comma/lachart": "dev-master",
+        "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "hekmatinasser/verta": "^2.1",
         "laravel/framework": "^9.11",
