@@ -9,7 +9,7 @@
     <th>گروه عمده تحصیلی</th>
 @endif
 @if (filterCol('number_of_registrants') == true)
-    <th>مقدار</th>
+    <th>تعداد ثبت نام شدگان</th>
 @endif
 @if (filterCol('year') == true)
     <th>سال</th>

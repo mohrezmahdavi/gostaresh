@@ -69,7 +69,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'گروه عمده تحصیلی');
         }
         if (filterCol('number_of_registrants') == true) {
-            array_push($headings, 'مقدار');
+            array_push($headings, 'تعداد ثبت نام شدگان');
         }
         if (filterCol('year') == true) {
             array_push($headings, 'سال');
