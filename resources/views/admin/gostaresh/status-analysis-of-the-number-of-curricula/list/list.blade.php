@@ -12,22 +12,26 @@
     تحلیل وضعیت تعداد برنامه های درسی
 
     <span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
     <span>
-    <a href="{{ route('status.analysis.of.the.number.of.curricula.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+        <a href="{{ route('status.analysis.of.the.number.of.curricula.create') }}" class="btn btn-success btn-sm">افزودن رکورد
+            جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -37,60 +41,61 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($statusAnalysisOfTheNumberOfCurriculas as $key => $statusAnalysisOfTheNumberOfCurricula)
                                 <tr>
-                                    <th scope="row">{{ $statusAnalysisOfTheNumberOfCurriculas?->firstItem() + $key }}</th>
-
-
-                                    <td>{{ $statusAnalysisOfTheNumberOfCurricula?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCurricula->county?->name }}
-                                    </td>
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key,\App\Models\Index\StatusAnalysisOfTheNumberOfCurricula::$numeric_fields))
-                                                <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $statusAnalysisOfTheNumberOfCurricula->{$key} }}</td>
-                                            @endif
+                                    <th>#</th>
+                                    <th>شهرستان</th>
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
 
-                                    <td>{{ $statusAnalysisOfTheNumberOfCurricula?->year }}</td>
-                                    <td>
-
-                                        <a href="{{ route('status.analysis.of.the.number.of.curricula.edit', $statusAnalysisOfTheNumberOfCurricula) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
-
-                                        <a href="{{ route('status.analysis.of.the.number.of.curricula.destroy', $statusAnalysisOfTheNumberOfCurricula) }}"
-                                           title="{{ __('validation.buttons.delete') }}"
-                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
-                                    </td>
-
+                                    <th>سال</th>
+                                    <th>اقدام</th>
                                 </tr>
-                            @endforeach
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($statusAnalysisOfTheNumberOfCurriculas as $key => $statusAnalysisOfTheNumberOfCurricula)
+                                    <tr>
+                                        <th scope="row">{{ $statusAnalysisOfTheNumberOfCurriculas?->firstItem() + $key }}
+                                        </th>
+
+
+                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->province?->name . ' - ' . $statusAnalysisOfTheNumberOfCurricula->county?->name }}
+                                        </td>
+                                        @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                            @if (filterCol($key))
+                                                @if (in_array($key, \App\Models\Index\StatusAnalysisOfTheNumberOfCurricula::$numeric_fields))
+                                                    <td>{{ number_format($statusAnalysisOfTheNumberOfCurricula?->{$key}) }}
+                                                    </td>
+                                                @else
+                                                    <td>{{ $statusAnalysisOfTheNumberOfCurricula->{$key} }}</td>
+                                                @endif
+                                            @endif
+                                        @endforeach
+
+                                        <td>{{ $statusAnalysisOfTheNumberOfCurricula?->year }}</td>
+                                        <td>
+
+                                            <a href="{{ route('status.analysis.of.the.number.of.curricula.edit', $statusAnalysisOfTheNumberOfCurricula) }}"
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+
+                                            <a href="{{ route('status.analysis.of.the.number.of.curricula.destroy', $statusAnalysisOfTheNumberOfCurricula) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
+                                                class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('status.analysis.of.the.number.of.curricula.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('status.analysis.of.the.number.of.curricula.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('status.analysis.of.the.number.of.curricula.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('status.analysis.of.the.number.of.curricula.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
