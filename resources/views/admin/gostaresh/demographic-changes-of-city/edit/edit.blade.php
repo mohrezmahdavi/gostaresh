@@ -63,16 +63,22 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$demographicChangesOfCity->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$demographicChangesOfCity->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$demographicChangesOfCity->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$demographicChangesOfCity->month" :required="false" name="month"></x-select-month> --}}
 
                         <select-province-component
                             province_default="{{ $demographicChangesOfCity->province_id }}"
                             zone_default="{{ $demographicChangesOfCity->county->zone }}"
                             county_default="{{ $demographicChangesOfCity->county_id }}"
                             city_default="{{ $demographicChangesOfCity->city_id }}"
-                            rural_district_default="{{ $demographicChangesOfCity->rural_district_id }}">
+                            rural_district_default="{{ $demographicChangesOfCity->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
