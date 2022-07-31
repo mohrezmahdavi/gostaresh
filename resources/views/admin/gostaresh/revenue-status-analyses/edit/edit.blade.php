@@ -64,7 +64,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_revenue" name="total_revenue"
+                                <input type="number" id="total_revenue" name="total_revenue"
                                     value="{{ $revenueStatusAnalysis->total_revenue }}" class="form-control"
                                     placeholder=" کل درآمد ها را وارد کنید...">
                             </div>
@@ -76,7 +76,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="income_from_student_tuition" name="income_from_student_tuition"
+                                <input type="number" id="income_from_student_tuition" name="income_from_student_tuition"
                                     value="{{ $revenueStatusAnalysis->income_from_student_tuition }}" class="form-control"
                                     placeholder=" درآمد حاصل از شهریه دانشجویان را وارد کنید...">
                             </div>
@@ -116,7 +116,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="income_from_skills_training" name="income_from_skills_training"
+                                <input type="number" id="income_from_skills_training" name="income_from_skills_training"
                                     value="{{ $revenueStatusAnalysis->income_from_skills_training }}" class="form-control"
                                     placeholder=" درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد را وارد کنید...">
                             </div>
@@ -140,7 +140,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_non_tuition_income" name="total_non_tuition_income"
+                                <input type="number" id="total_non_tuition_income" name="total_non_tuition_income"
                                     value="{{ $revenueStatusAnalysis->total_non_tuition_income }}" class="form-control"
                                     placeholder=" مجموع درآمدهای غیر شهریه ای واحد را وارد کنید...">
                             </div>
@@ -152,7 +152,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="total_international_income" name="total_international_income"
+                                <input type="number" id="total_international_income" name="total_international_income"
                                     value="{{ $revenueStatusAnalysis->total_international_income }}" class="form-control"
                                     placeholder=" مجموع درآمد های ناشی از فعالیت های بین المللی را وارد کنید...">
                             </div>
