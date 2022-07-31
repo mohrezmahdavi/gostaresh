@@ -27,7 +27,10 @@ class DatabaseSeeder extends Seeder
             RuralDistrictSeeder::class,
             CitiesIranSeeder::class,
             UserSeeder::class,
-            RolePermissionSeeder::class
+            RolePermissionSeeder::class,
+            GradeSeeder::class,
+            MajorSeeder::class,
+            MinorSeeder::class
         ]);
     }
 }
