@@ -36,16 +36,16 @@ return new class extends Migration
             $table->unsignedInteger('number_of_international_awards')->comment('تعداد جوایز بین المللی کسب شده در ۵ سال اخیر')->nullable();
 
             //table 37
-            $table->float('average_H_index_of_faculty_members')->comment('متوسط H-index اعضای هیات علمی')->nullable();
+            $table->unsignedInteger('average_H_index_of_faculty_members')->comment('متوسط H-index اعضای هیات علمی')->nullable();
             $table->unsignedInteger('number_of_articles_science_and_nature')->comment('تعداد مقالات در دو مجله Science  و Nature')->nullable();
-            $table->float('print_ISI_articles')->comment('سرانه چاپ مقالات ISI')->nullable();
+            $table->unsignedInteger('print_ISI_articles')->comment('سرانه چاپ مقالات ISI')->nullable();
             $table->float('percentage_of_quality_articles')->comment('درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1)')->nullable();
             $table->unsignedInteger('number_of_faculty_members_of_world_scientists')->comment('تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس نظام‌های رتبه بندی مصوب')->nullable();
             $table->unsignedInteger('number_of_faculty_members_of_international_journals')->comment('تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی')->nullable();
             $table->unsignedInteger('number_of_international_conferences_held')->comment('تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر')->nullable();
             $table->unsignedInteger('number_of_international_scientific_books')->comment('تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی')->nullable();
             $table->unsignedInteger('number_of_international_agreements_implemented')->comment('تعداد تفاهم نامه های بین المللی اجرایی شده')->nullable();
-            $table->float('amount_of_international_research_credits')->comment('میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده')->nullable();
+            $table->unsignedInteger('amount_of_international_research_credits')->comment('میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده')->nullable();
             $table->unsignedInteger('number_of_international_publications')->comment('تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus)')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
