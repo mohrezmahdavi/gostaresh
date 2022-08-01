@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalStudentGrowthRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\StatusAnalysisOfTheNumberOfCurriculaRequest;
+use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -75,10 +75,10 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StatusAnalysisOfTheNumberOfCurriculaRequest  $request
+     * @param InternationalStudentGrowthRateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StatusAnalysisOfTheNumberOfCurriculaRequest $request)
+    public function store(InternationalStudentGrowthRateRequest $request)
     {
         InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success',__('titles.success_store'));
@@ -98,7 +98,7 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
     public function edit(InternationalStudentGrowthRate $internationalStudentGrowthRate)
@@ -109,11 +109,11 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  StatusAnalysisOfTheNumberOfCurriculaRequest  $request
-     * @param  int  $id
+     * @param InternationalStudentGrowthRateRequest $request
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
-    public function update(StatusAnalysisOfTheNumberOfCurriculaRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
+    public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
         $internationalStudentGrowthRate->update($request->validated());
         return back()->with('success', __('titles.success_update'));
@@ -122,7 +122,7 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
     public function destroy(InternationalStudentGrowthRate $internationalStudentGrowthRate)
