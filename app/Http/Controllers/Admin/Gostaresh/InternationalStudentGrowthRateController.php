@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalStudentGrowthRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
+use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\StatusAnalysisOfTheNumberOfCurriculaRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -75,10 +75,10 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  InternationalStudentGrowthRateRequest  $request
+     * @param  StatusAnalysisOfTheNumberOfCurriculaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InternationalStudentGrowthRateRequest $request)
+    public function store(StatusAnalysisOfTheNumberOfCurriculaRequest $request)
     {
         InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success',__('titles.success_store'));
@@ -109,11 +109,11 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  InternationalStudentGrowthRateRequest  $request
+     * @param  StatusAnalysisOfTheNumberOfCurriculaRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
+    public function update(StatusAnalysisOfTheNumberOfCurriculaRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
         $internationalStudentGrowthRate->update($request->validated());
         return back()->with('success', __('titles.success_update'));

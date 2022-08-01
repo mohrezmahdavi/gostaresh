@@ -99,7 +99,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="annual_growth_rate_of_student_enrollment" name="annual_growth_rate_of_student_enrollment"
+                                <input type="text" style="direction: rtl" id="annual_growth_rate_of_student_enrollment" name="annual_growth_rate_of_student_enrollment"
                                        value="{{ $annualGrthRateOfStdnEnrollment->annual_growth_rate_of_student_enrollment }}" class="form-control"
                                        placeholder=" نرخ رشد را وارد کنید...">
                             </div>
@@ -111,7 +111,7 @@
                         {{-- <x-select-month :default="$annualGrthRateOfStdnEnrollment->month" :required="false" name="month"></x-select-month> --}}
 
 
-                        
+
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>

@@ -527,6 +527,13 @@ return [
         "kardani_count" => 'تعداد کاردانی',
         "karshenasi_count" => 'تعداد کارشناسی',
         "docktora_count" => 'تعداد دکتری',
-        "phone_number" => 'شماره همراه'
-    ]
+        "phone_number" => 'شماره همراه',
+        'total_number_of_curricula' => 'تعداد کل برنامه های درسی (رشته گرایش ها)',
+        'number_of_modified_curricula' => 'تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی',
+        'new_interdisciplinary_curricula_implemented' => 'برنامه های درسی جدید میان رشته ای مورد اجرا',
+        'complete_new_interdisciplinary_curricula' => 'کل برنامه های درسی جدید میان رشته ای مورد اجرا',
+        'number_of_common_curricula_with_the_world' => 'تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان',
+        'number_of_curricula_developed' => 'تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر',
+
+]
 ];

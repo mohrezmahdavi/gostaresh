@@ -103,7 +103,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="annual_growth_rate_of_student_enrollment"
+                                <input type="text" id="annual_growth_rate_of_student_enrollment"
                                     name="annual_growth_rate_of_student_enrollment"
                                     value="{{ old('annual_growth_rate_of_student_enrollment') }}" class="form-control"
                                     placeholder=" نرخ رشد را وارد کنید...">

@@ -30,12 +30,12 @@ class GrowthRateStudentPopulationRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'gender_id' => 'required|numeric',
-            'ebtedai' => 'required|numeric|gte:0',
-            'motevasete_1' => 'required|numeric|gte:0',
-            'motevasete_2_ensani' => 'required|numeric|gte:0',
-            'motevasete_2_math' => 'required|numeric|gte:0',
-            'motevasete_2_science' => 'required|numeric|gte:0',
-            'motevasete_2_kar_danesh' => 'required|numeric|gte:0',
+            'ebtedai' => 'required|numeric',
+            'motevasete_1' => 'required|numeric',
+            'motevasete_2_ensani' => 'required|numeric',
+            'motevasete_2_math' => 'required|numeric',
+            'motevasete_2_science' => 'required|numeric',
+            'motevasete_2_kar_danesh' => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
