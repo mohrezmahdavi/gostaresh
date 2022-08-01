@@ -25,6 +25,15 @@ use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
 use App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController;
 use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
+use App\Http\Controllers\Admin\Profile\ShowProfileController;
+use App\Http\Controllers\Admin\Profile\UpdateProfileController;
+use App\Http\Controllers\Admin\Security\RoleController;
+use App\Http\Controllers\Admin\User\CreateController;
+use App\Http\Controllers\Admin\User\DeleteController;
+use App\Http\Controllers\Admin\User\EditController;
+use App\Http\Controllers\Admin\User\ListController;
+use App\Http\Controllers\Admin\User\StoreController;
+use App\Http\Controllers\Admin\User\UpdateController;
 use App\Http\Controllers\Admin\Zone\ZoneController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,16 +54,23 @@ require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [App\Http\Controllers\Admin\Index\IndexController::class, 'index'])->name('admin.index');
 
-    Route::get('/profile', [\App\Http\Controllers\Admin\Profile\ShowProfileController::class, 'show'])->name('admin.profile.edit');
-    Route::post('/profile', [\App\Http\Controllers\Admin\Profile\UpdateProfileController::class, 'update'])->name('admin.profile.update');
+    Route::get('/profile', [ShowProfileController::class, 'show'])->name('admin.profile.edit');
+    Route::post('/profile', [UpdateProfileController::class, 'update'])->name('admin.profile.update');
 
     // Users
-    Route::get('/users/list', [\App\Http\Controllers\Admin\User\ListController::class, 'list'])->name('admin.users.list');
-    Route::get('/user/create', [\App\Http\Controllers\Admin\User\CreateController::class, 'create'])->name('admin.user.create');
-    Route::post('/user/create', [\App\Http\Controllers\Admin\User\StoreController::class, 'store'])->name('admin.user.store');
-    Route::get('/user/edit/{user}', [\App\Http\Controllers\Admin\User\EditController::class, 'edit'])->name('admin.user.edit');
-    Route::post('/user/edit/{user}', [\App\Http\Controllers\Admin\User\UpdateController::class, 'update'])->name('admin.user.update');
-    Route::get('/user/delete/{user}', [\App\Http\Controllers\Admin\User\DeleteController::class, 'delete'])->name('admin.user.delete');
+    Route::get('/users/list', [ListController::class, 'list'])->name('admin.users.list');
+    Route::get('/user/create', [CreateController::class, 'create'])->name('admin.user.create');
+    Route::post('/user/create', [StoreController::class, 'store'])->name('admin.user.store');
+    Route::get('/user/edit/{user}', [EditController::class, 'edit'])->name('admin.user.edit');
+    Route::post('/user/edit/{user}', [UpdateController::class, 'update'])->name('admin.user.update');
+    Route::get('/user/delete/{user}', [DeleteController::class, 'delete'])->name('admin.user.delete');
+
+    //roles
+    Route::get("role/{role}/user/list",[RoleController::class,"roleUsers"])->name("admin.role.users.list");
+    Route::delete("role/{role}/user/{user}/remove",[RoleController::class,"removeUserFromRole"])->name("admin.role.user.remove");
+    Route::get("role/{role}/users/add",[RoleController::class,"addUserToRoleList"])->name("admin.role.user.add.list");
+    Route::post("role/{role}/users/add/{user}",[RoleController::class,"addUserToRole"])->name("admin.role.user.add");
+    Route::resource("role", RoleController::class)->names("admin.role");
 
     //Zone
     Route::get('/zones/create', [ZoneController::class, 'create'])->name('admin.zone.create');
