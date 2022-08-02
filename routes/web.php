@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\User\CreateController;
 use App\Http\Controllers\Admin\User\DeleteController;
 use App\Http\Controllers\Admin\User\EditController;
 use App\Http\Controllers\Admin\User\ListController;
+use App\Http\Controllers\Admin\User\LogsController;
 use App\Http\Controllers\Admin\User\StoreController;
 use App\Http\Controllers\Admin\User\UpdateController;
 use App\Http\Controllers\Admin\Zone\ZoneController;
@@ -64,12 +65,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/user/edit/{user}', [EditController::class, 'edit'])->name('admin.user.edit');
     Route::post('/user/edit/{user}', [UpdateController::class, 'update'])->name('admin.user.update');
     Route::get('/user/delete/{user}', [DeleteController::class, 'delete'])->name('admin.user.delete');
+    Route::get("/user/logs/{user}", [LogsController::class, "authenticationLogs"])->name("admin.user.logs");
 
     //roles
-    Route::get("role/{role}/user/list",[RoleController::class,"roleUsers"])->name("admin.role.users.list");
-    Route::delete("role/{role}/user/{user}/remove",[RoleController::class,"removeUserFromRole"])->name("admin.role.user.remove");
-    Route::get("role/{role}/users/add",[RoleController::class,"addUserToRoleList"])->name("admin.role.user.add.list");
-    Route::post("role/{role}/users/add/{user}",[RoleController::class,"addUserToRole"])->name("admin.role.user.add");
+    Route::get("role/{role}/user/list", [RoleController::class, "roleUsers"])->name("admin.role.users.list");
+    Route::delete("role/{role}/user/{user}/remove", [RoleController::class, "removeUserFromRole"])->name("admin.role.user.remove");
+    Route::get("role/{role}/users/add", [RoleController::class, "addUserToRoleList"])->name("admin.role.user.add.list");
+    Route::post("role/{role}/users/add/{user}", [RoleController::class, "addUserToRole"])->name("admin.role.user.add");
     Route::resource("role", RoleController::class)->names("admin.role");
 
     //Zone
