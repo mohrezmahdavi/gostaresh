@@ -80,7 +80,8 @@
                                         <div class="btn-group btn-group-xs">
                                             @can("delete-any-Role")
                                                 @if( !in_array($role->id,auth()->user()->roles->pluck('id')->toArray()) )
-                                                    <form method="post" action="{{route("admin.role.destroy",$role->id)}}">
+                                                    <form method="post"
+                                                          action="{{route("admin.role.destroy",$role->id)}}">
                                                         @csrf
                                                         @method("DELETE")
                                                         <button type="submit"
@@ -98,6 +99,12 @@
                                                 <a href="{{ route('admin.role.edit',$role) }}"
                                                    title="{{ __('validation.buttons.edit') }}"
                                                    class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+
+
+                                                <a href="{{ route('admin.role.users.list',$role) }}"
+                                                   title="{{ __('validation.buttons.edit') }}"
+                                                   class="btn btn-info btn-sm"><i class="fa fa-users"></i></a>
+
                                             @endcan
 
                                         </div>

@@ -55,4 +55,9 @@ class User extends Authenticatable
         return $this->belongsTo(City::class, 'city_id');
     }
 
+    public function UserLogs()
+    {
+        return $this->hasMany(UserLog::class,"user_id");
+    }
+
 }

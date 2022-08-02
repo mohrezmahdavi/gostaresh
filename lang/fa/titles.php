@@ -32,7 +32,8 @@ $modelsTitles = [
     "SubGrade"      => "زیر سطح",
     "User"          => "کاربر",
     "Role"          => "گروه",
-    "Permission"    => "دسترسی"
+    "Permission"    => "دسترسی",
+    "UserLog"       => "گزارشات کاربر",
 ];
 
 $gostareshModels = config("gostaresh-urls.url");
