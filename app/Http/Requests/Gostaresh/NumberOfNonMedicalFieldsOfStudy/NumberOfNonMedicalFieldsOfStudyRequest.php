@@ -37,6 +37,7 @@ class NumberOfNonMedicalFieldsOfStudyRequest extends FormRequest
             "docktora_herfei_count" => 'required|integer|gte:0|lte:2147483647',
             "docktora_takhasosi_count" => 'required|integer|gte:0|lte:2147483647',
             "department_of_education" => 'nullable|integer|gte:0',
+            "major" => 'nullable|integer|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

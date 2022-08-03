@@ -1,6 +1,7 @@
 <td>{{ $numberOfNonMedicalFieldsOfStudy?->province?->name . ' - ' . $numberOfNonMedicalFieldsOfStudy->county?->name }}
 </td>
 
+<td>{{ $numberOfNonMedicalFieldsOfStudy?->major_title }}</td>
 <td>{{ $numberOfNonMedicalFieldsOfStudy?->department_of_education_title }}</td>
 @if (filterCol('kardani_peyvaste_count') == true)
     <td>{{ number_format($numberOfNonMedicalFieldsOfStudy?->kardani_peyvaste_count) }}</td>
