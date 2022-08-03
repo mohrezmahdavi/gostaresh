@@ -130,7 +130,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="distance_to_the_nearest_higher_education_center" name="distance_to_the_nearest_higher_education_center" value="{{ old('distance_to_the_nearest_higher_education_center') }}"
+                                <input type="number" id="distance_to_the_nearest_higher_education_center" name="distance_to_the_nearest_higher_education_center" value="{{ old('distance_to_the_nearest_higher_education_center') }}"
                                     class="form-control" placeholder="فاصله تا نزدیکترین مرکز آموزش عالی را وارد کنید...">
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="distance_to_the_nearest_unit_of_azad_university" name="distance_to_the_nearest_unit_of_azad_university" value="{{ old('distance_to_the_nearest_higher_education_center') }}"
+                                <input type="number" id="distance_to_the_nearest_unit_of_azad_university" name="distance_to_the_nearest_unit_of_azad_university" value="{{ old('distance_to_the_nearest_higher_education_center') }}"
                                     class="form-control" placeholder="فاصله تا نزدیکترین واحد دانشگاه آزاد را وارد کنید...">
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="level_and_quality_of_access" id="level_and_quality_of_access" class="form-select" >
-                                    @foreach (config('gostaresh.qualities') as $key => $value)
+                                    @foreach (config('gostaresh.qualitiesOfAvailable') as $key => $value)
                                     <option {{ ($key == old('level_and_quality_of_access') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -168,7 +168,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="international_opportunities_geographical_location" id="international_opportunities_geographical_location" class="form-select" >
-                                    @foreach (config('gostaresh.qualities') as $key => $value)
+                                    @foreach (config('gostaresh.international_opportunities') as $key => $value)
                                     <option {{ ($key == old('international_opportunities_geographical_location') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>

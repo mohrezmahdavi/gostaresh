@@ -63,11 +63,7 @@
                                         <td>{{ number_format($organizationalCulture?->{$key}) }}</td>
                                     @elseif(in_array($key, \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
                                         <td>
-                                            @foreach (config('gostaresh.amount') as $amountKey => $amountValue)
-                                                @if ($amountKey == $organizationalCulture->{$key})
-                                                    {{ $amountValue }}
-                                                @endif
-                                            @endforeach
+                                            {{$organizationalCulture->$key}}
                                         </td>
                                     @else
                                         <td>{{ $organizationalCulture?->{$key} }}</td>

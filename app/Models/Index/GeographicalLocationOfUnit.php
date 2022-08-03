@@ -24,7 +24,7 @@ class GeographicalLocationOfUnit extends Model
 
     public function getLevelAndQualityOfAccessTitleAttribute()
     {
-        foreach (config('gostaresh.qualities') as $key => $value) {
+        foreach (config('gostaresh.qualitiesOfAvailable') as $key => $value) {
             if ($key == $this->level_and_quality_of_access) {
                 return $value;
             }
@@ -33,7 +33,7 @@ class GeographicalLocationOfUnit extends Model
 
     public function getInternationalOpportunitiesGeographicalLocationTitleAttribute()
     {
-        foreach (config('gostaresh.qualities') as $key => $value) {
+        foreach (config('gostaresh.international_opportunities') as $key => $value) {
             if ($key == $this->international_opportunities_geographical_location) {
                 return $value;
             }

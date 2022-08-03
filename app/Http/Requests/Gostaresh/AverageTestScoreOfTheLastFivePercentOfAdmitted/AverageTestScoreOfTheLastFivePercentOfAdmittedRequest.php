@@ -31,7 +31,7 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             "gender_id" => 'required|numeric',
             "university_type" => 'required|numeric',
-            "average_test_score_of_the_last_five_percent_of_admitted" => 'required|numeric|gte:0',
+            "average_test_score_of_the_last_five_percent_of_admitted" => 'required|integer|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

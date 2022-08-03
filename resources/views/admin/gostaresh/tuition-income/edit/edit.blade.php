@@ -98,7 +98,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="associate_degree" name="associate_degree"
+                                <input type="number" id="associate_degree" name="associate_degree"
                                     value="{{ $tuitionIncome->associate_degree }}" class="form-control"
                                     placeholder=" کاردانی را وارد کنید...">
                             </div>
@@ -110,7 +110,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="bachelor_degree" name="bachelor_degree"
+                                <input type="number" id="bachelor_degree" name="bachelor_degree"
                                     value="{{ $tuitionIncome->bachelor_degree }}" class="form-control"
                                     placeholder=" کارشناسی را وارد کنید...">
                             </div>
@@ -122,7 +122,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="masters" name="masters" value="{{ $tuitionIncome->masters }}"
+                                <input type="number" id="masters" name="masters" value="{{ $tuitionIncome->masters }}"
                                     class="form-control" placeholder=" کارشناسی ارشد را وارد کنید...">
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="phd" name="phd" value="{{ $tuitionIncome->phd }}"
+                                <input type="number" id="phd" name="phd" value="{{ $tuitionIncome->phd }}"
                                     class="form-control" placeholder=" دکتری را وارد کنید...">
                             </div>
                         </div>
