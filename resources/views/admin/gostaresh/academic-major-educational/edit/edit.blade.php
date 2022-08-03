@@ -72,8 +72,20 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="azad_eslami_count" name="azad_eslami_count"
-                                    value="{{ $academicMajorEducational->azad_eslami_count }}" class="form-control"
-                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                                       value="{{ $academicMajorEducational->azad_eslami_count }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="azad_eslami_percent">
+                                <span>دانشگاه آزاد اسلامی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="azad_eslami_percent" name="azad_eslami_percent"
+                                       value="{{ $academicMajorEducational->azad_eslami_percent }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
 
@@ -84,8 +96,20 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="dolati_count" name="dolati_count"
-                                    value="{{ $academicMajorEducational->dolati_count }}" class="form-control"
-                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                                       value="{{ $academicMajorEducational->dolati_count }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="dolati_percent">
+                                <span>دانشگاه دولتی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="dolati_percent" name="dolati_percent"
+                                       value="{{ $academicMajorEducational->dolati_percent }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
 
@@ -96,8 +120,20 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="payam_noor_count" name="payam_noor_count"
-                                    value="{{ $academicMajorEducational->payam_noor_count }}" class="form-control"
-                                    placeholder=" دانشگاه پیام نور را وارد کنید...">
+                                       value="{{ $academicMajorEducational->payam_noor_count }}" class="form-control"
+                                       placeholder=" دانشگاه پیام نور را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="payam_noor_percent">
+                                <span>دانشگاه پیام نور </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="payam_noor_percent" name="payam_noor_percent"
+                                       value="{{ $academicMajorEducational->payam_noor_percent }}" class="form-control"
+                                       placeholder=" دانشگاه پیام نور را وارد کنید...">
                             </div>
                         </div>
 
@@ -108,8 +144,20 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="gheir_entefai_count" name="gheir_entefai_count"
-                                    value="{{ $academicMajorEducational->gheir_entefai_count }}" class="form-control"
-                                    placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
+                                       value="{{ $academicMajorEducational->gheir_entefai_count }}" class="form-control"
+                                       placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="gheir_entefai_percent">
+                                <span>دانشگاه غیر انتفاعی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="gheir_entefai_percent" name="gheir_entefai_percent"
+                                       value="{{ $academicMajorEducational->gheir_entefai_percent }}" class="form-control"
+                                       placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
                             </div>
                         </div>
 
@@ -120,8 +168,20 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="elmi_karbordi_count" name="elmi_karbordi_count"
-                                    value="{{ $academicMajorEducational->elmi_karbordi_count }}" class="form-control"
-                                    placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
+                                       value="{{ $academicMajorEducational->elmi_karbordi_count }}" class="form-control"
+                                       placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="elmi_karbordi_percent">
+                                <span>دانشگاه علمی کاربردی </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="elmi_karbordi_percent" name="elmi_karbordi_percent"
+                                       value="{{ $academicMajorEducational->elmi_karbordi_percent }}" class="form-control"
+                                       placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
                             </div>
                         </div>
 
