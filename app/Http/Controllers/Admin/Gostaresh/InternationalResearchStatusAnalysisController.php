@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
-// Table 36,37 Controller
+// Table 36 Controller
 class InternationalResearchStatusAnalysisController extends Controller
 {
     /**

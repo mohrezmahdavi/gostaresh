@@ -31,7 +31,7 @@
                                 </a>
 
 
-                                @if (count($valueParent) > 0)
+                                @if ( count($valueParent) > 0)
                                     <ul>
                                         @foreach ($valueParent as $keyMiddle => $valueMiddle)
                                             <li>
@@ -42,17 +42,23 @@
                                                 </a>
 
 
-                                                @if (count($valueMiddle) > 0)
+                                                @if ( count($valueMiddle) > 0)
                                                     <ul>
                                                         @foreach ($valueMiddle as $key => $value)
-                                                            <li>
+                                                            @php
+                                                                $modelExplode = explode( '\\',$value["model"]);
+                                                                $modelName = end($modelExplode);
+                                                            @endphp
+                                                            @can('view-any-'.$modelName)
+                                                                <li>
 
-                                                                <a href="{{ route($value['name'] . '.index',["all=1"]) }}" >
-                                                                    {{ $value['title'] }}
+                                                                    <a href="{{ route($value['name'] . '.index',["all=1"]) }}">
+                                                                        {{ $value['title'] }}
 
-                                                                </a>
+                                                                    </a>
 
-                                                            </li>
+                                                                </li>
+                                                            @endcan
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -64,21 +70,6 @@
                         @endforeach
 
                     </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     {{-- @foreach (config('gostaresh-urls.url') as $key => $value)
