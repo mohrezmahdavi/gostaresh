@@ -64,39 +64,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('number_of_international_awards') == true) {
             array_push($mapping, $internationalResearchStatusAnalyses?->number_of_international_awards);
         }
-        if (filterCol('average_H_index_of_faculty_members') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->average_H_index_of_faculty_members);
-        }
-        if (filterCol('number_of_articles_science_and_nature') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_articles_science_and_nature);
-        }
-        if (filterCol('print_ISI_articles') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->print_ISI_articles);
-        }
-        if (filterCol('percentage_of_quality_articles') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->percentage_of_quality_articles);
-        }
-        if (filterCol('number_of_faculty_members_of_world_scientists') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_faculty_members_of_world_scientists);
-        }
-        if (filterCol('number_of_faculty_members_of_international_journals') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_faculty_members_of_international_journals);
-        }
-        if (filterCol('number_of_international_conferences_held') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_international_conferences_held);
-        }
-        if (filterCol('number_of_international_scientific_books') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_international_scientific_books);
-        }
-        if (filterCol('number_of_international_agreements_implemented') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_international_agreements_implemented);
-        }
-        if (filterCol('amount_of_international_research_credits') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->amount_of_international_research_credits);
-        }
-        if (filterCol('number_of_international_publications') == true) {
-            array_push($mapping, $internationalResearchStatusAnalyses?->number_of_international_publications);
-        }
 
         array_push($mapping, $internationalResearchStatusAnalyses?->year);
         array_push($mapping, $internationalResearchStatusAnalyses?->month);
@@ -141,39 +108,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
         if (filterCol('number_of_international_awards') == true) {
             array_push($headings, 'تعداد جوایز بین المللی کسب شده در ۵ سال اخیر');
-        }
-        if (filterCol('average_H_index_of_faculty_members') == true) {
-            array_push($headings, 'متوسط H-index اعضای هیات علمی');
-        }
-        if (filterCol('number_of_articles_science_and_nature') == true) {
-            array_push($headings, 'تعداد مقالات در دو مجله Science و Nature');
-        }
-        if (filterCol('print_ISI_articles') == true) {
-            array_push($headings, 'سرانه چاپ مقالات ISI');
-        }
-        if (filterCol('percentage_of_quality_articles') == true) {
-            array_push($headings, 'درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1)');
-        }
-        if (filterCol('number_of_faculty_members_of_world_scientists') == true) {
-            array_push($headings, 'تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس نظام‌های رتبه بندی مصوب');
-        }
-        if (filterCol('number_of_faculty_members_of_international_journals') == true) {
-            array_push($headings, 'تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی');
-        }
-        if (filterCol('number_of_international_conferences_held') == true) {
-            array_push($headings, 'تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر');
-        }
-        if (filterCol('number_of_international_scientific_books') == true) {
-            array_push($headings, 'تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی');
-        }
-        if (filterCol('number_of_international_agreements_implemented') == true) {
-            array_push($headings, 'تعداد تفاهم نامه های بین المللی اجرایی شده');
-        }
-        if (filterCol('amount_of_international_research_credits') == true) {
-            array_push($headings, 'میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده');
-        }
-        if (filterCol('number_of_international_publications') == true) {
-            array_push($headings, 'تعداد نشریه های دارای نمایه های استنادی بین المللی');
         }
 
         array_push($headings, 'سال');

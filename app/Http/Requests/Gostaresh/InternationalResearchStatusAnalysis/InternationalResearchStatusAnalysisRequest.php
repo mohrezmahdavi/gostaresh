@@ -41,17 +41,6 @@ class InternationalResearchStatusAnalysisRequest extends FormRequest
             'number_of_foreign_workshops_held' => 'required|integer|gte:0|lte:2147483647',
             'number_of_international_lectures_held' => 'required|integer|gte:0|lte:2147483647',
             'number_of_international_awards' => 'required|integer|gte:0|lte:2147483647',
-            'average_H_index_of_faculty_members' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_articles_science_and_nature' => 'required|integer|gte:0|lte:2147483647',
-            'print_ISI_articles' => 'required|integer|gte:0|lte:2147483647',
-            'percentage_of_quality_articles' => 'required|numeric',
-            'number_of_faculty_members_of_world_scientists' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_faculty_members_of_international_journals' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_international_conferences_held' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_international_scientific_books' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_international_agreements_implemented' => 'required|integer|gte:0|lte:2147483647',
-            'amount_of_international_research_credits' => 'required|integer|gte:0|lte:2147483647',
-            'number_of_international_publications' => 'required|integer|gte:0|lte:2147483647',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
