@@ -97,6 +97,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>نام</th>
+                                <th>گروه کاربری</th>
                                 <th>تلفن تماس</th>
                                 <th>وضعیت</th>
                                 <th>اقدام</th>
@@ -108,6 +109,12 @@
                                     <th scope="row">{{ $users?->firstItem() + $key }}</th>
                                     <td>{{ $user?->first_name . ' ' . $user?->last_name }}</td>
 
+                                    <td>
+                                        @foreach($user?->roles as $key => $role)
+                                            {{ $key>0 && $key + 1 <=  $user?->roles->count() ?",":"" }}
+                                            {{ $role->name }}
+                                        @endforeach
+                                    </td>
                                     <td>{{ $user?->phone_number }}</td>
                                     <td>
                                         @foreach (config('gostaresh.user_status') as $key => $value)
@@ -130,9 +137,9 @@
                                         @endif
 
                                         @can("view-any-UserLog")
-                                                <a href="{{ route('admin.user.logs', $user) }}"
-                                                   title="{{ __('titles.UserLog') }}"
-                                                   class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                                            <a href="{{ route('admin.user.logs', $user) }}"
+                                               title="{{ __('titles.UserLog') }}"
+                                               class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                                         @endcan
                                     </td>
 

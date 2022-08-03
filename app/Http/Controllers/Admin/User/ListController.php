@@ -13,7 +13,7 @@ class ListController extends Controller
     {
         $this->authorize("view-any-User");
 
-        $query = User::query();
+        $query = User::query()->with("roles:id,name");
 
         if (request('first_name')) {
             $query->where('first_name', 'like', '%' . request('first_name') . '%');
