@@ -70,3 +70,14 @@ if (!function_exists('filterByOwnProvince')) {
         return $query;
     }
 }
+
+if (!function_exists('employment_status')) {
+    function employment_status($field)
+    {
+        foreach(config('gostaresh.employment_status') as $key => $value)
+            if($key == $field)
+                return $value;
+        return '';
+    }
+
+}
