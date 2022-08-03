@@ -14,7 +14,8 @@ class LogsController extends Controller
      */
     public function authenticationLogs(User $user)
     {
-        $logs = $user->UserLogs()->paginate(15, ["event", "ip_address", "operating_system", "browser", "created_at"]);
+        $logs = $user->UserLogs()->orderByDesc("id")
+            ->paginate(15, ["event", "ip_address", "operating_system", "browser", "created_at"]);
 
         return view("admin.users.security_logs", compact("logs"));
     }
