@@ -85,6 +85,7 @@ if (!function_exists('getAppModelsList')) {
         }
         return $out;
     }
+}
 
 if (!function_exists('employment_status')) {
     function employment_status($field)
