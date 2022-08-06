@@ -18,8 +18,11 @@
 @if (filterCol('masters') == true)                                 
     <th>کارشناسی ارشد</th>
 @endif
-@if (filterCol('phd') == true)                                 
-    <th>دکتری</th>
+@if (filterCol('professional_phd') == true)
+    <th>دکتری حرفه ای</th>
+@endif
+@if (filterCol('phd') == true)
+    <th>دکتری تخصصی(Ph.D)</th>
 @endif
 
 <th>سال</th>

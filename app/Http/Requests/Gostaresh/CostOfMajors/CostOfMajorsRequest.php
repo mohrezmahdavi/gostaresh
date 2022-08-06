@@ -36,6 +36,7 @@ class CostOfMajorsRequest extends FormRequest
             'associate_degree' => 'required|integer|gte:0|lte:2147483647',
             'bachelor_degree' => 'required|integer|gte:0|lte:2147483647',
             'masters' => 'required|integer|gte:0|lte:2147483647',
+            'professional_phd' => 'required|integer|gte:0|lte:2147483647',
             'phd' => 'required|integer|gte:0|lte:2147483647',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
