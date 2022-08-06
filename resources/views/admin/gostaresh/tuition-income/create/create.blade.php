@@ -124,13 +124,24 @@
                         </div>
 
                         <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="professional_phd">
+                                <span>دکتری حرفه ای </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="professional_phd" name="professional_phd" value="{{ old('professional_phd') }}"
+                                    class="form-control" placeholder=" دکتری حرفه ای را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="phd">
-                                <span>دکتری </span>&nbsp
+                                <span>دکتری تخصصی(Ph.D) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="phd" name="phd" value="{{ old('phd') }}"
-                                    class="form-control" placeholder=" دکتری را وارد کنید...">
+                                    class="form-control" placeholder=" دکتری تخصصی(Ph.D) را وارد کنید...">
                             </div>
                         </div>
 

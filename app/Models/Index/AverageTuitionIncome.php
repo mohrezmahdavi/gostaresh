@@ -118,7 +118,8 @@ class AverageTuitionIncome extends Model
         "associate_degree"              => "کاردانی",
         "bachelor_degree"               => "کارشناسی",
         "masters"                       => "کارشناسی ارشد",
-        "phd"                           => "دکتری",
+        "professional_phd"              => "دکتری حرفه ای",
+        "phd"                           => "دکتری تخصصی(Ph.D)",
 
     ];
 
