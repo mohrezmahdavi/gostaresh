@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Facades\Verta;
@@ -21,7 +22,7 @@ class SocialHealthStatusAnalysis extends Model
 
     protected $table = "gostaresh_social_health_status_analyses";
 
-    protected $appends = ['gender', 'component_title'];
+    protected $appends = ['gender', 'component_title', 'grade_title'];
 
     public function getComponentTitleAttribute()
     {
@@ -37,6 +38,15 @@ class SocialHealthStatusAnalysis extends Model
         foreach (config('gostaresh.gender') as $key => $value) {
             if ($key == $this->gender_id) {
                 return $value;
+            }
+        }
+    }
+
+    public function getGradeTitleAttribute()
+    {
+        foreach (Grade::all() as $grade) {
+            if ($grade->id == $this->grade_id) {
+                return $grade->name;
             }
         }
     }
@@ -119,6 +129,7 @@ class SocialHealthStatusAnalysis extends Model
         "unit"                => "واحد",
         "component_title"     => "مولفه",
         "gender"              => "جنسیت",
+        "grade_title"         => "مقطع",
         "associate_degree"    => "کاردانی",
         "bachelor_degree"     => "کارشناسی",
         "masters"             => "کارشناسی ارشد",

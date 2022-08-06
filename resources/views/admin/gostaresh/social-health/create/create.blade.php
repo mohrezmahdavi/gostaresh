@@ -90,6 +90,22 @@
                         </div>
 
                         <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="grade_id">
+                                <span>مقطع</span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="grade_id" id="grade_id" class="form-select">
+                                    <option value="">انتخاب کنید...</option>
+                                    @foreach (\App\Models\Grade::all() as $grade)
+                                        <option {{ $grade->id == old('grade_id') ? ' selected' : '' }} value="{{ $grade->id}}">{{ $grade->name }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="associate_degree">
                                 <span>کاردانی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
