@@ -3,7 +3,7 @@
 @section('thead')
     <tr>
         <th>#</th>
-        @include('admin.gostaresh.international-research-status-analyses.list.partials.thead')
+        @include('admin.gostaresh.international-research-status-analysis2.list.partials.thead')
 
     </tr>
 @endsection
@@ -13,7 +13,7 @@
         <tr>
             <td>{{ $key + 1 }}</td>
 
-            @include('admin.gostaresh.international-research-status-analyses.list.partials.tbody')
+            @include('admin.gostaresh.international-research-status-analysis2.list.partials.tbody')
         </tr>
     @endforeach
 @endsection
