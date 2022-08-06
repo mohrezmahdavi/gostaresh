@@ -19,7 +19,7 @@ class InternationalResearchStatusAnalysis extends Model
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_international_research_status_analysis";
+    protected $table = "gostaresh_international_research_status_analyses";
 
     public function country()
     {
@@ -98,7 +98,7 @@ class InternationalResearchStatusAnalysis extends Model
         "number_of_foreign_workshops_held",
         "number_of_international_lectures_held",
         "number_of_international_awards",
-    
+
     ];
     public static $filterColumnsCheckBoxes = [
         "unit"                                                  => "واحد",
@@ -112,7 +112,7 @@ class InternationalResearchStatusAnalysis extends Model
         "number_of_foreign_workshops_held"                      => "تعداد کارگاهها، دوره های آموزشی و تدریس بین المللی برگزار شده توسط اساتید خارجی ومتخصصان ایرانی غیر مقیم",
         "number_of_international_lectures_held"                 => "تعدادسخنرانی وسمینارهای علمی بین المللی برگزارشده توسط اساتیدخارجی و متخصصان ایرانی غیر مقیم",
         "number_of_international_awards"                        => "تعداد جوایز بین المللی کسب شده در ۵ سال اخیر",
-       
+
     ];
 
 }

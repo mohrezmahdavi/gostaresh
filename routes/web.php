@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
@@ -271,13 +272,21 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('status/analysis/of/the/number/of/fields/of/study/list/pdf', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class, 'listPDFExport'])->name('status.analysis.of.the.number.of.fields.of.study.list.pdf');
     Route::get('status/analysis/of/the/number/of/fields/of/study/list/print', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class, 'listPrintExport'])->name('status.analysis.of.the.number.of.fields.of.study.list.print');
 
-    // Table 26, 27 Route
+    // Table 26 Route
     Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
         'study' => 'numberOfNonMedicalFieldsOfStudy'
     ]);
     Route::get('number/of/non/medical/fields/of/study/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.list.excel');
     Route::get('number/of/non/medical/fields/of/study/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.list.pdf');
     Route::get('number/of/non/medical/fields/of/study/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPrintExport'])->name('number.of.non.medical.fields.of.study.list.print');
+
+    // Table 27 Route
+    Route::resource('number/of/non/medical/fields/of/study2', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class)->names('number.of.non.medical.fields.of.study.2')->parameters([
+        'study' => 'numberOfNonMedicalFieldsOfStudy'
+    ]);
+    Route::get('number/of/non/medical/fields/of/study2/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.2.list.excel');
+    Route::get('number/of/non/medical/fields/of/study2/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.2.list.pdf');
+    Route::get('number/of/non/medical/fields/of/study2/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listPrintExport'])->name('number.of.non.medical.fields.of.study.2.list.print');
 
     // Table 28 Route
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
@@ -335,11 +344,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('research-output-status-analyses/list/pdf', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPDFExport'])->name('research-output-status-analyses.list.pdf');
     Route::get('research-output-status-analyses/list/print', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPrintExport'])->name('research-output-status-analyses.list.print');
 
-    // Table 36,37 Route
+    // Table 36 Route
     Route::resource('international-research', InternationalResearchStatusAnalysisController::class)->names('international-research');
     Route::get('international-research/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listExcelExport'])->name('international-research.list.excel');
     Route::get('international-research/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPDFExport'])->name('international-research.list.pdf');
     Route::get('international-research/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPrintExport'])->name('international-research.list.print');
+
+    // Table 37 Route
+    Route::resource('international-research2', InternationalResearchStatusAnalysis2Controller::class)->names('international-research2');
+    Route::get('international-research2/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listExcelExport'])->name('international-research2.list.excel');
+    Route::get('international-research2/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listPDFExport'])->name('international-research2.list.pdf');
+    Route::get('international-research2/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listPrintExport'])->name('international-research2.list.print');
 
     // Table 38 Route
     Route::resource('amount-of-facilities', AmountOfFacilitiesController::class)->names('amount-of-facilities');

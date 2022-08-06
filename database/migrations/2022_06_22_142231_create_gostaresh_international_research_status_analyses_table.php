@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_international_research_status_analysis', function (Blueprint $table) {
+        Schema::create('gostaresh_international_research_status_analyses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedInteger('number_of_international_lectures_held')->comment('تعدادسخنرانی وسمینارهای علمی بین المللی برگزارشده توسط اساتیدخارجی و متخصصان ایرانی غیر مقیم')->nullable();
             $table->unsignedInteger('number_of_international_awards')->comment('تعداد جوایز بین المللی کسب شده در ۵ سال اخیر')->nullable();
 
-            
+
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
