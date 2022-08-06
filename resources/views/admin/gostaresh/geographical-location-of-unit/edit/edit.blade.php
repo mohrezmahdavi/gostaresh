@@ -57,7 +57,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row mt-2">
+                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_building">
                                 <span> ساختمان واحد دانشگاهی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
@@ -79,7 +79,7 @@
                                     value="{{ $geographicalLocationOfUnit->land_area }}" class="form-control"
                                     placeholder="مساحت زمین را وارد کنید...">
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="the_size_of_the_building">
