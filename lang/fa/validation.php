@@ -536,6 +536,14 @@ return [
         'complete_new_interdisciplinary_curricula' => 'کل برنامه های درسی جدید میان رشته ای مورد اجرا',
         'number_of_common_curricula_with_the_world' => 'تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان',
         'number_of_curricula_developed' => 'تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر',
+        'medical_sciences_count' => 'تعداد علوم پزشکی',
+        'medical_sciences_percent' => 'درصد علوم پزشکی',
+        'farhangian_percent'=> 'فرهنگیان(درصد)',
+        'fani_herfei_percent'=> 'فنی حرفه ای(درصد)',
+        'payam_noor_percent'=> 'پیام نور(درصد)',
+        'gheir_entefai_percent'=> 'غیر انتفاعی(تعداد)',
+        'elmi_karbordi_percent'=> 'علمی کاربردی(درصد)',
+
     ],
     'placeholders' => [
         'first_name' => 'نام را وارد کنید',

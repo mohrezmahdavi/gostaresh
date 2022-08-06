@@ -65,7 +65,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="azad_eslami_count">
-                                <span>دانشگاه آزاد اسلامی </span>&nbsp
+                                <span>دانشگاه آزاد اسلامی(تعداد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -77,7 +77,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="azad_eslami_percent">
-                                <span>دانشگاه آزاد اسلامی </span>&nbsp
+                                <span>دانشگاه آزاد اسلامی(درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -89,7 +89,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="dolati_count">
-                                <span>دانشگاه دولتی </span>&nbsp
+                                <span>دانشگاه دولتی(تعداد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -101,7 +101,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="dolati_percent">
-                                <span>دانشگاه دولتی </span>&nbsp
+                                <span>دانشگاه دولتی(درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -112,8 +112,80 @@
                         </div>
 
                         <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="medical_sciences_count">
+                                <span>علوم پزشکی(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="medical_sciences_count" name="medical_sciences_count"
+                                    value="{{ old('medical_sciences_count') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="medical_sciences_percent">
+                                <span>علوم پزشکی(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="medical_sciences_percent" name="medical_sciences_percent"
+                                    value="{{ old('medical_sciences_percent') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="farhangian_count">
+                                <span>فرهنگیان(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="farhangian_count" name="farhangian_count"
+                                    value="{{ old('farhangian_count') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="farhangian_percent">
+                                <span>فرهنگیان(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="farhangian_percent" name="farhangian_percent"
+                                    value="{{ old('farhangian_percent') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="fani_herfei_count">
+                                <span> فنی حرفه ای(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="fani_herfei_count" name="fani_herfei_count"
+                                    value="{{ old('fani_herfei_count') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="fani_herfei_percent">
+                                <span> فنی حرفه ای(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="fani_herfei_percent" name="fani_herfei_percent"
+                                    value="{{ old('fani_herfei_percent') }}" class="form-control"
+                                    placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="payam_noor_count">
-                                <span>دانشگاه پیام نور </span>&nbsp
+                                <span>دانشگاه پیام نور(تعداد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -125,7 +197,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="payam_noor_percent">
-                                <span>دانشگاه پیام نور </span>&nbsp
+                                <span>دانشگاه پیام نور(درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -137,7 +209,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gheir_entefai_count">
-                                <span>دانشگاه غیر انتفاعی </span>&nbsp
+                                <span>دانشگاه غیر انتفاعی(تعداد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -149,7 +221,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gheir_entefai_percent">
-                                <span>دانشگاه غیر انتفاعی </span>&nbsp
+                                <span>دانشگاه غیر انتفاعی(درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -161,7 +233,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="elmi_karbordi_count">
-                                <span>دانشگاه علمی کاربردی </span>&nbsp
+                                <span>دانشگاه علمی کاربردی(تعداد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -173,7 +245,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="elmi_karbordi_percent">
-                                <span>دانشگاه علمی کاربردی </span>&nbsp
+                                <span>دانشگاه علمی کاربردی(درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
