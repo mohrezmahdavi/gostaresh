@@ -52,7 +52,7 @@
                             <div class="col-sm-10">
                                 <select name="higher_education_subsystems" id="higher_education_subsystems"
                                     class="form-select">
-                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
+                                    @foreach (config('gostaresh.university_type') as $key => $value)
                                         <option {{ $key == old('higher_education_subsystems') ? 'selected' : '' }}
                                             value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
@@ -80,7 +80,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="average_age_of_employees" name="average_age_of_employees"
+                                <input type="number" id="average_age_of_employees" name="average_age_of_employees"
                                     value="{{ old('average_age_of_employees') }}" class="form-control"
                                     placeholder=" میانگین سنی کارمندان را وارد کنید...">
                             </div>
