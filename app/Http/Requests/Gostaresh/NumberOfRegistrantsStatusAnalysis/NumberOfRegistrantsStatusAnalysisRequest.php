@@ -32,6 +32,8 @@ class NumberOfRegistrantsStatusAnalysisRequest extends FormRequest
             "gender_id" => 'required|numeric',
             "university_type" => 'required|numeric',
             "number_of_registrants" => 'required|integer|gte:0',
+            "grade_id" => 'required|numeric',
+            'department_of_education' => 'required|numeric|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

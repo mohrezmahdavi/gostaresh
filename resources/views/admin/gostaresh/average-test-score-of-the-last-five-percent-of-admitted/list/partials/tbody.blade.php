@@ -7,6 +7,9 @@
 @if (filterCol('gender_title') == true)
     <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->gender_title }}</td>
 @endif
+@if (filterCol('grade_title') == true)
+    <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->grade_title }}</td>
+@endif
 @if (filterCol('department_of_education_title') == true)
     <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->department_of_education_title }}</td>
 @endif

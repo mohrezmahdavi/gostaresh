@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ class AnnualGrowthRateOfStudentEnrollment extends Model
 
     protected $table = "gostaresh_annual_growth_rate_of_student_enrollments";
 
-    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title'];
+    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title', 'grade_title'];
 
     public function getGenderTitleAttribute()
     {
@@ -49,6 +50,14 @@ class AnnualGrowthRateOfStudentEnrollment extends Model
         }
     }
 
+    public function getGradeTitleAttribute()
+    {
+        foreach (Grade::all() as $grade) {
+            if ($grade->id == $this->grade_id) {
+                return $grade->name;
+            }
+        }
+    }
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

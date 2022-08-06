@@ -5,6 +5,9 @@
 @if (filterCol('gender_title') == true)
     <th>جنسیت</th>
 @endif
+@if (filterCol('grade_title') == true)
+    <th>مقطع</th>
+@endif
 @if (filterCol('department_of_education_title') == true)
     <th>گروه عمده تحصیلی</th>
 @endif

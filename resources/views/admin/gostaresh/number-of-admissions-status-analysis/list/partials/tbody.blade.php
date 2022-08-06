@@ -6,6 +6,9 @@
 @if (filterCol('gender_title') == true)
 <td>{{ $numberOfAdmissionsStatusAnalysis?->gender_title }}</td>
 @endif
+@if (filterCol('grade_title') == true)
+<td>{{ $numberOfAdmissionsStatusAnalysis?->grade_title }}</td>
+@endif
 @if (filterCol('department_of_education_title') == true)
 <td>{{ $numberOfAdmissionsStatusAnalysis?->department_of_education_title }}</td>
 @endif

@@ -30,6 +30,8 @@ class NumberOfAdmissionsStatusAnalysisRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             "gender_id" => 'required|numeric',
+            "grade_id" => 'required|numeric',
+            'department_of_education' => 'required|numeric|gte:0',
             "university_type" => 'required|numeric',
             "number_of_admissions" => 'required|integer|gte:0',
             'year' => 'nullable|numeric|gte:0',
