@@ -112,6 +112,77 @@
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="medical_sciences_count">
+                                <span>علوم پزشکی(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="medical_sciences_count" name="medical_sciences_count"
+                                       value="{{ $academicMajorEducational->medical_sciences_count }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="medical_sciences_percent">
+                                <span>علوم پزشکی(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="medical_sciences_percent" name="medical_sciences_percent"
+                                       value="{{ $academicMajorEducational->medical_sciences_percent }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="farhangian_count">
+                                <span>فرهنگیان(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="farhangian_count" name="farhangian_count"
+                                       value="{{ $academicMajorEducational->farhangian_count }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="farhangian_percent">
+                                <span>فرهنگیان(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="farhangian_percent" name="farhangian_percent"
+                                       value="{{ $academicMajorEducational->farhangian_percent }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="fani_herfei_count">
+                                <span> فنی حرفه ای(تعداد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="fani_herfei_count" name="fani_herfei_count"
+                                       value="{{ $academicMajorEducational->fani_herfei_count }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="fani_herfei_percent">
+                                <span> فنی حرفه ای(درصد) </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="fani_herfei_percent" name="fani_herfei_percent"
+                                       value="{{ $academicMajorEducational->fani_herfei_percent }}" class="form-control"
+                                       placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
+                            </div>
+                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="payam_noor_count">
@@ -191,7 +262,7 @@
 
 
 
-                        <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
+                        <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
                 </div>
             </div>
