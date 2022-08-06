@@ -5,15 +5,15 @@
 @endsection
 
 @section('breadcrumb-title')
-افزودن روند تحولات جمعیتی شهرستان های استان
+    افزودن روند تحولات جمعیتی شهرستان های استان
 @endsection
 
 @section('page-title')
-افزودن روند تحولات جمعیتی شهرستان های استان
+    افزودن روند تحولات جمعیتی شهرستان های استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,7 +27,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('demographic.changes.city.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('demographic.changes.city.store') }}"
+                        role="form">
                         @csrf
 
 
@@ -37,8 +38,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="population" min="0" max="18446744073709551615" name="population" value="{{ old('population') }}"
-                                    class="form-control" placeholder="جمعیت را وارد کنید...">
+                                <input type="number" id="population" min="0" max="18446744073709551615"
+                                    name="population" value="{{ old('population') }}" class="form-control"
+                                    placeholder="جمعیت را وارد کنید...">
                             </div>
                         </div>
 
@@ -48,8 +50,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="immigration_rates" name="immigration_rates" value="{{ old('immigration_rates') }}"
-                                    class="form-control" placeholder="نرخ مهاجرت را وارد کنید...">
+                                <input type="text" id="immigration_rates" name="immigration_rates"
+                                    value="{{ old('immigration_rates') }}" class="form-control"
+                                    placeholder="نرخ مهاجرت را وارد کنید...">
                             </div>
                         </div>
 
@@ -64,16 +67,21 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="true" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="1390" max="1400" :required="true" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>
@@ -85,5 +93,5 @@
 @endsection
 
 @section('body-scripts')
-<script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

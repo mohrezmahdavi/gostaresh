@@ -36,7 +36,13 @@
                             zone_default="{{ $academicMajorEducational->county->zone }}"
                             county_default="{{ $academicMajorEducational->county_id }}"
                             city_default="{{ $academicMajorEducational->city_id }}"
-                            rural_district_default="{{ $academicMajorEducational->rural_district_id }}">
+                            rural_district_default="{{ $academicMajorEducational->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
@@ -119,9 +125,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$academicMajorEducational->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$academicMajorEducational->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$academicMajorEducational->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$academicMajorEducational->month" :required="false" name="month"></x-select-month> --}}
 
 
 

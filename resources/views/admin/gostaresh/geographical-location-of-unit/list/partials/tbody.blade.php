@@ -1,7 +1,7 @@
 <td>{{ $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name }}
 </td>
 <td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
-<td>{{ $geographicalLocationOfUnit?->university_building }}</td>
+{{-- <td>{{ $geographicalLocationOfUnit?->university_building }}</td>
 
 @if (filterCol('land_area') == true)
     <td>{{ number_format((int) $geographicalLocationOfUnit?->land_area) }}
@@ -11,7 +11,7 @@
 @if (filterCol('the_size_of_the_building') == true)
     <td>{{ number_format((int) $geographicalLocationOfUnit?->the_size_of_the_building) }}
     </td>
-@endif
+@endif --}}
 
 @if (filterCol('distance_from_population_density_of_city') == true)
     <td>{{ number_format((int) $geographicalLocationOfUnit?->distance_from_population_density_of_city) }}

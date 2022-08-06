@@ -9,7 +9,7 @@
     <th>گروه عمده تحصیلی</th>
 @endif
 @if (filterCol('annual_growth_rate_of_student_enrollment') == true)
-    <th>مقدار</th>
+    <th>نرخ رشد سالانه ثبت نام دانشجو</th>
 @endif
 @if (filterCol('year') == true)
     <th>سال</th>

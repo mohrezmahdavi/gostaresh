@@ -18,8 +18,8 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
     }
 
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return $this->numberOfStudentsStatusAnalysises;
@@ -46,6 +46,16 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $numberOfStudentsStatusAnalysis?->number_of_students);
         }
 
+        if (filterCol('grade_id') == true) {
+            array_push($mapping, $numberOfStudentsStatusAnalysis?->grade?->name);
+        }
+        if (filterCol('major_id') == true) {
+            array_push($mapping, $numberOfStudentsStatusAnalysis?->major?->name);
+        }
+        if (filterCol('minor_id') == true) {
+            array_push($mapping, $numberOfStudentsStatusAnalysis?->minor?->name);
+        }
+
         if (filterCol('year') == true) {
             array_push($mapping, $numberOfStudentsStatusAnalysis?->year);
         }
@@ -69,7 +79,16 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'گروه عمده تحصیلی');
         }
         if (filterCol('number_of_students') == true) {
-            array_push($headings, 'مقدار');
+            array_push($headings, 'تعداد دانشجویان');
+        }
+        if (filterCol('grade_id') == true) {
+            array_push($headings, 'مقطع');
+        }
+        if (filterCol('major_id') == true) {
+            array_push($headings, 'رشته');
+        }
+        if (filterCol('minor_id') == true) {
+            array_push($headings, 'گرایش');
         }
         if (filterCol('year') == true) {
             array_push($headings, 'سال');

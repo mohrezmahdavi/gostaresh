@@ -34,7 +34,13 @@
                         <select-province-component province_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->province_id }}"
                             zone_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->county->zone }}"
                             county_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->county_id }}" city_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->city_id }}"
-                            rural_district_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->rural_district_id }}">
+                            rural_district_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -89,7 +95,7 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_test_score_of_the_first_thirty_percent_of_admitted">
-                                <span>مقدار </span>&nbsp
+                                <span> میانگین رتبه آزمون 30 درصد اول پذیرفته شدگان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -100,9 +106,9 @@
                         </div>
 
                         
-                        <x-select-year :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
+                        <x-select-year min="1390" max="1400" :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$avgTstScrOfFrtThrtPrntOfAdmitted->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$avgTstScrOfFrtThrtPrntOfAdmitted->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

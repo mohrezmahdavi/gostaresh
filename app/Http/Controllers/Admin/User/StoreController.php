@@ -11,8 +11,7 @@ class StoreController extends Controller
 {
     public function store(StoreUserRequest $request)
     {
-        if(!auth()->user()->hasPermissionTo('create-any-user'))
-            abort(403);
+        $this->authorize('create-any-User');
 
         $user = User::create([
             'first_name' => (string) $request->first_name,

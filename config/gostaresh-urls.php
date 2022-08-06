@@ -2,256 +2,310 @@
 
 return [
     'url' => [
-        'پایش محیطی' => [
+        'پایش محیطی'                                       => [
             'جمعیت' => [
                 [
                     'title' => 'روند تحولات جمعیتی شهرستان های استان',
-                    'name' => 'demographic.changes.city',
-                ],
-            ],
-            
-            'اقلیم و جغرافیا' => [
-                [
-                    'title' => 'وضعیت جغرافیایی واحد و دسترسی به آن در استان',
-                    'name' => 'geographical.location.unit'
+                    'model' => \App\Models\Index\DemographicChangesOfCity::class,
+                    'name'  => 'demographic.changes.city',
                 ],
             ],
 
-            'دانش آموز' => [
+            'اقلیم و جغرافیا' => [
+                [
+                    'title' => 'وضعیت جغرافیایی واحد و دسترسی به آن در استان',
+                    'model' => \App\Models\Index\GeographicalLocationOfUnit::class,
+                    'name'  => 'geographical.location.unit'
+                ],
+            ],
+
+            'دانش آموز'     => [
                 [
                     'title' => 'تعداد و ترکیب جمعیت دانش آموزی استان',
-                    'name' => 'number.student.population'
+                    'model' => \App\Models\Index\NumberStudentPopulation::class,
+                    'name'  => 'number.student.population'
                 ],
                 [
                     'title' => ' نرخ رشد و ترکیب جمعیت دانش آموزی استان',
-                    'name' => 'growth.rate.student.population'
+                    'model' => \App\Models\Index\GrowthRateStudentPopulation::class,
+                    'name'  => 'growth.rate.student.population'
                 ],
                 [
                     'title' => ' روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی',
-                    'name' => 'gdp.city'
+                    'model' => \App\Models\Index\GDPCity::class,
+                    'name'  => 'gdp.city'
                 ],
                 [
                     'title' => 'روند تغییرات سهم تولید ناخالص داخلی استان ',
-                    'name' => 'gdp.part',
+                    'model' => \App\Models\Index\GDPPart::class,
+                    'name'  => 'gdp.part',
                 ],
             ],
             'تحقیق و توسعه' => [
                 [
                     'title' => 'روند تغییرات تعداد کل طرح های پژوهشی مورد اجرا در داخل استان',
-                    'name' => 'number.of.research.project',
+                    'model' => \App\Models\Index\NumberOfResearchProject::class,
+                    'name'  => 'number.of.research.project',
                 ],
                 [
                     'title' => 'روند تغییرات میزان هزینه کرد در بخش R&D',
-                    'name' => 'payment.r.and.d.department',
+                    'model' => \App\Models\Index\PaymentRAndDDepartment::class,
+                    'name'  => 'payment.r.and.d.department',
                 ],
                 [
                     'title' => 'روند تغییرات درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه',
-                    'name' => 'industrial.expenditure.research',
+                    'model' => \App\Models\Index\IndustrialExpenditureResearch::class,
+                    'name'  => 'industrial.expenditure.research',
                 ],
             ],
 
-            'شاغلین' => [
+            'شاغلین'        => [
                 [
                     'title' => 'وضعیت نرخ مشارکت اقتصادی',
-                    'name' => 'economic.participation.rate',
+                    'model' => \App\Models\Index\EconomicParticipationRate::class,
+                    'name'  => 'economic.participation.rate',
                 ],
                 [
                     'title' => 'وضعیت نرخ بیکاری',
-                    'name' => 'unemployment.rate',
+                    'model' => \App\Models\Index\UnemploymentRate::class,
+                    'name'  => 'unemployment.rate',
                 ],
                 [
                     'title' => 'وضعیت اشتغال شهرستان های استان ',
-                    'name' => 'employment.of.provincial',
+                    'model' => \App\Models\Index\EmploymentOfProvincial::class,
+                    'name'  => 'employment.of.provincial',
                 ],
-            ], 
+            ],
             'فقر و محرومیت' => [
                 [
                     'title' => 'تحلیل وضعیت شاخص محرومیت چندگانه',
-                    'name' => 'multiple.deprivation.index.of.city',
+                    'model' => \App\Models\Index\MultipleDeprivationIndexOfCity::class,
+                    'name'  => 'multiple.deprivation.index.of.city',
                 ],
                 [
                     'title' => 'نرخ فقر شهرستان های استان',
-                    'name' => 'poverty.of.provincial.city',
+                    'model' => \App\Models\Index\PovertyOfProvincialCity::class,
+                    'name'  => 'poverty.of.provincial.city',
                 ],
             ]
         ],
         'پایش آموزش عالی و محیط درونی دانشگاه آزاد اسلامی' => [
-            'آموزش' => [
+            'آموزش'           => [
                 [
                     'title' => ' تحلیل وضعیت تعداد دانشجویان',
-                    'name' => 'number.of.students.status.analysis',
+                    'model' => \App\Models\Index\NumberOfStudentsStatusAnalysis::class,
+                    'name'  => 'number.of.students.status.analysis',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد داوطلبان',
-                    'name' => 'number.of.volunteers.status.analysis',
+                    'model' => \App\Models\Index\NumberOfVolunteersStatusAnalysis::class,
+                    'name'  => 'number.of.volunteers.status.analysis',
                 ],
                 [
                     'title' => ' تعداد پذیرفته شدگان',
-                    'name' => 'number.of.admissions.status.analysis',
+                    'model' => \App\Models\Index\NumberOfAdmissionsStatusAnalysis::class,
+                    'name'  => 'number.of.admissions.status.analysis',
                 ],
                 [
                     'title' => 'تعداد ثبت نام شدگان',
-                    'name' => 'number.of.registrants.status.analysis',
+                    'model' => \App\Models\Index\NumberOfRegistrantsStatusAnalysis::class,
+                    'name'  => 'number.of.registrants.status.analysis',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد برنامه های درسی',
-                    'name' => 'status.analysis.of.the.number.of.curricula',
+                    'model' => \App\Models\Index\StatusAnalysisOfTheNumberOfCurricula::class,
+                    'name'  => 'status.analysis.of.the.number.of.curricula',
                 ],
                 [
                     'title' => ' نرخ پوشش تحصیلی بر حسب گروه عمده تحصیلی',
-                    'name' => 'academic.major.educational',
+                    'model' => \App\Models\Index\AcademicMajorEducational::class,
+                    'name'  => 'academic.major.educational',
                 ],
-                
+
                 [
                     'title' => ' نرخ رشد سالانه ثبت نام دانشجو',
-                    'name' => 'annual.growth.rate.of.student.enrollment',
+                    'model' => \App\Models\Index\AnnualGrowthRateOfStudentEnrollment::class,
+                    'name'  => 'annual.growth.rate.of.student.enrollment',
                 ],
                 [
                     'title' => 'میانگین رتبه آزمون سراسری 30 درصد اول پذیرفته شدگان',
-                    'name' => 'average.test.score.of.the.first.thirty.percent.of.admitted',
+                    'model' => \App\Models\Index\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::class,
+                    'name'  => 'average.test.score.of.the.first.thirty.percent.of.admitted',
                 ],
                 [
                     'title' => 'میانگین رتبه آزمون سراسری 5 درصد آخر پذیرفته شدگان',
-                    'name' => 'average.test.score.of.the.last.five.percent.of.admitted',
+                    'model' => \App\Models\Index\AverageTestScoreOfTheLastFivePercentOfAdmitted::class,
+                    'name'  => 'average.test.score.of.the.last.five.percent.of.admitted',
                 ],
                 [
                     'title' => 'میزان ظرفیت پذیرش دانشجو',
-                    'name' => 'student.admission.capacity',
+                    'model' => \App\Models\Index\StudentAdmissionCapacity::class,
+                    'name'  => 'student.admission.capacity',
                 ],
                 [
                     'title' => ' تحلیل وضعیت تعداد رشته های تحصیلی',
-                    'name' => 'status.analysis.of.the.number.of.fields.of.study',
+                    'model' => \App\Models\Index\StatusAnalysisOfTheNumberOfCurricula::class,
+                    'name'  => 'status.analysis.of.the.number.of.fields.of.study',
                 ],
                 [
                     'title' => ' تعدادرشته/گرایشهای تحصیلی غیر پزشکی',
-                    'name' => 'number.of.non.medical.fields.of.study',
+                    'model' => \App\Models\Index\NumberOfNonMedicalFieldsOfStudy::class,
+                    'name'  => 'number.of.non.medical.fields.of.study',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد دوره های تحصیلی',
-                    'name' => 'status.analysis.of.the.number.of.course',
+                    'model' => \App\Models\Index\StatusAnalysisOfTheNumberOfCourse::class,
+                    'name'  => 'status.analysis.of.the.number.of.course',
                 ],
                 [
                     'title' => 'تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی',
-                    'name' => 'number.of.international.course',
+                    'model' => \App\Models\Index\NumberOfInternationalCourse::class,
+                    'name'  => 'number.of.international.course',
                 ],
                 [
                     'title' => 'نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی',
-                    'name' => 'international.student.growth.rate',
+                    'model' => \App\Models\Index\InternationalStudentGrowthRate::class,
+                    'name'  => 'international.student.growth.rate',
                 ],
-                
+
                 [
                     'title' => 'کل دانش آموختگان از مراکز آموزش عالی موجود',
-                    'name' => 'graduates-of-higher-education',
+                    'model' => \App\Models\Index\GraduatesOfHigherEducationCenters::class,
+                    'name'  => 'graduates-of-higher-education',
                 ],
                 [
                     'title' => 'تحلیل وضعیت فارغ التحصیلان',
-                    'name' => 'graduate-status-analyses',
+                    'model' => \App\Models\Index\GraduateStatusAnalysis::class,
+                    'name'  => 'graduate-status-analyses',
                 ],
             ],
-            'فارغ التحصیلان' => [
+            'فارغ التحصیلان'  => [
                 [
                     'title' => 'تحلیل وضعیت اعضای هیات علمی و مدرسین',
-                    'name' => 'teachers-status-analyses',
+                    'model' => \App\Models\Index\TeachersStatusAnalysis::class,
+                    'name'  => 'teachers-status-analyses',
                 ],
             ],
-            'پژوهش' => [
+            'پژوهش'           => [
                 [
                     'title' => 'تحلیل وضعیت برونداد پژوهشی',
-                    'name' => 'research-output-status-analyses',
+                    'model' => \App\Models\Index\ResearchOutputStatusAnalysis::class,
+                    'name'  => 'research-output-status-analyses',
                 ],
                 [
                     'title' => 'تحلیل وضعیت پژوهش بین المللی',
-                    'name' => 'international-research',
+                    'model' => \App\Models\Index\InternationalResearchStatusAnalysis::class,
+                    'name'  => 'international-research',
                 ],
                 [
                     'title' => ' میزان تسهیلات و حمایت های مالی صورت گرفته ',
-                    'name' => 'amount-of-facilities',
+                    'model' => \App\Models\Index\AmountOfFacilitiesForResearchAchievements::class,
+                    'name'  => 'amount-of-facilities',
                 ],
             ],
             'فناوری و نوآوری' => [
                 [
                     'title' => 'تعداد زیرساخت های فناوری و نوآوری',
-                    'name' => 'innovation-infrastructures',
+                    'model' => \App\Models\Index\TechnologyAndInnovationInfrastructure::class,
+                    'name'  => 'innovation-infrastructures',
                 ],
                 [
                     'title' => ' تعداد و محصولات فناورانه و نوآورانه',
-                    'name' => 'technological-product',
+                    'model' => \App\Models\Index\TechnologicalProduct::class,
+                    'name'  => 'technological-product',
                 ],
                 [
                     'title' => ' انتقال فناوری و نوآوری در عرصه بین المللی',
-                    'name' => 'international-technology',
+                    'model' => \App\Models\Index\InternationalTechnology::class,
+                    'name'  => 'international-technology',
                 ],
-            ], 
-            'فرهنگی' => [
+            ],
+            'فرهنگی'          => [
                 [
                     'title' => 'تحلیل وضعیت  شاخص ها و برنامه های فرهنگی',
-                    'name' => 'cultural-indicators',
+                    'model' => \App\Models\Index\CulturalIndicatorsStatusAnalysis::class,
+                    'name'  => 'cultural-indicators',
                 ],
                 [
                     'title' => 'تحلیل وضعیت  سلامت اجتماعی در طرح سیمای زندگی',
-                    'name' => 'social-health',
+                    'model' => \App\Models\Index\SocialHealthStatusAnalysis::class,
+                    'name'  => 'social-health',
                 ],
                 [
                     'title' => ' تحلیل وضعیت  فرهنگ سازمانی',
-                    'name' => 'organizational-culture',
+                    'model' => \App\Models\Index\OrganizationalCultureStatusAnalysis::class,
+                    'name'  => 'organizational-culture',
                 ],
             ],
-            'مالی و اداری' => [
+            'مالی و اداری'    => [
                 [
                     'title' => 'تحلیل وضعیت و  مشخصات کارمندان دانشگاه',
-                    'name' => 'employee-profile',
+                    'model' => \App\Models\Index\EmployeeProfile::class,
+                    'name'  => 'employee-profile',
                 ],
                 [
                     'title' => 'تحلیل وضعیت سرانه فضای دانشگاهی',
-                    'name' => 'percapita-status-analyses',
+                    'model' => \App\Models\Index\PercapitaStatusAnalysis::class,
+                    'name'  => 'percapita-status-analyses',
                 ],
                 [
                     'title' => 'تحلیل وضعیت شاخص میزان بهره وری از دارایی',
-                    'name' => 'asset-productivity',
+                    'model' => \App\Models\Index\IndexOfAssetProductivity::class,
+                    'name'  => 'asset-productivity',
                 ],
                 [
                     'title' => ' تحلیل وضعیت درآمد های دانشگاه',
-                    'name' => 'revenue-status-analyses',
+                    'model' => \App\Models\Index\RevenueStatusAnalysis::class,
+                    'name'  => 'revenue-status-analyses',
                 ],
                 [
                     'title' => 'تحلیل روند تغییرات وضعیت درآمد های دانشگاه',
-                    'name' => 'revenue-changes',
+                    'model' => \App\Models\Index\RevenueChangesTrendsAnalysis::class,
+                    'name'  => 'revenue-changes',
                 ],
                 [
                     'title' => ' میانگین درآمدهی شهریه ای',
-                    'name' => 'tuition-income',
+                    'model' => \App\Models\Index\AverageTuitionIncome::class,
+                    'name'  => 'tuition-income',
                 ],
                 [
                     'title' => ' تحلیل وضعیت درآمد  سرانه ',
-                    'name' => 'percapita-revenue',
+                    'model' => \App\Models\Index\PercapitaRevenueStatusAnalysis::class,
+                    'name'  => 'percapita-revenue',
                 ],
                 [
                     'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی',
-                    'name' => 'university-costs',
+                    'model' => \App\Models\Index\UniversityCostsAnalysis::class,
+                    'name'  => 'university-costs',
                 ],
                 [
                     'title' => 'تحلیل روند تغییرات وضعیت ھزینه ھای دانشگاه',
-                    'name' => 'cost-changes-trends',
+                    'model' => \App\Models\Index\CostChangesTrendsAnalysis::class,
+                    'name'  => 'cost-changes-trends',
                 ],
                 [
                     'title' => 'تعداد میانگین ھزینه ناشی از اجرای رشته ھای تحصیلی',
-                    'name' => 'cost-of-majors',
+                    'model' => \App\Models\Index\AverageCostOfMajor::class,
+                    'name'  => 'cost-of-majors',
                 ],
-                
-                
+
+
                 [
                     'title' => 'نقشه راه دستیابی به وضع مطلوب در واحد دانشگاهی',
-                    'name' => 'roadmap-desired',
+                    'model' => \App\Models\Index\RoadmapToAchieveDesiredSituation::class,
+                    'name'  => 'roadmap-desired',
                 ],
             ],
-            'دارایی' => [
+            'دارایی'          => [
                 [
                     'title' => 'تحلیل اعتبارات و دارایی های دانشگاه ',
-                    'name' => 'credit-and-asset',
+                    'model' => \App\Models\Index\CreditAndAssetAnalysis::class,
+                    'name'  => 'credit-and-asset',
                 ],
                 [
                     'title' => 'وضعیت کلی واحدها و مراکز آموزشی',
-                    'name' => 'units-general-status',
+                    'model' => \App\Models\Index\UnitsGeneralStatus::class,
+                    'name'  => 'units-general-status',
                 ],
             ]
         ],

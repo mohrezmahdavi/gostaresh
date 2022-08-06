@@ -55,7 +55,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'تحصیلات');
         }
         if (filterCol('amount') == true) {
-            array_push($headings, 'مقدار');
+            array_push($headings, 'مقدار  نرخ بیکاری (درصد)');
         }
 
         if (filterCol('year') == true) {

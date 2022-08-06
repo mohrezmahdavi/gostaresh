@@ -11,10 +11,9 @@ class ListController extends Controller
 {
     public function list(Request $request)
     {
-        if(!auth()->user()->hasPermissionTo('view-all-users'))
-            abort(403);
+        $this->authorize("view-any-User");
 
-        $query = User::query();
+        $query = User::query()->with("roles:id,name");
 
         if (request('first_name')) {
             $query->where('first_name', 'like', '%' . request('first_name') . '%');

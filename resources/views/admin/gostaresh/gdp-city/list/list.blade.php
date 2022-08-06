@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    روند تغییرات سهم تولید ناخالص داخلی شهرستان
+ روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 @endsection
 
 @section('breadcrumb-title')
-    روند تغییرات سهم تولید ناخالص داخلی شهرستان
+روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 @endsection
 
 @section('page-title')
-    روند تغییرات سهم تولید ناخالص داخلی شهرستان
+روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -20,14 +20,17 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -52,10 +55,11 @@
                                         <td>
 
                                             <a href="{{ route('gdp.city.edit', $gdpCity) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('gdp.city.destroy', $gdpCity) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('gdp.city.destroy', $gdpCity) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -64,11 +68,9 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
-                                excelLink="{{ route('gdp.city.list.excel', request()->query->all()) }}"
+                            <x-exports.export-links excelLink="{{ route('gdp.city.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('gdp.city.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('gdp.city.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('gdp.city.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
