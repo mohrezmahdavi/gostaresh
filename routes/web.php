@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\User\EditController;
 use App\Http\Controllers\Admin\User\ListController;
 use App\Http\Controllers\Admin\User\LogsController;
 use App\Http\Controllers\Admin\User\StoreController;
+use App\Http\Controllers\Admin\User\ImportController;
 use App\Http\Controllers\Admin\User\UpdateController;
 use App\Http\Controllers\Admin\Zone\ZoneController;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::post('/user/edit/{user}', [UpdateController::class, 'update'])->name('admin.user.update');
     Route::get('/user/delete/{user}', [DeleteController::class, 'delete'])->name('admin.user.delete');
     Route::get("/user/logs/{user}", [LogsController::class, "authenticationLogs"])->name("admin.user.logs");
+    Route::post('/user/all/create', [ImportController::class, 'store'])->name('admin.user.file.store');
 
     //roles
     Route::get("role/{role}/user/list", [RoleController::class, "roleUsers"])->name("admin.role.users.list");

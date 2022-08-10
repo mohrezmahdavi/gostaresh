@@ -85,6 +85,29 @@
         </div>
     </form>
 
+    <form class="form-horizontal" method="POST" action="{{ route('admin.user.file.store') }}" role="form" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <input type="file" id="user_file" name="user_file"
+                                accept=".xlsx,.xls,.csv"
+                                class="form-control"> 
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <button type="submit" class="btn btn-success my-2 my-sm-0">بارگزاری فایل</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </form>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
