@@ -274,9 +274,13 @@ return [
                     'name'  => 'percapita-revenue',
                 ],
                 [
-                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی',
+                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی (۱)',
                     'model' => \App\Models\Index\UniversityCostsAnalysis::class,
                     'name'  => 'university-costs',
+                ],[
+                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی (۲)',
+                    'model' => \App\Models\Index\UniversityCostsAnalysis::class,
+                    'name'  => 'university-costs-per-unit',
                 ],
                 [
                     'title' => 'تحلیل روند تغییرات وضعیت ھزینه ھای دانشگاه',

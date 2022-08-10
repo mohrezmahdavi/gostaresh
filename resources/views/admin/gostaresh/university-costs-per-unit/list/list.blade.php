@@ -1,21 +1,21 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-      تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۲)
 @endsection
 
 @section('breadcrumb-title')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۲)
 @endsection
 
 @section('page-title')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۲)
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
     <span>
-        <a href="{{ route('university-costs.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+        <a href="{{ route('university-costs-per-unit.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
 @endsection
 
@@ -73,7 +73,7 @@
                                 <td>{{ $universityCost?->year }}</td>
                                 <td>
 
-                                    <a href="{{ route('university-costs.edit', $universityCost) }}"
+                                    <a href="{{ route('university-costs-per-unit.edit', $universityCost) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
@@ -89,9 +89,9 @@
 
                         <div class="text-end mt-3">
                             <x-exports.export-links
-                                excelLink="{{ route('university-costs.list.excel', request()->query->all()) }}"
-                                pdfLink="{{ route('university-costs.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('university-costs.list.print', request()->query->all()) }}" />
+                                excelLink="{{ route('university-costs-per-unit.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('university-costs-per-unit.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('university-costs-per-unit.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->
