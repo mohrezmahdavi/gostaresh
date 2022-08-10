@@ -209,6 +209,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('number/of/students/status/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class, 'listPDFExport'])->name('number.of.students.status.analysis.list.pdf');
     Route::get('number/of/students/status/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class, 'listPrintExport'])->name('number.of.students.status.analysis.list.print');
 
+    // Table 17 Route
+    Route::resource('number/of/students/status/by-grade/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class)->names('number.of.students.status.by-grade.analysis')->parameters([
+        'analysis' => 'numberOfStudentsStatusAnalysis'
+    ]);
+    Route::get('number/of/students/status/by-grade/analysis/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listExcelExport'])->name('number.of.students.status.by-garde.analysis.list.excel');
+    Route::get('number/of/students/status/by-grade/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listPDFExport'])->name('number.of.students.status.by-garde.analysis.list.pdf');
+    Route::get('number/of/students/status/by-grade/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listPrintExport'])->name('number.of.students.status.by-garde.analysis.list.print');
+
     // Table 18 Route
     Route::resource('number/of/volunteers/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfVolunteersStatusAnalysisController::class)->names('number.of.volunteers.status.analysis')->parameters([
         'analysis' => 'numberOfVolunteersStatusAnalysis'
