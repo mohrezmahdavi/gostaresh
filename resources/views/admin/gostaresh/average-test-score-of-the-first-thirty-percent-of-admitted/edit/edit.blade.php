@@ -106,7 +106,7 @@
                         </div>
 
                         
-                        <x-select-year min="1390" max="1400" :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
+                        <x-select-year min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
 
                         {{-- <x-select-month :default="$avgTstScrOfFrtThrtPrntOfAdmitted->month" :required="false" name="month"></x-select-month> --}}
 
