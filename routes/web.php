@@ -433,6 +433,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('university-costs/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPDFExport'])->name('university-costs.list.pdf');
     Route::get('university-costs/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPrintExport'])->name('university-costs.list.print');
 
+
+    // Table 53 Route
+    Route::resource('university-costs-per-unit', App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class)->names('university-costs-per-unit');
+    Route::get('university-costs-per-unit/list/excel', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listExcelExport'])->name('university-costs-per-unit.list.excel');
+    Route::get('university-costs-per-unit/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listPDFExport'])->name('university-costs-per-unit.list.pdf');
+    Route::get('university-costs-per-unit/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listPrintExport'])->name('university-costs-per-unit.list.print');
+
     // Table 54 Route
     Route::resource('cost-changes-trends', CostChangesTrendsController::class)->names('cost-changes-trends');
     Route::get('cost-changes-trends/list/excel', [App\Http\Controllers\Admin\Gostaresh\CostChangesTrendsController::class, 'listExcelExport'])->name('cost-changes-trends.list.excel');
