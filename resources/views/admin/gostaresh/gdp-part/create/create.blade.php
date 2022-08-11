@@ -65,7 +65,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="amount" name="amount" value="{{ old('amount') }}"
+                                <input type="text" id="amount" name="amount" value="{{ old('amount') }}"
                                     class="form-control" placeholder="مقدار را به وارد کنید...">
                             </div>
                         </div>

@@ -75,15 +75,47 @@
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="grade">
+                            <label class="col-sm-2 col-form-label" for="grade_id">
                                 <span>مقطع تحصیلی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="grade" id="grade" class="form-select">
-                                    @foreach (config('gostaresh.grade') as $key => $value)
-                                        <option {{ $key == old('grade') ? 'selected' : '' }}
-                                            value="{{ $key }}">{{ $value }}</option>
+                                <select name="grade_id" id="grade_id" class="form-select">
+                                    @foreach (\App\Models\Grade::all() as $grade)
+                                        <option {{ $grade->id == old('grade') ? 'selected' : '' }}
+                                            value="{{  $grade->id }}">{{  $grade->name }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="major_id">
+                                <span>رشته </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="major_id" id="major_id" class="form-select">
+                                    @foreach ($majors as $major)
+                                        <option {{ $major->id == old('major') ? 'selected' : '' }}
+                                            value="{{ $major->id }}">{{ $major->name }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="minor_id">
+                                <span>گرایش </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="minor_id" id="minor_id" class="form-select">
+                                    @foreach ($minors as $minor)
+                                        <option {{ $minor->id == old('minor') ? 'selected' : '' }}
+                                            value="{{ $minor->id }}">{{ $minor->name }}</option>
                                     @endforeach
                                 </select>
 
@@ -96,7 +128,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="percapita_revenue_status_analyses"
+                                <input type="number" id="percapita_revenue_status_analyses"
                                     name="percapita_revenue_status_analyses"
                                     value="{{ old('percapita_revenue_status_analyses') }}" class="form-control"
                                     placeholder=" تحلیل وضعیت درآمد سرانه را وارد کنید...">

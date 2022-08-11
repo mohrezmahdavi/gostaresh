@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Major;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,13 +21,23 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
 
     protected $table = "gostaresh_number_of_non_medical_fields_of_studies";
 
-    protected $appends = ['department_of_education_title'];
+    protected $appends = ['department_of_education_title','major_title'];
 
     public function getDepartmentOfEducationTitleAttribute()
     {
         foreach (config('gostaresh.department_of_education') as $key => $value) {
             if ($key == $this->department_of_education) {
                 return $value;
+            }
+        }
+    }
+
+    public function getMajorTitleAttribute()
+    {
+        $majors = Major::all();
+        foreach ($majors as $major) {
+            if ($major->id == $this->major) {
+                return $major->name;
             }
         }
     }

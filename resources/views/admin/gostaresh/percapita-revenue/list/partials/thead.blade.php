@@ -9,6 +9,12 @@
 @if (filterCol('grade_title') == true)
     <th>مقطع تحصیلی</th>
 @endif
+@if (filterCol('major_title') == true)
+    <th>رشته</th>
+@endif
+@if (filterCol('minor_title') == true)
+    <th>گرایش</th>
+@endif
 @if (filterCol('percapita_revenue_status_analyses') == true)
     <th>تحلیل وضعیت درآمد سرانه</th>
 @endif

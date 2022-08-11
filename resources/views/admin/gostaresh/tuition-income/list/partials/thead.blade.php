@@ -19,7 +19,10 @@
     <th>کارشناسی ارشد</th>
 @endif
 @if (filterCol('phd') == true)
-    <th>دکتری</th>
+    <th>دکتری حرفه ای</th>
+@endif
+@if (filterCol('phd') == true)
+    <th>دکتری تخصصی(Ph.D)</th>
 @endif
 
 <th>سال</th>

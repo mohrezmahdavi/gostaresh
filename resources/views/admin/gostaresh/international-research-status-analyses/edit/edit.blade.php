@@ -204,7 +204,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="average_H_index_of_faculty_members"
+                                <input type="number" id="average_H_index_of_faculty_members"
                                     name="average_H_index_of_faculty_members"
                                     value="{{ $internationalResearch->average_H_index_of_faculty_members }}"
                                     class="form-control" placeholder=" متوسط H-index اعضای هیات علمی را وارد کنید...">
@@ -231,7 +231,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="print_ISI_articles" name="print_ISI_articles"
+                                <input type="number" id="print_ISI_articles" name="print_ISI_articles"
                                     value="{{ $internationalResearch->print_ISI_articles }}" class="form-control"
                                     placeholder=" سرانه چاپ مقالات ISI را وارد کنید...">
                             </div>
@@ -330,7 +330,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="amount_of_international_research_credits"
+                                <input type="number" id="amount_of_international_research_credits"
                                     name="amount_of_international_research_credits"
                                     value="{{ $internationalResearch->amount_of_international_research_credits }}"
                                     class="form-control"

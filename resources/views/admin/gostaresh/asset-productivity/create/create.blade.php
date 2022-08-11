@@ -204,7 +204,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_faculty_members_to_students"
+                                <input type="number" id="ratio_of_faculty_members_to_students"
                                     name="ratio_of_faculty_members_to_students"
                                     value="{{ old('ratio_of_faculty_members_to_students') }}" class="form-control"
                                     placeholder=" نسبت تعداد اعضای هیات علمی به دانشجویان را وارد کنید...">
@@ -217,7 +217,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_staff_to_students" name="ratio_of_staff_to_students"
+                                <input type="number" id="ratio_of_staff_to_students" name="ratio_of_staff_to_students"
                                     value="{{ old('ratio_of_staff_to_students') }}" class="form-control"
                                     placeholder=" نسبت تعداد کارمندان به دانشجویان را وارد کنید...">
                             </div>
@@ -229,7 +229,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_faculty_members_to_teaching_professors"
+                                <input type="number" id="ratio_of_faculty_members_to_teaching_professors"
                                     name="ratio_of_faculty_members_to_teaching_professors"
                                     value="{{ old('ratio_of_faculty_members_to_teaching_professors') }}"
                                     class="form-control"
@@ -243,7 +243,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_faculty_members_to_employees"
+                                <input type="number" id="ratio_of_faculty_members_to_employees"
                                     name="ratio_of_faculty_members_to_employees"
                                     value="{{ old('ratio_of_faculty_members_to_employees') }}" class="form-control"
                                     placeholder=" نسبت تعداد اعضای هیات علمی به کارمندان واحد را وارد کنید...">
@@ -257,7 +257,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text"
+                                <input type="number"
                                     id="ratio_of_unit_faculty_members_to_faculty_members_of_the_province"
                                     name="ratio_of_unit_faculty_members_to_faculty_members_of_the_province"
                                     value="{{ old('ratio_of_unit_faculty_members_to_faculty_members_of_the_province') }}"
@@ -273,7 +273,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_unit_students_to_students_of_the_province"
+                                <input type="number" id="ratio_of_unit_students_to_students_of_the_province"
                                     name="ratio_of_unit_students_to_students_of_the_province"
                                     value="{{ old('ratio_of_unit_students_to_students_of_the_province') }}"
                                     class="form-control"
@@ -287,7 +287,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="ratio_of_unit_employees_to_provincial_employees"
+                                <input type="number" id="ratio_of_unit_employees_to_provincial_employees"
                                     name="ratio_of_unit_employees_to_provincial_employees"
                                     value="{{ old('ratio_of_unit_employees_to_provincial_employees') }}"
                                     class="form-control"
@@ -303,7 +303,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit_teaching_professors_to_teaching_professors_province"
+                                <input type="number" id="unit_teaching_professors_to_teaching_professors_province"
                                     name="unit_teaching_professors_to_teaching_professors_province"
                                     value="{{ old('unit_teaching_professors_to_teaching_professors_province') }}"
                                     class="form-control"

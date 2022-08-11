@@ -63,9 +63,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="degree/rank" name="degree/rank"
-                                    value="{{ $unitsGeneralStatus['degree/rank'] }}" class="form-control"
-                                    placeholder=" درجه/رتبه را وارد کنید...">
+                                <select class="form-control" required id="degree/rank" name="degree/rank">
+                                    <option label="انتخاب کنید"></option>
+                                    @foreach (config('gostaresh.rank') as $key => $value)
+                                        <option {{ ($unitsGeneralStatus['degree/rank'] == $key) ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

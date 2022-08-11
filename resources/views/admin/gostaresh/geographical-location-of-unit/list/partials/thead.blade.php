@@ -1,13 +1,13 @@
 <th>شهرستان </th>
 <th>واحد دانشگاهی</th>
-{{-- <th>ساختمان واحد دانشگاهی</th>
+ <th>ساختمان واحد دانشگاهی</th>
 @if (filterCol('land_area') == true)
     <th>مساحت زمین</th>
 @endif
 
 @if (filterCol('the_size_of_the_building') == true)
     <th>متراژ ساختمانهای ملکی</th>
-@endif --}}
+@endif
 
 @if (filterCol('distance_from_population_density_of_city') == true)
     <th>فاصله از تراکم جمعیتی شهر</th>

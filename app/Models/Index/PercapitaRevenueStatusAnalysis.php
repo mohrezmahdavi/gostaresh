@@ -5,6 +5,9 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
+use App\Models\Major;
+use App\Models\Minor;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Facades\Verta;
@@ -34,9 +37,27 @@ class PercapitaRevenueStatusAnalysis extends Model
 
     public function getGradeTitleAttribute()
     {
-        foreach (config('gostaresh.grade') as $key => $value) {
-            if ($key == $this->grade) {
-                return $value;
+        foreach (Grade::all() as $grade) {
+            if ($grade->id == $this->grade_id) {
+                return $grade->name;
+            }
+        }
+    }
+
+    public function getMajorTitleAttribute()
+    {
+        foreach (Major::all() as $major) {
+            if ($major->id == $this->major_id) {
+                return $major->name;
+            }
+        }
+    }
+
+    public function getMinorTitleAttribute()
+    {
+        foreach (Minor::all() as $minor) {
+            if ($minor->id == $this->minor_id) {
+                return $minor->name;
             }
         }
     }
@@ -113,6 +134,8 @@ class PercapitaRevenueStatusAnalysis extends Model
         "unit"                              => "واحد",
         "university_type_title"             => "دانشگاه",
         "grade_title"                       => "مقطع تحصیلی",
+        "major_title"                       => "رشته",
+        "minor_title"                       => "گرایش",
         "percapita_revenue_status_analyses" => "تحلیل وضعیت درآمد سرانه",
     ];
 

@@ -8,6 +8,9 @@
 @if (filterCol('department_of_education_title') == true)
     <th>گروه عمده تحصیلی</th>
 @endif
+@if (filterCol('department_of_education_title') == true)
+    <th>مقطع تحصیلی</th>
+@endif
 @if (filterCol('number_of_volunteers') == true)
     <th>مقدار</th>
 @endif

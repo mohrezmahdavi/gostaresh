@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Table 26,27 Migration
+// Table 26 Migration
 return new class extends Migration
 {
     /**
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->unsignedBigInteger('karshenasi_arshad_count')->default(0);
             $table->unsignedBigInteger('docktora_herfei_count')->default(0);
             $table->unsignedBigInteger('docktora_takhasosi_count')->default(0);
-            $table->tinyInteger('department_of_education')->nullable(); 
+            $table->tinyInteger('department_of_education')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

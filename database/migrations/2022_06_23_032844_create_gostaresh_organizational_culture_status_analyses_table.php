@@ -24,21 +24,21 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->unsignedTinyInteger('student_satisfaction')->comment('میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه')->nullable();
-            $table->unsignedTinyInteger('unique_organizational_learning_capability')->comment('قابلیت یادگیری سازمانی واحد')->nullable();
-            $table->unsignedTinyInteger('students_religious_beliefs')->comment('میزان پایبندی به فضایل اخلاقی و باورهای دینی در میان دانشجویان واحد دانشگاهی')->nullable();
-            $table->unsignedTinyInteger('student_study_research_culture')->comment('میزان پایبندی به فرهنگ تحقیق مطالعه، تتبع و تحقیق در میان دانشجویان واحد')->nullable();
-            $table->unsignedTinyInteger('hijab_culture_of_students')->comment('میزان پایبندی به فرهنگ عفاف و حجاب و سبک پوشش اسلامی در میان دانشجویان واحد')->nullable();
-            $table->unsignedTinyInteger('culture_of_participation')->comment('سطح فرهنگ مشارکت پذیری و کار گروهی در واحد')->nullable();
-            $table->unsignedTinyInteger('faculty_members_self_confidence')->comment('سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد')->nullable();
-            $table->unsignedTinyInteger('amount_of_physical_elements')->comment('میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی')->nullable();
+            $table->float('student_satisfaction')->comment('میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه')->nullable();
+            $table->float('unique_organizational_learning_capability')->comment('قابلیت یادگیری سازمانی واحد')->nullable();
+            $table->float('students_religious_beliefs')->comment('میزان پایبندی به فضایل اخلاقی و باورهای دینی در میان دانشجویان واحد دانشگاهی')->nullable();
+            $table->float('student_study_research_culture')->comment('میزان پایبندی به فرهنگ تحقیق مطالعه، تتبع و تحقیق در میان دانشجویان واحد')->nullable();
+            $table->float('hijab_culture_of_students')->comment('میزان پایبندی به فرهنگ عفاف و حجاب و سبک پوشش اسلامی در میان دانشجویان واحد')->nullable();
+            $table->float('culture_of_participation')->comment('سطح فرهنگ مشارکت پذیری و کار گروهی در واحد')->nullable();
+            $table->float('faculty_members_self_confidence')->comment('سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد')->nullable();
+            $table->float('amount_of_physical_elements')->comment('میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی')->nullable();
             $table->float( 'percentage_of_sample_professors_in_unit')->comment('درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان')->nullable();
             $table->float( 'percentage_of_sample_professors_in_province')->comment('درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی')->nullable();
             $table->float( 'percentage_of_sample_students_in_unit')->comment('درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان')->nullable();
             $table->float( 'percentage_of_sample_students_in_province')->comment('درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد اسلامی')->nullable();
-            $table->unsignedTinyInteger( 'brand_influence_in_the_province')->comment('میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان')->nullable();
-            $table->unsignedTinyInteger( 'level_of_intelligence')->comment('میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد')->nullable();
-            $table->unsignedTinyInteger( 'axial_program')->comment('برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش)')->nullable();
+            $table->float( 'brand_influence_in_the_province')->comment('میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان')->nullable();
+            $table->float( 'level_of_intelligence')->comment('میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد')->nullable();
+            $table->float( 'axial_program')->comment('برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش)')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

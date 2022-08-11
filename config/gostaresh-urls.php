@@ -152,9 +152,14 @@ return [
                     'name'  => 'status.analysis.of.the.number.of.fields.of.study',
                 ],
                 [
-                    'title' => ' تعدادرشته/گرایشهای تحصیلی غیر پزشکی',
+                    'title' => ' تعدادرشته/گرایشهای تحصیلی غیر پزشکی (۱)',
                     'model' => \App\Models\Index\NumberOfNonMedicalFieldsOfStudy::class,
                     'name'  => 'number.of.non.medical.fields.of.study',
+                ],
+                [
+                    'title' => ' تعدادرشته/گرایشهای تحصیلی غیر پزشکی (۲)',
+                    'model' => \App\Models\Index\NumberOfNonMedicalFieldsOfStudy2::class,
+                    'name'  => 'number.of.non.medical.fields.of.study.2',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد دوره های تحصیلی',
@@ -197,9 +202,14 @@ return [
                     'name'  => 'research-output-status-analyses',
                 ],
                 [
-                    'title' => 'تحلیل وضعیت پژوهش بین المللی',
+                    'title' => 'تحلیل وضعیت پژوهش بین المللی (۱)',
                     'model' => \App\Models\Index\InternationalResearchStatusAnalysis::class,
                     'name'  => 'international-research',
+                ],
+                [
+                    'title' => 'تحلیل وضعیت پژوهش بین المللی (۲)',
+                    'model' => \App\Models\Index\InternationalResearchStatusAnalysis2::class,
+                    'name'  => 'international-research2',
                 ],
                 [
                     'title' => ' میزان تسهیلات و حمایت های مالی صورت گرفته ',
