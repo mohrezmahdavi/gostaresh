@@ -12,15 +12,15 @@
 @if (filterCol('number_of_students') == true)
     <td>{{ number_format($numberOfStudentsStatusAnalysis?->number_of_students) }}</td>
 @endif
-{{--@if (filterCol('grade_id') == true)--}}
-{{--    <td>{{ $numberOfStudentsStatusAnalysis?->grade?->name }}</td>--}}
-{{--@endif--}}
-{{--@if (filterCol('major_id') == true)--}}
-{{--    <td>{{ $numberOfStudentsStatusAnalysis?->major?->name }}</td>--}}
-{{--@endif--}}
-{{--@if (filterCol('minor_id') == true)--}}
-{{--    <td>{{ $numberOfStudentsStatusAnalysis?->minor?->name }}</td>--}}
-{{--@endif--}}
+@if (filterCol('grade_id') == true)
+    <td>{{ $numberOfStudentsStatusAnalysis?->grade?->name }}</td>
+@endif
+@if (filterCol('major_id') == true)
+    <td>{{ $numberOfStudentsStatusAnalysis?->major?->name }}</td>
+@endif
+@if (filterCol('minor_id') == true)
+    <td>{{ $numberOfStudentsStatusAnalysis?->minor?->name }}</td>
+@endif
 @if (filterCol('year') == true)
     <td>{{ $numberOfStudentsStatusAnalysis?->year }}</td>
 @endif

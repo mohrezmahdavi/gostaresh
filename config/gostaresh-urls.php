@@ -95,6 +95,10 @@ return [
                     'title' => ' تحلیل وضعیت تعداد دانشجویان',
                     'model' => \App\Models\Index\NumberOfStudentsStatusAnalysis::class,
                     'name'  => 'number.of.students.status.analysis',
+                ],                [
+                    'title' => ' تحلیل وضعیت تعداد دانشجویان بر اساس مقطع',
+                    'model' => \App\Models\Index\NumberOfStudentsStatusByGradeAnalysis::class,
+                    'name'  => 'number.of.students.status.by-grade.analysis',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد داوطلبان',
