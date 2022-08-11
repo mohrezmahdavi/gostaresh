@@ -40,7 +40,7 @@ class UniversityCostsController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
-    
+
     // ****************** Export ******************
     private function getUniversityCostsAnalysisRecords()
     {

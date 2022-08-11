@@ -126,7 +126,7 @@
                         </div>
 
 
-                        <x-select-year :default="old('year')" min="1390" max="1400" :required="false" name="year">
+                        <x-select-year :default="old('year')" min="1370" max="1405" :required="false" name="year">
                         </x-select-year>
 
                         {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}

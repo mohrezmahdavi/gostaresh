@@ -85,6 +85,29 @@
         </div>
     </form>
 
+    <form class="form-horizontal" method="POST" action="{{ route('admin.user.file.store') }}" role="form" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <input type="file" id="user_file" name="user_file"
+                                accept=".xlsx,.xls,.csv"
+                                class="form-control"> 
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <button type="submit" class="btn btn-success my-2 my-sm-0">بارگزاری فایل</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </form>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -97,6 +120,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>نام</th>
+                                <th>گروه کاربری</th>
                                 <th>تلفن تماس</th>
                                 <th>وضعیت</th>
                                 <th>اقدام</th>
@@ -108,6 +132,12 @@
                                     <th scope="row">{{ $users?->firstItem() + $key }}</th>
                                     <td>{{ $user?->first_name . ' ' . $user?->last_name }}</td>
 
+                                    <td>
+                                        @foreach($user?->roles as $key => $role)
+                                            {{ $key>0 && $key + 1 <=  $user?->roles->count() ?",":"" }}
+                                            {{ $role->name }}
+                                        @endforeach
+                                    </td>
                                     <td>{{ $user?->phone_number }}</td>
                                     <td>
                                         @foreach (config('gostaresh.user_status') as $key => $value)
@@ -130,9 +160,9 @@
                                         @endif
 
                                         @can("view-any-UserLog")
-                                                <a href="{{ route('admin.user.logs', $user) }}"
-                                                   title="{{ __('titles.UserLog') }}"
-                                                   class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                                            <a href="{{ route('admin.user.logs', $user) }}"
+                                               title="{{ __('titles.UserLog') }}"
+                                               class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                                         @endcan
                                     </td>
 

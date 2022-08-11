@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$gdpCity->year" min="1390" max="1400" :required="false" name="year">
+                        <x-select-year :default="$gdpCity->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year">
                         </x-select-year>
 
                         {{-- <x-select-month :default="$gdpCity->month" :required="false" name="month"></x-select-month> --}}

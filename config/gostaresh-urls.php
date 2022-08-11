@@ -95,6 +95,10 @@ return [
                     'title' => ' تحلیل وضعیت تعداد دانشجویان',
                     'model' => \App\Models\Index\NumberOfStudentsStatusAnalysis::class,
                     'name'  => 'number.of.students.status.analysis',
+                ],                [
+                    'title' => ' تحلیل وضعیت تعداد دانشجویان بر اساس مقطع',
+                    'model' => \App\Models\Index\NumberOfStudentsStatusByGradeAnalysis::class,
+                    'name'  => 'number.of.students.status.by-grade.analysis',
                 ],
                 [
                     'title' => 'تحلیل وضعیت تعداد داوطلبان',
@@ -284,9 +288,13 @@ return [
                     'name'  => 'percapita-revenue',
                 ],
                 [
-                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی',
+                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی (۱)',
                     'model' => \App\Models\Index\UniversityCostsAnalysis::class,
                     'name'  => 'university-costs',
+                ],[
+                    'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی (۲)',
+                    'model' => \App\Models\Index\UniversityCostsAnalysis::class,
+                    'name'  => 'university-costs-per-unit',
                 ],
                 [
                     'title' => 'تحلیل روند تغییرات وضعیت ھزینه ھای دانشگاه',

@@ -192,7 +192,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <select name="year" id="year" class="form-select">
-                                    @for ($i = 1390; $i <= 1400; $i++)
+                                    @for ($i = config('gostaresh.year.min', 1370); $i <= config('gostaresh.year.max', 1405); $i++)
                                         <option {{ $i == $technologicalProduct->year ? 'selected' : '' }}
                                             value="{{ $i }}">
                                             {{ $i }}</option>
