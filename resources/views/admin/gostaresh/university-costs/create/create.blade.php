@@ -55,185 +55,185 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="payment_to_faculty_members">
-                                <span>درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="payment_to_faculty_members" name="payment_to_faculty_members"
-                                    value="{{ old('payment_to_faculty_members') }}" class="form-control"
-                                    placeholder=" درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="payment_to_faculty_members">--}}
+{{--                                <span>درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="text" id="payment_to_faculty_members" name="payment_to_faculty_members"--}}
+{{--                                    value="{{ old('payment_to_faculty_members') }}" class="form-control"--}}
+{{--                                    placeholder=" درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="total_running_costs">
-                                <span>کل هزینه های جاری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="total_running_costs" name="total_running_costs"
-                                    value="{{ old('total_running_costs') }}" class="form-control"
-                                    placeholder=" کل هزینه های جاری را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="total_running_costs">--}}
+{{--                                <span>کل هزینه های جاری </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="total_running_costs" name="total_running_costs"--}}
+{{--                                    value="{{ old('total_running_costs') }}" class="form-control"--}}
+{{--                                    placeholder=" کل هزینه های جاری را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_salary_of_faculty_members">
-                                <span>میانگین حقوق دریافتی اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="average_salary_of_faculty_members"
-                                    name="average_salary_of_faculty_members"
-                                    value="{{ old('average_salary_of_faculty_members') }}" class="form-control"
-                                    placeholder=" میانگین حقوق دریافتی اعضای هیات علمی را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="average_salary_of_faculty_members">--}}
+{{--                                <span>میانگین حقوق دریافتی اعضای هیات علمی </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="average_salary_of_faculty_members"--}}
+{{--                                    name="average_salary_of_faculty_members"--}}
+{{--                                    value="{{ old('average_salary_of_faculty_members') }}" class="form-control"--}}
+{{--                                    placeholder=" میانگین حقوق دریافتی اعضای هیات علمی را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label"
-                                for="average_salaries_of_faculty_members_from_research_contracts">
-                                <span>میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای
-                                    تحقیقاتی، آموزشی و خدماتی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="average_salaries_of_faculty_members_from_research_contracts"
-                                    name="average_salaries_of_faculty_members_from_research_contracts"
-                                    value="{{ old('average_salaries_of_faculty_members_from_research_contracts') }}"
-                                    class="form-control"
-                                    placeholder=" میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای تحقیقاتی، آموزشی و خدماتی را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label"--}}
+{{--                                for="average_salaries_of_faculty_members_from_research_contracts">--}}
+{{--                                <span>میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای--}}
+{{--                                    تحقیقاتی، آموزشی و خدماتی </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="average_salaries_of_faculty_members_from_research_contracts"--}}
+{{--                                    name="average_salaries_of_faculty_members_from_research_contracts"--}}
+{{--                                    value="{{ old('average_salaries_of_faculty_members_from_research_contracts') }}"--}}
+{{--                                    class="form-control"--}}
+{{--                                    placeholder=" میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای تحقیقاتی، آموزشی و خدماتی را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="student_fees">
-                                <span>هزینه دانشجویان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="student_fees" name="student_fees"
-                                    value="{{ old('student_fees') }}" class="form-control"
-                                    placeholder=" هزینه دانشجویان را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="student_fees">--}}
+{{--                                <span>هزینه دانشجویان </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="student_fees" name="student_fees"--}}
+{{--                                    value="{{ old('student_fees') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه دانشجویان را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_salary_of_employees">
-                                <span>میانگین حقوق دریافتی کارمندان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="average_salary_of_employees" name="average_salary_of_employees"
-                                    value="{{ old('average_salary_of_employees') }}" class="form-control"
-                                    placeholder=" میانگین حقوق دریافتی کارمندان را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="average_salary_of_employees">--}}
+{{--                                <span>میانگین حقوق دریافتی کارمندان </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="average_salary_of_employees" name="average_salary_of_employees"--}}
+{{--                                    value="{{ old('average_salary_of_employees') }}" class="form-control"--}}
+{{--                                    placeholder=" میانگین حقوق دریافتی کارمندان را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="current_expenditure_growth_rate">
-                                <span>نرخ رشد هزینه های جاری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="current_expenditure_growth_rate"
-                                    name="current_expenditure_growth_rate"
-                                    value="{{ old('current_expenditure_growth_rate') }}" class="form-control"
-                                    placeholder=" نرخ رشد هزینه های جاری را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="current_expenditure_growth_rate">--}}
+{{--                                <span>نرخ رشد هزینه های جاری </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="text" id="current_expenditure_growth_rate"--}}
+{{--                                    name="current_expenditure_growth_rate"--}}
+{{--                                    value="{{ old('current_expenditure_growth_rate') }}" class="form-control"--}}
+{{--                                    placeholder=" نرخ رشد هزینه های جاری را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="cost_of_paying_office_rent">
-                                <span>هزینه پرداخت اجاره ساختمان اداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="cost_of_paying_office_rent" name="cost_of_paying_office_rent"
-                                    value="{{ old('cost_of_paying_office_rent') }}" class="form-control"
-                                    placeholder=" هزینه پرداخت اجاره ساختمان اداری را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="cost_of_paying_office_rent">--}}
+{{--                                <span>هزینه پرداخت اجاره ساختمان اداری </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="cost_of_paying_office_rent" name="cost_of_paying_office_rent"--}}
+{{--                                    value="{{ old('cost_of_paying_office_rent') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه پرداخت اجاره ساختمان اداری را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="cost_of_rent_for_educational_building">
-                                <span>هزینه پرداخت اجاره ساختمان آموزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_for_educational_building"
-                                    name="cost_of_rent_for_educational_building"
-                                    value="{{ old('cost_of_rent_for_educational_building') }}" class="form-control"
-                                    placeholder=" هزینه پرداخت اجاره ساختمان آموزشی را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="cost_of_rent_for_educational_building">--}}
+{{--                                <span>هزینه پرداخت اجاره ساختمان آموزشی </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="cost_of_rent_for_educational_building"--}}
+{{--                                    name="cost_of_rent_for_educational_building"--}}
+{{--                                    value="{{ old('cost_of_rent_for_educational_building') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه پرداخت اجاره ساختمان آموزشی را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="cost_of_rent_for_research_building">
-                                <span>هزینه پرداخت اجاره ساختمان پژوهشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_for_research_building"
-                                    name="cost_of_rent_for_research_building"
-                                    value="{{ old('cost_of_rent_for_research_building') }}" class="form-control"
-                                    placeholder=" هزینه پرداخت اجاره ساختمان پژوهشی را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="cost_of_rent_for_research_building">--}}
+{{--                                <span>هزینه پرداخت اجاره ساختمان پژوهشی </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="cost_of_rent_for_research_building"--}}
+{{--                                    name="cost_of_rent_for_research_building"--}}
+{{--                                    value="{{ old('cost_of_rent_for_research_building') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه پرداخت اجاره ساختمان پژوهشی را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="extra_charge_for_rent_extracurricular_building">
-                                <span>هزینه پرداخت اجاره ساختمان فوق برنامه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="extra_charge_for_rent_extracurricular_building"
-                                    name="extra_charge_for_rent_extracurricular_building"
-                                    value="{{ old('extra_charge_for_rent_extracurricular_building') }}"
-                                    class="form-control"
-                                    placeholder=" هزینه پرداخت اجاره ساختمان فوق برنامه را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="extra_charge_for_rent_extracurricular_building">--}}
+{{--                                <span>هزینه پرداخت اجاره ساختمان فوق برنامه </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="extra_charge_for_rent_extracurricular_building"--}}
+{{--                                    name="extra_charge_for_rent_extracurricular_building"--}}
+{{--                                    value="{{ old('extra_charge_for_rent_extracurricular_building') }}"--}}
+{{--                                    class="form-control"--}}
+{{--                                    placeholder=" هزینه پرداخت اجاره ساختمان فوق برنامه را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="cost_of_rent_innovation_buildings">
-                                <span>هزینه پرداخت اجاره ساختمان فناوری و نوآوری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_innovation_buildings"
-                                    name="cost_of_rent_innovation_buildings"
-                                    value="{{ old('cost_of_rent_innovation_buildings') }}" class="form-control"
-                                    placeholder=" هزینه پرداخت اجاره ساختمان فناوری و نوآوری را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="cost_of_rent_innovation_buildings">--}}
+{{--                                <span>هزینه پرداخت اجاره ساختمان فناوری و نوآوری </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="cost_of_rent_innovation_buildings"--}}
+{{--                                    name="cost_of_rent_innovation_buildings"--}}
+{{--                                    value="{{ old('cost_of_rent_innovation_buildings') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه پرداخت اجاره ساختمان فناوری و نوآوری را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="energy_costs_of_buildings">
-                                <span>هزینه های انرژی ساختمان ها </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="energy_costs_of_buildings" name="energy_costs_of_buildings"
-                                    value="{{ old('energy_costs_of_buildings') }}" class="form-control"
-                                    placeholder=" هزینه های انرژی ساختمان ها را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="energy_costs_of_buildings">--}}
+{{--                                <span>هزینه های انرژی ساختمان ها </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="energy_costs_of_buildings" name="energy_costs_of_buildings"--}}
+{{--                                    value="{{ old('energy_costs_of_buildings') }}" class="form-control"--}}
+{{--                                    placeholder=" هزینه های انرژی ساختمان ها را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="cost_of_university_equipment">
-                                <span>هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="cost_of_university_equipment"
-                                    name="cost_of_university_equipment" value="{{ old('cost_of_university_equipment') }}"
-                                    class="form-control"
-                                    placeholder=" هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه را وارد کنید...">
-                            </div>
-                        </div>
+{{--                        <div class="form-group row mt-2">--}}
+{{--                            <label class="col-sm-2 col-form-label" for="cost_of_university_equipment">--}}
+{{--                                <span>هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه </span>&nbsp--}}
+{{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+{{--                            </label>--}}
+{{--                            <div class="col-sm-10">--}}
+{{--                                <input type="number" id="cost_of_university_equipment"--}}
+{{--                                    name="cost_of_university_equipment" value="{{ old('cost_of_university_equipment') }}"--}}
+{{--                                    class="form-control"--}}
+{{--                                    placeholder=" هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه را وارد کنید...">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="training_costs">
