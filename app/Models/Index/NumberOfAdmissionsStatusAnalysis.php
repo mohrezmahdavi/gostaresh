@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ class NumberOfAdmissionsStatusAnalysis extends Model
 
     protected $table = "gostaresh_number_of_admissions_status_analyses";
 
-    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title'];
+    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title', 'grade_title'];
 
     public function getGenderTitleAttribute()
     {
@@ -45,6 +46,15 @@ class NumberOfAdmissionsStatusAnalysis extends Model
         foreach (config('gostaresh.department_of_education') as $key => $value) {
             if ($key == $this->department_of_education) {
                 return $value;
+            }
+        }
+    }
+
+    public function getGradeTitleAttribute()
+    {
+        foreach (Grade::all() as $grade) {
+            if ($grade->id == $this->grade_id) {
+                return $grade->name;
             }
         }
     }

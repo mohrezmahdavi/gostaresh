@@ -1,4 +1,4 @@
-{{--Table 43 View--}}
+{{-- Table 43 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -28,25 +28,26 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST"
-                        action="{{ route('social-health.update', $socialHealth) }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('social-health.update', $socialHealth) }}"
                         role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $socialHealth->province_id }}"
-                            zone_default="{{ $socialHealth->county->zone }}"
-                            county_default="{{ $socialHealth->county_id }}"
+                            zone_default="{{ $socialHealth->county->zone }}" county_default="{{ $socialHealth->county_id }}"
                             city_default="{{ $socialHealth->city_id }}"
-                            rural_district_default="{{ $socialHealth->rural_district_id }}">
+                            rural_district_default="{{ $socialHealth->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
-                        <select-grade-component
-                                grade_default="{{ $socialHealth->grade_id }}"
-                                sub_grade_default="{{ $socialHealth->sub_grade_id }}"
-                                major_default="{{ $socialHealth->major_id }}"
-                                minor_default="{{ $socialHealth->minor_id }}"
-                        >
+                        <select-grade-component grade_default="{{ $socialHealth->grade_id }}"
+                            sub_grade_default="{{ $socialHealth->sub_grade_id }}"
+                            major_default="{{ $socialHealth->major_id }}" minor_default="{{ $socialHealth->minor_id }}">
                         </select-grade-component>
 
                         <div class="form-group row mt-2">
@@ -55,21 +56,21 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="unit" name="unit"
-                                       value="{{ $socialHealth->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="number" id="unit" name="unit" value="{{ $socialHealth->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="component">
-                                <span>مولفه  </span>&nbsp
+                                <span>مولفه </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="component" id="component" class="form-select" >
+                                <select name="component" id="component" class="form-select">
                                     @foreach (config('gostaresh.component') as $key => $value)
-                                        <option {{ ($key == $socialHealth->component ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == $socialHealth->component ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
@@ -78,13 +79,30 @@
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
-                                <span>جنسیت  </span>&nbsp
+                                <span>جنسیت </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="gender_id" id="gender_id" class="form-select" >
+                                <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ ($key == $socialHealth->gender_id ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == $socialHealth->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="grade_id">
+                                <span>مقطع</span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="grade_id" id="grade_id" class="form-select">
+                                    <option value="">انتخاب کنید...</option>
+                                    @foreach (\App\Models\Grade::all() as $grade)
+                                        <option {{ $grade->id == $socialHealth['grade_id'] ? ' selected' : '' }} value="{{ $grade->id}}">{{ $grade->name }}</option>
                                     @endforeach
                                 </select>
 
@@ -98,8 +116,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="associate_degree" name="associate_degree"
-                                       value="{{ $socialHealth->associate_degree }}" class="form-control"
-                                       placeholder=" کاردانی را وارد کنید...">
+                                    value="{{ $socialHealth->associate_degree }}" class="form-control"
+                                    placeholder=" کاردانی را وارد کنید...">
                             </div>
                         </div>
 
@@ -110,8 +128,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="bachelor_degree" name="bachelor_degree"
-                                       value="{{ $socialHealth->bachelor_degree }}" class="form-control"
-                                       placeholder=" کارشناسی را وارد کنید...">
+                                    value="{{ $socialHealth->bachelor_degree }}" class="form-control"
+                                    placeholder=" کارشناسی را وارد کنید...">
                             </div>
                         </div>
 
@@ -121,9 +139,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="masters" name="masters"
-                                       value="{{ $socialHealth->masters }}" class="form-control"
-                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                                <input type="number" id="masters" name="masters" value="{{ $socialHealth->masters }}"
+                                    class="form-control" placeholder=" کارشناسی ارشد را وارد کنید...">
                             </div>
                         </div>
 
@@ -134,8 +151,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="professional_doctor" name="professional_doctor"
-                                       value="{{ $socialHealth->professional_doctor }}" class="form-control"
-                                       placeholder=" دکتری حرفه ای را وارد کنید...">
+                                    value="{{ $socialHealth->professional_doctor }}" class="form-control"
+                                    placeholder=" دکتری حرفه ای را وارد کنید...">
                             </div>
                         </div>
 
@@ -145,15 +162,14 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="phd" name="phd"
-                                       value="{{ $socialHealth->phd }}" class="form-control"
-                                       placeholder=" دکتری تخصصی را وارد کنید...">
+                                <input type="number" id="phd" name="phd" value="{{ $socialHealth->phd }}"
+                                    class="form-control" placeholder=" دکتری تخصصی را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$socialHealth->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$socialHealth->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$socialHealth->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$socialHealth->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

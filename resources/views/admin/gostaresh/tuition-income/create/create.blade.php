@@ -1,20 +1,20 @@
-{{--Table 50 View--}}
+{{-- Table 50 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
+    ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
 @endsection
 
 @section('breadcrumb-title')
-ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
+    ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
 @endsection
 
 @section('page-title')
-ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
+    ایجاد میانگین درآمدھی شھریه ای در گروه ھا و مقاطع مختلف تحصیلی
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -31,12 +31,17 @@
                     <form class="form-horizontal" method="POST" action="{{ route('tuition-income.store') }}" role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <select-grade-component></select-grade-component>
@@ -47,21 +52,21 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ old('unit') }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
-                                <span>دانشگاه  </span>&nbsp
+                                <span>دانشگاه </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="university_type" id="university_type" class="form-select" >
+                                <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ ($key == old('university_type') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == old('university_type') ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
@@ -69,13 +74,14 @@
                         </div>
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span>گروه عمده تحصیلی  </span>&nbsp
+                                <span>گروه عمده تحصیلی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select" >
+                                <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ ($key == old('department_of_education') ? 'selected' : '') }} value="{{ $key }}">{{ $value }}</option>
+                                        <option {{ $key == old('department_of_education') ? 'selected' : '' }}
+                                            value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
 
@@ -88,9 +94,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="associate_degree" name="associate_degree"
-                                       value="{{ old('associate_degree') }}" class="form-control"
-                                       placeholder=" کاردانی را وارد کنید...">
+                                <input type="number" id="associate_degree" name="associate_degree"
+                                    value="{{ old('associate_degree') }}" class="form-control"
+                                    placeholder=" کاردانی را وارد کنید...">
                             </div>
                         </div>
 
@@ -100,9 +106,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="bachelor_degree" name="bachelor_degree"
-                                       value="{{ old('bachelor_degree') }}" class="form-control"
-                                       placeholder=" کارشناسی را وارد کنید...">
+                                <input type="number" id="bachelor_degree" name="bachelor_degree"
+                                    value="{{ old('bachelor_degree') }}" class="form-control"
+                                    placeholder=" کارشناسی را وارد کنید...">
                             </div>
                         </div>
 
@@ -112,28 +118,37 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="masters" name="masters"
-                                       value="{{ old('masters') }}" class="form-control"
-                                       placeholder=" کارشناسی ارشد را وارد کنید...">
+                                <input type="number" id="masters" name="masters" value="{{ old('masters') }}"
+                                    class="form-control" placeholder=" کارشناسی ارشد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="professional_phd">
+                                <span>دکتری حرفه ای </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="professional_phd" name="professional_phd" value="{{ old('professional_phd') }}"
+                                    class="form-control" placeholder=" دکتری حرفه ای را وارد کنید...">
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="phd">
-                                <span>دکتری </span>&nbsp
+                                <span>دکتری تخصصی(Ph.D) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="phd" name="phd"
-                                       value="{{ old('phd') }}" class="form-control"
-                                       placeholder=" دکتری را وارد کنید...">
+                                <input type="number" id="phd" name="phd" value="{{ old('phd') }}"
+                                    class="form-control" placeholder=" دکتری تخصصی(Ph.D) را وارد کنید...">
                             </div>
                         </div>
 
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
 

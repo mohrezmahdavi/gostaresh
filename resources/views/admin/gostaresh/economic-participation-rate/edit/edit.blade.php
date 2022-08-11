@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش نرخ مشارکت اقتصادی (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ مشارکت اقتصادی
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش نرخ مشارکت اقتصادی (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ مشارکت اقتصادی
 @endsection
 
 @section('page-title')
-    ویرایش نرخ مشارکت اقتصادی (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ مشارکت اقتصادی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -37,13 +37,19 @@
                             zone_default="{{ $economicParticipationRate->county->zone }}"
                             county_default="{{ $economicParticipationRate->county_id }}"
                             city_default="{{ $economicParticipationRate->city_id }}"
-                            rural_district_default="{{ $economicParticipationRate->rural_district_id }}">
+                            rural_district_default="{{ $economicParticipationRate->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount">
-                                <span>مقدار </span>&nbsp
+                                <span>سهم تولید ناخالصی داخلی استان (درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -73,9 +79,9 @@
                         </div>
 
 
-                        <x-select-year :default="$economicParticipationRate->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$economicParticipationRate->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$economicParticipationRate->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$economicParticipationRate->month" :required="false" name="month"></x-select-month> --}}
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

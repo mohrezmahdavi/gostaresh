@@ -34,7 +34,13 @@
                         <select-province-component province_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->province_id }}"
                             zone_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->county->zone }}"
                             county_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->county_id }}" city_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->city_id }}"
-                            rural_district_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->rural_district_id }}">
+                            rural_district_default="{{ $avgTstScrOfFrtThrtPrntOfAdmitted->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -86,10 +92,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="grade_id">
+                                <span>مقطع</span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="grade_id" id="grade_id" class="form-select">
+                                    <option value="">انتخاب کنید...</option>
+                                    @foreach (\App\Models\Grade::all() as $grade)
+                                        <option {{ $grade->id == $avgTstScrOfFrtThrtPrntOfAdmitted['grade_id'] ? ' selected' : '' }} value="{{ $grade->id}}">{{ $grade->name }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_test_score_of_the_first_thirty_percent_of_admitted">
-                                <span>مقدار </span>&nbsp
+                                <span> میانگین رتبه آزمون 30 درصد اول پذیرفته شدگان </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -100,9 +121,9 @@
                         </div>
 
                         
-                        <x-select-year :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
+                        <x-select-year min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :default="$avgTstScrOfFrtThrtPrntOfAdmitted->year" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$avgTstScrOfFrtThrtPrntOfAdmitted->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$avgTstScrOfFrtThrtPrntOfAdmitted->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

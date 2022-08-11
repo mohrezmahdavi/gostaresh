@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 22 Controller
 class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Controller
@@ -32,6 +35,30 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getAverageTestScoreOfTheFirstThirtyPercentOfAdmittedRecords()
+    {
+        return AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = $this->getAverageTestScoreOfTheFirstThirtyPercentOfAdmittedRecords();
+        return Excel::download(new ListExport($averageTestScoreOfTheFirstThirtyPercentOfAdmitteds), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = $this->getAverageTestScoreOfTheFirstThirtyPercentOfAdmittedRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.pdf', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitteds'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $averageTestScoreOfTheFirstThirtyPercentOfAdmitteds = $this->getAverageTestScoreOfTheFirstThirtyPercentOfAdmittedRecords();
+        return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.list.pdf', compact('averageTestScoreOfTheFirstThirtyPercentOfAdmitteds'));
     }
 
     /**

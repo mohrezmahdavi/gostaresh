@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfAdmissionsStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfAdmissionsStatusAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfAdmissionsStatusAnalysis\NumberOfAdmissionsStatusAnalysisRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 19 Controller
 class NumberOfAdmissionsStatusAnalysisController extends Controller
@@ -32,6 +35,30 @@ class NumberOfAdmissionsStatusAnalysisController extends Controller
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfAdmissionsStatusAnalysisRecords()
+    {
+        return NumberOfAdmissionsStatusAnalysis::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfAdmissionsStatusAnalysises = $this->getNumberOfAdmissionsStatusAnalysisRecords();
+        return Excel::download(new ListExport($numberOfAdmissionsStatusAnalysises), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $numberOfAdmissionsStatusAnalysises = $this->getNumberOfAdmissionsStatusAnalysisRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-admissions-status-analysis.list.pdf', compact('numberOfAdmissionsStatusAnalysises'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $numberOfAdmissionsStatusAnalysises = $this->getNumberOfAdmissionsStatusAnalysisRecords();
+        return view('admin.gostaresh.number-of-admissions-status-analysis.list.pdf', compact('numberOfAdmissionsStatusAnalysises'));
     }
 
     /**

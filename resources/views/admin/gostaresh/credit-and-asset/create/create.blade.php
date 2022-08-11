@@ -1,21 +1,20 @@
-{{--Table 56 View--}}
+{{-- Table 56 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
 @endsection
 
 @section('breadcrumb-title')
-ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
 @endsection
 
 @section('page-title')
-ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
+    ایجاد تحلیل اعتبارات و دارایی ھای دانشگاه در واحدھای دانشگاھی استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -32,12 +31,17 @@
                     <form class="form-horizontal" method="POST" action="{{ route('credit-and-asset.store') }}" role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -46,9 +50,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ old('unit') }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -59,8 +62,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="administrative_credits" name="administrative_credits"
-                                       value="{{ old('administrative_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات اداری را وارد کنید...">
+                                    value="{{ old('administrative_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات اداری را وارد کنید...">
                             </div>
                         </div>
 
@@ -71,8 +74,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="educational_credits" name="educational_credits"
-                                       value="{{ old('educational_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات آموزشی را وارد کنید...">
+                                    value="{{ old('educational_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات آموزشی را وارد کنید...">
                             </div>
                         </div>
 
@@ -83,8 +86,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="research_credits" name="research_credits"
-                                       value="{{ old('research_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات پژوهشی را وارد کنید...">
+                                    value="{{ old('research_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات پژوهشی را وارد کنید...">
                             </div>
                         </div>
 
@@ -95,8 +98,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="cultural_credits" name="cultural_credits"
-                                       value="{{ old('cultural_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات فرهنگی را وارد کنید...">
+                                    value="{{ old('cultural_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات فرهنگی را وارد کنید...">
                             </div>
                         </div>
 
@@ -107,8 +110,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="innovative_credits" name="innovative_credits"
-                                       value="{{ old('innovative_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات فناورانه و نوآورانه را وارد کنید...">
+                                    value="{{ old('innovative_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات فناورانه و نوآورانه را وارد کنید...">
                             </div>
                         </div>
 
@@ -119,8 +122,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="skills_credits" name="skills_credits"
-                                       value="{{ old('skills_credits') }}" class="form-control"
-                                       placeholder=" اعتبارات حوزه مهارتی را وارد کنید...">
+                                    value="{{ old('skills_credits') }}" class="form-control"
+                                    placeholder=" اعتبارات حوزه مهارتی را وارد کنید...">
                             </div>
                         </div>
 
@@ -131,8 +134,8 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_University_credits" name="total_University_credits"
-                                       value="{{ old('total_University_credits') }}" class="form-control"
-                                       placeholder=" کل اعتبارات دانشگاه را وارد کنید...">
+                                    value="{{ old('total_University_credits') }}" class="form-control"
+                                    placeholder=" کل اعتبارات دانشگاه را وارد کنید...">
                             </div>
                         </div>
 
@@ -143,14 +146,15 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_university_assets" name="total_university_assets"
-                                       value="{{ old('total_university_assets') }}" class="form-control"
-                                       placeholder=" کل دارایی های دانشگاه را وارد کنید...">
+                                    value="{{ old('total_university_assets') }}" class="form-control"
+                                    placeholder=" کل دارایی های دانشگاه را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year">
+                        </x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
 

@@ -10,6 +10,12 @@
 @if (filterCol('grade_title') == true)
 <td>{{ $percapitaRevenue?->grade_title }}</td>
 @endif
+@if (filterCol('major_title') == true)
+<td>{{ $percapitaRevenue?->major_title }}</td>
+@endif
+@if (filterCol('minor_title') == true)
+<td>{{ $percapitaRevenue?->minor_title }}</td>
+@endif
 @if (filterCol('percapita_revenue_status_analyses') == true)
 <td>{{ number_format((int) $percapitaRevenue?->percapita_revenue_status_analyses ) }}</td>
 @endif

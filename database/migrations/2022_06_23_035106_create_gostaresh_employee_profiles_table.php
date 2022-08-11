@@ -25,7 +25,7 @@ return new class extends Migration
 
             $table->unsignedInteger('higher_education_subsystems')->comment('زیرنظام های آموزش عالی شهرستان')->nullable();
             $table->unsignedInteger('number_of_non_faculty_staff')->comment('تعداد کارکنان غیر هیات علمی')->nullable();
-            $table->float('average_age_of_employees')->comment('میانگین سنی کارمندان')->nullable();
+            $table->unsignedInteger('average_age_of_employees')->comment('میانگین سنی کارمندان')->nullable();
             $table->unsignedInteger('number_of_male_employees')->comment('تعداد کارمندان مرد')->nullable();
             $table->unsignedInteger('number_of_female_employees')->comment('تعداد کارمندان زن')->nullable();
             $table->unsignedInteger('number_of_administrative_staff')->comment('تعداد کارمندان اداری')->nullable();

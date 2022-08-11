@@ -1,19 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش سهم تولید ناخالص داخلی شهرستان
+ویرایش روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 @endsection
 
 @section('breadcrumb-title')
-ویرایش سهم تولید ناخالص داخلی شهرستان
+ویرایش روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 @endsection
 
 @section('page-title')
-ویرایش سهم تولید ناخالص داخلی شهرستان
+ویرایش روند تغییرات سهم تولید ناخالص داخلی شهرستان در مقایسه با تولید ناخالص داخلی
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,21 +27,26 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('gdp.city.update', $gdpCity) }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('gdp.city.update', $gdpCity) }}"
+                        role="form">
                         @csrf
                         @method('PUT')
 
-                        <select-province-component
-                            province_default="{{ $gdpCity->province_id }}"
-                            zone_default="{{ $gdpCity->county->zone }}"
-                            county_default="{{ $gdpCity->county_id }}"
+                        <select-province-component province_default="{{ $gdpCity->province_id }}"
+                            zone_default="{{ $gdpCity->county->zone }}" county_default="{{ $gdpCity->county_id }}"
                             city_default="{{ $gdpCity->city_id }}"
-                            rural_district_default="{{ $gdpCity->rural_district_id }}">
+                            rural_district_default="{{ $gdpCity->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount">
-                                <span> مقدار (درصد) </span>&nbsp
+                                <span> سهم تولید ناخالصی داخلی شهرستان (درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -50,11 +55,12 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$gdpCity->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$gdpCity->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year">
+                        </x-select-year>
 
-                        <x-select-month :default="$gdpCity->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$gdpCity->month" :required="false" name="month"></x-select-month> --}}
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
@@ -65,5 +71,5 @@
 @endsection
 
 @section('body-scripts')
-<script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection

@@ -1,19 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ویرایش  وضعیت تعداد داوطلبان
+ویرایش تحلیل وضعیت تعداد داوطلبان
 @endsection
 
 @section('breadcrumb-title')
-ویرایش  وضعیت تعداد داوطلبان
+ویرایش تحلیل وضعیت تعداد داوطلبان
 @endsection
 
 @section('page-title')
-ویرایش  وضعیت تعداد داوطلبان
+ویرایش تحلیل وضعیت تعداد داوطلبان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,14 +27,23 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('number.of.volunteers.status.analysis.update', $numberOfVolunteersStatusAnalysis) }}" role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('number.of.volunteers.status.analysis.update', $numberOfVolunteersStatusAnalysis) }}"
+                        role="form">
                         @csrf
                         @method('PUT')
 
                         <select-province-component province_default="{{ $numberOfVolunteersStatusAnalysis->province_id }}"
                             zone_default="{{ $numberOfVolunteersStatusAnalysis->county->zone }}"
-                            county_default="{{ $numberOfVolunteersStatusAnalysis->county_id }}" city_default="{{ $numberOfVolunteersStatusAnalysis->city_id }}"
-                            rural_district_default="{{ $numberOfVolunteersStatusAnalysis->rural_district_id }}">
+                            county_default="{{ $numberOfVolunteersStatusAnalysis->county_id }}"
+                            city_default="{{ $numberOfVolunteersStatusAnalysis->city_id }}"
+                            rural_district_default="{{ $numberOfVolunteersStatusAnalysis->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -45,7 +54,8 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == $numberOfVolunteersStatusAnalysis->gender_id ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == $numberOfVolunteersStatusAnalysis->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -61,7 +71,9 @@
                             <div class="col-sm-10">
                                 <select name="department_of_education" id="department_of_education" class="form-select">
                                     @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == $numberOfVolunteersStatusAnalysis->department_of_education ? 'selected' : '' }} value="{{ $key }}">
+                                        <option
+                                            {{ $key == $numberOfVolunteersStatusAnalysis->department_of_education ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -79,33 +91,51 @@
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
                                     @foreach (config('gostaresh.university_type') as $key => $value)
-                                        <option {{ $key == $numberOfVolunteersStatusAnalysis->university_type ? 'selected' : '' }} value="{{ $key }}">
+                                        <option
+                                            {{ $key == $numberOfVolunteersStatusAnalysis->university_type ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
-
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_volunteers">
-                                <span>تعداد دانشجویان </span>&nbsp
+                            <label class="col-sm-2 col-form-label" for="grade_id">
+                                <span>مقطع</span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_volunteers" name="number_of_volunteers"
-                                    value="{{ $numberOfVolunteersStatusAnalysis->number_of_volunteers }}" class="form-control"
-                                    placeholder=" تعداد دانشجویان را وارد کنید...">
+                                <select name="grade_id" id="grade_id" class="form-select">
+                                    <option value="">انتخاب کنید...</option>
+                                    @foreach (\App\Models\Grade::all() as $grade)
+                                        <option {{ $grade->id == $numberOfVolunteersStatusAnalysis['grade_id'] ? ' selected' : '' }} value="{{ $grade->id}}">{{ $grade->name }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                         </div>
 
 
-                        <x-select-year :default="$numberOfVolunteersStatusAnalysis->year" :required="false" name="year"></x-select-year>
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="number_of_volunteers">
+                                <span>تعداد داوطلبان  </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="number_of_volunteers" name="number_of_volunteers"
+                                    value="{{ $numberOfVolunteersStatusAnalysis->number_of_volunteers }}"
+                                    class="form-control" placeholder=" تعداد دانشجویان را وارد کنید...">
+                            </div>
+                        </div>
 
-                        <x-select-month :default="$numberOfVolunteersStatusAnalysis->month" :required="false" name="month"></x-select-month>
+
+                        <x-select-year :default="$numberOfVolunteersStatusAnalysis->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
+
+                        {{-- <x-select-month :default="$numberOfVolunteersStatusAnalysis->month" :required="false" name="month"></x-select-month> --}}
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

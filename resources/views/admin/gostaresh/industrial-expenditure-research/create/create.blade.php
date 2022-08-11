@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد  درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد  روند تغییرات درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
 @endsection
 
 @section('breadcrumb-title')
-ایجاد  درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد  روند تغییرات درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
 @endsection
 
 @section('page-title')
-ایجاد  درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
+ایجاد  روند تغییرات درصد هزینه‌کرد بخش صنعت در تحقیق‌ و توسعه
 
 <span>
     <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -35,7 +35,16 @@
                             zone_default="{{ auth()->user()->county->zone ?? ''}}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ 
+                                json_encode([
+                                    "province" => true,
+                                    "zone" => false,
+                                    "county" => true,
+                                    "city" => false,
+                                ])
+                             }}">
+                            
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -50,9 +59,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">افزودن</button>

@@ -31,8 +31,8 @@ return new class extends Migration
             $table->unsignedBigInteger('land_area')->nullable();
             $table->unsignedBigInteger('the_size_of_the_building')->nullable();
             $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
-            $table->string('distance_to_the_nearest_higher_education_center')->nullable();
-            $table->string('distance_to_the_nearest_unit_of_azad_university')->nullable();
+            $table->unsignedInteger('distance_to_the_nearest_higher_education_center')->nullable();
+            $table->unsignedInteger('distance_to_the_nearest_unit_of_azad_university')->nullable();
             $table->tinyInteger('level_and_quality_of_access')->unsigned()->nullable();
             $table->tinyInteger('international_opportunities_geographical_location')->unsigned()->nullable();
 
@@ -49,6 +49,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gostaresh_geographical_location_of_the_unit');
+        Schema::dropIfExists('gostaresh_geographical_location_of_unit');
     }
 };

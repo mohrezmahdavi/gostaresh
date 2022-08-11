@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmitted\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\AverageTestScoreOfTheLastFivePercentOfAdmitted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmitted\AverageTestScoreOfTheLastFivePercentOfAdmittedRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 23 Controller
 class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controller
@@ -32,6 +35,30 @@ class AverageTestScoreOfTheLastFivePercentOfAdmittedController extends Controlle
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+    
+    private function getAverageTestScoreOfTheLastFivePercentOfAdmittedRecords()
+    {
+        return AverageTestScoreOfTheLastFivePercentOfAdmitted::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $averageTestScoreOfTheLastFivePercentOfAdmitteds = $this->getAverageTestScoreOfTheLastFivePercentOfAdmittedRecords();
+        return Excel::download(new ListExport($averageTestScoreOfTheLastFivePercentOfAdmitteds), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $averageTestScoreOfTheLastFivePercentOfAdmitteds = $this->getAverageTestScoreOfTheLastFivePercentOfAdmittedRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.pdf', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $averageTestScoreOfTheLastFivePercentOfAdmitteds = $this->getAverageTestScoreOfTheLastFivePercentOfAdmittedRecords();
+        return view('admin.gostaresh.average-test-score-of-the-last-five-percent-of-admitted.list.pdf', compact('averageTestScoreOfTheLastFivePercentOfAdmitteds'));
     }
 
     /**

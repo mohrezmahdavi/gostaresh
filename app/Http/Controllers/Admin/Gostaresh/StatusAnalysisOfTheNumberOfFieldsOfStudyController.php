@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudy\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\StatusAnalysisOfTheNumberOfFieldsOfStudy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
-use phpDocumentor\Reflection\DocBlock\Tags\See;
 use App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudy\StatusAnalysisOfTheNumberOfFieldsOfStudyRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 // Table 25 Controller
 class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
@@ -35,6 +36,33 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
+
+    private function getStatusAnalysisOfTheNumberOfFieldsOfStudyRecords()
+    {
+        return StatusAnalysisOfTheNumberOfFieldsOfStudy::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $statusAnalysisOfTheNumberOfFieldsOfStudies = $this->getStatusAnalysisOfTheNumberOfFieldsOfStudyRecords();
+        return Excel::download(new ListExport($statusAnalysisOfTheNumberOfFieldsOfStudies), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfFieldsOfStudy::$filterColumnsCheckBoxes;
+        $statusAnalysisOfTheNumberOfFieldsOfStudies = $this->getStatusAnalysisOfTheNumberOfFieldsOfStudyRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.pdf', compact('statusAnalysisOfTheNumberOfFieldsOfStudies','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfFieldsOfStudy::$filterColumnsCheckBoxes;
+        $statusAnalysisOfTheNumberOfFieldsOfStudies = $this->getStatusAnalysisOfTheNumberOfFieldsOfStudyRecords();
+        return view('admin.gostaresh.status-analysis-of-the-number-of-fields-of-study.list.pdf', compact('statusAnalysisOfTheNumberOfFieldsOfStudies', 'filterColumnsCheckBoxes'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

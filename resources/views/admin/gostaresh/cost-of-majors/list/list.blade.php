@@ -20,7 +20,6 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -28,8 +27,12 @@
 
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -39,60 +42,59 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-
-
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-
-
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($costOfMajors as $key => $costOfMajor)
                                 <tr>
-                                    <th scope="row">{{ $costOfMajors?->firstItem() + $key }}</th>
-                                    <td>{{ $costOfMajor?->province?->name . ' - ' . $costOfMajor->county?->name }}
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key,\App\Models\Index\AverageCostOfMajor::$numeric_fields))
-                                                <td>{{ number_format($costOfMajor?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $costOfMajor->{$key} }}</td>
-                                            @endif
+                                    <th>#</th>
+                                    <th>شهرستان</th>
+
+
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
 
-                                    <td>{{ $costOfMajor?->year }}</td>
-                                    <td>
 
-                                        <a href="{{ route('cost-of-majors.edit', $costOfMajor) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
+                                    <th>سال</th>
+                                    <th>اقدام</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($costOfMajors as $key => $costOfMajor)
+                                    <tr>
+                                        <th scope="row">{{ $costOfMajors?->firstItem() + $key }}</th>
+                                        <td>{{ $costOfMajor?->province?->name . ' - ' . $costOfMajor->county?->name }}
+                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                                @if (filterCol($key))
+                                                    @if (in_array($key, \App\Models\Index\AverageCostOfMajor::$numeric_fields))
+                                        <td>{{ number_format($costOfMajor?->{$key}) }}</td>
+                                    @else
+                                        <td>{{ $costOfMajor->{$key} }}</td>
+                                @endif
+                                @endif
+                                @endforeach
 
-                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $costOfMajor) }}" title="{{ __('validation.buttons.delete') }}"--}}
-                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
+                                <td>{{ $costOfMajor?->year }}</td>
+                                <td>
 
-                                    </td>
+                                    <a href="{{ route('cost-of-majors.edit', $costOfMajor) }}"
+                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                            class="fa fa-edit"></i></a>
+
+                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $costOfMajor) }}" title="{{ __('validation.buttons.delete') }}" --}}
+                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+
+                                </td>
 
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('cost-of-majors.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('cost-of-majors.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('cost-of-majors.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('cost-of-majors.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->
@@ -106,7 +108,5 @@
 @endsection
 
 @section('body-scripts')
-
     <script src="{{ mix('/js/app.js') }}"></script>
-
 @endsection

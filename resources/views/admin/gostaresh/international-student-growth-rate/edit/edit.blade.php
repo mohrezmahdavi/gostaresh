@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+ویرایش نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+ویرایش نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 @endsection
 
 @section('page-title')
-    ویرایش تعداد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
+ویرایش نرخ رشد دانشجویان غیرایرانی و بین الملل واحدهای دانشگاهی
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -37,7 +37,13 @@
                             zone_default="{{ $internationalStudentGrowthRate->county->zone }}"
                             county_default="{{ $internationalStudentGrowthRate->county_id }}"
                             city_default="{{ $internationalStudentGrowthRate->city_id }}"
-                            rural_district_default="{{ $internationalStudentGrowthRate->rural_district_id }}">
+                            rural_district_default="{{ $internationalStudentGrowthRate->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -60,7 +66,8 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == $internationalStudentGrowthRate->gender_id ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == $internationalStudentGrowthRate->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -92,7 +99,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="kardani_count" name="kardani_count"
+                                <input type="text" style="direction: rtl;" id="kardani_count" name="kardani_count"
                                     value="{{ $internationalStudentGrowthRate->kardani_count }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -104,7 +111,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="karshenasi_count" name="karshenasi_count"
+                                <input type="text" style="direction: rtl;" id="karshenasi_count" name="karshenasi_count"
                                     value="{{ $internationalStudentGrowthRate->karshenasi_count }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -116,7 +123,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="karshenasi_arshad_count" name="karshenasi_arshad_count"
+                                <input type="text" style="direction: rtl;" id="karshenasi_arshad_count"
+                                    name="karshenasi_arshad_count"
                                     value="{{ $internationalStudentGrowthRate->karshenasi_arshad_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -128,15 +136,15 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="docktora_count" name="docktora_count"
+                                <input type="text" style="direction: rtl;" id="docktora_count" name="docktora_count"
                                     value="{{ $internationalStudentGrowthRate->docktora_count }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$internationalStudentGrowthRate->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$internationalStudentGrowthRate->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$internationalStudentGrowthRate->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$internationalStudentGrowthRate->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

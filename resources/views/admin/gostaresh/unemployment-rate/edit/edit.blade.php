@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    ویرایش وضعیت نرخ بیکاری (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ بیکاری
 @endsection
 
 @section('breadcrumb-title')
-    ویرایش وضعیت نرخ بیکاری (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ بیکاری
 @endsection
 
 @section('page-title')
-    ویرایش وضعیت نرخ بیکاری (به تفکیک جمعیت تحصیل کرده/فاقد تحصیلات)
+ویرایش وضعیت نرخ بیکاری
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -37,13 +37,19 @@
                             zone_default="{{ $unemploymentRate->county->zone }}"
                             county_default="{{ $unemploymentRate->county_id }}"
                             city_default="{{ $unemploymentRate->city_id }}"
-                            rural_district_default="{{ $unemploymentRate->rural_district_id }}">
+                            rural_district_default="{{ $unemploymentRate->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount">
-                                <span>مقدار </span>&nbsp
+                                <span>مقدار  نرخ بیکاری (درصد) </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
@@ -72,9 +78,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$unemploymentRate->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$unemploymentRate->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$unemploymentRate->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$unemploymentRate->month" :required="false" name="month"></x-select-month> --}}
 
                         
 

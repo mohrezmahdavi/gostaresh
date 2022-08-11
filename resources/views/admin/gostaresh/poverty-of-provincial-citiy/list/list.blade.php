@@ -1,33 +1,36 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-نرخ فقر شهرستان های استان
+    نرخ فقر شهرستان های استان
 @endsection
 
 @section('breadcrumb-title')
-نرخ فقر شهرستان های استان
+    نرخ فقر شهرستان های استان
 @endsection
 
 @section('page-title')
-نرخ فقر شهرستان های استان
+    نرخ فقر شهرستان های استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('poverty.of.provincial.city.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('poverty.of.provincial.city.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -52,10 +55,11 @@
                                         <td>
 
                                             <a href="{{ route('poverty.of.provincial.city.edit', $povertyOfProvincialCity) }}"
-                                                title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                    class="fa fa-edit"></i></a>
+                                                title="{{ __('validation.buttons.edit') }}"
+                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('poverty.of.provincial.city.destroy', $povertyOfProvincialCity) }}" title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('poverty.of.provincial.city.destroy', $povertyOfProvincialCity) }}"
+                                                title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
 
@@ -64,11 +68,10 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('poverty.of.provincial.city.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('poverty.of.provincial.city.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('poverty.of.provincial.city.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('poverty.of.provincial.city.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
@@ -83,4 +86,3 @@
 @section('body-scripts')
     <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
-

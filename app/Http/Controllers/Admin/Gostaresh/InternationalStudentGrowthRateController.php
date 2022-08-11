@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\InternationalStudentGrowthRate\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\InternationalStudentGrowthRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class InternationalStudentGrowthRateController extends Controller
 {
@@ -33,6 +36,32 @@ class InternationalStudentGrowthRateController extends Controller
         return $query->select('year')->distinct()->pluck('year');
     }
 
+    private function getInternationalStudentGrowthRateRecords()
+    {
+        return InternationalStudentGrowthRate::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        return Excel::download(new ListExport($internationalStudentGrowthRates), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
+        $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
+        return view('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates', 'filterColumnsCheckBoxes'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +75,7 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  InternationalStudentGrowthRateRequest  $request
+     * @param InternationalStudentGrowthRateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(InternationalStudentGrowthRateRequest $request)
@@ -69,7 +98,7 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
     public function edit(InternationalStudentGrowthRate $internationalStudentGrowthRate)
@@ -80,8 +109,8 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  InternationalStudentGrowthRateRequest  $request
-     * @param  int  $id
+     * @param InternationalStudentGrowthRateRequest $request
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
     public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
@@ -93,7 +122,7 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
      * @return \Illuminate\Http\Response
      */
     public function destroy(InternationalStudentGrowthRate $internationalStudentGrowthRate)

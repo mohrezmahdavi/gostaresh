@@ -90,11 +90,12 @@ class RoadmapToAchieveDesiredSituation extends Model
     public static $numeric_fields = [];
 
     public static $filterColumnsCheckBoxes = [
-        "experimental_policy_title" => "عنوان سیاست آزمایشی",
         "title_axis"                => "عنوان محور",
         "project_title"             => "عنوان پروژه",
+        "package_number"            => "شماره بسته متناظر از سند تحول دانشگاه",
+        "transformation_document"   => "شماره راهکنش متناظر از سند تحول دانشگاه",
         "quantitative_goal"         => "هدف کمی",
-        "test"                      => "سنجش",
+        "test"                      => "سنجه",
         "annual_progress_level"     => "سطح پیشرفت و تحقق سالانه",
         "responsible_for_track"     => "مسئول پیگیری",
         "considerations"            => "ملاحظات",

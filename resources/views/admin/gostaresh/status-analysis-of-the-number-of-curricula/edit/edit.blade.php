@@ -34,7 +34,13 @@
                             zone_default="{{ $stsAnalysisOfTheNumOfCurricula->county->zone }}"
                             county_default="{{ $stsAnalysisOfTheNumOfCurricula->county_id }}"
                             city_default="{{ $stsAnalysisOfTheNumOfCurricula->city_id }}"
-                            rural_district_default="{{ $stsAnalysisOfTheNumOfCurricula->rural_district_id }}">
+                            rural_district_default="{{ $stsAnalysisOfTheNumOfCurricula->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -122,9 +128,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$stsAnalysisOfTheNumOfCurricula->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$stsAnalysisOfTheNumOfCurricula->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$stsAnalysisOfTheNumOfCurricula->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$stsAnalysisOfTheNumOfCurricula->month" :required="false" name="month"></x-select-month> --}}
 
                         
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

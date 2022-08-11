@@ -37,7 +37,13 @@
                             zone_default="{{ $numberOfInternationalCourse->county->zone }}"
                             county_default="{{ $numberOfInternationalCourse->county_id }}"
                             city_default="{{ $numberOfInternationalCourse->city_id }}"
-                            rural_district_default="{{ $numberOfInternationalCourse->rural_district_id }}">
+                            rural_district_default="{{ $numberOfInternationalCourse->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -60,7 +66,8 @@
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
-                                        <option {{ $key == $numberOfInternationalCourse->gender_id ? 'selected' : '' }} value="{{ $key }}">
+                                        <option {{ $key == $numberOfInternationalCourse->gender_id ? 'selected' : '' }}
+                                            value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
                                 </select>
@@ -116,7 +123,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="karshenasi_arshad_count" name="karshenasi_arshad_count"
+                                <input type="number" style="direction: rtl;" id="karshenasi_arshad_count"
+                                    name="karshenasi_arshad_count"
                                     value="{{ $numberOfInternationalCourse->karshenasi_arshad_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -134,9 +142,9 @@
                             </div>
                         </div>
 
-                        <x-select-year :default="$numberOfInternationalCourse->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$numberOfInternationalCourse->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$numberOfInternationalCourse->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$numberOfInternationalCourse->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

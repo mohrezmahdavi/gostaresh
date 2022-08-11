@@ -1,4 +1,4 @@
-{{--Table 54 View--}}
+{{-- Table 54 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -29,8 +29,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('cost-changes-trends.update', $costChangesTrend) }}"
-                        role="form">
+                        action="{{ route('cost-changes-trends.update', $costChangesTrend) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -38,7 +37,13 @@
                             zone_default="{{ $costChangesTrend->county->zone }}"
                             county_default="{{ $costChangesTrend->county_id }}"
                             city_default="{{ $costChangesTrend->city_id }}"
-                            rural_district_default="{{ $costChangesTrend->rural_district_id }}">
+                            rural_district_default="{{ $costChangesTrend->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -47,9 +52,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ $costChangesTrend->unit }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ $costChangesTrend->unit }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -60,14 +64,14 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="number" id="total_annual_expenses" name="total_annual_expenses"
-                                       value="{{ $costChangesTrend->total_annual_expenses }}" class="form-control"
-                                       placeholder=" کل هزینه های سالیانه را وارد کنید...">
+                                    value="{{ $costChangesTrend->total_annual_expenses }}" class="form-control"
+                                    placeholder=" کل هزینه های سالیانه را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$costChangesTrend->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$costChangesTrend->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$costChangesTrend->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$costChangesTrend->month" :required="false" name="month"></x-select-month> --}}
 
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>

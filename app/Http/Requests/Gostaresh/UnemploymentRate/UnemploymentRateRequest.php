@@ -30,7 +30,7 @@ class UnemploymentRateRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'education_id' => 'required|numeric',
-            'amount' => 'required|numeric|gte:0',
+            'amount' => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

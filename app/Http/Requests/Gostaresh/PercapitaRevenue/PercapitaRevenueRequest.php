@@ -32,8 +32,10 @@ class PercapitaRevenueRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
             'university_type' => 'required|numeric|gte:0',
-            'grade' => 'required|numeric|gte:0',
-            'percapita_revenue_status_analyses' => 'required|numeric',
+            'grade_id' => 'required|numeric|gte:0',
+            'major_id' => 'required|numeric|gte:0',
+            'minor_id' => 'required|numeric|gte:0',
+            'percapita_revenue_status_analyses' => 'required|integer|gte:0|lte:2147483647',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-// Table 36,37 Model
+// Table 36 Model
 class InternationalResearchStatusAnalysis extends Model
 {
     use HasFactory, SoftDeletes;
@@ -98,17 +98,7 @@ class InternationalResearchStatusAnalysis extends Model
         "number_of_foreign_workshops_held",
         "number_of_international_lectures_held",
         "number_of_international_awards",
-        "average_H_index_of_faculty_members",
-        "number_of_articles_science_and_nature",
-        "print_ISI_articles",
-        "percentage_of_quality_articles",
-        "number_of_faculty_members_of_world_scientists",
-        "number_of_faculty_members_of_international_journals",
-        "number_of_international_conferences_held",
-        "number_of_international_scientific_books",
-        "number_of_international_agreements_implemented",
-        "amount_of_international_research_credits",
-        "number_of_international_publications",
+
     ];
     public static $filterColumnsCheckBoxes = [
         "unit"                                                  => "واحد",
@@ -122,17 +112,7 @@ class InternationalResearchStatusAnalysis extends Model
         "number_of_foreign_workshops_held"                      => "تعداد کارگاهها، دوره های آموزشی و تدریس بین المللی برگزار شده توسط اساتید خارجی ومتخصصان ایرانی غیر مقیم",
         "number_of_international_lectures_held"                 => "تعدادسخنرانی وسمینارهای علمی بین المللی برگزارشده توسط اساتیدخارجی و متخصصان ایرانی غیر مقیم",
         "number_of_international_awards"                        => "تعداد جوایز بین المللی کسب شده در ۵ سال اخیر",
-        "average_H_index_of_faculty_members"                    => "متوسط H-index اعضای هیات علمی",
-        "number_of_articles_science_and_nature"                 => "تعداد مقالات در دو مجله Science وNature ",
-        "print_ISI_articles"                                    => "سرانه چاپ مقالات ISI",
-        "percentage_of_quality_articles"                        => "درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1)",
-        "number_of_faculty_members_of_world_scientists"         => "تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس نظام‌های رتبه بندی مصوب",
-        "number_of_faculty_members_of_international_journals"   => "تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی",
-        "number_of_international_conferences_held"              => "تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر",
-        "number_of_international_scientific_books"              => "تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی",
-        "number_of_international_agreements_implemented"        => "تعداد تفاهم نامه های بین المللی اجرایی شده",
-        "amount_of_international_research_credits"              => "میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده",
-        "number_of_international_publications"                  => "تعداد نشریه های دارای نمایه های استنادی بین المللی",
+
     ];
 
 }

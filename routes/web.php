@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Gostaresh\EmployeeProfileController;
 use App\Http\Controllers\Admin\Gostaresh\GraduatesOfHigherEducationController;
 use App\Http\Controllers\Admin\Gostaresh\GraduateStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InnovationInfrastructureController;
+use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller;
 use App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController;
 use App\Http\Controllers\Admin\Gostaresh\InternationalTechnologyController;
 use App\Http\Controllers\Admin\Gostaresh\OrganizationalCultureController;
@@ -25,6 +26,17 @@ use App\Http\Controllers\Admin\Gostaresh\TechnologicalProductController;
 use App\Http\Controllers\Admin\Gostaresh\TuitionIncomeController;
 use App\Http\Controllers\Admin\Gostaresh\UnitsGeneralStatusController;
 use App\Http\Controllers\Admin\Gostaresh\UniversityCostsController;
+use App\Http\Controllers\Admin\Profile\ShowProfileController;
+use App\Http\Controllers\Admin\Profile\UpdateProfileController;
+use App\Http\Controllers\Admin\Security\RoleController;
+use App\Http\Controllers\Admin\User\CreateController;
+use App\Http\Controllers\Admin\User\DeleteController;
+use App\Http\Controllers\Admin\User\EditController;
+use App\Http\Controllers\Admin\User\ListController;
+use App\Http\Controllers\Admin\User\LogsController;
+use App\Http\Controllers\Admin\User\StoreController;
+use App\Http\Controllers\Admin\User\ImportController;
+use App\Http\Controllers\Admin\User\UpdateController;
 use App\Http\Controllers\Admin\Zone\ZoneController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,16 +57,25 @@ require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [App\Http\Controllers\Admin\Index\IndexController::class, 'index'])->name('admin.index');
 
-    Route::get('/profile', [\App\Http\Controllers\Admin\Profile\ShowProfileController::class, 'show'])->name('admin.profile.edit');
-    Route::post('/profile', [\App\Http\Controllers\Admin\Profile\UpdateProfileController::class, 'update'])->name('admin.profile.update');
+    Route::get('/profile', [ShowProfileController::class, 'show'])->name('admin.profile.edit');
+    Route::post('/profile', [UpdateProfileController::class, 'update'])->name('admin.profile.update');
 
     // Users
-    Route::get('/users/list', [\App\Http\Controllers\Admin\User\ListController::class, 'list'])->name('admin.users.list');
-    Route::get('/user/create', [\App\Http\Controllers\Admin\User\CreateController::class, 'create'])->name('admin.user.create');
-    Route::post('/user/create', [\App\Http\Controllers\Admin\User\StoreController::class, 'store'])->name('admin.user.store');
-    Route::get('/user/edit/{user}', [\App\Http\Controllers\Admin\User\EditController::class, 'edit'])->name('admin.user.edit');
-    Route::post('/user/edit/{user}', [\App\Http\Controllers\Admin\User\UpdateController::class, 'update'])->name('admin.user.update');
-    Route::get('/user/delete/{user}', [\App\Http\Controllers\Admin\User\DeleteController::class, 'delete'])->name('admin.user.delete');
+    Route::get('/users/list', [ListController::class, 'list'])->name('admin.users.list');
+    Route::get('/user/create', [CreateController::class, 'create'])->name('admin.user.create');
+    Route::post('/user/create', [StoreController::class, 'store'])->name('admin.user.store');
+    Route::get('/user/edit/{user}', [EditController::class, 'edit'])->name('admin.user.edit');
+    Route::post('/user/edit/{user}', [UpdateController::class, 'update'])->name('admin.user.update');
+    Route::get('/user/delete/{user}', [DeleteController::class, 'delete'])->name('admin.user.delete');
+    Route::get("/user/logs/{user}", [LogsController::class, "authenticationLogs"])->name("admin.user.logs");
+    Route::post('/user/all/create', [ImportController::class, 'store'])->name('admin.user.file.store');
+
+    //roles
+    Route::get("role/{role}/user/list", [RoleController::class, "roleUsers"])->name("admin.role.users.list");
+    Route::delete("role/{role}/user/{user}/remove", [RoleController::class, "removeUserFromRole"])->name("admin.role.user.remove");
+    Route::get("role/{role}/users/add", [RoleController::class, "addUserToRoleList"])->name("admin.role.user.add.list");
+    Route::post("role/{role}/users/add/{user}", [RoleController::class, "addUserToRole"])->name("admin.role.user.add");
+    Route::resource("role", RoleController::class)->names("admin.role");
 
     //Zone
     Route::get('/zones/create', [ZoneController::class, 'create'])->name('admin.zone.create');
@@ -189,6 +210,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('number/of/students/status/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class, 'listPDFExport'])->name('number.of.students.status.analysis.list.pdf');
     Route::get('number/of/students/status/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusAnalysisController::class, 'listPrintExport'])->name('number.of.students.status.analysis.list.print');
 
+    // Table 17 Route
+    Route::resource('number/of/students/status/by-grade/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class)->names('number.of.students.status.by-grade.analysis')->parameters([
+        'analysis' => 'numberOfStudentsStatusAnalysis'
+    ]);
+    Route::get('number/of/students/status/by-grade/analysis/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listExcelExport'])->name('number.of.students.status.by-garde.analysis.list.excel');
+    Route::get('number/of/students/status/by-grade/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listPDFExport'])->name('number.of.students.status.by-garde.analysis.list.pdf');
+    Route::get('number/of/students/status/by-grade/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfStudentsStatusByGradeAnalysisController::class, 'listPrintExport'])->name('number.of.students.status.by-garde.analysis.list.print');
+
     // Table 18 Route
     Route::resource('number/of/volunteers/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfVolunteersStatusAnalysisController::class)->names('number.of.volunteers.status.analysis')->parameters([
         'analysis' => 'numberOfVolunteersStatusAnalysis'
@@ -201,56 +230,97 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::resource('number/of/admissions/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class)->names('number.of.admissions.status.analysis')->parameters([
         'analysis' => 'numberOfAdmissionsStatusAnalysis'
     ]);
+    Route::get('number/of/admissions/status/analysis/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class, 'listExcelExport'])->name('number.of.admissions.status.analysis.list.excel');
+    Route::get('number/of/admissions/status/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class, 'listPDFExport'])->name('number.of.admissions.status.analysis.list.pdf');
+    Route::get('number/of/admissions/status/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfAdmissionsStatusAnalysisController::class, 'listPrintExport'])->name('number.of.admissions.status.analysis.list.print');
 
     // Table 20 Route
     Route::resource('number/of/registrants/status/analysis', App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class)->names('number.of.registrants.status.analysis')->parameters([
         'analysis' => 'numberOfRegistrant'
     ]);
+    Route::get('number/of/registrants/status/analysis/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listExcelExport'])->name('number.of.registrants.status.analysis.list.excel');
+    Route::get('number/of/registrants/status/analysis/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listPDFExport'])->name('number.of.registrants.status.analysis.list.pdf');
+    Route::get('number/of/registrants/status/analysis/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfRegistrantsStatusAnalysisController::class, 'listPrintExport'])->name('number.of.registrants.status.analysis.list.print');
 
     // Table 21 Route
     Route::resource('annual/growth/rate/of/student/enrollment', App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class)->names('annual.growth.rate.of.student.enrollment')->parameters([
         'enrollment' => 'annualGrthRateOfStdnEnrollment'
     ]);
+    Route::get('annual/growth/rate/of/student/enrollment/list/excel', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listExcelExport'])->name('annual.growth.rate.of.student.enrollment.list.excel');
+    Route::get('annual/growth/rate/of/student/enrollment/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listPDFExport'])->name('annual.growth.rate.of.student.enrollment.list.pdf');
+    Route::get('annual/growth/rate/of/student/enrollment/list/print', [App\Http\Controllers\Admin\Gostaresh\AnnualGrowthRateOfStudentEnrollmentController::class, 'listPrintExport'])->name('annual.growth.rate.of.student.enrollment.list.print');
 
     // Table 22 Route
     Route::resource('average/test/score/of/the/first/thirty/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class)->names('average.test.score.of.the.first.thirty.percent.of.admitted')->parameters([
         'admitted' => 'avgTstScrOfFrtThrtPrntOfAdmitted'
     ]);
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/excel', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listExcelExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.excel');
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listPDFExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.pdf');
+    Route::get('average/test/score/of/the/first/thirty/percent/of/admitted/list/print', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController::class, 'listPrintExport'])->name('average.test.score.of.the.first.thirty.percent.of.admitted.list.print');
 
     // Table 23 Route
     Route::resource('average/test/score/of/the/last/five/percent/of/admitted', App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class)->names('average.test.score.of.the.last.five.percent.of.admitted')->parameters([
         'admitted' => 'avgTstScOfLastFivePctOfAdmitted'
     ]);
+    Route::get('average/test/score/of/the/last/five/percent/of/admitted/list/excel', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class, 'listExcelExport'])->name('average.test.score.of.the.last.five.percent.of.admitted.list.excel');
+    Route::get('average/test/score/of/the/last/five/percent/of/admitted/list/pdf', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class, 'listPDFExport'])->name('average.test.score.of.the.last.five.percent.of.admitted.list.pdf');
+    Route::get('average/test/score/of/the/last/five/percent/of/admitted/list/print', [App\Http\Controllers\Admin\Gostaresh\AverageTestScoreOfTheLastFivePercentOfAdmittedController::class, 'listPrintExport'])->name('average.test.score.of.the.last.five.percent.of.admitted.list.print');
 
     // Table 24 Route
     Route::resource('student/admission/capacity', App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class)->names('student.admission.capacity')->parameters([
         'capacity' => 'studentAdmissionCapacity'
     ]);
+    Route::get('student/admission/capacity/list/excel', [App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class, 'listExcelExport'])->name('student.admission.capacity.list.excel');
+    Route::get('student/admission/capacity/list/pdf', [App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class, 'listPDFExport'])->name('student.admission.capacity.list.pdf');
+    Route::get('student/admission/capacity/list/print', [App\Http\Controllers\Admin\Gostaresh\StudentAdmissionCapacityController::class, 'listPrintExport'])->name('student.admission.capacity.list.print');
 
     // Table 25 Route
     Route::resource('status/analysis/of/the/number/of/fields/of/study', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class)->names('status.analysis.of.the.number.of.fields.of.study')->parameters([
         'study' => 'stsAnlysOfTheNumOfFieldsOfStudy'
     ]);
+    Route::get('status/analysis/of/the/number/of/fields/of/study/list/excel', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class, 'listExcelExport'])->name('status.analysis.of.the.number.of.fields.of.study.list.excel');
+    Route::get('status/analysis/of/the/number/of/fields/of/study/list/pdf', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class, 'listPDFExport'])->name('status.analysis.of.the.number.of.fields.of.study.list.pdf');
+    Route::get('status/analysis/of/the/number/of/fields/of/study/list/print', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudyController::class, 'listPrintExport'])->name('status.analysis.of.the.number.of.fields.of.study.list.print');
 
-    // Table 26, 27 Route
+    // Table 26 Route
     Route::resource('number/of/non/medical/fields/of/study', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class)->names('number.of.non.medical.fields.of.study')->parameters([
         'study' => 'numberOfNonMedicalFieldsOfStudy'
     ]);
+    Route::get('number/of/non/medical/fields/of/study/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.list.excel');
+    Route::get('number/of/non/medical/fields/of/study/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.list.pdf');
+    Route::get('number/of/non/medical/fields/of/study/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudyController::class, 'listPrintExport'])->name('number.of.non.medical.fields.of.study.list.print');
+
+    // Table 27 Route
+    Route::resource('number/of/non/medical/fields/of/study2', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class)->names('number.of.non.medical.fields.of.study.2')->parameters([
+        'study' => 'numberOfNonMedicalFieldsOfStudy'
+    ]);
+    Route::get('number/of/non/medical/fields/of/study2/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.2.list.excel');
+    Route::get('number/of/non/medical/fields/of/study2/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.2.list.pdf');
+    Route::get('number/of/non/medical/fields/of/study2/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listPrintExport'])->name('number.of.non.medical.fields.of.study.2.list.print');
 
     // Table 28 Route
     Route::resource('status/analysis/of/the/number/of/course', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class)->names('status.analysis.of.the.number.of.course')->parameters([
         'course' => 'statusAnalysisOfTheNumOfCourse'
     ]);
+    Route::get('status/analysis/of/the/number/of/course/list/excel', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listExcelExport'])->name('status.analysis.of.the.number.of.course.list.excel');
+    Route::get('status/analysis/of/the/number/of/course/list/pdf', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listPDFExport'])->name('status.analysis.of.the.number.of.course.list.pdf');
+    Route::get('status/analysis/of/the/number/of/course/list/print', [App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCoursesController::class, 'listPrintExport'])->name('status.analysis.of.the.number.of.course.list.print');
 
     // Table 29 Route
     Route::resource('number/of/international/course', App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class)->names('number.of.international.course')->parameters([
         'course' => 'numberOfInternationalCourse'
     ]);
+    Route::get('number/of/international/course/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listExcelExport'])->name('number.of.international.course.list.excel');
+    Route::get('number/of/international/course/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listPDFExport'])->name('number.of.international.course.list.pdf');
+    Route::get('number/of/international/course/list/print', [App\Http\Controllers\Admin\Gostaresh\NumberOfInternationalCourseController::class, 'listPrintExport'])->name('number.of.international.course.list.print');
 
     // Table 30 Route
     Route::resource('international/student/growth/rate', App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class)->names('international.student.growth.rate')->parameters([
         'rate' => 'internationalStudentGrowthRate'
     ]);
+    Route::get('international/student/growth/rate/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class, 'listExcelExport'])->name('international.student.growth.rate.list.excel');
+    Route::get('international/student/growth/rate/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class, 'listPDFExport'])->name('international.student.growth.rate.list.pdf');
+    Route::get('international/student/growth/rate/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalStudentGrowthRateController::class, 'listPrintExport'])->name('international.student.growth.rate.list.print');
 
     // Table 31 Route
     Route::resource('status/analysis/of/the/number/of/curricula', App\Http\Controllers\Admin\Gostaresh\StatusAnalysisOfTheNumberOfCurriculaController::class)->names('status.analysis.of.the.number.of.curricula')->parameters([
@@ -284,11 +354,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('research-output-status-analyses/list/pdf', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPDFExport'])->name('research-output-status-analyses.list.pdf');
     Route::get('research-output-status-analyses/list/print', [App\Http\Controllers\Admin\Gostaresh\ResearchOutputStatusAnalysisController::class, 'listPrintExport'])->name('research-output-status-analyses.list.print');
 
-    // Table 36,37 Route
+    // Table 36 Route
     Route::resource('international-research', InternationalResearchStatusAnalysisController::class)->names('international-research');
     Route::get('international-research/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listExcelExport'])->name('international-research.list.excel');
     Route::get('international-research/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPDFExport'])->name('international-research.list.pdf');
     Route::get('international-research/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysisController::class, 'listPrintExport'])->name('international-research.list.print');
+
+    // Table 37 Route
+    Route::resource('international-research2', InternationalResearchStatusAnalysis2Controller::class)->names('international-research2');
+    Route::get('international-research2/list/excel', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listExcelExport'])->name('international-research2.list.excel');
+    Route::get('international-research2/list/pdf', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listPDFExport'])->name('international-research2.list.pdf');
+    Route::get('international-research2/list/print', [App\Http\Controllers\Admin\Gostaresh\InternationalResearchStatusAnalysis2Controller::class, 'listPrintExport'])->name('international-research2.list.print');
 
     // Table 38 Route
     Route::resource('amount-of-facilities', AmountOfFacilitiesController::class)->names('amount-of-facilities');
@@ -379,6 +455,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('university-costs/list/excel', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listExcelExport'])->name('university-costs.list.excel');
     Route::get('university-costs/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPDFExport'])->name('university-costs.list.pdf');
     Route::get('university-costs/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPrintExport'])->name('university-costs.list.print');
+
+
+    // Table 53 Route
+    Route::resource('university-costs-per-unit', App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class)->names('university-costs-per-unit');
+    Route::get('university-costs-per-unit/list/excel', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listExcelExport'])->name('university-costs-per-unit.list.excel');
+    Route::get('university-costs-per-unit/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listPDFExport'])->name('university-costs-per-unit.list.pdf');
+    Route::get('university-costs-per-unit/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class, 'listPrintExport'])->name('university-costs-per-unit.list.print');
 
     // Table 54 Route
     Route::resource('cost-changes-trends', CostChangesTrendsController::class)->names('cost-changes-trends');

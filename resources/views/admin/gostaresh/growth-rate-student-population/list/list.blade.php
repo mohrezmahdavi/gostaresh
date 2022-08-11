@@ -1,26 +1,25 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-نرخ رشد و ترکیب جمعیت دانش آموزی
+    نرخ رشد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('breadcrumb-title')
-نرخ رشد و ترکیب جمعیت دانش آموزی
+    نرخ رشد و ترکیب جمعیت دانش آموزی
 @endsection
 
 @section('page-title')
-نرخ رشد و ترکیب جمعیت دانش آموزی
+    نرخ رشد و ترکیب جمعیت دانش آموزی
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
-<span>
-    <a href="{{ route('growth.rate.student.population.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
+    <span>
+        <a href="{{ route('growth.rate.student.population.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    </span>
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -34,11 +33,17 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <select-province-inline-component
-                                    province_default="{{ request()->province_id ?? auth()->user()->province_id ?? ''}}"
-                                    zone_default="{{ request()->zone_id ?? auth()->user()->county->zone ?? ''}}"
-                                    county_default="{{ request()->county_id ?? auth()->user()->county_id ?? ''}}"
-                                    city_default="{{ request()->city_id ?? auth()->user()->city_id ?? ''}}"
-                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}">
+                                    province_default="{{ request()->province_id ?? (auth()->user()->province_id ?? '') }}"
+                                    zone_default="{{ request()->zone_id ?? (auth()->user()->county->zone ?? '') }}"
+                                    county_default="{{ request()->county_id ?? (auth()->user()->county_id ?? '') }}"
+                                    city_default="{{ request()->city_id ?? (auth()->user()->city_id ?? '') }}"
+                                    rural_district_default="{{ request()->rural_district_id ?? (auth()->user()->rural_district_id ?? '') }}"
+                                    :fields="{{ json_encode([
+                                        'province' => true,
+                                        'zone' => false,
+                                        'county' => true,
+                                        'city' => false,
+                                    ]) }}">
                                 </select-province-inline-component>
                             </div>
                         </div>
@@ -146,8 +151,8 @@
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('growth.rate.student.population.destroy', $growthRateStudentPopulation) }}" }}"
-                                                title="{{ __('validation.buttons.delete') }}"
+                                            <a href="{{ route('growth.rate.student.population.destroy', $growthRateStudentPopulation) }}"
+                                                }}" title="{{ __('validation.buttons.delete') }}"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
                                         </td>
                                     </tr>
@@ -158,8 +163,7 @@
                             <x-exports.export-links
                                 excelLink="{{ route('growth.rate.student.population.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('growth.rate.student.population.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('growth.rate.student.population.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('growth.rate.student.population.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
@@ -176,7 +180,6 @@
         </div>
 
     </div>
-
 @endsection
 
 @section('body-scripts')

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\NumberOfInternationalCourse\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfInternationalCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfInternationalCourse\NumberOfInternationalCourseRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
+
 // Table 29 Controller
 class NumberOfInternationalCourseController extends Controller
 {
@@ -25,12 +29,38 @@ class NumberOfInternationalCourseController extends Controller
 
         $numberOfInternationalCourses = $query->orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses',, 'filterColumnsCheckBoxes', 'yearSelectedList'));
+        return view('admin.gostaresh.number-of-international-course.list.list', compact('numberOfInternationalCourses', 'filterColumnsCheckBoxes', 'yearSelectedList'));
     }
 
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
+    }
+
+    private function getNumberOfInternationalCourseRecords()
+    {
+        return NumberOfInternationalCourse::whereRequestsQuery()->orderBy('id', 'desc')->get();
+    }
+
+    public function listExcelExport()
+    {
+        $numberOfInternationalCourses = $this->getNumberOfInternationalCourseRecords();
+        return Excel::download(new ListExport($numberOfInternationalCourses), 'invoices.xlsx');
+    }
+
+    public function listPDFExport()
+    {
+        $filterColumnsCheckBoxes = NumberOfInternationalCourse::$filterColumnsCheckBoxes;
+        $numberOfInternationalCourses = $this->getNumberOfInternationalCourseRecords();
+        $pdfFile = PDF::loadView('admin.gostaresh.number-of-international-course.list.pdf', compact('numberOfInternationalCourses','filterColumnsCheckBoxes'));
+        return $pdfFile->download('export-pdf.pdf');
+    }
+
+    public function listPrintExport()
+    {
+        $filterColumnsCheckBoxes = NumberOfInternationalCourse::$filterColumnsCheckBoxes;
+        $numberOfInternationalCourses = $this->getNumberOfInternationalCourseRecords();
+        return view('admin.gostaresh.number-of-international-course.list.pdf', compact('numberOfInternationalCourses', 'filterColumnsCheckBoxes'));
     }
 
     /**

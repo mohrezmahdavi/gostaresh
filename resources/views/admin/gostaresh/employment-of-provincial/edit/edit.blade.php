@@ -1,19 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 @endsection
 
 @section('breadcrumb-title')
-ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 @endsection
 
 @section('page-title')
-ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
+    ویرایش وضعیت اشتغال شهرستان های استان به روش ترکیب-سهم
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -27,7 +27,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('employment.of.provincial.update', $employmentOfProvincial) }}" role="form">
+                    <form class="form-horizontal" method="POST"
+                        action="{{ route('employment.of.provincial.update', $employmentOfProvincial) }}" role="form">
                         @csrf
                         @method('PUT')
 
@@ -35,7 +36,13 @@
                             zone_default="{{ $employmentOfProvincial->county->zone }}"
                             county_default="{{ $employmentOfProvincial->county_id }}"
                             city_default="{{ $employmentOfProvincial->city_id }}"
-                            rural_district_default="{{ $employmentOfProvincial->rural_district_id }}">
+                            rural_district_default="{{ $employmentOfProvincial->rural_district_id }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
 
@@ -45,9 +52,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="agriculture_hunting_forestry" name="agriculture_hunting_forestry"
-                                    value="{{ $employmentOfProvincial->agriculture_hunting_forestry }}" class="form-control"
-                                    placeholder=" کشاورزی، شکار و جنگلداری را وارد کنید...">
+                                <select name="agriculture_hunting_forestry" id="agriculture_hunting_forestry" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->agriculture_hunting_forestry ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -58,9 +68,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="mining_construction" name="mining_construction"
-                                    value="{{ $employmentOfProvincial->mining_construction }}" class="form-control"
-                                    placeholder="  استخراج معدن - ساخت را وارد کنید...">
+                                <select name="mining_construction" id="mining_construction" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->mining_construction ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -70,9 +83,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="water_electricity_natural_gas_supply" name="water_electricity_natural_gas_supply"
-                                    value="{{ $employmentOfProvincial->water_electricity_natural_gas_supply }}" class="form-control"
-                                    placeholder="  تامین آب، برق و گاز طبیعی را وارد کنید...">
+                                <select name="water_electricity_natural_gas_supply" id="water_electricity_natural_gas_supply" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->water_electricity_natural_gas_supply ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -82,9 +98,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="building" name="building"
-                                    value="{{ $employmentOfProvincial->building }}" class="form-control"
-                                    placeholder="  ساختمان را وارد کنید...">
+                                <select name="building" id="building" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->building ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -94,9 +113,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="wholesale_retail_vehicle_repair_supply" name="wholesale_retail_vehicle_repair_supply"
-                                    value="{{ $employmentOfProvincial->wholesale_retail_vehicle_repair_supply }}" class="form-control"
-                                    placeholder="  عمده فروشی، خرده فروشی، تعمیر وسایل نقلیه و تامین کالا را وارد کنید...">
+                                <select name="wholesale_retail_vehicle_repair_supply" id="wholesale_retail_vehicle_repair_supply" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->wholesale_retail_vehicle_repair_supply ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -106,9 +128,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="hotel_and_restaurant" name="hotel_and_restaurant"
-                                    value="{{ $employmentOfProvincial->hotel_and_restaurant }}" class="form-control"
-                                    placeholder="  هتل و رسنوران را وارد کنید...">
+                                <select name="hotel_and_restaurant" id="hotel_and_restaurant" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->hotel_and_restaurant ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -118,9 +143,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="transportation_warehousing_communications" name="transportation_warehousing_communications"
-                                    value="{{ $employmentOfProvincial->transportation_warehousing_communications }}" class="form-control"
-                                    placeholder="  حمل و نقل، انبارداری و ارتباطات را وارد کنید...">
+                                <select name="transportation_warehousing_communications" id="transportation_warehousing_communications" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->transportation_warehousing_communications ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -130,9 +158,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="financial_intermediation" name="financial_intermediation"
-                                    value="{{ $employmentOfProvincial->financial_intermediation }}" class="form-control"
-                                    placeholder="  واسطه گری های مالی را وارد کنید...">
+                                <select name="financial_intermediation" id="financial_intermediation" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->financial_intermediation ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -142,9 +173,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="office_of_public_affairs_urban_services" name="office_of_public_affairs_urban_services"
-                                    value="{{ $employmentOfProvincial->office_of_public_affairs_urban_services }}" class="form-control"
-                                    placeholder="  اداره امور عمومی و خدمات شهری، دفاع، و تامین اجتماعی را وارد کنید...">
+                                <select name="office_of_public_affairs_urban_services" id="office_of_public_affairs_urban_services" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->office_of_public_affairs_urban_services ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -154,9 +188,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="education" name="education"
-                                    value="{{ $employmentOfProvincial->education }}" class="form-control"
-                                    placeholder="   آموزش را وارد کنید...">
+                                <select name="education" id="education" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->education ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -167,9 +204,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="health_and_social_work" name="health_and_social_work"
-                                    value="{{ $employmentOfProvincial->health_and_social_work }}" class="form-control"
-                                    placeholder="   بهداشت و مددکاری اجتماعی را وارد کنید...">
+                                <select name="health_and_social_work" id="health_and_social_work" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->health_and_social_work ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -179,9 +219,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="activities_of_employed_households" name="activities_of_employed_households"
-                                    value="{{ $employmentOfProvincial->activities_of_employed_households }}" class="form-control"
-                                    placeholder="   فعالیت های خانوارهای دارای مستخدم را وارد کنید...">
+                                <select name="activities_of_employed_households" id="activities_of_employed_households" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->activities_of_employed_households ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -191,9 +234,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="overseas_organizations_and_delegations" name="overseas_organizations_and_delegations"
-                                    value="{{ $employmentOfProvincial->overseas_organizations_and_delegations }}" class="form-control"
-                                    placeholder="   سازمان ها و هیات های برون مرزی را وارد کنید...">
+                                <select name="overseas_organizations_and_delegations" id="overseas_organizations_and_delegations" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->overseas_organizations_and_delegations ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -203,9 +249,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="real_estates" name="real_estates"
-                                    value="{{ $employmentOfProvincial->real_estates }}" class="form-control"
-                                    placeholder="   املاک و مستغلات را وارد کنید...">
+                                <select name="real_estates" id="real_estates" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->real_estates ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -215,9 +264,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="professional_scientific_technical_activities" name="professional_scientific_technical_activities"
-                                    value="{{ $employmentOfProvincial->professional_scientific_technical_activities }}" class="form-control"
-                                    placeholder="   فعالیت های حرفه ای ، علمی و فنی را وارد کنید...">
+                                <select name="professional_scientific_technical_activities" id="professional_scientific_technical_activities" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->professional_scientific_technical_activities ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -227,21 +279,27 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="office_and_support_services" name="office_and_support_services"
-                                    value="{{ $employmentOfProvincial->office_and_support_services }}" class="form-control"
-                                    placeholder="   اداری و خدمات پشتیبانی را وارد کنید...">
+                                <select name="office_and_support_services" id="office_and_support_services" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->office_and_support_services ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="art_and_entertainment">
-                                <span>هنر  و سرگرمی </span>&nbsp
+                                <span>هنر و سرگرمی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="art_and_entertainment" name="art_and_entertainment"
-                                    value="{{ $employmentOfProvincial->art_and_entertainment }}" class="form-control"
-                                    placeholder="   هنر  و سرگرمی را وارد کنید...">
+                                <select name="art_and_entertainment" id="art_and_entertainment" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->art_and_entertainment ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -251,18 +309,21 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="other_services" name="other_services"
-                                    value="{{ $employmentOfProvincial->other_services }}" class="form-control"
-                                    placeholder="   سایر خدمات را وارد کنید...">
+                                <select name="other_services" id="other_services" class="form-select">
+                                    @foreach (config('gostaresh.employment_status') as $key => $value)
+                                        <option {{ $key == $employmentOfProvincial->other_services ? 'selected' : '' }}
+                                                value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
-                        <x-select-year :default="$employmentOfProvincial->year" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$employmentOfProvincial->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="$employmentOfProvincial->month" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="$employmentOfProvincial->month" :required="false" name="month"></x-select-month> --}}
 
 
-                        
+
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>

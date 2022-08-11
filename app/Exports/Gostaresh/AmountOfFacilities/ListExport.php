@@ -53,7 +53,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'واحد');
         }
         if (filterCol('amount') == true) {
-            array_push($headings, 'میزان');
+            array_push($headings, "میزان تسھیلات و حمایت ھای مالی");
         }
 
         array_push($headings, 'سال');

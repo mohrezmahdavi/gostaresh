@@ -1,16 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('title-tag')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
-
+      تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
 @endsection
 
 @section('breadcrumb-title')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
 @endsection
 
 @section('page-title')
-    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان
+    تعداد تحلیل وضعیت ھزینه ھای دانشگاه در واحدھای دانشگاھی استان (۱)
 
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
@@ -18,12 +17,9 @@
     <span>
         <a href="{{ route('university-costs.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
-
-
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
@@ -31,8 +27,12 @@
 
 
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -42,57 +42,56 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($universityCosts as $key => $universityCost)
                                 <tr>
-                                    <th scope="row">{{ $universityCosts?->firstItem() + $key }}</th>
-                                    <td>{{ $universityCost?->province?->name . ' - ' . $universityCost->county?->name }}
+                                    <th>#</th>
+                                    <th>شهرستان</th>
 
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key,\App\Models\Index\UniversityCostsAnalysis::$numeric_fields))
-                                                <td>{{ number_format($universityCost?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $universityCost->{$key} }}</td>
-                                            @endif
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
-                                    <td>{{ $universityCost?->year }}</td>
-                                    <td>
+                                    <th>سال</th>
+                                    <th>اقدام</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($universityCosts as $key => $universityCost)
+                                    <tr>
+                                        <th scope="row">{{ $universityCosts?->firstItem() + $key }}</th>
+                                        <td>{{ $universityCost?->province?->name . ' - ' . $universityCost->county?->name }}
 
-                                        <a href="{{ route('university-costs.edit', $universityCost) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
+                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                                @if (filterCol($key))
+                                                    @if (in_array($key, \App\Models\Index\UniversityCostsAnalysis::$numeric_fields))
+                                        <td>{{ number_format($universityCost?->{$key}) }}</td>
+                                    @else
+                                        <td>{{ $universityCost->{$key} }}</td>
+                                @endif
+                                @endif
+                                @endforeach
+                                <td>{{ $universityCost?->year }}</td>
+                                <td>
 
-                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $universityCost) }}" title="{{ __('validation.buttons.delete') }}"--}}
-                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
+                                    <a href="{{ route('university-costs.edit', $universityCost) }}"
+                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                            class="fa fa-edit"></i></a>
 
-                                    </td>
+                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $universityCost) }}" title="{{ __('validation.buttons.delete') }}" --}}
+                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+
+                                </td>
 
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('university-costs.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('university-costs.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('university-costs.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('university-costs.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->
@@ -107,5 +106,4 @@
 
 @section('body-scripts')
     <script src="{{ mix('/js/app.js') }}"></script>
-
 @endsection

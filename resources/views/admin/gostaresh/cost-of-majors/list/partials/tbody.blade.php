@@ -19,9 +19,12 @@
 @if (filterCol('masters') == true)
 <td>{{ number_format((int) $costOfMajor?->masters ) }}</td>
 @endif
+@if (filterCol('professional_phd') == true)
+<td>{{ number_format((int) $costOfMajor?->professional_phd ) }}</td>
+@endif   
 @if (filterCol('phd') == true)
 <td>{{ number_format((int) $costOfMajor?->phd ) }}</td>
-@endif   
+@endif
 
 <td>{{ $costOfMajor?->year }}</td>
 <td>{{ $costOfMajor?->month }}</td>

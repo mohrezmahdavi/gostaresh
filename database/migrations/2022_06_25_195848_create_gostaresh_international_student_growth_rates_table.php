@@ -31,10 +31,10 @@ return new class extends Migration
 
             $table->string('unit')->nullable();
             $table->tinyInteger('department_of_education')->nullable();
-            $table->unsignedBigInteger('kardani_count')->nullable();
-            $table->unsignedBigInteger('karshenasi_count')->nullable();
-            $table->unsignedBigInteger('karshenasi_arshad_count')->nullable();
-            $table->unsignedBigInteger('docktora_count')->nullable();
+            $table->float('kardani_count')->nullable();
+            $table->float('karshenasi_count')->nullable();
+            $table->float('karshenasi_arshad_count')->nullable();
+            $table->float('docktora_count')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

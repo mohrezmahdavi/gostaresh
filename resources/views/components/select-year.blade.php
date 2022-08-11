@@ -7,7 +7,7 @@
     </label>
     <div class="col-sm-10">
         <select name="{{ $name ?? 'year' }}" id="year" class="form-select">
-            @for ($i = 1250; $i <= 1405; $i++)
+            @for ($i = (int)($min ?? 1250); $i <= (int)($max ?? 1405); $i++)
                 <option {{ $i == (int)($default ?? null) ? 'selected' : '' }} value="{{ $i }}">
                     {{ $i }}</option>
             @endfor

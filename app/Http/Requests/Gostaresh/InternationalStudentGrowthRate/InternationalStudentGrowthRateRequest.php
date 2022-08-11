@@ -32,10 +32,10 @@ class InternationalStudentGrowthRateRequest extends FormRequest
             'unit' => 'required|max:255',
             "gender_id" => 'required|numeric',
             "department_of_education" => 'required|numeric|gte:0',
-            "kardani_count" => 'required|numeric|gte:0',
-            "karshenasi_count" => 'required|numeric|gte:0',
-            "karshenasi_arshad_count" => 'required|numeric|gte:0',
-            "docktora_count" => 'required|numeric|gte:0',
+            "kardani_count" => 'required|numeric',
+            "karshenasi_count" => 'required|numeric',
+            "karshenasi_arshad_count" => 'required|numeric',
+            "docktora_count" => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

@@ -35,14 +35,14 @@ return new class extends Migration
             $table->float('employee_capacity_utilization_rate')->comment('نرخ بهره برداری از ظرفیت کارمندان')->nullable();
             $table->float('graduate_capacity_utilization_rate')->comment('نرخ بهره برداری از ظرفیت فارغ التحصیلان')->nullable();
             $table->float('student_capacity_utilization_rate')->comment('نرخ بهره برداری از ظرفیت دانشجویان')->nullable();
-            $table->float('ratio_of_faculty_members_to_students')->comment('نسبت تعداد اعضای هیات علمی به دانشجویان')->nullable();
-            $table->float('ratio_of_staff_to_students')->comment('نسبت تعداد کارمندان به دانشجویان')->nullable();
-            $table->float('ratio_of_faculty_members_to_teaching_professors')->comment('نسبت تعداد اعضای هیات علمی به تعداد اساتید مدعو و حق التدریس')->nullable();
-            $table->float('ratio_of_faculty_members_to_employees')->comment('نسبت تعداد اعضای هیات علمی به کارمندان واحد')->nullable();
-            $table->float('ratio_of_unit_faculty_members_to_faculty_members_of_the_province')->comment('نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان')->nullable();
-            $table->float('ratio_of_unit_students_to_students_of_the_province')->comment('نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان')->nullable();
-            $table->float('ratio_of_unit_employees_to_provincial_employees')->comment('نسبت تعداد کارمندان به میانگین تعداد کارمندان استان')->nullable();
-            $table->float('unit_teaching_professors_to_teaching_professors_province')->comment('نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان')->nullable();
+            $table->unsignedInteger('ratio_of_faculty_members_to_students')->comment('نسبت تعداد اعضای هیات علمی به دانشجویان')->nullable();
+            $table->unsignedInteger('ratio_of_staff_to_students')->comment('نسبت تعداد کارمندان به دانشجویان')->nullable();
+            $table->unsignedInteger('ratio_of_faculty_members_to_teaching_professors')->comment('نسبت تعداد اعضای هیات علمی به تعداد اساتید مدعو و حق التدریس')->nullable();
+            $table->unsignedInteger('ratio_of_faculty_members_to_employees')->comment('نسبت تعداد اعضای هیات علمی به کارمندان واحد')->nullable();
+            $table->unsignedInteger('ratio_of_unit_faculty_members_to_faculty_members_of_the_province')->comment('نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان')->nullable();
+            $table->unsignedInteger('ratio_of_unit_students_to_students_of_the_province')->comment('نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان')->nullable();
+            $table->unsignedInteger('ratio_of_unit_employees_to_provincial_employees')->comment('نسبت تعداد کارمندان به میانگین تعداد کارمندان استان')->nullable();
+            $table->unsignedInteger('unit_teaching_professors_to_teaching_professors_province')->comment('نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

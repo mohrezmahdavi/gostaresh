@@ -30,7 +30,7 @@ class GDPPartRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'part' => 'required|numeric|gte:0',
-            'amount' => 'required|numeric|gte:0|lte:2147483647',
+            'amount' => 'required|numeric',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

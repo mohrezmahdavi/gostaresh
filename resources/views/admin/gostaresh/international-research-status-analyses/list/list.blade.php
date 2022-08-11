@@ -1,4 +1,4 @@
-{{--Table 36,37 View--}}
+{{-- Table 36,37 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
@@ -21,14 +21,17 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -37,54 +40,54 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="thead-light">
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($internationalResearchStatusAnalyses as $key => $internationalResearchStatusAnalysis)
                                 <tr>
-                                    <th scope="row">{{ $internationalResearchStatusAnalyses?->firstItem() + $key }}</th>
-                                    <td>{{ $internationalResearchStatusAnalysis?->province?->name . ' - ' . $internationalResearchStatusAnalysis->county?->name }}
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key , \App\Models\Index\InternationalResearchStatusAnalysis::$numeric_fields))
-                                                <td>{{ number_format($internationalResearchStatusAnalysis?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $internationalResearchStatusAnalysis?->{$key} }}</td>
-                                            @endif
+                                    <th>#</th>
+                                    <th>شهرستان</th>
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
-                                    <td>{{ $internationalResearchStatusAnalysis?->year }}</td>
-                                    <td>
+                                    <th>سال</th>
+                                    <th>اقدام</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($internationalResearchStatusAnalyses as $key => $internationalResearchStatusAnalysis)
+                                    <tr>
+                                        <th scope="row">{{ $internationalResearchStatusAnalyses?->firstItem() + $key }}
+                                        </th>
+                                        <td>{{ $internationalResearchStatusAnalysis?->province?->name . ' - ' . $internationalResearchStatusAnalysis->county?->name }}
+                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                                @if (filterCol($key))
+                                                    @if (in_array($key, \App\Models\Index\InternationalResearchStatusAnalysis::$numeric_fields))
+                                        <td>{{ number_format($internationalResearchStatusAnalysis?->{$key}) }}</td>
+                                    @else
+                                        <td>{{ $internationalResearchStatusAnalysis?->{$key} }}</td>
+                                @endif
+                                @endif
+                                @endforeach
+                                <td>{{ $internationalResearchStatusAnalysis?->year }}</td>
+                                <td>
 
-                                        <a href="{{ route('international-research.edit', $internationalResearchStatusAnalysis) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
+                                    <a href="{{ route('international-research.edit', $internationalResearchStatusAnalysis) }}"
+                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                            class="fa fa-edit"></i></a>
 
-                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $internationalResearchStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}"--}}
-                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
-                                    </td>
+                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $internationalResearchStatusAnalysis) }}" title="{{ __('validation.buttons.delete') }}" --}}
+                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+                                </td>
 
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('international-research.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('international-research.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('international-research.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('international-research.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->

@@ -20,15 +20,18 @@
 @endsection
 
 @section('styles-head')
-
 @endsection
 
 
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
-                                                               :yearSelectedList="$yearSelectedList"/>
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+        'province' => true,
+        'zone' => false,
+        'county' => true,
+        'city' => false,
+    ]" />
 
     <div class="row">
         <div class="col-md-12">
@@ -38,55 +41,54 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                            <tr>
-                                <th>#</th>
-                                <th>شهرستان</th>
-                                @foreach($filterColumnsCheckBoxes as $key => $value)
-                                    @if( filterCol($key))
-                                        <th>{{$value}}</th>
-                                    @endif
-                                @endforeach
-                                <th>سال</th>
-                                <th>اقدام</th>
-                            </tr>
-                            </thead>
-                            <tbody style="text-align: right; direction: ltr">
-                            @foreach ($employeeProfiles as $key => $employeeProfile)
                                 <tr>
-                                    <th scope="row">{{ $employeeProfiles?->firstItem() + $key }}</th>
-                                    <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile->county?->name }}
-                                    @foreach( $filterColumnsCheckBoxes as $key => $value)
-                                        @if( filterCol($key))
-                                            @if( in_array($key,\App\Models\Index\EmployeeProfile::$numeric_fields))
-                                                <td>{{ number_format($employeeProfile?->{$key}) }}</td>
-                                            @else
-                                                <td>{{ $employeeProfile->{$key} }}</td>
-                                            @endif
+                                    <th>#</th>
+                                    <th>شهرستان</th>
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            <th>{{ $value }}</th>
                                         @endif
                                     @endforeach
-                                    <td>{{ $employeeProfile?->year }}</td>
-                                    <td>
+                                    <th>سال</th>
+                                    <th>اقدام</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right; direction: ltr">
+                                @foreach ($employeeProfiles as $key => $employeeProfile)
+                                    <tr>
+                                        <th scope="row">{{ $employeeProfiles?->firstItem() + $key }}</th>
+                                        <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile->county?->name }}
+                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                                @if (filterCol($key))
+                                                    @if (in_array($key, \App\Models\Index\EmployeeProfile::$numeric_fields))
+                                        <td>{{ number_format($employeeProfile?->{$key}) }}</td>
+                                    @else
+                                        <td>{{ $employeeProfile->{$key} }}</td>
+                                @endif
+                                @endif
+                                @endforeach
+                                <td>{{ $employeeProfile?->year }}</td>
+                                <td>
 
-                                        <a href="{{ route('employee-profile.edit', $employeeProfile) }}"
-                                           title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                                class="fa fa-edit"></i></a>
+                                    <a href="{{ route('employee-profile.edit', $employeeProfile) }}"
+                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                            class="fa fa-edit"></i></a>
 
-                                        {{--                                        <a href="{{ route('research-output-status-analyses.destroy', $employeeProfile) }}" title="{{ __('validation.buttons.delete') }}"--}}
-                                        {{--                                           class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>--}}
+                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $employeeProfile) }}" title="{{ __('validation.buttons.delete') }}" --}}
+                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
 
-                                    </td>
+                                </td>
 
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
                         <div class="text-end mt-3">
-                            <x-exports.export-links 
+                            <x-exports.export-links
                                 excelLink="{{ route('employee-profile.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('employee-profile.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('employee-profile.list.print', request()->query->all()) }}"
-                            />
+                                printLink="{{ route('employee-profile.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->

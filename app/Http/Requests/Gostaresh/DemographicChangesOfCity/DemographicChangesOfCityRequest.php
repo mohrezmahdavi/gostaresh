@@ -29,9 +29,9 @@ class DemographicChangesOfCityRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'population' => 'required|numeric|gte:0',
-            'immigration_rates' => 'required|numeric|gte:0',
-            'growth_rate' => 'required|numeric|gte:0',
+            'population' => 'required|integer|gte:0',
+            'immigration_rates' => 'required|numeric',
+            'growth_rate' => 'required|numeric',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

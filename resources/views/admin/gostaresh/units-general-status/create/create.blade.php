@@ -1,20 +1,20 @@
-{{--Table 57 View--}}
+{{-- Table 57 View --}}
 @extends('layouts.dashboard')
 
 @section('title-tag')
-ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
+    ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
 @endsection
 
 @section('breadcrumb-title')
-ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
+    ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
 @endsection
 
 @section('page-title')
-ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
+    ایجاد وضعیت کلی واحدھا و مراکز آموزشی شھرستان ھای استان
 
-<span>
-    <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
-</span>
+    <span>
+        <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
+    </span>
 @endsection
 
 @section('styles-head')
@@ -28,15 +28,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body" id="app">
-                    <form class="form-horizontal" method="POST" action="{{ route('units-general-status.store') }}" role="form">
+                    <form class="form-horizontal" method="POST" action="{{ route('units-general-status.store') }}"
+                        role="form">
                         @csrf
 
-                        <select-province-component
-                            province_default="{{ auth()->user()->province_id ?? '' }}"
-                            zone_default="{{ auth()->user()->county->zone ?? ''}}"
+                        <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
+                            zone_default="{{ auth()->user()->county->zone ?? '' }}"
                             county_default="{{ auth()->user()->county_id ?? '' }}"
                             city_default="{{ auth()->user()->city_id ?? '' }}"
-                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}">
+                            rural_district_default="{{ auth()->user()->rural_district_id ?? '' }}"
+                            :fields="{{ json_encode([
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                            ]) }}">
                         </select-province-component>
 
                         <div class="form-group row mt-2">
@@ -45,9 +51,8 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit"
-                                       value="{{ old('unit') }}" class="form-control"
-                                       placeholder=" واحد را وارد کنید...">
+                                <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
+                                    class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
 
@@ -57,9 +62,12 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="degree/rank" name="degree/rank"
-                                       value="{{ old('degree/rank') }}" class="form-control"
-                                       placeholder=" درجه/رتبه را وارد کنید...">
+                                <select class="form-control" required id="degree/rank" name="degree/rank">
+                                    <option label="انتخاب کنید"></option>
+                                    @foreach (config('gostaresh.rank') as $key => $value)
+                                        <option {{ (old('degree/rank') == $key) ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -69,13 +77,13 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="score" name="score"
-                                       value="{{ old('score') }}" class="form-control"
-                                       placeholder="امتیاز را وارد کنید...">
+                                <input type="text" id="score" name="score" value="{{ old('score') }}"
+                                    class="form-control" placeholder="امتیاز را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="old('established_year')" :required="true" name="established_year" title="سال تاسیس"></x-select-year>
+                        <x-select-year :default="old('established_year')" :required="true" name="established_year" title="سال تاسیس">
+                        </x-select-year>
 
 
                         <div class="form-group row mt-2">
@@ -84,16 +92,17 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="approved_number_and_titles_of_the_faculty" name="approved_number_and_titles_of_the_faculty"
-                                       value="{{ old('approved_number_and_titles_of_the_faculty') }}" class="form-control"
-                                       placeholder=" تعداد و عناوین دانشکده مصوب را وارد کنید...">
+                                <input type="text" id="approved_number_and_titles_of_the_faculty"
+                                    name="approved_number_and_titles_of_the_faculty"
+                                    value="{{ old('approved_number_and_titles_of_the_faculty') }}" class="form-control"
+                                    placeholder=" تعداد و عناوین دانشکده مصوب را وارد کنید...">
                             </div>
                         </div>
 
 
-                        <x-select-year :default="old('year')" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="old('year')" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        <x-select-month :default="old('month')" :required="false" name="month"></x-select-month>
+                        {{-- <x-select-month :default="old('month')" :required="false" name="month"></x-select-month> --}}
 
 
 

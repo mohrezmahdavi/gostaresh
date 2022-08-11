@@ -5,6 +5,7 @@ namespace App\Models\Index;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\County;
+use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ class StudentAdmissionCapacity extends Model
 
     protected $table = "gostaresh_student_admission_capacities";
 
-    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title'];
+    protected $appends = ['department_of_education_title', 'university_type_title', 'gender_title', 'grade_title'];
 
     public function getGenderTitleAttribute()
     {
@@ -45,6 +46,15 @@ class StudentAdmissionCapacity extends Model
         foreach (config('gostaresh.department_of_education') as $key => $value) {
             if ($key == $this->department_of_education) {
                 return $value;
+            }
+        }
+    }
+
+    public function getGradeTitleAttribute()
+    {
+        foreach (Grade::all() as $grade) {
+            if ($grade->id == $this->grade_id) {
+                return $grade->name;
             }
         }
     }
@@ -120,8 +130,9 @@ class StudentAdmissionCapacity extends Model
 
         "university_type_title"          => "دانشگاه",
         "gender_title"                   => "جنسیت",
+        "grade_title"                    => "مقطع",
         "department_of_education_title"  => "گروه عمده تحصیلی",
-        "student_admission_capacities"   => "مقدار",
+        "student_admission_capacities"   => "تعداد میزان ظرفیت پذیرش دانشجو",
         "year"                           => "سال",
      
     ];
