@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaRevenue\PercapitaRevenueRequest;
 use App\Models\Index\AverageTuitionIncome;
 use App\Models\Index\PercapitaRevenueStatusAnalysis;
+use App\Models\Major;
+use App\Models\Minor;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -74,7 +76,9 @@ class PercapitaRevenueController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.percapita-revenue.create.create');
+        $majors = Major::all();
+        $minors = Minor::all();
+        return view('admin.gostaresh.percapita-revenue.create.create', compact('majors','minors'));
     }
 
     /**
@@ -108,7 +112,9 @@ class PercapitaRevenueController extends Controller
      */
     public function edit(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
-        return view('admin.gostaresh.percapita-revenue.edit.edit', compact('percapitaRevenue'));
+        $majors = Major::all();
+        $minors = Minor::all();
+        return view('admin.gostaresh.percapita-revenue.edit.edit', compact('percapitaRevenue','majors','minors'));
     }
 
     /**

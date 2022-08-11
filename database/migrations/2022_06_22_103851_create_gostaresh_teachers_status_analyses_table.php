@@ -41,7 +41,7 @@ return new class extends Migration
             $table->unsignedInteger('number_of_faculty_members_type_a')->comment('تعداد اعضای هیات علمی نوع الف')->nullable();
             $table->unsignedInteger('number_of_faculty_members_type_b')->comment('تعداد اعضای هیات علمی نوع ب')->nullable();
             $table->unsignedInteger('number_of_top_scientific_faculty_members')->comment('تعداد اعضای هیات علمی سرآمد علمی')->nullable();
-            $table->unsignedInteger('average_level_of_research_productivity_of_faculty_members')->comment('متوسط سطح بهره وری پژوهشی اعضای هیات علمی')->nullable();
+            $table->float('average_level_of_research_productivity_of_faculty_members')->comment('متوسط سطح بهره وری پژوهشی اعضای هیات علمی')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

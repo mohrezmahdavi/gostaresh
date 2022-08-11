@@ -1,7 +1,7 @@
 <td>{{ $employeeProfile?->province?->name . ' - ' . $employeeProfile?->county?->name }}
 </td>
-@if (filterCol('department_of_education_title') == true)
-<td>{{ $employeeProfile?->department_of_education_title }}</td>
+@if (filterCol('university_type_title') == true)
+<td>{{ $employeeProfile?->university_type_title }}</td>
 @endif
 @if (filterCol('number_of_non_faculty_staff') == true)
 <td>{{ number_format((int) $employeeProfile?->number_of_non_faculty_staff) }}</td>

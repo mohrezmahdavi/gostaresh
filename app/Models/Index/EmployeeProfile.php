@@ -21,11 +21,11 @@ class EmployeeProfile extends Model
 
     protected $table = "gostaresh_employee_profiles";
 
-    protected $appends = ['department_of_education_title'];
+    protected $appends = ['university_type_title'];
 
-    public function getDepartmentOfEducationTitleAttribute()
+    public function getUniversityTypeTitleAttribute()
     {
-        foreach (config('gostaresh.department_of_education') as $key => $value) {
+        foreach (config('gostaresh.university_type') as $key => $value) {
             if ($key == $this->higher_education_subsystems) {
                 return $value;
             }
@@ -114,7 +114,7 @@ class EmployeeProfile extends Model
     ];
 
     public static $filterColumnsCheckBoxes = [
-        "department_of_education_title"               => "زیرنظام های آموزش عالی شهرستان",
+        "university_type_title"               => "زیرنظام های آموزش عالی شهرستان",
         "number_of_non_faculty_staff"                 => "تعداد کارکنان غیر هیات علمی",
         "average_age_of_employees"                    => "میانگین سنی کارمندان",
         "number_of_male_employees"                    => "تعداد کارمندان مرد",

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\NumberOfNonMedicalFieldsOfStudy\ListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Index\NumberOfNonMedicalFieldsOfStudy;
+use App\Models\Major;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfNonMedicalFieldsOfStudy\NumberOfNonMedicalFieldsOfStudyRequest;
@@ -70,7 +71,8 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function create()
     {
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.create.create');
+        $majors = Major::all();
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.create.create', compact('majors'));
     }
 
     /**
@@ -104,7 +106,8 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function edit(NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
     {
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.edit.edit', compact('numberOfNonMedicalFieldsOfStudy'));
+        $majors = Major::all();
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.edit.edit', compact('numberOfNonMedicalFieldsOfStudy','majors'));
     }
 
     /**

@@ -19,6 +19,9 @@
 @if (filterCol('masters') == true)
 <td>{{ number_format((int) $tuitionIncome?->masters ) }}</td>
 @endif
+@if (filterCol('professional_phd') == true)
+<td>{{ number_format((int) $tuitionIncome?->professional_phd ) }}</td>
+@endif
 @if (filterCol('phd') == true)
 <td>{{ number_format((int) $tuitionIncome?->phd ) }}</td>
 @endif

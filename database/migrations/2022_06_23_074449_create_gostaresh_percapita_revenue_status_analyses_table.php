@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->unsignedTinyInteger('university_type')->comment('دانشگاه')->nullable();
             $table->unsignedTinyInteger('grade')->comment('مقطع تحصیلی')->nullable();
-            $table->float('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
+            $table->unsignedInteger('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

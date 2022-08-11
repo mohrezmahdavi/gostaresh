@@ -8,6 +8,9 @@
 @if (filterCol('gender') == true)
     <th>جنسیت</th>
 @endif
+@if (filterCol('grade') == true)
+    <th>مقطع</th>
+@endif
 @if (filterCol('associate_degree') == true)
     <th>کاردانی</th>
 @endif

@@ -43,6 +43,7 @@
 
                                 <tr>
                                     <th>#</th>
+                                    <th>درجه/رتبه</th>
                                     <th>شهرستان</th>
 
 
@@ -61,16 +62,23 @@
                                 @foreach ($unitsGeneralStatuses as $key => $unitsGeneralStatus)
                                     <tr>
                                         <th scope="row">{{ $unitsGeneralStatuses?->firstItem() + $key }}</th>
+                                        <td>
+                                            @foreach(config('gostaresh.rank') as $item => $value)
+                                                @if($item == $unitsGeneralStatus['degree/rank'])
+                                                    {{$value}}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>{{ $unitsGeneralStatus?->province?->name . ' - ' . $unitsGeneralStatus->county?->name }}
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\UnitsGeneralStatus::$numeric_fields))
-                                        <td>{{ number_format($unitsGeneralStatus?->{$key}) }}</td>
-                                    @else
-                                        <td>{{ $unitsGeneralStatus->{$key} }}</td>
-                                @endif
-                                @endif
-                                @endforeach
+                                                        <td>{{ number_format($unitsGeneralStatus?->{$key}) }}</td>
+                                                    @else
+                                                        <td>{{ $unitsGeneralStatus->{$key} }}</td>
+                                                    @endif
+                                                @endif
+                                            @endforeach
 
                                 <td>{{ $unitsGeneralStatus?->year }}</td>
                                 <td>

@@ -44,17 +44,17 @@
                             ]) }}">
                         </select-province-component>
 
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="experimental_policy_title">
-                                <span>عنوان سیاست آزمایشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="experimental_policy_title" name="experimental_policy_title"
-                                    value="{{ old('experimental_policy_title') }}" class="form-control"
-                                    placeholder=" عنوان سیاست آزمایشی را وارد کنید...">
-                            </div>
-                        </div>
+                        {{--<div class="form-group row mt-2">--}}
+                            {{--<label class="col-sm-2 col-form-label" for="experimental_policy_title">--}}
+                                {{--<span>عنوان سیاست آزمایشی </span>&nbsp--}}
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+                            {{--</label>--}}
+                            {{--<div class="col-sm-10">--}}
+                                {{--<input type="text" id="experimental_policy_title" name="experimental_policy_title"--}}
+                                    {{--value="{{ old('experimental_policy_title') }}" class="form-control"--}}
+                                    {{--placeholder=" عنوان سیاست آزمایشی را وارد کنید...">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="title_axis">
@@ -76,6 +76,30 @@
                                 <input type="text" id="project_title" name="project_title"
                                     value="{{ old('project_title') }}" class="form-control"
                                     placeholder=" عنوان پروژه را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="package_number">
+                                <span>شماره بسته متناظر از سند تحول دانشگاه </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="package_number" name="package_number"
+                                    value="{{ old('package_number') }}" class="form-control"
+                                    placeholder=" شماره بسته متناظر از سند تحول دانشگاه را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="transformation_document">
+                                <span>شماره راهکنش متناظر از سند تحول دانشگاه </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="number" id="transformation_document" name="transformation_document"
+                                    value="{{ old('transformation_document') }}" class="form-control"
+                                    placeholder=" شماره راهکنش متناظر از سند تحول دانشگاه را وارد کنید...">
                             </div>
                         </div>
 

@@ -287,7 +287,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_level_of_research_productivity_of_faculty_members"
+                                <input type="text" id="average_level_of_research_productivity_of_faculty_members"
                                     name="average_level_of_research_productivity_of_faculty_members"
                                     value="{{ old('average_level_of_research_productivity_of_faculty_members') }}"
                                     class="form-control"

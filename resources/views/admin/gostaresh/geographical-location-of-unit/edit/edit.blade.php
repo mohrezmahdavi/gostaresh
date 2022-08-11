@@ -57,7 +57,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row mt-2">
+                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_building">
                                 <span> ساختمان واحد دانشگاهی </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
@@ -79,7 +79,7 @@
                                     value="{{ $geographicalLocationOfUnit->land_area }}" class="form-control"
                                     placeholder="مساحت زمین را وارد کنید...">
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="the_size_of_the_building">
@@ -144,7 +144,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="distance_to_the_nearest_higher_education_center"
+                                <input type="number" id="distance_to_the_nearest_higher_education_center"
                                     name="distance_to_the_nearest_higher_education_center"
                                     value="{{ $geographicalLocationOfUnit->distance_to_the_nearest_higher_education_center }}"
                                     class="form-control" placeholder="فاصله تا نزدیکترین مرکز آموزش عالی را وارد کنید...">
@@ -157,7 +157,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="distance_to_the_nearest_unit_of_azad_university"
+                                <input type="number" id="distance_to_the_nearest_unit_of_azad_university"
                                     name="distance_to_the_nearest_unit_of_azad_university"
                                     value="{{ $geographicalLocationOfUnit->distance_to_the_nearest_higher_education_center }}"
                                     class="form-control"
@@ -173,7 +173,7 @@
                             <div class="col-sm-10">
                                 <select name="level_and_quality_of_access" id="level_and_quality_of_access"
                                     class="form-select">
-                                    @foreach (config('gostaresh.qualities') as $key => $value)
+                                    @foreach (config('gostaresh.qualitiesOfAvailable') as $key => $value)
                                         <option
                                             {{ $key == $geographicalLocationOfUnit->level_and_quality_of_access ? 'selected' : '' }}
                                             value="{{ $key }}">{{ $value }}</option>
@@ -192,7 +192,7 @@
                             <div class="col-sm-10">
                                 <select name="international_opportunities_geographical_location"
                                     id="international_opportunities_geographical_location" class="form-select">
-                                    @foreach (config('gostaresh.qualities') as $key => $value)
+                                    @foreach (config('gostaresh.international_opportunities') as $key => $value)
                                         <option
                                             {{ $key == $geographicalLocationOfUnit->international_opportunities_geographical_location ? 'selected' : '' }}
                                             value="{{ $key }}">{{ $value }}</option>

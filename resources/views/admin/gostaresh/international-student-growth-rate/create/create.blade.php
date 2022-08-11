@@ -95,7 +95,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="kardani_count" name="kardani_count"
+                                <input type="text" style="direction: rtl;" id="kardani_count" name="kardani_count"
                                     value="{{ old('kardani_count') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -107,7 +107,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="karshenasi_count" name="karshenasi_count"
+                                <input type="text" style="direction: rtl;" id="karshenasi_count" name="karshenasi_count"
                                     value="{{ old('karshenasi_count') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -119,7 +119,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="karshenasi_arshad_count"
+                                <input type="text" style="direction: rtl;" id="karshenasi_arshad_count"
                                     name="karshenasi_arshad_count" value="{{ old('karshenasi_arshad_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -131,7 +131,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="docktora_count" name="docktora_count"
+                                <input type="text" style="direction: rtl;" id="docktora_count" name="docktora_count"
                                     value="{{ old('docktora_count') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>

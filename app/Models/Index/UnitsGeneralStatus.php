@@ -91,7 +91,6 @@ class UnitsGeneralStatus extends Model
 
     public static $filterColumnsCheckBoxes = [
         'unit'                                      => 'واحد',
-        'degree/rank'                               => 'درجه/رتبه',
         'score'                                     => 'امتیاز',
         'established_year'                          => 'سال تاسیس',
         'approved_number_and_titles_of_the_faculty' => 'تعداد و عناوین دانشکده مصوب',
