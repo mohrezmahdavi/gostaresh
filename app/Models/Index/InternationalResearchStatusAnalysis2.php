@@ -2,6 +2,11 @@
 
 namespace App\Models\Index;
 
+use App\Models\City;
+use App\Models\Country;
+use App\Models\County;
+use App\Models\Province;
+use App\Models\RuralDistrict;
 use Facades\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -83,7 +88,7 @@ class InternationalResearchStatusAnalysis2 extends Model
     }
 
     public static $numeric_fields = [
-        
+
         "average_H_index_of_faculty_members",
         "number_of_articles_science_and_nature",
         "print_ISI_articles",
