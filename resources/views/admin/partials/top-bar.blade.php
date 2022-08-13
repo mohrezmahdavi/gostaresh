@@ -308,7 +308,7 @@
                     </div>
 
 
-                    <a href="" class="dropdown-item notify-item">
+                    <a href="{{ route('admin.profile.edit') }}" class="dropdown-item notify-item">
                         <i class="far fa-user"></i>
                         <span>پروفایل</span>
                     </a>
