@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gostaresh_international_research_status_analyses', function (Blueprint $table) {
+        Schema::create('gostaresh_international_research_status_analysis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
