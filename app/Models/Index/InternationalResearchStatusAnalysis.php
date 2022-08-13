@@ -19,7 +19,7 @@ class InternationalResearchStatusAnalysis extends Model
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_international_research_status_analyses";
+    protected $table = "gostaresh_international_research_status_analysis";
 
     public function country()
     {

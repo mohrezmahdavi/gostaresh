@@ -37,11 +37,11 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component province_default="{{ $internationalResearch->province_id }}"
-                            zone_default="{{ $internationalResearch->county->zone }}"
-                            county_default="{{ $internationalResearch->county_id }}"
-                            city_default="{{ $internationalResearch->city_id }}"
-                            rural_district_default="{{ $internationalResearch->rural_district_id }}"
+                        <select-province-component province_default="{{ $internationalResearch->province_id ?? ''}}"
+                            zone_default="{{ $internationalResearch->county->zone ?? ''}}"
+                            county_default="{{ $internationalResearch->county_id ?? ''}}"
+                            city_default="{{ $internationalResearch->city_id ?? ''}}"
+                            rural_district_default="{{ $internationalResearch->rural_district_id ?? ''}}"
                             :fields="{{ json_encode([
                                 'province' => true,
                                 'zone' => false,
@@ -199,161 +199,6 @@
                                     value="{{ $internationalResearch->number_of_international_awards }}"
                                     class="form-control"
                                     placeholder=" تعداد جوایز بین المللی کسب شده در ۵ سال اخیر را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="average_H_index_of_faculty_members">
-                                <span>متوسط H-index اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="average_H_index_of_faculty_members"
-                                    name="average_H_index_of_faculty_members"
-                                    value="{{ $internationalResearch->average_H_index_of_faculty_members }}"
-                                    class="form-control" placeholder=" متوسط H-index اعضای هیات علمی را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_articles_science_and_nature">
-                                <span>تعداد مقالات در دو مجله Science و Nature </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_articles_science_and_nature"
-                                    name="number_of_articles_science_and_nature"
-                                    value="{{ $internationalResearch->number_of_articles_science_and_nature }}"
-                                    class="form-control"
-                                    placeholder=" تعداد مقالات در دو مجله Science  و Nature را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="print_ISI_articles">
-                                <span>سرانه چاپ مقالات ISI </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="print_ISI_articles" name="print_ISI_articles"
-                                    value="{{ $internationalResearch->print_ISI_articles }}" class="form-control"
-                                    placeholder=" سرانه چاپ مقالات ISI را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="percentage_of_quality_articles">
-                                <span>درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" id="percentage_of_quality_articles"
-                                    name="percentage_of_quality_articles"
-                                    value="{{ $internationalResearch->percentage_of_quality_articles }}"
-                                    class="form-control"
-                                    placeholder=" درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1) را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_faculty_members_of_world_scientists">
-                                <span>تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس
-                                    نظام‌های رتبه بندی مصوب </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_faculty_members_of_world_scientists"
-                                    name="number_of_faculty_members_of_world_scientists"
-                                    value="{{ $internationalResearch->number_of_faculty_members_of_world_scientists }}"
-                                    class="form-control"
-                                    placeholder=" تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس نظام‌های رتبه بندی مصوب را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label"
-                                for="number_of_faculty_members_of_international_journals">
-                                <span>تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_faculty_members_of_international_journals"
-                                    name="number_of_faculty_members_of_international_journals"
-                                    value="{{ $internationalResearch->number_of_faculty_members_of_international_journals }}"
-                                    class="form-control"
-                                    placeholder=" تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_international_conferences_held">
-                                <span>تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_international_conferences_held"
-                                    name="number_of_international_conferences_held"
-                                    value="{{ $internationalResearch->number_of_international_conferences_held }}"
-                                    class="form-control"
-                                    placeholder=" تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_international_scientific_books">
-                                <span>تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation
-                                    دانشگاه آزاد اسلامی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_international_scientific_books"
-                                    name="number_of_international_scientific_books"
-                                    value="{{ $internationalResearch->number_of_international_scientific_books }}"
-                                    class="form-control"
-                                    placeholder=" تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_international_agreements_implemented">
-                                <span>تعداد تفاهم نامه های بین المللی اجرایی شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_international_agreements_implemented"
-                                    name="number_of_international_agreements_implemented"
-                                    value="{{ $internationalResearch->number_of_international_agreements_implemented }}"
-                                    class="form-control"
-                                    placeholder=" تعداد تفاهم نامه های بین المللی اجرایی شده را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="amount_of_international_research_credits">
-                                <span>میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="amount_of_international_research_credits"
-                                    name="amount_of_international_research_credits"
-                                    value="{{ $internationalResearch->amount_of_international_research_credits }}"
-                                    class="form-control"
-                                    placeholder=" میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده را وارد کنید...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="number_of_international_publications">
-                                <span>تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus)
-                                </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="number" id="number_of_international_publications"
-                                    name="number_of_international_publications"
-                                    value="{{ $internationalResearch->number_of_international_publications }}"
-                                    class="form-control"
-                                    placeholder=" تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus) را وارد کنید...">
                             </div>
                         </div>
 
