@@ -19,7 +19,7 @@ class InternationalResearchStatusAnalysis extends Model
 
     protected $guarded = [];
 
-    protected $table = "gostaresh_international_research_status_analyses";
+    protected $table = "gostaresh_international_research_status_analysis";
 
     public function country()
     {
@@ -78,8 +78,16 @@ class InternationalResearchStatusAnalysis extends Model
             });
         }
 
-        if (request()->year) {
-            $query->where('year', request()->year);
+        if (request('year_selected')) {
+            $query->where('year', request('year_selected'));
+        }
+
+        if (request('start_year')) {
+            $query->where('year', '>=' ,request('start_year'));
+        }
+
+        if (request('end_year')) {
+            $query->where('year', '<=' ,request('end_year'));
         }
 
         $query = filterByOwnProvince($query);

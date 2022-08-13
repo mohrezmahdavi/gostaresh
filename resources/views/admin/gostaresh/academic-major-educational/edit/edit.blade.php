@@ -14,6 +14,9 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+    <span>
+        <a href="{{ route('academic.major.educational.index') }}" class="btn btn-secondary btn-sm">بازگشت به لیست اطلاعات</a>
+    </span>
 @endsection
 
 @section('styles-head')

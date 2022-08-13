@@ -106,36 +106,36 @@ class InternationalResearchStatusAnalysis2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param InternationalResearchStatusAnalysis2 $internationalResearch
+     * @param InternationalResearchStatusAnalysis2 $internationalResearch2
      * @return Application|Factory|View
      */
-    public function edit(InternationalResearchStatusAnalysis2 $internationalResearch): Factory|View|Application
+    public function edit(InternationalResearchStatusAnalysis2 $internationalResearch2)
     {
-        return view('admin.gostaresh.international-research-status-analysis2.edit.edit', compact('internationalResearch'));
+        return view('admin.gostaresh.international-research-status-analysis2.edit.edit', compact('internationalResearch2'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param InternationalResearchStatusAnalysis2Request $request
-     * @param InternationalResearchStatusAnalysis2 $internationalResearch
+     * @param InternationalResearchStatusAnalysis2 $internationalResearch2
      * @return RedirectResponse
      */
-    public function update(InternationalResearchStatusAnalysis2Request $request, InternationalResearchStatusAnalysis2 $internationalResearch): RedirectResponse
+    public function update(InternationalResearchStatusAnalysis2Request $request, InternationalResearchStatusAnalysis2 $internationalResearch2): RedirectResponse
     {
-        $internationalResearch->update($request->validated());
+        $internationalResearch2->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param InternationalResearchStatusAnalysis2 $internationalResearch
+     * @param InternationalResearchStatusAnalysis2 $internationalResearch2
      * @return RedirectResponse
      */
-    public function destroy(InternationalResearchStatusAnalysis2 $internationalResearch): RedirectResponse
+    public function destroy(InternationalResearchStatusAnalysis2 $internationalResearch2): RedirectResponse
     {
-        $internationalResearch->delete();
+        $internationalResearch2->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }
