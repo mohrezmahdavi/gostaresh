@@ -38,7 +38,7 @@
 
                         <select-province-component
                             province_default="{{ $statusAnalysisOfTheNumOfCourse->province_id ?? '' }}"
-                            zone_default="{{ $statusAnalysisOfTheNumOfCourse->county->zone }}"
+                            zone_default="{{ $statusAnalysisOfTheNumOfCourse->county->zone ?? ''}}"
                             county_default="{{ $statusAnalysisOfTheNumOfCourse->county_id ?? '' }}"
                             city_default="{{ $statusAnalysisOfTheNumOfCourse->city_id ?? '' }}"
                             rural_district_default="{{ $statusAnalysisOfTheNumOfCourse->rural_district_id ?? '' }}"

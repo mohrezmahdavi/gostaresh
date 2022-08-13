@@ -37,11 +37,11 @@
                         @csrf
                         @method('PUT')
 
-                        <select-province-component province_default="{{ $numberOfInternationalCourse->province_id }}"
-                            zone_default="{{ $numberOfInternationalCourse->county->zone }}"
-                            county_default="{{ $numberOfInternationalCourse->county_id }}"
-                            city_default="{{ $numberOfInternationalCourse->city_id }}"
-                            rural_district_default="{{ $numberOfInternationalCourse->rural_district_id }}"
+                        <select-province-component province_default="{{ $numberOfInternationalCourse->province_id ?? ''}}"
+                            zone_default="{{ $numberOfInternationalCourse->county->zone ?? ''}}"
+                            county_default="{{ $numberOfInternationalCourse->county_id ?? ''}}"
+                            city_default="{{ $numberOfInternationalCourse->city_id ?? ''}}"
+                            rural_district_default="{{ $numberOfInternationalCourse->rural_district_id ?? ''}}"
                             :fields="{{ json_encode([
                                 'province' => true,
                                 'zone' => false,
