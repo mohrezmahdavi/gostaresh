@@ -33,4 +33,3 @@
 @endif                     
 
 <td>{{ $revenueStatusAnalys?->year }}</td>
-<td>{{ $revenueStatusAnalys?->month }}</td>

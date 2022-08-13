@@ -38,4 +38,3 @@
 @endif
 
 <td>{{ $percapitaStatusAnalys?->year }}</td>
-<td>{{ $percapitaStatusAnalys?->month }}</td>

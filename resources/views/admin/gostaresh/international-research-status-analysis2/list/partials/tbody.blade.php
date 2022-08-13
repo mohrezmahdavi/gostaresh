@@ -68,4 +68,3 @@
 @endif
 
 <td>{{ $internationalResearchStatusAnalys?->year }}</td>
-<td>{{ $internationalResearchStatusAnalys?->month }}</td>

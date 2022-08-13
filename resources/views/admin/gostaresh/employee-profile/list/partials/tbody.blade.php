@@ -45,4 +45,3 @@
 
 
 <td>{{ $employeeProfile?->year }}</td>
-<td>{{ $employeeProfile?->month }}</td>

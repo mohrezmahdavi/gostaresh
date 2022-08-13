@@ -83,4 +83,3 @@
 @endif
 
 <td>{{ $culturalIndicator?->year }}</td>
-<td>{{ $culturalIndicator?->month }}</td>

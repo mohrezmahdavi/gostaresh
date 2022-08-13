@@ -20,5 +20,4 @@
 @endif
 
 <td>{{ $internationalTechnology?->year }}</td>
-<td>{{ $internationalTechnology?->month }}</td>
 

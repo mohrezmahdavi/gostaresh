@@ -9,4 +9,3 @@
 @endif
 
 <td>{{ $revenueChange?->year }}</td>
-<td>{{ $revenueChange?->month }}</td>

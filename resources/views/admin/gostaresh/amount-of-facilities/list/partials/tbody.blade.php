@@ -8,4 +8,3 @@
 @endif
 
 <td>{{ $amountOfFacilitiesForResearchAchievement?->year }}</td>
-<td>{{ $amountOfFacilitiesForResearchAchievement?->month }}</td>

@@ -59,7 +59,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $creditAndAssets?->year);
-        array_push($mapping, $creditAndAssets?->month);
 
         return $mapping;
     }
@@ -98,7 +97,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }
