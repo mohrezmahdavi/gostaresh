@@ -47,19 +47,23 @@
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <x-search-date name="date" startDate="{{ request()->input('start_date') }}"
                                     endDate="{{ request()->input('end_date') }}">
                                 </x-search-date>
-                            </div>
+                            </div> --}}
                             <div class="col-md-2">
-                                <label class="col-form-label">سال</label>
-                                <select name="year" class="form-select" id="year">
-                                    <option value="">همه</option>
-                                    @foreach ($yearSelectedList as $yearSelected)
-                                        <option value="{{ $yearSelected }}">{{ $yearSelected }}</option>
-                                    @endforeach
-                                </select>
+                                <x-gostaresh.filter-table-list.select-year title="از سال" :default="request()->start_year"
+                                    min="{{ config('gostaresh.year.min', 1370) }}"
+                                    max="{{ config('gostaresh.year.max', 1405) }}" name="start_year">
+                                </x-gostaresh.filter-table-list.select-year>
+                            </div>
+
+                            <div class="col-md-2">
+                                <x-gostaresh.filter-table-list.select-year title="تا سال" :default="request()->end_year"
+                                    min="{{ config('gostaresh.year.min', 1370) }}"
+                                    max="{{ config('gostaresh.year.max', 1405) }}" name="end_year">
+                                </x-gostaresh.filter-table-list.select-year>
                             </div>
                             <div class="col-md-6 mt-4">
                                 <div class="mt-1">
