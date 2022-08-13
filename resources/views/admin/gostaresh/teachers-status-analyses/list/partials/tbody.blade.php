@@ -60,4 +60,3 @@
 @endif
 
 <td>{{ $teachersStatusAnalys?->year }}</td>
-<td>{{ $teachersStatusAnalys?->month }}</td>

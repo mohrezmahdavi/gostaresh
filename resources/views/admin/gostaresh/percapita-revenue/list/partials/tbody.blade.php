@@ -21,4 +21,3 @@
 @endif
 
 <td>{{ $percapitaRevenue?->year }}</td>
-<td>{{ $percapitaRevenue?->month }}</td>

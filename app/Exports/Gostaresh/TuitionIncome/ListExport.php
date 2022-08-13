@@ -53,7 +53,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $tuitionIncomes?->year);
-        array_push($mapping, $tuitionIncomes?->month);
 
         return $mapping;
     }
@@ -86,7 +85,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

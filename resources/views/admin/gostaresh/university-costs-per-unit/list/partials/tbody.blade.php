@@ -93,4 +93,3 @@
 @endif
 
 <td>{{ $universityCost?->year }}</td>
-<td>{{ $universityCost?->month }}</td>

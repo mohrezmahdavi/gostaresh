@@ -11,6 +11,5 @@
 
 
 <td>{{ $demographicChangesOfCity?->year }}</td>
-<td>{{ $demographicChangesOfCity?->month }}</td>
 <td>{{ $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name }}
 </td>

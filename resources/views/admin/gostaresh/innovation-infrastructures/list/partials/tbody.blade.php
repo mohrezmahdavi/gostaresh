@@ -35,4 +35,3 @@
 @endif
 
 <td>{{ $innovationInfrastructure?->year }}</td>
-<td>{{ $innovationInfrastructure?->month }}</td>

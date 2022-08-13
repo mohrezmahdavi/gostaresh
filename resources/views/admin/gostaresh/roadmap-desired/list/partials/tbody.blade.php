@@ -27,4 +27,3 @@
 @endif
 
 <td>{{ $roadmapDesired?->year }}</td>
-<td>{{ $roadmapDesired?->month }}</td>

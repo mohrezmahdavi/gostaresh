@@ -36,4 +36,3 @@
 
 
 <td>{{ $technologicalProduct?->year }}</td>
-<td>{{ $technologicalProduct?->month }}</td>

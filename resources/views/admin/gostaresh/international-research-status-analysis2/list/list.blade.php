@@ -16,7 +16,7 @@
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
     <span>
-        <a href="{{ route('international-research.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+        <a href="{{ route('international-research2.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
 @endsection
 
@@ -70,7 +70,7 @@
                                 <td>{{ $internationalResearchStatusAnalysis?->year }}</td>
                                 <td>
 
-                                    <a href="{{ route('international-research.edit', $internationalResearchStatusAnalysis) }}"
+                                    <a href="{{ route('international-research2.edit', $internationalResearchStatusAnalysis) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
@@ -85,9 +85,9 @@
 
                         <div class="text-end mt-3">
                             <x-exports.export-links
-                                excelLink="{{ route('international-research.list.excel', request()->query->all()) }}"
-                                pdfLink="{{ route('international-research.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('international-research.list.print', request()->query->all()) }}" />
+                                excelLink="{{ route('international-research2.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('international-research2.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('international-research2.list.print', request()->query->all()) }}" />
                         </div>
                     </div>
                     <!-- end table-responsive-->
