@@ -9,4 +9,3 @@
 @endif     
 
 <td>{{ $costChangesTrend?->year }}</td>
-<td>{{ $costChangesTrend?->month }}</td>

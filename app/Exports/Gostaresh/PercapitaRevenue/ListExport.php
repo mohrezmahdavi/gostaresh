@@ -44,7 +44,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $percapitaRevenues?->year);
-        array_push($mapping, $percapitaRevenues?->month);
 
         return $mapping;
     }
@@ -68,7 +67,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

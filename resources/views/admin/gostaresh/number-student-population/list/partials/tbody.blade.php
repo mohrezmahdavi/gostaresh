@@ -26,4 +26,3 @@
 @endif
 
 <td>{{ $numberStudentPopulation?->year }}</td>
-<td>{{ $numberStudentPopulation?->month }}</td>

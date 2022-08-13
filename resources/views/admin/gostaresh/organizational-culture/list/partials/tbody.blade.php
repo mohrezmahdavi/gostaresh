@@ -50,4 +50,3 @@
 @endif
 
 <td>{{ $organizationalCulture?->year }}</td>
-<td>{{ $organizationalCulture?->month }}</td>

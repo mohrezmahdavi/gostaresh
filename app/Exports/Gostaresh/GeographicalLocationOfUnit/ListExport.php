@@ -58,7 +58,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $geographicalLocationOfUnit?->year);
-        array_push($mapping, $geographicalLocationOfUnit?->month);
         array_push($mapping, $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit?->county?->name);
         return $mapping;
     }
@@ -98,7 +97,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($headings, 'فرصت های بین الملی موقعیت جغرافیایی');
         }
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         array_push($headings, 'موقعیت');
         return $headings;
     }

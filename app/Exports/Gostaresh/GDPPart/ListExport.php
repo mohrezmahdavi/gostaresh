@@ -36,7 +36,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('year') == true) {
             array_push($mapping, $gdpPart?->year);
         }
-        array_push($mapping, $gdpPart?->month);
 
         return $mapping;
     }
@@ -54,7 +53,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('immigration_rates') == true) {
             array_push($headings, 'سال');
         }
-        array_push($headings, 'ماه');
 
         return $headings;
     }

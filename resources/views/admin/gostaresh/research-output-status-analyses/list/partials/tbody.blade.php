@@ -59,5 +59,4 @@
 @endif
 
 <td>{{ $researchOutputStatusAnalys?->year }}</td>
-<td>{{ $researchOutputStatusAnalys?->month }}</td>
 

@@ -81,7 +81,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
         
         array_push($mapping, $organizationalCultures?->year);
-        array_push($mapping, $organizationalCultures?->month);
 
         return $mapping;
     }
@@ -141,7 +140,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }
