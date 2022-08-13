@@ -78,8 +78,16 @@ class TechnologicalProduct extends Model
             });
         }
 
-        if (request()->year) {
-            $query->where('year', request()->year);
+        if (request('year_selected')) {
+            $query->where('year', request('year_selected'));
+        }
+
+        if (request('start_year')) {
+            $query->where('year', '>=' ,request('start_year'));
+        }
+
+        if (request('end_year')) {
+            $query->where('year', '<=' ,request('end_year'));
         }
 
         $query = filterByOwnProvince($query);

@@ -1,7 +1,7 @@
 <div class="row">
                                                                
     <div class="col-md-6" >
-        <label class="col-form-label" >از تاریخ</label>
+        <label class="col-form-label" >از سال</label>
 
         <date-picker-component 
             name="start_{{ $name }}" 
@@ -11,7 +11,7 @@
 
 
     <div class="col-md-6" >
-        <label class="col-form-label" >تا تاریخ</label>
+        <label class="col-form-label" >تا سال</label>
         <date-picker-component 
             name="end_{{ $name }}" 
             default_date="{{ $endDate != null ? Carbon\Carbon::parse($endDate)->toDateTimeString() : '' }}">

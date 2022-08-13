@@ -32,12 +32,10 @@ class NumberOfStudentsStatusAnalysisRequest extends FormRequest
             "gender_id" => 'required|integer',
             "university_type" => 'required|numeric',
             "number_of_students" => 'required|integer|gte:0',
+            "department_of_education" => 'required|numeric|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0',
-            'grade_id' => 'required|integer|gte:0',
-            'major_id' => 'required|integer|gte:0',
-            'minor_id' => 'required|integer|gte:0',
-
+            'grade_id' => 'required|integer|gte:0'
         ];
     }
 }
