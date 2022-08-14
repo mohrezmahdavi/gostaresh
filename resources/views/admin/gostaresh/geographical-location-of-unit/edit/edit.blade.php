@@ -78,7 +78,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="land_area" name="land_area"
+                                <input type="text" style="direction: rtl" id="land_area" name="land_area"
                                     value="{{ $geographicalLocationOfUnit->land_area }}" class="form-control"
                                     placeholder="مساحت زمین را وارد کنید...">
                             </div>
@@ -90,7 +90,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="the_size_of_the_building"
+                                <input type="text" style="direction: rtl" id="the_size_of_the_building"
                                     name="the_size_of_the_building"
                                     value="{{ $geographicalLocationOfUnit->the_size_of_the_building }}"
                                     class="form-control" placeholder="متراز ساختمانهای ملکی را وارد کنید...">
@@ -103,7 +103,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="distance_from_population_density_of_city"
+                                <input type="text" style="direction: rtl" id="distance_from_population_density_of_city"
                                     name="distance_from_population_density_of_city"
                                     value="{{ $geographicalLocationOfUnit->distance_from_population_density_of_city }}"
                                     class="form-control" placeholder="فاصله از تراکم جمعیتی شهر را وارد کنید...">
@@ -116,7 +116,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="distance_from_center_of_province"
+                                <input type="text" style="direction: rtl" id="distance_from_center_of_province"
                                     name="distance_from_center_of_province"
                                     value="{{ $geographicalLocationOfUnit->distance_from_center_of_province }}"
                                     class="form-control" placeholder="فاصله از مرکز استان را وارد کنید...">
@@ -147,7 +147,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_to_the_nearest_higher_education_center"
+                                <input type="text" id="distance_to_the_nearest_higher_education_center"
                                     name="distance_to_the_nearest_higher_education_center"
                                     value="{{ $geographicalLocationOfUnit->distance_to_the_nearest_higher_education_center }}"
                                     class="form-control" placeholder="فاصله تا نزدیکترین مرکز آموزش عالی را وارد کنید...">
@@ -160,7 +160,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="distance_to_the_nearest_unit_of_azad_university"
+                                <input type="text" id="distance_to_the_nearest_unit_of_azad_university"
                                     name="distance_to_the_nearest_unit_of_azad_university"
                                     value="{{ $geographicalLocationOfUnit->distance_to_the_nearest_higher_education_center }}"
                                     class="form-control"

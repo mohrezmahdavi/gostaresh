@@ -78,7 +78,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_running_costs" name="total_running_costs"
+                                <input type="text" id="total_running_costs" name="total_running_costs"
                                     value="{{ $universityCost->total_running_costs }}" class="form-control"
                                     placeholder=" کل هزینه های جاری را وارد کنید...">
                             </div>
@@ -90,7 +90,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_salary_of_faculty_members"
+                                <input type="text" id="average_salary_of_faculty_members"
                                     name="average_salary_of_faculty_members"
                                     value="{{ $universityCost->average_salary_of_faculty_members }}" class="form-control"
                                     placeholder=" میانگین حقوق دریافتی اعضای هیات علمی را وارد کنید...">
@@ -105,7 +105,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_salaries_of_faculty_members_from_research_contracts"
+                                <input type="text" id="average_salaries_of_faculty_members_from_research_contracts"
                                     name="average_salaries_of_faculty_members_from_research_contracts"
                                     value="{{ $universityCost->average_salaries_of_faculty_members_from_research_contracts }}"
                                     class="form-control"
@@ -119,7 +119,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="student_fees" name="student_fees"
+                                <input type="text" id="student_fees" name="student_fees"
                                     value="{{ $universityCost->student_fees }}" class="form-control"
                                     placeholder=" هزینه دانشجویان را وارد کنید...">
                             </div>
@@ -131,7 +131,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_salary_of_employees" name="average_salary_of_employees"
+                                <input type="text" id="average_salary_of_employees" name="average_salary_of_employees"
                                     value="{{ $universityCost->average_salary_of_employees }}" class="form-control"
                                     placeholder=" میانگین حقوق دریافتی کارمندان را وارد کنید...">
                             </div>
@@ -156,7 +156,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="cost_of_paying_office_rent" name="cost_of_paying_office_rent"
+                                <input type="text" id="cost_of_paying_office_rent" name="cost_of_paying_office_rent"
                                     value="{{ $universityCost->cost_of_paying_office_rent }}" class="form-control"
                                     placeholder=" هزینه پرداخت اجاره ساختمان اداری را وارد کنید...">
                             </div>
@@ -168,7 +168,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_for_educational_building"
+                                <input type="text" id="cost_of_rent_for_educational_building"
                                     name="cost_of_rent_for_educational_building"
                                     value="{{ $universityCost->cost_of_rent_for_educational_building }}"
                                     class="form-control" placeholder=" هزینه پرداخت اجاره ساختمان آموزشی را وارد کنید...">
@@ -181,7 +181,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_for_research_building"
+                                <input type="text" id="cost_of_rent_for_research_building"
                                     name="cost_of_rent_for_research_building"
                                     value="{{ $universityCost->cost_of_rent_for_research_building }}"
                                     class="form-control" placeholder=" هزینه پرداخت اجاره ساختمان پژوهشی را وارد کنید...">
@@ -194,7 +194,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="extra_charge_for_rent_extracurricular_building"
+                                <input type="text" id="extra_charge_for_rent_extracurricular_building"
                                     name="extra_charge_for_rent_extracurricular_building"
                                     value="{{ $universityCost->extra_charge_for_rent_extracurricular_building }}"
                                     class="form-control"
@@ -208,7 +208,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="cost_of_rent_innovation_buildings"
+                                <input type="text" id="cost_of_rent_innovation_buildings"
                                     name="cost_of_rent_innovation_buildings"
                                     value="{{ $universityCost->cost_of_rent_innovation_buildings }}" class="form-control"
                                     placeholder=" هزینه پرداخت اجاره ساختمان فناوری و نوآوری را وارد کنید...">
@@ -221,7 +221,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="energy_costs_of_buildings" name="energy_costs_of_buildings"
+                                <input type="text" id="energy_costs_of_buildings" name="energy_costs_of_buildings"
                                     value="{{ $universityCost->energy_costs_of_buildings }}" class="form-control"
                                     placeholder=" هزینه های انرژی ساختمان ها را وارد کنید...">
                             </div>
@@ -233,7 +233,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="cost_of_university_equipment"
+                                <input type="text" id="cost_of_university_equipment"
                                     name="cost_of_university_equipment"
                                     value="{{ $universityCost->cost_of_university_equipment }}" class="form-control"
                                     placeholder=" هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه را وارد کنید...">
@@ -246,7 +246,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="training_costs" name="training_costs"--}}
+{{--                                <input type="text" id="training_costs" name="training_costs"--}}
 {{--                                    value="{{ $universityCost->training_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه آموزش را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -258,7 +258,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="research_costs" name="research_costs"--}}
+{{--                                <input type="text" id="research_costs" name="research_costs"--}}
 {{--                                    value="{{ $universityCost->research_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه پژوهش را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -270,7 +270,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="innovation_costs" name="innovation_costs"--}}
+{{--                                <input type="text" id="innovation_costs" name="innovation_costs"--}}
 {{--                                    value="{{ $universityCost->innovation_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه فناوری و نوآوری را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -282,7 +282,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="educational_costs" name="educational_costs"--}}
+{{--                                <input type="text" id="educational_costs" name="educational_costs"--}}
 {{--                                    value="{{ $universityCost->educational_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه مهارت آموزشی و کارآفرینی را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -294,7 +294,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="development_costs" name="development_costs"--}}
+{{--                                <input type="text" id="development_costs" name="development_costs"--}}
 {{--                                    value="{{ $universityCost->development_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه تحقیق و توسعه را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -306,7 +306,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="cultural_sphere_costs" name="cultural_sphere_costs"--}}
+{{--                                <input type="text" id="cultural_sphere_costs" name="cultural_sphere_costs"--}}
 {{--                                    value="{{ $universityCost->cultural_sphere_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه فرهنگی را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -318,7 +318,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="administrative_costs" name="administrative_costs"--}}
+{{--                                <input type="text" id="administrative_costs" name="administrative_costs"--}}
 {{--                                    value="{{ $universityCost->administrative_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه اداری را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -330,7 +330,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="information_technology_costs"--}}
+{{--                                <input type="text" id="information_technology_costs"--}}
 {{--                                    name="information_technology_costs"--}}
 {{--                                    value="{{ $universityCost->information_technology_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه فناوری اطلاعات و زیرساخت های فضای مجازی را وارد کنید...">--}}
@@ -343,7 +343,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="International_sphere_costs" name="International_sphere_costs"--}}
+{{--                                <input type="text" id="International_sphere_costs" name="International_sphere_costs"--}}
 {{--                                    value="{{ $universityCost->International_sphere_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه بین الملل را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -355,7 +355,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="costs_of_staff_training_and_faculty"--}}
+{{--                                <input type="text" id="costs_of_staff_training_and_faculty"--}}
 {{--                                    name="costs_of_staff_training_and_faculty"--}}
 {{--                                    value="{{ $universityCost->costs_of_staff_training_and_faculty }}"--}}
 {{--                                    class="form-control"--}}
@@ -369,7 +369,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="sports_expenses" name="sports_expenses"--}}
+{{--                                <input type="text" id="sports_expenses" name="sports_expenses"--}}
 {{--                                    value="{{ $universityCost->sports_expenses }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه ورزشی را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -381,7 +381,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="health_costs" name="health_costs"--}}
+{{--                                <input type="text" id="health_costs" name="health_costs"--}}
 {{--                                    value="{{ $universityCost->health_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه بهداشت و سلامت را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -393,7 +393,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="entrepreneurship_costs" name="entrepreneurship_costs"--}}
+{{--                                <input type="text" id="entrepreneurship_costs" name="entrepreneurship_costs"--}}
 {{--                                    value="{{ $universityCost->entrepreneurship_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه ترویج کارآفرینی و اشتغال را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -405,7 +405,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="graduate_costs" name="graduate_costs"--}}
+{{--                                <input type="text" id="graduate_costs" name="graduate_costs"--}}
 {{--                                    value="{{ $universityCost->graduate_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه فارغ التحصیلان را وارد کنید...">--}}
 {{--                            </div>--}}
@@ -417,7 +417,7 @@
 {{--                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
 {{--                            </label>--}}
 {{--                            <div class="col-sm-10">--}}
-{{--                                <input type="number" id="branding_costs" name="branding_costs"--}}
+{{--                                <input type="text" id="branding_costs" name="branding_costs"--}}
 {{--                                    value="{{ $universityCost->branding_costs }}" class="form-control"--}}
 {{--                                    placeholder=" هزینه های حوزه برند سازی و تبلیغات و جذب دانشجویان را وارد کنید...">--}}
 {{--                            </div>--}}

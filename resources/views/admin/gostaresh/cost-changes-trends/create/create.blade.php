@@ -66,7 +66,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_annual_expenses" name="total_annual_expenses"
+                                <input type="text" id="total_annual_expenses" name="total_annual_expenses"
                                     value="{{ old('total_annual_expenses') }}" class="form-control"
                                     placeholder=" کل هزینه های سالیانه را وارد کنید...">
                             </div>

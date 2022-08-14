@@ -66,7 +66,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_annual_income" name="total_annual_income"
+                                <input type="text" id="total_annual_income" name="total_annual_income"
                                     value="{{ $revenueChange->total_annual_income }}" class="form-control"
                                     placeholder=" کل درآمد های سالیانه را وارد کنید...">
                             </div>

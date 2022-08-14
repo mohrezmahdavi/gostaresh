@@ -65,7 +65,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_graduates" name="total_graduates"
+                                <input type="text" id="total_graduates" name="total_graduates"
                                     value="{{ $graduateStatusAnalysis->total_graduates }}" class="form-control"
                                     placeholder=" تعداد کل فارغ التحصیلان را وارد کنید...">
                             </div>
@@ -77,7 +77,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="employed_graduates" name="employed_graduates"
+                                <input type="text" id="employed_graduates" name="employed_graduates"
                                     value="{{ $graduateStatusAnalysis->employed_graduates }}" class="form-control"
                                     placeholder=" تعداد فارغ التحصیلان شاغل را وارد کنید...">
                             </div>
@@ -101,7 +101,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="related_employed_graduates" name="related_employed_graduates"
+                                <input type="text" id="related_employed_graduates" name="related_employed_graduates"
                                     value="{{ $graduateStatusAnalysis->related_employed_graduates }}" class="form-control"
                                     placeholder=" تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی را وارد کنید...">
                             </div>
@@ -113,7 +113,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="skill_certification_graduates"
+                                <input type="text" id="skill_certification_graduates"
                                     name="skill_certification_graduates"
                                     value="{{ $graduateStatusAnalysis->skill_certification_graduates }}"
                                     class="form-control"
@@ -127,7 +127,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="employed_graduates_6_months_after_graduation"
+                                <input type="text" id="employed_graduates_6_months_after_graduation"
                                     name="employed_graduates_6_months_after_graduation"
                                     value="{{ $graduateStatusAnalysis->employed_graduates_6_months_after_graduation }}"
                                     class="form-control"
@@ -141,7 +141,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_monthly_income_employed_graduates"
+                                <input type="text" id="average_monthly_income_employed_graduates"
                                     name="average_monthly_income_employed_graduates"
                                     value="{{ $graduateStatusAnalysis->average_monthly_income_employed_graduates }}"
                                     class="form-control"
