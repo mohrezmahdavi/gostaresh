@@ -37,7 +37,7 @@
                         @method('PUT')
 
                         <select-province-component province_default="{{ $gdpPart->province_id ?? ''}}"
-                            zone_default="{{ $gdpPart->county->zone }}" county_default="{{ $gdpPart->county_id ?? ''}}"
+                            zone_default="{{ $gdpPart->county->zone ?? ''}}" county_default="{{ $gdpPart->county_id ?? ''}}"
                             city_default="{{ $gdpPart->city_id ?? ''}}"
                             rural_district_default="{{ $gdpPart->rural_district_id ?? ''}}"
                             :fields="{{ json_encode([

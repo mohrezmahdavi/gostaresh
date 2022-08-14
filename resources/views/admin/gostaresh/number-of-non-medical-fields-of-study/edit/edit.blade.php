@@ -72,22 +72,6 @@
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="major">
-                                <span>گروه فرعی تحصیلی</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="major" id="major" class="form-select">
-                                    @foreach ($majors as $major)
-                                        <option {{ $major->id == $numberOfNonMedicalFieldsOfStudy->major ? 'selected' : '' }} value="{{ $major->id }}">
-                                            {{ $major->name }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="kardani_peyvaste_count">
                                 <span>تعداد کاردانی پیوسته </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>

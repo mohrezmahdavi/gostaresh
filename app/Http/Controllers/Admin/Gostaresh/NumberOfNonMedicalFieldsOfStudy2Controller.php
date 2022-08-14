@@ -92,7 +92,7 @@ class NumberOfNonMedicalFieldsOfStudy2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy)
+    public function show(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy2)
     {
         //
     }
@@ -103,10 +103,10 @@ class NumberOfNonMedicalFieldsOfStudy2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy)
+    public function edit(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy2)
     {
         $majors = Major::all();
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study2.edit.edit', compact('numberOfNonMedicalFieldsOfStudy','majors'));
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study2.edit.edit', compact('numberOfNonMedicalFieldsOfStudy2','majors'));
     }
 
     /**
@@ -116,9 +116,9 @@ class NumberOfNonMedicalFieldsOfStudy2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NumberOfNonMedicalFieldsOfStudy2Request $request, NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy)
+    public function update(NumberOfNonMedicalFieldsOfStudy2Request $request, NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy2)
     {
-        $numberOfNonMedicalFieldsOfStudy->update($request->validated());
+        $numberOfNonMedicalFieldsOfStudy2->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -128,9 +128,9 @@ class NumberOfNonMedicalFieldsOfStudy2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy)
+    public function destroy(NumberOfNonMedicalFieldsOfStudy2 $numberOfNonMedicalFieldsOfStudy2)
     {
-        $numberOfNonMedicalFieldsOfStudy->delete();
+        $numberOfNonMedicalFieldsOfStudy2->delete();
         return back()->with('success', __('titles.success_delete'));
     }
 }

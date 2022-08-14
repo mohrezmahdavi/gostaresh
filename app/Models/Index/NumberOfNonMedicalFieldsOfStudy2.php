@@ -21,16 +21,7 @@ class NumberOfNonMedicalFieldsOfStudy2 extends Model
 
     protected $table = "gostaresh_number_of_non_medical_fields_of_studies2";
 
-    protected $appends = ['department_of_education_title','major_title'];
-
-    public function getDepartmentOfEducationTitleAttribute()
-    {
-        foreach (config('gostaresh.department_of_education') as $key => $value) {
-            if ($key == $this->department_of_education) {
-                return $value;
-            }
-        }
-    }
+    protected $appends = ['major_title'];
 
     public function getMajorTitleAttribute()
     {
@@ -125,7 +116,6 @@ class NumberOfNonMedicalFieldsOfStudy2 extends Model
         "karshenasi_arshad_count"       => "کارشناسی ارشد",
         "docktora_herfei_count"         => "دکتری حرفه ای",
         "docktora_takhasosi_count"      => "دکتری تخصصی",
-        "department_of_education_title" => "گروه فرعی تحصیلی",
         "year" => "سال",
 
     ];

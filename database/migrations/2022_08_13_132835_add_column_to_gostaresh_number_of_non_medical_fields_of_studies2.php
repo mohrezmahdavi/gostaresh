@@ -13,7 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('gostaresh_number_of_non_medical_fields_of_studies', function (Blueprint $table) {
+        Schema::table('gostaresh_number_of_non_medical_fields_of_studies2', function (Blueprint $table) {
+            $table->dropColumn('department_of_education')->nullable();
             $table->unsignedInteger('major')->nullable();
         });
     }
@@ -25,8 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('gostaresh_number_of_non_medical_fields_of_studies', function (Blueprint $table) {
-            $table->dropColumn('major');
+        Schema::table('gostaresh_number_of_non_medical_fields_of_studies2', function (Blueprint $table) {
+            $table->dropColumn('major')->nullable();
         });
     }
 };
