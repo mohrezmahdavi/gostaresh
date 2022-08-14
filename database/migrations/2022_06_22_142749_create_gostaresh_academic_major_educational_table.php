@@ -26,13 +26,13 @@ return new class extends Migration
 
             $table->tinyInteger('department_of_education')->nullable();
 
-            $table->unsignedBigInteger('azad_eslami_count')->default(0);
-            $table->unsignedBigInteger('dolati_count')->default(0);
-            $table->unsignedBigInteger('farhangian_count')->default(0);
-            $table->unsignedBigInteger('fani_herfei_count')->default(0);
-            $table->unsignedBigInteger('payam_noor_count')->default(0);
-            $table->unsignedBigInteger('gheir_entefai_count')->default(0);
-            $table->unsignedBigInteger('elmi_karbordi_count')->default(0);
+            $table->float('azad_eslami_count')->default(0);
+            $table->float('dolati_count')->default(0);
+            $table->float('farhangian_count')->default(0);
+            $table->float('fani_herfei_count')->default(0);
+            $table->float('payam_noor_count')->default(0);
+            $table->float('gheir_entefai_count')->default(0);
+            $table->float('elmi_karbordi_count')->default(0);
 
 
             $table->integer('year')->unsigned()->nullable();

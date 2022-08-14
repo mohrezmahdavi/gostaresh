@@ -30,8 +30,8 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->tinyInteger('university_type')->nullable();
-            $table->unsignedBigInteger('student_admission_capacities')->nullable();
-            $table->tinyInteger('department_of_education')->nullable(); 
+            $table->float('student_admission_capacities')->nullable();
+            $table->tinyInteger('department_of_education')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

@@ -26,13 +26,13 @@ return new class extends Migration
 
             $table->string('unit_university')->nullable();
             $table->string('university_building')->nullable();
-            $table->unsignedBigInteger('distance_from_population_density_of_city')->nullable();
-            $table->unsignedBigInteger('distance_from_center_of_province')->nullable();
-            $table->unsignedBigInteger('land_area')->nullable();
-            $table->unsignedBigInteger('the_size_of_the_building')->nullable();
+            $table->float('distance_from_population_density_of_city')->nullable();
+            $table->float('distance_from_center_of_province')->nullable();
+            $table->float('land_area')->nullable();
+            $table->float('the_size_of_the_building')->nullable();
             $table->tinyInteger('climate_type_and_weather_conditions')->unsigned()->nullable();
-            $table->unsignedInteger('distance_to_the_nearest_higher_education_center')->nullable();
-            $table->unsignedInteger('distance_to_the_nearest_unit_of_azad_university')->nullable();
+            $table->float('distance_to_the_nearest_higher_education_center')->nullable();
+            $table->float('distance_to_the_nearest_unit_of_azad_university')->nullable();
             $table->tinyInteger('level_and_quality_of_access')->unsigned()->nullable();
             $table->tinyInteger('international_opportunities_geographical_location')->unsigned()->nullable();
 

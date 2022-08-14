@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->unsignedBigInteger('population')->default(0);
+            $table->float('population')->default(0);
             $table->float('immigration_rates')->default(0);
             $table->float('growth_rate')->default(0);
 

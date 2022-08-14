@@ -30,9 +30,9 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->unsignedTinyInteger('university_type')->comment('دانشگاه')->nullable();
-            $table->unsignedTinyInteger('grade')->comment('مقطع تحصیلی')->nullable();
-            $table->unsignedInteger('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
+            $table->float('university_type')->comment('دانشگاه')->nullable();
+            $table->float('grade')->comment('مقطع تحصیلی')->nullable();
+            $table->float('percapita_revenue_status_analyses')->comment('تحلیل وضعیت درآمد سرانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
