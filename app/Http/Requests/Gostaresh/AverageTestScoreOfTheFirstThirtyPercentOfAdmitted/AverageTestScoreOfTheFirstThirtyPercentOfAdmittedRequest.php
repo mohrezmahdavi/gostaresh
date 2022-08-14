@@ -33,7 +33,7 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest extends FormReque
             "university_type" => 'required|numeric',
             "grade_id" => 'required|numeric',
             'department_of_education' => 'required|numeric|gte:0',
-            "average_test_score_of_the_first_thirty_percent_of_admitted" => 'required|integer|gte:0',
+            "average_test_score_of_the_first_thirty_percent_of_admitted" => 'required|numeric|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

@@ -31,7 +31,7 @@ class CostChangesTrendsRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'total_annual_expenses' => 'required|integer|gte:0|lte:2147483647',
+            'total_annual_expenses' => 'required|numeric|gte:0|lte:2147483647',
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
