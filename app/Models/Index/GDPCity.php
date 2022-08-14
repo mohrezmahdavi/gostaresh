@@ -97,7 +97,7 @@ class GDPCity extends Model
 
     public static $filterColumnsCheckBoxes = [
         //"field"  => "title"
-        "amount"   => "مقدار",
+        "amount"   => 'سهم تولید ناخالصی داخلی شهرستان (درصد)',
         "year"     => "سال",
 
     ];
