@@ -35,6 +35,14 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('university_building') == true) {
             array_push($mapping, $geographicalLocationOfUnit?->university_building);
         }
+        if (filterCol('land_area') == true)
+        {
+            array_push($mapping, $geographicalLocationOfUnit?->land_area);
+        }
+
+        if (filterCol('the_size_of_the_building') == true) {
+            array_push($mapping, $geographicalLocationOfUnit?->the_size_of_the_building);
+        }
         if (filterCol('distance_from_population_density_of_city') == true) {
             array_push($mapping, $geographicalLocationOfUnit?->distance_from_population_density_of_city);
         }
@@ -75,6 +83,16 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('university_building') == true) {
             array_push($headings, 'ساختمان واحد دانشگاهی');
         }
+
+        if (filterCol('land_area') == true)
+        {
+            array_push($headings, 'مساحت زمین');
+        }
+
+        if (filterCol('the_size_of_the_building') == true) {
+            array_push($headings, 'متراژ ساختمانهای ملکی');
+        }
+
         if (filterCol('distance_from_population_density_of_city') == true) {
             array_push($headings, 'فاصله از تراکم جمعیتی شهر');
         }
