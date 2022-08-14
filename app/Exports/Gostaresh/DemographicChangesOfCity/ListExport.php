@@ -42,7 +42,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $demographicChangesOfCity?->year);
-        array_push($mapping, $demographicChangesOfCity?->month);
         array_push($mapping, $demographicChangesOfCity?->province?->name . ' - ' . $demographicChangesOfCity?->county?->name);
         return $mapping;
     }
@@ -64,7 +63,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
 
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         array_push($headings, 'موقعیت');
         return $headings;
     }

@@ -29,4 +29,3 @@
 @endif
 
 <td>{{ $socialHealth?->year }}</td>
-<td>{{ $socialHealth?->month }}</td>

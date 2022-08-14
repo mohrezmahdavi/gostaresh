@@ -27,4 +27,3 @@
 @endif
 
 <td>{{ $costOfMajor?->year }}</td>
-<td>{{ $costOfMajor?->month }}</td>

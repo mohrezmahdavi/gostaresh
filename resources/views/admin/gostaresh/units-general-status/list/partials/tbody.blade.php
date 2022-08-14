@@ -18,4 +18,3 @@
 @endif  
 
 <td>{{ $unitsGeneralStatus?->year }}</td>
-<td>{{ $unitsGeneralStatus?->month }}</td>

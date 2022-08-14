@@ -27,4 +27,3 @@
 @endif
 
 <td>{{ $tuitionIncome?->year }}</td>
-<td>{{ $tuitionIncome?->month }}</td>

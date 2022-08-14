@@ -51,7 +51,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $growthRateStudentPopulation?->motevasete_2_kar_danesh);
         }
         array_push($mapping, $growthRateStudentPopulation?->year);
-        array_push($mapping, $growthRateStudentPopulation?->month);
 
         return $mapping;
     }
@@ -86,7 +85,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

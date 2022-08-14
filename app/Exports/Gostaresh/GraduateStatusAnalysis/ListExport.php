@@ -55,7 +55,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $graduateStatusAnalysis?->average_monthly_income_employed_graduates);
         }
         array_push($mapping, $graduateStatusAnalysis?->year);
-        array_push($mapping, $graduateStatusAnalysis?->month);
 
         return $mapping;
     }
@@ -92,7 +91,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

@@ -36,7 +36,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         if (filterCol('year') == true) {
             array_push($mapping, $gdpCity?->year);
         }
-        array_push($mapping, $gdpCity?->month);
 
         return $mapping;
     }
@@ -48,13 +47,12 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         $headings = ["#"];
         array_push($headings, 'شهرستان');
         
-        if (filterCol('population') == true) {
+        if (filterCol('amount') == true) {
             array_push($headings, 'سهم تولید ناخالصی داخلی شهرستان (درصد)');
         }
-        if (filterCol('immigration_rates') == true) {
+        if (filterCol('year') == true) {
             array_push($headings, 'سال');
         }
-        array_push($headings, 'ماه');
 
         return $headings;
     }

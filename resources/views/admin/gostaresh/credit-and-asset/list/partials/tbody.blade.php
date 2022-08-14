@@ -30,4 +30,3 @@
 @endif   
 
 <td>{{ $creditAndAsset?->year }}</td>
-<td>{{ $creditAndAsset?->month }}</td>

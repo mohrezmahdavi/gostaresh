@@ -53,7 +53,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $statusAnalysisOfTheNumberOfCurriculas?->number_of_curricula_developed);
         }
         array_push($mapping, $statusAnalysisOfTheNumberOfCurriculas?->year);
-        array_push($mapping, $statusAnalysisOfTheNumberOfCurriculas?->month);
 
         return $mapping;
     }
@@ -87,7 +86,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

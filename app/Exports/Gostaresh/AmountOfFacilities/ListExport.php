@@ -39,7 +39,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $amountOfFacilitiesForResearchAchievements?->year);
-        array_push($mapping, $amountOfFacilitiesForResearchAchievements?->month);
 
         return $mapping;
     }
@@ -57,7 +56,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

@@ -40,7 +40,7 @@
 
                         <select-province-component
                             province_default="{{ $numberOfNonMedicalFieldsOfStudy->province_id ?? '' }}"
-                            zone_default="{{ $numberOfNonMedicalFieldsOfStudy->county->zone }}"
+                            zone_default="{{ $numberOfNonMedicalFieldsOfStudy->county->zone ?? ''}}"
                             county_default="{{ $numberOfNonMedicalFieldsOfStudy->county_id ?? '' }}"
                             city_default="{{ $numberOfNonMedicalFieldsOfStudy->city_id ?? '' }}"
                             rural_district_default="{{ $numberOfNonMedicalFieldsOfStudy->rural_district_id ?? '' }}"
@@ -65,22 +65,6 @@
                                             {{ $key == $numberOfNonMedicalFieldsOfStudy->department_of_education ? 'selected' : '' }}
                                             value="{{ $key }}">
                                             {{ $value }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="major">
-                                <span>گروه فرعی تحصیلی</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="major" id="major" class="form-select">
-                                    @foreach ($majors as $major)
-                                        <option {{ $major->id == $numberOfNonMedicalFieldsOfStudy->major ? 'selected' : '' }} value="{{ $major->id }}">
-                                            {{ $major->name }}</option>
                                     @endforeach
                                 </select>
 

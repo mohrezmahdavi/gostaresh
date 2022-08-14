@@ -92,7 +92,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($mapping, $assetProductivity?->year);
-        array_push($mapping, $assetProductivity?->month);
 
         return $mapping;
     }
@@ -165,7 +164,6 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
         }
 
         array_push($headings, 'سال');
-        array_push($headings, 'ماه');
         
         return $headings;
     }

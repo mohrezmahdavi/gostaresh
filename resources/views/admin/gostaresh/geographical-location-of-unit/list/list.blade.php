@@ -37,7 +37,13 @@
                                     zone_default="{{ request()->zone_id ?? auth()->user()->county->zone ?? ''}}"
                                     county_default="{{ request()->county_id ?? auth()->user()->county_id ?? ''}}"
                                     city_default="{{ request()->city_id ?? auth()->user()->city_id ?? ''}}"
-                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}">
+                                    rural_district_default="{{ request()->rural_district_id ?? auth()->user()->rural_district_id ?? ''}}"
+                                    :fields="{{ json_encode([
+                                        'province' => true,
+                                        'zone' => false,
+                                        'county' => true,
+                                        'city' => false,
+                                    ]) }}">
                                 </select-province-inline-component>
                             </div>
                         </div>
@@ -62,6 +68,34 @@
                             </div>
                             <div class="col-md-8 mt-4">
                                 <div class="mt-1">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="unit_university">واحد دانشگاهی</label>
+                                        <input class="form-check-input" name="unit_university"
+                                            type="checkbox"
+                                            {{ filterCol('unit_university') == true ? 'checked' : '' }}
+                                            id="unit_university" value="1">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="university_building">ساختمان واحد دانشگاهی</label>
+                                        <input class="form-check-input" name="university_building"
+                                            type="checkbox"
+                                            {{ filterCol('university_building') == true ? 'checked' : '' }}
+                                            id="university_building" value="1">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="land_area">مساحت زمین</label>
+                                        <input class="form-check-input" name="land_area"
+                                            type="checkbox"
+                                            {{ filterCol('land_area') == true ? 'checked' : '' }}
+                                            id="land_area" value="1">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="the_size_of_the_building">متراژ ساختمانهای ملکی</label>
+                                        <input class="form-check-input" name="the_size_of_the_building"
+                                            type="checkbox"
+                                            {{ filterCol('the_size_of_the_building') == true ? 'checked' : '' }}
+                                            id="the_size_of_the_building" value="1">
+                                    </div>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="distance_from_population_density_of_city">فاصله
                                             از تراکم جمعیتی شهر</label>

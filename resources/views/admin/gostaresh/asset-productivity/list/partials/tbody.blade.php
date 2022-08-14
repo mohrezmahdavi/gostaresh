@@ -62,4 +62,3 @@
 @endif
 
 <td>{{ $assetProduct?->year }}</td>
-<td>{{ $assetProduct?->month }}</td>

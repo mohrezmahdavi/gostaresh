@@ -118,6 +118,7 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
     }
 
     public static $filterColumnsCheckBoxes = [
+        "department_of_education_title" => "گروه/ مقطع",
         "kardani_peyvaste_count"        => "کاردانی پیوسته",
         "kardani_na_peyvaste_count"     => "کاردانی ناپیوسته",
         "karshenasi_peyvaste_count"     => "کارشناسی پیوسته",
@@ -125,7 +126,6 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
         "karshenasi_arshad_count"       => "کارشناسی ارشد",
         "docktora_herfei_count"         => "دکتری حرفه ای",
         "docktora_takhasosi_count"      => "دکتری تخصصی",
-        "department_of_education_title" => "گروه/ مقطع",
         "year" => "سال",
 
     ];

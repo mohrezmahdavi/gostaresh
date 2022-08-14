@@ -21,4 +21,3 @@
 @endif
 
 <td>{{ $graduatesOfHigherEducationCenter?->year }}</td>
-<td>{{ $graduatesOfHigherEducationCenter?->month }}</td>
