@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\County;
 use App\Models\Province;
 use App\Models\RuralDistrict;
+use App\Services\Model\FilterProvince;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // Table 11 Model
@@ -57,18 +58,9 @@ class UnemploymentRate extends Model
     public function scopeWhereRequestsQuery($query)
     {
         $query = filterByOwnProvince($query);
+        
+        FilterProvince::filter($query);
 
-        if (request('province_id'))
-            $query->where('province_id', request('province_id'));
-
-        if (request('county_id'))
-            $query->where('county_id', request('county_id'));
-
-        if (request('city_id'))
-            $query->where('city_id', request('city_id'));
-
-        if (request('rural_district_id'))
-            $query->where('rural_district_id', request('rural_district_id'));
 
         if (request('start_date'))
         {

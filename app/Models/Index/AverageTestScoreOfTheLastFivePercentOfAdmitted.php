@@ -8,6 +8,7 @@ use App\Models\County;
 use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
+use App\Services\Model\FilterProvince;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -88,17 +89,8 @@ class AverageTestScoreOfTheLastFivePercentOfAdmitted extends Model
     {
         $query = filterByOwnProvince($query);
 
-        if (request('province_id'))
-            $query->where('province_id', request('province_id'));
+        FilterProvince::filter($query);
 
-        if (request('county_id'))
-            $query->where('county_id', request('county_id'));
-
-        if (request('city_id'))
-            $query->where('city_id', request('city_id'));
-
-        if (request('rural_district_id'))
-            $query->where('rural_district_id', request('rural_district_id'));
 
         if (request('start_date'))
         {

@@ -8,6 +8,7 @@ use App\Models\County;
 use App\Models\Grade;
 use App\Models\Province;
 use App\Models\RuralDistrict;
+use App\Services\Model\FilterProvince;
 use Facades\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -78,17 +79,7 @@ class SocialHealthStatusAnalysis extends Model
 
     public function scopeWhereRequestsQuery($query)
     {
-        if (request()->province_id)
-            $query->where('province_id', request()->province_id);
-
-        if (request()->county_id)
-            $query->where('county_id', request()->county_id);
-
-        if (request()->city_id)
-            $query->where('city_id', request()->city_id);
-
-        if (request()->rural_district_id)
-            $query->where('rural_district_id', request()->rural_district_id);
+        FilterProvince::filter($query);
 
         if (request()->input('start_date')) {
             $startDateJ = Verta::instance(request()->input('start_date'));
