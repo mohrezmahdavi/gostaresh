@@ -108,7 +108,7 @@ class GDPPart extends Model
     public static $filterColumnsCheckBoxes = [
         //"field"      => "title"
         "part_title"   => "بخش",
-        "amount"       => "مقدار",
+        "amount"       => "روند تغییر در مقدار GDP استان",
         "year"         => "سال",
 
     ];
