@@ -47,21 +47,25 @@
                                     <th>اقدام</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: right; direction: ltr">
+                            <tbody>
                                 @foreach ($industrialExpenditureResearches as $key => $industrialExpenditureResearch)
                                     <tr>
                                         <th scope="row">{{ $industrialExpenditureResearches?->firstItem() + $key }}</th>
                                         @include('admin.gostaresh.industrial-expenditure-research.list.partials.tbody')
 
-                                        <td>
+                                        <td class="d-flex">
 
                                             <a href="{{ route('industrial.expenditure.research.edit', $industrialExpenditureResearch) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
-                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                                class="btn btn-warning btn-sm me-1"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('industrial.expenditure.research.destroy', $industrialExpenditureResearch) }}"
-                                                title="{{ __('validation.buttons.delete') }}"
-                                                class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                            <form method="POST" action="{{ route('industrial.expenditure.research.destroy', $industrialExpenditureResearch) }}" role="form">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>

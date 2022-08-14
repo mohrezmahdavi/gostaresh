@@ -63,9 +63,14 @@
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('annual.growth.rate.of.student.enrollment.destroy', $annualGrowthRateOfStudentEnrollment) }}"
-                                                title="{{ __('validation.buttons.delete') }}"
-                                                class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                                
+                                            <form method="POST" action="{{ route('annual.growth.rate.of.student.enrollment.destroy', $annualGrowthRateOfStudentEnrollment) }}" role="form">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
