@@ -26,6 +26,12 @@ class DecimalRangeRule implements Rule
     public function passes($attribute, $value)
     {
         $decimal = explode('.', $value);
+        if (isset($decimal[0]))
+        {
+            $len = strlen((string) $decimal[0]);
+            if ($len > 14)
+                return false;
+        }
         if (isset($decimal[1]))
         {
             $len = strlen((string) $decimal[1]);
@@ -42,6 +48,6 @@ class DecimalRangeRule implements Rule
      */
     public function message()
     {
-        return 'تعداد رقم اعشار باید 8 رقم باشد.';
+        return 'تعداد ارقام خارج از محدوده است، بخش صحیح باید 14 رقم و بخش اعشار 8 رقم باشد.';
     }
 }
