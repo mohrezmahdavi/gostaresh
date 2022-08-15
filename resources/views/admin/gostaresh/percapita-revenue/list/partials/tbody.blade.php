@@ -17,7 +17,7 @@
 <td>{{ $percapitaRevenue?->minor_title }}</td>
 @endif
 @if (filterCol('percapita_revenue_status_analyses') == true)
-<td>{{ number_format((int) $percapitaRevenue?->percapita_revenue_status_analyses ) }}</td>
+<td>{{ $percapitaRevenue?->percapita_revenue_status_analyses }}</td>
 @endif
 
 <td>{{ $percapitaRevenue?->year }}</td>

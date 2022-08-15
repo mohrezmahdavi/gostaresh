@@ -13,7 +13,7 @@
     <td>{{ $numberOfVolunteersStatusAnalysis?->grade_title }}</td>
 @endif
 @if (filterCol('number_of_volunteers') == true)
-    <td>{{ number_format($numberOfVolunteersStatusAnalysis?->number_of_volunteers) }}</td>
+    <td>{{ $numberOfVolunteersStatusAnalysis?->number_of_volunteers }}</td>
 @endif
 @if (filterCol('year') == true)
     <td>{{ $numberOfVolunteersStatusAnalysis?->year }}</td>
