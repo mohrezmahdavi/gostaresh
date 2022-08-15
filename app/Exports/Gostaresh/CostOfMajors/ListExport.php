@@ -40,16 +40,16 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $costOfMajors?->department_of_education_title);
         }
         if (filterCol('associate_degree') == true) {
-            array_push($mapping, number_format((int) $costOfMajors?->associate_degree ));
+            array_push($mapping, $costOfMajors?->associate_degree);
         }
         if (filterCol('bachelor_degree') == true) {
-            array_push($mapping, number_format((int) $costOfMajors?->bachelor_degree ));
+            array_push($mapping, $costOfMajors?->bachelor_degree);
         }
         if (filterCol('masters') == true) {
-            array_push($mapping, number_format((int) $costOfMajors?->masters ));
+            array_push($mapping, $costOfMajors?->masters);
         }
         if (filterCol('phd') == true) {
-            array_push($mapping, number_format((int) $costOfMajors?->phd ));
+            array_push($mapping, $costOfMajors?->phd);
         }
 
         array_push($mapping, $costOfMajors?->year);

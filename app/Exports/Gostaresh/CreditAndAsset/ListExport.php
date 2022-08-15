@@ -34,28 +34,28 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $creditAndAssets?->unit);
         }
         if (filterCol('administrative_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->administrative_credits ));
+            array_push($mapping, $creditAndAssets?->administrative_credits);
         }
         if (filterCol('educational_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->educational_credits ));
+            array_push($mapping, $creditAndAssets?->educational_credits);
         }
         if (filterCol('research_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->research_credits ));
+            array_push($mapping, $creditAndAssets?->research_credits);
         }
         if (filterCol('cultural_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->cultural_credits ));
+            array_push($mapping, $creditAndAssets?->cultural_credits);
         }
         if (filterCol('innovative_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->innovative_credits ));
+            array_push($mapping, $creditAndAssets?->innovative_credits);
         }
         if (filterCol('skills_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->skills_credits ));
+            array_push($mapping, $creditAndAssets?->skills_credits);
         }
         if (filterCol('total_University_credits') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->total_University_credits ));
+            array_push($mapping, $creditAndAssets?->total_University_credits);
         }
         if (filterCol('total_university_assets') == true) {
-            array_push($mapping, number_format((int) $creditAndAssets?->total_university_assets ));
+            array_push($mapping, $creditAndAssets?->total_university_assets);
         }
 
         array_push($mapping, $creditAndAssets?->year);

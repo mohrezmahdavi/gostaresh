@@ -34,40 +34,40 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $employeeProfiles?->department_of_education_title);
         }
         if (filterCol('number_of_non_faculty_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_non_faculty_staff));
+            array_push($mapping, $employeeProfiles?->number_of_non_faculty_staff);
         }
         if (filterCol('average_age_of_employees') == true) {
             array_push($mapping, $employeeProfiles?->average_age_of_employees);
         }
         if (filterCol('number_of_male_employees') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_male_employees));
+            array_push($mapping, $employeeProfiles?->number_of_male_employees);
         }
         if (filterCol('number_of_female_employees') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_female_employees));
+            array_push($mapping, $employeeProfiles?->number_of_female_employees);
         }
         if (filterCol('number_of_administrative_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_administrative_staff));
+            array_push($mapping, $employeeProfiles?->number_of_administrative_staff);
         }
         if (filterCol('number_of_training_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_training_staff));
+            array_push($mapping, $employeeProfiles?->number_of_training_staff);
         }
         if (filterCol('number_of_research_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_research_staff));
+            array_push($mapping, $employeeProfiles?->number_of_research_staff);
         }
         if (filterCol('number_of_PhD_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_PhD_staff));
+            array_push($mapping, $employeeProfiles?->number_of_PhD_staff);
         }
         if (filterCol('number_of_master_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_master_staff));
+            array_push($mapping, $employeeProfiles?->number_of_master_staff);
         }
         if (filterCol('number_of_expert_staff') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_expert_staff));
+            array_push($mapping, $employeeProfiles?->number_of_expert_staff);
         }
         if (filterCol('number_of_diploma_and_sub_diploma_employees') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_diploma_and_sub_diploma_employees));
+            array_push($mapping, $employeeProfiles?->number_of_diploma_and_sub_diploma_employees);
         }
         if (filterCol('number_of_employees_studying') == true) {
-            array_push($mapping, number_format((int) $employeeProfiles?->number_of_employees_studying));
+            array_push($mapping, $employeeProfiles?->number_of_employees_studying);
         }
         if (filterCol('growth_rate') == true) {
             array_push($mapping, $employeeProfiles?->growth_rate);

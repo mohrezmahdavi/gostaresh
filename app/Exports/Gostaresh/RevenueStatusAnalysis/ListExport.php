@@ -34,31 +34,31 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $revenueStatusAnalyses?->unit);
         }
         if (filterCol('total_revenue') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->total_revenue ));
+            array_push($mapping, $revenueStatusAnalyses?->total_revenue);
         }
         if (filterCol('income_from_student_tuition') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->income_from_student_tuition ));
+            array_push($mapping, $revenueStatusAnalyses?->income_from_student_tuition);
         }
         if (filterCol('income_from_commercialized_technologies') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->income_from_commercialized_technologies ));
+            array_push($mapping, $revenueStatusAnalyses?->income_from_commercialized_technologies);
         }
         if (filterCol('income_from_research_activities') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->income_from_research_activities ));
+            array_push($mapping, $revenueStatusAnalyses?->income_from_research_activities);
         }
         if (filterCol('income_from_skills_training') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->income_from_skills_training ));
+            array_push($mapping, $revenueStatusAnalyses?->income_from_skills_training);
         }
         if (filterCol('operating_income_growth_rate') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->operating_income_growth_rate ));
+            array_push($mapping, $revenueStatusAnalyses?->operating_income_growth_rate);
         }
         if (filterCol('total_non_tuition_income') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->total_non_tuition_income ));
+            array_push($mapping, $revenueStatusAnalyses?->total_non_tuition_income);
         }
         if (filterCol('total_international_income') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->total_international_income ));
+            array_push($mapping, $revenueStatusAnalyses?->total_international_income);
         }
         if (filterCol('shareholder_income') == true) {
-            array_push($mapping, number_format((int) $revenueStatusAnalyses?->shareholder_income ));
+            array_push($mapping, $revenueStatusAnalyses?->shareholder_income);
         }
 
         array_push($mapping, $revenueStatusAnalyses?->year);
