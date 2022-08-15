@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\PercapitaStatusAnalysis;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 46 request
@@ -31,17 +32,17 @@ class PercapitaStatusAnalysisRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'percapita_office_space' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_educational_space' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_innovation_space' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_cultural_space' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_civil_space' => 'required|numeric|gte:0|lte:2147483647',
-            'building_under_construction' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_residential' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_operating_buildings' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_sports_space' =>'required|numeric|gte:0|lte:2147483647',
-            'percapita_aristocratic_space' => 'required|numeric|gte:0|lte:2147483647',
-            'percapita_arena_space' => 'required|numeric|gte:0|lte:2147483647',
+            'percapita_office_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_educational_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_innovation_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_cultural_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_civil_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'building_under_construction' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_residential' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_operating_buildings' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_sports_space' =>['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_aristocratic_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'percapita_arena_space' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

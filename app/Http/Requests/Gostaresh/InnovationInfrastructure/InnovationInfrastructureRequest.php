@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\InnovationInfrastructure;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 39 request
@@ -31,16 +32,16 @@ class InnovationInfrastructureRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'number_of_active_innovation_houses' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_active_accelerators' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_active_growth_centers' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_active_technology_cores' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_active_skill_high_schools' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_skill_training_centers' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_research_centers' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_development_offices' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_industry_trade_offices' => 'required|numeric|gte:0|lte:2147483647',
-            'number_of_entrepreneurship_centers' => 'required|numeric|gte:0|lte:2147483647',
+            'number_of_active_innovation_houses' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_active_accelerators' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_active_growth_centers' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_active_technology_cores' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_active_skill_high_schools' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_skill_training_centers' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_research_centers' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_development_offices' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_industry_trade_offices' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_entrepreneurship_centers' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

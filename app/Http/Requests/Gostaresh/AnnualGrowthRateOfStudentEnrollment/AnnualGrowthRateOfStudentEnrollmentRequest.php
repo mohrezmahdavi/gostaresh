@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\AnnualGrowthRateOfStudentEnrollment;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AnnualGrowthRateOfStudentEnrollmentRequest extends FormRequest
@@ -29,11 +30,11 @@ class AnnualGrowthRateOfStudentEnrollmentRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            "gender_id" => 'required|numeric',
-            "university_type" => 'required|numeric',
-            "grade_id" => 'required|numeric',
-            'department_of_education' => 'required|numeric|gte:0',
-            "annual_growth_rate_of_student_enrollment" => 'required|numeric',
+            "gender_id" => ['required', 'numeric', new DecimalRangeRule()],
+            "university_type" => ['required', 'numeric', new DecimalRangeRule()],
+            "grade_id" => ['required', 'numeric', new DecimalRangeRule()],
+            'department_of_education' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "annual_growth_rate_of_student_enrollment" => ['required', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

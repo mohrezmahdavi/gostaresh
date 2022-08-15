@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\UnemploymentRate;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UnemploymentRateRequest extends FormRequest
@@ -30,7 +31,7 @@ class UnemploymentRateRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'education_id' => 'required|numeric',
-            'amount' => 'required|numeric',
+            'amount' => ['required', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

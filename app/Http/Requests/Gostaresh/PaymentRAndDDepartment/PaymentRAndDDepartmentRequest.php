@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\PaymentRAndDDepartment;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentRAndDDepartmentRequest extends FormRequest
@@ -29,7 +30,7 @@ class PaymentRAndDDepartmentRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'amount_payment_rd' => 'required|numeric|gte:0',
+            'amount_payment_rd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

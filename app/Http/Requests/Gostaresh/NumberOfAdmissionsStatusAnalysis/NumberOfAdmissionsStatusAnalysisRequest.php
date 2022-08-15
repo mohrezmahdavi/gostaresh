@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\NumberOfAdmissionsStatusAnalysis;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NumberOfAdmissionsStatusAnalysisRequest extends FormRequest
@@ -33,7 +34,7 @@ class NumberOfAdmissionsStatusAnalysisRequest extends FormRequest
             "grade_id" => 'required|numeric',
             'department_of_education' => 'required|numeric|gte:0',
             "university_type" => 'required|numeric',
-            "number_of_admissions" => 'required|numeric|gte:0',
+            "number_of_admissions" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

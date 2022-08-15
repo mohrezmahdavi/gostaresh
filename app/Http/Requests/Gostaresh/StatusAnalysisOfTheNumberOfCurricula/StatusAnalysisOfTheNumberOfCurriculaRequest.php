@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfCurricula;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StatusAnalysisOfTheNumberOfCurriculaRequest extends FormRequest
@@ -30,12 +31,12 @@ class StatusAnalysisOfTheNumberOfCurriculaRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            "total_number_of_curricula" => 'required|numeric|gte:0',
-            "number_of_modified_curricula" => 'required|numeric|gte:0',
-            "new_interdisciplinary_curricula_implemented" => 'required|numeric|gte:0',
-            "complete_new_interdisciplinary_curricula" => 'required|numeric|gte:0',
-            "number_of_common_curricula_with_the_world" => 'required|numeric|gte:0',
-            "number_of_curricula_developed" => 'required|numeric|gte:0',
+            "total_number_of_curricula" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_modified_curricula" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "new_interdisciplinary_curricula_implemented" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "complete_new_interdisciplinary_curricula" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_common_curricula_with_the_world" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_curricula_developed" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

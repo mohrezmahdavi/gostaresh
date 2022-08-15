@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\CostOfMajors;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 55 request
@@ -33,11 +34,11 @@ class CostOfMajorsRequest extends FormRequest
             'university_type' => 'required|numeric|gte:0',
             'gender_id' => 'required|numeric|gte:0',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|numeric|gte:0|lte:2147483647',
-            'bachelor_degree' => 'required|numeric|gte:0|lte:2147483647',
-            'masters' => 'required|numeric|gte:0|lte:2147483647',
-            'professional_phd' => 'required|numeric|gte:0|lte:2147483647',
-            'phd' => 'required|numeric|gte:0|lte:2147483647',
+            'associate_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'bachelor_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'masters' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'professional_phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

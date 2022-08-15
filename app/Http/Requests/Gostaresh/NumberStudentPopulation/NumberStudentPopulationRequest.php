@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\NumberStudentPopulation;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NumberStudentPopulationRequest extends FormRequest
@@ -30,12 +31,12 @@ class NumberStudentPopulationRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             "gender_id" => 'required|numeric',
-            "ebtedai" => 'required|numeric|gte:0',
-            "motevasete_1" => 'required|numeric|gte:0',
-            "motevasete_2_ensani" => 'required|numeric|gte:0',
-            "motevasete_2_math" => 'required|numeric|gte:0',
-            "motevasete_2_science" => 'required|numeric|gte:0',
-            "motevasete_2_kar_danesh" => 'required|numeric|gte:0',
+            "ebtedai" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "motevasete_1" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "motevasete_2_ensani" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "motevasete_2_math" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "motevasete_2_science" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "motevasete_2_kar_danesh" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\NumberOfInternationalCourse;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NumberOfInternationalCourseRequest extends FormRequest
@@ -32,10 +33,10 @@ class NumberOfInternationalCourseRequest extends FormRequest
             'unit' => 'required|max:255',
             "gender_id" => 'required|numeric',
             "department_of_education" => 'required|numeric|gte:0',
-            "kardani_count" => 'required|numeric|gte:0',
-            "karshenasi_count" => 'required|numeric|gte:0',
-            "karshenasi_arshad_count" => 'required|numeric|gte:0',
-            "docktora_count" => 'required|numeric|gte:0',
+            "kardani_count" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "karshenasi_count" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "karshenasi_arshad_count" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "docktora_count" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

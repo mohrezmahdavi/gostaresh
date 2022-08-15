@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\RevenueChanges;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 49 request
@@ -31,7 +32,7 @@ class RevenueChangesRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'total_annual_income' => 'required|numeric|gte:0|lte:2147483647',
+            'total_annual_income' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
