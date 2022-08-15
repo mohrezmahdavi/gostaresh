@@ -73,7 +73,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\UnitsGeneralStatus::$numeric_fields))
-                                                        <td>{{ number_format($unitsGeneralStatus?->{$key}) }}</td>
+                                                        <td>{{ $unitsGeneralStatus?->{$key} }}</td>
                                                     @else
                                                         <td>{{ $unitsGeneralStatus->{$key} }}</td>
                                                     @endif

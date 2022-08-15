@@ -64,7 +64,7 @@
                     @foreach ($filterColumnsCheckBoxes as $key => $value)
                         @if (filterCol($key))
                             @if (in_array($key, \App\Models\Index\RevenueChangesTrendsAnalysis::$numeric_fields))
-                <td>{{ number_format($revenueChange?->{$key}) }}</td>
+                <td>{{ $revenueChange?->{$key} }}</td>
             @else
                 <td>{{ $revenueChange->{$key} }}</td>
         @endif

@@ -20,7 +20,7 @@
 <td>{{ $graduateStatusAnalysis?->skill_certification_graduates }}</td>
 @endif
 @if (filterCol('employed_graduates_6_months_after_graduation') == true)
-<td>{{ number_format((int)$graduateStatusAnalysis?->employed_graduates_6_months_after_graduation }}</td>
+<td>{{ $graduateStatusAnalysis?->employed_graduates_6_months_after_graduation }}</td>
 @endif
 @if (filterCol('average_monthly_income_employed_graduates') == true)
 <td>{{ $graduateStatusAnalysis?->average_monthly_income_employed_graduates }}</td>
