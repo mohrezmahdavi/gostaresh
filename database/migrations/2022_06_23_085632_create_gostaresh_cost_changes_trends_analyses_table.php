@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->unsignedInteger('total_annual_expenses')->comment('کل هزینه های سالیانه')->nullable();
+            $table->float('total_annual_expenses')->comment('کل هزینه های سالیانه')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

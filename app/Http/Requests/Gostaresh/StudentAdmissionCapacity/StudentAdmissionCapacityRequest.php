@@ -33,7 +33,7 @@ class StudentAdmissionCapacityRequest extends FormRequest
             "university_type" => 'required|numeric',
             "grade_id" => 'required|numeric',
             'department_of_education' => 'required|numeric|gte:0',
-            "student_admission_capacities" => 'required|integer|gte:0',
+            "student_admission_capacities" => 'required|numeric|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

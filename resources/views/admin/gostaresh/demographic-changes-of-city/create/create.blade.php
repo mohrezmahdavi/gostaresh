@@ -42,7 +42,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="population" min="0" max="18446744073709551615"
+                                <input type="text" id="population" min="0" max="18446744073709551615"
                                     name="population" value="{{ old('population') }}" class="form-control"
                                     placeholder="جمعیت را وارد کنید...">
                             </div>

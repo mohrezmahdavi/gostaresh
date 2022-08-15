@@ -122,7 +122,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_registrants" name="number_of_registrants"
+                                <input type="text" id="number_of_registrants" name="number_of_registrants"
                                     value="{{ old('number_of_registrants') }}" class="form-control"
                                     placeholder=" تعداد دانشجویان را وارد کنید...">
                             </div>

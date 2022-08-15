@@ -56,7 +56,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="amount_payment_rd" name="amount_payment_rd"
+                                <input type="text" style="direction: rtl" id="amount_payment_rd" name="amount_payment_rd"
                                     value="{{ $paymentRAndDDepartment->amount }}" class="form-control"
                                     placeholder="میزان هزینه کرد را وارد کنید...">
                             </div>

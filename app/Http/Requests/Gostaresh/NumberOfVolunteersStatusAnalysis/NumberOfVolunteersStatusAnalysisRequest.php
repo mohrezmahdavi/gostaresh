@@ -33,7 +33,7 @@ class NumberOfVolunteersStatusAnalysisRequest extends FormRequest
             "grade_id" => 'required|numeric',
             "university_type" => 'required|numeric',
             'department_of_education' => 'required|numeric|gte:0',
-            "number_of_volunteers" => 'required|integer|gte:0',
+            "number_of_volunteers" => 'required|numeric|gte:0',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

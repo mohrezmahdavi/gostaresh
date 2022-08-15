@@ -45,7 +45,7 @@
                                     <span>{{$county->name}}</span>&nbsp
                                 </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" id="{{$county->id}}" name="{{$county->id}}" value="{{ old($county->id) ?? $county->zone }}">
+                                    <input class="form-control" type="text" id="{{$county->id}}" name="{{$county->id}}" value="{{ old($county->id) ?? $county->zone }}">
                                 </div>
                             </div>
                         @endforeach

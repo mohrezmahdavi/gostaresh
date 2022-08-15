@@ -29,12 +29,12 @@ return new class extends Migration
             $table->foreignId('sub_grade_id')->nullable();
             $table->foreignId('major_id')->nullable();
             $table->foreignId('minor_id')->nullable();
-            $table->unsignedBigInteger('ebtedai')->default(0);
-            $table->unsignedBigInteger('motevasete_1')->default(0);
-            $table->unsignedBigInteger('motevasete_2_ensani')->default(0);
-            $table->unsignedBigInteger('motevasete_2_math')->default(0);
-            $table->unsignedBigInteger('motevasete_2_science')->default(0);
-            $table->unsignedBigInteger('motevasete_2_kar_danesh')->default(0);
+            $table->float('ebtedai')->default(0);
+            $table->float('motevasete_1')->default(0);
+            $table->float('motevasete_2_ensani')->default(0);
+            $table->float('motevasete_2_math')->default(0);
+            $table->float('motevasete_2_science')->default(0);
+            $table->float('motevasete_2_kar_danesh')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

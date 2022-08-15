@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->unsignedBigInteger('amount')->default(0);
+            $table->float('amount')->default(0);
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

@@ -124,7 +124,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="student_admission_capacities"
+                                <input type="text" style="direction: rtl" id="student_admission_capacities"
                                     name="student_admission_capacities"
                                     value="{{ $studentAdmissionCapacity->student_admission_capacities }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">

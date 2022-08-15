@@ -31,11 +31,11 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->unsignedTinyInteger('component')->comment('مولفه')->nullable();
             $table->unsignedTinyInteger('gender_id')->unsigned()->nullable();
-            $table->unsignedInteger('associate_degree')->nullable();
-            $table->unsignedInteger('bachelor_degree')->nullable();
-            $table->unsignedInteger('masters')->nullable();
-            $table->unsignedInteger('professional_doctor')->nullable();
-            $table->unsignedInteger('phd')->nullable();
+            $table->float('associate_degree')->nullable();
+            $table->float('bachelor_degree')->nullable();
+            $table->float('masters')->nullable();
+            $table->float('professional_doctor')->nullable();
+            $table->float('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

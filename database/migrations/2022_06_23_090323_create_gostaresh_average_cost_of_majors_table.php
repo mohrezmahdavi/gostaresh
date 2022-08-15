@@ -29,13 +29,13 @@ return new class extends Migration
             $table->foreignId('minor_id')->nullable();
 
             $table->string('university_type')->nullable();
-            $table->unsignedTinyInteger('gender_id')->unsigned()->nullable();
-            $table->unsignedTinyInteger('department_of_education')->nullable();
-            $table->unsignedInteger('associate_degree')->nullable();
-            $table->unsignedInteger('bachelor_degree')->nullable();
-            $table->unsignedInteger('masters')->nullable();
-            $table->unsignedInteger('professional_phd')->nullable();
-            $table->unsignedInteger('phd')->nullable();
+            $table->float('gender_id')->unsigned()->nullable();
+            $table->float('department_of_education')->nullable();
+            $table->float('associate_degree')->nullable();
+            $table->float('bachelor_degree')->nullable();
+            $table->float('masters')->nullable();
+            $table->float('professional_phd')->nullable();
+            $table->float('phd')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();
