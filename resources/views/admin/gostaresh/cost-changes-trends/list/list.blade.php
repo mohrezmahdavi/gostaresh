@@ -64,7 +64,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\CostChangesTrendsAnalysis::$numeric_fields))
-                                        <td>{{ number_format($costChangesTrend?->{$key}) }}</td>
+                                        <td>{{ $costChangesTrend?->{$key} }}</td>
                                     @else
                                         <td>{{ $costChangesTrend->{$key} }}</td>
                                 @endif

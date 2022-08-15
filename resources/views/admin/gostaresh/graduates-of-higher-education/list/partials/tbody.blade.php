@@ -11,10 +11,10 @@
 <td>{{ $graduatesOfHigherEducationCenter?->department_of_education_title }}</td>
 @endif
 @if (filterCol('associate_degree') == true)
-<td>{{ number_format((int) $graduatesOfHigherEducationCenter?->associate_degree) }}</td>
+<td>{{ $graduatesOfHigherEducationCenter?->associate_degree }}</td>
 @endif
 @if (filterCol('bachelor_degree') == true)
-<td>{{ number_format((int) $graduatesOfHigherEducationCenter?->bachelor_degree) }}</td>
+<td>{{ $graduatesOfHigherEducationCenter?->bachelor_degree }}</td>
 @endif
 @if (filterCol('masters') == true)
 <td>{{ $graduatesOfHigherEducationCenter?->masters }}</td>

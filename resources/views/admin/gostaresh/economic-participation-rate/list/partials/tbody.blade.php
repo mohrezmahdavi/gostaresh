@@ -4,7 +4,7 @@
 <td>{{ $economicParticipationRate?->education_title }}</td>
 @endif
 @if (filterCol('amount') == true)
-<td>{{ number_format($economicParticipationRate?->amount) }}</td>
+<td>{{ $economicParticipationRate?->amount }}</td>
 @endif
 @if (filterCol('year') == true)
 <td>{{ $economicParticipationRate?->year }}</td>

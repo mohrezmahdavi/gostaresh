@@ -11,19 +11,19 @@
 <td>{{ $costOfMajor?->department_of_education_title }}</td>
 @endif
 @if (filterCol('associate_degree') == true)
-<td>{{ number_format((int) $costOfMajor?->associate_degree ) }}</td>
+<td>{{ $costOfMajor?->associate_degree }}</td>
 @endif
 @if (filterCol('bachelor_degree') == true)
-<td>{{ number_format((int) $costOfMajor?->bachelor_degree ) }}</td>
+<td>{{ $costOfMajor?->bachelor_degree }}</td>
 @endif
 @if (filterCol('masters') == true)
-<td>{{ number_format((int) $costOfMajor?->masters ) }}</td>
+<td>{{ $costOfMajor?->masters }}</td>
 @endif
 @if (filterCol('professional_phd') == true)
-<td>{{ number_format((int) $costOfMajor?->professional_phd ) }}</td>
+<td>{{ $costOfMajor?->professional_phd }}</td>
 @endif   
 @if (filterCol('phd') == true)
-<td>{{ number_format((int) $costOfMajor?->phd ) }}</td>
+<td>{{ $costOfMajor?->phd }}</td>
 @endif
 
 <td>{{ $costOfMajor?->year }}</td>

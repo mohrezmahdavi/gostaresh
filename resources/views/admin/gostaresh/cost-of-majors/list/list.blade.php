@@ -66,7 +66,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\AverageCostOfMajor::$numeric_fields))
-                                        <td>{{ number_format($costOfMajor?->{$key}) }}</td>
+                                        <td>{{ $costOfMajor?->{$key} }}</td>
                                     @else
                                         <td>{{ $costOfMajor->{$key} }}</td>
                                 @endif

@@ -4,7 +4,7 @@
 <td>{{ $amountOfFacilitiesForResearchAchievement?->unit }}</td>
 @endif
 @if (filterCol('amount') == true)
-<td>{{ number_format((int) $amountOfFacilitiesForResearchAchievement?->amount) }}</td>
+<td>{{ $amountOfFacilitiesForResearchAchievement?->amount }}</td>
 @endif
 
 <td>{{ $amountOfFacilitiesForResearchAchievement?->year }}</td>

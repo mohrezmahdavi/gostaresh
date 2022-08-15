@@ -5,7 +5,7 @@
 <td>{{ $costChangesTrend?->unit }}</td>
 @endif
 @if (filterCol('total_annual_expenses') == true)
-<td>{{ number_format((int) $costChangesTrend?->total_annual_expenses ) }}</td>
+<td>{{ $costChangesTrend?->total_annual_expenses }}</td>
 @endif     
 
 <td>{{ $costChangesTrend?->year }}</td>

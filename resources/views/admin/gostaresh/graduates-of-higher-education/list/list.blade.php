@@ -64,7 +64,7 @@
                                         <td>{{ $graduatesOfHigherEducationCenter?->province?->name . ' - ' . $graduatesOfHigherEducationCenter->county?->name }}
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (in_array($key, \App\Models\Index\GraduatesOfHigherEducationCenters::$numeric_fields))
-                                        <td>{{ number_format($graduatesOfHigherEducationCenter?->{$key}) }}</td>
+                                        <td>{{ $graduatesOfHigherEducationCenter?->{$key} }}</td>
                                     @else
                                         <td>{{ $graduatesOfHigherEducationCenter?->{$key} }}</td>
                                 @endif

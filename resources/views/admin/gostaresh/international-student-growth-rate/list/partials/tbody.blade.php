@@ -11,16 +11,16 @@
     <td>{{ $internationalStudentGrowthRate?->gender_title }}</td>
 @endif
 @if (filterCol('kardani_count') == true)
-    <td>{{ number_format($internationalStudentGrowthRate?->kardani_count) }}</td>
+    <td>{{ $internationalStudentGrowthRate?->kardani_count }}</td>
 @endif
 @if (filterCol('karshenasi_count') == true)
-    <td>{{ number_format($internationalStudentGrowthRate?->karshenasi_count) }}</td>
+    <td>{{ $internationalStudentGrowthRate?->karshenasi_count }}</td>
 @endif
 @if (filterCol('karshenasi_arshad_count') == true)
-    <td>{{ number_format($internationalStudentGrowthRate?->karshenasi_arshad_count) }}</td>
+    <td>{{ $internationalStudentGrowthRate?->karshenasi_arshad_count }}</td>
 @endif
 @if (filterCol('docktora_count') == true)
-    <td>{{ number_format($internationalStudentGrowthRate?->docktora_count) }}</td>
+    <td>{{ $internationalStudentGrowthRate?->docktora_count }}</td>
 @endif
 @if (filterCol('year') == true)
     <td>{{ $internationalStudentGrowthRate?->year }}</td>
