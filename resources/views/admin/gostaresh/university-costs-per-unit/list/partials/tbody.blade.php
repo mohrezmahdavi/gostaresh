@@ -47,49 +47,49 @@
 {{--<td>{{ number_format((int) $universityCost?->cost_of_university_equipment ) }}</td>--}}
 {{--@endif                              --}}
 @if (filterCol('training_costs') == true)
-<td>{{ number_format((int) $universityCost?->training_costs ) }}</td>
+<td>{{ $universityCost?->training_costs }}</td>
 @endif
 @if (filterCol('research_costs') == true)
-<td>{{ number_format((int) $universityCost?->research_costs ) }}</td>
+<td>{{ $universityCost?->research_costs }}</td>
 @endif
 @if (filterCol('innovation_costs') == true)
-<td>{{ number_format((int) $universityCost?->innovation_costs ) }}</td>
+<td>{{ $universityCost?->innovation_costs }}</td>
 @endif
 @if (filterCol('educational_costs') == true)
-<td>{{ number_format((int) $universityCost?->educational_costs ) }}</td>
+<td>{{ $universityCost?->educational_costs }}</td>
 @endif
 @if (filterCol('development_costs') == true)
-<td>{{ number_format((int) $universityCost?->development_costs ) }}</td>
+<td>{{ $universityCost?->development_costs }}</td>
 @endif
 @if (filterCol('cultural_sphere_costs') == true)
-<td>{{ number_format((int) $universityCost?->cultural_sphere_costs ) }}</td>
+<td>{{ $universityCost?->cultural_sphere_costs }}</td>
 @endif
 @if (filterCol('administrative_costs') == true)
-<td>{{ number_format((int) $universityCost?->administrative_costs ) }}</td>
+<td>{{ $universityCost?->administrative_costs }}</td>
 @endif
 @if (filterCol('information_technology_costs') == true)
-<td>{{ number_format((int) $universityCost?->information_technology_costs ) }}</td>
+<td>{{ $universityCost?->information_technology_costs }}</td>
 @endif
 @if (filterCol('International_sphere_costs') == true)
-<td>{{ number_format((int) $universityCost?->International_sphere_costs ) }}</td>
+<td>{{ $universityCost?->International_sphere_costs }}</td>
 @endif
 @if (filterCol('costs_of_staff_training_and_faculty') == true)
-<td>{{ number_format((int) $universityCost?->costs_of_staff_training_and_faculty ) }}</td>
+<td>{{ $universityCost?->costs_of_staff_training_and_faculty }}</td>
 @endif
 @if (filterCol('sports_expenses') == true)
-<td>{{ number_format((int) $universityCost?->sports_expenses ) }}</td>
+<td>{{ $universityCost?->sports_expenses }}</td>
 @endif
 @if (filterCol('health_costs') == true)
-<td>{{ number_format((int) $universityCost?->health_costs ) }}</td>
+<td>{{ $universityCost?->health_costs }}</td>
 @endif
 @if (filterCol('entrepreneurship_costs') == true)
-<td>{{ number_format((int) $universityCost?->entrepreneurship_costs ) }}</td>
+<td>{{ $universityCost?->entrepreneurship_costs }}</td>
 @endif
 @if (filterCol('graduate_costs') == true)
-<td>{{ number_format((int) $universityCost?->graduate_costs ) }}</td>
+<td>{{ $universityCost?->graduate_costs }}</td>
 @endif
 @if (filterCol('branding_costs') == true)
-<td>{{ number_format((int) $universityCost?->branding_costs ) }}</td>
+<td>{{ $universityCost?->branding_costs }}</td>
 @endif
 
 <td>{{ $universityCost?->year }}</td>

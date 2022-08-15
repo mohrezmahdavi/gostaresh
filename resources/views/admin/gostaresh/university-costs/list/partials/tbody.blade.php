@@ -5,46 +5,46 @@
 <td>{{ $universityCost?->unit }}</td>
 @endif
 @if (filterCol('payment_to_faculty_members') == true)
-<td>{{ number_format((int) $universityCost?->payment_to_faculty_members ) }}</td>
+<td>{{ $universityCost?->payment_to_faculty_members }}</td>
 @endif
 @if (filterCol('total_running_costs') == true)
-<td>{{ number_format((int) $universityCost?->total_running_costs ) }}</td>
+<td>{{ $universityCost?->total_running_costs }}</td>
 @endif
 @if (filterCol('average_salary_of_faculty_members') == true)
-<td>{{ number_format((int) $universityCost?->average_salary_of_faculty_members ) }}</td>
+<td>{{ $universityCost?->average_salary_of_faculty_members }}</td>
 @endif
 @if (filterCol('average_salaries_of_faculty_members_from_research_contracts') == true)
-<td>{{ number_format((int) $universityCost?->average_salaries_of_faculty_members_from_research_contracts ) }}</td>
+<td>{{ $universityCost?->average_salaries_of_faculty_members_from_research_contracts }}</td>
 @endif
 @if (filterCol('student_fees') == true)
-<td>{{ number_format((int) $universityCost?->student_fees ) }}</td>
+<td>{{ $universityCost?->student_fees }}</td>
 @endif
 @if (filterCol('average_salary_of_employees') == true)
-<td>{{ number_format((int) $universityCost?->average_salary_of_employees ) }}</td>
+<td>{{ $universityCost?->average_salary_of_employees }}</td>
 @endif
 @if (filterCol('current_expenditure_growth_rate') == true)
-<td>{{ number_format((int) $universityCost?->current_expenditure_growth_rate ) }}</td>
+<td>{{ $universityCost?->current_expenditure_growth_rate }}</td>
 @endif
 @if (filterCol('cost_of_paying_office_rent') == true)
-<td>{{ number_format((int) $universityCost?->cost_of_paying_office_rent ) }}</td>
+<td>{{ $universityCost?->cost_of_paying_office_rent }}</td>
 @endif
 @if (filterCol('cost_of_rent_for_educational_building') == true)
-<td>{{ number_format((int) $universityCost?->cost_of_rent_for_educational_building ) }}</td>
+<td>{{ $universityCost?->cost_of_rent_for_educational_building }}</td>
 @endif
 @if (filterCol('cost_of_rent_for_research_building') == true)
-<td>{{ number_format((int) $universityCost?->cost_of_rent_for_research_building ) }}</td>
+<td>{{ $universityCost?->cost_of_rent_for_research_building }}</td>
 @endif
 @if (filterCol('extra_charge_for_rent_extracurricular_building') == true)
-<td>{{ number_format((int) $universityCost?->extra_charge_for_rent_extracurricular_building ) }}</td>
+<td>{{ $universityCost?->extra_charge_for_rent_extracurricular_building }}</td>
 @endif
 @if (filterCol('cost_of_rent_innovation_buildings') == true)
-<td>{{ number_format((int) $universityCost?->cost_of_rent_innovation_buildings ) }}</td>
+<td>{{ $universityCost?->cost_of_rent_innovation_buildings }}</td>
 @endif
 @if (filterCol('energy_costs_of_buildings') == true)
-<td>{{ number_format((int) $universityCost?->energy_costs_of_buildings ) }}</td>
+<td>{{ $universityCost?->energy_costs_of_buildings }}</td>
 @endif
 @if (filterCol('cost_of_university_equipment') == true)
-<td>{{ number_format((int) $universityCost?->cost_of_university_equipment ) }}</td>
+<td>{{ $universityCost?->cost_of_university_equipment }}</td>
 @endif
 {{--@if (filterCol('training_costs') == true)--}}
 {{--<td>{{ number_format((int) $universityCost?->training_costs ) }}</td>--}}
