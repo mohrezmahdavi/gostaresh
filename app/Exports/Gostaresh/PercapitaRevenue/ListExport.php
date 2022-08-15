@@ -40,7 +40,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $percapitaRevenues?->grade_title );
         }
         if (filterCol('percapita_revenue_status_analyses') == true) {
-            array_push($mapping, number_format((int) $percapitaRevenues?->percapita_revenue_status_analyses) );
+            array_push($mapping, $percapitaRevenues?->percapita_revenue_status_analyses );
         }
 
         array_push($mapping, $percapitaRevenues?->year);

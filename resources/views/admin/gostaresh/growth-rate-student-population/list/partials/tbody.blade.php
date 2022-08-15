@@ -6,22 +6,22 @@
 {{-- <td>{{ $growthRateStudentPopulation?->grade }}</td> --}}
 
 @if (filterCol('ebtedai') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->ebtedai) }}</td>
+    <td>{{ $growthRateStudentPopulation?->ebtedai }}</td>
 @endif
 @if (filterCol('motevasete_1') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->motevasete_1) }}</td>
+    <td>{{ $growthRateStudentPopulation?->motevasete_1 }}</td>
 @endif
 @if (filterCol('motevasete_2_ensani') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_ensani) }}</td>
+    <td>{{ $growthRateStudentPopulation?->motevasete_2_ensani }}</td>
 @endif
 @if (filterCol('motevasete_2_math') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_math) }}</td>
+    <td>{{ $growthRateStudentPopulation?->motevasete_2_math }}</td>
 @endif
 @if (filterCol('motevasete_2_science') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_science) }}</td>
+    <td>{{ $growthRateStudentPopulation?->motevasete_2_science }}</td>
 @endif
 @if (filterCol('motevasete_2_kar_danesh') == true)
-    <td>{{ number_format($growthRateStudentPopulation?->motevasete_2_kar_danesh) }}</td>
+    <td>{{ $growthRateStudentPopulation?->motevasete_2_kar_danesh }}</td>
 @endif
 
 <td>{{ $growthRateStudentPopulation?->year }}</td>

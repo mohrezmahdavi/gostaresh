@@ -4,7 +4,7 @@
     <td>{{ $gdpPart?->part_title }}</td>
 @endif
 @if (filterCol('amount') == true)
-    <td>{{ number_format($gdpPart?->amount) }}</td>
+    <td>{{ $gdpPart?->amount }}</td>
 @endif
 @if (filterCol('year') == true)
     <td>{{ $gdpPart?->year }}</td>

@@ -5,16 +5,16 @@
 <td>{{ $statusAnalysisOfTheNumberOfCurricula?->unit }}</td>
 @endif
 @if (filterCol('total_number_of_curricula') == true)
-<td>{{ number_format((int) $statusAnalysisOfTheNumberOfCurricula?->total_number_of_curricula) }}</td>
+<td>{{ $statusAnalysisOfTheNumberOfCurricula?->total_number_of_curricula }}</td>
 @endif
 @if (filterCol('number_of_modified_curricula') == true)
-<td>{{ number_format((int) $statusAnalysisOfTheNumberOfCurricula?->number_of_modified_curricula) }}</td>
+<td>{{ $statusAnalysisOfTheNumberOfCurricula?->number_of_modified_curricula }}</td>
 @endif
 @if (filterCol('new_interdisciplinary_curricula_implemented') == true)
-<td>{{ number_format((int) $statusAnalysisOfTheNumberOfCurricula?->new_interdisciplinary_curricula_implemented) }}</td>
+<td>{{ $statusAnalysisOfTheNumberOfCurricula?->new_interdisciplinary_curricula_implemented }}</td>
 @endif
 @if (filterCol('complete_new_interdisciplinary_curricula') == true)
-<td>{{ number_format((int) $statusAnalysisOfTheNumberOfCurricula?->complete_new_interdisciplinary_curricula) }}</td>
+<td>{{ $statusAnalysisOfTheNumberOfCurricula?->complete_new_interdisciplinary_curricula }}</td>
 @endif
 @if (filterCol('number_of_common_curricula_with_the_world') == true)
 <td>{{ $statusAnalysisOfTheNumberOfCurricula?->number_of_common_curricula_with_the_world }}</td>

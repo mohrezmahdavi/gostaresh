@@ -10,17 +10,17 @@
 @endif
 
 @if (filterCol('land_area') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->land_area) }}
+    <td>{{ $geographicalLocationOfUnit?->land_area }}
     </td>
 @endif
 
 @if (filterCol('the_size_of_the_building') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->the_size_of_the_building) }}
+    <td>{{ $geographicalLocationOfUnit?->the_size_of_the_building }}
     </td>
 @endif
 
 @if (filterCol('distance_from_population_density_of_city') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->distance_from_population_density_of_city) }}
+    <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
     </td>
 @endif
 @if (filterCol('distance_from_center_of_province') == true)

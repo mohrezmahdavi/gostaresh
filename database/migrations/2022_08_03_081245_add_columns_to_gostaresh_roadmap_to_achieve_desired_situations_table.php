@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('gostaresh_roadmap_to_achieve_desired_situations', function (Blueprint $table) {
-            $table->unsignedInteger('package_number')->comment('شماره بسته متناظر از سند تحول دانشگاه')->nullable();
-            $table->unsignedInteger('transformation_document')->comment('شماره راهکنش متناظر از سند تحول دانشگاه')->nullable();
+            $table->float('package_number')->comment('شماره بسته متناظر از سند تحول دانشگاه')->nullable();
+            $table->float('transformation_document')->comment('شماره راهکنش متناظر از سند تحول دانشگاه')->nullable();
         });
     }
 

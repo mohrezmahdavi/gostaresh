@@ -61,7 +61,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\SocialHealthStatusAnalysis::$numeric_fields))
-                                        <td>{{ number_format($socialHealth?->{$key}) }}</td>
+                                        <td>{{ $socialHealth?->{$key} }}</td>
                                     @else
                                         <td>{{ $socialHealth?->{$key} }}</td>
                                 @endif

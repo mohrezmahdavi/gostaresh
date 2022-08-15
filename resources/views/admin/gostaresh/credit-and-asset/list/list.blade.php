@@ -60,7 +60,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\CreditAndAssetAnalysis::$numeric_fields))
-                                        <td>{{ number_format($creditAndAsset?->{$key}) }}</td>
+                                        <td>{{ $creditAndAsset?->{$key} }}</td>
                                     @else
                                         <td>{{ $creditAndAsset->{$key} }}</td>
                                 @endif

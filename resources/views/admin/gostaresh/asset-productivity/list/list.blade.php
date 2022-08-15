@@ -63,7 +63,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\IndexOfAssetProductivity::$numeric_fields))
-                                        <td>{{ number_format($assetProductivityItem?->{$key}) }}</td>
+                                        <td>{{ $assetProductivityItem?->{$key} }}</td>
                                     @else
                                         <td>{{ $assetProductivityItem->{$key} }}</td>
                                 @endif

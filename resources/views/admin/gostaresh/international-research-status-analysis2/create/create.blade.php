@@ -66,7 +66,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_H_index_of_faculty_members"
+                                <input type="text" id="average_H_index_of_faculty_members"
                                     name="average_H_index_of_faculty_members"
                                     value="{{ old('average_H_index_of_faculty_members') }}" class="form-control"
                                     placeholder=" متوسط H-index اعضای هیات علمی را وارد کنید...">
@@ -79,7 +79,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_articles_science_and_nature"
+                                <input type="text" id="number_of_articles_science_and_nature"
                                     name="number_of_articles_science_and_nature"
                                     value="{{ old('number_of_articles_science_and_nature') }}" class="form-control"
                                     placeholder=" تعداد مقالات در دو مجله Science  و Nature را وارد کنید...">
@@ -92,7 +92,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="print_ISI_articles" name="print_ISI_articles"
+                                <input type="text" id="print_ISI_articles" name="print_ISI_articles"
                                     value="{{ old('print_ISI_articles') }}" class="form-control"
                                     placeholder=" سرانه چاپ مقالات ISI را وارد کنید...">
                             </div>
@@ -118,7 +118,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_faculty_members_of_world_scientists"
+                                <input type="text" id="number_of_faculty_members_of_world_scientists"
                                     name="number_of_faculty_members_of_world_scientists"
                                     value="{{ old('number_of_faculty_members_of_world_scientists') }}"
                                     class="form-control"
@@ -133,7 +133,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_faculty_members_of_international_journals"
+                                <input type="text" id="number_of_faculty_members_of_international_journals"
                                     name="number_of_faculty_members_of_international_journals"
                                     value="{{ old('number_of_faculty_members_of_international_journals') }}"
                                     class="form-control"
@@ -147,7 +147,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_conferences_held"
+                                <input type="text" id="number_of_international_conferences_held"
                                     name="number_of_international_conferences_held"
                                     value="{{ old('number_of_international_conferences_held') }}" class="form-control"
                                     placeholder=" تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر را وارد کنید...">
@@ -161,7 +161,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_scientific_books"
+                                <input type="text" id="number_of_international_scientific_books"
                                     name="number_of_international_scientific_books"
                                     value="{{ old('number_of_international_scientific_books') }}" class="form-control"
                                     placeholder=" تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation دانشگاه آزاد اسلامی را وارد کنید...">
@@ -174,7 +174,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_agreements_implemented"
+                                <input type="text" id="number_of_international_agreements_implemented"
                                     name="number_of_international_agreements_implemented"
                                     value="{{ old('number_of_international_agreements_implemented') }}"
                                     class="form-control"
@@ -188,7 +188,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="amount_of_international_research_credits"
+                                <input type="text" id="amount_of_international_research_credits"
                                     name="amount_of_international_research_credits"
                                     value="{{ old('amount_of_international_research_credits') }}" class="form-control"
                                     placeholder=" میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده را وارد کنید...">
@@ -202,7 +202,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_international_publications"
+                                <input type="text" id="number_of_international_publications"
                                     name="number_of_international_publications"
                                     value="{{ old('number_of_international_publications') }}" class="form-control"
                                     placeholder=" تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus) را وارد کنید...">

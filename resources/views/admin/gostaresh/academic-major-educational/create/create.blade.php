@@ -72,7 +72,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="azad_eslami_count" name="azad_eslami_count"
+                                <input type="text" id="azad_eslami_count" name="azad_eslami_count"
                                     value="{{ old('azad_eslami_count') }}" class="form-control"
                                     placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -96,7 +96,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="dolati_count" name="dolati_count"
+                                <input type="text" id="dolati_count" name="dolati_count"
                                     value="{{ old('dolati_count') }}" class="form-control"
                                     placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -120,7 +120,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="medical_sciences_count" name="medical_sciences_count"
+                                <input type="text" id="medical_sciences_count" name="medical_sciences_count"
                                     value="{{ old('medical_sciences_count') }}" class="form-control"
                                     placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -144,7 +144,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="farhangian_count" name="farhangian_count"
+                                <input type="text" id="farhangian_count" name="farhangian_count"
                                     value="{{ old('farhangian_count') }}" class="form-control"
                                     placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -168,7 +168,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="fani_herfei_count" name="fani_herfei_count"
+                                <input type="text" id="fani_herfei_count" name="fani_herfei_count"
                                     value="{{ old('fani_herfei_count') }}" class="form-control"
                                     placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
@@ -192,7 +192,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="payam_noor_count" name="payam_noor_count"
+                                <input type="text" id="payam_noor_count" name="payam_noor_count"
                                     value="{{ old('payam_noor_count') }}" class="form-control"
                                     placeholder=" دانشگاه پیام نور را وارد کنید...">
                             </div>
@@ -216,7 +216,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="gheir_entefai_count" name="gheir_entefai_count"
+                                <input type="text" id="gheir_entefai_count" name="gheir_entefai_count"
                                     value="{{ old('gheir_entefai_count') }}" class="form-control"
                                     placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
                             </div>
@@ -240,7 +240,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="elmi_karbordi_count" name="elmi_karbordi_count"
+                                <input type="text" id="elmi_karbordi_count" name="elmi_karbordi_count"
                                     value="{{ old('elmi_karbordi_count') }}" class="form-control"
                                     placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
                             </div>

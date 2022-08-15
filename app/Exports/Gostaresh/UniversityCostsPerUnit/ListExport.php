@@ -76,49 +76,49 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
 //            array_push($mapping, number_format((int) $universityCosts?->cost_of_university_equipment ));
         }
         if (filterCol('training_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->training_costs ));
+            array_push($mapping, $universityCosts?->training_costs );
         }
         if (filterCol('research_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->research_costs ));
+            array_push($mapping, $universityCosts?->research_costs );
         }
         if (filterCol('innovation_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->innovation_costs ));
+            array_push($mapping, $universityCosts?->innovation_costs );
         }
         if (filterCol('educational_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->educational_costs ));
+            array_push($mapping, $universityCosts?->educational_costs );
         }
         if (filterCol('development_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->development_costs ));
+            array_push($mapping, $universityCosts?->development_costs );
         }
         if (filterCol('cultural_sphere_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cultural_sphere_costs ));
+            array_push($mapping, $universityCosts?->cultural_sphere_costs );
         }
         if (filterCol('administrative_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->administrative_costs ));
+            array_push($mapping, $universityCosts?->administrative_costs );
         }
         if (filterCol('information_technology_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->information_technology_costs ));
+            array_push($mapping, $universityCosts?->information_technology_costs );
         }
         if (filterCol('International_sphere_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->International_sphere_costs ));
+            array_push($mapping, $universityCosts?->International_sphere_costs );
         }
         if (filterCol('costs_of_staff_training_and_faculty') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->costs_of_staff_training_and_faculty ));
+            array_push($mapping, $universityCosts?->costs_of_staff_training_and_faculty );
         }
         if (filterCol('sports_expenses') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->sports_expenses ));
+            array_push($mapping, $universityCosts?->sports_expenses );
         }
         if (filterCol('health_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->health_costs ));
+            array_push($mapping, $universityCosts?->health_costs );
         }
         if (filterCol('entrepreneurship_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->entrepreneurship_costs ));
+            array_push($mapping, $universityCosts?->entrepreneurship_costs );
         }
         if (filterCol('graduate_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->graduate_costs ));
+            array_push($mapping, $universityCosts?->graduate_costs );
         }
         if (filterCol('branding_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->branding_costs ));
+            array_push($mapping, $universityCosts?->branding_costs );
         }
 
         array_push($mapping, $universityCosts?->year);

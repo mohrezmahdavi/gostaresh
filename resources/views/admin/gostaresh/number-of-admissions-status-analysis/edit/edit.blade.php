@@ -125,7 +125,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_admissions" name="number_of_admissions"
+                                <input type="text" id="number_of_admissions" name="number_of_admissions"
                                     value="{{ $numberOfAdmissionsStatusAnalysis->number_of_admissions }}"
                                     class="form-control" placeholder=" تعداد پذیرفته شدگان را وارد کنید...">
                             </div>

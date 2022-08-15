@@ -61,7 +61,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\RoadmapToAchieveDesiredSituation::$numeric_fields))
-                                        <td>{{ number_format($roadmapDesired?->{$key}) }}</td>
+                                        <td>{{ $roadmapDesired?->{$key} }}</td>
                                     @else
                                         <td>{{ $roadmapDesired->{$key} }}</td>
                                 @endif

@@ -61,7 +61,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\CulturalIndicatorsStatusAnalysis::$numeric_fields))
-                                        <td>{{ number_format($culturalIndicator?->{$key}) }}</td>
+                                        <td>{{ $culturalIndicator?->{$key} }}</td>
                                     @else
                                         <td>{{ $culturalIndicator?->{$key} }}</td>
                                 @endif

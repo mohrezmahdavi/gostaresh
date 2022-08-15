@@ -34,7 +34,7 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $revenueChanges?->unit);
         }
         if (filterCol('total_annual_income') == true) {
-            array_push($mapping, number_format((int) $revenueChanges?->total_annual_income ));
+            array_push($mapping, $revenueChanges?->total_annual_income );
         }
 
         array_push($mapping, $revenueChanges?->year);

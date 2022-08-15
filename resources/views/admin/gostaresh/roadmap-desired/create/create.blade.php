@@ -89,7 +89,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="package_number" name="package_number"
+                                <input type="text" id="package_number" name="package_number"
                                     value="{{ old('package_number') }}" class="form-control"
                                     placeholder=" شماره بسته متناظر از سند تحول دانشگاه را وارد کنید...">
                             </div>
@@ -101,7 +101,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="transformation_document" name="transformation_document"
+                                <input type="text" id="transformation_document" name="transformation_document"
                                     value="{{ old('transformation_document') }}" class="form-control"
                                     placeholder=" شماره راهکنش متناظر از سند تحول دانشگاه را وارد کنید...">
                             </div>

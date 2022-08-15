@@ -67,7 +67,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="total_number_of_fields_of_study"
+                                <input type="text" style="direction: rtl" id="total_number_of_fields_of_study"
                                     name="total_number_of_fields_of_study"
                                     value="{{ old('total_number_of_fields_of_study') }}" class="form-control"
                                     placeholder=" تعداد کل رشته های تحصیلی را وارد کنید...">
@@ -80,7 +80,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_international_courses"
+                                <input type="text" style="direction: rtl" id="number_of_international_courses"
                                     name="number_of_international_courses"
                                     value="{{ old('number_of_international_courses') }}" class="form-control"
                                     placeholder=" تعداد رشته های تحصیلی بین المللی را وارد کنید...">
@@ -93,7 +93,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_virtual_courses"
+                                <input type="text" style="direction: rtl" id="number_of_virtual_courses"
                                     name="number_of_virtual_courses" value="{{ old('number_of_virtual_courses') }}"
                                     class="form-control" placeholder=" تعداد رشته های تحصیلی مجازی را وارد کنید...">
                             </div>
@@ -105,7 +105,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_technical_disciplines"
+                                <input type="text" style="direction: rtl" id="number_of_technical_disciplines"
                                     name="number_of_technical_disciplines"
                                     value="{{ old('number_of_technical_disciplines') }}" class="form-control"
                                     placeholder=" تعداد رشته های فنی و حرفه ای و مهارتی را وارد کنید...">
@@ -118,7 +118,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_newly_established_courses"
+                                <input type="text" style="direction: rtl" id="number_of_newly_established_courses"
                                     name="number_of_newly_established_courses"
                                     value="{{ old('number_of_newly_established_courses') }}" class="form-control"
                                     placeholder=" تعداد رشته های تحصیلی جدید التاسیس را وارد کنید...">
@@ -131,7 +131,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_courses_not_accepted"
+                                <input type="text" style="direction: rtl" id="number_of_courses_not_accepted"
                                     name="number_of_courses_not_accepted"
                                     value="{{ old('number_of_courses_not_accepted') }}" class="form-control"
                                     placeholder=" تعداد رشته / محل های فاقد پذیرش را وارد کنید...">
@@ -144,7 +144,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_courses_without_volunteers"
+                                <input type="text" style="direction: rtl" id="number_of_courses_without_volunteers"
                                     name="number_of_courses_without_volunteers"
                                     value="{{ old('number_of_courses_without_volunteers') }}" class="form-control"
                                     placeholder=" تعداد رشته / محل های فاقد داوطلب را وارد کنید...">
@@ -157,7 +157,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_GDP_courses"
+                                <input type="text" style="direction: rtl" id="number_of_GDP_courses"
                                     name="number_of_GDP_courses" value="{{ old('number_of_GDP_courses') }}"
                                     class="form-control"
                                     placeholder=" تعدادرشته های تحصیلی مرتبط با حوزه GDP غالب استان را وارد کنید...">
@@ -171,7 +171,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl"
+                                <input type="text" style="direction: rtl"
                                     id="number_of_disciplines_corresponding_to_job_fields"
                                     name="number_of_disciplines_corresponding_to_job_fields"
                                     value="{{ old('number_of_disciplines_corresponding_to_job_fields') }}"
@@ -188,7 +188,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl"
+                                <input type="text" style="direction: rtl"
                                     id="number_of_fields_corresponding_to_the_specified_specialties"
                                     name="number_of_fields_corresponding_to_the_specified_specialties"
                                     value="{{ old('number_of_fields_corresponding_to_the_specified_specialties') }}"
@@ -204,7 +204,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_courses_offered_virtually"
+                                <input type="text" style="direction: rtl" id="number_of_courses_offered_virtually"
                                     name="number_of_courses_offered_virtually"
                                     value="{{ old('number_of_courses_offered_virtually') }}" class="form-control"
                                     placeholder="تعداد واحدهای درسی ارایه شده به صورت مجازی">
@@ -219,7 +219,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl"
+                                <input type="text" style="direction: rtl"
                                     id="number_of_popular_fields_more_than_eighty_percent_capacity"
                                     name="number_of_popular_fields_more_than_eighty_percent_capacity"
                                     value="{{ old('number_of_popular_fields_more_than_eighty_percent_capacity') }}"
@@ -235,7 +235,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_courses_with_low_audience"
+                                <input type="text" style="direction: rtl" id="number_of_courses_with_low_audience"
                                     name="number_of_courses_with_low_audience"
                                     value="{{ old('number_of_courses_with_low_audience') }}" class="form-control"
                                     placeholder="تعداد رشته های تحصیلی کم مخاطب (با تعداد کل دانشجوی کمتر از 20 درصد ظرفیت)">
@@ -248,7 +248,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_fields_of_less_than_5_people"
+                                <input type="text" style="direction: rtl" id="number_of_fields_of_less_than_5_people"
                                     name="number_of_fields_of_less_than_5_people"
                                     value="{{ old('number_of_fields_of_less_than_5_people') }}" class="form-control"
                                     placeholder="تعداد رشته های تحصیلی کمتر از 5 نفر">
@@ -261,7 +261,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_courses_without_admission"
+                                <input type="text" style="direction: rtl" id="number_of_courses_without_admission"
                                     name="number_of_courses_without_admission"
                                     value="{{ old('number_of_courses_without_admission') }}" class="form-control"
                                     placeholder="تعداد رشته های تحصیلی بدون پذیرش">
@@ -275,7 +275,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="number_of_popular_fields"
+                                <input type="text" style="direction: rtl" id="number_of_popular_fields"
                                     name="number_of_popular_fields" value="{{ old('number_of_popular_fields') }}"
                                     class="form-control"
                                     placeholder="تعداد رشته های تحصیلی پر متقاضی (با تعداد دانشجوی پذیرفته شده در سال 1399 بیش از 80 درصد ظرفیت)">
@@ -289,7 +289,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="low_number_of_applicants"
+                                <input type="text" style="direction: rtl" id="low_number_of_applicants"
                                     name="low_number_of_applicants" value="{{ old('low_number_of_applicants') }}"
                                     class="form-control"
                                     placeholder="تعداد رشته های تحصیلی کم متقاضی ( با تعداد دانشجوی پذیرفته شده در سال 1399 کمتر از 20 درصد ظرفیت)">

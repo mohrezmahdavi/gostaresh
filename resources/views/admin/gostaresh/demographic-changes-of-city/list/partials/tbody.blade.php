@@ -1,5 +1,5 @@
 @if (filterCol('population') == true)
-<td>{{ number_format((int) $demographicChangesOfCity?->population) }}</td>
+<td>{{ $demographicChangesOfCity?->population }}</td>
 @endif
 @if (filterCol('immigration_rates') == true)
 <td>{{ $demographicChangesOfCity?->immigration_rates }}</td>

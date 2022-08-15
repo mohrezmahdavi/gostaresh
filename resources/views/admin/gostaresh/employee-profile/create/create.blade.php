@@ -72,7 +72,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_non_faculty_staff" name="number_of_non_faculty_staff"
+                                <input type="text" id="number_of_non_faculty_staff" name="number_of_non_faculty_staff"
                                     value="{{ old('number_of_non_faculty_staff') }}" class="form-control"
                                     placeholder=" تعداد کارکنان غیر هیات علمی را وارد کنید...">
                             </div>
@@ -84,7 +84,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="average_age_of_employees" name="average_age_of_employees"
+                                <input type="text" id="average_age_of_employees" name="average_age_of_employees"
                                     value="{{ old('average_age_of_employees') }}" class="form-control"
                                     placeholder=" میانگین سنی کارمندان را وارد کنید...">
                             </div>
@@ -96,7 +96,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_male_employees" name="number_of_male_employees"
+                                <input type="text" id="number_of_male_employees" name="number_of_male_employees"
                                     value="{{ old('number_of_male_employees') }}" class="form-control"
                                     placeholder=" تعداد کارمندان مرد را وارد کنید...">
                             </div>
@@ -108,7 +108,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_female_employees" name="number_of_female_employees"
+                                <input type="text" id="number_of_female_employees" name="number_of_female_employees"
                                     value="{{ old('number_of_female_employees') }}" class="form-control"
                                     placeholder=" تعداد کارمندان زن را وارد کنید...">
                             </div>
@@ -120,7 +120,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_administrative_staff"
+                                <input type="text" id="number_of_administrative_staff"
                                     name="number_of_administrative_staff"
                                     value="{{ old('number_of_administrative_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان اداری را وارد کنید...">
@@ -133,7 +133,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_training_staff" name="number_of_training_staff"
+                                <input type="text" id="number_of_training_staff" name="number_of_training_staff"
                                     value="{{ old('number_of_training_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان بخش آموزشی را وارد کنید...">
                             </div>
@@ -145,7 +145,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_research_staff" name="number_of_research_staff"
+                                <input type="text" id="number_of_research_staff" name="number_of_research_staff"
                                     value="{{ old('number_of_research_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان بخش پژوهش و فناوری را وارد کنید...">
                             </div>
@@ -157,7 +157,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_PhD_staff" name="number_of_PhD_staff"
+                                <input type="text" id="number_of_PhD_staff" name="number_of_PhD_staff"
                                     value="{{ old('number_of_PhD_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان با مدرک دکترا را وارد کنید...">
                             </div>
@@ -169,7 +169,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_master_staff" name="number_of_master_staff"
+                                <input type="text" id="number_of_master_staff" name="number_of_master_staff"
                                     value="{{ old('number_of_master_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان با مدرک کارشناسی ارشد را وارد کنید...">
                             </div>
@@ -181,7 +181,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_expert_staff" name="number_of_expert_staff"
+                                <input type="text" id="number_of_expert_staff" name="number_of_expert_staff"
                                     value="{{ old('number_of_expert_staff') }}" class="form-control"
                                     placeholder=" تعداد کارمندان با مدرک کارشناسی را وارد کنید...">
                             </div>
@@ -193,7 +193,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_diploma_and_sub_diploma_employees"
+                                <input type="text" id="number_of_diploma_and_sub_diploma_employees"
                                     name="number_of_diploma_and_sub_diploma_employees"
                                     value="{{ old('number_of_diploma_and_sub_diploma_employees') }}" class="form-control"
                                     placeholder=" تعداد کارمندان با مدرک دیپلم و زیر دیپلم را وارد کنید...">
@@ -206,7 +206,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_employees_studying"
+                                <input type="text" id="number_of_employees_studying"
                                     name="number_of_employees_studying" value="{{ old('number_of_employees_studying') }}"
                                     class="form-control" placeholder=" تعداد کارمندان در حال تحصیل را وارد کنید...">
                             </div>

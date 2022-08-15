@@ -65,7 +65,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="total_number_of_curricula" name="total_number_of_curricula"
+                                <input type="text" id="total_number_of_curricula" name="total_number_of_curricula"
                                     value="{{ old('total_number_of_curricula') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -77,7 +77,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_modified_curricula" name="number_of_modified_curricula"
+                                <input type="text" id="number_of_modified_curricula" name="number_of_modified_curricula"
                                     value="{{ old('number_of_modified_curricula') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -89,7 +89,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="new_interdisciplinary_curricula_implemented"
+                                <input type="text" id="new_interdisciplinary_curricula_implemented"
                                     name="new_interdisciplinary_curricula_implemented"
                                     value="{{ old('new_interdisciplinary_curricula_implemented') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
@@ -102,7 +102,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="complete_new_interdisciplinary_curricula"
+                                <input type="text" id="complete_new_interdisciplinary_curricula"
                                     name="complete_new_interdisciplinary_curricula"
                                     value="{{ old('complete_new_interdisciplinary_curricula') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
@@ -115,7 +115,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_common_curricula_with_the_world"
+                                <input type="text" id="number_of_common_curricula_with_the_world"
                                     name="number_of_common_curricula_with_the_world"
                                     value="{{ old('number_of_common_curricula_with_the_world') }}" class="form-control"
                                     placeholder=" تعداد را وارد کنید...">
@@ -129,7 +129,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="number_of_curricula_developed"
+                                <input type="text" id="number_of_curricula_developed"
                                     name="number_of_curricula_developed" value="{{ old('number_of_curricula_developed') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>

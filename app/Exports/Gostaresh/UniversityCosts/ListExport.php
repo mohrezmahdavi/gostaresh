@@ -34,46 +34,46 @@ class ListExport implements FromCollection, WithMapping, WithHeadings
             array_push($mapping, $universityCosts?->unit);
         }
         if (filterCol('payment_to_faculty_members') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->payment_to_faculty_members ));
+            array_push($mapping, $universityCosts?->payment_to_faculty_members);
         }
         if (filterCol('total_running_costs') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->total_running_costs ));
+            array_push($mapping, $universityCosts?->total_running_costs);
         }
         if (filterCol('average_salary_of_faculty_members') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->average_salary_of_faculty_members ));
+            array_push($mapping, $universityCosts?->average_salary_of_faculty_members);
         }
         if (filterCol('average_salaries_of_faculty_members_from_research_contracts') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->average_salaries_of_faculty_members_from_research_contracts ));
+            array_push($mapping, $universityCosts?->average_salaries_of_faculty_members_from_research_contracts);
         }
         if (filterCol('student_fees') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->student_fees ));
+            array_push($mapping, $universityCosts?->student_fees);
         }
         if (filterCol('average_salary_of_employees') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->average_salary_of_employees ));
+            array_push($mapping, $universityCosts?->average_salary_of_employees);
         }
         if (filterCol('current_expenditure_growth_rate') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->current_expenditure_growth_rate ));
+            array_push($mapping, $universityCosts?->current_expenditure_growth_rate);
         }
         if (filterCol('cost_of_paying_office_rent') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cost_of_paying_office_rent ));
+            array_push($mapping, $universityCosts?->cost_of_paying_office_rent);
         }
         if (filterCol('cost_of_rent_for_educational_building') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cost_of_rent_for_educational_building ));
+            array_push($mapping, $universityCosts?->cost_of_rent_for_educational_building);
         }
         if (filterCol('cost_of_rent_for_research_building') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cost_of_rent_for_research_building ));
+            array_push($mapping, $universityCosts?->cost_of_rent_for_research_building);
         }
         if (filterCol('extra_charge_for_rent_extracurricular_building') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->extra_charge_for_rent_extracurricular_building ));
+            array_push($mapping, $universityCosts?->extra_charge_for_rent_extracurricular_building);
         }
         if (filterCol('cost_of_rent_innovation_buildings') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cost_of_rent_innovation_buildings ));
+            array_push($mapping, $universityCosts?->cost_of_rent_innovation_buildings);
         }
         if (filterCol('energy_costs_of_buildings') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->energy_costs_of_buildings ));
+            array_push($mapping, $universityCosts?->energy_costs_of_buildings);
         }
         if (filterCol('cost_of_university_equipment') == true) {
-            array_push($mapping, number_format((int) $universityCosts?->cost_of_university_equipment ));
+            array_push($mapping, $universityCosts?->cost_of_university_equipment);
         }
 //        if (filterCol('training_costs') == true) {
 //            array_push($mapping, number_format((int) $universityCosts?->training_costs ));

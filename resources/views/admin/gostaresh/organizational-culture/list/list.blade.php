@@ -60,7 +60,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\OrganizationalCultureStatusAnalysis::$numeric_fields))
-                                        <td>{{ number_format($organizationalCulture?->{$key}) }}</td>
+                                        <td>{{ $organizationalCulture?->{$key} }}</td>
                                     @elseif(in_array($key, \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
                                         <td>
                                             {{$organizationalCulture->$key}}

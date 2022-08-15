@@ -59,7 +59,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\AverageTuitionIncome::$numeric_fields))
-                                        <td>{{ number_format($tuitionIncomeItem?->{$key}) }}</td>
+                                        <td>{{ $tuitionIncomeItem?->{$key} }}</td>
                                     @else
                                         <td>{{ $tuitionIncomeItem->{$key} }}</td>
                                 @endif

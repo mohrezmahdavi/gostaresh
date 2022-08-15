@@ -127,7 +127,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl"
+                                <input type="text" style="direction: rtl"
                                     id="average_test_score_of_the_last_five_percent_of_admitted"
                                     name="average_test_score_of_the_last_five_percent_of_admitted"
                                     value="{{ $avgTstScOfLastFivePctOfAdmitted->average_test_score_of_the_last_five_percent_of_admitted }}"
