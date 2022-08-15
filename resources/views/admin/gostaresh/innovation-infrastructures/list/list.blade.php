@@ -63,7 +63,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\TechnologyAndInnovationInfrastructure::$numeric_fields))
-                                        <td>{{ number_format($innovationInfrastructure?->{$key}) }}</td>
+                                        <td>{{ $innovationInfrastructure?->{$key} }}</td>
                                     @else
                                         <td>{{ $innovationInfrastructure?->{$key} }}</td>
                                 @endif
@@ -77,8 +77,13 @@
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
-                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $innovationInfrastructure) }}" title="{{ __('validation.buttons.delete') }}" --}}
-                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+                                    <form method="POST" action="{{ route('innovation-infrastructures.destroy', $innovationInfrastructure) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 </tr>

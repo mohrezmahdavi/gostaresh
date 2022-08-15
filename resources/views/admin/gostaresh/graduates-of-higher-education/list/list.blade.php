@@ -64,7 +64,7 @@
                                         <td>{{ $graduatesOfHigherEducationCenter?->province?->name . ' - ' . $graduatesOfHigherEducationCenter->county?->name }}
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (in_array($key, \App\Models\Index\GraduatesOfHigherEducationCenters::$numeric_fields))
-                                        <td>{{ number_format($graduatesOfHigherEducationCenter?->{$key}) }}</td>
+                                        <td>{{ $graduatesOfHigherEducationCenter?->{$key} }}</td>
                                     @else
                                         <td>{{ $graduatesOfHigherEducationCenter?->{$key} }}</td>
                                 @endif
@@ -77,8 +77,13 @@
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
-                                    {{-- <a href="{{ route('graduates-of-higher-education.destroy', $graduatesOfHigherEducationCenter) }}" title="{{ __('validation.buttons.delete') }}" --}}
-                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
+                                    <form method="POST" action="{{ route('graduates-of-higher-education.destroy', $graduatesOfHigherEducationCenter) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 </tr>

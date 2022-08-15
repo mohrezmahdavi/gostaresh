@@ -132,7 +132,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" id="percapita_revenue_status_analyses"
+                                <input type="text" id="percapita_revenue_status_analyses"
                                     name="percapita_revenue_status_analyses"
                                     value="{{ old('percapita_revenue_status_analyses') }}" class="form-control"
                                     placeholder=" تحلیل وضعیت درآمد سرانه را وارد کنید...">

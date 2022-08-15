@@ -65,7 +65,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;" id="total_number_of_courses"
+                                <input type="text" style="direction: rtl;" id="total_number_of_courses"
                                     name="total_number_of_courses" value="{{ old('total_number_of_courses') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -78,7 +78,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;"
+                                <input type="text" style="direction: rtl;"
                                     id="number_of_international_Persian_language_courses_in_person"
                                     name="number_of_international_Persian_language_courses_in_person"
                                     value="{{ old('number_of_international_Persian_language_courses_in_person') }}"
@@ -93,7 +93,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;"
+                                <input type="text" style="direction: rtl;"
                                     id="number_of_international_virtual_Persian_language_courses"
                                     name="number_of_international_virtual_Persian_language_courses"
                                     value="{{ old('number_of_international_virtual_Persian_language_courses') }}"
@@ -109,7 +109,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;"
+                                <input type="text" style="direction: rtl;"
                                     id="number_of_international_courses_in_the_target_language_in_person"
                                     name="number_of_international_courses_in_the_target_language_in_person"
                                     value="{{ old('number_of_international_courses_in_the_target_language_in_person') }}"
@@ -125,7 +125,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl;"
+                                <input type="text" style="direction: rtl;"
                                     id="number_of_international_courses_in_the_target_language_virtually"
                                     name="number_of_international_courses_in_the_target_language_virtually"
                                     value="{{ old('number_of_international_courses_in_the_target_language_virtually') }}"

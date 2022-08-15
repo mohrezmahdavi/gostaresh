@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\DemographicChangesOfCity;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DemographicChangesOfCityRequest extends FormRequest
@@ -29,9 +30,9 @@ class DemographicChangesOfCityRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'population' => 'required|integer|gte:0',
-            'immigration_rates' => 'required|numeric',
-            'growth_rate' => 'required|numeric',
+            'population' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'immigration_rates' => ['required', 'numeric', new DecimalRangeRule()],
+            'growth_rate' => ['required', 'numeric', new DecimalRangeRule()],
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

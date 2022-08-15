@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfCourse;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StatusAnalysisOfTheNumberOfCourseRequest extends FormRequest
@@ -30,11 +31,11 @@ class StatusAnalysisOfTheNumberOfCourseRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            "total_number_of_courses" => 'required|integer|gte:0',
-            "number_of_international_Persian_language_courses_in_person" => 'required|integer|gte:0',
-            "number_of_international_virtual_Persian_language_courses" => 'required|integer|gte:0',
-            "number_of_international_courses_in_the_target_language_in_person" => 'required|integer|gte:0',
-            "number_of_international_courses_in_the_target_language_virtually" => 'required|integer|gte:0',
+            "total_number_of_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_international_Persian_language_courses_in_person" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_international_virtual_Persian_language_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_international_courses_in_the_target_language_in_person" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_international_courses_in_the_target_language_virtually" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

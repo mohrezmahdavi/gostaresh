@@ -71,8 +71,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function create()
     {
-        $majors = Major::all();
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.create.create', compact('majors'));
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.create.create');
     }
 
     /**
@@ -106,8 +105,7 @@ class NumberOfNonMedicalFieldsOfStudyController extends Controller
      */
     public function edit(NumberOfNonMedicalFieldsOfStudy $numberOfNonMedicalFieldsOfStudy)
     {
-        $majors = Major::all();
-        return view('admin.gostaresh.number-of-non-medical-fields-of-study.edit.edit', compact('numberOfNonMedicalFieldsOfStudy','majors'));
+        return view('admin.gostaresh.number-of-non-medical-fields-of-study.edit.edit', compact('numberOfNonMedicalFieldsOfStudy'));
     }
 
     /**

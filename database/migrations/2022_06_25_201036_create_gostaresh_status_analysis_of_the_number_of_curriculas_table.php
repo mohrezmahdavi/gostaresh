@@ -24,12 +24,12 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->unsignedBigInteger('total_number_of_curricula')->comment('تعداد کل برنامه های درسی (رشته گرایش ها)')->nullable();
-            $table->unsignedBigInteger('number_of_modified_curricula')->comment('تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی')->nullable();
-            $table->unsignedBigInteger('new_interdisciplinary_curricula_implemented')->comment('برنامه های درسی جدید میان رشته ای مورد اجرا')->nullable();
-            $table->unsignedBigInteger('complete_new_interdisciplinary_curricula')->comment('کل برنامه های درسی جدید میان رشته ای مورد اجرا')->nullable();
-            $table->unsignedBigInteger('number_of_common_curricula_with_the_world')->comment('تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان')->nullable();
-            $table->unsignedBigInteger('number_of_curricula_developed')->comment('تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر')->nullable();
+            $table->float('total_number_of_curricula')->comment('تعداد کل برنامه های درسی (رشته گرایش ها)')->nullable();
+            $table->float('number_of_modified_curricula')->comment('تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی')->nullable();
+            $table->float('new_interdisciplinary_curricula_implemented')->comment('برنامه های درسی جدید میان رشته ای مورد اجرا')->nullable();
+            $table->float('complete_new_interdisciplinary_curricula')->comment('کل برنامه های درسی جدید میان رشته ای مورد اجرا')->nullable();
+            $table->float('number_of_common_curricula_with_the_world')->comment('تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان')->nullable();
+            $table->float('number_of_curricula_developed')->comment('تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

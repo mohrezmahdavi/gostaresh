@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\TuitionIncome;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 50 request
@@ -32,11 +33,11 @@ class TuitionIncomeRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
             'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => 'required|integer|gte:0|lte:2147483647',
-            'bachelor_degree' => 'required|integer|gte:0|lte:2147483647',
-            'masters' => 'required|integer|gte:0|lte:2147483647',
-            'professional_phd' => 'required|integer|gte:0|lte:2147483647',
-            'phd' => 'required|integer|gte:0|lte:2147483647',
+            'associate_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'bachelor_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'masters' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'professional_phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'required|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

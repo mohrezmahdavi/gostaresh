@@ -60,7 +60,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\OrganizationalCultureStatusAnalysis::$numeric_fields))
-                                        <td>{{ number_format($organizationalCulture?->{$key}) }}</td>
+                                        <td>{{ $organizationalCulture?->{$key} }}</td>
                                     @elseif(in_array($key, \App\Models\Index\OrganizationalCultureStatusAnalysis::$amount_fields))
                                         <td>
                                             {{$organizationalCulture->$key}}
@@ -78,9 +78,13 @@
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
-                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $organizationalCulture) }}" title="{{ __('validation.buttons.delete') }}" --}}
-                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
-
+                                    <form method="POST" action="{{ route('organizational-culture.destroy', $organizationalCulture) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 </tr>

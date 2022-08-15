@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\CreditAndAsset;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 56 request
@@ -31,14 +32,14 @@ class CreditAndAssetRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'administrative_credits' => 'required|integer|gte:0|lte:2147483647',
-            'educational_credits' => 'required|integer|gte:0|lte:2147483647',
-            'research_credits' => 'required|integer|gte:0|lte:2147483647',
-            'cultural_credits' => 'required|integer|gte:0|lte:2147483647',
-            'innovative_credits' => 'required|integer|gte:0|lte:2147483647',
-            'skills_credits' => 'required|integer|gte:0|lte:2147483647',
-            'total_University_credits' => 'required|integer|gte:0|lte:2147483647',
-            'total_university_assets' => 'required|integer|gte:0|lte:2147483647',
+            'administrative_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'educational_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'research_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'cultural_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'innovative_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'skills_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'total_University_credits' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'total_university_assets' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

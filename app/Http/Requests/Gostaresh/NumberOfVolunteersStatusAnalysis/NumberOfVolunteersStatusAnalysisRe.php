@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\NumberOfVolunteersStatusAnalysis;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NumberOfVolunteersStatusAnalysisRe extends FormRequest
@@ -31,7 +32,7 @@ class NumberOfVolunteersStatusAnalysisRe extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
             "gender_id" => 'required|numeric',
             "university_type" => 'required|numeric',
-            "number_of_volunteers" => 'required|numeric|gte:0',
+            "number_of_volunteers" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

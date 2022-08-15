@@ -24,16 +24,16 @@ return new class extends Migration
             $table->foreignId('rural_district_id')->nullable();
 
             $table->string('unit')->nullable();
-            $table->unsignedInteger('number_of_active_innovation_houses')->comment('تعداد سرای نوآوری فعال')->nullable();
-            $table->unsignedInteger('number_of_active_accelerators')->comment('تعداد شتاب دهنده فعال')->nullable();
-            $table->unsignedInteger('number_of_active_growth_centers')->comment('تعداد مراکز رشد فعال')->nullable();
-            $table->unsignedInteger('number_of_active_technology_cores')->comment('تعداد هسته فناور فعال')->nullable();
-            $table->unsignedInteger('number_of_active_skill_high_schools')->comment('تعداد مدارس عالی مهارتی فعال')->nullable();
-            $table->unsignedInteger('number_of_skill_training_centers')->comment('تعداد مراکز توانمندسازی و آموزش مهارتی')->nullable();
-            $table->unsignedInteger('number_of_research_centers')->comment('تعداد مراکز تحقیقاتی')->nullable();
-            $table->unsignedInteger('number_of_development_offices')->comment('تعداد دفاتر توسعه و انتقال فناوری')->nullable();
-            $table->unsignedInteger('number_of_industry_trade_offices')->comment('تعداددفاتر کلینیک صنعت، معدن و تجارت')->nullable();
-            $table->unsignedInteger('number_of_entrepreneurship_centers')->comment('تعداد مراکز کارآفرینی')->nullable();
+            $table->float('number_of_active_innovation_houses')->comment('تعداد سرای نوآوری فعال')->nullable();
+            $table->float('number_of_active_accelerators')->comment('تعداد شتاب دهنده فعال')->nullable();
+            $table->float('number_of_active_growth_centers')->comment('تعداد مراکز رشد فعال')->nullable();
+            $table->float('number_of_active_technology_cores')->comment('تعداد هسته فناور فعال')->nullable();
+            $table->float('number_of_active_skill_high_schools')->comment('تعداد مدارس عالی مهارتی فعال')->nullable();
+            $table->float('number_of_skill_training_centers')->comment('تعداد مراکز توانمندسازی و آموزش مهارتی')->nullable();
+            $table->float('number_of_research_centers')->comment('تعداد مراکز تحقیقاتی')->nullable();
+            $table->float('number_of_development_offices')->comment('تعداد دفاتر توسعه و انتقال فناوری')->nullable();
+            $table->float('number_of_industry_trade_offices')->comment('تعداددفاتر کلینیک صنعت، معدن و تجارت')->nullable();
+            $table->float('number_of_entrepreneurship_centers')->comment('تعداد مراکز کارآفرینی')->nullable();
 
             $table->integer('year')->unsigned()->nullable();
             $table->tinyInteger('month')->unsigned()->nullable();

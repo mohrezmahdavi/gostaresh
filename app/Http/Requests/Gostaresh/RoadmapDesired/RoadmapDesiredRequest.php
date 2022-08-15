@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\RoadmapDesired;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 58 request
@@ -32,8 +33,8 @@ class RoadmapDesiredRequest extends FormRequest
             'rural_district_id' => 'nullable|numeric|gte:0',
 //            'experimental_policy_title' => 'required|max:255',
             'title_axis' => 'required|max:255',
-            'package_number' => 'required|integer|gte:0',
-            'transformation_document' => 'required|integer|gte:0',
+            'package_number' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'transformation_document' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'project_title' => 'required|max:255',
             'quantitative_goal' => 'required|max:255',
             'test' => 'required|max:255',

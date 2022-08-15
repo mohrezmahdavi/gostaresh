@@ -1,6 +1,13 @@
 <th>شهرستان </th>
-<th>واحد دانشگاهی</th>
- <th>ساختمان واحد دانشگاهی</th>
+
+@if (filterCol('unit_university') == true)
+    <th>واحد دانشگاهی</th>
+@endif
+
+@if (filterCol('university_building') == true)
+    <th>ساختمان واحد دانشگاهی</th>
+@endif
+
 @if (filterCol('land_area') == true)
     <th>مساحت زمین</th>
 @endif

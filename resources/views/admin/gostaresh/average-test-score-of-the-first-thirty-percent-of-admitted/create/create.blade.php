@@ -117,7 +117,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="average_test_score_of_the_first_thirty_percent_of_admitted" name="average_test_score_of_the_first_thirty_percent_of_admitted"
+                                <input type="text" style="direction: rtl" id="average_test_score_of_the_first_thirty_percent_of_admitted" name="average_test_score_of_the_first_thirty_percent_of_admitted"
                                     value="{{ old('average_test_score_of_the_first_thirty_percent_of_admitted') }}" class="form-control"
                                     placeholder=" مقدار را وارد کنید...">
                             </div>

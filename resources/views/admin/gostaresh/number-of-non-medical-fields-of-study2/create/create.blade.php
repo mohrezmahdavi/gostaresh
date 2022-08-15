@@ -16,7 +16,7 @@
     </span>
 
     <span>
-        <a href="{{ route('number.of.non.medical.fields.of.study2.index') }}" class="btn btn-secondary btn-sm">بازگشت به لیست اطلاعات</a>
+        <a href="{{ route('number.of.non.medical.fields.of.study.2.index') }}" class="btn btn-secondary btn-sm">بازگشت به لیست اطلاعات</a>
     </span>
 @endsection
 
@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('number.of.non.medical.fields.of.study.store') }}" role="form">
+                        action="{{ route('number.of.non.medical.fields.of.study.2.store') }}" role="form">
                         @csrf
 
                         <select-province-component province_default="{{ auth()->user()->province_id ?? '' }}"
@@ -47,23 +47,6 @@
                                 'city' => false,
                             ]) }}">
                         </select-province-component>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span> گروه تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select">
-                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option {{ $key == old('department_of_education') ? 'selected' : '' }}
-                                            value="{{ $key }}">
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="major">
@@ -87,7 +70,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_peyvaste_count"
                                     name="kardani_peyvaste_count" value="{{ old('kardani_peyvaste_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -99,7 +82,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_na_peyvaste_count"
                                     name="kardani_na_peyvaste_count" value="{{ old('kardani_na_peyvaste_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -111,7 +94,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_peyvaste_count"
                                     name="karshenasi_peyvaste_count" value="{{ old('karshenasi_peyvaste_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -123,7 +106,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_na_peyvaste_count"
                                     name="karshenasi_na_peyvaste_count" value="{{ old('karshenasi_na_peyvaste_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -135,7 +118,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_arshad_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_arshad_count"
                                     name="karshenasi_arshad_count" value="{{ old('karshenasi_arshad_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -147,7 +130,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_herfei_count"
+                                <input type="text" style="direction: rtl" id="docktora_herfei_count"
                                     name="docktora_herfei_count" value="{{ old('docktora_herfei_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
@@ -159,7 +142,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_takhasosi_count"
+                                <input type="text" style="direction: rtl" id="docktora_takhasosi_count"
                                     name="docktora_takhasosi_count" value="{{ old('docktora_takhasosi_count') }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>

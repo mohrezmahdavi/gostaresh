@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfFieldsOfStudy;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StatusAnalysisOfTheNumberOfFieldsOfStudyRequest extends FormRequest
@@ -30,23 +31,23 @@ class StatusAnalysisOfTheNumberOfFieldsOfStudyRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            "total_number_of_fields_of_study" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_international_courses" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_virtual_courses" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_technical_disciplines" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_newly_established_courses" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_courses_not_accepted" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_courses_without_volunteers" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_GDP_courses" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_disciplines_corresponding_to_job_fields" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_fields_corresponding_to_the_specified_specialties" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_courses_offered_virtually" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_popular_fields_more_than_eighty_percent_capacity" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_courses_with_low_audience" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_fields_of_less_than_5_people" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_courses_without_admission" => 'required|integer|gte:0|lte:2147483647',
-            "number_of_popular_fields" => 'required|integer|gte:0|lte:2147483647',
-            "low_number_of_applicants" => 'required|integer|gte:0|lte:2147483647',
+            "total_number_of_fields_of_study" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_international_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_virtual_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_technical_disciplines" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_newly_established_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_courses_not_accepted" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_courses_without_volunteers" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_GDP_courses" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_disciplines_corresponding_to_job_fields" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_fields_corresponding_to_the_specified_specialties" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_courses_offered_virtually" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_popular_fields_more_than_eighty_percent_capacity" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_courses_with_low_audience" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_fields_of_less_than_5_people" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_courses_without_admission" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "number_of_popular_fields" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "low_number_of_applicants" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

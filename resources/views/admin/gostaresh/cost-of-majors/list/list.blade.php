@@ -66,7 +66,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\AverageCostOfMajor::$numeric_fields))
-                                        <td>{{ number_format($costOfMajor?->{$key}) }}</td>
+                                        <td>{{ $costOfMajor?->{$key} }}</td>
                                     @else
                                         <td>{{ $costOfMajor->{$key} }}</td>
                                 @endif
@@ -80,9 +80,13 @@
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
-                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $costOfMajor) }}" title="{{ __('validation.buttons.delete') }}" --}}
-                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
-
+                                    <form method="POST" action="{{ route('cost-of-majors.destroy', $costOfMajor) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 </tr>

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('gostaresh_academic_major_educational', function (Blueprint $table) {
-            $table->unsignedBigInteger('medical_sciences_count')->default(0);
+            $table->float('medical_sciences_count')->default(0);
             $table->float('medical_sciences_percent')->nullable();
         });
     }

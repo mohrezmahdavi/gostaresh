@@ -23,13 +23,13 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable();
             $table->foreignId('rural_district_id')->nullable();
 
-            $table->unsignedBigInteger('kardani_peyvaste_count')->default(0);
-            $table->unsignedBigInteger('kardani_na_peyvaste_count')->default(0);
-            $table->unsignedBigInteger('karshenasi_peyvaste_count')->default(0);
-            $table->unsignedBigInteger('karshenasi_na_peyvaste_count')->default(0);
-            $table->unsignedBigInteger('karshenasi_arshad_count')->default(0);
-            $table->unsignedBigInteger('docktora_herfei_count')->default(0);
-            $table->unsignedBigInteger('docktora_takhasosi_count')->default(0);
+            $table->float('kardani_peyvaste_count')->default(0);
+            $table->float('kardani_na_peyvaste_count')->default(0);
+            $table->float('karshenasi_peyvaste_count')->default(0);
+            $table->float('karshenasi_na_peyvaste_count')->default(0);
+            $table->float('karshenasi_arshad_count')->default(0);
+            $table->float('docktora_herfei_count')->default(0);
+            $table->float('docktora_takhasosi_count')->default(0);
             $table->tinyInteger('department_of_education')->nullable();
 
             $table->integer('year')->unsigned()->nullable();

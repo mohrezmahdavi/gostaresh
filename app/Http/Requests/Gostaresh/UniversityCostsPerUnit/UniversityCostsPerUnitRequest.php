@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\UniversityCostsPerUnit;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 52,53 request
@@ -31,35 +32,21 @@ class UniversityCostsPerUnitRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-//            'payment_to_faculty_members' => 'required|numeric',
-//            'total_running_costs' => 'required|numeric',
-//            'average_salary_of_faculty_members' => 'required|numeric',
-//            'average_salaries_of_faculty_members_from_research_contracts' => 'required|numeric',
-//            'student_fees' => 'required|numeric',
-//            'average_salary_of_employees' => 'required|numeric',
-//            'current_expenditure_growth_rate' => 'required|numeric',
-//            'cost_of_paying_office_rent' => 'required|numeric',
-//            'cost_of_rent_for_educational_building' => 'required|numeric',
-//            'cost_of_rent_for_research_building' => 'required|numeric',
-//            'extra_charge_for_rent_extracurricular_building' => 'required|numeric',
-//            'cost_of_rent_innovation_buildings' => 'required|numeric',
-//            'energy_costs_of_buildings' => 'required|numeric',
-//            'cost_of_university_equipment' => 'required|numeric',
-            'training_costs' => 'required|numeric',
-            'research_costs' => 'required|numeric',
-            'innovation_costs' => 'required|numeric',
-            'educational_costs' => 'required|numeric',
-            'development_costs' => 'required|numeric',
-            'cultural_sphere_costs' => 'required|numeric',
-            'administrative_costs' => 'required|numeric',
-            'information_technology_costs' => 'required|numeric',
-            'International_sphere_costs' => 'required|numeric',
-            'costs_of_staff_training_and_faculty' => 'required|numeric',
-            'sports_expenses' => 'required|numeric',
-            'health_costs' => 'required|numeric',
-            'entrepreneurship_costs' => 'required|numeric',
-            'graduate_costs' => 'required|numeric',
-            'branding_costs' => 'required|numeric',
+            'training_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'research_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'innovation_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'educational_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'development_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'cultural_sphere_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'administrative_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'information_technology_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'International_sphere_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'costs_of_staff_training_and_faculty' => ['required', 'numeric', new DecimalRangeRule()],
+            'sports_expenses' => ['required', 'numeric', new DecimalRangeRule()],
+            'health_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'entrepreneurship_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'graduate_costs' => ['required', 'numeric', new DecimalRangeRule()],
+            'branding_costs' => ['required', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

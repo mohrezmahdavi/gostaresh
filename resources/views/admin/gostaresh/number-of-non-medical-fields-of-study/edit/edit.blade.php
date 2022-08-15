@@ -72,28 +72,12 @@
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="major">
-                                <span>گروه فرعی تحصیلی</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="major" id="major" class="form-select">
-                                    @foreach ($majors as $major)
-                                        <option {{ $major->id == $numberOfNonMedicalFieldsOfStudy->major ? 'selected' : '' }} value="{{ $major->id }}">
-                                            {{ $major->name }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="kardani_peyvaste_count">
                                 <span>تعداد کاردانی پیوسته </span>&nbsp
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_peyvaste_count"
                                     name="kardani_peyvaste_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->kardani_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -106,7 +90,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_na_peyvaste_count"
                                     name="kardani_na_peyvaste_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->kardani_na_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -119,7 +103,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_peyvaste_count"
                                     name="karshenasi_peyvaste_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -132,7 +116,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_na_peyvaste_count"
                                     name="karshenasi_na_peyvaste_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_na_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -145,7 +129,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_arshad_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_arshad_count"
                                     name="karshenasi_arshad_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_arshad_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -158,7 +142,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_herfei_count"
+                                <input type="text" style="direction: rtl" id="docktora_herfei_count"
                                     name="docktora_herfei_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->docktora_herfei_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
@@ -171,7 +155,7 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_takhasosi_count"
+                                <input type="text" style="direction: rtl" id="docktora_takhasosi_count"
                                     name="docktora_takhasosi_count"
                                     value="{{ $numberOfNonMedicalFieldsOfStudy->docktora_takhasosi_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">

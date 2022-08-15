@@ -61,7 +61,7 @@
                                             @foreach ($filterColumnsCheckBoxes as $key => $value)
                                                 @if (filterCol($key))
                                                     @if (in_array($key, \App\Models\Index\RoadmapToAchieveDesiredSituation::$numeric_fields))
-                                        <td>{{ number_format($roadmapDesired?->{$key}) }}</td>
+                                        <td>{{ $roadmapDesired?->{$key} }}</td>
                                     @else
                                         <td>{{ $roadmapDesired->{$key} }}</td>
                                 @endif
@@ -74,9 +74,13 @@
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
 
-                                    {{-- <a href="{{ route('research-output-status-analyses.destroy', $roadmapDesired) }}" title="{{ __('validation.buttons.delete') }}" --}}
-                                    {{-- class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a> --}}
-
+                                    <form method="POST" action="{{ route('roadmap-desired.destroy', $roadmapDesired) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 </tr>

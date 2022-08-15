@@ -13,7 +13,7 @@
 <td>{{ $numberOfAdmissionsStatusAnalysis?->department_of_education_title }}</td>
 @endif
 @if (filterCol('number_of_admissions') == true)
-<td>{{ number_format($numberOfAdmissionsStatusAnalysis?->number_of_admissions) }}</td>
+<td>{{ $numberOfAdmissionsStatusAnalysis?->number_of_admissions }}</td>
 @endif
 @if (filterCol('year') == true)
 <td>{{ $numberOfAdmissionsStatusAnalysis?->year }}</td>

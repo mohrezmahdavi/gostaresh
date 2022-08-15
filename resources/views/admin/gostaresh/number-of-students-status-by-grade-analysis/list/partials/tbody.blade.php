@@ -10,7 +10,7 @@
     <td>{{ $numberOfStudentsStatusAnalysis?->department_of_education_title }}</td>
 @endif
 @if (filterCol('number_of_students') == true)
-    <td>{{ number_format($numberOfStudentsStatusAnalysis?->number_of_students) }}</td>
+    <td>{{ $numberOfStudentsStatusAnalysis?->number_of_students }}</td>
 @endif
 @if (filterCol('grade_id') == true)
     <td>{{ $numberOfStudentsStatusAnalysis?->grade?->name }}</td>

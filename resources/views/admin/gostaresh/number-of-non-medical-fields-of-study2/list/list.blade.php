@@ -15,7 +15,7 @@
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
     <span>
-        <a href="{{ route('number.of.non.medical.fields.of.study.create') }}" class="btn btn-success btn-sm">افزودن رکورد
+        <a href="{{ route('number.of.non.medical.fields.of.study.2.create') }}" class="btn btn-success btn-sm">افزودن رکورد
             جدید</a>
     </span>
 @endsection
@@ -46,7 +46,7 @@
                                 <tr>
                                     <th>#</th>
 
-                                    @include('admin.gostaresh.number-of-non-medical-fields-of-study.list.partials.thead')
+                                    @include('admin.gostaresh.number-of-non-medical-fields-of-study2.list.partials.thead')
 
                                     <th>اقدام</th>
                                 </tr>
@@ -56,18 +56,22 @@
                                     <tr>
                                         <th scope="row">{{ $numberOfNonMedicalFieldsOfStudies?->firstItem() + $key }}
                                         </th>
-                                        @include('admin.gostaresh.number-of-non-medical-fields-of-study.list.partials.tbody')
+                                        @include('admin.gostaresh.number-of-non-medical-fields-of-study2.list.partials.tbody')
 
 
                                         <td>
 
-                                            <a href="{{ route('number.of.non.medical.fields.of.study.edit', $numberOfNonMedicalFieldsOfStudy) }}"
+                                            <a href="{{ route('number.of.non.medical.fields.of.study.2.edit', $numberOfNonMedicalFieldsOfStudy) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('number.of.non.medical.fields.of.study.destroy', $numberOfNonMedicalFieldsOfStudy) }}"
-                                                title="{{ __('validation.buttons.delete') }}"
-                                                class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></a>
+                                            <form method="POST" action="{{ route('number.of.non.medical.fields.of.study.2.destroy', $numberOfNonMedicalFieldsOfStudy) }}" role="form">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
@@ -76,9 +80,9 @@
                         </table>
                         <div class="text-end mt-3">
                             <x-exports.export-links
-                                excelLink="{{ route('number.of.non.medical.fields.of.study.list.excel', request()->query->all()) }}"
-                                pdfLink="{{ route('number.of.non.medical.fields.of.study.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('number.of.non.medical.fields.of.study.list.print', request()->query->all()) }}" />
+                                excelLink="{{ route('number.of.non.medical.fields.of.study.2.list.excel', request()->query->all()) }}"
+                                pdfLink="{{ route('number.of.non.medical.fields.of.study.2.list.pdf', request()->query->all()) }}"
+                                printLink="{{ route('number.of.non.medical.fields.of.study.2.list.print', request()->query->all()) }}" />
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\StudentAdmissionCapacity;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StudentAdmissionCapacityRequest extends FormRequest
@@ -33,7 +34,7 @@ class StudentAdmissionCapacityRequest extends FormRequest
             "university_type" => 'required|numeric',
             "grade_id" => 'required|numeric',
             'department_of_education' => 'required|numeric|gte:0',
-            "student_admission_capacities" => 'required|integer|gte:0',
+            "student_admission_capacities" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

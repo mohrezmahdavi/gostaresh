@@ -6,10 +6,10 @@
         @endif
     </label>
     <div class="col-sm-10">
-        <input type="number" id="{{ ($name ?? '') }}" 
-            name="{{ ($name ?? '') }}" 
+        <input type="text" id="{{ ($name ?? '') }}"
+            name="{{ ($name ?? '') }}"
             value="{{ ($default ?? '') }}"
-            min="{{ ($min ?? '') }}" 
+            min="{{ ($min ?? '') }}"
             max="{{ ($max ?? '') }}"
             class="form-control" placeholder="{{ ($placeholder ?? '') }}">
     </div>

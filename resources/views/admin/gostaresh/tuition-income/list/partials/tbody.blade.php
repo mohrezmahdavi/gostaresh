@@ -11,19 +11,19 @@
 <td>{{ $tuitionIncome?->department_of_education_title }}</td>
 @endif
 @if (filterCol('associate_degree') == true)
-<td>{{ number_format((int) $tuitionIncome?->associate_degree ) }}</td>
+<td>{{ $tuitionIncome?->associate_degree }}</td>
 @endif
 @if (filterCol('bachelor_degree') == true)
-<td>{{ number_format((int) $tuitionIncome?->bachelor_degree ) }}</td>
+<td>{{ $tuitionIncome?->bachelor_degree }}</td>
 @endif
 @if (filterCol('masters') == true)
-<td>{{ number_format((int) $tuitionIncome?->masters ) }}</td>
+<td>{{ $tuitionIncome?->masters }}</td>
 @endif
 @if (filterCol('professional_phd') == true)
-<td>{{ number_format((int) $tuitionIncome?->professional_phd ) }}</td>
+<td>{{ $tuitionIncome?->professional_phd }}</td>
 @endif
 @if (filterCol('phd') == true)
-<td>{{ number_format((int) $tuitionIncome?->phd ) }}</td>
+<td>{{ $tuitionIncome?->phd }}</td>
 @endif
 
 <td>{{ $tuitionIncome?->year }}</td>

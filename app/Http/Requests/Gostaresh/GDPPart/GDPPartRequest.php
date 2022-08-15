@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\GDPPart;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GDPPartRequest extends FormRequest
@@ -29,8 +30,8 @@ class GDPPartRequest extends FormRequest
             'county_id'=> 'required|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'part' => 'required|numeric|gte:0',
-            'amount' => 'required|numeric',
+            'part' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'amount' => ['required', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

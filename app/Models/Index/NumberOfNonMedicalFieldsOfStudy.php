@@ -8,6 +8,7 @@ use App\Models\County;
 use App\Models\Major;
 use App\Models\Province;
 use App\Models\RuralDistrict;
+use App\Services\Model\FilterProvince;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -71,17 +72,7 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
     {
         $query = filterByOwnProvince($query);
 
-        if (request('province_id'))
-            $query->where('province_id', request('province_id'));
-
-        if (request('county_id'))
-            $query->where('county_id', request('county_id'));
-
-        if (request('city_id'))
-            $query->where('city_id', request('city_id'));
-
-        if (request('rural_district_id'))
-            $query->where('rural_district_id', request('rural_district_id'));
+        FilterProvince::filter($query);
 
         if (request('start_date'))
         {
@@ -118,6 +109,7 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
     }
 
     public static $filterColumnsCheckBoxes = [
+        "department_of_education_title" => "گروه/ مقطع",
         "kardani_peyvaste_count"        => "کاردانی پیوسته",
         "kardani_na_peyvaste_count"     => "کاردانی ناپیوسته",
         "karshenasi_peyvaste_count"     => "کارشناسی پیوسته",
@@ -125,7 +117,6 @@ class NumberOfNonMedicalFieldsOfStudy extends Model
         "karshenasi_arshad_count"       => "کارشناسی ارشد",
         "docktora_herfei_count"         => "دکتری حرفه ای",
         "docktora_takhasosi_count"      => "دکتری تخصصی",
-        "department_of_education_title" => "گروه/ مقطع",
         "year" => "سال",
 
     ];

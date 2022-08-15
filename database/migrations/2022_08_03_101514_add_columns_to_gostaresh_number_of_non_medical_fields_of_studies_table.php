@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('gostaresh_number_of_non_medical_fields_of_studies', function (Blueprint $table) {
-            $table->unsignedInteger('major');
+            $table->dropColumn('major');
         });
     }
 };

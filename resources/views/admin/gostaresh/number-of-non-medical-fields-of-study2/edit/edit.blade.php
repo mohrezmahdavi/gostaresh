@@ -16,7 +16,7 @@
     </span>
 
     <span>
-        <a href="{{ route('number.of.non.medical.fields.of.study2.index') }}" class="btn btn-secondary btn-sm">بازگشت به لیست اطلاعات</a>
+        <a href="{{ route('number.of.non.medical.fields.of.study.2.index') }}" class="btn btn-secondary btn-sm">بازگشت به لیست اطلاعات</a>
     </span>
 @endsection
 
@@ -32,18 +32,18 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('number.of.non.medical.fields.of.study.update', $numberOfNonMedicalFieldsOfStudy) }}"
+                        action="{{ route('number.of.non.medical.fields.of.study.2.update', $numberOfNonMedicalFieldsOfStudy2) }}"
                         role="form">
                         @csrf
                         @method('PUT')
 
 
                         <select-province-component
-                            province_default="{{ $numberOfNonMedicalFieldsOfStudy->province_id ?? '' }}"
-                            zone_default="{{ $numberOfNonMedicalFieldsOfStudy->county->zone ?? ''}}"
-                            county_default="{{ $numberOfNonMedicalFieldsOfStudy->county_id ?? '' }}"
-                            city_default="{{ $numberOfNonMedicalFieldsOfStudy->city_id ?? '' }}"
-                            rural_district_default="{{ $numberOfNonMedicalFieldsOfStudy->rural_district_id ?? '' }}"
+                            province_default="{{ $numberOfNonMedicalFieldsOfStudy2->province_id ?? '' }}"
+                            zone_default="{{ $numberOfNonMedicalFieldsOfStudy2->county->zone ?? ''}}"
+                            county_default="{{ $numberOfNonMedicalFieldsOfStudy2->county_id ?? '' }}"
+                            city_default="{{ $numberOfNonMedicalFieldsOfStudy2->city_id ?? '' }}"
+                            rural_district_default="{{ $numberOfNonMedicalFieldsOfStudy2->rural_district_id ?? '' }}"
                             :fields="{{ json_encode([
                                 'province' => true,
                                 'zone' => false,
@@ -51,25 +51,6 @@
                                 'city' => false,
                             ]) }}">
                         </select-province-component>
-
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span> گروه تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select">
-                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option
-                                            {{ $key == $numberOfNonMedicalFieldsOfStudy->department_of_education ? 'selected' : '' }}
-                                            value="{{ $key }}">
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="major">
@@ -79,7 +60,7 @@
                             <div class="col-sm-10">
                                 <select name="major" id="major" class="form-select">
                                     @foreach ($majors as $major)
-                                        <option {{ $major->id == $numberOfNonMedicalFieldsOfStudy->major ? 'selected' : '' }} value="{{ $major->id }}">
+                                        <option {{ $major->id == $numberOfNonMedicalFieldsOfStudy2->major ? 'selected' : '' }} value="{{ $major->id }}">
                                             {{ $major->name }}</option>
                                     @endforeach
                                 </select>
@@ -93,9 +74,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_peyvaste_count"
                                     name="kardani_peyvaste_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->kardani_peyvaste_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->kardani_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -106,9 +87,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="kardani_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="kardani_na_peyvaste_count"
                                     name="kardani_na_peyvaste_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->kardani_na_peyvaste_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->kardani_na_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -119,9 +100,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_peyvaste_count"
                                     name="karshenasi_peyvaste_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_peyvaste_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->karshenasi_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -132,9 +113,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_na_peyvaste_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_na_peyvaste_count"
                                     name="karshenasi_na_peyvaste_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_na_peyvaste_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->karshenasi_na_peyvaste_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -145,9 +126,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="karshenasi_arshad_count"
+                                <input type="text" style="direction: rtl" id="karshenasi_arshad_count"
                                     name="karshenasi_arshad_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->karshenasi_arshad_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->karshenasi_arshad_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -158,9 +139,9 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_herfei_count"
+                                <input type="text" style="direction: rtl" id="docktora_herfei_count"
                                     name="docktora_herfei_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->docktora_herfei_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->docktora_herfei_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
@@ -171,16 +152,16 @@
                                 <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="number" style="direction: rtl" id="docktora_takhasosi_count"
+                                <input type="text" style="direction: rtl" id="docktora_takhasosi_count"
                                     name="docktora_takhasosi_count"
-                                    value="{{ $numberOfNonMedicalFieldsOfStudy->docktora_takhasosi_count }}"
+                                    value="{{ $numberOfNonMedicalFieldsOfStudy2->docktora_takhasosi_count }}"
                                     class="form-control" placeholder=" تعداد را وارد کنید...">
                             </div>
                         </div>
 
-                        <x-select-year :default="$numberOfNonMedicalFieldsOfStudy->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
+                        <x-select-year :default="$numberOfNonMedicalFieldsOfStudy2->year" min="1390" max="1400" :required="false" name="year"></x-select-year>
 
-                        {{-- <x-select-month :default="$numberOfNonMedicalFieldsOfStudy->month" :required="false" name="month"></x-select-month> --}}
+                        {{-- <x-select-month :default="$numberOfNonMedicalFieldsOfStudy2->month" :required="false" name="month"></x-select-month> --}}
 
 
 

@@ -292,7 +292,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     // Table 27 Route
     Route::resource('number/of/non/medical/fields/of/study2', App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class)->names('number.of.non.medical.fields.of.study.2')->parameters([
-        'study' => 'numberOfNonMedicalFieldsOfStudy'
+        'study2' => 'numberOfNonMedicalFieldsOfStudy2'
     ]);
     Route::get('number/of/non/medical/fields/of/study2/list/excel', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listExcelExport'])->name('number.of.non.medical.fields.of.study.2.list.excel');
     Route::get('number/of/non/medical/fields/of/study2/list/pdf', [App\Http\Controllers\Admin\Gostaresh\NumberOfNonMedicalFieldsOfStudy2Controller::class, 'listPDFExport'])->name('number.of.non.medical.fields.of.study.2.list.pdf');
@@ -450,12 +450,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('percapita-revenue/list/pdf', [App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController::class, 'listPDFExport'])->name('percapita-revenue.list.pdf');
     Route::get('percapita-revenue/list/print', [App\Http\Controllers\Admin\Gostaresh\PercapitaRevenueController::class, 'listPrintExport'])->name('percapita-revenue.list.print');
 
-    // Table 52,53 Route
+    // Table 52 Route
     Route::resource('university-costs', UniversityCostsController::class)->names('university-costs');
     Route::get('university-costs/list/excel', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listExcelExport'])->name('university-costs.list.excel');
     Route::get('university-costs/list/pdf', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPDFExport'])->name('university-costs.list.pdf');
     Route::get('university-costs/list/print', [App\Http\Controllers\Admin\Gostaresh\UniversityCostsController::class, 'listPrintExport'])->name('university-costs.list.print');
-
 
     // Table 53 Route
     Route::resource('university-costs-per-unit', App\Http\Controllers\Admin\Gostaresh\UniversityCostsPerUnitController::class)->names('university-costs-per-unit');

@@ -1,20 +1,26 @@
 <td>{{ $geographicalLocationOfUnit?->province?->name . ' - ' . $geographicalLocationOfUnit->county?->name }}
 </td>
-<td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
-<td>{{ $geographicalLocationOfUnit?->university_building }}</td>
+
+@if (filterCol('unit_university') == true)
+    <td>{{ $geographicalLocationOfUnit?->unit_university }}</td>
+@endif
+
+@if (filterCol('university_building') == true)
+    <td>{{ $geographicalLocationOfUnit?->university_building }}</td>
+@endif
 
 @if (filterCol('land_area') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->land_area) }}
+    <td>{{ $geographicalLocationOfUnit?->land_area }}
     </td>
 @endif
 
 @if (filterCol('the_size_of_the_building') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->the_size_of_the_building) }}
+    <td>{{ $geographicalLocationOfUnit?->the_size_of_the_building }}
     </td>
 @endif
 
 @if (filterCol('distance_from_population_density_of_city') == true)
-    <td>{{ number_format((int) $geographicalLocationOfUnit?->distance_from_population_density_of_city) }}
+    <td>{{ $geographicalLocationOfUnit?->distance_from_population_density_of_city }}
     </td>
 @endif
 @if (filterCol('distance_from_center_of_province') == true)

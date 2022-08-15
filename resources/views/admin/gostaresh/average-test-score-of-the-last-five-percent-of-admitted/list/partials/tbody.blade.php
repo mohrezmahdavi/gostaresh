@@ -14,7 +14,7 @@
     <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->department_of_education_title }}</td>
 @endif
 @if (filterCol('average_test_score_of_the_last_five_percent_of_admitted') == true)
-    <td>{{ number_format($averageTestScoreOfTheLastFivePercentOfAdmitted?->average_test_score_of_the_last_five_percent_of_admitted) }}
+    <td>{{ $averageTestScoreOfTheLastFivePercentOfAdmitted?->average_test_score_of_the_last_five_percent_of_admitted }}
     </td>
 @endif
 @if (filterCol('year') == true)

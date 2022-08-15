@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Gostaresh\AssetProductivity;
 
+use App\Rules\DecimalRangeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // Table 47 request
@@ -31,25 +32,25 @@ class AssetProductivityRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             'unit' => 'required|max:255',
-            'office_space_utilization_rate' => 'required|numeric',
-            'utilization_rate_of_educational_equipment' => 'required|numeric',
-            'utilization_rate_of_technology_equipment' => 'required|numeric',
-            'utilization_rate_of_cultural_equipment' => 'required|numeric',
-            'utilization_rate_of_sports_equipment' => 'required|numeric',
-            'operation_rate_of_agricultural_equipment' => 'required|numeric',
-            'operation_rate_of_workshop_equipment' => 'required|numeric',
-            'faculty_capacity_utilization_rate' => 'required|numeric',
-            'employee_capacity_utilization_rate' => 'required|numeric',
-            'graduate_capacity_utilization_rate' => 'required|numeric',
-            'student_capacity_utilization_rate' => 'required|numeric',
-            'ratio_of_faculty_members_to_students' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_staff_to_students' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_faculty_members_to_teaching_professors' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_faculty_members_to_employees' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_unit_faculty_members_to_faculty_members_of_the_province' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_unit_students_to_students_of_the_province' => 'required|integer|gte:0|lte:2147483647',
-            'ratio_of_unit_employees_to_provincial_employees' => 'required|integer|gte:0|lte:2147483647',
-            'unit_teaching_professors_to_teaching_professors_province' => 'required|integer|gte:0|lte:2147483647',
+            'office_space_utilization_rate' => ['required', 'numeric', new DecimalRangeRule()],
+            'utilization_rate_of_educational_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'utilization_rate_of_technology_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'utilization_rate_of_cultural_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'utilization_rate_of_sports_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'operation_rate_of_agricultural_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'operation_rate_of_workshop_equipment' => ['required', 'numeric', new DecimalRangeRule()],
+            'faculty_capacity_utilization_rate' => ['required', 'numeric', new DecimalRangeRule()],
+            'employee_capacity_utilization_rate' => ['required', 'numeric', new DecimalRangeRule()],
+            'graduate_capacity_utilization_rate' => ['required', 'numeric', new DecimalRangeRule()],
+            'student_capacity_utilization_rate' => ['required', 'numeric', new DecimalRangeRule()],
+            'ratio_of_faculty_members_to_students' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_staff_to_students' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_faculty_members_to_teaching_professors' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_faculty_members_to_employees' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_unit_faculty_members_to_faculty_members_of_the_province' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_unit_students_to_students_of_the_province' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'ratio_of_unit_employees_to_provincial_employees' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'unit_teaching_professors_to_teaching_professors_province' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
