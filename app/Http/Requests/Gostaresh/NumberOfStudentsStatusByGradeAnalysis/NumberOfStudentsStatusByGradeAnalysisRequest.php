@@ -27,18 +27,18 @@ class NumberOfStudentsStatusByGradeAnalysisRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            "gender_id" => 'required|numeric',
-            "department_of_education" => 'required|numeric|gte:0',
-            "university_type" => 'required|numeric',
-            "number_of_students" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "gender_id" => 'nullable|numeric',
+            "department_of_education" => 'nullable|numeric|gte:0',
+            "university_type" => 'nullable|numeric',
+            "number_of_students" => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0',
-            'grade_id' => 'required|numeric|gte:0',
-            'major_id' => 'required|numeric|gte:0',
-            'minor_id' => 'required|numeric|gte:0',
+            'grade_id' => 'nullable|numeric|gte:0',
+            'major_id' => 'nullable|numeric|gte:0',
+            'minor_id' => 'nullable|numeric|gte:0',
 
         ];
     }

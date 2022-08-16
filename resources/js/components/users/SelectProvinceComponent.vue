@@ -2,7 +2,12 @@
   <div>
     <input type="hidden" name="country_id" id="" value="1" />
     <div class="form-group row mt-2" v-if="fields.province == true">
-      <label class="col-sm-2 col-form-label" for="province_id">استان</label>
+      <label class="col-sm-2 col-form-label" for="province_id"
+        >استان
+        <span class="text-danger" style="font-size: 11px !important">
+          (اجباری)
+        </span>
+      </label>
       <div class="col-sm-10">
         <select
           v-if="flag_province"

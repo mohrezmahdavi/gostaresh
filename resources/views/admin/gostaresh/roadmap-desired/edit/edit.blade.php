@@ -52,7 +52,7 @@
                         {{--<div class="form-group row mt-2">--}}
                             {{--<label class="col-sm-2 col-form-label" for="experimental_policy_title">--}}
                                 {{--<span>عنوان سیاست آزمایشی </span>&nbsp--}}
-                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+                                {{--{{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}--}}
                             {{--</label>--}}
                             {{--<div class="col-sm-10">--}}
                                 {{--<input type="text" id="experimental_policy_title" name="experimental_policy_title"--}}
@@ -64,7 +64,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="title_axis">
                                 <span>عنوان محور </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="title_axis" name="title_axis"
@@ -76,7 +76,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="project_title">
                                 <span>عنوان پروژه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="project_title" name="project_title"
@@ -88,7 +88,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="package_number">
                                 <span>شماره بسته متناظر از سند تحول دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="package_number" name="package_number"
@@ -100,7 +100,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="transformation_document">
                                 <span>شماره راهکنش متناظر از سند تحول دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="transformation_document" name="transformation_document"
@@ -112,7 +112,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="quantitative_goal">
                                 <span>هدف کمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="quantitative_goal" name="quantitative_goal"
@@ -124,7 +124,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="test">
                                 <span> سنجه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="test" name="test" value="{{ $roadmapDesired->test }}"
@@ -135,7 +135,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="annual_progress_level">
                                 <span>سطح پیشرفت و تحقق سالانه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="annual_progress_level" name="annual_progress_level"
@@ -147,7 +147,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="responsible_for_track">
                                 <span>مسئول پیگیری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="responsible_for_track" name="responsible_for_track"
@@ -159,7 +159,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="considerations">
                                 <span>ملاحظات </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="considerations" name="considerations"

@@ -52,7 +52,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="degree/rank">
                                 <span>درجه/رتبه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" required id="degree/rank" name="degree/rank">
@@ -78,7 +78,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="score">
                                 <span>امتیاز </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="score" name="score" value="{{ old('score') }}"
@@ -93,7 +93,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="approved_number_and_titles_of_the_faculty">
                                 <span>تعداد و عناوین دانشکده مصوب </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="approved_number_and_titles_of_the_faculty"

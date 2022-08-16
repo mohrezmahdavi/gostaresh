@@ -50,7 +50,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -62,7 +62,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_number_of_curricula">
                                 <span>تعداد کل برنامه های درسی (رشته گرایش ها) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_number_of_curricula" name="total_number_of_curricula"
@@ -74,7 +74,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_modified_curricula">
                                 <span>تعداد برنامه های درسی بازنگری و اصلاح شده با رویکرد مهارت آموزی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_modified_curricula" name="number_of_modified_curricula"
@@ -86,7 +86,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="new_interdisciplinary_curricula_implemented">
                                 <span>برنامه های درسی جدید میان رشته ای مورد اجرا </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="new_interdisciplinary_curricula_implemented"
@@ -99,7 +99,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="complete_new_interdisciplinary_curricula">
                                 <span>کل برنامه های درسی جدید میان رشته ای مورد اجرا </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="complete_new_interdisciplinary_curricula"
@@ -112,7 +112,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_common_curricula_with_the_world">
                                 <span>تعداد برنامه های درسی مشترک اجرا شده با سایر دانشگاه های جهان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_common_curricula_with_the_world"
@@ -126,7 +126,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_curricula_developed">
                                 <span>تعداد برنامه درسی تدوین شده جهت تاسیس رشته جدید تحصیلی توسط واحد دانشگاهی مورد نظر
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_curricula_developed"

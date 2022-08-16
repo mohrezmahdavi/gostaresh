@@ -31,12 +31,12 @@ class InternationalTechnologyRequest extends FormRequest
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required|max:255',
-            'number_of_participation' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'number_of_technical_services' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'earnings' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'number_of_international_inventions' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'number_of_international_knowledge_based_companies' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'unit' => 'nullable|max:255',
+            'number_of_participation' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_technical_services' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'earnings' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_international_inventions' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'number_of_international_knowledge_based_companies' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

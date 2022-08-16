@@ -52,7 +52,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="student_satisfaction">
                                 <span>میزان رضایت دانشجویان و فارغ التحصیلان واحد از خدمات دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="student_satisfaction"
@@ -76,7 +76,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unique_organizational_learning_capability">
                                 <span>قابلیت یادگیری سازمانی واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unique_organizational_learning_capability"
@@ -90,7 +90,7 @@
                             <label class="col-sm-2 col-form-label" for="students_religious_beliefs">
                                 <span>میزان پایبندی به فضایل اخلاقی و باورهای دینی در میان دانشجویان واحد دانشگاهی
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="students_religious_beliefs"
@@ -103,7 +103,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="student_study_research_culture">
                                 <span>میزان پایبندی به فرهنگ تحقیق مطالعه، تتبع و تحقیق در میان دانشجویان واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="student_study_research_culture"
@@ -117,7 +117,7 @@
                             <label class="col-sm-2 col-form-label" for="hijab_culture_of_students">
                                 <span>میزان پایبندی به فرهنگ عفاف و حجاب و سبک پوشش اسلامی در میان دانشجویان واحد
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="hijab_culture_of_students"
@@ -130,7 +130,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="culture_of_participation">
                                 <span>سطح فرهنگ مشارکت پذیری و کار گروهی در واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="culture_of_participation"
@@ -143,7 +143,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="faculty_members_self_confidence">
                                 <span>سطح خودباوری و تعلق سازمانی در میان اعضای هیات علمی و کارکنان واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="faculty_members_self_confidence"
@@ -156,7 +156,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount_of_physical_elements">
                                 <span>میزان المان های فیزیکی و نمایه های بصری هویت دار در واحد دانشگاهی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount_of_physical_elements"
@@ -171,7 +171,7 @@
                             <label class="col-sm-2 col-form-label" for="percentage_of_sample_professors_in_unit">
                                 <span>درصد اساتید نمونه واحد دانشگاهی از کل اساتید نمونه دانشگاه آزاد اسلامی استان
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percentage_of_sample_professors_in_unit"
@@ -185,7 +185,7 @@
                             <label class="col-sm-2 col-form-label" for="percentage_of_sample_professors_in_province">
                                 <span>درصد اساتید نمونه دانشگاه آزاد اسلامی استان از کل اساتید نمونه دانشگاه آزاد اسلامی
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percentage_of_sample_professors_in_province"
@@ -199,7 +199,7 @@
                             <label class="col-sm-2 col-form-label" for="percentage_of_sample_students_in_unit">
                                 <span>درصد دانشجویان نمونه واحد دانشگاهی از کل دانشجویان نمونه دانشگاه آزاد اسلامی استان
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percentage_of_sample_students_in_unit"
@@ -213,7 +213,7 @@
                             <label class="col-sm-2 col-form-label" for="percentage_of_sample_students_in_province">
                                 <span>درصد دانشجویان نمونه دانشگاه آزاد اسلامی استان از کل دانشجویان نمونه دانشگاه آزاد
                                     اسلامی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percentage_of_sample_students_in_province"
@@ -226,7 +226,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="brand_influence_in_the_province">
                                 <span>میزان نفوذ برند دانشگاه آزاد اسلامی و هویت بصری آن در سطح شهرستان/استان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="brand_influence_in_the_province"
@@ -240,7 +240,7 @@
                             <label class="col-sm-2 col-form-label" for="level_of_intelligence">
                                 <span>میزان سامانه سپاری و هوشمندسازی ساختار تشکیلاتی، فرایندها و نظام های مدیریت در واحد
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="level_of_intelligence"
@@ -255,7 +255,7 @@
                             <label class="col-sm-2 col-form-label" for="axial_program">
                                 <span>برنامه محوری (وجود برنامه راهبردی-عملیاتی در سطح واحد/استان مبتنی بر طرح آمایش)
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="axial_program"

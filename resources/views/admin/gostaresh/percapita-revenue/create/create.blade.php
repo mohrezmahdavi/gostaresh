@@ -54,7 +54,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -65,7 +65,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
                                 <span>دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
@@ -81,7 +81,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="grade_id">
                                 <span>مقطع تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="grade_id" id="grade_id" class="form-select">
@@ -97,7 +97,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="major_id">
                                 <span>رشته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="major_id" id="major_id" class="form-select">
@@ -113,7 +113,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="minor_id">
                                 <span>گرایش </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="minor_id" id="minor_id" class="form-select">
@@ -129,7 +129,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_revenue_status_analyses">
                                 <span>تحلیل وضعیت درآمد سرانه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_revenue_status_analyses"

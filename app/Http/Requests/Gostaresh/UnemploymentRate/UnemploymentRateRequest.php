@@ -27,11 +27,11 @@ class UnemploymentRateRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'education_id' => 'required|numeric',
-            'amount' => ['required', 'numeric', new DecimalRangeRule()],
+            'education_id' => 'nullable|numeric',
+            'amount' => ['nullable', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

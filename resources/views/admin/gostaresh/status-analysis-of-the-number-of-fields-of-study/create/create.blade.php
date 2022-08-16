@@ -50,7 +50,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -64,7 +64,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_number_of_fields_of_study">
                                 <span>تعداد کل رشته های تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="total_number_of_fields_of_study"
@@ -77,7 +77,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_international_courses">
                                 <span>تعداد رشته های تحصیلی بین المللی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_international_courses"
@@ -90,7 +90,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_virtual_courses">
                                 <span>تعداد رشته های تحصیلی مجازی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_virtual_courses"
@@ -102,7 +102,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_technical_disciplines">
                                 <span>تعداد رشته های فنی و حرفه ای و مهارتی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_technical_disciplines"
@@ -115,7 +115,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_newly_established_courses">
                                 <span>تعداد رشته های تحصیلی جدید التاسیس </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_newly_established_courses"
@@ -128,7 +128,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_courses_not_accepted">
                                 <span>تعداد رشته / محل های فاقد پذیرش </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_courses_not_accepted"
@@ -141,7 +141,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_courses_without_volunteers">
                                 <span>تعداد رشته / محل های فاقد داوطلب </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_courses_without_volunteers"
@@ -154,7 +154,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_GDP_courses">
                                 <span>تعداد تعدادرشته های تحصیلی مرتبط با حوزه GDP غالب استان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_GDP_courses"
@@ -168,7 +168,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_disciplines_corresponding_to_job_fields">
                                 <span>تعداد رشته های تحصیلی منطبق با حوزه های شغلی مورد نیاز در شهرستان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl"
@@ -185,7 +185,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_fields_corresponding_to_the_specified_specialties">
                                 <span>تعداد رشته های تحصیلی منطبق با تخصص های تعیین شده برای شهرستان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl"
@@ -201,7 +201,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_courses_offered_virtually">
                                 <span>تعداد واحدهای درسی ارایه شده به صورت مجازی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_courses_offered_virtually"
@@ -216,7 +216,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_popular_fields_more_than_eighty_percent_capacity">
                                 <span>تعداد رشته های تحصیلی پر مخاطب (با تعداد کل دانشجوی بیش از 80 درصد ظرفیت) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl"
@@ -232,7 +232,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_courses_with_low_audience">
                                 <span>تعداد رشته های تحصیلی کم مخاطب (با تعداد کل دانشجوی کمتر از 20 درصد ظرفیت)
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_courses_with_low_audience"
@@ -245,7 +245,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_fields_of_less_than_5_people">
                                 <span>تعداد رشته های تحصیلی کمتر از 5 نفر </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_fields_of_less_than_5_people"
@@ -258,7 +258,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_courses_without_admission">
                                 <span>تعداد رشته های تحصیلی بدون پذیرش </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_courses_without_admission"
@@ -272,7 +272,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_popular_fields">
                                 <span>تعداد رشته های تحصیلی پر متقاضی (با تعداد دانشجوی پذیرفته شده در سال 1399 بیش از 80
                                     درصد ظرفیت) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="number_of_popular_fields"
@@ -286,7 +286,7 @@
                             <label class="col-sm-2 col-form-label" for="low_number_of_applicants">
                                 <span>تعداد رشته های تحصیلی کم متقاضی ( با تعداد دانشجوی پذیرفته شده در سال 1399 کمتر از 20
                                     درصد ظرفیت)</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="low_number_of_applicants"

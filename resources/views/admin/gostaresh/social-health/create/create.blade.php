@@ -53,7 +53,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -64,7 +64,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="component">
                                 <span>مولفه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="component" id="component" class="form-select">
@@ -80,7 +80,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span>جنسیت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
@@ -94,25 +94,9 @@
                         </div>
 
                         <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="grade_id">
-                                <span>مقطع</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="grade_id" id="grade_id" class="form-select">
-                                    <option value="">انتخاب کنید...</option>
-                                    @foreach (\App\Models\Grade::all() as $grade)
-                                        <option {{ $grade->id == old('grade_id') ? ' selected' : '' }} value="{{ $grade->id}}">{{ $grade->name }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="associate_degree">
                                 <span>کاردانی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="associate_degree" name="associate_degree"
@@ -124,7 +108,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="bachelor_degree">
                                 <span>کارشناسی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="bachelor_degree" name="bachelor_degree"
@@ -136,7 +120,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="masters">
                                 <span>کارشناسی ارشد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="masters" name="masters" value="{{ old('masters') }}"
@@ -147,7 +131,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="professional_doctor">
                                 <span>دکتری حرفه ای </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="professional_doctor" name="professional_doctor"
@@ -159,7 +143,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="phd">
                                 <span>دکتری تخصصی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="phd" name="phd" value="{{ old('phd') }}"

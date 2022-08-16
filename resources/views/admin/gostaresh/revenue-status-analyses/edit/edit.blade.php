@@ -53,7 +53,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
@@ -65,7 +65,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_revenue">
                                 <span>کل درآمد ها </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_revenue" name="total_revenue"
@@ -77,7 +77,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="income_from_student_tuition">
                                 <span>درآمد حاصل از شهریه دانشجویان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_student_tuition" name="income_from_student_tuition"
@@ -89,7 +89,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="income_from_commercialized_technologies">
                                 <span>درصد درآمد حاصل از فروش فناوری و طرح های تجاری سازی شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_commercialized_technologies"
@@ -103,7 +103,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="income_from_research_activities">
                                 <span>درصد درآمد حاصل از فعالیت های تحقیق و توسعه واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_research_activities"
@@ -117,7 +117,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="income_from_skills_training">
                                 <span>درآمدهای حاصل از مهارت آموزی، فعالیت های کاربنیان و کارآفرینی واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="income_from_skills_training" name="income_from_skills_training"
@@ -129,7 +129,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="operating_income_growth_rate">
                                 <span>نرخ رشد درآمدهای عملیاتی واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="operating_income_growth_rate" name="operating_income_growth_rate"
@@ -141,7 +141,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_non_tuition_income">
                                 <span>مجموع درآمدهای غیر شهریه ای واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_non_tuition_income" name="total_non_tuition_income"
@@ -153,7 +153,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_international_income">
                                 <span>مجموع درآمد های ناشی از فعالیت های بین المللی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_international_income" name="total_international_income"
@@ -165,7 +165,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="shareholder_income">
                                 <span>درآمد ناشی از سهامداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="shareholder_income" name="shareholder_income"

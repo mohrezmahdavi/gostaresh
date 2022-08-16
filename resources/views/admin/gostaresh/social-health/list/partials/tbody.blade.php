@@ -9,9 +9,6 @@
 @if (filterCol('gender') == true)
     <td>{{ $socialHealth?->gender }}</td>
 @endif
-@if (filterCol('grade') == true)
-    <td>{{ $socialHealth?->grade_title }}</td>
-@endif
 @if (filterCol('associate_degree') == true)
     <td>{{ $socialHealth?->associate_degree }}</td>
 @endif

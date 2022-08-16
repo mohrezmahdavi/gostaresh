@@ -49,7 +49,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span> جنسیت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
@@ -65,7 +65,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="department_of_education">
                                 <span> گروه تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="department_of_education" id="department_of_education" class="form-select">
@@ -83,7 +83,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="university_type">
                                 <span>نوع دانشگاه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="university_type" id="university_type" class="form-select">
@@ -98,7 +98,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="grade_id">
                                 <span>مقطع</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="grade_id" id="grade_id" class="form-select">
@@ -114,7 +114,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_test_score_of_the_first_thirty_percent_of_admitted">
                                 <span> میانگین رتبه آزمون 30 درصد اول پذیرفته شدگان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="average_test_score_of_the_first_thirty_percent_of_admitted" name="average_test_score_of_the_first_thirty_percent_of_admitted"

@@ -50,7 +50,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
@@ -62,7 +62,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_graduates">
                                 <span>تعداد کل فارغ التحصیلان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="total_graduates" name="total_graduates"
@@ -74,7 +74,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="employed_graduates">
                                 <span>تعداد فارغ التحصیلان شاغل </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="employed_graduates" name="employed_graduates"
@@ -86,7 +86,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="graduate_growth_rate">
                                 <span>نرخ رشد فارغ التحصیلان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="graduate_growth_rate" name="graduate_growth_rate"
@@ -98,7 +98,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="related_employed_graduates">
                                 <span>تعداد فارغ التحصیلان شاغل در مشاغل مرتبط با رشته تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="related_employed_graduates" name="related_employed_graduates"
@@ -110,7 +110,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="skill_certification_graduates">
                                 <span>تعداد فارغ التحصیلان دارای گواهینامه مهارتی و صلاحیت حرفه ای </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="skill_certification_graduates"
@@ -124,7 +124,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="employed_graduates_6_months_after_graduation">
                                 <span>تعداد فارغ التحصیلان دارای شغل در مدت 6 ماه بعد از فراغت از تحصیل </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="employed_graduates_6_months_after_graduation"
@@ -138,7 +138,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_monthly_income_employed_graduates">
                                 <span>متوسط درآمد ماهیانه فارغ التحصیلان دارای شغل مرتبط با رشته تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="average_monthly_income_employed_graduates"

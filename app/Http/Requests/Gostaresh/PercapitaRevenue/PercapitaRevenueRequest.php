@@ -28,16 +28,16 @@ class PercapitaRevenueRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required|max:255',
-            'university_type' => 'required|numeric|gte:0',
-            'grade_id' => 'required|numeric|gte:0',
-            'major_id' => 'required|numeric|gte:0',
-            'minor_id' => 'required|numeric|gte:0',
-            'percapita_revenue_status_analyses' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'year' => 'required|numeric|gte:0',
+            'unit' => 'nullable|max:255',
+            'university_type' => 'nullable|numeric|gte:0',
+            'grade_id' => 'nullable|numeric|gte:0',
+            'major_id' => 'nullable|numeric|gte:0',
+            'minor_id' => 'nullable|numeric|gte:0',
+            'percapita_revenue_status_analyses' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
     }

@@ -55,7 +55,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="major">
                                 <span>گروه فرعی تحصیلی</span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="major" id="major" class="form-select">
@@ -71,7 +71,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="kardani_peyvaste_count">
                                 <span>تعداد کاردانی پیوسته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="kardani_peyvaste_count"
@@ -84,7 +84,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="kardani_na_peyvaste_count">
                                 <span>تعداد کاردانی ناپیوسته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="kardani_na_peyvaste_count"
@@ -97,7 +97,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="karshenasi_peyvaste_count">
                                 <span>تعداد کارشناسی پیوسته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="karshenasi_peyvaste_count"
@@ -110,7 +110,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="karshenasi_na_peyvaste_count">
                                 <span>تعداد کارشناسی ناپیوسته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="karshenasi_na_peyvaste_count"
@@ -123,7 +123,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="karshenasi_arshad_count">
                                 <span>تعداد کارشناسی ارشد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="karshenasi_arshad_count"
@@ -136,7 +136,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="docktora_herfei_count">
                                 <span>تعداد دکتری حرفه ای </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="docktora_herfei_count"
@@ -149,7 +149,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="docktora_takhasosi_count">
                                 <span>تعداد دکتری تخصصی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl" id="docktora_takhasosi_count"

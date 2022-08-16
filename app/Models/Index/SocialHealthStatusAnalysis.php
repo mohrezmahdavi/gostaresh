@@ -128,7 +128,6 @@ class SocialHealthStatusAnalysis extends Model
         "unit"                => "واحد",
         "component_title"     => "مولفه",
         "gender"              => "جنسیت",
-        "grade_title"         => "مقطع",
         "associate_degree"    => "کاردانی",
         "bachelor_degree"     => "کارشناسی",
         "masters"             => "کارشناسی ارشد",
