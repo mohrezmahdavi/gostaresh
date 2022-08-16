@@ -2411,6 +2411,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -62285,14 +62290,7 @@ var render = function () {
     _vm._v(" "),
     _vm.fields.province == true
       ? _c("div", { staticClass: "form-group row mt-2" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-2 col-form-label",
-              attrs: { for: "province_id" },
-            },
-            [_vm._v("استان")]
-          ),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-10" }, [
             _vm.flag_province
@@ -62558,7 +62556,28 @@ var render = function () {
       : _vm._e(),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-sm-2 col-form-label", attrs: { for: "province_id" } },
+      [
+        _vm._v("استان\n      "),
+        _c(
+          "span",
+          {
+            staticClass: "text-danger",
+            staticStyle: { "font-size": "11px !important" },
+          },
+          [_vm._v("\n        (اجباری)\n      ")]
+        ),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
