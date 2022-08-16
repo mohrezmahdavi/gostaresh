@@ -51,7 +51,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="agriculture_hunting_forestry">
                                 <span>کشاورزی، شکار و جنگلداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="agriculture_hunting_forestry" id="agriculture_hunting_forestry" class="form-select">
@@ -67,7 +67,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="mining_construction">
                                 <span>استخراج معدن - ساخت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="mining_construction" id="mining_construction" class="form-select">
@@ -82,7 +82,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="water_electricity_natural_gas_supply">
                                 <span>تامین آب، برق و گاز طبیعی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="water_electricity_natural_gas_supply" id="water_electricity_natural_gas_supply" class="form-select">
@@ -97,7 +97,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="building">
                                 <span>ساختمان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="building" id="building" class="form-select">
@@ -112,7 +112,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="wholesale_retail_vehicle_repair_supply">
                                 <span>عمده فروشی، خرده فروشی، تعمیر وسایل نقلیه و تامین کالا </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="wholesale_retail_vehicle_repair_supply" id="wholesale_retail_vehicle_repair_supply" class="form-select">
@@ -127,7 +127,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="hotel_and_restaurant">
                                 <span>هتل و رسنوران </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="hotel_and_restaurant" id="hotel_and_restaurant" class="form-select">
@@ -142,7 +142,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="transportation_warehousing_communications">
                                 <span>حمل و نقل، انبارداری و ارتباطات </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="transportation_warehousing_communications" id="transportation_warehousing_communications" class="form-select">
@@ -157,7 +157,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="financial_intermediation">
                                 <span>واسطه گری های مالی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="financial_intermediation" id="financial_intermediation" class="form-select">
@@ -172,7 +172,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="office_of_public_affairs_urban_services">
                                 <span>اداره امور عمومی و خدمات شهری، دفاع، و تامین اجتماعی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="office_of_public_affairs_urban_services" id="office_of_public_affairs_urban_services" class="form-select">
@@ -187,7 +187,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="education">
                                 <span>آموزش </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="education" id="education" class="form-select">
@@ -203,7 +203,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="health_and_social_work">
                                 <span>بهداشت و مددکاری اجتماعی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="health_and_social_work" id="health_and_social_work" class="form-select">
@@ -218,7 +218,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="activities_of_employed_households">
                                 <span>فعالیت های خانوارهای دارای مستخدم </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="activities_of_employed_households" id="activities_of_employed_households" class="form-select">
@@ -233,7 +233,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="overseas_organizations_and_delegations">
                                 <span>سازمان ها و هیات های برون مرزی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="overseas_organizations_and_delegations" id="overseas_organizations_and_delegations" class="form-select">
@@ -248,7 +248,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="real_estates">
                                 <span>املاک و مستغلات </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="real_estates" id="real_estates" class="form-select">
@@ -263,7 +263,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="professional_scientific_technical_activities">
                                 <span>فعالیت های حرفه ای ، علمی و فنی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="professional_scientific_technical_activities" id="professional_scientific_technical_activities" class="form-select">
@@ -278,7 +278,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="office_and_support_services">
                                 <span>اداری و خدمات پشتیبانی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="office_and_support_services" id="office_and_support_services" class="form-select">
@@ -293,7 +293,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="art_and_entertainment">
                                 <span>هنر و سرگرمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="art_and_entertainment" id="art_and_entertainment" class="form-select">
@@ -308,7 +308,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="other_services">
                                 <span>سایر خدمات </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="other_services" id="other_services" class="form-select">

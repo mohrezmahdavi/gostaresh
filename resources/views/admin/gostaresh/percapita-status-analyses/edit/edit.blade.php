@@ -53,7 +53,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
@@ -65,7 +65,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_office_space">
                                 <span>سرانه فضای اداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_office_space" name="percapita_office_space"
@@ -77,7 +77,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_educational_space">
                                 <span>سرانه فضای آموزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_educational_space" name="percapita_educational_space"
@@ -89,7 +89,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_innovation_space">
                                 <span>سرانه فضای فناوری و نوآوری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_innovation_space" name="percapita_innovation_space"
@@ -101,7 +101,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_cultural_space">
                                 <span>سرانه فضای فرهنگی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_cultural_space" name="percapita_cultural_space"
@@ -113,7 +113,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_civil_space">
                                 <span>سرانه فضای عمرانی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_civil_space" name="percapita_civil_space"
@@ -125,7 +125,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="building_under_construction">
                                 <span>ساختمان در دست احداث </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="building_under_construction" name="building_under_construction"
@@ -137,7 +137,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_residential">
                                 <span>سرانه اقامتی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_residential" name="percapita_residential"
@@ -149,7 +149,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_operating_buildings">
                                 <span>سرانه ساختمان های بهره بردار </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_operating_buildings"
@@ -162,7 +162,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_sports_space">
                                 <span>سرانه فضای ورزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_sports_space" name="percapita_sports_space"
@@ -174,7 +174,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_aristocratic_space">
                                 <span>سرانه فضای اعیانی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_aristocratic_space"
@@ -187,7 +187,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percapita_arena_space">
                                 <span>سرانه فضای عرصه </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percapita_arena_space" name="percapita_arena_space"

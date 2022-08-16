@@ -52,7 +52,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="office_space_utilization_rate">
                                 <span>نرخ بهره برداری از فضای اداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="office_space_utilization_rate"
@@ -75,7 +75,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="utilization_rate_of_educational_equipment">
                                 <span>نرخ بهره برداری از فضا و تجهیزات آموزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="utilization_rate_of_educational_equipment"
@@ -88,7 +88,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="utilization_rate_of_technology_equipment">
                                 <span>نرخ بهره برداری از فضای و تجهیزات فناوری و نوآوری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="utilization_rate_of_technology_equipment"
@@ -101,7 +101,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="utilization_rate_of_cultural_equipment">
                                 <span>سرانه نرخ بهره برداری از فضا و تجهیزات فرهنگی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="utilization_rate_of_cultural_equipment"
@@ -114,7 +114,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="utilization_rate_of_sports_equipment">
                                 <span>نرخ بهره برداری از فضا و تجهیزات ورزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="utilization_rate_of_sports_equipment"
@@ -127,7 +127,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="operation_rate_of_agricultural_equipment">
                                 <span>نرخ بهره برداری از تجهیزات و فضای کشاورزی و زراعی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="operation_rate_of_agricultural_equipment"
@@ -140,7 +140,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="operation_rate_of_workshop_equipment">
                                 <span>ﻧـﺮخﺑﻬـﺮهﺑـﺮداری ازتجهیزات و فضای کارگاهی و آزمایشگاهی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="operation_rate_of_workshop_equipment"
@@ -153,7 +153,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="faculty_capacity_utilization_rate">
                                 <span>نرخ بهره برداری از ظرفیت اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="faculty_capacity_utilization_rate"
@@ -166,7 +166,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="employee_capacity_utilization_rate">
                                 <span>نرخ بهره برداری از ظرفیت کارمندان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="employee_capacity_utilization_rate"
@@ -179,7 +179,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="graduate_capacity_utilization_rate">
                                 <span>نرخ بهره برداری از ظرفیت فارغ التحصیلان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="graduate_capacity_utilization_rate"
@@ -192,7 +192,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="student_capacity_utilization_rate">
                                 <span>نرخ بهره برداری از ظرفیت دانشجویان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="student_capacity_utilization_rate"
@@ -205,7 +205,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ratio_of_faculty_members_to_students">
                                 <span>نسبت تعداد اعضای هیات علمی به دانشجویان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_faculty_members_to_students"
@@ -218,7 +218,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ratio_of_staff_to_students">
                                 <span>نسبت تعداد کارمندان به دانشجویان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_staff_to_students" name="ratio_of_staff_to_students"
@@ -230,7 +230,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ratio_of_faculty_members_to_teaching_professors">
                                 <span>نسبت تعداد اعضای هیات علمی به تعداد اساتید مدعو و حق التدریس </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_faculty_members_to_teaching_professors"
@@ -244,7 +244,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ratio_of_faculty_members_to_employees">
                                 <span>نسبت تعداد اعضای هیات علمی به کارمندان واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_faculty_members_to_employees"
@@ -258,7 +258,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="ratio_of_unit_faculty_members_to_faculty_members_of_the_province">
                                 <span>نسبت تعداد اعضای هیات علمی به میانگین تعداد اعضای هیات علمی استان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text"
@@ -274,7 +274,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="ratio_of_unit_students_to_students_of_the_province">
                                 <span>نسبت تعداد دانشجویان به میانگین تعداد دانشجویان استان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_unit_students_to_students_of_the_province"
@@ -288,7 +288,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ratio_of_unit_employees_to_provincial_employees">
                                 <span>نسبت تعداد کارمندان به میانگین تعداد کارمندان استان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ratio_of_unit_employees_to_provincial_employees"
@@ -304,7 +304,7 @@
                                 for="unit_teaching_professors_to_teaching_professors_province">
                                 <span>نسبت تعداد اساتید مدعو و حق التدریس به میانگین تعداد اساتید مدعو و حق التدریس استان
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit_teaching_professors_to_teaching_professors_province"

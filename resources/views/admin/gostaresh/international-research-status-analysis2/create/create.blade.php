@@ -52,7 +52,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_H_index_of_faculty_members">
                                 <span>متوسط H-index اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="average_H_index_of_faculty_members"
@@ -76,7 +76,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_articles_science_and_nature">
                                 <span>تعداد مقالات در دو مجله Science و Nature </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_articles_science_and_nature"
@@ -89,7 +89,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="print_ISI_articles">
                                 <span>سرانه چاپ مقالات ISI </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="print_ISI_articles" name="print_ISI_articles"
@@ -101,7 +101,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="percentage_of_quality_articles">
                                 <span>درصد مقالات کیفی در ۲۵ درصد بالای فهرست JCR (Q1) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="percentage_of_quality_articles"
@@ -115,7 +115,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_faculty_members_of_world_scientists">
                                 <span>تعداد اعضای هیات علمی با بیش از ۱۰۰۰ استناد یا در ردیف دانشمندان برتر جهان بر اساس
                                     نظام‌های رتبه بندی مصوب </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members_of_world_scientists"
@@ -130,7 +130,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_faculty_members_of_international_journals">
                                 <span>تعداد اعضای هیات علمی عضو هیات تحریریه مجلات معتبر بین المللی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members_of_international_journals"
@@ -144,7 +144,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_international_conferences_held">
                                 <span>تعداد همایش های بین المللی برگزار شده مصوب هیات امنا در ۵ سال اخیر </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_international_conferences_held"
@@ -158,7 +158,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_international_scientific_books">
                                 <span>تعداد کتب علمی بین المللی و چاپ فصلی از کتاب های علمی بین المللی با Affiliation
                                     دانشگاه آزاد اسلامی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_international_scientific_books"
@@ -171,7 +171,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_international_agreements_implemented">
                                 <span>تعداد تفاهم نامه های بین المللی اجرایی شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_international_agreements_implemented"
@@ -185,7 +185,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount_of_international_research_credits">
                                 <span>میزان اعتبارات پژوهشی (گرنت) بین المللی اخذ شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount_of_international_research_credits"
@@ -199,7 +199,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_international_publications">
                                 <span>تعداد نشریه های دارای نمایه های استنادی بین المللی از جمله (ISI) و (Scopus)
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_international_publications"

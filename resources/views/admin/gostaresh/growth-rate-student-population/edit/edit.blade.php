@@ -51,7 +51,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span>جنسیت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="gender_id" id="gender_id" class="form-select">
@@ -73,7 +73,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="ebtedai">
                                 <span> ابتدایی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="ebtedai" name="ebtedai"
@@ -85,7 +85,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="motevasete_1">
                                 <span> متوسطه اول </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="motevasete_1" name="motevasete_1"
@@ -97,7 +97,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="motevasete_2_ensani">
                                 <span> متوسطه دوم (علوم انسانی) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="motevasete_2_ensani" name="motevasete_2_ensani"
@@ -109,7 +109,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="motevasete_2_math">
                                 <span> متوسطه دوم (ریاضی) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="motevasete_2_math" name="motevasete_2_math"
@@ -121,7 +121,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="motevasete_2_science">
                                 <span> متوسطه دوم (علوم تجربی) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="motevasete_2_science" name="motevasete_2_science"
@@ -133,7 +133,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="motevasete_2_kar_danesh">
                                 <span> متوسطه دوم (کار و دانش و فنی حرفه ای) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="motevasete_2_kar_danesh" name="motevasete_2_kar_danesh"

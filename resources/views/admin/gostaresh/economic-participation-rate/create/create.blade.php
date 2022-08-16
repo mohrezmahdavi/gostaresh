@@ -51,7 +51,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount">
                                 <span>سهم تولید ناخالصی داخلی استان (درصد) </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount" name="amount" value="{{ old('amount') }}"
@@ -62,7 +62,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="education_id">
                                 <span> تحصیلات </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="education_id" id="education_id" class="form-select">

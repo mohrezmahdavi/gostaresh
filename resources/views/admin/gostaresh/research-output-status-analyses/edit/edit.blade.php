@@ -53,7 +53,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
@@ -65,7 +65,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_valid_scientific_articles">
                                 <span>تعداد مقالات معتبر علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_valid_scientific_articles"
@@ -78,7 +78,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_valid_books">
                                 <span>تعداد کتب معتبر </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_valid_books" name="number_of_valid_books"
@@ -90,7 +90,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_authored_books">
                                 <span>تعداد کتب تالیفی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_authored_books" name="number_of_authored_books"
@@ -102,7 +102,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_internal_inventions">
                                 <span>تعداد اختراعات ثبت شده داخلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_internal_inventions"
@@ -115,7 +115,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_international_inventions">
                                 <span>تعداد اختراعات ثبت شده بین المللی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_international_inventions"
@@ -128,7 +128,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_theses">
                                 <span>تعداد پایان نامه ها </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_theses" name="number_of_theses"
@@ -140,7 +140,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_research_dissertations">
                                 <span>تعداد پایان نامه های منجر به مقاله علمی-پژوهشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_research_dissertations"
@@ -155,7 +155,7 @@
                             <label class="col-sm-2 col-form-label" for="number_of_compiled_dissertations">
                                 <span>تعداد پایان نامه های تدوین شده بر اساس نظام موضوعات برنامه های علمی دانشگاه
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_compiled_dissertations"
@@ -169,7 +169,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_invented_dissertations">
                                 <span>تعداد پایان نامه های منجر به ثبت اختراع </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_invented_dissertations"
@@ -183,7 +183,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_product_dissertations">
                                 <span>تعداد پایان نامه های منجر به محصول </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_product_dissertations"
@@ -197,7 +197,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_completed_research_projects">
                                 <span>تعداد طرح های تحقیقاتی خاتمه یافته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_completed_research_projects"
@@ -211,7 +211,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_theorizing_chairs">
                                 <span>تعداد کرسی های نظریه پردازی برگزار شده توسط اساتید واحد دانشگاهی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_theorizing_chairs" name="number_of_theorizing_chairs"
@@ -224,7 +224,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_memoranda_of_understanding">
                                 <span>تعداد تفاهمنامه ها با صنایع و سازمان‌های محلی/ملی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_memoranda_of_understanding"
@@ -238,7 +238,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount_of_national_contracts_concluded">
                                 <span>مبلغ قراردهای منعقد شده با صنایع و سازمان‌های ملی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount_of_national_contracts_concluded"
@@ -252,7 +252,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount_of_local_contracts_concluded">
                                 <span>مبلغ قراردهای منعقد شده با صنایع و سازمان‌های محلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount_of_local_contracts_concluded"
@@ -266,7 +266,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_scientific_journals">
                                 <span>تعداد مجلات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_scientific_journals"
@@ -279,7 +279,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_R&D_research">
                                 <span>تعداد پژوهش های معطوف به R &D </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_R&D_research" name="number_of_R&D_research"
@@ -291,7 +291,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_innovative_ideas">
                                 <span>تعداد طرح ها و ایده های فناورانه و نوآورانه تجاری سازی شده </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_innovative_ideas" name="number_of_innovative_ideas"

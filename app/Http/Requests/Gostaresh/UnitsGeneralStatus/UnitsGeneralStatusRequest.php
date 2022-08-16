@@ -27,14 +27,14 @@ class UnitsGeneralStatusRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required|max:255',
-            'degree/rank' => 'required|max:255',
-            'score' => 'required|max:255',
-            'established_year' => 'required|max:255',
-            'approved_number_and_titles_of_the_faculty' => 'required|max:255',
+            'unit' => 'nullable|max:255',
+            'degree/rank' => 'nullable|max:255',
+            'score' => 'nullable|max:255',
+            'established_year' => 'nullable|max:255',
+            'approved_number_and_titles_of_the_faculty' => 'nullable|max:255',
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

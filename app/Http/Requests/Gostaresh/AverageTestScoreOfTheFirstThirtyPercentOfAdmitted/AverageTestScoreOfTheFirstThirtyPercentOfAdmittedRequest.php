@@ -27,14 +27,14 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest extends FormReque
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            "gender_id" => 'required|numeric',
-            "university_type" => 'required|numeric',
-            "grade_id" => 'required|numeric',
-            'department_of_education' => 'required|numeric|gte:0',
-            "average_test_score_of_the_first_thirty_percent_of_admitted" => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            "gender_id" => 'nullable|numeric',
+            "university_type" => 'nullable|numeric',
+            "grade_id" => 'nullable|numeric',
+            'department_of_education' => 'nullable|numeric|gte:0',
+            "average_test_score_of_the_first_thirty_percent_of_admitted" => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

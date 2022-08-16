@@ -27,17 +27,17 @@ class GraduatesOfHigherEducationRequest extends FormRequest
     {
         return [
             'country_id' => 'nullable|numeric|gte:0',
-            'province_id'=> 'nullable|numeric|gte:0',
+            'province_id'=> 'required|numeric|gte:0',
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'university' => 'required|max:255',
-            'gender_id' => 'required|numeric|gte:0',
-            'department_of_education' => 'required|numeric|gte:0',
-            'associate_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'bachelor_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'masters' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'university' => 'nullable|max:255',
+            'gender_id' => 'nullable|numeric|gte:0',
+            'department_of_education' => 'nullable|numeric|gte:0',
+            'associate_degree' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'bachelor_degree' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'masters' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'phd' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

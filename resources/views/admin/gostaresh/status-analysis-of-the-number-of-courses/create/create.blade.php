@@ -50,7 +50,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit" value="{{ old('unit') }}"
@@ -62,7 +62,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="total_number_of_courses">
                                 <span>تعداد کل دوره های تحصیلی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl;" id="total_number_of_courses"
@@ -75,7 +75,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_international_Persian_language_courses_in_person">
                                 <span>تعداد دوره های تحصیلی بین المللی زبان فارسی حضوری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl;"
@@ -90,7 +90,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_international_virtual_Persian_language_courses">
                                 <span>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان فارسی به صورت مجازی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl;"
@@ -106,7 +106,7 @@
                                 for="number_of_international_courses_in_the_target_language_in_person">
                                 <span>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان های کشورهای هدف به صورت حضوری
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl;"
@@ -122,7 +122,7 @@
                                 for="number_of_international_courses_in_the_target_language_virtually">
                                 <span>تعداد دوره های تحصیلی بین المللی برگزار شده به زبان های کشورهای هدف به صورت مجازی
                                 </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" style="direction: rtl;"

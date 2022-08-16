@@ -27,13 +27,13 @@ class DemographicChangesOfCityRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'population' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'immigration_rates' => ['required', 'numeric', new DecimalRangeRule()],
-            'growth_rate' => ['required', 'numeric', new DecimalRangeRule()],
-            'year' => 'required|numeric|gte:0',
+            'population' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'immigration_rates' => ['nullable', 'numeric', new DecimalRangeRule()],
+            'growth_rate' => ['nullable', 'numeric', new DecimalRangeRule()],
+            'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];
     }

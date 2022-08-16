@@ -27,18 +27,18 @@ class SocialHealthRequest extends FormRequest
     {
         return [
             'country_id' => 'nullable|numeric|gte:0',
-            'province_id'=> 'nullable|numeric|gte:0',
+            'province_id'=> 'required|numeric|gte:0',
             'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'unit' => 'required|max:255',
-            'component' => 'required|numeric|gte:0',
-            'gender_id' => 'required|numeric|gte:0',
-            'associate_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'bachelor_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'masters' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'professional_doctor' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
-            'phd' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'unit' => 'nullable|max:255',
+            'component' => 'nullable|numeric|gte:0',
+            'gender_id' => 'nullable|numeric|gte:0',
+            'associate_degree' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'bachelor_degree' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'masters' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'professional_doctor' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
+            'phd' => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

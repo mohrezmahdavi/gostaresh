@@ -51,7 +51,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="unit">
                                 <span>واحد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="unit" name="unit"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_faculty_members">
                                 <span>تعداد اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members" name="number_of_faculty_members"
@@ -75,7 +75,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="scientific_programs_faculty_members">
                                 <span>تعداد اعضای هیئت علمی مشارکت کننده در برنامه های علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="scientific_programs_faculty_members"
@@ -89,7 +89,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="upgraded_faculty_members">
                                 <span>تعداد اعضای هیات علمی ارتقا یافته </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="upgraded_faculty_members" name="upgraded_faculty_members"
@@ -101,7 +101,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_tuition_teachers">
                                 <span>تعداد مدرسین حق التدریس و اساتید مدعو </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_tuition_teachers" name="number_of_tuition_teachers"
@@ -113,7 +113,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_officer_faculty_members_in_other_unit">
                                 <span>تعداد اعضای هیات علمی مامور در سایر واحدها </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_officer_faculty_members_in_other_unit"
@@ -128,7 +128,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_officer_faculty_members_in_central_organization">
                                 <span>تعداد اعضای هیات علمی مامور در سازمان مرکزی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_officer_faculty_members_in_central_organization"
@@ -143,7 +143,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="number_of_participant_faculty_members_in_cooperation_plan">
                                 <span>تعداد اعضای هیات علمی شرکت کننده در طرح تعاون </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_participant_faculty_members_in_cooperation_plan"
@@ -157,7 +157,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_transfer_faculty_members">
                                 <span>تعداد اعضای هیات علمی انتقالی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_transfer_faculty_members"
@@ -170,7 +170,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_instructor_faculty_members">
                                 <span>تعداد اعضای هیات علمی با درجه مربی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_instructor_faculty_members"
@@ -184,7 +184,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_assistant_professor_faculty_members">
                                 <span>تعداد اعضای هیات علمی با درجه استادیار </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_assistant_professor_faculty_members"
@@ -198,7 +198,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_associate_professor_faculty_members">
                                 <span>تعداد اعضای هیات علمی با درجه دانشیار </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_associate_professor_faculty_members"
@@ -212,7 +212,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_full_professor_faculty_members">
                                 <span>تعداد اعضای هیات علمی با درجه استاد تمام </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_full_professor_faculty_members"
@@ -226,7 +226,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_faculty_members_smaller_50_years_old">
                                 <span>تعداد اعضای هیات علمی دارای سن کمتر از 50 سال </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members_smaller_50_years_old"
@@ -240,7 +240,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_technology_faculty_members">
                                 <span>تعداد اعضای هیات علمی فناور </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_technology_faculty_members"
@@ -253,7 +253,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_faculty_members_type_a">
                                 <span>تعداد اعضای هیات علمی نوع الف </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members_type_a"
@@ -266,7 +266,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_faculty_members_type_b">
                                 <span>تعداد اعضای هیات علمی نوع ب </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_faculty_members_type_b"
@@ -279,7 +279,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_top_scientific_faculty_members">
                                 <span>تعداد اعضای هیات علمی سرآمد علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_top_scientific_faculty_members"
@@ -293,7 +293,7 @@
                             <label class="col-sm-2 col-form-label"
                                 for="average_level_of_research_productivity_of_faculty_members">
                                 <span>متوسط سطح بهره وری پژوهشی اعضای هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="average_level_of_research_productivity_of_faculty_members"

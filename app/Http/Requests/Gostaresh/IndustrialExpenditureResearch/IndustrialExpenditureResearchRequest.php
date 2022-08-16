@@ -27,10 +27,10 @@ class IndustrialExpenditureResearchRequest extends FormRequest
         return [
             'country_id' => 'nullable|numeric|gte:0',
             'province_id'=> 'required|numeric|gte:0',
-            'county_id'=> 'required|numeric|gte:0',
+            'county_id'=> 'nullable|numeric|gte:0',
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
-            'amount_payment_rd' => ['required', 'numeric', new DecimalRangeRule()],
+            'amount_payment_rd' => ['nullable', 'numeric', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
             'month' => 'nullable|numeric|gte:0'
         ];

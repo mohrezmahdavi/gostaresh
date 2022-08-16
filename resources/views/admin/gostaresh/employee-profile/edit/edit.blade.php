@@ -53,7 +53,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="higher_education_subsystems">
                                 <span>زیرنظام های آموزش عالی شهرستان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <select name="higher_education_subsystems" id="higher_education_subsystems"
@@ -71,7 +71,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_non_faculty_staff">
                                 <span>تعداد کارکنان غیر هیات علمی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_non_faculty_staff" name="number_of_non_faculty_staff"
@@ -83,7 +83,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="average_age_of_employees">
                                 <span>میانگین سنی کارمندان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="average_age_of_employees" name="average_age_of_employees"
@@ -95,7 +95,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_male_employees">
                                 <span>تعداد کارمندان مرد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_male_employees" name="number_of_male_employees"
@@ -107,7 +107,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_female_employees">
                                 <span>تعداد کارمندان زن </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_female_employees" name="number_of_female_employees"
@@ -119,7 +119,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_administrative_staff">
                                 <span>تعداد کارمندان اداری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_administrative_staff"
@@ -132,7 +132,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_training_staff">
                                 <span>تعداد کارمندان بخش آموزشی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_training_staff" name="number_of_training_staff"
@@ -144,7 +144,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_research_staff">
                                 <span>تعداد کارمندان بخش پژوهش و فناوری </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_research_staff" name="number_of_research_staff"
@@ -156,7 +156,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_PhD_staff">
                                 <span>تعداد کارمندان با مدرک دکترا </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_PhD_staff" name="number_of_PhD_staff"
@@ -168,7 +168,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_master_staff">
                                 <span>تعداد کارمندان با مدرک کارشناسی ارشد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_master_staff" name="number_of_master_staff"
@@ -180,7 +180,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_expert_staff">
                                 <span>تعداد کارمندان با مدرک کارشناسی </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_expert_staff" name="number_of_expert_staff"
@@ -192,7 +192,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_diploma_and_sub_diploma_employees">
                                 <span>تعداد کارمندان با مدرک دیپلم و زیر دیپلم </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_diploma_and_sub_diploma_employees"
@@ -206,7 +206,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_employees_studying">
                                 <span>تعداد کارمندان در حال تحصیل </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="number_of_employees_studying"
@@ -219,7 +219,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="growth_rate">
                                 <span>نرخ رشد کارمندان </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="growth_rate" name="growth_rate"

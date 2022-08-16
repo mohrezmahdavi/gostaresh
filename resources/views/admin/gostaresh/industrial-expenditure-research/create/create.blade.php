@@ -54,7 +54,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="amount_payment_rd">
                                 <span>میزان هزینه کرد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="amount_payment_rd" name="amount_payment_rd"

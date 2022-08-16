@@ -39,7 +39,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="population">
                                 <span> جمعیت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="population" min="0" max="18446744073709551615"
@@ -51,7 +51,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="immigration_rates">
                                 <span> نرخ مهاجرت </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="immigration_rates" name="immigration_rates"
@@ -63,7 +63,7 @@
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="growth_rate">
                                 <span> نرخ رشد </span>&nbsp
-                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="growth_rate" name="growth_rate" value="{{ old('growth_rate') }}"
