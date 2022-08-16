@@ -34,7 +34,6 @@ class SocialHealthRequest extends FormRequest
             'unit' => 'required|max:255',
             'component' => 'required|numeric|gte:0',
             'gender_id' => 'required|numeric|gte:0',
-            'grade_id' => 'required|numeric|gte:0',
             'associate_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'bachelor_degree' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
             'masters' => ['required', 'numeric', 'gte:0', new DecimalRangeRule()],
