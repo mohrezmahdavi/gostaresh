@@ -32,15 +32,15 @@
             <div class="card">
                 <div class="card-body" id="app">
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('amount-of-facilities.update', $amountOfFacility) }}" role="form">
+                        action="{{ route('amount-of-facilities.update', strip_trailing_zeros($amountOfFacility)) }}" role="form">
                         @csrf
                         @method('PUT')
 
-                        <select-province-component province_default="{{ $amountOfFacility->province_id ?? ''}}"
-                            zone_default="{{ $amountOfFacility->county->zone ?? ''}}"
-                            county_default="{{ $amountOfFacility->county_id ?? ''}}"
-                            city_default="{{ $amountOfFacility->city_id ?? ''}}"
-                            rural_district_default="{{ $amountOfFacility->rural_district_id ?? ''}}"
+                        <select-province-component province_default="{{ strip_trailing_zeros($amountOfFacility->province_id) ?? ''}}"
+                            zone_default="{{ strip_trailing_zeros($amountOfFacility->county->zone) ?? ''}}"
+                            county_default="{{ strip_trailing_zeros($amountOfFacility->county_id) ?? ''}}"
+                            city_default="{{ strip_trailing_zeros($amountOfFacility->city_id) ?? ''}}"
+                            rural_district_default="{{ strip_trailing_zeros($amountOfFacility->rural_district_id) ?? ''}}"
                             :fields="{{ json_encode([
                                 'province' => true,
                                 'zone' => false,
@@ -55,7 +55,7 @@
                                 {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="unit" name="unit" value="{{ $amountOfFacility->unit }}"
+                                <input type="text" id="unit" name="unit" value="{{ strip_trailing_zeros($amountOfFacility->unit) }}"
                                     class="form-control" placeholder=" واحد را وارد کنید...">
                             </div>
                         </div>
@@ -66,14 +66,14 @@
                                 {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="amount" name="amount" value="{{ $amountOfFacility->amount }}"
+                                <input type="text" id="amount" name="amount" value="{{ strip_trailing_zeros($amountOfFacility->amount) }}"
                                     class="form-control" placeholder=" میزان را وارد کنید...">
                             </div>
                         </div>
 
                         <x-select-year :default="$amountOfFacility->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
-                        {{-- <x-select-month :default="$amountOfFacility->month" :required="false" name="month"></x-select-month> --}}
+                        {{-- <x-select-month :default="strip_trailing_zeros($amountOfFacility->month" :required="false" name="month"></x-select-month> --}}
 
                         <button type="submit" class="btn btn-primary  mt-3">ویرایش</button>
                     </form>
