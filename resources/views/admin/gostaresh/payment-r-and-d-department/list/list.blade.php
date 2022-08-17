@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-PaymentRAndDDepartment")
     <span>
         <a href="{{ route('payment.r.and.d.department.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -54,18 +57,22 @@
                                         @include('admin.gostaresh.payment-r-and-d-department.list.partials.tbody')
                                         <td>
 
+@can("edit-any-PaymentRAndDDepartment")
                                             <a href="{{ route('payment.r.and.d.department.edit', $paymentRAndDDepartment) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                              
-                                            <form method="POST" action="{{ route('payment.r.and.d.department.destroy', $paymentRAndDDepartment) }}" role="form">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                   @endcan
+
+@can("delete-any-PaymentRAndDDepartment")
+                                    <form method="POST" action="{{ route('payment.r.and.d.department.destroy', $paymentRAndDDepartment) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
+ @endcan
+ </td>
 
                                     </tr>
                                 @endforeach

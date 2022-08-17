@@ -14,9 +14,13 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-    <span>
-        <a href="{{ route('industrial.expenditure.research.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+    @can("create-any-IndustrialExpenditureResearch")
+        <span>
+        <a href="{{ route('industrial.expenditure.research.create') }}"
+           class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+    @endcan
+
 @endsection
 
 @section('styles-head')
@@ -25,13 +29,14 @@
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList"
-        :fieldsProvinceSelect="[
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"
+                                                               :fieldsProvinceSelect="[
             'province' => true,
             'zone' => false,
             'county' => true,
             'city' => false,
-        ]" />
+        ]"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -41,42 +46,49 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                                <tr>
-                                    <th>#</th>
-                                    @include('admin.gostaresh.industrial-expenditure-research.list.partials.thead')
-                                    <th>اقدام</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                @include('admin.gostaresh.industrial-expenditure-research.list.partials.thead')
+                                <th>اقدام</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($industrialExpenditureResearches as $key => $industrialExpenditureResearch)
-                                    <tr>
-                                        <th scope="row">{{ $industrialExpenditureResearches?->firstItem() + $key }}</th>
-                                        @include('admin.gostaresh.industrial-expenditure-research.list.partials.tbody')
+                            @foreach ($industrialExpenditureResearches as $key => $industrialExpenditureResearch)
+                                <tr>
+                                    <th scope="row">{{ $industrialExpenditureResearches?->firstItem() + $key }}</th>
+                                    @include('admin.gostaresh.industrial-expenditure-research.list.partials.tbody')
 
-                                        <td class="d-flex">
+                                    <td class="d-flex">
+                                        @can("edit-any-IndustrialExpenditureResearch")
 
-                                            <a href="{{ route('industrial.expenditure.research.edit', $industrialExpenditureResearch) }}"
-                                                title="{{ __('validation.buttons.edit') }}"
-                                                class="btn btn-warning btn-sm me-1"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('industrial.expenditure.research.edit', $industrialExpenditureResearch) }}"
+                                           title="{{ __('validation.buttons.edit') }}"
+                                           class="btn btn-warning btn-sm me-1"><i class="fa fa-edit"></i></a>
+                                        @endcan
 
-                                            <form method="POST" action="{{ route('industrial.expenditure.research.destroy', $industrialExpenditureResearch) }}" role="form">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        @can("delete-any-IndustrialExpenditureResearch")
+                                        <form method="POST"
+                                              action="{{ route('industrial.expenditure.research.destroy', $industrialExpenditureResearch) }}"
+                                              role="form">
+                                            @csrf
+                                            {{ method_field('delete') }}
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                    title="{{ __('validation.buttons.delete') }}">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </form>
+                                        @endcan
+                                    </td>
 
-                                    </tr>
-                                @endforeach
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
                             <x-exports.export-links
                                 excelLink="{{ route('industrial.expenditure.research.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('industrial.expenditure.research.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('industrial.expenditure.research.list.print', request()->query->all()) }}" />
+                                printLink="{{ route('industrial.expenditure.research.list.print', request()->query->all()) }}"/>
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">

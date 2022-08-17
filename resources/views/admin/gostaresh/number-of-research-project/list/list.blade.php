@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-NumberOfResearchProject")
     <span>
         <a href="{{ route('number.of.research.project.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -55,18 +58,22 @@
 
                                         <td>
 
+@can("edit-any-NumberOfResearchProject")
                                             <a href="{{ route('number.of.research.project.edit', $numberOfResearchProject) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                                
-                                            <form method="POST" action="{{ route('number.of.research.project.destroy', $numberOfResearchProject) }}" role="form">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                   @endcan
+
+@can("delete-any-NumberOfResearchProject")
+                                    <form method="POST" action="{{ route('number.of.research.project.destroy', $numberOfResearchProject) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
+ @endcan
+ </td>
 
                                     </tr>
                                 @endforeach

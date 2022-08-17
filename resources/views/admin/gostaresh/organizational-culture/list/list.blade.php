@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-OrganizationalCultureStatusAnalysis")
     <span>
         <a href="{{ route('organizational-culture.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -73,11 +76,12 @@
 
                                 <td>{{ $organizationalCulture?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('organizational-culture.edit', $organizationalCulture) }}"
+@can("edit-any-OrganizationalCultureStatusAnalysis")
+                                 <a href="{{ route('organizational-culture.edit', $organizationalCulture) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-OrganizationalCultureStatusAnalysis")
                                     <form method="POST" action="{{ route('organizational-culture.destroy', $organizationalCulture) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -85,6 +89,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>

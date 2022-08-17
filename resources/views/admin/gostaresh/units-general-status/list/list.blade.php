@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-UnitsGeneralStatus")
     <span>
         <a href="{{ route('units-general-status.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -82,11 +85,12 @@
 
                                 <td>{{ $unitsGeneralStatus?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('units-general-status.edit', $unitsGeneralStatus) }}"
+@can("edit-any-UnitsGeneralStatus")
+                                 <a href="{{ route('units-general-status.edit', $unitsGeneralStatus) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-UnitsGeneralStatus")
                                     <form method="POST" action="{{ route('units-general-status.destroy', $unitsGeneralStatus) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -94,6 +98,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>

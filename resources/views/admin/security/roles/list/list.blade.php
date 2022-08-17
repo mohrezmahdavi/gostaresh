@@ -79,7 +79,6 @@
                                     <td>
                                         <div class="btn-group btn-group-xs">
                                             @can("delete-any-Role")
-                                                @if( !in_array($role->id,auth()->user()->roles->pluck('id')->toArray()) )
                                                     <form method="post"
                                                           action="{{route("admin.role.destroy",$role->id)}}">
                                                         @csrf
@@ -92,7 +91,6 @@
                                                             <i class="fa fa-minus"></i>
                                                         </button>
                                                     </form>
-                                                @endif
                                             @endcan
                                             @can("edit-any-Role")
 

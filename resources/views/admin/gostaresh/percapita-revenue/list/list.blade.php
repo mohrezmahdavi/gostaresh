@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-PercapitaRevenueStatusAnalysis")
     <span>
         <a href="{{ route('percapita-revenue.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -68,11 +71,12 @@
 
                                 <td>{{ $percapitaRevenueItem?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('percapita-revenue.edit', $percapitaRevenueItem->id) }}"
+@can("edit-any-PercapitaRevenueStatusAnalysis")
+                                 <a href="{{ route('percapita-revenue.edit', $percapitaRevenueItem->id) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-PercapitaRevenueStatusAnalysis")
                                     <form method="POST" action="{{ route('percapita-revenue.destroy', $percapitaRevenueItem->id) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -80,6 +84,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>
