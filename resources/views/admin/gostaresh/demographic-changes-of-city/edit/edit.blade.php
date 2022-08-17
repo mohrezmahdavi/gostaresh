@@ -40,7 +40,7 @@
                                 {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" id="population" name="population" value="{{ strip_trailing_zeros($demographicChangesOfCity->population) }}"
+                                <input type="text" id="population" name="population" value="{{ $demographicChangesOfCity->population }}"
                                     class="form-control" placeholder="جمعیت را وارد کنید...">
                             </div>
                         </div>

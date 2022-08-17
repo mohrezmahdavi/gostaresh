@@ -75,7 +75,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="azad_eslami_count" name="azad_eslami_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->azad_eslami_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->azad_eslami_count }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="azad_eslami_percent" name="azad_eslami_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->azad_eslami_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->azad_eslami_percent }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="dolati_count" name="dolati_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->dolati_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->dolati_count }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="dolati_percent" name="dolati_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->dolati_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->dolati_percent }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="medical_sciences_count" name="medical_sciences_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->medical_sciences_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->medical_sciences_count }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="medical_sciences_percent" name="medical_sciences_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->medical_sciences_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->medical_sciences_percent }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="farhangian_count" name="farhangian_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->farhangian_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->farhangian_count }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="farhangian_percent" name="farhangian_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->farhangian_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->farhangian_percent }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="fani_herfei_count" name="fani_herfei_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->fani_herfei_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->fani_herfei_count }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="fani_herfei_percent" name="fani_herfei_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->fani_herfei_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->fani_herfei_percent }}" class="form-control"
                                        placeholder=" دانشگاه آزاد اسلامی را وارد کنید...">
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="payam_noor_count" name="payam_noor_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->payam_noor_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->payam_noor_count }}" class="form-control"
                                        placeholder=" دانشگاه پیام نور را وارد کنید...">
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="payam_noor_percent" name="payam_noor_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->payam_noor_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->payam_noor_percent }}" class="form-control"
                                        placeholder=" دانشگاه پیام نور را وارد کنید...">
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="gheir_entefai_count" name="gheir_entefai_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->gheir_entefai_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->gheir_entefai_count }}" class="form-control"
                                        placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="gheir_entefai_percent" name="gheir_entefai_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->gheir_entefai_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->gheir_entefai_percent }}" class="form-control"
                                        placeholder=" دانشگاه غیر انتفاعی را وارد کنید...">
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="elmi_karbordi_count" name="elmi_karbordi_count"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->elmi_karbordi_count) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->elmi_karbordi_count }}" class="form-control"
                                        placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
                             </div>
                         </div>
@@ -254,7 +254,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" id="elmi_karbordi_percent" name="elmi_karbordi_percent"
-                                       value="{{ strip_trailing_zeros($academicMajorEducational->elmi_karbordi_percent) }}" class="form-control"
+                                       value="{{ $academicMajorEducational->elmi_karbordi_percent }}" class="form-control"
                                        placeholder=" دانشگاه علمی کاربردی را وارد کنید...">
                             </div>
                         </div>

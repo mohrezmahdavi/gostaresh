@@ -97,14 +97,3 @@ if (!function_exists('employment_status')) {
     }
 
 }
-
-if (!function_exists('strip_trailing_zeros')) {
-    function strip_trailing_zeros($number)
-    {
-        $number = rtrim($number, "0");
-        $locale_info = localeconv();
-        $number = rtrim($number, $locale_info['decimal_point']);
-        return $number;
-    }
-
-}
