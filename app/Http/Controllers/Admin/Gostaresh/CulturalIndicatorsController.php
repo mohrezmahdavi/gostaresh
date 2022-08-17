@@ -24,27 +24,29 @@ class CulturalIndicatorsController extends Controller
      */
     public function index()
     {
-        
+        $this->authorize("view-any-CulturalIndicatorsStatusAnalysis");
+
+
         $query = CulturalIndicatorsStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = CulturalIndicatorsStatusAnalysis::$filterColumnsCheckBoxes;
-        
+
         $yearSelectedList = $this->yearSelectedList(clone $query);
-        
+
         $query = filterByOwnProvince($query);
-        
+
         $culturalIndicators = $query->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.gostaresh.cultural-indicators.list.list', compact('culturalIndicators'
             , 'yearSelectedList', 'filterColumnsCheckBoxes'
         ));
     }
-    
+
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
     }
-    
+
     // ****************** Export ******************
     private function getCulturalIndicatorsRecords()
     {
@@ -78,6 +80,8 @@ class CulturalIndicatorsController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-CulturalIndicatorsStatusAnalysis");
+
         return view('admin.gostaresh.cultural-indicators.create.create');
     }
 
@@ -89,7 +93,8 @@ class CulturalIndicatorsController extends Controller
      */
     public function store(CulturalIndicatorsRequest $request)
     {
-         CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-CulturalIndicatorsStatusAnalysis");
+        CulturalIndicatorsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -99,7 +104,7 @@ class CulturalIndicatorsController extends Controller
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
      * @return void
      */
-    public function show( CulturalIndicatorsStatusAnalysis $culturalIndicator)
+    public function show(CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
         //
     }
@@ -112,6 +117,8 @@ class CulturalIndicatorsController extends Controller
      */
     public function edit(CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
+        $this->authorize("edit-any-CulturalIndicatorsStatusAnalysis");
+
         return view('admin.gostaresh.cultural-indicators.edit.edit', compact('culturalIndicator'));
     }
 
@@ -124,7 +131,9 @@ class CulturalIndicatorsController extends Controller
      */
     public function update(CulturalIndicatorsRequest $request, CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
+        $this->authorize("edit-any-CulturalIndicatorsStatusAnalysis");
         $culturalIndicator->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -134,8 +143,9 @@ class CulturalIndicatorsController extends Controller
      * @param CulturalIndicatorsStatusAnalysis $culturalIndicator
      * @return RedirectResponse
      */
-    public function destroy( CulturalIndicatorsStatusAnalysis $culturalIndicator)
+    public function destroy(CulturalIndicatorsStatusAnalysis $culturalIndicator)
     {
+        $this->authorize("delete-any-CulturalIndicatorsStatusAnalysis");
         $culturalIndicator->delete();
         return back()->with('success', __('titles.success_delete'));
     }

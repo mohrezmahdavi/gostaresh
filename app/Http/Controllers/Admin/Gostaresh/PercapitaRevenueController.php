@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\PercapitaRevenue\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaRevenue\PercapitaRevenueRequest;
-use App\Models\Index\AverageTuitionIncome;
 use App\Models\Index\PercapitaRevenueStatusAnalysis;
 use App\Models\Major;
 use App\Models\Minor;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -19,10 +19,12 @@ class PercapitaRevenueController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-PercapitaRevenueStatusAnalysis");
+
         $query = PercapitaRevenueStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = PercapitaRevenueStatusAnalysis::$filterColumnsCheckBoxes;
@@ -68,28 +70,32 @@ class PercapitaRevenueController extends Controller
         return view('admin.gostaresh.percapita-revenue.list.pdf', compact('percapitaRevenues'));
     }
     // ****************** End Export ******************
-        
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-PercapitaRevenueStatusAnalysis");
+
         $majors = Major::all();
         $minors = Minor::all();
-        return view('admin.gostaresh.percapita-revenue.create.create', compact('majors','minors'));
+        return view('admin.gostaresh.percapita-revenue.create.create', compact('majors', 'minors'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param PercapitaRevenueRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(PercapitaRevenueRequest $request)
     {
-         PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-PercapitaRevenueStatusAnalysis");
+
+        PercapitaRevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -108,13 +114,13 @@ class PercapitaRevenueController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
         $majors = Major::all();
         $minors = Minor::all();
-        return view('admin.gostaresh.percapita-revenue.edit.edit', compact('percapitaRevenue','majors','minors'));
+        return view('admin.gostaresh.percapita-revenue.edit.edit', compact('percapitaRevenue', 'majors', 'minors'));
     }
 
     /**
@@ -122,11 +128,13 @@ class PercapitaRevenueController extends Controller
      *
      * @param PercapitaRevenueRequest $request
      * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(PercapitaRevenueRequest $request, PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
+        $this->authorize("edit-any-PercapitaRevenueStatusAnalysis");
         $percapitaRevenue->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -134,10 +142,11 @@ class PercapitaRevenueController extends Controller
      * Remove the specified resource from storage.
      *
      * @param PercapitaRevenueStatusAnalysis $percapitaRevenue
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(PercapitaRevenueStatusAnalysis $percapitaRevenue)
     {
+        $this->authorize("delete-any-PercapitaRevenueStatusAnalysis");
         $percapitaRevenue->delete();
         return back()->with('success', __('titles.success_delete'));
     }

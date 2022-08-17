@@ -148,7 +148,7 @@ return [
                 ],
                 [
                     'title' => ' تحلیل وضعیت تعداد رشته های تحصیلی',
-                    'model' => \App\Models\Index\StatusAnalysisOfTheNumberOfCurricula::class,
+                    'model' => \App\Models\Index\StatusAnalysisOfTheNumberOfFieldsOfStudy::class,
                     'name'  => 'status.analysis.of.the.number.of.fields.of.study',
                 ],
                 [
@@ -293,7 +293,7 @@ return [
                     'name'  => 'university-costs',
                 ],[
                     'title' => 'تحلیل وضعیت هزینه های دانشگاه در واحدهای دانشگاهی (۲)',
-                    'model' => \App\Models\Index\UniversityCostsAnalysis::class,
+                    'model' => \App\Models\Index\UniversityCostsPerUnit::class,
                     'name'  => 'university-costs-per-unit',
                 ],
                 [

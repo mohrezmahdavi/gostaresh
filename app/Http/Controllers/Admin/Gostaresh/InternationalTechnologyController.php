@@ -6,7 +6,6 @@ use App\Exports\Gostaresh\InternationalTechnology\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalTechnology\InternationalTechnologyRequest;
 use App\Models\Index\InternationalTechnology;
-use App\Models\Index\TechnologicalProduct;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,6 +24,8 @@ class InternationalTechnologyController extends Controller
      */
     public function index()
     {
+        $this->authorize("view-any-InternationalTechnology");
+
         $query = InternationalTechnology::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = InternationalTechnology::$filterColumnsCheckBoxes;
@@ -78,6 +79,8 @@ class InternationalTechnologyController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-InternationalTechnology");
+
         return view('admin.gostaresh.international-technology.create.create');
     }
 
@@ -89,17 +92,19 @@ class InternationalTechnologyController extends Controller
      */
     public function store(InternationalTechnologyRequest $request)
     {
-         InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-InternationalTechnology");
+
+        InternationalTechnology::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  InternationalTechnology $internationalTechnology
+     * @param InternationalTechnology $internationalTechnology
      * @return void
      */
-    public function show( InternationalTechnology $internationalTechnology)
+    public function show(InternationalTechnology $internationalTechnology)
     {
         //
     }
@@ -107,12 +112,15 @@ class InternationalTechnologyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  InternationalTechnology $internationalTechnology
+     * @param InternationalTechnology $internationalTechnology
      * @return Application|Factory|View
      */
-    public function edit( InternationalTechnology $internationalTechnology)
+    public function edit(InternationalTechnology $internationalTechnology)
     {
-        return view('admin.gostaresh.international-technology.edit.edit', compact('internationalTechnology'));
+        $this->authorize("edit-any-InternationalTechnology");
+
+        return view(
+            'admin.gostaresh.international-technology.edit.edit', compact('internationalTechnology'));
     }
 
     /**
@@ -122,20 +130,23 @@ class InternationalTechnologyController extends Controller
      * @param InternationalTechnology $internationalTechnology
      * @return RedirectResponse
      */
-    public function update(InternationalTechnologyRequest $request,  InternationalTechnology $internationalTechnology)
+    public function update(InternationalTechnologyRequest $request, InternationalTechnology $internationalTechnology)
     {
+        $this->authorize("edit-any-InternationalTechnology");
         $internationalTechnology->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  InternationalTechnology $internationalTechnology
+     * @param InternationalTechnology $internationalTechnology
      * @return RedirectResponse
      */
-    public function destroy( InternationalTechnology $internationalTechnology)
+    public function destroy(InternationalTechnology $internationalTechnology)
     {
+        $this->authorize("delete-any-InternationalTechnology");
         $internationalTechnology->delete();
         return back()->with('success', __('titles.success_delete'));
     }

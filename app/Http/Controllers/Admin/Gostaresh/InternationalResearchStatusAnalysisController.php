@@ -6,7 +6,6 @@ use App\Exports\Gostaresh\InternationalResearchStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InternationalResearchStatusAnalysis\InternationalResearchStatusAnalysisRequest;
 use App\Models\Index\InternationalResearchStatusAnalysis;
-use App\Models\Index\ResearchOutputStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,6 +24,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-InternationalResearchStatusAnalysis");
         $query = InternationalResearchStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = InternationalResearchStatusAnalysis::$filterColumnsCheckBoxes;
@@ -77,7 +77,10 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        return view('admin.gostaresh.international-research-status-analyses.create.create');
+        $this->authorize("create-any-InternationalResearchStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.international-research-status-analyses.create.create');
     }
 
     /**
@@ -88,6 +91,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function store(InternationalResearchStatusAnalysisRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-InternationalResearchStatusAnalysis");
         InternationalResearchStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -111,7 +115,10 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function edit(InternationalResearchStatusAnalysis $internationalResearch): Factory|View|Application
     {
-        return view('admin.gostaresh.international-research-status-analyses.edit.edit', compact('internationalResearch'));
+        $this->authorize("edit-any-InternationalResearchStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.international-research-status-analyses.edit.edit', compact('internationalResearch'));
     }
 
     /**
@@ -123,7 +130,9 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function update(InternationalResearchStatusAnalysisRequest $request, InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
+        $this->authorize("edit-any-InternationalResearchStatusAnalysis");
         $internationalResearch->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -135,6 +144,7 @@ class InternationalResearchStatusAnalysisController extends Controller
      */
     public function destroy(InternationalResearchStatusAnalysis $internationalResearch): RedirectResponse
     {
+        $this->authorize("delete-any-InternationalResearchStatusAnalysis");
         $internationalResearch->delete();
         return back()->with('success', __('titles.success_delete'));
     }

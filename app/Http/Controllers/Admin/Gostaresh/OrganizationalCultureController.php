@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\OrganizationalCulture\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\OrganizationalCulture\OrganizationalCultureRequest;
 use App\Models\Index\OrganizationalCultureStatusAnalysis;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -17,10 +18,12 @@ class OrganizationalCultureController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-OrganizationalCultureStatusAnalysis");
+
         $query = OrganizationalCultureStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = OrganizationalCultureStatusAnalysis::$filterColumnsCheckBoxes;
@@ -40,7 +43,7 @@ class OrganizationalCultureController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
-    
+
     // ****************** Export ******************
     private function getOrganizationalCultureRecords()
     {
@@ -70,10 +73,12 @@ class OrganizationalCultureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-OrganizationalCultureStatusAnalysis");
+
         return view('admin.gostaresh.organizational-culture.create.create');
     }
 
@@ -81,10 +86,12 @@ class OrganizationalCultureController extends Controller
      * Store a newly created resource in storage.
      *
      * @param OrganizationalCultureRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(OrganizationalCultureRequest $request)
     {
+        $this->authorize("create-any-OrganizationalCultureStatusAnalysis");
+
         OrganizationalCultureStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -104,11 +111,14 @@ class OrganizationalCultureController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param OrganizationalCultureStatusAnalysis $organizationalCulture
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
-        return view('admin.gostaresh.organizational-culture.edit.edit', compact('organizationalCulture'));
+        $this->authorize("edit-any-OrganizationalCultureStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.organizational-culture.edit.edit', compact('organizationalCulture'));
     }
 
     /**
@@ -116,11 +126,13 @@ class OrganizationalCultureController extends Controller
      *
      * @param OrganizationalCultureRequest $request
      * @param OrganizationalCultureStatusAnalysis $organizationalCulture
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(OrganizationalCultureRequest $request, OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
+        $this->authorize("edit-any-OrganizationalCultureStatusAnalysis");
         $organizationalCulture->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -128,10 +140,11 @@ class OrganizationalCultureController extends Controller
      * Remove the specified resource from storage.
      *
      * @param OrganizationalCultureStatusAnalysis $organizationalCulture
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(OrganizationalCultureStatusAnalysis $organizationalCulture)
     {
+        $this->authorize("delete-any-OrganizationalCultureStatusAnalysis");
         $organizationalCulture->delete();
         return back()->with('success', __('titles.success_delete'));
     }

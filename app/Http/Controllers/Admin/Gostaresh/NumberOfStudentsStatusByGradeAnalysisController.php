@@ -5,17 +5,16 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\NumberOfStudentsStatusByGradeAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\NumberOfStudentsStatusByGradeAnalysis\NumberOfStudentsStatusByGradeAnalysisRequest;
+use App\Models\Grade;
 use App\Models\Index\NumberOfStudentsStatusByGradeAnalysis;
+use App\Models\Major;
+use App\Models\Minor;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Grade;
-use App\Models\Major;
-use App\Models\Minor;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -29,6 +28,8 @@ class NumberOfStudentsStatusByGradeAnalysisController extends Controller
      */
     public function index()
     {
+        $this->authorize("view-any-NumberOfStudentsStatusByGradeAnalysis");
+
         $query = NumberOfStudentsStatusByGradeAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = NumberOfStudentsStatusByGradeAnalysis::$filterColumnsCheckBoxes;
@@ -78,6 +79,8 @@ class NumberOfStudentsStatusByGradeAnalysisController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-NumberOfStudentsStatusByGradeAnalysis");
+
         $grades = Grade::all();
         $majors = Major::all();
         $minors = Minor::all();
@@ -92,7 +95,10 @@ class NumberOfStudentsStatusByGradeAnalysisController extends Controller
      */
     public function store(NumberOfStudentsStatusByGradeAnalysisRequest $request)
     {
+        $this->authorize("create-any-NumberOfStudentsStatusByGradeAnalysis");
+
         NumberOfStudentsStatusByGradeAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -130,7 +136,9 @@ class NumberOfStudentsStatusByGradeAnalysisController extends Controller
      */
     public function update(NumberOfStudentsStatusByGradeAnalysisRequest $request, NumberOfStudentsStatusByGradeAnalysis $numberOfStudentsStatusAnalysis)
     {
+        $this->authorize("edit-any-NumberOfStudentsStatusByGradeAnalysis");
         $numberOfStudentsStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -142,6 +150,7 @@ class NumberOfStudentsStatusByGradeAnalysisController extends Controller
      */
     public function destroy(NumberOfStudentsStatusByGradeAnalysis $numberOfStudentsStatusAnalysis)
     {
+        $this->authorize("delete-any-NumberOfStudentsStatusByGradeAnalysis");
         $numberOfStudentsStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

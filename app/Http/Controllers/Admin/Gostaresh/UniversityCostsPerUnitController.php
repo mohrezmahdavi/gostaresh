@@ -10,7 +10,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response as ResponseAlias;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -26,6 +25,8 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function index()
     {
+        $this->authorize("view-any-UniversityCostsPerUnit");
+
         $query = UniversityCostsPerUnit::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = UniversityCostsPerUnit::$filterColumnsCheckBoxes;
@@ -79,6 +80,8 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-UniversityCostsPerUnit");
+
         return view('admin.gostaresh.university-costs-per-unit.create.create');
     }
 
@@ -90,6 +93,8 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function store(UniversityCostsPerUnitRequest $request)
     {
+        $this->authorize("create-any-UniversityCostsPerUnit");
+
         UniversityCostsPerUnit::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -113,7 +118,10 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function edit(UniversityCostsPerUnit $universityCostsPerUnit)
     {
-        return view('admin.gostaresh.university-costs-per-unit.edit.edit', compact('universityCostsPerUnit'));
+        $this->authorize("edit-any-UniversityCostsPerUnit");
+
+        return view(
+            'admin.gostaresh.university-costs-per-unit.edit.edit', compact('universityCostsPerUnit'));
     }
 
     /**
@@ -125,7 +133,10 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function update(UniversityCostsPerUnitRequest $request, UniversityCostsPerUnit $universityCostsPerUnit)
     {
+        $this->authorize("edit-any-UniversityCostsPerUnit");
+
         $universityCostsPerUnit->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -137,6 +148,8 @@ class UniversityCostsPerUnitController extends Controller
      */
     public function destroy(UniversityCostsPerUnit $universityCostsPerUnit)
     {
+        $this->authorize("delete-any-UniversityCostsPerUnit");
+
         $universityCostsPerUnit->delete();
         return back()->with('success', __('titles.success_delete'));
     }

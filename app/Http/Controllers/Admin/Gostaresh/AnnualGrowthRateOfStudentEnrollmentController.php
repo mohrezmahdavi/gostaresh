@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\AnnualGrowthRateOfStudentEnrollment\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\AnnualGrowthRateOfStudentEnrollment;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\AnnualGrowthRateOfStudentEnrollment\AnnualGrowthRateOfStudentEnrollmentRequest;
+use App\Models\Index\AnnualGrowthRateOfStudentEnrollment;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-AnnualGrowthRateOfStudentEnrollment");
+
         $query = AnnualGrowthRateOfStudentEnrollment::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = AnnualGrowthRateOfStudentEnrollment::$filterColumnsCheckBoxes;
@@ -64,21 +66,24 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-AnnualGrowthRateOfStudentEnrollment");
+
         return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  AnnualGrowthRateOfStudentEnrollmentRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param AnnualGrowthRateOfStudentEnrollmentRequest $request
+     * @return Response
      */
     public function store(AnnualGrowthRateOfStudentEnrollmentRequest $request)
     {
+        $this->authorize("create-any-AnnualGrowthRateOfStudentEnrollment");
         AnnualGrowthRateOfStudentEnrollment::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
@@ -86,8 +91,8 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
@@ -97,23 +102,27 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
-        return view('admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrthRateOfStdnEnrollment'));
+        $this->authorize("edit-any-AnnualGrowthRateOfStudentEnrollment");
+
+        return view(
+            'admin.gostaresh.annual-growth-rate-of-student-enrollment.edit.edit', compact('annualGrthRateOfStdnEnrollment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  AnnualGrowthRateOfStudentEnrollmentRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param AnnualGrowthRateOfStudentEnrollmentRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(AnnualGrowthRateOfStudentEnrollmentRequest $request, AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
+        $this->authorize("edit-any-AnnualGrowthRateOfStudentEnrollment");
         $annualGrthRateOfStdnEnrollment->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
@@ -121,11 +130,13 @@ class AnnualGrowthRateOfStudentEnrollmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(AnnualGrowthRateOfStudentEnrollment $annualGrthRateOfStdnEnrollment)
     {
+        $this->authorize("delete-any-AnnualGrowthRateOfStudentEnrollment");
+
         $annualGrthRateOfStdnEnrollment->delete();
         return back()->with('success', __('titles.success_delete'));
     }

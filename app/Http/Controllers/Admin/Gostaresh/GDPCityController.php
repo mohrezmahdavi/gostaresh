@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
+use App\Exports\Gostaresh\GDPCity\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\GDPCity\GDPCityRequest;
 use App\Models\Index\GDPCity;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\Gostaresh\GDPCity\ListExport;
 use PDF;
 
 // Table 5 Controller
@@ -17,17 +17,19 @@ class GDPCityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-GDPCity");
+
         $query = GDPCity::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = GDPCity::$filterColumnsCheckBoxes;
 
         $yearSelectedList = $this->yearSelectedList(clone $query);
 
-        $gdpCities = $query->orderBy('id' , 'desc')->paginate(20);
+        $gdpCities = $query->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.gostaresh.gdp-city.list.list', compact('gdpCities', 'filterColumnsCheckBoxes', 'yearSelectedList'));
     }
@@ -71,10 +73,12 @@ class GDPCityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-GDPCity");
+
         return view('admin.gostaresh.gdp-city.create.create');
     }
 
@@ -82,19 +86,20 @@ class GDPCityController extends Controller
      * Store a newly created resource in storage.
      *
      * @param GDPCityRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(GDPCityRequest $request)
     {
-        GDPCity::create(array_merge(['user_id' => Auth::id()] , $request->validated()));
+        $this->authorize("create-any-GDPCity");
+        GDPCity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(GDPCity $gdpCity)
     {
@@ -104,12 +109,15 @@ class GDPCityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(GDPCity $gdpCity)
     {
-        return view('admin.gostaresh.gdp-city.edit.edit', compact('gdpCity'));
+        $this->authorize("edit-any-GDPCity");
+
+        return view(
+            'admin.gostaresh.gdp-city.edit.edit', compact('gdpCity'));
     }
 
     /**
@@ -117,22 +125,25 @@ class GDPCityController extends Controller
      *
      * @param GDPCityRequest $request
      * @param GDPCity $gdpCity
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(GDPCityRequest $request, GDPCity $gdpCity)
     {
+        $this->authorize("edit-any-GDPCity");
         $gdpCity->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(GDPCity $gdpCity)
     {
+        $this->authorize("delete-any-GDPCity");
         $gdpCity->delete();
         return back()->with('success', __('titles.success_delete'));
     }

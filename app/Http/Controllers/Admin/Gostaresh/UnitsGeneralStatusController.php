@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\UnitsGeneralStatus\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\UnitsGeneralStatus\UnitsGeneralStatusRequest;
 use App\Models\Index\UnitsGeneralStatus;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -16,10 +17,12 @@ class UnitsGeneralStatusController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-UnitsGeneralStatus");
+
         $query = UnitsGeneralStatus::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = UnitsGeneralStatus::$filterColumnsCheckBoxes;
@@ -70,10 +73,12 @@ class UnitsGeneralStatusController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-UnitsGeneralStatus");
+
         return view('admin.gostaresh.units-general-status.create.create');
     }
 
@@ -81,10 +86,12 @@ class UnitsGeneralStatusController extends Controller
      * Store a newly created resource in storage.
      *
      * @param UnitsGeneralStatusRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(UnitsGeneralStatusRequest $request)
     {
+        $this->authorize("create-any-UnitsGeneralStatus");
+
         UnitsGeneralStatus::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -104,11 +111,14 @@ class UnitsGeneralStatusController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param UnitsGeneralStatus $unitsGeneralStatus
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(UnitsGeneralStatus $unitsGeneralStatus)
     {
-        return view('admin.gostaresh.units-general-status.edit.edit', compact('unitsGeneralStatus'));
+        $this->authorize("edit-any-UnitsGeneralStatus");
+
+        return view(
+            'admin.gostaresh.units-general-status.edit.edit', compact('unitsGeneralStatus'));
     }
 
     /**
@@ -116,11 +126,14 @@ class UnitsGeneralStatusController extends Controller
      *
      * @param UnitsGeneralStatusRequest $request
      * @param UnitsGeneralStatus $unitsGeneralStatus
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UnitsGeneralStatusRequest $request, UnitsGeneralStatus $unitsGeneralStatus)
     {
+        $this->authorize("edit-any-UnitsGeneralStatus");
+
         $unitsGeneralStatus->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -128,10 +141,12 @@ class UnitsGeneralStatusController extends Controller
      * Remove the specified resource from storage.
      *
      * @param UnitsGeneralStatus $unitsGeneralStatus
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(UnitsGeneralStatus $unitsGeneralStatus)
     {
+        $this->authorize("delete-any-UnitsGeneralStatus");
+
         $unitsGeneralStatus->delete();
         return back()->with('success', __('titles.success_delete'));
     }
