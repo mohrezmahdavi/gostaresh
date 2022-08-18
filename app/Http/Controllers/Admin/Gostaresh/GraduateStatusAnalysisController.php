@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\GraduateStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\GraduateStatusAnalysis\GraduateStatusAnalysisRequest;
-use App\Models\Index\GraduatesOfHigherEducationCenters;
 use App\Models\Index\GraduateStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,6 +24,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-GraduateStatusAnalysis");
         $query = GraduateStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = GraduateStatusAnalysis::$filterColumnsCheckBoxes;
@@ -78,7 +78,10 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        return view('admin.gostaresh.graduate-status-analyses.create.create');
+        $this->authorize("create-any-GraduateStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.graduate-status-analyses.create.create');
     }
 
     /**
@@ -89,6 +92,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function store(GraduateStatusAnalysisRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-GraduateStatusAnalysis");
         GraduateStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -112,7 +116,10 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function edit(GraduateStatusAnalysis $graduateStatusAnalysis): Factory|View|Application
     {
-        return view('admin.gostaresh.graduate-status-analyses.edit.edit', compact('graduateStatusAnalysis'));
+        $this->authorize("edit-any-GraduateStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.graduate-status-analyses.edit.edit', compact('graduateStatusAnalysis'));
     }
 
     /**
@@ -124,7 +131,9 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function update(GraduateStatusAnalysisRequest $request, GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
+        $this->authorize("edit-any-GraduateStatusAnalysis");
         $graduateStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -136,6 +145,7 @@ class GraduateStatusAnalysisController extends Controller
      */
     public function destroy(GraduateStatusAnalysis $graduateStatusAnalysis): RedirectResponse
     {
+        $this->authorize("delete-any-GraduateStatusAnalysis");
         $graduateStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

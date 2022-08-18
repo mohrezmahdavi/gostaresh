@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\ResearchOutputStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\ResearchOutputStatusAnalysis\ResearchOutputStatusAnalysisRequest;
-use App\Models\Index\GraduatesOfHigherEducationCenters;
 use App\Models\Index\ResearchOutputStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,6 +24,7 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-ResearchOutputStatusAnalysis");
         $query = ResearchOutputStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = ResearchOutputStatusAnalysis::$filterColumnsCheckBoxes;
@@ -77,7 +77,10 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        return view('admin.gostaresh.research-output-status-analyses.create.create');
+        $this->authorize("create-any-ResearchOutputStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.research-output-status-analyses.create.create');
     }
 
     /**
@@ -88,6 +91,7 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function store(ResearchOutputStatusAnalysisRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-ResearchOutputStatusAnalysis");
         ResearchOutputStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -111,7 +115,10 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function edit(ResearchOutputStatusAnalysis $researchOutputStatusAnalysis): Factory|View|Application
     {
-        return view('admin.gostaresh.research-output-status-analyses.edit.edit', compact('researchOutputStatusAnalysis'));
+        $this->authorize("edit-any-ResearchOutputStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.research-output-status-analyses.edit.edit', compact('researchOutputStatusAnalysis'));
     }
 
     /**
@@ -123,7 +130,9 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function update(ResearchOutputStatusAnalysisRequest $request, ResearchOutputStatusAnalysis $researchOutputStatusAnalysis): RedirectResponse
     {
+        $this->authorize("edit-any-ResearchOutputStatusAnalysis");
         $researchOutputStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -135,6 +144,7 @@ class ResearchOutputStatusAnalysisController extends Controller
      */
     public function destroy(ResearchOutputStatusAnalysis $researchOutputStatusAnalysis): RedirectResponse
     {
+        $this->authorize("delete-any-ResearchOutputStatusAnalysis");
         $researchOutputStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

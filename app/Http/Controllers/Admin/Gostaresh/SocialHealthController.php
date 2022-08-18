@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\SocialHealth\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\SocialHealth\SocialHealthRequest;
 use App\Models\Index\SocialHealthStatusAnalysis;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -17,10 +18,12 @@ class SocialHealthController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-SocialHealthStatusAnalysis");
+
         $query = SocialHealthStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = SocialHealthStatusAnalysis::$filterColumnsCheckBoxes;
@@ -35,6 +38,7 @@ class SocialHealthController extends Controller
             , 'yearSelectedList', 'filterColumnsCheckBoxes'
         ));
     }
+
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
@@ -69,10 +73,12 @@ class SocialHealthController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-SocialHealthStatusAnalysis");
+
         return view('admin.gostaresh.social-health.create.create');
     }
 
@@ -80,11 +86,13 @@ class SocialHealthController extends Controller
      * Store a newly created resource in storage.
      *
      * @param SocialHealthRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(SocialHealthRequest $request)
     {
-         SocialHealthStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-SocialHealthStatusAnalysis");
+
+        SocialHealthStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -94,7 +102,7 @@ class SocialHealthController extends Controller
      * @param SocialHealthStatusAnalysis $socialHealth
      * @return void
      */
-    public function show( SocialHealthStatusAnalysis $socialHealth)
+    public function show(SocialHealthStatusAnalysis $socialHealth)
     {
         //
     }
@@ -103,11 +111,14 @@ class SocialHealthController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param SocialHealthStatusAnalysis $socialHealth
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function edit( SocialHealthStatusAnalysis $socialHealth)
+    public function edit(SocialHealthStatusAnalysis $socialHealth)
     {
-        return view('admin.gostaresh.social-health.edit.edit', compact('socialHealth'));
+        $this->authorize("edit-any-SocialHealthStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.social-health.edit.edit', compact('socialHealth'));
     }
 
     /**
@@ -115,11 +126,14 @@ class SocialHealthController extends Controller
      *
      * @param SocialHealthRequest $request
      * @param SocialHealthStatusAnalysis $socialHealth
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(SocialHealthRequest $request,  SocialHealthStatusAnalysis $socialHealth)
+    public function update(SocialHealthRequest $request, SocialHealthStatusAnalysis $socialHealth)
     {
+        $this->authorize("edit-any-SocialHealthStatusAnalysis");
+
         $socialHealth->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -127,10 +141,12 @@ class SocialHealthController extends Controller
      * Remove the specified resource from storage.
      *
      * @param SocialHealthStatusAnalysis $socialHealth
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function destroy( SocialHealthStatusAnalysis $socialHealth)
+    public function destroy(SocialHealthStatusAnalysis $socialHealth)
     {
+        $this->authorize("delete-any-SocialHealthStatusAnalysis");
+
         $socialHealth->delete();
         return back()->with('success', __('titles.success_delete'));
     }

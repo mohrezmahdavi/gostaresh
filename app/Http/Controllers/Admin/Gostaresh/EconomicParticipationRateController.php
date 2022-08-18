@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\EconomicParticipationRate\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\EconomicParticipationRate;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\EconomicParticipationRate\EconomicParticipationRateRequest;
+use App\Models\Index\EconomicParticipationRate;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class EconomicParticipationRateController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-EconomicParticipationRate");
+
         $query = EconomicParticipationRate::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = EconomicParticipationRate::$filterColumnsCheckBoxes;
@@ -64,21 +66,24 @@ class EconomicParticipationRateController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-EconomicParticipationRate");
+
         return view('admin.gostaresh.economic-participation-rate.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  EconomicParticipationRateRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param EconomicParticipationRateRequest $request
+     * @return Response
      */
     public function store(EconomicParticipationRateRequest $request)
     {
+        $this->authorize("create-any-EconomicParticipationRate");
         EconomicParticipationRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
@@ -86,8 +91,8 @@ class EconomicParticipationRateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(EconomicParticipationRate $economicParticipationRate)
     {
@@ -97,35 +102,41 @@ class EconomicParticipationRateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(EconomicParticipationRate $economicParticipationRate)
     {
-        return view('admin.gostaresh.economic-participation-rate.edit.edit', compact('economicParticipationRate'));
+        $this->authorize("edit-any-EconomicParticipationRate");
+
+        return view(
+            'admin.gostaresh.economic-participation-rate.edit.edit', compact('economicParticipationRate'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  EconomicParticipationRateRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param EconomicParticipationRateRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(EconomicParticipationRateRequest $request, EconomicParticipationRate $economicParticipationRate)
     {
+        $this->authorize("edit-any-EconomicParticipationRate");
         $economicParticipationRate->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(EconomicParticipationRate $economicParticipationRate)
     {
+        $this->authorize("delete-any-EconomicParticipationRate");
         $economicParticipationRate->delete();
         return back()->with('success', __('titles.success_delete'));
     }

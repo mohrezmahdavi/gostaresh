@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\NumberOfVolunteersStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\NumberOfVolunteersStatusAnalysis;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfVolunteersStatusAnalysis\NumberOfVolunteersStatusAnalysisRequest;
+use App\Models\Index\NumberOfVolunteersStatusAnalysis;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-NumberOfVolunteersStatusAnalysis");
+
         $query = NumberOfVolunteersStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = NumberOfVolunteersStatusAnalysis::$filterColumnsCheckBoxes;
@@ -64,30 +66,35 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-NumberOfVolunteersStatusAnalysis");
+
         return view('admin.gostaresh.number-of-volunteers-status-analysis.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NumberOfVolunteersStatusAnalysisRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param NumberOfVolunteersStatusAnalysisRequest $request
+     * @return Response
      */
     public function store(NumberOfVolunteersStatusAnalysisRequest $request)
     {
+        $this->authorize("create-any-NumberOfVolunteersStatusAnalysis");
+
         NumberOfVolunteersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
@@ -97,35 +104,41 @@ class NumberOfVolunteersStatusAnalysisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
-        return view('admin.gostaresh.number-of-volunteers-status-analysis.edit.edit', compact('numberOfVolunteersStatusAnalysis'));
+        $this->authorize("edit-any-NumberOfVolunteersStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.number-of-volunteers-status-analysis.edit.edit', compact('numberOfVolunteersStatusAnalysis'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  NumberOfVolunteersStatusAnalysisRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param NumberOfVolunteersStatusAnalysisRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(NumberOfVolunteersStatusAnalysisRequest $request, NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
+        $this->authorize("edit-any-NumberOfVolunteersStatusAnalysis");
         $numberOfVolunteersStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(NumberOfVolunteersStatusAnalysis $numberOfVolunteersStatusAnalysis)
     {
+        $this->authorize("delete-any-NumberOfVolunteersStatusAnalysis");
         $numberOfVolunteersStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

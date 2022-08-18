@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-EmployeeProfile")
     <span>
         <a href="{{ route('employee-profile.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -69,11 +72,12 @@
                                 @endforeach
                                 <td>{{ $employeeProfile?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('employee-profile.edit', $employeeProfile) }}"
+@can("edit-any-EmployeeProfile")
+                                 <a href="{{ route('employee-profile.edit', $employeeProfile) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-EmployeeProfile")
                                     <form method="POST" action="{{ route('employee-profile.destroy', $employeeProfile) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -81,6 +85,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>

@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-AmountOfFacilitiesForResearchAchievements")
     <span>
         <a href="{{ route('amount-of-facilities.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -68,11 +71,12 @@
                                 @endforeach
                                 <td>{{ $amountOfFacility?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('amount-of-facilities.edit', $amountOfFacility) }}"
+@can("edit-any-AmountOfFacilitiesForResearchAchievements")
+                                 <a href="{{ route('amount-of-facilities.edit', $amountOfFacility) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can( "delete-any-AmountOfFacilitiesForResearchAchievements")
                                     <form method="POST" action="{{ route('amount-of-facilities.destroy', $amountOfFacility) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -80,6 +84,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>

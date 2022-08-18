@@ -6,7 +6,6 @@ use App\Exports\Gostaresh\TechnologicalProduct\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TechnologicalProduct\TechnologicalProductRequest;
 use App\Models\Index\TechnologicalProduct;
-use App\Models\Index\TechnologyAndInnovationInfrastructure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,6 +24,8 @@ class TechnologicalProductController extends Controller
      */
     public function index()
     {
+        $this->authorize("view-any-TechnologicalProduct");
+
         $query = TechnologicalProduct::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = TechnologicalProduct::$filterColumnsCheckBoxes;
@@ -78,6 +79,8 @@ class TechnologicalProductController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-TechnologicalProduct");
+
         return view('admin.gostaresh.technological-product.create.create');
     }
 
@@ -89,6 +92,8 @@ class TechnologicalProductController extends Controller
      */
     public function store(TechnologicalProductRequest $request)
     {
+        $this->authorize("create-any-TechnologicalProduct");
+
         TechnologicalProduct::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -112,7 +117,10 @@ class TechnologicalProductController extends Controller
      */
     public function edit(TechnologicalProduct $technologicalProduct)
     {
-        return view('admin.gostaresh.technological-product.edit.edit', compact('technologicalProduct'));
+        $this->authorize("edit-any-TechnologicalProduct");
+
+        return view(
+            'admin.gostaresh.technological-product.edit.edit', compact('technologicalProduct'));
     }
 
     /**
@@ -124,7 +132,10 @@ class TechnologicalProductController extends Controller
      */
     public function update(TechnologicalProductRequest $request, TechnologicalProduct $technologicalProduct)
     {
+        $this->authorize("edit-any-TechnologicalProduct");
+
         $technologicalProduct->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -136,6 +147,8 @@ class TechnologicalProductController extends Controller
      */
     public function destroy(TechnologicalProduct $technologicalProduct)
     {
+        $this->authorize("delete-any-TechnologicalProduct");
+
         $technologicalProduct->delete();
         return back()->with('success', __('titles.success_delete'));
     }

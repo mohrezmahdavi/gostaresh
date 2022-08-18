@@ -6,7 +6,11 @@ use App\Exports\Gostaresh\CostChangesTrends\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CostChangesTrends\CostChangesTrendsRequest;
 use App\Models\Index\CostChangesTrendsAnalysis;
-use App\Models\Index\UniversityCostsAnalysis;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -17,10 +21,13 @@ class CostChangesTrendsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function index()
     {
+        $this->authorize("view-any-CostChangesTrendsAnalysis");
+
         $query = CostChangesTrendsAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = CostChangesTrendsAnalysis::$filterColumnsCheckBoxes;
@@ -40,7 +47,7 @@ class CostChangesTrendsController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
-    
+
     // ****************** Export ******************
     private function getCostChangesTrendsAnalysisRecords()
     {
@@ -70,10 +77,12 @@ class CostChangesTrendsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-CostChangesTrendsAnalysis");
+
         return view('admin.gostaresh.cost-changes-trends.create.create');
     }
 
@@ -81,10 +90,11 @@ class CostChangesTrendsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CostChangesTrendsRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(CostChangesTrendsRequest $request)
     {
+        $this->authorize("create-any-CostChangesTrendsAnalysis");
         CostChangesTrendsAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -104,10 +114,12 @@ class CostChangesTrendsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param CostChangesTrendsAnalysis $costChangesTrend
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(CostChangesTrendsAnalysis $costChangesTrend)
     {
+        $this->authorize("edit-any-CostChangesTrendsAnalysis");
+
         return view('admin.gostaresh.cost-changes-trends.edit.edit', compact('costChangesTrend'));
     }
 
@@ -116,10 +128,11 @@ class CostChangesTrendsController extends Controller
      *
      * @param CostChangesTrendsRequest $request
      * @param CostChangesTrendsAnalysis $costChangesTrend
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(CostChangesTrendsRequest $request, CostChangesTrendsAnalysis $costChangesTrend)
     {
+        $this->authorize("edit-any-CostChangesTrendsAnalysis");
         $costChangesTrend->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
@@ -128,10 +141,11 @@ class CostChangesTrendsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param CostChangesTrendsAnalysis $costChangesTrend
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(CostChangesTrendsAnalysis $costChangesTrend)
     {
+        $this->authorize("delete-any-CostChangesTrendsAnalysis");
         $costChangesTrend->delete();
         return back()->with('success', __('titles.success_delete'));
     }

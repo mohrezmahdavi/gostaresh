@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\StudentAdmissionCapacity\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\StudentAdmissionCapacity;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\StudentAdmissionCapacity\StudentAdmissionCapacityRequest;
+use App\Models\Index\StudentAdmissionCapacity;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class StudentAdmissionCapacityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-StudentAdmissionCapacity");
+
         $query = StudentAdmissionCapacity::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
@@ -52,7 +54,7 @@ class StudentAdmissionCapacityController extends Controller
     {
         $filterColumnsCheckBoxes = StudentAdmissionCapacity::$filterColumnsCheckBoxes;
         $studentAdmissionCapacities = $this->getStudentAdmissionCapacityRecords();
-        $pdfFile = PDF::loadView('admin.gostaresh.student-admission-capacity.list.pdf', compact('studentAdmissionCapacities','filterColumnsCheckBoxes'));
+        $pdfFile = PDF::loadView('admin.gostaresh.student-admission-capacity.list.pdf', compact('studentAdmissionCapacities', 'filterColumnsCheckBoxes'));
         return $pdfFile->download('export-pdf.pdf');
     }
 
@@ -66,30 +68,35 @@ class StudentAdmissionCapacityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-StudentAdmissionCapacity");
+
         return view('admin.gostaresh.student-admission-capacity.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StudentAdmissionCapacityRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StudentAdmissionCapacityRequest $request
+     * @return Response
      */
     public function store(StudentAdmissionCapacityRequest $request)
     {
+        $this->authorize("create-any-StudentAdmissionCapacity");
+
         StudentAdmissionCapacity::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(StudentAdmissionCapacity $studentAdmissionCapacity)
     {
@@ -99,35 +106,43 @@ class StudentAdmissionCapacityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(StudentAdmissionCapacity $studentAdmissionCapacity)
     {
-        return view('admin.gostaresh.student-admission-capacity.edit.edit', compact('studentAdmissionCapacity'));
+        $this->authorize("edit-any-StudentAdmissionCapacity");
+
+        return view(
+            'admin.gostaresh.student-admission-capacity.edit.edit', compact('studentAdmissionCapacity'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  StudentAdmissionCapacityRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StudentAdmissionCapacityRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(StudentAdmissionCapacityRequest $request, StudentAdmissionCapacity $studentAdmissionCapacity)
     {
+        $this->authorize("edit-any-StudentAdmissionCapacity");
+
         $studentAdmissionCapacity->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(StudentAdmissionCapacity $studentAdmissionCapacity)
     {
+        $this->authorize("delete-any-StudentAdmissionCapacity");
+
         $studentAdmissionCapacity->delete();
         return back()->with('success', __('titles.success_delete'));
     }

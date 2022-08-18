@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\InnovationInfrastructures\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\InnovationInfrastructure\InnovationInfrastructureRequest;
-use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
 use App\Models\Index\TechnologyAndInnovationInfrastructure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,6 +24,7 @@ class InnovationInfrastructureController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-TechnologyAndInnovationInfrastructure");
         $query = TechnologyAndInnovationInfrastructure::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = TechnologyAndInnovationInfrastructure::$filterColumnsCheckBoxes;
@@ -78,7 +78,10 @@ class InnovationInfrastructureController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        return view('admin.gostaresh.innovation-infrastructures.create.create');
+        $this->authorize("create-any-TechnologyAndInnovationInfrastructure");
+
+        return view(
+            'admin.gostaresh.innovation-infrastructures.create.create');
     }
 
     /**
@@ -89,6 +92,7 @@ class InnovationInfrastructureController extends Controller
      */
     public function store(InnovationInfrastructureRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-TechnologyAndInnovationInfrastructure");
         TechnologyAndInnovationInfrastructure::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -112,7 +116,10 @@ class InnovationInfrastructureController extends Controller
      */
     public function edit(TechnologyAndInnovationInfrastructure $innovationInfrastructure): Factory|View|Application
     {
-        return view('admin.gostaresh.innovation-infrastructures.edit.edit', compact('innovationInfrastructure'));
+        $this->authorize("edit-any-TechnologyAndInnovationInfrastructure");
+
+        return view(
+            'admin.gostaresh.innovation-infrastructures.edit.edit', compact('innovationInfrastructure'));
     }
 
     /**
@@ -124,7 +131,9 @@ class InnovationInfrastructureController extends Controller
      */
     public function update(InnovationInfrastructureRequest $request, TechnologyAndInnovationInfrastructure $innovationInfrastructure): RedirectResponse
     {
+        $this->authorize("edit-any-TechnologyAndInnovationInfrastructure");
         $innovationInfrastructure->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -136,6 +145,7 @@ class InnovationInfrastructureController extends Controller
      */
     public function destroy(TechnologyAndInnovationInfrastructure $innovationInfrastructure)
     {
+        $this->authorize("delete-any-TechnologyAndInnovationInfrastructure");
         $innovationInfrastructure->delete();
         return back()->with('success', __('titles.success_delete'));
     }

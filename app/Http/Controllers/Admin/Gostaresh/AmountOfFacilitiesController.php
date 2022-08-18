@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Gostaresh;
 
-use App\Http\Controllers\Controller;
 use App\Exports\Gostaresh\AmountOfFacilities\ListExport;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\AmountOfFacilities\AmountOfFacilitiesRequest;
 use App\Models\Index\AmountOfFacilitiesForResearchAchievements;
 use Illuminate\Contracts\Foundation\Application;
@@ -24,6 +24,8 @@ class AmountOfFacilitiesController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-AmountOfFacilitiesForResearchAchievements");
+
         $query = AmountOfFacilitiesForResearchAchievements::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = AmountOfFacilitiesForResearchAchievements::$filterColumnsCheckBoxes;
@@ -77,6 +79,8 @@ class AmountOfFacilitiesController extends Controller
      */
     public function create(): Factory|View|Application
     {
+        $this->authorize("create-any-AmountOfFacilitiesForResearchAchievements");
+
         return view('admin.gostaresh.amount-of-facilities.create.create');
     }
 
@@ -88,6 +92,7 @@ class AmountOfFacilitiesController extends Controller
      */
     public function store(AmountOfFacilitiesRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-AmountOfFacilitiesForResearchAchievements");
         AmountOfFacilitiesForResearchAchievements::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -111,7 +116,10 @@ class AmountOfFacilitiesController extends Controller
      */
     public function edit(AmountOfFacilitiesForResearchAchievements $amountOfFacility): Factory|View|Application
     {
-        return view('admin.gostaresh.amount-of-facilities.edit.edit', compact('amountOfFacility'));
+        $this->authorize("edit-any-AmountOfFacilitiesForResearchAchievements");
+
+        return view(
+            'admin.gostaresh.amount-of-facilities.edit.edit', compact('amountOfFacility'));
     }
 
     /**
@@ -124,6 +132,7 @@ class AmountOfFacilitiesController extends Controller
     public function update(AmountOfFacilitiesRequest $request, AmountOfFacilitiesForResearchAchievements $amountOfFacility): RedirectResponse
     {
         $amountOfFacility->update($request->validated());
+        $this->authorize("edit-any-AmountOfFacilitiesForResearchAchievements");
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -135,6 +144,7 @@ class AmountOfFacilitiesController extends Controller
      */
     public function destroy(AmountOfFacilitiesForResearchAchievements $amountOfFacility): RedirectResponse
     {
+        $this->authorize("delete-any-AmountOfFacilitiesForResearchAchievements");
         $amountOfFacility->delete();
         return back()->with('success', __('titles.success_delete'));
     }

@@ -18,9 +18,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-GraduatesOfHigherEducationCenters")
     <span>
         <a href="{{ route('graduates-of-higher-education.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -72,11 +75,12 @@
 
                                 <td>{{ $graduatesOfHigherEducationCenter?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('graduates-of-higher-education.edit', $graduatesOfHigherEducationCenter) }}"
+@can("edit-any-GraduatesOfHigherEducationCenters")
+                                 <a href="{{ route('graduates-of-higher-education.edit', $graduatesOfHigherEducationCenter) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-GraduatesOfHigherEducationCenters")
                                     <form method="POST" action="{{ route('graduates-of-higher-education.destroy', $graduatesOfHigherEducationCenter) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -84,6 +88,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>

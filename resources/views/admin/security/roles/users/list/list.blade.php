@@ -127,7 +127,6 @@
                                     </td>
                                     <td>
                                         @can( 'edit-any-Role')
-                                            @if($user->id != auth()->id())
                                                 <form
                                                     action="{{ route('admin.role.user.remove',[ "user"=>$user->id,"role"=>$role->id])}}"
                                                     method="post">
@@ -138,7 +137,6 @@
                                                             class="btn btn-danger btn-sm"><i class="fa fa-minus"></i>
                                                     </button>
                                                 </form>
-                                            @endif
                                         @endcan
                                     </td>
 

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\NumberOfRegistrantsStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\NumberOfRegistrantsStatusAnalysis;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfRegistrantsStatusAnalysis\NumberOfRegistrantsStatusAnalysisRequest;
+use App\Models\Index\NumberOfRegistrantsStatusAnalysis;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-NumberOfRegistrantsStatusAnalysis");
+
         $query = NumberOfRegistrantsStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = NumberOfRegistrantsStatusAnalysis::$filterColumnsCheckBoxes;
@@ -64,30 +66,35 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-NumberOfRegistrantsStatusAnalysis");
+
         return view('admin.gostaresh.number-of-registrants-status-analysis.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NumberOfRegistrantsStatusAnalysisRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param NumberOfRegistrantsStatusAnalysisRequest $request
+     * @return Response
      */
     public function store(NumberOfRegistrantsStatusAnalysisRequest $request)
     {
+        $this->authorize("create-any-NumberOfRegistrantsStatusAnalysis");
+
         NumberOfRegistrantsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
@@ -97,35 +104,41 @@ class NumberOfRegistrantsStatusAnalysisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
-        return view('admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numberOfRegistrant'));
+        $this->authorize("edit-any-NumberOfRegistrantsStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.number-of-registrants-status-analysis.edit.edit', compact('numberOfRegistrant'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  NumberOfRegistrantsStatusAnalysisRequest $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param NumberOfRegistrantsStatusAnalysisRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(NumberOfRegistrantsStatusAnalysisRequest $request, NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
+        $this->authorize("edit-any-NumberOfRegistrantsStatusAnalysis");
         $numberOfRegistrant->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(NumberOfRegistrantsStatusAnalysis $numberOfRegistrant)
     {
+        $this->authorize("delete-any-NumberOfRegistrantsStatusAnalysis");
         $numberOfRegistrant->delete();
         return back()->with('success', __('titles.success_delete'));
     }

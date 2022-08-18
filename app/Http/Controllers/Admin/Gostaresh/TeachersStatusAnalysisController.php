@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 use App\Exports\Gostaresh\TeachersStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\TeachersStatusAnalysis\TeachersStatusAnalysisRequest;
-use App\Models\Index\GraduateStatusAnalysis;
 use App\Models\Index\TeachersStatusAnalysis;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,6 +24,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function index(): Factory|View|Application
     {
+        $this->authorize("view-any-TeachersStatusAnalysis");
         $query = TeachersStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = TeachersStatusAnalysis::$filterColumnsCheckBoxes;
@@ -77,6 +77,8 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-TeachersStatusAnalysis");
+
         return view('admin.gostaresh.teachers-status-analyses.create.create');
     }
 
@@ -88,6 +90,7 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function store(TeachersStatusAnalysisRequest $request): RedirectResponse
     {
+        $this->authorize("create-any-TeachersStatusAnalysis");
         TeachersStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -111,7 +114,10 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function edit(TeachersStatusAnalysis $teachersStatusAnalysis): Factory|View|Application
     {
-        return view('admin.gostaresh.teachers-status-analyses.edit.edit', compact('teachersStatusAnalysis'));
+        $this->authorize("edit-any-TeachersStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.teachers-status-analyses.edit.edit', compact('teachersStatusAnalysis'));
     }
 
     /**
@@ -123,7 +129,10 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function update(TeachersStatusAnalysisRequest $request, TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
     {
+        $this->authorize("edit-any-TeachersStatusAnalysis");
+
         $teachersStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -135,6 +144,8 @@ class TeachersStatusAnalysisController extends Controller
      */
     public function destroy(TeachersStatusAnalysis $teachersStatusAnalysis): RedirectResponse
     {
+        $this->authorize("delete-any-TeachersStatusAnalysis");
+
         $teachersStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

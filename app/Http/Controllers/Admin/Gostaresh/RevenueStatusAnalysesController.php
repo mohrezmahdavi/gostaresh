@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\RevenueStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\RevenueStatusAnalysis\RevenueStatusAnalysisRequest;
 use App\Models\Index\RevenueStatusAnalysis;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -16,10 +17,12 @@ class RevenueStatusAnalysesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-RevenueStatusAnalysis");
+
         $query = RevenueStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = RevenueStatusAnalysis::$filterColumnsCheckBoxes;
@@ -39,7 +42,7 @@ class RevenueStatusAnalysesController extends Controller
     {
         return $query->select('year')->distinct()->pluck('year');
     }
-        
+
     // ****************** Export ******************
     private function getRevenueStatusAnalysisRecords()
     {
@@ -65,14 +68,16 @@ class RevenueStatusAnalysesController extends Controller
         return view('admin.gostaresh.revenue-status-analyses.list.pdf', compact('revenueStatusAnalyses'));
     }
     // ****************** End Export ******************
-    
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-RevenueStatusAnalysis");
+
         return view('admin.gostaresh.revenue-status-analyses.create.create');
     }
 
@@ -80,11 +85,13 @@ class RevenueStatusAnalysesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param RevenueStatusAnalysisRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(RevenueStatusAnalysisRequest $request)
     {
-         RevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-RevenueStatusAnalysis");
+
+        RevenueStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -103,11 +110,14 @@ class RevenueStatusAnalysesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param RevenueStatusAnalysis $revenueStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(RevenueStatusAnalysis $revenueStatusAnalysis)
     {
-        return view('admin.gostaresh.revenue-status-analyses.edit.edit', compact('revenueStatusAnalysis'));
+        $this->authorize("edit-any-RevenueStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.revenue-status-analyses.edit.edit', compact('revenueStatusAnalysis'));
     }
 
     /**
@@ -115,11 +125,14 @@ class RevenueStatusAnalysesController extends Controller
      *
      * @param RevenueStatusAnalysisRequest $request
      * @param RevenueStatusAnalysis $revenueStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(RevenueStatusAnalysisRequest $request, RevenueStatusAnalysis $revenueStatusAnalysis)
     {
+        $this->authorize("edit-any-RevenueStatusAnalysis");
+
         $revenueStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -127,10 +140,12 @@ class RevenueStatusAnalysesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param RevenueStatusAnalysis $revenueStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(RevenueStatusAnalysis $revenueStatusAnalysis)
     {
+        $this->authorize("delete-any-RevenueStatusAnalysis");
+
         $revenueStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

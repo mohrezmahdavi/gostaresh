@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-AverageTuitionIncome")
     <span>
         <a href="{{ route('tuition-income.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -67,11 +70,12 @@
                                 @endforeach
                                 <td>{{ $tuitionIncomeItem?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('tuition-income.edit', $tuitionIncomeItem->id) }}"
+@can("edit-any-AverageTuitionIncome")
+                                 <a href="{{ route('tuition-income.edit', $tuitionIncomeItem->id) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-AverageTuitionIncome")
                                     <form method="POST" action="{{ route('tuition-income.destroy', $tuitionIncomeItem->id) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -79,6 +83,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
                                 </td>
 
                                 </tr>
