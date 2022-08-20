@@ -18,12 +18,12 @@ class GradeSeeder extends Seeder
 
         Grade::insert([
             [
-                'slug' => 'associate-degree',
-                'name' => 'کاردانی'
+                'slug' => 'continuous-associate',
+                'name' => 'کاردانی پیوسته'
             ],
             [
-                'slug' => 'bachelors-degree',
-                'name' => 'کارشناسی'
+                'slug' => 'continuous-bachelor',
+                'name' => 'کارشناسی پیوسته'
             ],
             [
                 'slug' => 'masters-degree',
@@ -37,6 +37,22 @@ class GradeSeeder extends Seeder
                 'slug' => 'PhD',
                 'name' => 'دکتری تخصصی(Ph.D)'
             ],
+            [
+                'slug' => 'discontinuous-associate',
+                'name' => 'کاردانی ناپیوسته'
+            ],
+            [
+                'slug' => 'discontinuous-bachelor',
+                'name' => 'کارشناسی ناپیوسته'
+            ],
+            [
+                'slug' => 'continuous-masters',
+                'name' => 'کارشناسی ارشد پیوسته'
+            ],
+            [
+                'slug' => 'continuous-Ph.D',
+                'name' => 'دکترای پیوسته'
+            ]
         ]);
     }
 }

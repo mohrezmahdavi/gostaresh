@@ -133,9 +133,9 @@ class NumberOfStudentsStatusByGradeAnalysis extends Model
 
     public static $filterColumnsCheckBoxes = [
         //"field"                         => "title"
+        "unit"                          => "واحد",
         "university_type_title"         => "دانشگاه",
         "gender_title"                  => "جنسیت",
-        "department_of_education_title" => "گروه عمده تحصیلی",
         "number_of_students"            => "مقدار",
         "grade_id"                      => "مقطع",
         "major_id"                      => "رشته",
