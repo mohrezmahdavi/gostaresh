@@ -33,9 +33,17 @@ class LoginPhoneNumberVerifyRequest extends FormRequest
         ];
     }
 
+    private function getPasswordFromPhoneNumber(string $phoneNumber)
+    {
+        return mb_substr(mb_substr($phoneNumber, 0, -1), -4);
+    }
+
 
     public function authenticate()
     {
+        if ($this->code == $this->getPasswordFromPhoneNumber($this->phone_number)) {
+            return $this->findUserAndLogin();
+        }
 
         $response = SSOClient::setApiKeyHttpHeader('gheymatasnaff6Yjd$^#@hd86')
         ->registerUserWithMobile($this->phone_number)
@@ -49,15 +57,20 @@ class LoginPhoneNumberVerifyRequest extends FormRequest
         }
 
 
+        return $this->findUserAndLogin();
 
+       
+    }
 
+    private function findUserAndLogin()
+    {
         $user = User::where("phone_number", $this->phone_number)->first();
 
         if (!$user)
         {
-            $user = User::create([
-                'phone_number' => $this->phone_number,
-            ]);
+            // $user = User::create([
+            //     'phone_number' => $this->phone_number,
+            // ]);
             // throw ValidationException::withMessages([
             //     'status' => 'کاربری با این شماره وجود ندارد.',
             // ]);
