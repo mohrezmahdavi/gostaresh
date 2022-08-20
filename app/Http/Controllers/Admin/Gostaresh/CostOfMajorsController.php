@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\CostOfMajors\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\CostOfMajors\CostOfMajorsRequest;
 use App\Models\Index\AverageCostOfMajor;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -16,10 +17,12 @@ class CostOfMajorsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-AverageCostOfMajor");
+
         $query = AverageCostOfMajor::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = AverageCostOfMajor::$filterColumnsCheckBoxes;
@@ -69,10 +72,12 @@ class CostOfMajorsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-AverageCostOfMajor");
+
         return view('admin.gostaresh.cost-of-majors.create.create');
     }
 
@@ -80,10 +85,11 @@ class CostOfMajorsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CostOfMajorsRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(CostOfMajorsRequest $request)
     {
+        $this->authorize("create-any-AverageCostOfMajor");
         AverageCostOfMajor::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
@@ -103,11 +109,14 @@ class CostOfMajorsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param AverageCostOfMajor $costOfMajor
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(AverageCostOfMajor $costOfMajor)
     {
-        return view('admin.gostaresh.cost-of-majors.edit.edit', compact('costOfMajor'));
+        $this->authorize("edit-any-AverageCostOfMajor");
+
+        return view(
+            'admin.gostaresh.cost-of-majors.edit.edit', compact('costOfMajor'));
     }
 
     /**
@@ -115,11 +124,12 @@ class CostOfMajorsController extends Controller
      *
      * @param CostOfMajorsRequest $request
      * @param AverageCostOfMajor $costOfMajor
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(CostOfMajorsRequest $request, AverageCostOfMajor $costOfMajor)
     {
         $costOfMajor->update($request->validated());
+        $this->authorize("edit-any-AverageCostOfMajor");
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -127,11 +137,12 @@ class CostOfMajorsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param AverageCostOfMajor $costOfMajor
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(AverageCostOfMajor $costOfMajor)
     {
         $costOfMajor->delete();
+        $this->authorize("delete-any-AverageCostOfMajor");
         return back()->with('success', __('titles.success_delete'));
     }
 }

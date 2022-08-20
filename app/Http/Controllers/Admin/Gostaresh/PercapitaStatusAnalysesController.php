@@ -6,6 +6,7 @@ use App\Exports\Gostaresh\PercapitaStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\PercapitaStatusAnalysis\PercapitaStatusAnalysisRequest;
 use App\Models\Index\PercapitaStatusAnalysis;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -16,10 +17,12 @@ class PercapitaStatusAnalysesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-PercapitaStatusAnalysis");
+
         $query = PercapitaStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = PercapitaStatusAnalysis::$filterColumnsCheckBoxes;
@@ -34,6 +37,7 @@ class PercapitaStatusAnalysesController extends Controller
             , 'yearSelectedList', 'filterColumnsCheckBoxes'
         ));
     }
+
     private function yearSelectedList($query)
     {
         return $query->select('year')->distinct()->pluck('year');
@@ -64,15 +68,17 @@ class PercapitaStatusAnalysesController extends Controller
         return view('admin.gostaresh.percapita-status-analyses.list.pdf', compact('percapitaStatusAnalyses'));
     }
     // ****************** End Export ******************
-    
-    
+
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-PercapitaStatusAnalysis");
+
         return view('admin.gostaresh.percapita-status-analyses.create.create');
     }
 
@@ -80,11 +86,13 @@ class PercapitaStatusAnalysesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param PercapitaStatusAnalysisRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(PercapitaStatusAnalysisRequest $request)
     {
-         PercapitaStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+        $this->authorize("create-any-PercapitaStatusAnalysis");
+
+        PercapitaStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return redirect()->back()->with('success', __('titles.success_store'));
     }
 
@@ -103,11 +111,14 @@ class PercapitaStatusAnalysesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param PercapitaStatusAnalysis $percapitaStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(PercapitaStatusAnalysis $percapitaStatusAnalysis)
     {
-        return view('admin.gostaresh.percapita-status-analyses.edit.edit', compact('percapitaStatusAnalysis'));
+        $this->authorize("edit-any-PercapitaStatusAnalysis");
+
+        return view(
+            'admin.gostaresh.percapita-status-analyses.edit.edit', compact('percapitaStatusAnalysis'));
     }
 
     /**
@@ -115,11 +126,13 @@ class PercapitaStatusAnalysesController extends Controller
      *
      * @param PercapitaStatusAnalysisRequest $request
      * @param PercapitaStatusAnalysis $percapitaStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(PercapitaStatusAnalysisRequest $request, PercapitaStatusAnalysis $percapitaStatusAnalysis)
     {
+        $this->authorize("edit-any-PercapitaStatusAnalysis");
         $percapitaStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -127,10 +140,11 @@ class PercapitaStatusAnalysesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param PercapitaStatusAnalysis $percapitaStatusAnalysis
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(PercapitaStatusAnalysis $percapitaStatusAnalysis)
     {
+        $this->authorize("delete-any-PercapitaStatusAnalysis");
         $percapitaStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

@@ -13,9 +13,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-CreditAndAssetAnalysis")
     <span>
         <a href="{{ route('credit-and-asset.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -68,11 +71,12 @@
                                 @endforeach
                                 <td>{{ $creditAndAsset?->year }}</td>
                                 <td>
-
-                                    <a href="{{ route('credit-and-asset.edit', $creditAndAsset) }}"
+@can("edit-any-CreditAndAssetAnalysis")
+                                 <a href="{{ route('credit-and-asset.edit', $creditAndAsset) }}"
                                         title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
                                             class="fa fa-edit"></i></a>
-
+ @endcan
+@can("delete-any-CreditAndAssetAnalysis")
                                     <form method="POST" action="{{ route('credit-and-asset.destroy', $creditAndAsset) }}" role="form">
                                         @csrf
                                         {{ method_field('delete') }}
@@ -80,6 +84,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </form>
+ @endcan
 
                                 </td>
 

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\NumberOfResearchProject\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\NumberOfResearchProject;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfResearchProject\NumberOfResearchProjectRequest;
+use App\Models\Index\NumberOfResearchProject;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class NumberOfResearchProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-NumberOfResearchProject");
+
         $query = NumberOfResearchProject::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = NumberOfResearchProject::$filterColumnsCheckBoxes;
@@ -64,30 +66,35 @@ class NumberOfResearchProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-NumberOfResearchProject");
+
         return view('admin.gostaresh.number-of-research-project.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NumberOfResearchProjectRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param NumberOfResearchProjectRequest $request
+     * @return Response
      */
     public function store(NumberOfResearchProjectRequest $request)
     {
+        $this->authorize("create-any-NumberOfResearchProject");
+
         NumberOfResearchProject::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(NumberOfResearchProject $numberOfResearchProject)
     {
@@ -97,35 +104,41 @@ class NumberOfResearchProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(NumberOfResearchProject $numberOfResearchProject)
     {
-        return view('admin.gostaresh.number-of-research-project.edit.edit', compact('numberOfResearchProject'));
+        $this->authorize("edit-any-NumberOfResearchProject");
+
+        return view(
+            'admin.gostaresh.number-of-research-project.edit.edit', compact('numberOfResearchProject'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  NumberOfResearchProjectRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param NumberOfResearchProjectRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(NumberOfResearchProjectRequest $request, NumberOfResearchProject $numberOfResearchProject)
     {
+        $this->authorize("edit-any-NumberOfResearchProject");
         $numberOfResearchProject->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(NumberOfResearchProject $numberOfResearchProject)
     {
+        $this->authorize("delete-any-NumberOfResearchProject");
         $numberOfResearchProject->delete();
         return back()->with('success', __('titles.success_delete'));
     }

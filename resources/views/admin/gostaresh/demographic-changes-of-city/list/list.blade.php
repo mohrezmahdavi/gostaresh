@@ -14,9 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
+@can("create-any-DemographicChangesOfCity")
     <span>
         <a href="{{ route('demographic.changes.city.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
+ @endcan
+
 @endsection
 
 @section('styles-head')
@@ -123,22 +126,24 @@
                                         <th scope="row">{{ $demographicChangesOfCities?->firstItem() + $key }}</th>
 
                                         @include('admin.gostaresh.demographic-changes-of-city.list.partials.tbody')
-
+@can("edit-any-DemographicChangesOfCity")
                                         <td class="d-flex">
                                             <a href="{{ route('demographic.changes.city.edit', $demographicChangesOfCity) }}"
                                                 title="{{ __('validation.buttons.edit') }}"
                                                 class="btn btn-warning btn-sm me-1">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-
-                                            <form method="POST" action="{{ route('demographic.changes.city.destroy', $demographicChangesOfCity) }}" role="form">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+@endcan
+@can("delete-any-DemographicChangesOfCity")
+                                    <form method="POST" action="{{ route('demographic.changes.city.destroy', $demographicChangesOfCity) }}" role="form">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </form>
+ @endcan
+ </td>
 
                                     </tr>
                                 @endforeach

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\InternationalStudentGrowthRate\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\InternationalStudentGrowthRate;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\InternationalStudentGrowthRate\InternationalStudentGrowthRateRequest;
+use App\Models\Index\InternationalStudentGrowthRate;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -16,10 +16,12 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-InternationalStudentGrowthRate");
+
         $query = InternationalStudentGrowthRate::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
@@ -51,7 +53,7 @@ class InternationalStudentGrowthRateController extends Controller
     {
         $filterColumnsCheckBoxes = InternationalStudentGrowthRate::$filterColumnsCheckBoxes;
         $internationalStudentGrowthRates = $this->getInternationalStudentGrowthRateRecords();
-        $pdfFile = PDF::loadView('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates','filterColumnsCheckBoxes'));
+        $pdfFile = PDF::loadView('admin.gostaresh.international-student-growth-rate.list.pdf', compact('internationalStudentGrowthRates', 'filterColumnsCheckBoxes'));
         return $pdfFile->download('export-pdf.pdf');
     }
 
@@ -65,10 +67,12 @@ class InternationalStudentGrowthRateController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-InternationalStudentGrowthRate");
+
         return view('admin.gostaresh.international-student-growth-rate.create.create');
     }
 
@@ -76,19 +80,22 @@ class InternationalStudentGrowthRateController extends Controller
      * Store a newly created resource in storage.
      *
      * @param InternationalStudentGrowthRateRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(InternationalStudentGrowthRateRequest $request)
     {
+        $this->authorize("create-any-InternationalStudentGrowthRate");
+
         InternationalStudentGrowthRate::create(array_merge(['user_id' => Auth::id()], $request->validated()));
-        return back()->with('success',__('titles.success_store'));
+
+        return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
@@ -99,11 +106,14 @@ class InternationalStudentGrowthRateController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
-        return view('admin.gostaresh.international-student-growth-rate.edit.edit', compact('internationalStudentGrowthRate'));
+        $this->authorize("edit-any-InternationalStudentGrowthRate");
+
+        return view(
+            'admin.gostaresh.international-student-growth-rate.edit.edit', compact('internationalStudentGrowthRate'));
     }
 
     /**
@@ -111,11 +121,13 @@ class InternationalStudentGrowthRateController extends Controller
      *
      * @param InternationalStudentGrowthRateRequest $request
      * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(InternationalStudentGrowthRateRequest $request, InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
+        $this->authorize("edit-any-InternationalStudentGrowthRate");
         $internationalStudentGrowthRate->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -123,10 +135,11 @@ class InternationalStudentGrowthRateController extends Controller
      * Remove the specified resource from storage.
      *
      * @param InternationalStudentGrowthRate $internationalStudentGrowthRate
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(InternationalStudentGrowthRate $internationalStudentGrowthRate)
     {
+        $this->authorize("delete-any-InternationalStudentGrowthRate");
         $internationalStudentGrowthRate->delete();
         return back()->with('success', __('titles.success_delete'));
     }

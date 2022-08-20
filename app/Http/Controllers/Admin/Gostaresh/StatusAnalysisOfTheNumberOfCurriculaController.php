@@ -6,7 +6,6 @@ use App\Exports\Gostaresh\StatusAnalysisOfTheNumberOfCurricula\ListExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Gostaresh\StatusAnalysisOfTheNumberOfCurricula\StatusAnalysisOfTheNumberOfCurriculaRequest;
 use App\Models\Index\StatusAnalysisOfTheNumberOfCurricula;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,6 +20,8 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function index()
     {
+        $this->authorize("view-any-StatusAnalysisOfTheNumberOfCurricula");
+
         $query = StatusAnalysisOfTheNumberOfCurricula::WhereRequestsQuery();
 
         $filterColumnsCheckBoxes = StatusAnalysisOfTheNumberOfCurricula::$filterColumnsCheckBoxes;
@@ -73,6 +74,8 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function create()
     {
+        $this->authorize("create-any-StatusAnalysisOfTheNumberOfCurricula");
+
         return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.create.create');
     }
 
@@ -84,7 +87,10 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function store(StatusAnalysisOfTheNumberOfCurriculaRequest $request)
     {
+        $this->authorize("create-any-StatusAnalysisOfTheNumberOfCurricula");
+
         StatusAnalysisOfTheNumberOfCurricula::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
@@ -107,7 +113,10 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function edit(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
-        return view('admin.gostaresh.status-analysis-of-the-number-of-curricula.edit.edit', compact('stsAnalysisOfTheNumOfCurricula'));
+        $this->authorize("edit-any-StatusAnalysisOfTheNumberOfCurricula");
+
+        return view(
+            'admin.gostaresh.status-analysis-of-the-number-of-curricula.edit.edit', compact('stsAnalysisOfTheNumOfCurricula'));
     }
 
     /**
@@ -119,7 +128,10 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function update(StatusAnalysisOfTheNumberOfCurriculaRequest $request, StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
+        $this->authorize("edit-any-StatusAnalysisOfTheNumberOfCurricula");
+
         $stsAnalysisOfTheNumOfCurricula->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
@@ -131,6 +143,8 @@ class StatusAnalysisOfTheNumberOfCurriculaController extends Controller
      */
     public function destroy(StatusAnalysisOfTheNumberOfCurricula $stsAnalysisOfTheNumOfCurricula)
     {
+        $this->authorize("delete-any-StatusAnalysisOfTheNumberOfCurricula");
+
         $stsAnalysisOfTheNumOfCurricula->delete();
         return back()->with('success', __('titles.success_delete'));
     }

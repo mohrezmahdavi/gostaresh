@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted\AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest;
+use App\Models\Index\AverageTestScoreOfTheFirstThirtyPercentOfAdmitted;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -17,10 +17,12 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
+
         $query = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::$filterColumnsCheckBoxes;
@@ -64,21 +66,24 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
+
         return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request
+     * @return Response
      */
     public function store(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request)
     {
+        $this->authorize("create-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
         AverageTestScoreOfTheFirstThirtyPercentOfAdmitted::create(array_merge(['user_id' => Auth::id()], $request->validated()));
         return back()->with('success', __('titles.success_store'));
     }
@@ -86,8 +91,8 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
@@ -97,23 +102,26 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
+        $this->authorize("edit-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
+
         return view('admin.gostaresh.average-test-score-of-the-first-thirty-percent-of-admitted.edit.edit', compact('avgTstScrOfFrtThrtPrntOfAdmitted'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(AverageTestScoreOfTheFirstThirtyPercentOfAdmittedRequest $request, AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
+        $this->authorize("edit-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
         $avgTstScrOfFrtThrtPrntOfAdmitted->update($request->validated());
         return back()->with('success', __('titles.success_update'));
     }
@@ -121,11 +129,12 @@ class AverageTestScoreOfTheFirstThirtyPercentOfAdmittedController extends Contro
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(AverageTestScoreOfTheFirstThirtyPercentOfAdmitted $avgTstScrOfFrtThrtPrntOfAdmitted)
     {
+        $this->authorize("delete-any-AverageTestScoreOfTheFirstThirtyPercentOfAdmitted");
         $avgTstScrOfFrtThrtPrntOfAdmitted->delete();
         return back()->with('success', __('titles.success_delete'));
     }

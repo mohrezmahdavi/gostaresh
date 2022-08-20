@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin\Gostaresh;
 
 use App\Exports\Gostaresh\NumberOfStudentsStatusAnalysis\ListExport;
 use App\Http\Controllers\Controller;
-use App\Models\Index\NumberOfStudentsStatusAnalysis;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Gostaresh\NumberOfStudentsStatusAnalysis\NumberOfStudentsStatusAnalysisRequest;
 use App\Models\Grade;
+use App\Models\Index\NumberOfStudentsStatusAnalysis;
 use App\Models\Major;
 use App\Models\Minor;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -20,10 +20,12 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
+        $this->authorize("view-any-NumberOfStudentsStatusAnalysis");
+
         $query = NumberOfStudentsStatusAnalysis::whereRequestsQuery();
 
         $filterColumnsCheckBoxes = NumberOfStudentsStatusAnalysis::$filterColumnsCheckBoxes;
@@ -67,10 +69,12 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
+        $this->authorize("create-any-NumberOfStudentsStatusAnalysis");
+
         $grades = Grade::all();
         $majors = Major::all();
         $minors = Minor::all();
@@ -80,20 +84,23 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  NumberOfStudentsStatusAnalysisRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param NumberOfStudentsStatusAnalysisRequest $request
+     * @return Response
      */
     public function store(NumberOfStudentsStatusAnalysisRequest $request)
     {
+        $this->authorize("create-any-NumberOfStudentsStatusAnalysis");
+
         NumberOfStudentsStatusAnalysis::create(array_merge(['user_id' => Auth::id()], $request->validated()));
+
         return back()->with('success', __('titles.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show(NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
@@ -103,8 +110,8 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
@@ -117,24 +124,27 @@ class NumberOfStudentsStatusAnalysisController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  NumberOfStudentsStatusAnalysisRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param NumberOfStudentsStatusAnalysisRequest $request
+     * @param int $id
+     * @return Response
      */
     public function update(NumberOfStudentsStatusAnalysisRequest $request, NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
+        $this->authorize("edit-any-NumberOfStudentsStatusAnalysis");
         $numberOfStudentsStatusAnalysis->update($request->validated());
+
         return back()->with('success', __('titles.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(NumberOfStudentsStatusAnalysis $numberOfStudentsStatusAnalysis)
     {
+        $this->authorize("delete-any-NumberOfStudentsStatusAnalysis");
         $numberOfStudentsStatusAnalysis->delete();
         return back()->with('success', __('titles.success_delete'));
     }

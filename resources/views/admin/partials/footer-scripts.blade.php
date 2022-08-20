@@ -12,4 +12,43 @@
         {{-- <script src="{{ asset('assets/admin/material/js/pages/dashboard-sales.init.js') }}"></script> --}}
 
         <!-- App js -->
-        
+
+        <script>
+                function whatDecimalSeparator() {
+                        var n = 1.1;
+                        n = n.toLocaleString().substring(1, 2);
+                        return n;
+                }
+
+                function removeLeadingZeroesForInput(){
+                        $(':input').each(function(){
+                                if($(this).val())
+                                {
+                                        if($(this).val().includes(".")){
+                                                $(this).val( $(this).val().replaceAll(/0*$/g, "") );
+                                                if ($(this).val().charAt($(this).val().length - 1) == whatDecimalSeparator() ) {
+                                                        $(this).val( $(this).val().substr(0, $(this).val().length - 1) );
+                                                }
+                                        }
+                                }
+                        })
+                }
+
+                function removeLeadingZeroesForTable(){
+                        $('.table td').each(function(){
+                                if($(this).text())
+                                {
+                                        if($(this).text().includes(".")){
+                                                $(this).text( $(this).text().replaceAll(/0*$/g, "") );
+                                                if ($(this).text().charAt($(this).text().length - 1) == whatDecimalSeparator() ) {
+                                                        $(this).text( $(this).text().substr(0, $(this).text().length - 1) );
+                                                }
+                                        }
+
+                                }
+                        })
+                }
+
+                removeLeadingZeroesForInput();
+                removeLeadingZeroesForTable();
+        </script>
