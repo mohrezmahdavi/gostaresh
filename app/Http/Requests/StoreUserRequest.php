@@ -28,6 +28,8 @@ class StoreUserRequest extends FormRequest
             'first_name' => ['string', 'required', new StringWithoutNumberRule],
             'last_name' => ['string', 'required', new StringWithoutNumberRule],
             'phone_number' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric|unique:users,phone_number',
+            'username' => 'required|string|unique:users,username',
+            'password' => 'nullable|string|confirmed',
             'country_id' => 'numeric|nullable',
             'province_id' => 'numeric|nullable',
             'county_id' => 'numeric|nullable',

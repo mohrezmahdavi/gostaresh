@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\StringWithoutNumberRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -28,6 +29,8 @@ class UpdateUserRequest extends FormRequest
             'first_name' => ['string', 'required', new StringWithoutNumberRule],
             'last_name' => ['string', 'required', new StringWithoutNumberRule],
             'phone_number' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric|unique:users,phone_number,' . $this->user->id . ',id',
+            'username' => 'required|string|unique:users,username,' . $this->user->id . ',id',
+            'password' => 'nullable|string|confirmed',
             'country_id' => 'numeric|nullable',
             'province_id' => 'numeric|nullable',
             'county_id' => 'numeric|nullable',

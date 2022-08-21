@@ -25,15 +25,25 @@
                     </span>
                 </a>
             </div> --}}
-            <p class="text-muted mb-4 mt-2">برای ورود، شماره همراه خود را وارد کنید.</p>
+            <p class="text-muted mb-4 mt-2">برای ورود، نام کاربری و رمز عبور خود را وارد کنید.</p>
         </div>
 
-        <form method="POST" action="{{ route('do.login.phone') }}">
+        <form method="POST" action="{{ route('do.login.username') }}">
             @csrf
             <div class="form-group mb-3">
-                <label for="phone_number">شماره همراه</label>
-                <input class="form-control @error('phone_number') is-invalid @enderror" type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="شماره همراه خود را وارد کنید...">
-                @error('phone_number')
+                <label for="phone_number">نام کاربری</label>
+                <input class="form-control @error('username') is-invalid @enderror" type="text" id="username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder=" نام کاربری خود را وارد کنید...">
+                @error('username')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password">رمز عبور</label>
+                <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus placeholder="رمز عبور خود را وارد کنید...">
+                @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -48,8 +58,8 @@
 
         <div class="row mt-4">
             <div class="col-md-12">
-                <span>برای ورود از طریق نام کاربری و رمز عبور </span>
-                <a href="{{ route('login.username') }}">کلیک کنید . </a>
+                <span>برای ورود از طریق شماره همراه  </span>
+                <a href="{{ route('login') }}">کلیک کنید . </a>
             </div>
         </div>
 

@@ -76,6 +76,39 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="username">
+                                <span> نام کاربری </span>&nbsp
+                                <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="username" name="username" value="{{ $user->username }}"
+                                    class="form-control" placeholder="نام کاربری خود را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="password">
+                                <span> رمز عبور </span>&nbsp
+                                {{-- <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span> --}}
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" id="password" name="password"
+                                    class="form-control" placeholder="رمز عبور خود را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="password_confirmation">
+                                <span> تایید رمزعبور </span>&nbsp
+                                {{-- <span class="text-danger" style="font-size: 11px !important"> (اجباری) </span> --}}
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" id="password_confirmation" name="password_confirmation"
+                                    class="form-control" placeholder="تایید رمز عبور خود را وارد کنید...">
+                            </div>
+                        </div>
+
                         <select-province-component province_default="{{ $user->province_id }}"
                                                    county_default="{{ $user->county_id }}"
                                                    city_default="{{ $user->city_id }}"
