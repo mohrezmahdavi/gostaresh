@@ -31,7 +31,7 @@ class NumberOfStudentsStatusByGradeAnalysisRequest extends FormRequest
             'city_id' => 'nullable|numeric|gte:0',
             'rural_district_id' => 'nullable|numeric|gte:0',
             "gender_id" => 'nullable|numeric',
-            "department_of_education" => 'nullable|numeric|gte:0',
+            'unit' => 'nullable|max:255',
             "university_type" => 'nullable|numeric',
             "number_of_students" => ['nullable', 'numeric', 'gte:0', new DecimalRangeRule()],
             'year' => 'nullable|numeric|gte:0',
