@@ -15,12 +15,11 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-@can("create-any-InternationalResearchStatusAnalysis")
-    <span>
-        <a href="{{ route('international-research.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-    </span>
- @endcan
-
+    @can('create-any-InternationalResearchStatusAnalysis')
+        <span>
+            <a href="{{ route('international-research.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+        </span>
+    @endcan
 @endsection
 
 @section('styles-head')
@@ -72,20 +71,23 @@
                                 @endforeach
                                 <td>{{ $internationalResearchStatusAnalysis?->year }}</td>
                                 <td>
-@can("edit-any-InternationalResearchStatusAnalysis")
-                                 <a href="{{ route('international-research.edit', $internationalResearchStatusAnalysis) }}"
-                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                            class="fa fa-edit"></i></a>
- @endcan
-@can("delete-any-InternationalResearchStatusAnalysis")
-                                    <form method="POST" action="{{ route('international-research.destroy', $internationalResearchStatusAnalysis) }}" role="form">
-                                        @csrf
-                                        {{ method_field('delete') }}
-                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </form>
- @endcan
+                                    @can('edit-any-InternationalResearchStatusAnalysis')
+                                        <a href="{{ route('international-research.edit', $internationalResearchStatusAnalysis) }}"
+                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                                class="fa fa-edit"></i></a>
+                                    @endcan
+                                    @can('delete-any-InternationalResearchStatusAnalysis')
+                                        <form method="POST"
+                                            action="{{ route('international-research.destroy', $internationalResearchStatusAnalysis) }}"
+                                            role="form">
+                                            @csrf
+                                            {{ method_field('delete') }}
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                title="{{ __('validation.buttons.delete') }}">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
                                 </td>
 
                                 </tr>
@@ -106,6 +108,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <x-gostaresh.international-research-status-analysis.line-chart-by-all-fields-year-component>
+            </x-gostaresh.international-research-status-analysis.line-chart-by-all-fields-year-component>
         </div>
     </div>
 @endsection
