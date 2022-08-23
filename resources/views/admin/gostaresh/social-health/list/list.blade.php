@@ -109,6 +109,13 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.social-health.line-chart-by-all-fields-year-component></x-gostaresh.social-health.line-chart-by-all-fields-year-component>
+        </div>
+    </div>
+
 @endsection
 
 @section('body-scripts')

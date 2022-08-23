@@ -14,12 +14,11 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-@can("create-any-AmountOfFacilitiesForResearchAchievements")
-    <span>
-        <a href="{{ route('amount-of-facilities.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
-    </span>
- @endcan
-
+    @can('create-any-AmountOfFacilitiesForResearchAchievements')
+        <span>
+            <a href="{{ route('amount-of-facilities.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
+        </span>
+    @endcan
 @endsection
 
 @section('styles-head')
@@ -71,20 +70,23 @@
                                 @endforeach
                                 <td>{{ $amountOfFacility?->year }}</td>
                                 <td>
-@can("edit-any-AmountOfFacilitiesForResearchAchievements")
-                                 <a href="{{ route('amount-of-facilities.edit', $amountOfFacility) }}"
-                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                            class="fa fa-edit"></i></a>
- @endcan
-@can( "delete-any-AmountOfFacilitiesForResearchAchievements")
-                                    <form method="POST" action="{{ route('amount-of-facilities.destroy', $amountOfFacility) }}" role="form">
-                                        @csrf
-                                        {{ method_field('delete') }}
-                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </form>
- @endcan
+                                    @can('edit-any-AmountOfFacilitiesForResearchAchievements')
+                                        <a href="{{ route('amount-of-facilities.edit', $amountOfFacility) }}"
+                                            title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
+                                                class="fa fa-edit"></i></a>
+                                    @endcan
+                                    @can('delete-any-AmountOfFacilitiesForResearchAchievements')
+                                        <form method="POST"
+                                            action="{{ route('amount-of-facilities.destroy', $amountOfFacility) }}"
+                                            role="form">
+                                            @csrf
+                                            {{ method_field('delete') }}
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                title="{{ __('validation.buttons.delete') }}">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
                                 </td>
 
                                 </tr>
@@ -105,6 +107,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.amount-of-facilities-for-research-achievements.line-chart-by-all-fields-year-component></x-gostaresh.amount-of-facilities-for-research-achievements.line-chart-by-all-fields-year-component>
         </div>
     </div>
 @endsection

@@ -109,6 +109,11 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <x-gostaresh.cultural-indicators-status-analysis.line-chart-by-all-fields-year-component></x-gostaresh.cultural-indicators-status-analysis.line-chart-by-all-fields-year-component>
+        </div>
+    </div>
 @endsection
 
 @section('body-scripts')
