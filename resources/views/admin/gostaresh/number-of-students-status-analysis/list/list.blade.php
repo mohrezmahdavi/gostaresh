@@ -14,12 +14,12 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-@can("create-any-NumberOfStudentsStatusAnalysis")
-    <span>
+    @can("create-any-NumberOfStudentsStatusAnalysis")
+        <span>
         <a href="{{ route('number.of.students.status.analysis.create')  }}" class="btn btn-success btn-sm">افزودن رکورد
             جدید</a>
     </span>
- @endcan
+    @endcan
 @endsection
 
 @section('styles-head')
@@ -28,12 +28,16 @@
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
-        'province' => true,
-        'zone' => false,
-        'county' => true,
-        'city' => false,
-    ]" />
+    <x-gostaresh.filter-table-list.filter-table-list-component
+        :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+        :yearSelectedList="$yearSelectedList"
+        :fieldsProvinceSelect="[
+                                'province' => true,
+                                'zone' => false,
+                                'county' => true,
+                                'city' => false,
+                                ]"
+    />
 
     <div class="row">
         <div class="col-md-12">
@@ -43,48 +47,51 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                                <tr>
-                                    <th>#</th>
-                                    @include('admin.gostaresh.number-of-students-status-analysis.list.partials.thead')
+                            <tr>
+                                <th>#</th>
+                                @include('admin.gostaresh.number-of-students-status-analysis.list.partials.thead')
 
-                                    <th>اقدام</th>
-                                </tr>
+                                <th>اقدام</th>
+                            </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                                @foreach ($numberOfStudentsStatusAnalysises as $key => $numberOfStudentsStatusAnalysis)
-                                    <tr>
-                                        <th scope="row">{{ $numberOfStudentsStatusAnalysises?->firstItem() + $key }}</th>
+                            @foreach ($numberOfStudentsStatusAnalysises as $key => $numberOfStudentsStatusAnalysis)
+                                <tr>
+                                    <th scope="row">{{ $numberOfStudentsStatusAnalysises?->firstItem() + $key }}</th>
 
-                                        @include('admin.gostaresh.number-of-students-status-analysis.list.partials.tbody')
+                                    @include('admin.gostaresh.number-of-students-status-analysis.list.partials.tbody')
 
-                                        <td>
+                                    <td>
 
-@can("edit-any-NumberOfStudentsStatusAnalysis")
+                                        @can("edit-any-NumberOfStudentsStatusAnalysis")
                                             <a href="{{ route('number.of.students.status.analysis.edit', $numberOfStudentsStatusAnalysis) }}"
-                                                title="{{ __('validation.buttons.edit') }}"
-                                                class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                   @endcan
+                                               title="{{ __('validation.buttons.edit') }}"
+                                               class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                        @endcan
 
-@can("delete-any-NumberOfStudentsStatusAnalysis")
-                                    <form method="POST" action="{{ route('number.of.students.status.analysis.destroy', $numberOfStudentsStatusAnalysis) }}" role="form">
-                                        @csrf
-                                        {{ method_field('delete') }}
-                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </form>
- @endcan
- </td>
+                                        @can("delete-any-NumberOfStudentsStatusAnalysis")
+                                            <form method="POST"
+                                                  action="{{ route('number.of.students.status.analysis.destroy', $numberOfStudentsStatusAnalysis) }}"
+                                                  role="form">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                        title="{{ __('validation.buttons.delete') }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
+                                    </td>
 
-                                    </tr>
-                                @endforeach
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="text-end mt-3">
                             <x-exports.export-links
                                 excelLink="{{ route('number.of.students.status.analysis.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('number.of.students.status.analysis.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('number.of.students.status.analysis.list.print', request()->query->all()) }}" />
+                                printLink="{{ route('number.of.students.status.analysis.list.print', request()->query->all()) }}"/>
                         </div>
                     </div> <!-- end table-responsive-->
                     <div class="mt-3">
@@ -92,6 +99,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <x-gostaresh.number-of-students-status-analysis.line-chart-all-fields-by-year-component/>
         </div>
     </div>
 @endsection
