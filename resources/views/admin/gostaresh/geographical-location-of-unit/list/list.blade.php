@@ -23,7 +23,8 @@
 @endsection
 
 @section('styles-head')
-
+<!-- Apex js-->
+<script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -251,6 +252,10 @@
 
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.line-chart-by-international-opportunities-geographical-location-component />
+        </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component></x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component>
         </div>
     </div>
 @endsection
