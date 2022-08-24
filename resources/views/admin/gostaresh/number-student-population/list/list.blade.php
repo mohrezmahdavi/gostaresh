@@ -195,9 +195,9 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <x-gostaresh.number-student-population.line-chart-by-gender-component />
-        </div>
+        </div> --}}
 
     </div>
 @endsection

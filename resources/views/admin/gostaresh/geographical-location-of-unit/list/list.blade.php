@@ -245,13 +245,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.line-chart-by-level-and-quality-of-access-component />
         </div>
 
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.line-chart-by-international-opportunities-geographical-location-component />
-        </div>
+        </div> --}}
     </div>
 @endsection
 
