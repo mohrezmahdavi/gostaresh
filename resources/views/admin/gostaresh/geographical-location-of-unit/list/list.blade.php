@@ -261,6 +261,10 @@
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.pie-chart-international-opportunities-geographical-location-component></x-gostaresh.geographical-location-of-unit.pie-chart-international-opportunities-geographical-location-component>
         </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.geographical-location-of-unit.pie-chart-climate-type-and-weather-conditions-geographical-location-component></x-gostaresh.geographical-location-of-unit.pie-chart-climate-type-and-weather-conditions-geographical-location-component>
+        </div>
     </div>
 @endsection
 
