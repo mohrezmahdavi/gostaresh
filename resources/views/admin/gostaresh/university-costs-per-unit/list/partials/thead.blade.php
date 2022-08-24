@@ -3,48 +3,6 @@
 @if (filterCol('unit') == true)
     <th>واحد</th>
 @endif
-{{--@if (filterCol('payment_to_faculty_members') == true)                                 --}}
-{{--    <th>درصد کل پرداختی به اعضای هیات علمی تمام وقت واحد دانشگاهی</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('total_running_costs') == true)                                        --}}
-{{--    <th>کل هزینه های جاری</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('average_salary_of_faculty_members') == true)                          --}}
-{{--    <th>میانگین حقوق دریافتی اعضای هیات علمی</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('average_salaries_of_faculty_members_from_research_contracts') == true)--}}
-{{--    <th>میانگین حقوق دریافتی اعضای هیات علمی دانشگاه آزاد اسلامی استان از محل قراردهای تحقیقاتی، آموزشی و خدماتی</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('student_fees') == true)                                               --}}
-{{--    <th>هزینه دانشجویان</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('average_salary_of_employees') == true)                                --}}
-{{--    <th>میانگین حقوق دریافتی کارمندان</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('current_expenditure_growth_rate') == true)                            --}}
-{{--    <th>نرخ رشد هزینه های جاری</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('cost_of_paying_office_rent') == true)                                 --}}
-{{--    <th>هزینه پرداخت اجاره ساختمان اداری</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('cost_of_rent_for_educational_building') == true)                      --}}
-{{--    <th>هزینه پرداخت اجاره ساختمان آموزشی</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('cost_of_rent_for_research_building') == true)                         --}}
-{{--    <th>هزینه پرداخت اجاره ساختمان پژوهشی</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('extra_charge_for_rent_extracurricular_building') == true)             --}}
-{{--    <th>هزینه پرداخت اجاره ساختمان فوق برنامه</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('cost_of_rent_innovation_buildings') == true)                          --}}
-{{--    <th>هزینه پرداخت اجاره ساختمان فناوری و نوآوری</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('energy_costs_of_buildings') == true)                                  --}}
-{{--    <th>هزینه های انرژی ساختمان ها</th>--}}
-{{--@endif--}}
-{{--@if (filterCol('cost_of_university_equipment') == true)                               --}}
-{{--    <th>هزینه های نگهداری، استهلاک و تعمیرات دارایی ها و تجهیزات دانشگاه</th>--}}
-{{--@endif--}}
 @if (filterCol('training_costs') == true)
     <th>هزینه های حوزه آموزش</th>
 @endif
