@@ -257,6 +257,10 @@
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component></x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component>
         </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.geographical-location-of-unit.pie-chart-international-opportunities-geographical-location-component></x-gostaresh.geographical-location-of-unit.pie-chart-international-opportunities-geographical-location-component>
+        </div>
     </div>
 @endsection
 
