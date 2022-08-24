@@ -51,6 +51,18 @@
                         </select-province-component>
 
                         <div class="form-group row mt-2">
+                            <label class="col-sm-2 col-form-label" for="unit">
+                                <span>واحد </span>&nbsp
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="unit" name="unit"
+                                       value="{{ $numberOfStudentsStatusAnalysis->unit }}" class="form-control"
+                                       placeholder=" واحد را وارد کنید...">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="gender_id">
                                 <span> جنسیت </span>&nbsp
                                 {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
@@ -59,24 +71,6 @@
                                 <select name="gender_id" id="gender_id" class="form-select">
                                     @foreach (config('gostaresh.gender') as $key => $value)
                                         <option {{ $key == $numberOfStudentsStatusAnalysis->gender_id ? 'selected' : '' }}
-                                            value="{{ $key }}">
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-2">
-                            <label class="col-sm-2 col-form-label" for="department_of_education">
-                                <span> گروه تحصیلی </span>&nbsp
-                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
-                            </label>
-                            <div class="col-sm-10">
-                                <select name="department_of_education" id="department_of_education" class="form-select">
-                                    @foreach (config('gostaresh.department_of_education') as $key => $value)
-                                        <option
-                                            {{ $key == $numberOfStudentsStatusAnalysis->department_of_education ? 'selected' : '' }}
                                             value="{{ $key }}">
                                             {{ $value }}</option>
                                     @endforeach
@@ -103,7 +97,6 @@
                                 </select>
                             </div>
                         </div>
-
 
                         <div class="form-group row mt-2">
                             <label class="col-sm-2 col-form-label" for="number_of_students">

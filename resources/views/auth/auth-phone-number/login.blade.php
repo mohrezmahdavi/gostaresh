@@ -46,7 +46,12 @@
 
         </form>
 
-        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <span>برای ورود از طریق نام کاربری و رمز عبور </span>
+                <a href="{{ route('login.username') }}">کلیک کنید . </a>
+            </div>
+        </div>
 
     </div> <!-- end card-body -->
 </div>

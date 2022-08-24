@@ -133,39 +133,6 @@
                             </div>
                         </div>
 
-{{--                        <div class="form-group row mt-2">--}}
-{{--                            <label class="col-sm-2 col-form-label" for="major_id">--}}
-{{--                                <span>رشته</span>&nbsp--}}
-{{--                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}--}}
-{{--                            </label>--}}
-{{--                            <div class="col-sm-10">--}}
-{{--                                <select name="major_id" id="major_id" class="form-select">--}}
-{{--                                    <option value="">انتخاب کنید...</option>--}}
-{{--                                    @foreach ($majors as $major)--}}
-{{--                                        <option {{ $major->id == $numberOfStudentsStatusAnalysis->major_id ? ' selected' : '' }} value="{{ $major->id}}">{{ $major->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                                --}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group row mt-2">--}}
-{{--                            <label class="col-sm-2 col-form-label" for="minor_id">--}}
-{{--                                <span>گرایش</span>&nbsp--}}
-{{--                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}--}}
-{{--                            </label>--}}
-{{--                            <div class="col-sm-10">--}}
-{{--                                <select name="minor_id" id="minor_id" class="form-select">--}}
-{{--                                    <option value="">انتخاب کنید...</option>--}}
-{{--                                    @foreach ($minors as $minor)--}}
-{{--                                        <option {{ $minor->id == $numberOfStudentsStatusAnalysis->minor_id ? ' selected' : '' }} value="{{ $minor->id}}">{{ $minor->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                                --}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
                         <x-select-year :default="$numberOfStudentsStatusAnalysis->year" min="{{ config('gostaresh.year.min', 1370) }}" max="{{ config('gostaresh.year.max', 1405) }}" :required="false" name="year"></x-select-year>
 
                         {{-- <x-select-month :default="$numberOfStudentsStatusAnalysis->month" :required="false" name="month"></x-select-month> --}}
