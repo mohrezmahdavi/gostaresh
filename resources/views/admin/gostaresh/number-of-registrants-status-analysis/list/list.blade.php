@@ -95,6 +95,11 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <x-gostaresh.number-of-registrants-status-analysis.line-chart-all-fields-by-year-component  />
+        </div>
+    </div>
 @endsection
 
 @section('body-scripts')

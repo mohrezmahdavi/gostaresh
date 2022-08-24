@@ -15,11 +15,11 @@
     <span>
         <a href="{{ route('admin.index') }}" class="btn btn-info btn-sm">بازگشت به منو</a>
     </span>
-@can("create-any-GraduateStatusAnalysis")
-    <span>
+    @can("create-any-GraduateStatusAnalysis")
+        <span>
         <a href="{{ route('graduate-status-analyses.create') }}" class="btn btn-success btn-sm">افزودن رکورد جدید</a>
     </span>
- @endcan
+    @endcan
 
 @endsection
 
@@ -29,12 +29,14 @@
 @section('content')
     @include('admin.partials.row-notifiy-col')
 
-    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes" :yearSelectedList="$yearSelectedList" :fieldsProvinceSelect="[
+    <x-gostaresh.filter-table-list.filter-table-list-component :filterColumnsCheckBoxes="$filterColumnsCheckBoxes"
+                                                               :yearSelectedList="$yearSelectedList"
+                                                               :fieldsProvinceSelect="[
         'province' => true,
         'zone' => false,
         'county' => true,
         'city' => false,
-    ]" />
+    ]"/>
 
     <div class="row">
         <div class="col-md-12">
@@ -44,52 +46,56 @@
                         <table class="table mb-0">
                             <thead class="thead-light">
 
-                                <tr>
-                                    <th>#</th>
-                                    <th>شهرستان</th>
-                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
-                                        @if (filterCol($key))
-                                            <th>{{ $value }}</th>
-                                        @endif
-                                    @endforeach
-                                    <th>سال</th>
-                                    <th>اقدام</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>شهرستان</th>
+                                @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                    @if (filterCol($key))
+                                        <th>{{ $value }}</th>
+                                    @endif
+                                @endforeach
+                                <th>سال</th>
+                                <th>اقدام</th>
+                            </tr>
                             </thead>
                             <tbody style="text-align: right; direction: ltr">
-                                @foreach ($graduateStatusAnalyses as $key => $graduateStatusAnalysis)
-                                    <tr>
-                                        <th scope="row">{{ $graduateStatusAnalyses?->firstItem() + $key }}</th>
-                                        <td>{{ $graduateStatusAnalysis?->province?->name . ' - ' . $graduateStatusAnalysis->county?->name }}
-                                            @foreach ($filterColumnsCheckBoxes as $key => $value)
-                                                @if (filterCol($key))
-                                                    @if (in_array($key, \App\Models\Index\GraduateStatusAnalysis::$numeric_fields))
-                                        <td>{{ $graduateStatusAnalysis?->{$key} }}</td>
-                                    @else
-                                        <td>{{ $graduateStatusAnalysis?->{$key} }}</td>
-                                @endif
-                                @endif
-                                @endforeach
-                                <td>{{ $graduateStatusAnalysis?->year }}</td>
-                                <td>
-@can("edit-any-GraduateStatusAnalysis")
-                                 <a href="{{ route('graduate-status-analyses.edit', $graduateStatusAnalysis) }}"
-                                        title="{{ __('validation.buttons.edit') }}" class="btn btn-warning btn-sm"><i
-                                            class="fa fa-edit"></i></a>
- @endcan
-@can("delete-any-GraduateStatusAnalysis")
-                                    <form method="POST" action="{{ route('graduate-status-analyses.destroy', $graduateStatusAnalysis) }}" role="form">
-                                        @csrf
-                                        {{ method_field('delete') }}
-                                        <button  type="submit" class="btn btn-danger btn-sm" title="{{ __('validation.buttons.delete') }}">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </form>
- @endcan
-                                </td>
+                            @foreach ($graduateStatusAnalyses as $key => $graduateStatusAnalysis)
+                                <tr>
+                                    <th scope="row">{{ $graduateStatusAnalyses?->firstItem() + $key }}</th>
+                                    <td>{{ $graduateStatusAnalysis?->province?->name . ' - ' . $graduateStatusAnalysis->county?->name }}
+                                    @foreach ($filterColumnsCheckBoxes as $key => $value)
+                                        @if (filterCol($key))
+                                            @if (in_array($key, \App\Models\Index\GraduateStatusAnalysis::$numeric_fields))
+                                                <td>{{ $graduateStatusAnalysis?->{$key} }}</td>
+                                            @else
+                                                <td>{{ $graduateStatusAnalysis?->{$key} }}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    <td>{{ $graduateStatusAnalysis?->year }}</td>
+                                    <td>
+                                        @can("edit-any-GraduateStatusAnalysis")
+                                            <a href="{{ route('graduate-status-analyses.edit', $graduateStatusAnalysis) }}"
+                                               title="{{ __('validation.buttons.edit') }}"
+                                               class="btn btn-warning btn-sm"><i
+                                                    class="fa fa-edit"></i></a>
+                                        @endcan
+                                        @can("delete-any-GraduateStatusAnalysis")
+                                            <form method="POST"
+                                                  action="{{ route('graduate-status-analyses.destroy', $graduateStatusAnalysis) }}"
+                                                  role="form">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                        title="{{ __('validation.buttons.delete') }}">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
+                                    </td>
 
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
 
@@ -97,7 +103,7 @@
                             <x-exports.export-links
                                 excelLink="{{ route('graduate-status-analyses.list.excel', request()->query->all()) }}"
                                 pdfLink="{{ route('graduate-status-analyses.list.pdf', request()->query->all()) }}"
-                                printLink="{{ route('graduate-status-analyses.list.print', request()->query->all()) }}" />
+                                printLink="{{ route('graduate-status-analyses.list.print', request()->query->all()) }}"/>
                         </div>
                     </div>
                     <!-- end table-responsive-->
@@ -106,6 +112,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <x-gostaresh.graduate-status-analysis.line-chart-all-fields-by-year-component/>
         </div>
     </div>
 @endsection
