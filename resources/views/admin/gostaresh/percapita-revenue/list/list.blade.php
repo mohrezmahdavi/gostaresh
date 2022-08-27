@@ -23,6 +23,8 @@
 @endsection
 
 @section('styles-head')
+    <!-- Apex js-->
+    <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -112,6 +114,17 @@
             <x-gostaresh.percapita-revenue.line-chart-by-all-fields-year-component></x-gostaresh.percapita-revenue.line-chart-by-all-fields-year-component>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.percapita-revenue.pie-chart-university-type-component></x-gostaresh.percapita-revenue.pie-chart-university-type-component>
+        </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.percapita-revenue.pie-chart-grade-component></x-gostaresh.percapita-revenue.pie-chart-grade-component>
+        </div>
+    </div>
+
 @endsection
 
 @section('body-scripts')
