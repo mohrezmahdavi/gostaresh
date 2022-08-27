@@ -22,6 +22,8 @@
 @endsection
 
 @section('styles-head')
+<!-- Apex js-->
+<script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -98,6 +100,14 @@
     <div class="row">
         <div class="col-md-12">
             <x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component></x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component>
+        </div>
+
+        <div class="col-md-4">
+            <x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component>
+        </div>
+
+        <div class="col-md-4">
+            <x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component>
         </div>
     </div>
 @endsection
