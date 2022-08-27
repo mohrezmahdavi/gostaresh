@@ -117,6 +117,14 @@
         <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component>
         </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-wholesale-retail-vehicle-repair-supply-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-wholesale-retail-vehicle-repair-supply-employment-of-provincial-component>
+        </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-hotel-and-restaurant-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-hotel-and-restaurant-employment-of-provincial-component>
+        </div>
     </div>
 @endsection
 
