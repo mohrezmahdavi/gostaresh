@@ -3,7 +3,7 @@
 
         <div class="d-flex align-items-start justify-content-between">
             <div>
-                <h4 class="header-title">دانشگاه</h4>
+                <h4 class="header-title">درصد وضعیت دانشگاه</h4>
             </div>
             <div class="avatar-sm">
                 <span class="avatar-title bg-soft-primary rounded">
