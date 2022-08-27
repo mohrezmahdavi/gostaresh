@@ -133,6 +133,10 @@
         <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-financial-intermediation-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-financial-intermediation-employment-of-provincial-component>
         </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-office-of-public-affairs-urban-services-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-office-of-public-affairs-urban-services-employment-of-provincial-component>
+        </div>
     </div>
 @endsection
 
