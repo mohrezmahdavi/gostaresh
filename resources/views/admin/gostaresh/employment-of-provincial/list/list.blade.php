@@ -145,6 +145,10 @@
         <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-health-and-social-work-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-health-and-social-work-employment-of-provincial-component>
         </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-activities-of-employed-households-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-activities-of-employed-households-employment-of-provincial-component>
+        </div>
     </div>
 @endsection
 
