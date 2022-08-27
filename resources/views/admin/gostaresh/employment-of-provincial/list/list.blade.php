@@ -98,16 +98,24 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component></x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component>
-        </div>
+        </div> --}}
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component>
+        </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-water-electricity-natural-gas-supply-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-water-electricity-natural-gas-supply-employment-of-provincial-component>
+        </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component>
         </div>
     </div>
 @endsection
