@@ -111,7 +111,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <x-gostaresh.percapita-status-analyses.line-chart-by-all-fields-year-component></x-gostaresh.percapita-status-analyses.line-chart-by-all-fields-year-component>
         </div>
     </div>
