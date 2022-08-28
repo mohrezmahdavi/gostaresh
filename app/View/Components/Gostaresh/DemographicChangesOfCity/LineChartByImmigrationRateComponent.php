@@ -36,6 +36,7 @@ class LineChartByImmigrationRateComponent extends Component
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
             'aggregate_field' => 'immigration_rates',
+            'aggregate_avg_count_record' => true,
             'aggregate_transform' => function ($value) {
                 return $value;
             },
