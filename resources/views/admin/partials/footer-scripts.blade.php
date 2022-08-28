@@ -39,7 +39,7 @@
                                 if($(this).text())
                                 {
                                         if($(this).text().includes(".")){
-                                                $(this).text( $(this).text().replaceAll(/0*$/g, "") );
+                                                $(this).text( $(this).text().trim().replaceAll(/0*$/g, "") );
                                                 if ($(this).text().charAt($(this).text().length - 1) == whatDecimalSeparator() ) {
                                                         $(this).text( $(this).text().substr(0, $(this).text().length - 1) );
                                                 }

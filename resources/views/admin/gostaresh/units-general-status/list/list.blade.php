@@ -23,6 +23,9 @@
 @endsection
 
 @section('styles-head')
+    <!-- Apex js-->
+    <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
+
 @endsection
 
 @section('content')
@@ -120,6 +123,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.units-general-status.pie-chart-degree-and-rank-component></x-gostaresh.units-general-status.pie-chart-degree-and-rank-component>
+        </div>
+
     </div>
 @endsection
 
