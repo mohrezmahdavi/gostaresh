@@ -165,6 +165,10 @@
         <div class="col-md-3">
             <x-gostaresh.employment-of-provincial.pie-chart-office-and-support-services-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-office-and-support-services-employment-of-provincial-component>
         </div>
+
+        <div class="col-md-3">
+            <x-gostaresh.employment-of-provincial.pie-chart-art-and-entertainment-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-art-and-entertainment-employment-of-provincial-component>
+        </div>
     </div>
 @endsection
 
