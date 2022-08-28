@@ -246,13 +246,14 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.line-chart-by-level-and-quality-of-access-component />
         </div>
 
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.line-chart-by-international-opportunities-geographical-location-component />
-        </div>
+
+        </div> --}}
 
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component></x-gostaresh.geographical-location-of-unit.pie-chart-level-level-and-quality-of-access-component>
@@ -265,6 +266,9 @@
         <div class="col-md-6">
             <x-gostaresh.geographical-location-of-unit.pie-chart-climate-type-and-weather-conditions-geographical-location-component></x-gostaresh.geographical-location-of-unit.pie-chart-climate-type-and-weather-conditions-geographical-location-component>
         </div>
+
+        </div>
+
     </div>
 @endsection
 
