@@ -35,6 +35,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'ebtedai',
             'aggregate_transform' => function ($value) {
                 return $value;
@@ -49,6 +50,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'motevasete_1',
             'aggregate_transform' => function ($value) {
                 return $value;
@@ -63,6 +65,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'motevasete_2_ensani',
             'aggregate_transform' => function ($value) {
                 return $value;
@@ -76,6 +79,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'motevasete_2_math',
             'aggregate_transform' => function ($value) {
                 return $value;
@@ -90,6 +94,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'motevasete_2_science',
             'aggregate_transform' => function ($value) {
                 return $value;
@@ -103,6 +108,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'motevasete_2_kar_danesh',
             'aggregate_transform' => function ($value) {
                 return $value;

@@ -199,7 +199,7 @@
 
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <x-gostaresh.growth-rate-student-population.line-chart-by-all-fields-year-component></x-gostaresh.growth-rate-student-population.line-chart-by-all-fields-year-component>
         </div>
 

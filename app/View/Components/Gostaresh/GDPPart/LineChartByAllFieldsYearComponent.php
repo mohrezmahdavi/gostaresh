@@ -35,6 +35,7 @@ class LineChartByAllFieldsYearComponent extends Component
             'group_by_field' => 'year',
             'chart_type' => 'line',
             'aggregate_function' => 'sum',
+            'aggregate_avg_count_record' => true,
             'aggregate_field' => 'amount',
             'aggregate_transform' => function ($value) {
                 return $value;

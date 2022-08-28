@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <x-gostaresh.payment-r-and-d-department.line-chart-by-all-fields-year-component></x-gostaresh.payment-r-and-d-department.line-chart-by-all-fields-year-component>
         </div>
     </div>

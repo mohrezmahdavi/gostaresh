@@ -201,7 +201,7 @@
             <x-gostaresh.number-student-population.line-chart-by-gender-component />
 
         </div> --}}
-        <div class="col-md-6">
+        <div class="col-md-8">
             <x-gostaresh.number-student-population.line-chart-by-all-fields-year-component>
             </x-gostaresh.number-student-population.line-chart-by-all-fields-year-component>
         </div>
