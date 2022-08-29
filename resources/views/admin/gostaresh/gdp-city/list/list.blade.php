@@ -96,6 +96,9 @@
         <div class="col-md-6">
             <x-gostaresh.g-d-p-city.line-chart-by-all-fields-year-component></x-gostaresh.g-d-p-city.line-chart-by-all-fields-year-component>
         </div>
+        <div class="col-md-6">
+            <x-gostaresh.g-d-p-city.bar-chart-by-all-fields-year-component></x-gostaresh.g-d-p-city.bar-chart-by-all-fields-year-component>
+        </div>
     </div>
 @endsection
 

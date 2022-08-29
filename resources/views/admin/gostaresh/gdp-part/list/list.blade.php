@@ -102,6 +102,10 @@
         <div class="col-md-6">
             <x-gostaresh.g-d-p-part.pie-chart-part-g-d-p-part-component></x-gostaresh.g-d-p-part.pie-chart-part-g-d-p-part-component>
         </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.g-d-p-part.bar-chart-by-all-fields-year-component></x-gostaresh.g-d-p-part.bar-chart-by-all-fields-year-component>
+        </div>
     </div>
 @endsection
 

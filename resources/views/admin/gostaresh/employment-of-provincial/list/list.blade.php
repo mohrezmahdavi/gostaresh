@@ -102,75 +102,75 @@
             <x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component></x-gostaresh.employment-of-provincial.line-chart-by-all-fields-year-component>
         </div> --}}
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-agriculture-hunting-forestry-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-mining-construction-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-water-electricity-natural-gas-supply-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-water-electricity-natural-gas-supply-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-building-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-wholesale-retail-vehicle-repair-supply-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-wholesale-retail-vehicle-repair-supply-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-hotel-and-restaurant-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-hotel-and-restaurant-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-transportation-warehousing-communications-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-transportation-warehousing-communications-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-financial-intermediation-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-financial-intermediation-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-office-of-public-affairs-urban-services-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-office-of-public-affairs-urban-services-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-education-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-education-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-health-and-social-work-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-health-and-social-work-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-activities-of-employed-households-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-activities-of-employed-households-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-overseas-organizations-and-delegations-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-overseas-organizations-and-delegations-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-real-estates-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-real-estates-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-professional-scientific-technical-activities-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-professional-scientific-technical-activities-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-office-and-support-services-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-office-and-support-services-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-art-and-entertainment-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-art-and-entertainment-employment-of-provincial-component>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <x-gostaresh.employment-of-provincial.pie-chart-other-services-employment-of-provincial-component></x-gostaresh.employment-of-provincial.pie-chart-other-services-employment-of-provincial-component>
         </div>
     </div>
