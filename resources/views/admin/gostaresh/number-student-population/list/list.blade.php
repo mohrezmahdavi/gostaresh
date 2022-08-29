@@ -206,6 +206,9 @@
             </x-gostaresh.number-student-population.line-chart-by-all-fields-year-component>
         </div>
 
+        <div class="col-md-8">
+            <x-gostaresh.number-student-population.bar-chart-by-all-fields-year-component></x-gostaresh.number-student-population.bar-chart-by-all-fields-year-component>
+        </div>
     </div>
 
     </div>
