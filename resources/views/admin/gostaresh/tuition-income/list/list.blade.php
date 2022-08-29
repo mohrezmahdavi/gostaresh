@@ -23,6 +23,8 @@
 @endsection
 
 @section('styles-head')
+    <!-- Apex js-->
+    <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -109,6 +111,12 @@
     <div class="row">
         <div class="col-md-6">
             <x-gostaresh.tuition-income.line-chart-by-all-fields-year-component></x-gostaresh.tuition-income.line-chart-by-all-fields-year-component>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <x-gostaresh.tuition-income.pie-chart-department-of-education-component></x-gostaresh.tuition-income.pie-chart-department-of-education-component>
         </div>
     </div>
 @endsection
