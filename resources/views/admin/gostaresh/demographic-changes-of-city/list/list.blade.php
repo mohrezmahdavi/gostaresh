@@ -180,6 +180,10 @@
         <div class="col-md-6">
             <x-gostaresh.demographic-changes-of-city.bar-chart-by-population-component></x-gostaresh.demographic-changes-of-city.bar-chart-by-population-component>
         </div>
+
+        <div class="col-md-6">
+            <x-gostaresh.demographic-changes-of-city.bar-chart-by-grow-rate-component></x-gostaresh.demographic-changes-of-city.bar-chart-by-grow-rate-component>
+        </div>
     </div>
 @endsection
 
