@@ -25,7 +25,7 @@ class PieChartGradeComponent extends Component
      */
     public function render()
     {
-        $percapitaRevenue = PercapitaRevenueStatusAnalysis::select('grade_id', DB::raw('count(*) as total'))->whereRequestsQuery()->groupBy('grade_id')->get();
+        $percapitaRevenue = PercapitaRevenueStatusAnalysis::select('grade_id', DB::raw('sum(percapita_revenue_status_analyses) as total'))->whereRequestsQuery()->groupBy('grade_id')->get();
 
         return view('components.gostaresh.percapita-revenue.pie-chart-grade-component', compact('percapitaRevenue'));
     }
