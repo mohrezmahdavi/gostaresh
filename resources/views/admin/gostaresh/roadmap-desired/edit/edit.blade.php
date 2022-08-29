@@ -52,7 +52,7 @@
                         {{--<div class="form-group row mt-2">--}}
                             {{--<label class="col-sm-2 col-form-label" for="experimental_policy_title">--}}
                                 {{--<span>عنوان سیاست آزمایشی </span>&nbsp--}}
-                                {{--{{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}--}}
+                                {{--<span class="text-danger" style="font-size: 11px !important"> (اجباری) </span>--}}
                             {{--</label>--}}
                             {{--<div class="col-sm-10">--}}
                                 {{--<input type="text" id="experimental_policy_title" name="experimental_policy_title"--}}

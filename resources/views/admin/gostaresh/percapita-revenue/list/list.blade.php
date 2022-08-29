@@ -117,10 +117,6 @@
 
     <div class="row">
         <div class="col-md-6">
-            <x-gostaresh.percapita-revenue.pie-chart-university-type-component></x-gostaresh.percapita-revenue.pie-chart-university-type-component>
-        </div>
-
-        <div class="col-md-6">
             <x-gostaresh.percapita-revenue.pie-chart-grade-component></x-gostaresh.percapita-revenue.pie-chart-grade-component>
         </div>
     </div>

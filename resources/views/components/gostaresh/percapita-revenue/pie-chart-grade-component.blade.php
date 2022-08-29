@@ -27,7 +27,7 @@
         $series = [];
         foreach (config('gostaresh.grade') as $key => $value) {
             $number = $percapitaRevenue->where('grade_id', $key)->first()?->total;
-            array_push($series, $number == null ? 0 : $number);
+            array_push($series, $number == null ? 0 : (int)$number);
         }
     }
 @endphp
