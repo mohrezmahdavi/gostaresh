@@ -203,6 +203,9 @@
             <x-gostaresh.growth-rate-student-population.line-chart-by-all-fields-year-component></x-gostaresh.growth-rate-student-population.line-chart-by-all-fields-year-component>
         </div>
 
+        <div class="col-md-8">
+            <x-gostaresh.growth-rate-student-population.bar-chart-by-grow-rate-component></x-gostaresh.growth-rate-student-population.bar-chart-by-grow-rate-component>
+        </div>
     </div>
 @endsection
 
