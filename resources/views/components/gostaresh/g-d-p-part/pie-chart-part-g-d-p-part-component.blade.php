@@ -62,12 +62,21 @@ if (count($gdpParts) > 0) {
                     vertical: 5
                 },
 
-                formatter: function(seriesName, opts) {
-                    return [`درصد ${seriesName}`]
+
+            },
+            tooltip: {
+                y: {
+                    formatter: () => '',
+                    title: {
+                        formatter: (seriesName, opts) => {
+                            console.log(opts)
+                            return [`تعداد ${seriesName} : ${opts.w.globals.series[opts.seriesIndex]} </br>`,
+                                `درصد ${seriesName} : %${opts.w.globals.seriesPercent[opts.seriesIndex][0].toFixed(1)}`
+                            ]
+                        },
+                    },
                 },
-
-
-            }
+            },
         }
 
         var chart = new ApexCharts(document.querySelector("#projections-actuals"), options);

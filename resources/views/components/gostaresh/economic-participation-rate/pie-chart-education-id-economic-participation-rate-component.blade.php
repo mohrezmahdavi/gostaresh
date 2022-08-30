@@ -52,20 +52,19 @@ if (count($economicParticipationRates) > 0) {
                 fontSize: '14px',
                 formatter: undefined,
                 inverseOrder: false,
-                itemMargin: {
-                    horizontal: 10,
-                    vertical: 5
-                },
 
-                formatter: function(seriesName, opts) {
-                    return [`درصد ${seriesName}`]
-                },
+
             },
             tooltip: {
                 y: {
-                    formatter: undefined,
+                    formatter: () => '',
                     title: {
-                        formatter: (seriesName) => `تعداد ${seriesName} : `,
+                        formatter: (seriesName, opts) => {
+                            console.log(opts)
+                            return [`تعداد ${seriesName} : ${opts.w.globals.series[opts.seriesIndex]} </br>`,
+                                `درصد ${seriesName} : %${opts.w.globals.seriesPercent[opts.seriesIndex][0].toFixed(1)}`
+                            ]
+                        },
                     },
                 },
             },
