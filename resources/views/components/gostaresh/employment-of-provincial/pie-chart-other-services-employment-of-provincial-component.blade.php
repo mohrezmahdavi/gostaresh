@@ -52,7 +52,23 @@ if (count($employmentOfProvincials) > 0) {
                 fontSize: '14px',
                 formatter: undefined,
                 inverseOrder: false,
-            }
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 5
+                },
+
+                formatter: function(seriesName, opts) {
+                    return [`درصد ${seriesName}`]
+                },
+            },
+            tooltip: {
+                y: {
+                    formatter: undefined,
+                    title: {
+                        formatter: (seriesName) => `تعداد ${seriesName} : `,
+                    },
+                },
+            },
         }
 
         var chart = new ApexCharts(document.querySelector("#projections-actuals17"), options);

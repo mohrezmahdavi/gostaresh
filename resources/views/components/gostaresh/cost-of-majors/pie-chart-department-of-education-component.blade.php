@@ -11,7 +11,7 @@
                 </span>
             </div>
         </div>
-        <div class="mt-3 text-center" >
+        <div class="mt-3 text-center">
             @if (count($costOfMajors) > 0)
                 <div id="projections-actuals" class="apex-charts"></div>
             @else
@@ -23,13 +23,13 @@
 
 @php
 
-    if (count($costOfMajors) > 0) {
-        $series = [];
-        foreach (config('gostaresh.department_of_education') as $key => $value) {
-            $number = $costOfMajors->where('department_of_education', $key)->first()?->total;
-            array_push($series, $number == null ? 0 : (int)$number);
-        }
+if (count($costOfMajors) > 0) {
+    $series = [];
+    foreach (config('gostaresh.department_of_education') as $key => $value) {
+        $number = $costOfMajors->where('department_of_education', $key)->first()?->total;
+        array_push($series, $number == null ? 0 : (int) $number);
     }
+}
 @endphp
 
 @if (count($costOfMajors) > 0)
@@ -49,7 +49,23 @@
                 fontSize: '14px',
                 formatter: undefined,
                 inverseOrder: false,
-            }
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 5
+                },
+
+                formatter: function(seriesName, opts) {
+                    return [`درصد ${seriesName}`]
+                },
+            },
+            tooltip: {
+                y: {
+                    formatter: undefined,
+                    title: {
+                        formatter: (seriesName) => `تعداد ${seriesName} : `,
+                    },
+                },
+            },
         }
 
         var chart = new ApexCharts(document.querySelector("#projections-actuals"), options);

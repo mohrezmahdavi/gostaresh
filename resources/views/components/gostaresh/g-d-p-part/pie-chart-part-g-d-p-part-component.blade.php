@@ -40,6 +40,14 @@ if (count($gdpParts) > 0) {
             },
             series: {!! json_encode($series) !!},
             labels: {!! json_encode(array_values(config('gostaresh.parts'))) !!},
+            tooltip: {
+                y: {
+                    formatter: undefined,
+                    title: {
+                        formatter: (seriesName) => `تعداد ${seriesName} : `,
+                    },
+                },
+            },
             legend: {
                 show: true,
                 position: 'bottom',
@@ -50,9 +58,15 @@ if (count($gdpParts) > 0) {
                 inverseOrder: false,
 
                 itemMargin: {
-                    horizontal: 10,
+                    horizontal: 5,
                     vertical: 5
                 },
+
+                formatter: function(seriesName, opts) {
+                    return [`درصد ${seriesName}`]
+                },
+
+
             }
         }
 
