@@ -17,10 +17,6 @@
             @else
                 <div class="alert alert-warning">رکوردی در حال حاضر وجود ندارد.</div>
             @endif
-
-
-
-
         </div>
     </div>
 </div> <!-- end card-box -->
@@ -40,7 +36,7 @@ if (count($gdpParts) > 0) {
         var options = {
             chart: {
                 type: 'pie',
-                width: '100%'
+                width: '100%',
             },
             series: {!! json_encode($series) !!},
             labels: {!! json_encode(array_values(config('gostaresh.parts'))) !!},
@@ -52,6 +48,11 @@ if (count($gdpParts) > 0) {
                 fontSize: '14px',
                 formatter: undefined,
                 inverseOrder: false,
+
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 5
+                },
             }
         }
 
